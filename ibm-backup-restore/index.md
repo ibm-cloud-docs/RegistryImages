@@ -39,7 +39,7 @@ Every **ibm-backup-restore** image contains the following software packages:
 Complete the following steps to perform backup and restore operations:
 1.  [Creating an {{site.data.keyword.objectstorageshort}} service instance](#object_storage)
 2.  [Running a scheduled backup](#scheduled_backup)
-3.  [Running the restore script](#backup_script_cli)
+3.  [Running the restore script](#restore_script_cli)
 4.  [Encrypting your backups](#encrypting_backups)
 5.  [Environment variable reference](#reference_backup_restore)
 
@@ -340,7 +340,7 @@ Encrypt the data in your {{site.data.keyword.objectstorageshort}} instance.
 
 13. To confirm that your backup is encrypted, review the files in your {{site.data.keyword.objectstorageshort}} instance. The files now have `.gpg` appended to the end of the file name.![The Object Storage GUI shows all backed-up files appended with .gpg, which shows that they are encrypted.](images/volume_backup_encrypt_screenshot.png)
 
-Your backup is encrypted. To restore the files, follow the steps in [Running the restore script](#backup_script) and include the encryption.asc file in the backup_restore directory on the container that is running the restore process. If the backup is encrypted, you must provide the ENCRYPTION_REQUIRED and ENCRYPTION_PASSPHRASE as environment variables when you create the restore container.
+Your backup is encrypted. To restore the files, follow the steps in [Running the restore script](#restore_script_cli) and include the encryption.asc file in the backup_restore directory on the container that is running the restore process. If the backup is encrypted, you must provide the ENCRYPTION_REQUIRED and ENCRYPTION_PASSPHRASE as environment variables when you create the restore container.
 
 ## Environment variable reference 
 {: #reference_backup_restore}
