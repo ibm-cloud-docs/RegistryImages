@@ -148,7 +148,7 @@ After the container that runs IBM Integration Bus is deployed in {{site.data.key
     ```
     {: pre}
 
-    **Note**: In this command, you can replace **bx ic** with **docker** when you [log in to {{site.data.keyword.containershort_notm}}](/docs/containers/container_cli_login.html) and set your environment variables to use native Docker commands. You can use native Docker commands in all steps that are marked with an asterisk (\*).
+    **Note**: In this command, you can replace **bx ic** with **docker** when you [log in to {{site.data.keyword.containershort_notm}}](/docs/containers/container_cli_cfic_install.html#container_cli_login) and set your environment variables to use native Docker commands. You can use native Docker commands in all steps that are marked with an asterisk (\*).
 
     ```
     $ bx ic ps
