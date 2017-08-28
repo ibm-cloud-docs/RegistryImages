@@ -43,7 +43,7 @@ Complete the following steps to perform backup and restore operations:
 4.  [Encrypting your backups](#encrypting_backups)
 5.  [Environment variable reference](#reference_backup_restore)
 
-## Creating an {{site.data.keyword.objectstoragefull}} service instance 
+## Creating an {{site.data.keyword.objectstorageshort}} service instance 
 {: #object_storage}
 
 Create an {{site.data.keyword.objectstorageshort}} instance to serve as the repository for your volume backup.
