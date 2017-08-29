@@ -13,7 +13,7 @@ lastupdated: "2017-06-15"
 {:pre: .pre}
 {:table: .aria-labeledby="caption"}
 
-# Getting started with the ibm-backup-restore image for {{site.data.keyword.Bluemix_notm}} 
+# Getting started with the ibm-backup-restore image 
 {: #ibmbackup_restore_starter}
 
 The **ibm-backup-restore** image contains the preinstalled packages that are needed to back up and restore container volumes in {{site.data.keyword.containerlong}}.
