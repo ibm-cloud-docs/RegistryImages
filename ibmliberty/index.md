@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-06-15"
+lastupdated: "2017-09-21"
 
 ---
 
@@ -125,7 +125,7 @@ Use your WebSphere Application Server license to create a production-licensed **
 -   [Upgrade the image from Docker Hub to a production image](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
 -   [Build your own production-licensed image](https://github.com/WASdev/ci.docker/tree/master/ga/production-install).
 
-After you created a production-licensed image, [push the image to your private {{site.data.keyword.Bluemix_notm}} registry](/docs/containers/container_images_adding_ov.html#container_images_pulling) to use it with {{site.data.keyword.containershort_notm}}.
+After you create a production-licensed image, [push the image to your private {{site.data.keyword.Bluemix_notm}} registry](/docs/services/Registry/index.html) to use it with {{site.data.keyword.containershort_notm}}.
 
 ## Creating an image from the provided images 
 {: #creating_image}
@@ -160,7 +160,7 @@ To create an image with your app code from the **ibmliberty** image:
 
 6. Add any other dependencies for your app to the Dockerfile.
 
-7. Build and push the image to your private {{site.data.keyword.Bluemix_notm}} images registry. For more information, see [Building an image](/docs/containers/container_images_adding_ov.html#container_images_building).
+7. Build and push the image to your private {{site.data.keyword.Bluemix_notm}} images registry. For more information, see [Getting started with IBM Bluemix Container Registry](/docs/services/Registry/index.html).
 
 **Note:** All **ibmliberty** images are configured to write Liberty log files to the directory /logs inside the container. All other files that are written by the Liberty server, are created in the directory /opt/ibm/wlp/output/defaultServer. You can access these files by using the shortcut /output.
 
