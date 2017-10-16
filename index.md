@@ -4,7 +4,7 @@ copyright:
 
   years: 2014, 2017
 
-lastupdated: "2017-07-28"
+lastupdated: "2017-10-16"
 
 ---
 
@@ -14,7 +14,7 @@ lastupdated: "2017-07-28"
 # Public IBM images for {{site.data.keyword.containershort_notm}}
 {: #ibm_images}
 
-You can use the following public images to create containers in {{site.data.keyword.containerlong}}. To create your own private image registry in {{site.data.keyword.Bluemix_short}}, see the [{{site.data.keyword.registrylong}} documentation](/docs/services/Registry/index.html).
+You can use the following public images to create containers in {{site.data.keyword.containerlong}}. To create your own private image registry in {{site.data.keyword.Bluemix_short}}, see [Getting started](/docs/services/Registry/index.html).
 {:shortdesc}
 
 
