@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-06-15"
+lastupdated: "2017-10-26"
 
 ---
 
@@ -11,6 +11,7 @@ lastupdated: "2017-06-15"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
 # Getting started with the ibm-backup-restore image 
@@ -48,7 +49,7 @@ Complete the following steps to perform backup and restore operations:
 
 Create an {{site.data.keyword.objectstorageshort}} instance to serve as the repository for your volume backup.
 
-1.  Provision your {{site.data.keyword.objectstorageshort}} instance from the **Services** section of the {{site.data.keyword.Bluemix_notm}}  catalog.
+1.  Provision your {{site.data.keyword.objectstorageshort}} instance from the **Services** section of the {{site.data.keyword.Bluemix_notm}} catalog.
 2.  Select the {{site.data.keyword.objectstorageshort}} instance.
 3.  Click the **Service Credentials** tab.
 4.  Click **New Credential**.
@@ -112,10 +113,10 @@ Create a container from the **ibm-backup-restore** image, and start a regularly 
 
     If the container does not start running, run `bx ic logs <container_name>` to review the logs for error messages.
 
-5.  Review the backup in {{site.data.keyword.objectstorageshort}} in the {{site.data.keyword.Bluemix_notm}}  GUI.
+5.  Review the backup in {{site.data.keyword.objectstorageshort}} in the {{site.data.keyword.Bluemix_notm}} GUI.
     1.  Click the {{site.data.keyword.objectstorageshort}} instance that you created for the backup.
     2.  Click the {{site.data.keyword.objectstorageshort}} container. In this example, the container name is volume_backup.
-    3.  Review the compressed files.![The Object Storage container in the Bluemix GUI shows the files that are backed up.](images/volume_backup_screenshot.png)You can download the vol1.difftar.gz file, extract the file, and verify the backed-up data. Note that if you delete or modify any files from {{site.data.keyword.objectstorageshort}}, those files cannot be recovered.
+    3.  Review the compressed files.![The Object Storage container in the {{site.data.keyword.Bluemix_notm}} GUI shows the files that are backed up.](images/volume_backup_screenshot.png) You can download the `vol1.difftar.gz` file, extract the file, and verify the backed-up data. Note that if you delete or modify any files from {{site.data.keyword.objectstorageshort}}, those files cannot be recovered.
 
 Your backup is available. If you configured *<container_name>* to create a one-time full backup, you must run the backup script each time that you want to create a new backup. If you configured the container to run an incremental backup periodically, then your backup runs as scheduled.
 
@@ -152,7 +153,7 @@ Restore your backup from {{site.data.keyword.objectstorageshort}} to an existing
 
 4.  Run a container from the **ibm-backup-restore** image. Include the command to start the restore script.
 
-    -   Make sure that you are in the same local directory as the <em>&lt;restore_env-file&rt;</em>.
+    -   Make sure that you are in the same local directory as the <em>&lt;restore_env-file&gt;</em>.
     -   The directory that the volume is mounted to must match the BACKUP_DIRECTORY in the environment variable file.
     
     ```
@@ -212,7 +213,7 @@ You successfully restored your backup to the volume *volume_name*. You can now m
 Encrypt the data in your {{site.data.keyword.objectstorageshort}} instance.
 
 1.  Download <a href="https://www.gnupg.org/download/index.html" target="_blank">GnuPG <img src="../../../icons/launch-glyph.svg" alt="External link icon"></a> to create an encryption key.
-2.  Create an encryption key on your local drive. You can accept the default values by pressing **ENTER**.
+2.  Create an encryption key on your local drive. You can accept the default values by pressing ENTER.
 
     **Warning:** Make note of the passphrase that you create. If you lose your passphrase, any information encrypted with your key cannot be decrypted.
 
