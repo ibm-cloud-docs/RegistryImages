@@ -11,6 +11,7 @@ lastupdated: "2017-10-26"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
 # Getting started with the ibm-backup-restore image 
@@ -170,7 +171,7 @@ Restore your backup from {{site.data.keyword.objectstorageshort}} to an existing
     ```
     [2016-10-26 18:01:51,031] [utilities : 152] [INFO] *****************Start logging to ./Restore.log with rollover at 102400 bytes**************
     [2016-10-26 18:01:51,031] [restore : 28] [INFO] Starting the restore process.
-    [2016-10-26 18:01:51,032] [configureOS : 22] [INFO] Configuring duplicity with IBM Cloud Object Storage.
+    [2016-10-26 18:01:51,032] [configureOS : 22] [INFO] Configuring duplicity with IBM Bluemix ObjectStorage.
     [2016-10-26 18:01:51,032] [configureOS : 13] [INFO] Configuring swift client.
     [2016-10-26 18:01:51,032] [restore : 40] [INFO] Configuration is completed.
     [2016-10-26 18:01:54,022] [restore : 70] [INFO] Restoring the backup that is named 'volume_backup' is completed. Synchronizing remote metadata to local cache...
