@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-06-15"
+lastupdated: "2017-10-25"
 
 ---
 
@@ -13,7 +13,7 @@ lastupdated: "2017-06-15"
 {:table: .aria-labeledby="caption"}
 
 
-# Getting started with the **ibm-integration-bus** image
+# Getting started with the *ibm-integration-bus* image
 {: #iib}
 
 The **ibm-integration-bus** image is supplied for {{site.data.keyword.containerlong}}. It includes the IBM Integration Bus for Developers edition.
@@ -232,14 +232,14 @@ The **ibm-integration-bus** image is configured to output IBM Integration Bus me
   </ol>
 
 
-*  From a terminal, use the Docker or the IBM Bluemix Container Service CLI to monitor the messages. Complete the following steps:
+*  From a terminal, use the Docker or the {{site.data.keyword.containerlong_notm}} CLI to monitor the messages. Complete the following steps:
 
 <ol>
  <li>
       Configure your terminal.
 
         <ul>
-        <li>To use the IBM Bluemix Container Service CLI to manage containers in Bluemix while still using the Docker CLI directly to manage your local Docker host, complete the following steps to set up the environment:
+        <li>To use the {{site.data.keyword.containerlong_notm}} CLI to manage containers in {{site.data.keyword.Bluemix_notm}} while still using the Docker CLI directly to manage your local Docker host, complete the following steps to set up the environment:
            <ol>
              <li>
                <pre class="codeblock">bx login</pre>
@@ -249,7 +249,7 @@ The **ibm-integration-bus** image is configured to output IBM Integration Bus me
              </li>
            </ol>
         </li>
-        <li>To use the Docker CLI to manage containers in Bluemix, complete the following steps:
+        <li>To use the Docker CLI to manage containers in {{site.data.keyword.Bluemix_notm}}, complete the following steps:
           <ol>
             <li>
               <pre class="codeblock">bx login</pre>
@@ -259,7 +259,7 @@ The **ibm-integration-bus** image is configured to output IBM Integration Bus me
                Copy the values that are provided for the following environment variables: &lt;DOCKER_HOST&gt;, &lt;DOCKER_CERT_PATH&gt;, and &lt;DOCKER_TLS_VERIFY&gt;.
             </li>
             <li>
-            Override the local Docker environment by setting the following variables to connect to IBM Bluemix Container Service:
+            Override the local Docker environment by setting the following variables to connect to {{site.data.keyword.containerlong_notm}}:
                <ul>
                  <li><pre class="codeblock">export DOCKER_HOST=&lt;your_host_value&gt;</pre></li>
                  <li><pre class="codeblock">export DOCKER_CERT_PATH=&lt;your_cert_path_value&gt;</pre></li>
@@ -275,7 +275,7 @@ The **ibm-integration-bus** image is configured to output IBM Integration Bus me
       Access the log. Choose one of the following options:
 
       <ul>
-         <li>If your terminal is configured to run IBM Bluemix Container Service CLI commands, run the following command:
+         <li>If your terminal is configured to run {{site.data.keyword.containerlong_notm}} CLI commands, run the following command:
 
             <pre class="codeblock">bx ic exec &lt;container_id&gt; tail -f /var/log/syslog</pre>
 
@@ -313,7 +313,7 @@ Launch the IBM Integration Bus web UI or run commands from a terminal to manage 
 
 *  [Launch the IBM Integration Bus Web UI](#launchwebUI) and manage IBM Integration Bus graphically.
 *  From a terminal, use the Docker or the {{site.data.keyword.containershort_notm}} CLI to manage IBM Integration Bus resources:
-    *   [Run administration commands in the container by using the IBM Bluemix Container Service CLI](#admin_commands_containers_cli)
+    *   [Run administration commands in the container by using the {{site.data.keyword.containerlong_notm}} CLI](#admin_commands_containers_cli)
     *   [Run administration commands in the container by using the Docker CLI](#admin_commands_docker_cli)
 
 
@@ -339,13 +339,13 @@ Follow these steps to connect a browser to your host, which you exposed in [Gett
 4.  The browser opens the web user interface, and you are ready to administer IBM Integration Bus.
 
 
-## Run administration commands in the container by using the IBM Bluemix Container Service CLI
+## Run administration commands in the container by using the {{site.data.keyword.containerlong_notm}} CLI
 {: #admin_commands_containers_cli}
 
 Use the {{site.data.keyword.containershort_notm}} CLI to run IBM Integration Bus administration commands directly in a container.
 {:shortdesc}
 
-Before you start, configure the {{site.data.keyword.containershort_notm}} CLI to run administration commands from the command line. For more information, see [Setting up the IBM Containers plug-in (`bx ic`)](/docs/containers/container_cli_cfic_install.html).
+Before you start, configure the {{site.data.keyword.containershort_notm}} CLI to run administration commands from the command line. For more information, see [Setting up the {{site.data.keyword.containershort_notm}} plug-in (`bx ic`)](/docs/containers/container_cli_cfic_install.html).
 
   Complete the following steps to set up a terminal to run **bx ic** commands to manage IBM Integration Bus:
 
@@ -409,7 +409,7 @@ Before you start, configure the {{site.data.keyword.containershort_notm}} CLI to
 
       <p>Copy the values that are provided for the following environment variables: &lt;DOCKER_HOST&gt;, &lt;DOCKER_CERT_PATH&gt;, and &lt;DOCKER_TLS_VERIFY&gt;.</p>
       </li>
-      <li>  Override the local Docker environment by setting the following variables to connect to IBM Bluemix Container Service:
+      <li>  Override the local Docker environment by setting the following variables to connect to {{site.data.keyword.containershort_notm}}:
         <ul>
            <li><pre class="codeblock">export DOCKER_HOST=&lt;your_host_value&gt;</pre></li>
            <li><pre class="codeblock">export DOCKER_CERT_PATH=&lt;your_cert_path_value&gt;</pre></li>
