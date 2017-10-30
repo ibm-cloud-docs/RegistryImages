@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-04-19"
+lastupdated: "2017-10-30"
 
 ---
 
@@ -14,23 +14,23 @@ lastupdated: "2017-04-19"
 # Getting started with the ibm-node-strong-pm image
 {: #getting_started_node_strong}
 
-The IBM® Node with StrongLoop \(**ibm-node-strong-pm**\) image is supplied for {{site.data.keyword.containerlong}}.
+The {{site.data.keyword.IBM}} Node with StrongLoop \(**ibm-node-strong-pm**\) image is supplied for {{site.data.keyword.containerlong_notm}}.
 {:shortdesc}
 
 ## How it works 
 {: #how_it_works}
 
-Use the **ibm-node-strong-pm** image to create a single container that deploys a running instance of the [StrongLoop Process Manager](https://www.strongloop.com). The Strongloop Process Manager enables you to deploy, manage, and monitor Node.js apps in the IBM Cloud that were implemented on a remote machine.
+Use the **ibm-node-strong-pm** image to create a single container that deploys a running instance of the [StrongLoop Process Manager](https://www.strongloop.com). The Strongloop Process Manager enables you to deploy, manage, and monitor Node.js apps in the {{site.data.keyword.IBM_notm}} cloud that were implemented on a remote machine.
 {:shortdesc}
 
-The remote machine must have installed an instance of StrongLoop Arc. StrongLoop Arc is a graphical user interface for the StrongLoop platform and includes tools for building, profiling, and monitoring Node.js apps. After you built an app with StrongLoop Arc, you push and deploy it to the container in {{site.data.keyword.Bluemix_short}} that runs the StrongLoop Process Manager. To establish a connection between the remote machine and the container, you must bind a public IP address to the container and set up this IP address as your StrongLoop Process Manager server in StrongLoop Arc. When your app is deployed through the StrongLoop Process Manager, you can monitor metrics and the performance of your app in the StrongLoop Process Manager. To update or scale your app, you must change it by using StrongLoop Arc, and then push your changes to the container.
+The remote machine must have installed an instance of StrongLoop Arc. StrongLoop Arc is a graphical user interface for the StrongLoop platform and includes tools for building, profiling, and monitoring Node.js apps. After you built an app with StrongLoop Arc, you push and deploy it to the container in {{site.data.keyword.Bluemix_notm}} that runs the StrongLoop Process Manager. To establish a connection between the remote machine and the container, you must bind a public IP address to the container and set up this IP address as your StrongLoop Process Manager server in StrongLoop Arc. When your app is deployed through the StrongLoop Process Manager, you can monitor metrics and the performance of your app in the StrongLoop Process Manager. To update or scale your app, you must change it by using StrongLoop Arc, and then push your changes to the container.
 
 **Note:** The **ibm-node-strong-pm** is not supported to be used with container groups in {{site.data.keyword.Bluemix_notm}}.
 
 ## What is included
 {: #whats_included}
 
--   All software packages that are included in the **ibmnode:latest** image. See the [What is included](/docs/services/RegistryImages/ibmliberty/index.html#whats_included) in the Getting started with the **ibmnode** image for {{site.data.keyword.Bluemix_notm}} topic.
+-   All software packages that are included in the **ibmnode:latest** image. See the [What is included](/docs/services/RegistryImages/ibmnode/index.html#getting_started_node) in the Getting started with the **ibmnode** image for {{site.data.keyword.Bluemix_notm}} topic.
 -   StrongLoop Process Manager
 
 ## Getting started
@@ -39,7 +39,7 @@ The remote machine must have installed an instance of StrongLoop Arc. StrongLoop
 You can use the **ibm-node-strong-pm** image from the {{site.data.keyword.Bluemix_notm}} Catalog to try out a single container in {{site.data.keyword.containershort_notm}}. The image is started with a running instance of the StrongLoop Process Manager, which you can access as soon as the container is available. Using an instance of StrongLoop Arc that is connected to that Process Manager, you can push a Node.js application and access it.
 {:shortdesc}
 
-**Note:** Before you begin, review the terms of use for IBM certified images in the Usage section of the [websphere-liberty Docker library](https://github.com/docker-library/docs/tree/master/websphere-liberty).
+**Note:** Before you begin, review the terms of use for {{site.data.keyword.IBM_notm}} certified images in the Usage section of the [websphere-liberty Docker library](https://github.com/docker-library/docs/tree/master/websphere-liberty).
 
 1.  From the catalog, select **Containers** and choose the **ibm-node-strong-pm** image to build your container from.
 2.  Create a single container.
@@ -48,7 +48,7 @@ You can use the **ibm-node-strong-pm** image from the {{site.data.keyword.Bluemi
 
         **Note:** To deploy additional apps to the StrongLoop Process Manager, expose more ports. The ports must be consecutive, starting with 3002. For example 3002, 3003, 3004, and so on.
 
-    -   For further information, see [Creating a single container by using the Bluemix Dashboard](/docs/containers/container_single_ui.html#gui).
+    -   For further information, see [Creating a single container by using the {{site.data.keyword.Bluemix_notm}} Dashboard](/docs/containers/container_single_ui.html#gui).
 3.  Bind a public IP address to the container. For more information, see [Requesting and binding IP addresses](/docs/containers/container_single_ui.html#container_cli_ips).
 
 ## Setting up StrongLoop Arc on a remote machine
@@ -97,7 +97,7 @@ After you connect the StrongLoop Process Manager that runs in your container wit
     ```
     {: pre}
 
-3.  Deploy your app by following the Arc user interface instructions. Select the Process Manager that you configured to deploy your app to Bluemix.
+3.  Deploy your app by following the Arc user interface instructions. Select the Process Manager that you configured to deploy your app to {{site.data.keyword.Bluemix_notm}}.
 4.  Wait for the deployment process to finish.
 5.  Access your app.
     1.  Open a web browser.
