@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-06-15"
+lastupdated: "2017-10-30"
 
 ---
 
@@ -21,7 +21,7 @@ The **ibm-websphere-extreme-scale** images are supplied for {{site.data.keyword.
 ## How it works 
 {: #how_it_works}
 
-The IBM WebSphere™ eXtreme Scale image is a distributed, in-memory cache feature running within the Liberty runtime environment. It provides Liberty caching servers, caching operation tools, an administrative console, and the out-of-the-box REST administration services based on the latest industry standards and specifications. This image is built on the core IBM WebSphere eXtreme Scale technology. The caching technology loaded within this image fully supports JCache \(JSR107\) specification and compliance.
+The IBM WebSphere&reg; eXtreme Scale image is a distributed, in-memory cache feature running within the Liberty runtime environment. It provides Liberty caching servers, caching operation tools, an administrative console, and the out-of-the-box REST administration services based on the latest industry standards and specifications. This image is built on the core IBM WebSphere eXtreme Scale technology. The caching technology loaded within this image fully supports JCache \(JSR107\) specification and compliance.
 
 The following main highlights are available when you use the `ibm-websphere-extreme-scale` image:
 
@@ -52,7 +52,7 @@ The specific features that are installed in the image depend on the tag that you
 ## Usage restrictions 
 {: #usage}
 
-The following table shows the restrictions that apply to the free usage of the **ibm-websphere-extreme-scale** image in {{site.data.keyword.Bluemix_short}}.
+The following table shows the restrictions that apply to the free usage of the **ibm-websphere-extreme-scale** image in {{site.data.keyword.Bluemix_notm}}.
 
 |Environment|Usage restrictions|
 |-----------|------------------|
@@ -209,7 +209,7 @@ This procedure includes the following options for either deploying the image wit
 
 The following steps are required to perform a rolling upgrade of containers that run `ibm-websphere-extreme-scale` in {{site.data.keyword.containershort_notm}}.
 
-**Note:** If your eXtreme Scale cache member group only has one member, remove this IBM container, and create it again from scratch. However, if your eXtreme Scale cache member group has more than one member and multiple catalog servers deployed, and you want to keep the cached data in {{site.data.keyword.containershort_notm}}, complete the following rolling upgrade steps to avoid the loss of any cached data. Upgrade cache members that only have container servers first, and then upgrade cache members that also have catalog servers.
+**Note:** If your eXtreme Scale cache member group only has one member, remove this {{site.data.keyword.IBM_notm}} container, and create it again from scratch. However, if your eXtreme Scale cache member group has more than one member and multiple catalog servers deployed, and you want to keep the cached data in {{site.data.keyword.containershort_notm}}, complete the following rolling upgrade steps to avoid the loss of any cached data. Upgrade cache members that only have container servers first, and then upgrade cache members that also have catalog servers.
 
 1.  Start a new container called wxsmigrate, and use it for upgrading all existing eXtreme Scale containers. See the [Getting started section](#get_started) on this page for more information. The latest eXtreme Scale update .zip files will be deployed under the /tmp folder on your new wxsmigrate container.
 2.  Copy the updated eXtreme Scale .zip files from the wxsmigrate container to your local system, where you are running the {{site.data.keyword.containershort_notm}} CLI plug-in:
