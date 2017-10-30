@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-26"
+lastupdated: "2017-10-30"
 
 ---
 
@@ -64,7 +64,7 @@ Review [{{site.data.keyword.objectstorageshort}}](../../ObjectStorage/index.html
 
 Create a container from the **ibm-backup-restore** image, and start a regularly scheduled backup.
 
-1.  Log in to the {{site.data.keyword.containershort}} CLI.
+1.  Log in to the {{site.data.keyword.containerlong_notm}} CLI.
 
     ```
     bx login
@@ -116,7 +116,7 @@ Create a container from the **ibm-backup-restore** image, and start a regularly 
 5.  Review the backup in {{site.data.keyword.objectstorageshort}} in the {{site.data.keyword.Bluemix_notm}} GUI.
     1.  Click the {{site.data.keyword.objectstorageshort}} instance that you created for the backup.
     2.  Click the {{site.data.keyword.objectstorageshort}} container. In this example, the container name is volume_backup.
-    3.  Review the compressed files.![The Object Storage container in the {{site.data.keyword.Bluemix_notm}} GUI shows the files that are backed up.](images/volume_backup_screenshot.png) You can download the `vol1.difftar.gz` file, extract the file, and verify the backed-up data. Note that if you delete or modify any files from {{site.data.keyword.objectstorageshort}}, those files cannot be recovered.
+    3.  Review the compressed files.![The {{site.data.keyword.objectstorageshort}} container in the {{site.data.keyword.Bluemix_notm}} GUI shows the files that are backed up.](images/volume_backup_screenshot.png) You can download the `vol1.difftar.gz` file, extract the file, and verify the backed-up data. Note that if you delete or modify any files from {{site.data.keyword.objectstorageshort}}, those files cannot be recovered.
 
 Your backup is available. If you configured *<container_name>* to create a one-time full backup, you must run the backup script each time that you want to create a new backup. If you configured the container to run an incremental backup periodically, then your backup runs as scheduled.
 
@@ -215,7 +215,7 @@ Encrypt the data in your {{site.data.keyword.objectstorageshort}} instance.
 1.  Download <a href="https://www.gnupg.org/download/index.html" target="_blank">GnuPG <img src="../../../icons/launch-glyph.svg" alt="External link icon"></a> to create an encryption key.
 2.  Create an encryption key on your local drive. You can accept the default values by pressing ENTER.
 
-    **Warning:** Make note of the passphrase that you create. If you lose your passphrase, any information encrypted with your key cannot be decrypted.
+    **Attention:** Make note of the passphrase that you create. If you lose your passphrase, any information encrypted with your key cannot be decrypted.
 
     ```
     gpg --gen-key
@@ -267,7 +267,7 @@ Encrypt the data in your {{site.data.keyword.objectstorageshort}} instance.
     ```
     BACKUP_NAME=<volume_name>
     BACKUP_DIRECTORY=/backup
-    # PROJECTID, REGION, USERID, PASSWORD come from the {{site.data.keyword.objectstorageshort}} credentials.
+    # PROJECTID, REGION, USERID, PASSWORD come from the Object Storage credentials.
     PROJECTID=
     REGION=
     USERID=
@@ -283,7 +283,7 @@ Encrypt the data in your {{site.data.keyword.objectstorageshort}} instance.
 
     These settings create a daily incremental backup that is encrypted with the name *<volume_name>*. To create a backup with different settings, review a full list of [environment variable options](#reference_backup_restore).
 
-7.  Log in to the {{site.data.keyword.containershort}} CLI.
+7.  Log in to the {{site.data.keyword.containerlong_notm}} CLI.
 
     ```
     bx login
@@ -301,7 +301,7 @@ Encrypt the data in your {{site.data.keyword.objectstorageshort}} instance.
     -   The directory that the volume is mounted to must match the BACKUP_DIRECTORY in the environment variable file.
     -   Replace the volume name with the name of the volume that is being backed up.
    
-   ```
+    ```
     bx ic run --name <container_name> --volume <volume_name>:/backup --env-file ./<encrypted_env-file_name> registry.ng.bluemix.net/ibm-backup-restore
     ```
     {: pre}
@@ -339,7 +339,7 @@ Encrypt the data in your {{site.data.keyword.objectstorageshort}} instance.
     ```
     {: codeblock}
 
-13. To confirm that your backup is encrypted, review the files in your {{site.data.keyword.objectstorageshort}} instance. The files now have `.gpg` appended to the end of the file name.![The Object Storage GUI shows all backed-up files appended with .gpg, which shows that they are encrypted.](images/volume_backup_encrypt_screenshot.png)
+13. To confirm that your backup is encrypted, review the files in your {{site.data.keyword.objectstorageshort}} instance. The files now have `.gpg` appended to the end of the file name.![The {{site.data.keyword.objectstorageshort}} GUI shows all backed-up files appended with .gpg, which shows that they are encrypted.](images/volume_backup_encrypt_screenshot.png)
 
 Your backup is encrypted. To restore the files, follow the steps in [Running the restore script](#restore_script_cli) and include the encryption.asc file in the backup_restore directory on the container that is running the restore process. If the backup is encrypted, you must provide the ENCRYPTION_REQUIRED and ENCRYPTION_PASSPHRASE as environment variables when you create the restore container.
 
