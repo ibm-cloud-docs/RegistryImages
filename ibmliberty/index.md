@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-09-21"
+lastupdated: "2017-10-30"
 
 ---
 
@@ -15,7 +15,7 @@ lastupdated: "2017-09-21"
 # Getting started with the **ibmliberty** image
 {: #ibmliberty}
 
-The IBM® WebSphere® Application Server Liberty \(**ibmliberty**\) images are supplied for {{site.data.keyword.containerlong}}.
+The IBM® WebSphere® Application Server Liberty \(**ibmliberty**\) images are supplied for {{site.data.keyword.containerlong_notm}}.
 {:shortdesc}
 
 ## How it works 
@@ -46,7 +46,7 @@ The specific Liberty features that are installed in the image depend on the tag 
 ## Usage restrictions 
 {: #usage}
 
-The following table shows the restrictions that apply to the free usage of the **ibmliberty** image in {{site.data.keyword.Bluemix_short}}.
+The following table shows the restrictions that apply to the free usage of the **ibmliberty** image in {{site.data.keyword.Bluemix_notm}}.
 {:shortdesc}
 
 **Note:** The pricing for the **ibmliberty** image is independent of the pricing for the containers that you use in {{site.data.keyword.Bluemix_notm}}.
@@ -112,9 +112,9 @@ WebSphere Application Server licenses are based on the number of Processor Value
 
 Every container size in {{site.data.keyword.Bluemix_notm}} requires a specific number of PVU entitlements that must be available in the WebSphere Application Server license. Therefore, you must plan your **ibmliberty** containers prior to purchasing the license.
 
-To purchase a WebSphere Application Server License, contact the [IBM Service](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us). If you already have a license for WebSphere Application Server v8.5 or newer, then you can use any unused PVUs from your existing entitlement for the deployment of your container.
+To purchase a WebSphere Application Server License, contact [IBM Service](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us). If you already have a license for WebSphere Application Server v8.5 or newer, then you can use any unused PVUs from your existing entitlement for the deployment of your container.
 
-If you find that you require more PVUs after you purchased the license, you can increase the amount by contacting the IBM Service.
+If you find that you require more PVUs after you purchased the license, you can increase the amount by contacting [IBM Service](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us).
 
 ## Creating a production-licensed **ibmliberty** image to be used with {{site.data.keyword.containershort_notm}} 
 {: #prod_image}
@@ -125,12 +125,12 @@ Use your WebSphere Application Server license to create a production-licensed **
 -   [Upgrade the image from Docker Hub to a production image](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
 -   [Build your own production-licensed image](https://github.com/WASdev/ci.docker/tree/master/ga/production-install).
 
-After you create a production-licensed image, [push the image to your private {{site.data.keyword.Bluemix_notm}} registry](/docs/services/Registry/index.html) to use it with {{site.data.keyword.containershort_notm}}.
+After you create a production-licensed image, [push the image to your private registry](/docs/services/Registry/index.html) to use it with {{site.data.keyword.containershort_notm}}.
 
 ## Creating an image from the provided images 
 {: #creating_image}
 
-You can use one of the **ibmliberty** images as a parent for creating a child image that includes your own app code. Customize the sample Dockerfile and build your image on your computer. Then, you can add your image to your organization's private {{site.data.keyword.Bluemix_notm}} images registry and create containers with it.
+You can use one of the **ibmliberty** images as a parent for creating a child image that includes your own app code. Customize the sample Dockerfile and build your image on your computer. Then, you can add your image to your organization's private images registry and create containers with it.
 {:shortdesc}
 
 Before you begin, consider the following steps.
@@ -141,7 +141,7 @@ Before you begin, consider the following steps.
 
 To create an image with your app code from the **ibmliberty** image:
 
-2. With a text editor, create a file that is named Dockerfile and copy the following information into it.
+1. With a text editor, create a file that is named Dockerfile and copy the following information into it.
 
     ```
     FROM registry.{{site.data.keyword.domainname}}/ibmliberty:<tag>
@@ -152,15 +152,15 @@ To create an image with your app code from the **ibmliberty** image:
 
     **Note:** The directory /config is a shortcut for /opt/ibm/wlp/usr/servers/defaultServer.
     
-3. Replace <tag\> with the version of the **ibmliberty** image that includes the features that your app requires.
+2. Replace <tag\> with the version of the **ibmliberty** image that includes the features that your app requires.
 
-4. Replace <app\_name\> with the name of your app file.
+3. Replace <app\_name\> with the name of your app file.
 
-5. Replace <file\_extension\> with either .war, .ear, or .eba.
+4. Replace <file\_extension\> with either .war, .ear, or .eba.
 
-6. Add any other dependencies for your app to the Dockerfile.
+5. Add any other dependencies for your app to the Dockerfile.
 
-7. Build and push the image to your private {{site.data.keyword.Bluemix_notm}} images registry. For more information, see [Getting started with IBM Bluemix Container Registry](/docs/services/Registry/index.html).
+6. Build and push the image to your private images registry. For more information, see [Getting started with {{site.data.keyword.registrylong_notm}}](/docs/services/Registry/index.html).
 
 **Note:** All **ibmliberty** images are configured to write Liberty log files to the directory /logs inside the container. All other files that are written by the Liberty server, are created in the directory /opt/ibm/wlp/output/defaultServer. You can access these files by using the shortcut /output.
 
