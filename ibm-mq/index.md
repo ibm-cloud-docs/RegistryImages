@@ -3,7 +3,7 @@
 copyright:
   years: 2015, 2017
 
-lastupdated: "2017-03-07"
+lastupdated: "2017-10-26"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2017-03-07"
 # Getting started with the **ibm-mq** image
 {: #ibm_mq}
 
-The ibm-mq image is supplied for {{site.data.keyword.containershort}}. It includes {{site.data.keyword.IBM}} MQ Advanced for Developers (non-warranted). 
+The ibm-mq image is supplied for {{site.data.keyword.containershort}}. It includes {{site.data.keyword.IBM_notm}} MQ Advanced for Developers (non-warranted). 
 
 {:shortdesc}
 
@@ -26,7 +26,7 @@ The ibm-mq image is supplied for {{site.data.keyword.containershort}}. It includ
 
 {{site.data.keyword.IBM_notm}} MQ Advanced for Developers contains everything you need to start developing your own messaging solutions and {{site.data.keyword.IBM_notm}} MQ applications. 
 
-To develop messaging solutions and {{site.data.keyword.IBM_notm}} MQ applications in {{site.data.keyword.Bluemix_notm}}, you can deploy the ibm-mq Docker image in the {{site.data.keyword.containershort}}. Then, you can create and run queue managers, and use the web UI or a terminal to configure them to meet your messaging solution or application requirements.
+To develop messaging solutions and {{site.data.keyword.IBM_notm}} MQ applications in {{site.data.keyword.Bluemix_notm}}, you can deploy the ibm-mq Docker image in the {{site.data.keyword.containershort_notm}}. Then, you can create and run queue managers, and use the web UI or a terminal to configure them to meet your messaging solution or application requirements.
 
 **Note:** You can use the ibm-mq image for development and unit test only. You can also use the image to explore the product, learn from tutorials, and evaluate the contribution that {{site.data.keyword.IBM_notm}} MQ can make to your organization.
 
@@ -81,7 +81,7 @@ Complete the following steps to run and manage {{site.data.keyword.IBM_notm}} MQ
     
         *	Launch the {{site.data.keyword.IBM_notm}} MQ web console and manage {{site.data.keyword.IBM_notm}} MQ graphically. For more information, see [Launch the IBM MQ web console](#ibm_mq_webui).
         *	From a terminal, use the Docker CLI. For more information, see [Setting up a terminal to use the Docker CLI](#ibm_mq_docker_commands).
-        * From a terminal, use the IBM Bluemix Container Service CLI. For more information, see [Setting up a terminal to use the IBM Bluemix Container Service CLI](#ibm_mq_containers_cli)
+        * From a terminal, use the {{site.data.keyword.containershort_notm}} CLI. For more information, see [Setting up a terminal to use the {{site.data.keyword.containershort_notm}} CLI](#ibm_mq_containers_cli)
         
     2. Configure the {{site.data.keyword.IBM_notm}} MQ Queue Manager that runs in the container. 
 
@@ -93,7 +93,7 @@ Complete the following steps to run and manage {{site.data.keyword.IBM_notm}} MQ
     
         For example, run in `runmqsc` the following command to create a new Local Queue: `DEFINE QLOCAL('MY.Q')`, where *MY.Q* is the name of the Local Queue from terminal. You can view the queue in the web console, or you can display the queue and its properties by running in 'runmqsc` the following command: `DISPLAY QLOCAL('MY.Q')`.
     
-3. [Optional] Monitor {{site.data.keyword.IBM_notm}} MQ logs inside the container. For more information, see [Managing your container through the command line](#ibm_mq_access).
+3. (Optional) Monitor {{site.data.keyword.IBM_notm}} MQ logs inside the container. For more information, see [Managing your container through the command line](#ibm_mq_access).
 
 For more information about the IBM MQ Getting started introduction, see [IBM MQ Version 9.0.x Welcome page ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm){: new_window}
 
@@ -126,15 +126,15 @@ Complete the following steps to provision a Docker container in {{site.data.keyw
  
         **Note:** If you do not specify values for the environment variables LICENSE and MQ_QMGR_NAME, the container is created but does not start. 
     
-    * [Optional] By default, the {{site.data.keyword.IBM_notm}} MQ Web Console is started in the container. To change the default behavior, set the **MQ_DISABLE_WEB_CONSOLE** environment variable value to *true*.
+    * (Optional) By default, the {{site.data.keyword.IBM_notm}} MQ Web Console is started in the container. To change the default behavior, set the **MQ_DISABLE_WEB_CONSOLE** environment variable value to *true*.
     
         **Note:** To use the web console, do not set the *MQ_DISABLE_WEB_CONSOLE* environment variable.
 
-    * [Optional] To see the MQ logs through the {{site.data.keyword.Bluemix_notm}} UI, set the environment variable **LOG_LOCATIONS** to the value `/var/mqm/qmgr/QM_Name/errors/AMQERR01.LOG` where *QM_Name* is the value you set for the environment variable *MQ_QMGR_NAME*.
+    * (Optional) To see the MQ logs through the {{site.data.keyword.Bluemix_notm}} UI, set the environment variable **LOG_LOCATIONS** to the value `/var/mqm/qmgr/QM_Name/errors/AMQERR01.LOG` where *QM_Name* is the value you set for the environment variable *MQ_QMGR_NAME*.
     
-    *	[Optional] By default, the {{site.data.keyword.IBM_notm}} MQ Developer default objects are created. To change the default behavior, set the **MQ_DEV** environment variable to *false*, and modify the default installation values for IBM MQ with your custom values. For more information, see [Modify the default installation values](#ibm_mq_dev_default)
+    *	(Optional) By default, the {{site.data.keyword.IBM_notm}} MQ Developer default objects are created. To change the default behavior, set the **MQ_DEV** environment variable to *false*, and modify the default installation values for IBM MQ with your custom values. For more information, see [Modify the default installation values](#ibm_mq_dev_default)
  
-9. [Optional] In the Advanced options section, assign a volume. Use {{site.data.keyword.Bluemix_notm}} volumes for storing {{site.data.keyword.IBM_notm}} MQ data and configuration persistently over container migrations. {{site.data.keyword.IBM_notm}} MQ data that is not stored in a volume will be lost if a container is terminated.
+9. (Optional) In the Advanced options section, assign a volume. Use {{site.data.keyword.Bluemix_notm}} volumes for storing {{site.data.keyword.IBM_notm}} MQ data and configuration persistently over container migrations. {{site.data.keyword.IBM_notm}} MQ data that is not stored in a volume will be lost if a container is terminated.
 
     The ibm-mq image can be used with {{site.data.keyword.Bluemix_notm}} volumes, however volumes must be mounted to **/mnt/mqm** to be detected and utilized by {{site.data.keyword.IBM_notm}} MQ.
 
@@ -163,11 +163,11 @@ You have created and started a queue manager. You can now connect an MQ applicat
 ### Managing your container through the command line
 {: #ibm_mq_access}
 
-After the container that runs {{site.data.keyword.IBM_notm}} MQ is deployed in {{site.data.keyword.Bluemix_notm}}, you can access your container and   the status of the container and validate the {{site.data.keyword.IBM_notm}} MQ installation.
+After the container that runs {{site.data.keyword.IBM_notm}} MQ is deployed in {{site.data.keyword.Bluemix_notm}}, you can access your container and the status of the container and validate the {{site.data.keyword.IBM_notm}} MQ installation.
 
 Complete the following steps to verify the setup and configuration of {{site.data.keyword.IBM_notm}} MQ in the container:
 
-1.	Set up the IBM Containers CLI. For more information, see [the Bluemix CLI page](https://plugins.ng.bluemix.net/ui/home.html) and follow the instructions to install the latest Cloud Foundry Container service plugin.
+1.	Set up the {{site.data.keyword.containershort_notm}} CLI. For more information, see [the {{site.data.keyword.Bluemix_notm}} CLI page](https://plugins.ng.bluemix.net/ui/home.html) and follow the instructions to install the latest {{site.data.keyword.containershort_notm}} plugin.
 
 2.	From a terminal, log in to your {{site.data.keyword.Bluemix_notm}} organization and space where the container is running with your {{site.data.keyword.Bluemix_notm}} ID. Run the following commands:
 
@@ -192,7 +192,7 @@ Complete the following steps to verify the setup and configuration of {{site.dat
 
 To monitor MQ logs, choose one of the following options:
 
-* If your terminal is configured to run {{site.data.keyword.containershort}} CLI commands, run the following command: `bx ic exec container_id tail -f /var/mqm/qmgr/QM_ Name/errors/AMQERR01.LOG` where *container_id* is the name of your container and *QM_ Name* is the name of your Queue Manager.
+* If your terminal is configured to run {{site.data.keyword.containershort_notm}} CLI commands, run the following command: `bx ic exec container_id tail -f /var/mqm/qmgr/QM_ Name/errors/AMQERR01.LOG` where *container_id* is the name of your container and *QM_ Name* is the name of your Queue Manager.
     
 * If your terminal is configured to run Docker CLI commands, run the following command: `docker exec container_id tail -f /var/mqm/qmgr/QM_Name/errors/AMQERR01.LOG` where *container_id* is the name of your container and *QM_Name* is the name of your Queue Manager.
     
@@ -221,14 +221,14 @@ Complete the following steps to launch the {{site.data.keyword.IBM_notm}} MQ web
     
 You are now ready to administer IBM MQ.
 
-### Setting up a terminal to use the IBM Bluemix Container Service CLI
+### Setting up a terminal to use the {{site.data.keyword.containershort_notm}} CLI
 {: #ibm_mq_containers_cli}
 
-Use the {{site.data.keyword.containershort}} CLI to run {{site.data.keyword.IBM_notm}} MQ administration commands directly in a container.
+Use the {{site.data.keyword.containershort_notm}} CLI to run {{site.data.keyword.IBM_notm}} MQ administration commands directly in a container.
 
-Complete the following steps to set up a terminal to run bx ic commands to manage IBM MQ:
+Complete the following steps to set up a terminal to run `bx ic` commands to manage IBM MQ:
 
-1.	Set up the {{site.data.keyword.containershort}} CLI. For more information, see [the Bluemix CLI page](https://plugins.ng.bluemix.net/ui/home.html) and follow the instructions to install the latest Cloud Foundry Container service plugin.
+1.	Set up the {{site.data.keyword.containershort_notm}} CLI. For more information, see [the {{site.data.keyword.Bluemix_notm}} CLI page](https://plugins.ng.bluemix.net/ui/home.html) and follow the instructions to install the latest {{site.data.keyword.containershort_notm}} plugin.
 
 2.	From a terminal, log in to {{site.data.keyword.Bluemix_notm}}. Run the following commands:
 
@@ -239,7 +239,7 @@ Complete the following steps to set up a terminal to run bx ic commands to manag
 
     `bx ic exec -it container_name /bin/bash`
     
-    where container_name is the name of the container
+    where container_name is the name of the container.
     
 
 
@@ -250,14 +250,14 @@ Use the Docker CLI to run {{site.data.keyword.IBM_notm}} MQ administration comma
 
 Complete the following steps to set up a terminal to run Docker commands to manage IBM MQ:
 
-1.	Set up the {{site.data.keyword.containershort}} CLI. For more information, see [the Bluemix CLI page](https://plugins.ng.bluemix.net/ui/home.html) and follow the instructions to install the latest Cloud Foundry Container service plugin.
+1.	Set up the {{site.data.keyword.containershort_notm}} CLI. For more information, see [the {{site.data.keyword.Bluemix_notm}} CLI page](https://plugins.ng.bluemix.net/ui/home.html) and follow the instructions to install the latest {{site.data.keyword.containershort_notm}} plugin.
 
 2.	From a terminal, log in to {{site.data.keyword.Bluemix_notm}}. Run the following commands:
 
     1. `bx login`
     2. `bx ic init`
     3. Copy the values that are provided for the following environment variables: DOCKER_HOST, DOCKER_CERT_PATH, and DOCKER_TLS_VERIFY.
-    4. Override the local Docker environment by setting the following variables to connect to {{site.data.keyword.containershort}}:
+    4. Override the local Docker environment by setting the following variables to connect to {{site.data.keyword.containershort_notm}}:
         
         `export DOCKER_HOST=<your_host_value>`
         
