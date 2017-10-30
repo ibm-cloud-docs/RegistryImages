@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-07-28"
+lastupdated: "2017-10-26"
 
 ---
 
@@ -14,7 +14,7 @@ lastupdated: "2017-07-28"
 
 # Getting started with the **ibmnode** image {: #getting_started_node}
 
-The public {{site.data.keyword.IBM}} Node (**ibmnode**) image is supplied for {{site.data.keyword.containerlong}}.
+The public {{site.data.keyword.IBM}} Node (**ibmnode**) image is supplied for {{site.data.keyword.containerlong_notm}}.
 {:shortdesc}
 
 **Note:** The {{site.data.keyword.IBM_notm}} Node (**ibmnode**) image does not include a sample Node.js app. When you deploy a container from this image, your container shuts down immediately after it is built as no long running process exists. To avoid that, use the {{site.data.keyword.IBM_notm}} Node (**ibmnode**) image as a parent and create your own image where you can add your own Node.js app code. For more information, see [Creating an image from this provided image](#creating_image).
@@ -61,7 +61,7 @@ Use the {{site.data.keyword.IBM_notm}} Node (**ibmnode**) image as a parent to b
 
 # Creating an image from this provided image {: #creating_image}
 
-You can use the **ibmnode** image as a parent for creating a child image that includes your own app code. Use the sample `Hello World` app container with **ibmnode** and the Express Node module to build an image on your computer. Add the image to your organization's private {{site.data.keyword.registrylong}} and create a container with it. Then, you can use the Dockerfile from the Hello World sample to create another image with your own app.
+You can use the **ibmnode** image as a parent for creating a child image that includes your own app code. Use the sample `Hello World` app container with **ibmnode** and the Express Node module to build an image on your computer. Add the image to your organization's private {{site.data.keyword.registrylong_notm}} and create a container with it. Then, you can use the Dockerfile from the Hello World sample to create another image with your own app.
 {:shortdesc}
 
 Before you begin, consider the following steps.
@@ -123,7 +123,7 @@ Create an image that is based on the **ibmnode** image and includes a Hello Worl
 
     **Tip:** Run `bx ic namespace get` to retrieve your namespace information.  Set the _registry.DomainName_ to the same region you used previously in the Dockerfile.
 
-    **Note:**\*In this command, you can replace `bx ic` with `docker` when you are [logged in to {{site.data.keyword.containershort_notm}}](/docs/containers/container_cli_cfic_install.html#container_cli_login) and set your environment variables to use native Docker commands. You can use native Docker commands in all steps that are marked with an asterisk (*) in this topic.
+    **Note:** \*In this command, you can replace `bx ic` with `docker` when you are [logged in to {{site.data.keyword.containershort_notm}}](/docs/containers/container_cli_cfic_install.html#container_cli_login) and set your environment variables to use native Docker commands. You can use native Docker commands in all steps that are marked with an asterisk (*) in this topic.
 
 1.  Create a container from your image.*
 
