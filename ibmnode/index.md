@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-26"
+lastupdated: "2017-11-06"
 
 ---
 
@@ -85,12 +85,18 @@ Create an image that is based on the **ibmnode** image and includes a Hello Worl
     <ul>
     <li>US South
 
-        ```registry.ng.bluemix.net/ibmnode```
+        ```
+		registry.ng.bluemix.net/ibmnode
+		```
+		{: codeblock}
 
     </li>
     <li>United Kingdom
 
-        ```registry.eu-gb.bluemix.net/ibmnode```
+        ```
+		registry.eu-gb.bluemix.net/ibmnode
+		```
+		{: codeblock}
 
       </li>
     </ul>
