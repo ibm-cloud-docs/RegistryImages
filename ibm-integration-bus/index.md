@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-10-25"
+lastupdated: "2017-11-06"
 
 ---
 
@@ -216,27 +216,26 @@ Before you start, configure the {{site.data.keyword.containershort_notm}} CLI to
 
 The **ibm-integration-bus** image is configured to output IBM Integration Bus messages into `/var/log/syslog` inside the container.
 
-  Choose one of the following ways to monitor IBM Integration Bus logs:
+Choose one of the following ways to monitor IBM Integration Bus logs:
 
 *  If you configured the environment variable LOG_LOCATIONS when you provisioned the container, you can monitor the logs from the {{site.data.keyword.Bluemix_notm}} UI.
 
-  Complete the following steps to access the logs:
+    Complete the following steps to access the logs:
 
-  <ol>
-  <li>From the container dashboard, select the container that you want to monitor.</li>
-  <li>Select <b>Monitoring and Logging</b>.</li>
-  <li>Select <b>Logging</b>. The dashboard lists the log entries.</li>
-  <li>To customize the logs view, select <b>Advanced View</b> in the Logging page to open Kibana. For more information, see
-  <a href="https://console.bluemix.net/docs/containers/container_planning.html#container_planning_monlog" target="_blank">Monitoring and logging</a> to get started.
-  </li>
-  </ol>
-
+    <ol>
+       <li>From the container dashboard, select the container that you want to monitor.</li>
+       <li>Select <b>Monitoring and Logging</b>.</li>
+       <li>Select <b>Logging</b>. The dashboard lists the log entries.</li>
+       <li>To customize the logs view, select <b>Advanced View</b> in the Logging page to open Kibana. For more information, see
+           <a href="https://console.bluemix.net/docs/containers/container_planning.html#container_planning_monlog" target="_blank">Monitoring and logging</a> to get started.
+       </li>
+    </ol>
 
 *  From a terminal, use the Docker or the {{site.data.keyword.containerlong_notm}} CLI to monitor the messages. Complete the following steps:
 
-<ol>
- <li>
-      Configure your terminal.
+    <ol>
+       <li>
+       Configure your terminal.
 
         <ul>
         <li>To use the {{site.data.keyword.containerlong_notm}} CLI to manage containers in {{site.data.keyword.Bluemix_notm}} while still using the Docker CLI directly to manage your local Docker host, complete the following steps to set up the environment:
@@ -270,8 +269,8 @@ The **ibm-integration-bus** image is configured to output IBM Integration Bus me
           </ol>
         </li>
       </ul>
-</li>
-<li>
+      </li>
+      <li>
       Access the log. Choose one of the following options:
 
       <ul>
@@ -300,7 +299,7 @@ The **ibm-integration-bus** image is configured to output IBM Integration Bus me
           </li>
         </ul>
        </li>
-     </ol>
+    </ol>
 
 
 ## Manage IBM Integration Bus resources that are running in the container
@@ -400,7 +399,7 @@ Before you start, configure the {{site.data.keyword.containershort_notm}} CLI to
 
 1.  From a terminal, log in to {{site.data.keyword.Bluemix_notm}}. Run the following commands:
 
-   <ol>
+    <ol>
      <li>
        <pre class="codeblock">bx login</pre>
      </li>
