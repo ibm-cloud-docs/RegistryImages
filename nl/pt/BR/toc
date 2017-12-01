@@ -1,0 +1,24 @@
+{:navgroup: .navgroup}
+{:topicgroup: .topicgroup}
+
+{: .toc subcollection="RegistryImages" audience="compute" href="/docs/services/RegistryImages/index.html"}
+Imagens de contêiner público IBM
+
+    {: .navgroup id="learn"}
+    index.md
+    {: .navgroup-end}
+    
+    {: .navgroup id="reference"}
+    {: .topicgroup}
+    Links relacionados [Referência do Dockerfile](http://docs.docker.com/engine/reference/builder/) [Usar supervisor com o Docker](https://docs.docker.com/engine/admin/using_supervisord/) [Referência da CLI de registro](../../cli/plugins/registry/index.html)
+    {: .navgroup-end}
+    
+    {: .navgroup id="howto"}
+    ibm-backup-restore/index.md
+    ibm-integration-bus/index.md
+    ibmliberty/index.md
+    ibm-mq/index.md
+    ibmnode/index.md
+    ibm-node-strong-pm/index.md
+    ibm-websphere-extreme-scale/index.md
+    {: .navgroup-end}

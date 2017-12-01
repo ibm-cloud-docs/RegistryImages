@@ -1,0 +1,27 @@
+{:navgroup: .navgroup}
+{:topicgroup: .topicgroup}
+
+{: .toc subcollection="RegistryImages" audience="compute" href="/docs/services/RegistryImages/index.html"}
+IBM 公共容器映像
+
+    {: .navgroup id="learn"}
+    index.md
+    {: .navgroup-end}
+    
+    {: .navgroup id="reference"}
+    {: .topicgroup}
+    相关链接
+        [Dockerfile 参考](http://docs.docker.com/engine/reference/builder/)
+        [搭配使用 Supervisor 和 Docker](https://docs.docker.com/engine/admin/using_supervisord/)
+        [注册表 CLI 参考](../../cli/plugins/registry/index.html)
+    {: .navgroup-end}
+    
+    {: .navgroup id="howto"}
+    ibm-backup-restore/index.md
+    ibm-integration-bus/index.md
+    ibmliberty/index.md
+    ibm-mq/index.md
+    ibmnode/index.md
+    ibm-node-strong-pm/index.md
+    ibm-websphere-extreme-scale/index.md
+    {: .navgroup-end}

@@ -1,0 +1,193 @@
+---
+
+copyright:
+  years: 2017
+lastupdated: "2017-10-30"
+
+  ---
+
+{:new_window: target="_blank"}
+{:shortdesc: .shortdesc}
+{:screen: .screen}
+{:pre: .pre}
+{:table: .aria-labeledby="caption"}
+
+# Iniciación a la imagen **ibmliberty**
+{: #ibmliberty}
+
+Las imágenes de IBM® WebSphere® Application Server Liberty \(**ibmliberty**\) se suministran para {{site.data.keyword.containerlong_notm}}.
+{:shortdesc}
+
+## Modo de funcionamiento 
+{: #how_it_works}
+
+Puede utilizar las imágenes **ibmliberty** como padre para crear su propia imagen y desplegar sus apps WAR, EAR u OSGi basadas en Java en un contenedor de IBM WebSphere Application Server Liberty.
+{:shortdesc}
+
+## Qué incluye 
+{: #whats_included}
+
+Cada imagen de Liberty proporciona los siguientes paquetes de software.
+{:shortdesc}
+
+-   IBM WebSphere Application Server for Developers Liberty
+-   IBM Java Runtime Environment 8.0
+
+Las características de Liberty específicas que se instalan en la imagen dependen de la etiqueta que seleccione. La siguiente tabla muestra que las características se incluyen en cada una de las imágenes **ibmliberty**. Para obtener más información sobre cada característica, consulte [Visión general de características de Liberty en IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html).
+
+|Etiqueta|Descripción|
+|---|-----------|
+|Todas las imágenes **ibmliberty**|Todas las imágenes **ibmliberty** incluyen las siguientes características. <ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
+|**ibmliberty:latest**|Esta imagen apunta a la imagen **ibmliberty:javaee7**.|
+|**ibmliberty:webProfile6**|Esta imagen incluye todas las características necesarias para la conformidad con EE6 Web Profile. También incorpora características adicionales para visualizar el contenido en línea con las características disponibles para descargar utilizando el JAR de tiempo de ejecución desde [http://wasdev.net/](http://wasdev.net/), especialmente las características que son necesarias para las aplicaciones OSGi.|
+|**ibmliberty:webProfile7**|Esta imagen incluye todas las características necesarias para la conformidad con Java EE7 Web Profile.|
+|**ibmliberty:javaee7**|Esta imagen incluye todas las características de la imagen **ibmliberty:webProfile7**, más las características que son necesarias para la conformidad con Java EE7 Full Platform.|
+
+## Restricciones de uso 
+{: #usage}
+
+La siguiente tabla muestra las restricciones de uso que se aplican al uso gratuito de la imagen **ibmliberty** en {{site.data.keyword.Bluemix_notm}}.
+{:shortdesc}
+
+**Nota:** El precio de la imagen **ibmliberty** es independiente del precio de los contenedores que utiliza en {{site.data.keyword.Bluemix_notm}}.
+
+|Entorno|Restricciones para el uso gratuito|
+|-----------|-----------------------|
+|Desarrollo|Uso gratuito **ilimitado** de la imagen **ibmliberty**.|
+|Producción|El uso gratuito de la imagen **ibmliberty** está limitado a un **máximo de 2 GB de espacio del almacenamiento dinámico de Java** en todas las instancias de contenedor que ejecutan la imagen. Por ejemplo, puede tener 2 x 1 GB, o 4 x 512 MB instancias de liberty de almacenamiento dinámico de forma gratuita.
+
+Para supervisar el uso del almacenamiento dinámico de Java de las instancias de contenedor, consulte [Supervisión del uso del espacio de almacenamiento dinámico de Java de un contenedor con la CLI](#monitor_heap).
+
+
+Revise los términos de uso para las imágenes certificadas de IBM en la sección Licencia de la [imagen websphere-liberty](https://hub.docker.com/_/websphere-liberty/) en Docker Hub.
+
+## Iniciación 
+{: #get_started}
+
+Utilice una de las imágenes gratuitas **ibmliberty** del catálogo de {{site.data.keyword.Bluemix_notm}} o seleccione su propia imagen con licencia de producción para crear un contenedor único o un grupo de contenedores.
+{:shortdesc}
+
+**Importante:** Antes de empezar, revise las [restricciones de uso](#usage)
+para las imágenes **ibmliberty**.
+
+1.  Desde el catálogo, seleccione **Contenedores** y elija la imagen **ibmliberty** a partir de la que se va a crear el contenedor. Si ha creado su propia imagen con licencia de producción y la ha desplegado en {{site.data.keyword.Bluemix_notm}}, seleccione esta imagen en el catálogo. Se abre la página de creación de contenedor.
+2.  Seleccione la versión de la imagen **ibmliberty** que desea utilizar en el recuadro desplegable **TAG/ VERSION**.
+3.  Seleccione si desea crear un contenedor o un grupo de contenedores escalable. Revise los siguientes temas para obtener más información sobre cómo crear contenedores.
+
+    -   [Creación de un contenedor mediante el panel de control de {{site.data.keyword.Bluemix_notm}}](/docs/containers/container_single_ui.html#gui)
+    -   [Creación de un grupo de contenedores mediante el panel de control de {{site.data.keyword.Bluemix_notm}}](/docs/containers/container_ha.html#container_group_ui)
+    
+    **Nota:** La imagen **ibmliberty** requiere que el puerto 9080 esté expuesto públicamente. Cuando crea un contenedor desde el Panel de control de {{site.data.keyword.Bluemix_notm}}, de forma predeterminada el puerto se añade en el campo **Puerto público**. Si crea un contenedor desde la CLI, exponga el puerto en el mandato
+`bx ic run`.
+
+
+## Supervisión del uso del espacio de almacenamiento dinámico de Java de un contenedor con la CLI 
+{: #monitor_heap}
+
+
+Después de crear un contenedor a partir de la imagen **ibmliberty**, puede listar todos los procesos en ejecución y revisar el uso del almacenamiento dinámico de Java. El espacio del almacenamiento dinámico de Java es la memoria que está disponible para la aplicación Java durante el tiempo de ejecución.
+{:shortdesc}
+
+1.  Liste todos los procesos en ejecución dentro del contenedor.
+
+    ```
+    bx ic top CONTAINER -aux
+ ```
+    {: pre}
+
+    La salida de la CLI es parecida a la siguiente:
+
+    ```    
+    USER        PID       %CPU   %MEM    VSZ         RSS        TTY     STAT   START    TIME   COMMAND
+    contain+    3322245   3.2    0.0     11522856    216192     ?            Ssl    14:43    0:35   /opt/ibm/java/jre/bin/java -javaagent:/opt/ibm/wlp/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -jar /opt/ibm/wlp/bin/tools/ws-server.jar defaultServer
+ ```
+    {: screen}
+
+2.  Revise el uso del almacenamiento dinámico de Java en la columna **RSS**. El uso del almacenamiento dinámico de Java se visualiza en kilobytes. Si el uso del almacenamiento dinámico está por debajo de 2097152 kilobytes (2GB) en todas las instancias, no tiene que adquirir una licencia de WebSphere Application Server.
+3.  Ajuste el máximo uso del almacenamiento dinámico para la instancia de WebSphere Application Server. Consulte [Establecer argumentos JVM genéricos en el perfil de WebSphere Application Server V8.5 Liberty](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) para obtener más información.
+
+## Obtención de una licencia de WebSphere Application Server 
+{: #license}
+
+Las licencias de WebSphere Application Server se basan en el número de value unit de procesador \(PVU\) que es necesario. PVU es una unidad de medida para la licencia del software de middleware de IBM. El número de PVU indica el número de procesadores \(núcleos\) que están disponibles para el software.
+{:shortdesc}
+
+Cada tamaño de contenedor en {{site.data.keyword.Bluemix_notm}} requiere un número específico de autorización por value unit de procesador (PVU) que deben estar disponibles en la licencia de WebSphere Application Server. Por lo tanto, debe planificar los contenedores de **ibmliberty** antes de adquirir la licencia.
+
+Para adquirir una licencia de WebSphere Application Server, póngase en contacto con el [servicio de IBM](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us). Si ya tiene una licencia para WebSphere
+Application Server v8.5 o posterior, puede utilizar todos los PVU no utilizados desde su titularidad existente para el despliegue del contenedor.
+
+Si encuentra que requiere más PVU después de adquirir la licencia, puede aumentar la cantidad contactando con el [servicio de IBM](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us).
+
+## Creación de una imagen **ibmliberty** con licencia para producción para utilizarla con {{site.data.keyword.containershort_notm}} 
+{: #prod_image}
+
+Utilice la licencia de WebSphere Application Server para crear una imagen **ibmliberty** con licencia de producción que puede utilizar con {{site.data.keyword.containershort_notm}}. Elija entre una de las siguientes tareas.
+{:shortdesc}
+
+-   [Actualice la imagen desde Docker Hub a una imagen de producción](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
+-   [Cree su propia imagen con licencia de producción](https://github.com/WASdev/ci.docker/tree/master/ga/production-install).
+
+Después de crear una imagen con licencia de producción, [envíe por push la imagen a su registro privado](/docs/services/Registry/index.html) para utilizarlo con {{site.data.keyword.containershort_notm}}.
+
+## Creación de una imagen a partir de las imágenes proporcionadas 
+{: #creating_image}
+
+Puede utilizar una de las imágenes **ibmliberty** como padre para crear una imagen hijo que incluya su propio código de app. Personalice el Dockerfile de ejemplo y cree la imagen en su sistema. A continuación, puede añadir la imagen al registro de imágenes privado de la organización y crear contenedores con esta.
+{:shortdesc}
+
+Antes de empezar, tenga en cuenta los siguientes pasos.
+
+-   Compile el código de app en un archivo WAR, EAR u OSGi.
+-   Copie el archivo en el directorio en el que desea compilar la imagen.
+
+
+Para crear una imagen con el código de la app a partir de la imagen **ibmliberty**:
+
+1. Con un editor de texto, cree un archivo denominado Dockerfile y copie en él la siguiente información.
+
+    ```
+    FROM registry.{{site.data.keyword.domainname}}/ibmliberty:<etiqueta>
+    COPY <nombre_app>.<extensión_archivo> /config/dropins/
+
+ ```
+    {: screen}
+
+    **Nota:** El directorio /config es un atajo para
+/opt/ibm/wlp/usr/servers/defaultServer.
+    
+2. Sustituya <etiqueta\> por la versión de la imagen **ibmliberty** que incluye las características que la app requiere.
+
+3. Sustituya <nombre\_app\> por el nombre de archivo de la app.
+
+4. Sustituya <extensión\_archivo\> por .war, .ear o .eba.
+
+5. Añada cualquier otra dependencia de la app al Dockerfile.
+
+6. Compile y envíe por push la imagen al registro de imágenes privado. Para obtener más información, consulte [Iniciación a {{site.data.keyword.registrylong_notm}}](/docs/services/Registry/index.html).
+
+**Nota:** Todas las imágenes **ibmliberty** se configuran de modo que graben los archivos de registro de Liberty en el directorio /logs dentro del contenedor. Todos los demás archivos grabados por el servidor Liberty se crean en el directorio /opt/ibm/wlp/output/defaultServer. Puede acceder a estos archivos utilizando el atajo /output.
+
+## Referencia del Dockerfile de **ibmliberty** 
+{: #reference_dockerfile}
+
+Este Dockerfile ilustra cómo se compila la imagen **ibmliberty:webProfile7** en {{site.data.keyword.Bluemix_notm}} a partir de las imágenes websphere-liberty públicas en Docker Hub. Esta información sirve únicamente como referencia.
+{:shortdesc}
+
+```
+FROM websphere-liberty:webProfile7
+
+  # Actualizar paquetes
+RUN apt-get update &&\
+    DEBIAN_FRONTEND=noninteractive apt-get upgrade -y &&\
+    apt-get clean &&\
+    rm -Rf /var/cache/*
+
+  # Establecer longitud de contraseña y caducidad en conformidad con el asesor de vulnerabilidad
+RUN sed -i 's/^PASS_MAX_DAYS.*/PASS_MAX_DAYS   90/' /etc/login.defs
+RUN sed -i 's/sha512/sha512 minlen=8/' /etc/pam.d/common-password
+
+  # Añadir etiqueta de documentos
+LABEL doc.url="/docs/services/RegistryImages/ibmliberty/index.html"
+```
+{: screen}
