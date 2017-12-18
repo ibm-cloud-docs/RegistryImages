@@ -1,0 +1,276 @@
+---
+
+copyright:
+  years: 2017
+lastupdated: "2017-12-18"
+
+---
+
+{:new_window: target="_blank"}
+{:shortdesc: .shortdesc}
+{:codeblock: .codeblock}
+{:screen: .screen}
+{:pre: .pre}
+{:tip: .tip}
+{:table: .aria-labeledby="caption"}
+
+# Getting started with the ibm-cluster-autoscaler image (alpha)
+{: #ibm-cluster-autoscaler}
+
+The **ibm-cluster-autoscaler** image contains the preinstalled packages that are needed to automatically scale the worker nodes within your {{site.data.keyword.containerlong}} cluster.
+{:shortdesc}
+
+## How it works
+{: #how-it-works}
+
+With the IBM cluster autoscaler you can scale the worker nodes within your Kubernetes cluster up or down, across any specified autoscaling group when working in {{site.data.keyword.containerlong}}. The IBM cluster autoscaler runs as a deployment in the `kube-system` namespace of your cluster and is a plugin on the Kubernetes cluster autoscaler.
+
+The size of your cluster is automatically adjusted when:
+
+* There are not enough available resources so pods fail to run.
+* Nodes in a cluster are underutilized for an extended period of time.
+
+<!---## What is included
+{: #included}
+The following packages are included in the image:
+* ?
+ What packages are installed? --->
+
+## Getting started
+{: #how_to_get_started}
+
+The IBM cluster autoscaler can be installed by using a Helm chart.
+**Note**: The IBM cluster autoscaler has some internal Git repository dependencies so it can only be built by users with the correct access.
+
+## Prerequisites
+{: #prerequisites}
+
+There are some prerequisites that you must complete before working with the IBM cluster autoscaler.
+
+<dl>
+	<dt> Required CLIs </dt>
+		<dd> To work with Kubernetes on IBM Cloud Container Service you must have the IBM Cloud, Kubectl, and Docker CLIs, as well as the IBM Cloud Container Service and IBM Cloud Container Registry plugins. For help installing the CLIs and creating your first cluster, follow [this tutorial in our docs](https://console.bluemix.net/docs/containers/cs_tutorials.html#cs_cluster_tutorial)!</dd>
+	<dt> Cluster version </dt>
+		<dd> You must have a paid cluster that is at version `1.8.2` to use the autoscaler plugin. </br>
+		To verify that you meet the requirements, run the following command and check that your Machine type does not say _free_ and that your version is correct. </br>
+		<codeblock> $bx cs workers <cluster-name> </codeblock> </br>
+		Example output: </br>
+		<codeblock> $bx cs workers ibm-cluster
+		OK
+		ID                                                   Public IP        Private IP     Machine Type   State    Status   Version
+		stage-dal06-crffef8b930b214442802bdcaa551b5ec0-w1    169.54.180.171   10.146.32.7    u2c.2x4        normal   Ready    1.7.4_1504
+		</codeblock></dd>
+	<dt> Secrets </dt>
+		<dd> To scale worker nodes on your behalf, the autoscaler needs to know your Identity and Access management details. The credentials are available as a secret in a paid cluster. To verify that the secret is available, run the following command. The command should return a secret. </br>
+		<codeblock> $kubectl get secrets -n kube-system | grep storage-secret-store </codeblock></dd>
+</dl>
+
+## Installing and configuring the autoscaler
+{: #install-configure}
+
+After the autoscaler is running, it automatically conserves resources and scales your clusters. There are a few steps you'll need to complete to get up and running.
+
+1. Log in to {{site.data.keyword.containershort_notm}} and target your cluster by running `{[bxcs]} cluster-config <cluster-name>`.
+
+2. [Install helm and initialize it in your cluster](https://docs.helm.sh/using_helm/#quickstart).
+
+3. Clone the {{site.data.keyword.containershort_notm}} Helm chart repository and navigate into it.
+
+   ```
+   git@github.ibm.com:alchemy-containers/helm-charts.git && cd helm-charts
+   ```
+   {: pre}
+
+4. Using the provided template, create a configuration file.
+   ```
+   cp incubator/helm/autoscaler/config.yaml.template config.yaml
+   ```
+   {: pre}
+
+    **NOTE**: In order for scaling groups to work, you must have at least one worker node of the machine type that you specify included in your cluster.
+
+  <table summary="The first row in the table spans both columns. The rest of the rows should be read left to right, with the parameter in column one, the description that matches in column two, and the default in column three.">
+    <thead>
+      <th colspan=3><img src="images/idea.png"/>IBM cluster autoscaler configurable parameters and their default value </th>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code> autoscalingGroups.name </code></td>
+        <td> The machine-type that you would like to scale. </td>
+        <td> No default, user-specified. </td>
+      </tr>
+      <tr>
+        <td><code> autoscalingGroups.minSize </code></td>
+        <td> The minimum number of worker nodes to which your cluster should scale. </td>
+        <td> No default, user-specified. </td>
+      </tr>
+      <tr>
+        <td><code> autoscalingGroups.maxSize </code></td>
+        <td> The maximum number of worker nodes to which your cluster should scale. </td>
+        <td> No default, user-specified. </td>
+      </tr>
+      <tr>
+        <td><code> api_route </code></td>
+        <td> The route to the IBM Cloud Container Service API for the region in which your cluster is running. </td>
+        <td> https://containers.bluemix.net/swagger-api/ </td>
+      </tr>
+      <tr>
+        <td><code> resources.limits.cpu </code></td>
+        <td> The amount of CPU that the Autoscaler pod is limited to. </td>
+        <td> 300m </td>
+      </tr>
+      <tr>
+        <td><code> resources.limits.memory </code></td>
+        <td> The amount of memory the autoscaler pod is limited to. </td>
+        <td> 300Mi </td>
+      </tr>
+      <tr>
+        <td><code> resources.requests.cpu </code></td>
+        <td> The amount of CPU you want the autoscaler pod to start with. </td>
+        <td> 100m </td>
+      </tr>
+      <tr>
+        <td><code> resources.requests.memory </code></td>
+        <td> The amount of memory you want the autoscaler pod to start with. </td>
+        <td> 100Mi </td>
+      </tr>
+      <tr>
+        <td><code> scale_down_delay </code></td>
+        <td> The amount of time the scaler should wait to scale down after issuing a scale up request. </td>
+        <td> 10m </td>
+      </tr>
+      <tr>
+        <td><code> scale_down_unneeded_time </code></td>
+        <td> The mount of time a node should be unneeded before it is eligible to be scaled down. </td>
+        <td> 10m </td>
+      </tr>
+      <tr>
+        <td><code> skipNodes.withLocalStorage </code></td>
+        <td> When set to true, nodes that contain local storage will be skipped and will not be scaled down. </td>
+        <td> true </td>
+      </tr>
+      <tr>
+        <td><code> skipNodes.withSystemPods </code></td>
+        <td> When set to true, nodes that contain kube-system pods will be skipped and will not be scaled down. </td>
+        <td> true </td>
+      </tr>
+      <tr>
+        <td><code> image.repository </code></td>
+        <td> The cluster autoscaler Docker image. </td>
+        <td> registry.ng.bluemix.net/armada-master/cluster-autoscaler </td>
+      </tr>
+      <tr>
+        <td><code> image.tag </code></td>
+        <td> The version of the image that you want to pull. </td>
+        <td> 12 </td>
+      </tr>
+      <tr>
+        <td><code> image.pullPolicy </code></td>
+        <td> Specifies when to pull the Docker image. </td>
+        <td> Always. </td>
+      </tr>
+    </tbody>
+  </table>
+
+5. Install the helm chart to your cluster in the `kube-system` namespace.
+
+  ```
+  helm install incubator/helm/autoscaler -f config.yaml --namespace kube-system
+  ```
+  {: pre}
+
+    Your output should be similar to the following:
+  ```
+  NAMESPACE: kube-system
+  STATUS: DEPLOYED
+
+  RESOURCES:
+  ==> v1/Service
+  NAME                CLUSTER-IP    EXTERNAL-IP  PORT(S)   AGE
+  cluster-autoscaler  10.10.10.189  <none>       8085/TCP  5s
+
+  ==> v1beta1/Deployment
+  NAME                DESIRED  CURRENT  UP-TO-DATE  AVAILABLE  AGE
+  cluster-autoscaler  1        1        1           0          3s
+  ```
+  {: screen}
+
+## Verifying installation
+
+1. Verify that your cluster containing the autoscaler pod is running.
+
+  ```
+  kubectl get pods --namespace=kube-system | grep cluster-autoscaler
+  ```
+  {: pre}
+
+    Your output should be similar to the following:
+  ```
+    cluster-autoscaler-4289984493-zldfk        1/1       Running   0          3m
+  ```
+  {: screen}
+
+2. Verify that the cluster autoscaler is running.
+
+  ```
+  kubectl get service --namespace=kube-system | grep cluster-autoscaler
+  ```
+  {: pre}
+
+    Your output should be similar to the following:
+  ```
+  cluster-autoscaler       10.10.10.204   <none>         8085/TCP                     4m
+  ```
+  {: screen}
+
+## Deploying the IBM cluster autoscaler
+
+You can deploy the autoscaler.
+
+1. Export `GOPATH` and create the following directory. After it's created, change into that directory.
+  ```
+	$mkdir -p $GOPATH/src/k8s.io
+  ```
+  {: pre}
+2. Clone the code.
+  ```
+	$git clone git@github.ibm.com:alchemy-containers/armada-cluster-autoscaler.git
+  ```
+  {: pre}
+3. Rename directory from `armada-cluster-autoscaler`  to `autoscaler` and then change into the `autoscaler` directory.
+  ```
+	$mv armada-cluster-autoscaler autoscaler
+  ```
+  {: pre}
+4. Resolve the dependencies.
+  ```
+	$make ibm-deps
+  ```
+  {: pre}
+5. Build the executable.
+  ```
+	$make build
+  ```
+  {: pre}
+6. Build your Docker image.
+  ```
+	$make container
+  ```
+  {: pre}
+
+## Uninstalling the chart
+
+You can uninstall the cluster autoscaler deployment.
+
+1. Get the name of your deployment.
+
+  ```
+  helm ls | grep autoscaler
+  ```
+  {: pre}
+2. Delete the deployment.
+
+  ```
+  helm delete <deployment_name>
+  ```
+  {: pre}
