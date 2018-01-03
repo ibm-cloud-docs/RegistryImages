@@ -11,9 +11,9 @@ IBM 公用容器映像檔
     {: .navgroup id="reference"}
     {: .topicgroup}
     相關鏈結
-        [Dockerfile 參考資料](http://docs.docker.com/engine/reference/builder/)
-        [使用監督程式與 Docker 搭配](https://docs.docker.com/engine/admin/using_supervisord/)
-        [登錄 CLI 參考資料](../../cli/plugins/registry/index.html)
+        [Dockerfile reference](http://docs.docker.com/engine/reference/builder/)
+        [Use Supervisor with Docker](https://docs.docker.com/engine/admin/using_supervisord/)
+        [Registry CLI 參考資料](../../cli/plugins/registry/index.html)
     {: .navgroup-end}
     
     {: .navgroup id="howto"}

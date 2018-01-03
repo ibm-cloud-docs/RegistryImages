@@ -118,7 +118,6 @@ lastupdated: "2017-10-30"
 
 이 Dockerfile은 {{site.data.keyword.Bluemix_notm}} Catalog에 **ibm-node-strong-pm** 이미지를 작성하는 데 사용합니다. 이 정보는 참조 전용입니다. 이 이미지의 빌드 버전에 포함된 기타 파일은 제공되지 않습니다.
 
-
 ```
 FROM registry.ng.bluemix.net/ibmnode:latest
 RUN useradd -ms /bin/bash strong-pm \    

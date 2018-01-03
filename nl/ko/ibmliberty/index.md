@@ -27,7 +27,8 @@ IBM WebSphere Application Server Liberty 컨테이너에서 Java를 기반으로
 ## 포함된 항목 
 {: #whats_included}
 
-모든 Liberty 이미지는 다음 소프트웨어 패키지를 제공합니다.{:shortdesc}
+모든 Liberty 이미지는 다음 소프트웨어 패키지를 제공합니다.
+{:shortdesc}
 
 -   IBM WebSphere Application Server for Developers Liberty
 -   IBM Java Runtime Environment 8.0
@@ -53,7 +54,7 @@ IBM WebSphere Application Server Liberty 컨테이너에서 Java를 기반으로
 |환경|무료 사용량 제한사항|
 |-----------|-----------------------|
 |개발|**ibmliberty** 이미지의 **무제한** 무료 사용량입니다.|
-|프로덕션 |**ibmliberty** 이미지의 무료 사용량은 이미지를 실행하는 모든 컨테이너 인스턴스에서 **최대 2GB Java 힙 영역**으로 제한됩니다. 예를 들어, 2 x 1GB 또는 4 x 512 MB 힙 liberty 인스턴스를 무료로 보유할 수 있습니다.
+|프로덕션|**ibmliberty** 이미지의 무료 사용량은 이미지를 실행하는 모든 컨테이너 인스턴스에서 **최대 2GB Java 힙 영역**으로 제한됩니다. 예를 들어, 2 x 1GB 또는 4 x 512 MB 힙 liberty 인스턴스를 무료로 보유할 수 있습니다.
 
 컨테이너 인스턴스의 Java 힙 사용량을 모니터하려면 [CLI로 컨테이너의 Java 힙 영역 사용량 모니터링](#monitor_heap)을 참조하십시오.
 

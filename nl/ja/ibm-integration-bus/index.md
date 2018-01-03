@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-10-25"
+lastupdated: "2017-11-06"
 
 ---
 
@@ -244,8 +244,7 @@ IBM Integration Bus を実行するコンテナーが {{site.data.keyword.Bluemi
              </li>
            </ol>
         </li>
-        <li>Docker CLI を使用して {{site.data.keyword.Bluemix_notm}} のコンテナーを管理するには、以下のステップを実行します。
-          <ol>
+        <li>Docker CLI を使用して {{site.data.keyword.Bluemix_notm}} のコンテナーを管理するには、以下のステップを実行します。<ol>
             <li>
               <pre class="codeblock">bx login</pre>
             </li>

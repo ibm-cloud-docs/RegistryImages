@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-30"
+lastupdated: "2017-11-09"
 
 ---
 
@@ -11,19 +11,19 @@ lastupdated: "2017-10-30"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip}
+{:tip: .tip} 
 {:table: .aria-labeledby="caption"}
 
-# ibm-backup-restore 이미지 시작하기 
+# ibm-backup-restore 이미지 시작하기
 {: #ibmbackup_restore_starter}
 
-**ibm-backup-restore** 이미지는 {{site.data.keyword.containerlong}}에서 컨테이너 볼륨을 백업하고 복원하는 데 필요한 사전 설치된 패키지를 포함합니다.
+**ibm-backup-restore** 이미지에는 {{site.data.keyword.containerlong}}에서 지속적 스토리지를 백업하고 복원하는 데 필요한 사전 설치된 패키지가 포함됩니다.
 {:shortdesc}
 
 ## 작동 방식 
 {: #how_it_works}
 
-**ibm-backup-restore** 이미지를 사용하여 컨테이너 볼륨에 대해 일회성 또는 예정된 백업을 작성할 수 있습니다. 백업은 {{site.data.keyword.objectstoragefull}} 인스턴스 내에 저장됩니다. 실행중인 컨테이너의 `config.conf` 파일을 편집하여 {{site.data.keyword.objectstorageshort}} 신임 정보를 **ibm-backup-restore** 컨테이너에 환경 변수로 전달할 수 있습니다. 또한 {{site.data.keyword.objectstorageshort}} 인스턴스에서 볼륨으로 저장된 데이터를 복구할 수 있습니다. 이미지에는 실행 중인 백업과 복원 둘 다에 대한 스크립트가 포함되므로 사용자는 실행 중인 컨테이너에서 적절한 스크립트를 시작하는 명령을 발행해야 합니다. 
+**ibm-backup-restore** 이미지를 사용하여 지속적 볼륨 클레임(pvc)에 대해 일회성 백업 또는 스케줄된 백업을 작성할 수 있습니다. 백업은 {{site.data.keyword.objectstoragefull}} 인스턴스 내에 저장됩니다. 실행중인 컨테이너의 `config.conf` 파일을 편집하여 {{site.data.keyword.objectstorageshort}} 신임 정보를 **ibm-backup-restore** 컨테이너에 환경 변수로 전달할 수 있습니다. 또한 {{site.data.keyword.objectstorageshort}} 인스턴스에서 볼륨으로 저장된 데이터를 복구할 수 있습니다. 이미지에는 백업 및 복원을 둘 다 실행하기 위한 스크립트가 포함되므로 사용자가 명령을 입력하여 적절한 스크립트를 시작해야 합니다.
 
 ## 포함된 항목 
 {: #whats_included}
@@ -37,7 +37,7 @@ lastupdated: "2017-10-30"
 ## 시작하기 
 {: #how_to_get_started}
 
-백업 및 복원 오퍼레이션을 수행하려면 다음 단계를 완료하십시오.
+데이터를 백업하고 복원하려면 다음 태스크를 검토하십시오.
 1.  [{{site.data.keyword.objectstorageshort}} 서비스 인스턴스 작성](#object_storage)
 2.  [스케줄된 백업 실행](#scheduled_backup)
 3.  [복원 스크립트 실행](#restore_script_cli)
@@ -49,8 +49,9 @@ lastupdated: "2017-10-30"
 
 {{site.data.keyword.objectstorageshort}} 인스턴스를 작성하여 볼륨 백업을 위한 저장소를 제공합니다.
 
-1.  {{site.data.keyword.Bluemix_notm}} 카탈로그의 **서비스**섹션에서 {{site.data.keyword.objectstorageshort}} 인스턴스를 프로비저닝하십시오.
-2.  {{site.data.keyword.objectstorageshort}} 인스턴스를 선택하십시오.
+1.  {{site.data.keyword.Bluemix_notm}} 카탈로그의 **스토리지** 섹션에서 {{site.data.keyword.objectstorageshort}} 인스턴스를 프로비저닝하십시오.
+2.  {{site.data.keyword.objectstorageshort}}를 클릭하십시오.
+3.  {{site.data.keyword.Bluemix_notm}}용 {{site.data.keyword.objectstorageshort}} OpenStack Swift를 선택하십시오. 그런 다음 저장을 클릭하십시오.
 3.  **서비스 신임 정보** 탭을 클릭하십시오.
 4.  **새 신임 정보**를 클릭하십시오.
 5.  이름 필드를 채우고 나머지 필드를 공백으로 두십시오. **추가**를 클릭하십시오.
@@ -62,150 +63,210 @@ lastupdated: "2017-10-30"
 ## 스케줄된 백업 실행 
 {: #scheduled_backup}
 
-**ibm-backup-restore** 이미지에서 컨테이너를 작성하고 정기적으로 스케줄된 백업을 시작합니다.
+**ibm-backup-restore** 이미지에서 컨테이너 포드를 작성하고 정기적으로 스케줄된 백업을 시작합니다.
 
-1.  {{site.data.keyword.containerlong_notm}} CLI에 로그인하십시오.
+시작하기 전에 다음을 수행하십시오.
 
-    ```
-    bx login
-    ```
-    {: pre}
+-   필수 [CLI](../../../containers/cs_cli_install.html#cs_cli_install)를 설치하십시오.
+-   클러스터를 [CLI의 대상으로 지정](../../../containers/cs_cli_install.html#cs_cli_configure)하십시오. 
 
-    ```
-    bx ic init
-    ```
-    {: pre}
 
-2.  로컬 디렉토리에서 환경 변수 파일을 작성하십시오.
+1. _backup-pvc.yaml_로 이름 지정된 구성 파일을 작성하십시오. 이 구성 파일은 백업 포드에 볼륨으로 마운트할 수 있는 지속적 볼륨 클레임(pvc)을 작성합니다. 
 
     ```
-    touch <backup_env-file_name>
-    ```
-    {: pre}
-
-3.  환경 변수 파일을 편집하고 다음 필드를 추가하십시오. 비어 있는 환경 변수의 경우, 이전에 기록해 둔 {{site.data.keyword.objectstorageshort}} 신임 정보에서 값을 입력하십시오. 신임 정보에 사용된 따옴표는 사용하지 마십시오.
-
-    ```
-    BACKUP_NAME=volume_name
-    BACKUP_DIRECTORY=/backup
-    PROJECTID=
-    REGION=
-    USERID=
-    PASSWORD=
-    SCHEDULE_TYPE=periodic
-    SCHEDULE_INFO=daily
-    BACKUP_TYPE=incremental
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: backuppvc
+      annotations:
+        volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze"
+    spec:
+      accessModes:
+        - ReadWriteMany
+      resources:
+        requests:
+          storage: 20Gi
     ```
     {: codeblock}
-
-    이 설정은 기본 이름 _volume_backup_으로 일별 증분식 백업을 작성합니다. 다른 설정으로 백업을 작성하려면 [환경 변수 옵션](#reference_backup_restore)의 전체 목록을 검토하십시오.
-
-4.  백업할 마운트된 볼륨과 함께 **ibm-backup-restore** 이미지에서 컨테이너를 실행하십시오. 백업 스크립트를 시작할 명령을 포함하십시오.
-
-    -   <em>&lt;backup_env-file&gt;</em>과 동일한 로컬 디렉토리에 있는지 확인하십시오.
-    -   볼륨이 마운트되는 디렉토리는 환경 변수 파일에서 BACKUP_DIRECTORY와 일치해야 합니다.
-    -   볼륨 이름을 백업할 볼륨 이름으로 대체하십시오.
     
+2. pvc를 작성하십시오.
+
     ```
-    bx ic run --name <container_name> --volume <volume_name>:/backup --env-file ./<backup_env-file_name> registry.ng.bluemix.net/ibm-backup-restore /bin/bash -c "/backup_restore/vbackup"
+    kubectl apply -f backup-pvc.yaml 
     ```
     {: pre}
 
-    컨테이너가 실행을 시작하지 않으면 `bx ic logs <container_name>`를 실행하여 로그에서 오류 메시지를 검토하십시오.
+3.  _backup.yaml_로 이름 지정된 구성 파일을 작성하십시오. 비어 있는 환경 변수의 경우, 이전에 기록해 둔 {{site.data.keyword.objectstorageshort}} 신임 정보에서 값을 입력하십시오. 신임 정보에 사용된 따옴표를 포함시키십시오. <em>&lt;pod_name&gt;</em>, <em>&lt;container_name&gt;</em> 및 이미지 레지스트리 <em>&lt;region&gt;</em>을 적절한 값으로 대체하십시오.
 
-5.  {{site.data.keyword.Bluemix_notm}} GUI의 {{site.data.keyword.objectstorageshort}}에서 백업을 검토하십시오.
+    ```
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: <pod_name>
+    spec:
+      containers:
+        - name: <container_name>
+          image: registry.<region>.bluemix.net/ibm-backup-restore
+          env:
+          - name: USERID
+            value: 
+          - name: PASSWORD
+            value: 
+          - name: PROJECTID
+            value:
+          - name: REGION
+            value:
+          - name: SCHEDULE_TYPE
+            value: periodic
+          - name: SCHEDULE_INFO
+            value: daily
+          - name: BACKUP_TYPE
+            value: incremental
+          - name: BACKUP_DIRECTORY
+            value: /backup
+          - name: BACKUP_NAME
+            value: mybackup
+          command: ["/bin/bash", "./vbackup"]
+          volumeMounts:
+          - mountPath: /backup
+            name: backup-volume
+      volumes:
+      - name: backup-volume 
+        persistentVolumeClaim:
+          claimName: backuppvc
+    ```
+    {: codeblock}
+    
+    이 설정은 기본 이름 _mybackup_으로 일별 증분식 백업을 작성합니다. 다른 설정으로 백업을 작성하려면 [환경 변수 옵션](#reference_backup_restore)의 전체 목록을 검토하십시오.
+
+4.  백업 스크립트를 실행하는 포드를 작성하십시오.
+
+    ```
+    kubectl apply -f backup.yaml
+    ```
+    {: pre}
+
+5.  포드가 실행 중인지 확인하십시오.
+
+    ```
+    kubectl get pods 
+    ```
+    {: pre}
+    
+    ```
+    NAME                                    READY     STATUS    RESTARTS   AGE
+    <pod_name>                              1/1       Running   0          1hr
+    ```
+    {: screen}
+
+4.  {{site.data.keyword.Bluemix_notm}} GUI의 {{site.data.keyword.objectstorageshort}}에서 백업을 검토하십시오.
     1.  백업을 위해 작성한 {{site.data.keyword.objectstorageshort}} 인스턴스를 클릭하십시오.
-    2.  {{site.data.keyword.objectstorageshort}} 컨테이너를 클릭하십시오. 이 예제에서 컨테이너 이름은 volume_backup입니다.
-    3.  압축된 파일을 검토하십시오.![{{site.data.keyword.Bluemix_notm}} GUI의 {{site.data.keyword.objectstorageshort}} 컨테이너에는 백업된 파일이 표시됩니다.](images/volume_backup_screenshot.png) `vol1.difftar.gz` 파일을 다운로드하고 파일의 압축을 푼 다음 백업된 데이터를 확인할 수 있습니다. {{site.data.keyword.objectstorageshort}}의 파일을 삭제하거나 수정한 경우 해당 파일을 복구할 수 없습니다.
+    2.  **컨테이너** 테이블의 **관리** 탭에서 {{site.data.keyword.objectstorageshort}} 컨테이너를 클릭하십시오.
+    3.  압축된 파일을 검토하십시오.![{{site.data.keyword.Bluemix_notm}} GUI의 Object Storage 컨테이너는 백업된 파일을 보여줍니다.](images/volume_backup_screenshot.png)vol1.difftar.gz 파일을 다운로드하고 파일을 추출하여 백업된 데이터를 확인할 수 있습니다. **중요**: {{site.data.keyword.objectstorageshort}}의 파일을 삭제하거나 수정한 경우 해당 파일을 복구할 수 없습니다.
 
-백업을 사용할 수 있습니다. 일회성 전체 백업을 작성하도록 *<container_name>*을 구성한 경우 새 백업을 작성할 때마다 백업 스크립트를 실행해야 합니다. 증분식 백업을 정기적으로 실행하도록 컨테이너를 구성한 경우 백업이 예정대로 실행됩니다. 
+백업을 사용할 수 있습니다. 일회성 전체 백업을 작성하도록 백업을 구성한 경우 새 백업을 작성할 때마다 백업 스크립트를 실행해야 합니다. 증분식 백업을 정기적으로 실행하도록 컨테이너를 구성한 경우 백업이 예정대로 실행됩니다.
 
 ## 복원 스크립트 실행 
 {: #restore_script_cli}
 
-{{site.data.keyword.objectstorageshort}}에서 기존 또는 신규 컨테이너 볼륨으로 백업을 복원합니다.
+{{site.data.keyword.objectstorageshort}}의 백업을 기존 볼륨 또는 새 볼륨에 복원합니다.
 
-1.  로컬 디렉토리에서 복원 컨테이너의 환경 변수 파일을 작성하십시오.
+시작하기 전에 다음을 수행하십시오.
+
+-   필수 [CLI](../../../containers/cs_cli_install.html#cs_cli_install)를 설치하십시오.
+-   클러스터를 [CLI의 대상으로 지정](../../../containers/cs_cli_install.html#cs_cli_configure)하십시오. 
+
+
+1. _restore-pvc.yaml_로 이름 지정된 구성 파일을 작성하십시오. 이 구성 파일은 복원 포드에 볼륨으로 마운트할 수 있는 지속적 볼륨 클레임(pvc)을 작성합니다.
 
     ```
-    touch <restore_env-file_name>
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: restorepvc
+      annotations:
+        volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze"
+    spec:
+      accessModes:
+        - ReadWriteMany
+      resources:
+        requests:
+          storage: 20Gi
+    ```
+    {: codeblock}
+    
+2. pvc를 작성하십시오.
+
+    ```
+    kubectl apply -f restore-pvc.yaml 
     ```
     {: pre}
 
-2.  환경 변수 파일을 편집하고 다음 필드를 추가하십시오. 비어 있는 환경 변수의 경우, 이전에 기록해 둔 {{site.data.keyword.objectstorageshort}} 신임 정보에서 값을 입력하십시오. BACKUP_NAME은 복원할 {{site.data.keyword.objectstorageshort}}의 백업 이름과 일치해야 합니다.
+3.  _restore.yaml_로 이름 지정된 구성 파일을 작성하십시오. 비어 있는 환경 변수의 경우, 이전에 기록해 둔 {{site.data.keyword.objectstorageshort}} 신임 정보에서 값을 입력하십시오. 신임 정보에 사용된 따옴표를 포함시키십시오. BACKUP_NAME은 복원할 {{site.data.keyword.objectstorageshort}}의 백업 이름과 일치해야 합니다.
 
     ```
-    BACKUP_NAME=<volume_name>
-    RESTORE_DIRECTORY=/restore
-    USERID=
-    REGION=
-    PROJECTID=
-    PASSWORD=
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: <pod_name>
+    spec:
+      containers:
+        - name: <container_name>
+          image: registry.<region>.bluemix.net/ibm-backup-restore
+          env:
+          - name: USERID
+            value: 
+          - name: PASSWORD
+            value: 
+          - name: PROJECTID
+            value:
+          - name: REGION
+            value:
+          - name: RESTORE_DIRECTORY
+            value: /restore
+          - name: BACKUP_NAME
+            value: mybackup
+          command: ["/bin/bash", "./vrestore"]
+          volumeMounts:
+          - mountPath: /restore
+            name: restore-volume
+      volumes:
+      - name: restore-volume 
+        persistentVolumeClaim:
+          claimName: restorepvc
     ```
     {: codeblock}
 
-3.  백업 파일을 복원할 볼륨을 작성하십시오.
-
-    ```
-    bx ic volume create <volume_name>
-    ```
-    {: pre}
-
-4.  **ibm-backup-restore** 이미지에서 컨테이너를 실행하십시오. 복원 스크립트를 시작할 명령을 포함하십시오.
-
-    -   <em>&lt;restore_env-file&gt;</em>과 동일한 로컬 디렉토리에 있는지 확인하십시오.
-    -   볼륨이 마운트되는 디렉토리는 환경 변수 파일에서 BACKUP_DIRECTORY와 일치해야 합니다.
+4.  복원 스크립트를 실행하는 포드를 작성하십시오.
     
     ```
-    bx ic run --name <container_name> --volume <volume_name>:/restore --env-file ./<restore_env-file_name> registry.ng.buemix.net/ibm-backup-restore /bin/bash -c "/backup_restore/vrestore"
+    kubectl apply -f restore.yaml
     ```
     {: pre}
-
-5.  컨테이너 로그를 통해 복원 프로세스가 완료되었는지 확인하십시오.
+    
+5.  포드가 실행 중인지 확인하십시오.
 
     ```
-    bx ic logs <container_name>
+    kubectl get pods 
     ```
     {: pre}
-
+    
     ```
-    [2016-10-26 18:01:51,031] [utilities : 152] [INFO] *****************Start logging to ./Restore.log with rollover at 102400 bytes**************
-    [2016-10-26 18:01:51,031] [restore : 28] [INFO] Starting the restore process.
-    [2016-10-26 18:01:51,032] [configureOS : 22] [INFO] Configuring duplicity with IBM Bluemix ObjectStorage.
-    [2016-10-26 18:01:51,032] [configureOS : 13] [INFO] Configuring swift client.
-    [2016-10-26 18:01:51,032] [restore : 40] [INFO] Configuration is completed.
-    [2016-10-26 18:01:54,022] [restore : 70] [INFO] Restoring the backup that is named 'volume_backup' is completed. Synchronizing remote metadata to local cache...
-    Copying duplicity-full-signatures.20161026T173856Z.sigtar.gz to local cache.
-    Copying duplicity-full.20161026T173856Z.manifest to local cache.
-    Last full backup date: Wed Oct 26 17:38:56 2016
+    NAME              READY     STATUS             RESTARTS   AGE
+    <pod_name>        0/1       CrashLoopBackOff   1          1m
     ```
     {: screen}
 
-    복원 프로세스가 완료되면 컨테이너가 종료됩니다.
+    포드가 복원 명령을 실행하고 중지됩니다. _CrashLoopBackOff_ 메시지는 Kubernetes가 포드를 다시 시작하려고 시도 중임을 의미합니다.
 
-6.  선택사항: 리소스를 이용하지 않도록 컨테이너를 제거하십시오.
+6.  포드가 더 많은 자원을 이용하지 못하도록 포드를 제거하십시오.
 
     ```
-    bx ic rm -f <container_name>
+    kubectl delete -f restore.yaml
     ```
     {: pre}
 
-7. 선택사항: 백업 파일이 볼륨에 있는지 확인하려면 컨테이너에 로그인하고 마운트 경로로 이동한 다음 파일을 나열하십시오.
-
-    ```
-    $ bx ic exec -it <container_name> bash
-    root@instance:/backup_restore# cd ..
-    root@instance/# cd restore
-    root@instance:/restore# ls
-    duplicity-I3_pJv-tempdir  new_file
-    root@instance:/restore# 
-    ```
-    {: screen}
-
-    tempdir은 백업 프로세스의 제품이며 수동으로 삭제할 수 있습니다.
-
-
-*volume_name* 볼륨에 백업이 복원되었습니다. 이제 컨테이너가 복원된 파일에 액세스할 수 있도록 새 컨테이너를 볼륨에 마운트할 수 있습니다. 백업된 컨테이너 데이터에 비루트 사용자가 포함된 경우 새 컨테이너에 비루트 권한을 추가해야 합니다. 자세한 정보는 [볼륨에 대한 비루트 사용자 액세스 권한 추가](../../../containers/container_volumes_ov.html#container_volumes_write)를 참조하십시오.
+성공적으로 백업을 복원했습니다. 이제 컨테이너가 복원된 파일에 액세스할 수 있도록 새 포드를 pvc에 마운트할 수 있습니다. 백업된 컨테이너 데이터에 비루트 사용자가 포함된 경우 새 컨테이너에 비루트 권한을 추가해야 합니다. 자세한 정보는 [볼륨에 대한 비루트 사용자 액세스 권한 추가](../../../containers/container_volumes_ov.html#container_volumes_write)를 참조하십시오.
 
 ## 백업 암호화 
 {: #encrypting_backups}
@@ -215,7 +276,7 @@ lastupdated: "2017-10-30"
 1.  <a href="https://www.gnupg.org/download/index.html" target="_blank">GnuPG <img src="../../../icons/launch-glyph.svg" alt="외부 링크 아이콘"></a>를 다운로드하여 암호화 키를 작성하십시오.
 2.  로컬 드라이브에 암호화 키를 작성하십시오. ENTER를 눌러 기본값을 사용할 수 있습니다.
 
-    **주의:** 작성하는 비밀번호 문구를 기록해 두십시오. 비밀번호 문구를 잃어버린 경우 키로 암호화된 정보는 복호화할 수 없습니다. 
+    **주의:** 작성하는 비밀번호 문구를 기록해 두십시오. 비밀번호 문구를 잃어버린 경우 키로 암호화된 정보는 복호화할 수 없습니다.
 
     ```
     gpg --gen-key
@@ -261,70 +322,115 @@ lastupdated: "2017-10-30"
     touch <encryption_env-file_name>
     ```
     {: pre}
-
-6.  환경 변수 파일을 편집하고 다음 필드를 추가하십시오. 비어 있는 환경 변수의 경우, 이전에 기록해 둔 {{site.data.keyword.objectstorageshort}} 신임 정보에서 값을 입력하십시오. 신임 정보에 사용된 따옴표는 사용하지 마십시오. *ENCRYPTION_PASSPHRASE*의 경우, 백업을 비밀번호로 보호할 비밀번호 문구를 포함하십시오. 이 비밀번호 문구는 암호화 키를 작성할 때 만든 문구와 다른 것입니다. 데이터를 백업하고 복원할 때 이 비밀번호 문구를 포함해야 합니다.
+    
+6. _backup-pvc.yaml_로 이름 지정된 구성 파일을 작성하십시오. 이 구성 파일은 백업 포드에 볼륨으로 마운트할 수 있는 지속적 볼륨 클레임(pvc)을 작성합니다. 
 
     ```
-    BACKUP_NAME=<volume_name>
-    BACKUP_DIRECTORY=/backup
-    # PROJECTID, REGION, USERID, PASSWORD come from the Object Storage credentials.
-    PROJECTID=
-    REGION=
-    USERID=
-    PASSWORD=
-    SCHEDULE_TYPE=periodic
-    SCHEDULE_INFO=daily
-    BACKUP_TYPE=incremental
-    ENCRYPTION_REQUIRED=yes
-    # Include this passphrase when backing up and restoring encrypted data.
-    ENCRYPTION_PASSPHRASE=
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: backuppvc
+      annotations:
+        volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze"
+    spec:
+      accessModes:
+        - ReadWriteMany
+      resources:
+        requests:
+          storage: 20Gi
     ```
     {: codeblock}
 
-    이 설정은 *<volume_name>* 이름을 사용하여 암호화된 매일 증분 백업을 작성합니다. 다른 설정으로 백업을 작성하려면 [환경 변수 옵션](#reference_backup_restore)의 전체 목록을 검토하십시오.
-
-7.  {{site.data.keyword.containerlong_notm}} CLI에 로그인하십시오.
+7. pvc를 작성하십시오.
 
     ```
-    bx login
+    kubectl apply -f backup-pvc.yaml 
     ```
     {: pre}
 
-    ```
-    bx ic init
-    ```
-    {: pre}
+8.  배치 구성 파일을 편집하고 다음 필드를 추가하십시오. 비어 있는 환경 변수의 경우, 이전에 기록해 둔 {{site.data.keyword.objectstorageshort}} 신임 정보에서 값을 입력하십시오. 신임 정보에 사용된 따옴표를 포함시키십시오. *ENCRYPTION_PASSPHRASE*의 경우, 백업을 비밀번호로 보호할 비밀번호 문구를 포함하십시오. 이 비밀번호 문구는 암호화 키를 작성할 때 만든 문구와 다른 것입니다. 데이터를 백업하고 복원할 때 이 비밀번호 문구를 포함해야 합니다.
 
-8.  백업할 마운트된 볼륨과 함께 **ibm-backup-restore** 이미지에서 컨테이너를 실행하십시오. 백업 스크립트를 시작할 명령을 포함하십시오.
-
-    -   <em>&lt;encryption_env-file_name&gt;</em>과 동일한 로컬 디렉토리에 있는지 확인하십시오.
-    -   볼륨이 마운트되는 디렉토리는 환경 변수 파일에서 BACKUP_DIRECTORY와 일치해야 합니다.
-    -   볼륨 이름을 백업할 볼륨 이름으로 대체하십시오.
+    ```
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: <pod_name>
+    spec:
+      containers:
+        - name: <container_name>
+          image: registry.<region>.bluemix.net/ibm-backup-restore
+          env:
+          - name: USERID
+            value:
+          - name: PASSWORD
+            value:
+          - name: PROJECTID
+            value:
+          - name: REGION
+            value:
+          - name: SCHEDULE_TYPE
+            value: periodic
+          - name: SCHEDULE_INFO
+            value: daily
+          - name: BACKUP_TYPE
+            value: incremental
+          - name: BACKUP_DIRECTORY
+            value: /backup
+          - name: BACKUP_NAME
+            value: mybackup
+          - name: ENCRYPTION_REQUIRED
+            value: yes
+          - name: ENCRYPTION_PASSPHRASE
+           # Include this passphrase when your are backing up and restoring encrypted data.
+            value:
+          volumeMounts:
+          - mountPath: /backup
+            name: backup-volume
+      volumes:
+      - name: backup-volume 
+        persistentVolumeClaim:
+          claimName: backuppvc
+   ```
    
-    ```
-    bx ic run --name <container_name> --volume <volume_name>:/backup --env-file ./<encrypted_env-file_name> registry.ng.bluemix.net/ibm-backup-restore
-    ```
-    {: pre}
+   이 설정은 <em>&lt;volume_name&gt;</em> 이름을 사용하여 암호화된 매일 증분 백업을 작성합니다. 다른 설정으로 백업을 작성하려면 [환경 변수 옵션](#reference_backup_restore)의 전체 목록을 검토하십시오.
 
-    컨테이너가 실행을 시작하지 않으면 `bx ic logs <container_name>`를 실행하여 로그에서 오류 메시지를 검토하십시오.
-
-9.  **ibm-backup-restore** 이미지에서 빌드된 컨테이너의 /backup_restore 디렉토리에 암호화 키를 복사하십시오.
+9.  백업 스크립트를 실행하는 포드를 작성하십시오.
 
     ```
-    bx ic cp ./encryption.asc <container_name>:/backup_restore
+    kubectl apply -f backup.yaml 
     ```
     {: pre}
 
-    데이터를 복호화하려면 암호화 키의 사본을 로컬로 보관하십시오. 
-
-10. 컨테이너에 로그인하십시오.
+9.  포드가 실행 중인지 확인하십시오.
 
     ```
-    bx ic exec -it <container_name> bash
+    kubectl get pods
     ```
     {: pre}
 
-11. *encryption.asc*가 backup_restore 폴더로 복사되었는지 확인하십시오.
+    ```
+    NAME                                    READY     STATUS    RESTARTS   AGE
+    <pod_name>                              1/1       Running   0          1hr
+    ```
+    {: screen}
+
+10.  **ibm-backup-restore** 이미지에서 빌드된 컨테이너의 /backup_restore 디렉토리에 암호화 키를 복사하십시오.
+
+    ```
+    kubectl cp ./encryption.asc <container_name>:/backup_restore
+    ```
+    {: pre}
+
+    데이터를 복호화하려면 암호화 키의 사본을 로컬로 보관하십시오.
+
+11. 컨테이너에 로그인하십시오.
+
+    ```
+    kubecl exec -it <container_name> bash
+    ```
+    {: pre}
+
+12. *encryption.asc*가 backup_restore 폴더로 복사되었는지 확인하십시오.
 
     ```
     root@instance:/backup_restore# ls                                                                                                                                                         
@@ -332,21 +438,21 @@ lastupdated: "2017-10-30"
     ```
     {: screen}
 
-12. backup_restore 폴더에서 백업 스크립트를 실행하십시오.
+13. backup_restore 폴더에서 백업 스크립트를 실행하십시오.
 
     ```
     ./vbackup &
     ```
     {: codeblock}
 
-13. 백업이 암호화되었는지 확인하려면 {{site.data.keyword.objectstorageshort}} 인스턴스의 파일을 검토하십시오. 이제 파일 이름의 끝에 `.gpg`가 추가되어 있습니다.![{{site.data.keyword.objectstorageshort}} GUI에서는 백업된 모들 파일에 .gpg가 추가되어 해당 파일이 암호화되었음을 보여줍니다.](images/volume_backup_encrypt_screenshot.png)
+13. 백업이 암호화되었는지 확인하려면 {{site.data.keyword.objectstorageshort}} 인스턴스의 파일을 검토하십시오. 이제 파일의 파일 이름 끝에 `.gpg`가 추가됩니다.![Object Storage GUI에 암호화되었음을 나타내는 .gpg 가 추가된 모든 백업 파일이 표시됩니다.](images/volume_backup_encrypt_screenshot.png)
 
-백업이 암호화되었습니다. 파일을 복원하려면 [복원 스크립트 실행](#restore_script_cli)의 단계를 따르고 복원 프로세스를 실행 중인 컨테이너의 backup_restore 디렉토리에 encryption.asc 파일을 포함시키십시오. 백업이 암호화된 경우 복원 컨테이너를 작성할 때 환경 변수로 ENCRYPTION_REQUIRED 및 ENCRYPTION_PASSPHRASE를 제공해야 합니다.
+백업이 암호화되었습니다. 파일을 복원하려면 [복원 스크립트](#restore_script_cli)의 단계를 따르고 복원 프로세스를 실행 중인 컨테이너의 backup_restore 디렉토리에 encryption.asc 파일을 포함시키십시오. 백업이 암호화된 경우 복원 컨테이너를 작성할 때 백업 yaml 파일의 ENCRYPTION_REQUIRED 및 ENCRYPTION_PASSPHRASE를 환경 변수로 제공해야 합니다.
 
-## 환경 변수 참조 
+## 환경 변수 참조
 {: #reference_backup_restore}
 
-환경 변수로 전달할 수 있거나 실행 중인 컨테이너의 `config.conf` 파일에서 편집할 수 있는 필드의 전체 목록을 검토합니다. 환경 변수로 전달된 값은 `config.conf`파일의 값을 대체합니다. 컨테이너에 대한 환경 변수를 검토하려면 `exec`를 사용하여 컨테이너에 로그인하고 `env`를 실행하십시오.
+환경 변수로 전달할 수 있거나 실행 중인 컨테이너의 `config.conf` 파일에서 편집할 수 있는 필드의 전체 목록을 검토합니다. 환경 변수로 전달된 값은 `config.conf` 파일의 값을 대체합니다. 컨테이너에 대한 환경 변수를 검토하려면 `exec`를 사용하여 컨테이너에 로그인하고 `env`를 실행하십시오.
 
 |키|값 옵션|
 |---|-------------|
@@ -362,9 +468,9 @@ lastupdated: "2017-10-30"
 |---|-------------|
 |BACKUP_DIRECTORY|*/backup*: 기본값. 볼륨이 마운트되는 디렉토리의 절대 파일 경로입니다. 데이터가 이 디렉토리에서 백업됩니다. 해당 디렉토리가 백업 및 복원 프로세스를 위한 파일을 포함하므로 backup_restore 디렉토리를 선택하지 마십시오.|
 |BACKUP_NAME|*volume_backup*: 기본값. 백업 이름을 선택하십시오.|
-|BACKUP_TYPE|*full*: 기본값. 모든 파일을 항상 백업합니다.<br/> *incremental*: 새 파일이나 변경된 파일만 백업합니다. *incremental*을 선택하면 SCHEDULING_INFO 및 SCHEDULING_TYPE의 값을 선택해야 합니다.|
+|BACKUP_TYPE|*full*: 기본값. 모든 파일을 항상 백업합니다.<br/> *incremental*: 새 파일이나 변경된 파일만 백업합니다. *incremental*을 선택하는 경우 SCHEDULING_INFO 및 SCHEDULING_TYPE의 값을 선택해야 합니다.|
 |SCHEDULE_TYPE|*none*: 기본값. 일회성 백업을 작성합니다.<br/> *periodic*: 스케줄된 백업을 작성하려면 값을 periodic으로 변경하십시오.|
-|SCHEDULE_INFO|*hourly*: 시간별 백업을 작성합니다.<br/>*daily*: 기본값. 매일 백업을 작성합니다.<br/>*weekly*: 매주 백업을 작성합니다. 주기적 업데이트를 스케줄링하는 경우 이 변수를 포함해야 합니다.|
+|SCHEDULE_INFO|*hourly*: 시간별 백업을 작성합니다.<br/>*daily*: 기본값. 매일 백업을 작성합니다.<br/>*weekly*: 주별 백업을 작성합니다. 주기적 업데이트를 스케줄링하는 경우 이 변수를 포함해야 합니다.|
 |EXCLUDE_DIRECTORIES|*none*: 기본값. 백업에서 제외할 디렉토리의 절대 파일 경로를 포함합니다. 쉼표로 디렉토리를 구분하십시오.|
 {: caption="표 2. 백업 변수" caption-side="top"}
 
@@ -372,13 +478,192 @@ lastupdated: "2017-10-30"
 |---|-------------|
 |BACKUP_NAME|*volume_backup*: 기본값. {{site.data.keyword.objectstorageshort}}에서 복원할 백업의 이름을 포함합니다.|
 |RESTORE_DIRECTORY|*/backup*: 기본값. 볼륨이 마운트되는 절대 디렉토리입니다. 데이터가 이 디렉토리로 복원됩니다. 해당 디렉토리가 백업 및 복원 프로세스를 위한 파일을 포함하므로 backup_restore 디렉토리를 선택하지 마십시오.|
-{: caption="표 3. 복원 변수" caption-side="top"}
+{: caption="Table 3. 복원 변수" caption-side="top"}
 
 |키|값 옵션|
 |---|-------------|
-|ENCRYPTION_KEY_FILE|.*/encryption.asc*: 기본값. 암호화 키의 파일 이름을 변경하거나 키가 backup_restore이 아닌 다른 디렉토리에 위치한 경우 이 환경 변수를 포함하십시오.|
-|ENCRYPTION_REQUIRED|*no*: 기본값. <br/> *yes*: 백업을 암호화하지 않는 경우 암호화 환경 변수를 포함하지 마십시오. 백업을 암호화하고 있는 경우 이 키와 yes 값을 포함하십시오.|
-|ENCRYPTION_PASSPHRASE|백업을 보호할 비밀번호 문구를 포함합니다. 이 비밀번호 문구는 암호화 키를 작성할 때 만든 문구와 다른 것입니다. 데이터를 백업하고 복원할 때 이 비밀번호 문구를 포함해야 합니다.|
-|IS_KEY_GENERATED_ON_SYSTEM|*no*: 기본값. <br/> *yes*: 컨테이너에서 직접 암호화 키를 생성한 경우 이 환경 변수를 yes로 포함하십시오. 대부분 사용자는 로컬 컴퓨터에 키를 생성하고 키를 컨테이너로 복사하므로 기본값인 no를 사용할 수 있습니다.|
-{: caption="표 4. 암호화 변수" caption-side="top"}
+|ENCRYPTION_KEY_FILE|.*/encryption.asc*: 기본값. 암호화 키의 파일 이름을 변경하거나 키가 backup_restore가 아닌 디렉토리에 있는 경우 이 환경 변수를 포함하십시오.|
+|ENCRYPTION_REQUIRED|*no*: 기본값.<br/> *yes*: 백업을 암호화하지 않는 경우 암호화 환경 변수를 포함하지 마십시오. 백업을 암호화하는 경우 이 키와 yes 값을 포함하십시오.|
+|ENCRYPTION_PASSPHRASE|백업의 보안을 설정하기 위한 비밀번호 문구를 포함합니다. 이 비밀번호 문구는 암호화 키를 작성할 때 만든 문구와 다른 것입니다. 데이터를 백업하고 복원할 때 이 비밀번호 문구를 포함해야 합니다.|
+|IS_KEY_GENERATED_ON_SYSTEM|*no*: 기본값.<br/> *yes*: 컨테이너에서 직접 암호화 키를 생성한 경우 이 환경 변수를 yes로 포함하십시오. 대부분의 사용자는 로컬 컴퓨터에 키를 생성하고 키를 컨테이너로 복사하므로 기본값을 no로 유지할 수 있습니다.|
+{: caption="Table 4. 암호화 변수" caption-side="top"}
 
+## 단일 및 확장 가능 컨테이너에서 Kubernetes로 볼륨 데이터 마이그레이션
+{: #migrate_data}
+
+컨테이너 볼륨에 대한 일회성 백업을 작성합니다. 백업은 {{site.data.keyword.objectstoragefull}} 인스턴스 내에 저장됩니다. 그런 다음 Kubernetes의 지속적 볼륨 클레임으로 데이터를 마이그레이션할 수 있습니다.
+{:shortdesc}
+
+### 시작하기
+{: #how_to_get_started}
+
+시작하기 전에 다음을 수행하십시오.
+
+- [앱을 Kubernetes로 이동하기 위한 전체 마이그레이션 경로 검토](../../../containers/cs_classic.html)
+- [단일 및 확장 가능 컨테이너 CLI 설치(bx ic)](../../../containers/container_cli_cfic_install.html)
+- [{{site.data.keyword.containershort}} CLI 설치(bx cs 및 kubectl)](../../../containers/cs_cli_install.html#cs_cli_install)
+- [데이터를 마이그레이션할 표준 Kubernetes 클러스터 작성](../../../containers/cs_cluster.html#cs_cluster_cli)
+
+백업 및 복원 오퍼레이션을 수행하려면 다음 태스크를 완료하십시오.
+1.  [{{site.data.keyword.objectstorageshort}} 서비스 인스턴스 작성](#object_storage)(이전에 처리됨)
+2.  [일회성 백업 실행](#migrate_backup)
+3.  [Kubernetes에서 복원 스크립트 실행](#migrate_restore)
+
+### 일회성 백업 실행
+{: #migrate_backup}
+
+**ibm-backup-restore** 이미지에서 단일 컨테이너를 작성하고 백업을 시작합니다.
+
+1.  {{site.data.keyword.containershort}} CLI에 로그인하십시오.
+
+    ```
+    bx login
+    ```
+    {: pre}
+
+    ```
+    bx ic init
+    ```
+    {: pre}
+
+2.  로컬 디렉토리에서 환경 변수 파일을 작성하십시오.
+
+    ```
+    touch <backup_env-file_name>
+    ```
+    {: pre}
+
+3.  환경 변수 파일을 편집하고 다음 필드를 추가하십시오. 비어 있는 환경 변수의 경우, 이전에 기록해 둔 {{site.data.keyword.objectstorageshort}} 신임 정보에서 값을 입력하십시오. 신임 정보에 사용된 따옴표는 포함시키지 **마십시오**.
+
+    ```
+    BACKUP_NAME=volume_backup
+    BACKUP_DIRECTORY=/backup
+    PROJECTID=
+    REGION=
+    USERID=
+    PASSWORD=
+    ```
+    {: codeblock}
+
+    이 설정은 기본 이름 _volume_backup_으로 일회성 백업을 작성합니다.
+
+4.  백업할 마운트된 볼륨과 함께 **ibm-backup-restore** 이미지에서 컨테이너를 실행하십시오. 백업 스크립트를 시작할 명령을 포함하십시오.
+
+    -   <em>&lt;backup_env-file&gt;</em>과 동일한 로컬 디렉토리에 있는지 확인하십시오.
+    -   볼륨이 마운트되는 디렉토리는 환경 변수 파일에서 BACKUP_DIRECTORY와 일치해야 합니다.
+    -   <em>&lt;volume_name&gt;</em>을 백업할 볼륨의 이름으로 대체하십시오.
+
+    ```
+    bx ic run --name <container_name> --volume <volume_name>:/backup --env-file ./<backup_env-file_name> registry.ng.bluemix.net/ibm-backup-restore /bin/bash -c "/backup_restore/vbackup"
+    ```
+    {: pre}
+
+    백업이 실행된 후 컨테이너가 종료됩니다. 컨테이너 실행이 시작되지 않으면 `bx ic logs <container_name>`을 실행하여 로그에서 오류 메시지를 검토하십시오.
+
+5.  {{site.data.keyword.Bluemix_notm}} GUI의 {{site.data.keyword.objectstorageshort}}에서 백업을 검토하십시오.
+    1.  백업을 위해 작성한 {{site.data.keyword.objectstorageshort}} 인스턴스를 클릭하십시오.
+    2.  {{site.data.keyword.objectstorageshort}} 컨테이너를 클릭하십시오. 이 예제에서 컨테이너 이름은 volume_backup입니다.
+    3.  압축된 파일을 검토하십시오.![{{site.data.keyword.Bluemix_notm}} GUI의 Object Storage 컨테이너에 백업된 파일이 표시됩니다.](images/volume_backup_screenshot.png)difftar.gz 파일을 다운로드하고 파일의 압축을 푼 다음 백업된 데이터를 확인할 수 있습니다. **중요**: {{site.data.keyword.objectstorageshort}}의 파일을 삭제하거나 수정한 경우 해당 파일을 복구할 수 없습니다.
+
+### Kubernetes 클러스터에 데이터 복원
+{: #migrate_restore}
+
+{{site.data.keyword.objectstorageshort}}의 백업을 Kubernetes 클러스터의 지속적 볼륨 클레임에 복원합니다.
+
+시작하기 전에 다음을 수행하십시오.
+
+- 클러스터를 [CLI의 대상으로 지정](../../../containers/cs_cli_install.html#cs_cli_configure)하십시오.
+
+
+1. named _restore-pvc.yaml_로 이름 지정된 구성 파일을 작성하십시오. 이 구성 파일은 백업 포드에 볼륨으로 마운트할 수 있는 지속적 볼륨 클레임(pvc)을 작성합니다.
+
+    ```
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: restorepvc
+      annotations:
+        volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze"
+    spec:
+      accessModes:
+        - ReadWriteMany
+      resources:
+        requests:
+          storage: 20Gi
+    ```
+    {: codeblock}
+
+2. pvc를 작성하십시오.
+
+    ```
+    kubectl apply -f restore-pvc.yaml 
+    ```
+    {: pre}
+
+3.  _restore.yaml_로 이름 지정된 구성 파일을 작성하십시오. 비어 있는 환경 변수의 경우, 이전에 기록해 둔 {{site.data.keyword.objectstorageshort}} 신임 정보에서 값을 입력하십시오. 신임 정보에 사용된 따옴표를 포함시키십시오. BACKUP_NAME은 복원할 {{site.data.keyword.objectstorageshort}}의 백업 이름과 일치해야 합니다.
+
+    ```
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: <pod_name>
+    spec:
+      containers:
+        - name: <container_name>
+          image: registry.<region>.bluemix.net/ibm-backup-restore
+          env:
+          - name: USERID
+            value: 
+          - name: PASSWORD
+            value: 
+          - name: PROJECTID
+            value:
+          - name: REGION
+            value:
+          - name: RESTORE_DIRECTORY
+            value: /restore
+          - name: BACKUP_NAME
+            value: volume_backup
+          command: ["/bin/bash", "./vrestore"]
+          volumeMounts:
+          - mountPath: /restore
+            name: restore-volume
+      volumes:
+      - name: restore-volume 
+        persistentVolumeClaim:
+          claimName: restorepvc
+    ```
+    {: codeblock}
+
+4.  복원 스크립트를 실행하는 포드를 작성하십시오.
+
+    ```
+    kubectl apply -f restore.yaml
+    ```
+    {: pre}
+
+5.  포드가 실행되는지 확인하십시오.
+
+    ```
+    kubectl get pods 
+    ```
+    {: pre}
+
+    ```
+    NAME              READY     STATUS             RESTARTS   AGE
+    <pod_name>        0/1       CrashLoopBackOff   1          1m
+    ```
+    {: screen}
+
+    포드가 복원 명령을 실행하고 중지됩니다. _CrashLoopBackOff_ 메시지는 Kubernetes가 포드를 다시 시작하려고 시도 중임을 의미합니다.
+
+6.  포드가 더 많은 자원을 이용하지 못하도록 포드를 제거하십시오.
+
+    ```
+    kubectl delete -f restore.yaml
+    ```
+    {: pre}
+
+데이터를 Kubernetes 클러스터로 마이그레이션했습니다. 이제 포드가 복원된 파일에 액세스할 수 있도록 새 포드를 pvc에 마운트할 수 있습니다.
+
+**참고**: 백업된 컨테이너 데이터에 비루트 사용자가 포함된 경우 새 컨테이너에 비루트 권한을 추가해야 합니다. 자세한 정보는 [볼륨에 대한 비루트 사용자 액세스 권한 추가](../../../containers/container_volumes_ov.html#container_volumes_write)를 참조하십시오.

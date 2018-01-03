@@ -41,7 +41,7 @@ Sie können das Image **ibm-node-strong-pm** im {{site.data.keyword.Bluemix_notm
 
 **Anmerkung:** Lesen Sie zunächst die Nutzungsbedingungen für die von {{site.data.keyword.IBM_notm}} zertifizierten Images im Abschnitt 'Usage' in der [WebSphere Liberty Docker-Bibliothek](https://github.com/docker-library/docs/tree/master/websphere-liberty).
 
-1.  Wählen Sie im Katalog **Container** und dann das Image **ibm-node-strong-pm** aus, aus dem Sie den Container erstellen wollen. 
+1.  Wählen Sie im Katalog **Container** und dann das Image **ibm-node-strong-pm** aus, aus dem Sie den Container erstellen wollen.
 2.  Erstellen Sie einen einzelnen Container.
     -   Wählen Sie im Feld **Größe** eine Containergröße von mindestens 1 GB Speicher \(**Small**\) aus.
     -   Geben Sie in das Feld **Öffentliche Ports** die Ports 8701 und 3001 ein. Diese Ports werden automatisch zugänglich gemacht, wenn Ihr Container in {{site.data.keyword.Bluemix_notm}} bereitgestellt wird, und stellen eine Voraussetzung zum Binden einer öffentlichen IP-Adresse an den Container dar. Port 8701 wird für den Zugriff auf StrongLoop Process Manager im Container verwendet. Port 3001 ist der Port, an dem die App nach Ihrer Bereitstellung bei StrongLoop Process Manager empfangsbereit ist.
@@ -82,7 +82,8 @@ Stellen Sie zunächst sicher, dass 'Node.js' und Node Package Manager \(npm\) au
 ## Node.js-App unter Verwendung von StrongLoop Arc mit einer Push-Operation an den Container übertragen
 {: #pushing_app_to_container}
 
-Nachdem Sie StrongLoop Process Manager, der in Ihrem Container ausgeführt wird, mit dem StrongLoop Arc-Client auf der fernen Maschine verbunden haben, erstellen Sie Ihre Node.js-Apps und übertragen Sie sie mit Push-Operationen an {{site.data.keyword.Bluemix_notm}}.{:shortdesc}
+Nachdem Sie StrongLoop Process Manager, der in Ihrem Container ausgeführt wird, mit dem StrongLoop Arc-Client auf der fernen Maschine verbunden haben, erstellen Sie Ihre Node.js-Apps und übertragen Sie sie mit Push-Operationen an {{site.data.keyword.Bluemix_notm}}.
+{:shortdesc}
 
 1.  Navigieren Sie von der Arc-Modulauswahl aus zu **Build and Deploy**.
 2.  Erstellen Sie Ihre App wie in den Anweisungen der Benutzerschnittstelle von Arc angegeben.

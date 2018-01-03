@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-30"
+lastupdated: "2017-11-09"
 
 ---
 
@@ -11,19 +11,19 @@ lastupdated: "2017-10-30"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip}
+{:tip: .tip} 
 {:table: .aria-labeledby="caption"}
 
-# Einführung in das Image 'ibm-backup-restore' 
+# Einführung in das Image 'ibm-backup-restore'
 {: #ibmbackup_restore_starter}
 
-Das Image **ibm-backup-restore** enthält die vorinstallierten Pakete, die zum Sichern und Wiederherstellen von Containerdatenträgern in {{site.data.keyword.containerlong}} erforderlich sind.
+Das Image **ibm-backup-restore** enthält die vorinstallierten Pakete, die zum Sichern und Wiederherstellen von persistentem Speicher in {{site.data.keyword.containerlong}} erforderlich sind.
 {:shortdesc}
 
 ## Funktionsweise 
 {: #how_it_works}
 
-Mit dem Image **ibm-backup-restore** können Sie eine einmalige oder geplante Sicherung für einen beliebigen Containerdatenträger erstellen. Die Sicherung wird in einer Instanz von {{site.data.keyword.objectstoragefull}} gespeichert. Sie können die {{site.data.keyword.objectstorageshort}}-Berechtigungsnachweise als Umgebungsvariablen an Ihren **ibm-backup-restore**-Container übergeben oder indem Sie die Datei `config.conf` in dem aktiven Container bearbeiten. Sie können die gespeicherten Daten auch von der {{site.data.keyword.objectstorageshort}}-Instanz auf einen Datenträger wiederherstellen. Da das Image Scripts für die Ausführung von Sicherungen und Wiederherstellungen enthält, muss der Benutzer einen Befehl ausgeben, um das entsprechende Script in einem aktiven Container zu starten.
+Mit dem Image **ibm-backup-restore** können Sie eine einmalige oder geplante Sicherung für einen beliebigen Persistent Volume Claim (PVC) erstellen. Die Sicherung wird in einer Instanz von {{site.data.keyword.objectstoragefull}} gespeichert. Sie können die {{site.data.keyword.objectstorageshort}}-Berechtigungsnachweise als Umgebungsvariablen an Ihren **ibm-backup-restore**-Container übergeben oder indem Sie die Datei `config.conf` in dem aktiven Container bearbeiten. Sie können die gespeicherten Daten auch von der {{site.data.keyword.objectstorageshort}}-Instanz auf einen Datenträger wiederherstellen. Da das Image Scripts für die Ausführung von Sicherungen und Wiederherstellungen enthält, muss der Benutzer einen Befehl eingeben, um das entsprechende Script zu starten.
 
 ## Enthaltene Elemente 
 {: #whats_included}
@@ -37,7 +37,7 @@ Jedes Image **ibm-backup-restore** enthält die folgenden Softwarepakete:
 ## Einführung 
 {: #how_to_get_started}
 
-Führen Sie die folgenden Schritte aus, um Sicherungs- und Wiederherstellungsoperationen auszuführen:
+Im Folgenden sind die Tasks für das Sichern und Wiederherstellen von Daten aufgeführt:
 1.  [{{site.data.keyword.objectstorageshort}}-Serviceinstanz erstellen](#object_storage)
 2.  [Geplante Sicherung ausführen](#scheduled_backup)
 3.  [Wiederherstellungsscript ausführen](#restore_script_cli)
@@ -49,8 +49,9 @@ Führen Sie die folgenden Schritte aus, um Sicherungs- und Wiederherstellungsope
 
 Erstellen Sie eine {{site.data.keyword.objectstorageshort}}-Instanz, die als Repository für Ihre Datenträgersicherung verwendet werden soll.
 
-1.  Richten Sie Ihre {{site.data.keyword.objectstorageshort}}-Instanz über den Abschnitt **Services** des {{site.data.keyword.Bluemix_notm}}-Katalogs ein.
-2.  Wählen Sie die {{site.data.keyword.objectstorageshort}}-Instanz aus.
+1.  Richten Sie Ihre {{site.data.keyword.objectstorageshort}}-Instanz über den Abschnitt **Speicher** des {{site.data.keyword.Bluemix_notm}}-Katalogs ein.
+2.  Klicken Sie auf {{site.data.keyword.objectstorageshort}}.
+3.  Wählen Sie {{site.data.keyword.objectstorageshort}} OpenStack Swift for {{site.data.keyword.Bluemix_notm}} aus. Klicken Sie anschließend auf 'Erstellen'.
 3.  Klicken Sie auf die Registerkarte **Serviceberechtigungsnachweise**.
 4.  Klicken Sie auf **Neuer Berechtigungsnachweis**.
 5.  Füllen Sie das Namensfeld aus, aber lassen Sie die anderen Felder leer. Klicken Sie auf **Hinzufügen**.
@@ -62,150 +63,210 @@ Weitere Informationen zur Konfiguration Ihrer Instanz können Sie der [{{site.da
 ## Geplante Sicherung ausführen 
 {: #scheduled_backup}
 
-Erstellen Sie einen Container aus dem Image **ibm-backup-restore** und starten Sie eine regelmäßige Sicherung.
+Erstellen Sie einen Container-Pod aus dem Image **ibm-backup-restore** und starten Sie eine regelmäßig geplante Sicherung.
 
-1.  Melden Sie sich an der {{site.data.keyword.containerlong_notm}}-Befehlszeilenschnittstelle an.
+Führen Sie zunächst die folgenden Schritte aus:
 
-    ```
-    bx login
-    ```
-    {: pre}
+-   Installieren Sie die erforderlichen [Befehlszeilenschnittstellen (CLIs)](../../../containers/cs_cli_install.html#cs_cli_install).
+-   [Richten Sie Ihre Befehlszeilenschnittstelle](../../../containers/cs_cli_install.html#cs_cli_configure) auf Ihren Cluster aus.
 
-    ```
-    bx ic init
-    ```
-    {: pre}
 
-2.  Erstellen Sie eine Datei mit Umgebungsvariablen in einem lokalen Verzeichnis.
+1. Erstellen Sie eine Konfigurationsdatei mit dem Namen _backup-pvc.yaml_. Die Konfigurationsdatei erstellt einen Persistent Volume Claim (PVC), den Sie als Datenträger an Ihren Sicherungs-Pod anhängen können.
 
     ```
-    touch <umgebungsvariablendateiname_für_sicherung>
-    ```
-    {: pre}
-
-3.  Bearbeiten Sie die Umgebungsvariablendatei und fügen Sie die folgenden Felder hinzu. Geben Sie für die leeren Umgebungsvariablen die Werte aus den {{site.data.keyword.objectstorageshort}}-Berechtigungsnachweisen ein, die Sie zuvor notiert haben. Geben Sie nicht die Anführungszeichen an, die in den Berechtigungsnachweisen verwendet werden.
-
-    ```
-    BACKUP_NAME=datenträgername
-    BACKUP_DIRECTORY=/backup
-    PROJECTID=
-    REGION=
-    USERID=
-    PASSWORD=
-    SCHEDULE_TYPE=periodic
-    SCHEDULE_INFO=daily
-    BACKUP_TYPE=incremental
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: backuppvc
+      annotations:
+        volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze"
+    spec:
+      accessModes:
+        - ReadWriteMany
+      resources:
+        requests:
+          storage: 20Gi
     ```
     {: codeblock}
-
-    Mit diesen Einstellungen wird eine tägliche inkrementelle Sicherung mit dem Standardnamen _volume_backup_ erstellt. Wenn Sie eine Sicherung mit anderen Einstellungen erstellen möchten, finden Sie weitere Informationen dazu in der vollständigen Liste von [Umgebungsvariablenoptionen](#reference_backup_restore).
-
-4.  Führen Sie einen Container aus dem Image **ibm-backup-restore** mit einem angehängten Datenträger aus, um eine Sicherungskopie zu erstellen. Geben Sie den Befehl zum Starten des Sicherungsscripts an.
-
-    -   Stellen Sie sicher, dass Sie sich in demselben lokalen Verzeichnis befinden wie die Datei <em>&lt;umgebungsvariablendatei_für_sicherung&gt;</em>.
-    -   Das Verzeichnis, an das der Datenträger angehängt ist, muss mit dem Wert von BACKUP_DIRECTORY in der Umgebungsvariablendatei übereinstimmen.
-    -   Ersetzen Sie den Datenträgernamen durch den Namen des Datenträgers, der gesichert wird.
     
+2. Erstellen Sie den PVC.
+
     ```
-    bx ic run --name <containername> --volume <datenträgername>:/backup --env-file ./<umgebungsvariablendateiname_für_sicherung> registry.ng.bluemix.net/ibm-backup-restore /bin/bash -c "/backup_restore/vbackup"
+    kubectl apply -f backup-pvc.yaml 
     ```
     {: pre}
 
-    Wenn der Container nicht gestartet wird, führen Sie `bx ic logs <containername>` aus, um die Protokolle auf Fehlernachrichten zu prüfen.
+3.  Erstellen Sie eine Konfigurationsdatei mit dem Namen _backup.yaml_. Geben Sie für die leeren Umgebungsvariablen die Werte aus den {{site.data.keyword.objectstorageshort}}-Berechtigungsnachweisen ein, die Sie zuvor notiert haben. Geben Sie die Anführungszeichen an, die in den Berechtigungsnachweisen verwendet werden. Ersetzen Sie <em>&lt;podname&gt;</em>, <em>&lt;containername&gt;</em> und die <em>&lt;region&gt;</em> der Image-Registry durch die entsprechenden Werte.
 
-5.  Überprüfen Sie die Sicherung in {{site.data.keyword.objectstorageshort}} in der {{site.data.keyword.Bluemix_notm}}-Benutzerschnittstelle.
+    ```
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: <podname>
+    spec:
+      containers:
+        - name: <containername>
+          image: registry.<region>.bluemix.net/ibm-backup-restore
+          env:
+          - name: USERID
+            value:
+          - name: PASSWORD
+            value:
+          - name: PROJECTID
+            value:
+          - name: REGION
+            value:
+          - name: SCHEDULE_TYPE
+            value: periodic
+          - name: SCHEDULE_INFO
+            value: daily
+          - name: BACKUP_TYPE
+            value: incremental
+          - name: BACKUP_DIRECTORY
+            value: /backup
+          - name: BACKUP_NAME
+            value: mybackup
+          command: ["/bin/bash", "./vbackup"]
+          volumeMounts:
+          - mountPath: /backup
+            name: backup-volume
+      volumes:
+      - name: backup-volume 
+        persistentVolumeClaim:
+          claimName: backuppvc
+    ```
+    {: codeblock}
+    
+    Mit diesen Einstellungen wird eine tägliche inkrementelle Sicherung mit dem Standardnamen _mybackup_ erstellt. Wenn Sie eine Sicherung mit anderen Einstellungen erstellen möchten, finden Sie weitere Informationen dazu in der vollständigen Liste von [Umgebungsvariablenoptionen](#reference_backup_restore).
+
+4.  Erstellen Sie einen Pod, der das Sicherungsscript ausführt.
+
+    ```
+    kubectl apply -f backup.yaml
+    ```
+    {: pre}
+
+5.  Stellen Sie sicher, dass der Pod ausgeführt wird.
+
+    ```
+    kubectl get pods 
+    ```
+    {: pre}
+    
+    ```
+    NAME                                    READY     STATUS    RESTARTS   AGE
+    <podname>                              1/1       Running   0          1hr
+    ```
+    {: screen}
+
+4.  Überprüfen Sie die Sicherung in {{site.data.keyword.objectstorageshort}} in der {{site.data.keyword.Bluemix_notm}}-Benutzerschnittstelle.
     1.  Klicken Sie auf die {{site.data.keyword.objectstorageshort}}-Instanz, die Sie für die Sicherung erstellt haben.
-    2.  Klicken Sie auf den {{site.data.keyword.objectstorageshort}}-Container. In diesem Beispiel ist der Containername 'volume_backup'.
-    3.  Überprüfen Sie die komprimierten Dateien.![Der {{site.data.keyword.objectstorageshort}}-Container in der {{site.data.keyword.Bluemix_notm}}-Benutzerschnittstelle zeigt die Dateien, die gesichert werden.](images/volume_backup_screenshot.png) Sie können die Datei `vol1.difftar.gz` herunterladen, die Datei extrahieren und die Sicherungsdaten überprüfen. Wenn Sie Dateien aus {{site.data.keyword.objectstorageshort}} löschen oder ändern, können diese Dateien nicht wiederhergestellt werden.
+    2.  Klicken Sie auf der Registerkarte **Verwalten** in der Tabelle **Container** auf den {{site.data.keyword.objectstorageshort}}-Container.
+    3.  Überprüfen Sie die komprimierten Dateien.![Der Object Storage-Container in der {{site.data.keyword.Bluemix_notm}}-Benutzerschnittstelle zeigt die Dateien, die gesichert werden.](images/volume_backup_screenshot.png)Sie können die Datei vol1.difftar.gz herunterladen, die Datei extrahieren und die Sicherungsdaten überprüfen. **Wichtig**: Wenn Sie Dateien aus {{site.data.keyword.objectstorageshort}} löschen oder ändern, können diese Dateien nicht wiederhergestellt werden.
 
-Ihre Sicherung ist verfügbar. Wenn Sie *<containername>* so konfiguriert haben, dass eine einmalige Gesamtsicherung erstellt wird, müssen Sie das Sicherungsscript jedes Mal ausführen, wenn Sie eine neue Sicherung erstellen wollen. Wenn Sie den Container so konfiguriert haben, dass er in regelmäßigen Abständen eine inkrementelle Sicherung ausführt, wird Ihre Sicherung wie geplant ausgeführt.
+Ihre Sicherung ist verfügbar. Wenn Sie Ihre Sicherung so konfiguriert haben, dass eine einmalige Gesamtsicherung erstellt wird, müssen Sie das Sicherungsscript jedes Mal ausführen, wenn Sie eine neue Sicherung erstellen wollen. Wenn Sie den Container so konfiguriert haben, dass er in regelmäßigen Abständen eine inkrementelle Sicherung ausführt, wird Ihre Sicherung wie geplant ausgeführt.
 
 ## Wiederherstellungsscript ausführen 
 {: #restore_script_cli}
 
-Stellen Sie Ihre Sicherung von {{site.data.keyword.objectstorageshort}} auf einem vorhandenen oder neuen Containerdatenträger wieder her.
+Stellen Sie Ihre Sicherung von {{site.data.keyword.objectstorageshort}} auf einem vorhandenen oder neuen Datenträger wieder her.
 
-1.  Erstellen Sie eine Umgebungsvariablendatei für Ihren Wiederherstellungscontainer in einem lokalen Verzeichnis.
+Führen Sie zunächst die folgenden Schritte aus:
+
+-   Installieren Sie die erforderlichen [Benutzerschnittstellen (CLIs)](../../../containers/cs_cli_install.html#cs_cli_install).
+-   [Richten Sie Ihre Befehlszeilenschnittstelle](../../../containers/cs_cli_install.html#cs_cli_configure) auf Ihren Cluster aus.
+
+
+1. Erstellen Sie eine Konfigurationsdatei mit dem Namen _restore-pvc.yaml_. Die Konfigurationsdatei erstellt einen Persistent Volume Claim (PVC), den Sie als Datenträger an Ihren Wiederherstellungs-Pod anhängen können.
 
     ```
-    touch <umgebungsvariablendateiname_für_wiederherstellung>
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: restorepvc
+      annotations:
+        volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze"
+    spec:
+      accessModes:
+        - ReadWriteMany
+      resources:
+        requests:
+          storage: 20Gi
+    ```
+    {: codeblock}
+    
+2. Erstellen Sie den PVC.
+
+    ```
+    kubectl apply -f restore-pvc.yaml 
     ```
     {: pre}
 
-2.  Bearbeiten Sie die Umgebungsvariablendatei und fügen Sie die folgenden Felder hinzu. Geben Sie für die leeren Umgebungsvariablen die Werte aus den {{site.data.keyword.objectstorageshort}}-Berechtigungsnachweisen ein, die Sie zuvor notiert haben. BACKUP_NAME muss mit dem Namen der Sicherung in {{site.data.keyword.objectstorageshort}} übereinstimmen, die wiederhergestellt wird.
+3.  Erstellen Sie eine Konfigurationsdatei mit dem Namen _restore.yaml_. Geben Sie für die leeren Umgebungsvariablen die Werte aus den {{site.data.keyword.objectstorageshort}}-Berechtigungsnachweisen ein, die Sie zuvor notiert haben. Geben Sie die Anführungszeichen an, die in den Berechtigungsnachweisen verwendet werden. BACKUP_NAME muss mit dem Namen der Sicherung in {{site.data.keyword.objectstorageshort}} übereinstimmen, die wiederhergestellt wird.
 
     ```
-    BACKUP_NAME=<datenträgername>
-    RESTORE_DIRECTORY=/restore
-    USERID=
-    REGION=
-    PROJECTID=
-    PASSWORD=
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: <podname>
+    spec:
+      containers:
+        - name: <containername>
+          image: registry.<region>.bluemix.net/ibm-backup-restore
+          env:
+          - name: USERID
+            value:
+          - name: PASSWORD
+            value:
+          - name: PROJECTID
+            value:
+          - name: REGION
+            value:
+          - name: RESTORE_DIRECTORY
+            value: /restore
+          - name: BACKUP_NAME
+            value: mybackup
+          command: ["/bin/bash", "./vrestore"]
+          volumeMounts:
+          - mountPath: /restore
+            name: restore-volume
+      volumes:
+      - name: restore-volume 
+        persistentVolumeClaim:
+          claimName: restorepvc
     ```
     {: codeblock}
 
-3.  Erstellen Sie einen Datenträger, in dem die Sicherungsdateien wiederhergestellt werden sollen.
-
-    ```
-    bx ic volume create <datenträgername>
-    ```
-    {: pre}
-
-4.  Führen Sie einen Container aus dem Image **ibm-backup-restore** aus. Geben Sie den Befehl zum Starten des Wiederherstellungsscripts an.
-
-    -   Stellen Sie sicher, dass Sie sich in demselben lokalen Verzeichnis befinden wie die <em>&lt;umgebungsvariablendateiname_für_wiederherstellung&gt;</em>.
-    -   Das Verzeichnis, an das der Datenträger angehängt ist, muss mit dem Wert von BACKUP_DIRECTORY in der Umgebungsvariablendatei übereinstimmen.
+4.  Erstellen Sie einen Pod, der das Wiederherstellungsscript ausführt.
     
     ```
-    bx ic run --name <containername> --volume <datenträgername>:/restore --env-file ./<umgebungsvariablendateiname_für_wiederherstellung> registry.ng.buemix.net/ibm-backup-restore /bin/bash -c "/backup_restore/vrestore"
+    kubectl apply -f restore.yaml
     ```
     {: pre}
-
-5.  Überprüfen Sie die Containerprotokolle, um sicherzustellen, dass der Wiederherstellungsprozess abgeschlossen ist.
+    
+5.  Stellen Sie sicher, dass der Pod ausgeführt wird.
 
     ```
-    bx ic logs <containername>
+    kubectl get pods 
     ```
     {: pre}
-
+    
     ```
-    [2016-10-26 18:01:51,031] [utilities : 152] [INFO] *****************Start logging to ./Restore.log with rollover at 102400 bytes**************
-    [2016-10-26 18:01:51,031] [restore : 28] [INFO] Starting the restore process.
-    [2016-10-26 18:01:51,032] [configureOS : 22] [INFO] Configuring duplicity with IBM Bluemix ObjectStorage.
-    [2016-10-26 18:01:51,032] [configureOS : 13] [INFO] Configuring swift client.
-    [2016-10-26 18:01:51,032] [restore : 40] [INFO] Configuration is completed.
-    [2016-10-26 18:01:54,022] [restore : 70] [INFO] Restoring the backup that is named 'volume_backup' is completed. Synchronizing remote metadata to local cache...
-    Copying duplicity-full-signatures.20161026T173856Z.sigtar.gz to local cache.
-    Copying duplicity-full.20161026T173856Z.manifest to local cache.
-    Last full backup date: Wed Oct 26 17:38:56 2016
+    NAME              READY     STATUS             RESTARTS   AGE
+    <podname>        0/1       CrashLoopBackOff   1          1m
     ```
     {: screen}
 
-    Wenn der Wiederherstellungsprozess abgeschlossen ist, wird der Container beendet.
+    Der Pod führt den Wiederherstellungsbefehl aus und wird gestoppt. Die Nachricht _CrashLoopBackOff_ bedeutet, dass Kubernetes versucht, den Pod erneut zu starten.
 
-6.  Optional: Sie können den Container entfernen, damit er keine Ressourcen belegt.
+6.  Entfernen Sie den Pod, um zu verhindern, dass er weitere Ressourcen verbraucht.
 
     ```
-    bx ic rm -f <containername>
+    kubectl delete -f restore.yaml
     ```
     {: pre}
 
-7. Optional: Um zu überprüfen, ob sich Ihre Sicherungsdateien auf dem Datenträger befinden, melden Sie sich am Container an, navigieren Sie zum Mountpfad und listen Sie die Dateien auf.
-
-    ```
-    $ bx ic exec -it <containername> bash
-    root@instance:/backup_restore# cd ..
-    root@instance/# cd restore
-    root@instance:/restore# ls
-    duplicity-I3_pJv-tempdir  new_file
-    root@instance:/restore# 
-    ```
-    {: screen}
-
-    Das Verzeichnis 'tempdir' ist infolge des Sicherungsprozesses entstanden und kann manuell gelöscht werden.
-
-
-Ihre Sicherung wurde erfolgreich auf dem Datenträger *datenträgername* wiederhergestellt. Sie können einen beliebigen neuen Container an den Datenträger anhängen, um dem betreffenden Container den Zugriff auf die wiederhergestellten Dateien zu ermöglichen. Befinden sich unter den gesicherten Containerdaten Daten, für die die Berechtigungen eines Benutzers ohne Rootberechtigung erforderlich sind, müssen Sie die Berechtigungen von Benutzern ohne Rootberechtigung zu dem neuen Container hinzufügen. Weitere Informationen hierzu finden Sie unter [Zugriff für Benutzer ohne Rootberechtigung zu Datenträgern hinzufügen](../../../containers/container_volumes_ov.html#container_volumes_write).
+Ihre Sicherung wurde erfolgreich wiederhergestellt. Sie können einen beliebigen neuen Pod an den PVC anhängen, um dem betreffenden Container den Zugriff auf die wiederhergestellten Dateien zu ermöglichen. Befinden sich unter den gesicherten Containerdaten Daten, für die die Berechtigungen eines Benutzers ohne Rootberechtigung erforderlich sind, müssen Sie die Berechtigungen von Benutzern ohne Rootberechtigung zu dem neuen Container hinzufügen. Weitere Informationen hierzu finden Sie unter [Zugriff für Benutzer ohne Rootberechtigung zu Datenträgern hinzufügen](../../../containers/container_volumes_ov.html#container_volumes_write).
 
 ## Sicherungen verschlüsseln 
 {: #encrypting_backups}
@@ -261,70 +322,115 @@ Verschlüsseln Sie die Daten in Ihrer {{site.data.keyword.objectstorageshort}}-I
     touch <umgebungsvariablendateiname_für_sicherung>
     ```
     {: pre}
-
-6.  Bearbeiten Sie die Umgebungsvariablendatei und fügen Sie die folgenden Felder hinzu. Geben Sie für die leeren Umgebungsvariablen die Werte aus den {{site.data.keyword.objectstorageshort}}-Berechtigungsnachweisen ein, die Sie zuvor notiert haben. Geben Sie nicht die Anführungszeichen an, die in den Berechtigungsnachweisen verwendet werden. Geben Sie für *ENCRYPTION_PASSPHRASE* eine Kennphrase ein, um die Sicherung zu schützen. Bei dieser Kennphrase handelt es sich um eine andere Kennphrase als die, die Sie beim Erstellen des Verschlüsselungsschlüssel erstellt haben. Sie müssen diese Kennphrase einfügen, wenn Sie Daten sichern und Daten wiederherstellen.
+    
+6. Erstellen Sie eine Konfigurationsdatei mit dem Namen _backup-pvc.yaml_. Die Konfigurationsdatei erstellt einen Persistent Volume Claim (PVC), den Sie als Datenträger an Ihren Sicherungs-Pod anhängen können.
 
     ```
-    BACKUP_NAME=<datenträgername>
-    BACKUP_DIRECTORY=/backup
-    # PROJECTID, REGION, USERID, PASSWORD come from the Object Storage credentials.
-    PROJECTID=
-    REGION=
-    USERID=
-    PASSWORD=
-    SCHEDULE_TYPE=periodic
-    SCHEDULE_INFO=daily
-    BACKUP_TYPE=incremental
-    ENCRYPTION_REQUIRED=yes
-    # Include this passphrase when backing up and restoring encrypted data.
-    ENCRYPTION_PASSPHRASE=
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: backuppvc
+      annotations:
+        volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze"
+    spec:
+      accessModes:
+        - ReadWriteMany
+      resources:
+        requests:
+          storage: 20Gi
     ```
     {: codeblock}
 
-    Mit diesen Einstellungen wird eine tägliche inkrementelle Sicherung erstellt, die mit dem Namen *<datenträgername>* verschlüsselt wird. Wenn Sie eine Sicherung mit anderen Einstellungen erstellen möchten, finden Sie weitere Informationen dazu in der vollständigen Liste von [Umgebungsvariablenoptionen](#reference_backup_restore).
-
-7.  Melden Sie sich an der {{site.data.keyword.containerlong_notm}}-Befehlszeilenschnittstelle an.
+7. Erstellen Sie den PVC.
 
     ```
-    bx login
+    kubectl apply -f backup-pvc.yaml 
     ```
     {: pre}
 
-    ```
-    bx ic init
-    ```
-    {: pre}
+8.  Bearbeiten Sie die Konfigurationsdatei für die Bereitstellung und fügen Sie die folgenden Felder hinzu. Geben Sie für die leeren Umgebungsvariablen die Werte aus den {{site.data.keyword.objectstorageshort}}-Berechtigungsnachweisen ein, die Sie zuvor notiert haben. Geben Sie die Anführungszeichen an, die in den Berechtigungsnachweisen verwendet werden. Geben Sie für *ENCRYPTION_PASSPHRASE* eine Kennphrase ein, um die Sicherung zu schützen. Bei dieser Kennphrase handelt es sich um eine andere Kennphrase als die, die Sie beim Erstellen des Verschlüsselungsschlüssel erstellt haben. Sie müssen diese Kennphrase einfügen, wenn Sie Daten sichern und Daten wiederherstellen.
 
-8.  Führen Sie einen Container aus dem Image **ibm-backup-restore** mit einem angehängten Datenträger aus, um eine Sicherungskopie zu erstellen. Geben Sie den Befehl zum Starten des Sicherungsscripts an.
-
-    -   Stellen Sie sicher, dass Sie sich in demselben lokalen Verzeichnis befinden wie die Datei <em>&lt;umgebungsvariablendateiname_für_verschlüsselung&gt;</em>.
-    -   Das Verzeichnis, an das der Datenträger angehängt ist, muss mit dem Wert von BACKUP_DIRECTORY in der Umgebungsvariablendatei übereinstimmen.
-    -   Ersetzen Sie den Datenträgernamen durch den Namen des Datenträgers, der gesichert wird.
+    ```
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: <podname>
+    spec:
+      containers:
+        - name: <containername>
+          image: registry.<region>.bluemix.net/ibm-backup-restore
+          env:
+          - name: USERID
+            value:
+          - name: PASSWORD
+            value:
+          - name: PROJECTID
+            value:
+          - name: REGION
+            value:
+          - name: SCHEDULE_TYPE
+            value: periodic
+          - name: SCHEDULE_INFO
+            value: daily
+          - name: BACKUP_TYPE
+            value: incremental
+          - name: BACKUP_DIRECTORY
+            value: /backup
+          - name: BACKUP_NAME
+            value: mybackup
+          - name: ENCRYPTION_REQUIRED
+            value: yes
+          - name: ENCRYPTION_PASSPHRASE
+           # Fügen Sie Kennphrase ein, wenn Sie verschlüsselte Daten sichern und wiederherstellen.
+            value: 
+          volumeMounts:
+          - mountPath: /backup
+            name: backup-volume
+      volumes:
+      - name: backup-volume 
+        persistentVolumeClaim:
+          claimName: backuppvc
+   ```
    
+   Mit diesen Einstellungen wird eine tägliche inkrementelle Sicherung erstellt, die mit dem Namen <em>&lt;datenträgername&gt;</em> verschlüsselt wird. Wenn Sie eine Sicherung mit anderen Einstellungen erstellen möchten, finden Sie weitere Informationen dazu in der vollständigen Liste von [Umgebungsvariablenoptionen](#reference_backup_restore).
+
+9.  Erstellen Sie einen Pod, der das Sicherungsscript ausführt.
+
     ```
-    bx ic run --name <containername> --volume <datenträgername>:/backup --env-file ./<name_der_verschlüsselten_umgebungsvariablendatei> registry.ng.bluemix.net/ibm-backup-restore
+    kubectl apply -f backup.yaml 
     ```
     {: pre}
 
-    Wenn der Container nicht gestartet wird, führen Sie `bx ic logs <containername>` aus, um die Protokolle auf Fehlernachrichten zu prüfen.
-
-9.  Kopieren Sie den Verschlüsselungsschlüssel in das Verzeichnis /backup_restore des Containers, der aus dem Image **ibm-backup-restore** erstellt wird.
+9.  Stellen Sie sicher, dass der Pod ausgeführt wird.
 
     ```
-    bx ic cp ./encryption.asc <containername>:/backup_restore
+    kubectl get pods
+    ```
+    {: pre}
+    
+    ```
+    NAME                                    READY     STATUS    RESTARTS   AGE
+    <podname>                              1/1       Running   0          1hr
+    ```
+    {: screen}
+
+10.  Kopieren Sie den Verschlüsselungsschlüssel in das Verzeichnis /backup_restore des Containers, der aus dem Image **ibm-backup-restore** erstellt wird.
+
+    ```
+    kubectl cp ./encryption.asc <containername>:/backup_restore
     ```
     {: pre}
 
     Bewahren Sie eine Kopie des Verschlüsselungsschlüssels lokal auf, um Ihre Daten zu entschlüsseln.
 
-10. Melden Sie sich am Container an.
+11. Melden Sie sich am Container an.
 
     ```
-    bx ic exec -it <containername> bash
+    kubecl exec -it <containername> bash
     ```
     {: pre}
 
-11. Bestätigen Sie, dass die Datei *encryption.asc* in den Ordner 'backup_restore' kopiert wurde.
+12. Stellen Sie sicher, dass die Datei *encryption.asc* in den Ordner 'backup_restore' kopiert wurde.
 
     ```
     root@instance:/backup_restore# ls                                                                                                                                                         
@@ -332,18 +438,18 @@ Verschlüsseln Sie die Daten in Ihrer {{site.data.keyword.objectstorageshort}}-I
     ```
     {: screen}
 
-12. Führen Sie das Sicherungsscript aus dem Ordner backup_restore aus.
+13. Führen Sie das Sicherungsscript aus dem Ordner backup_restore aus.
 
     ```
     ./vbackup &
     ```
     {: codeblock}
 
-13. Überprüfen Sie die Dateien in Ihrer {{site.data.keyword.objectstorageshort}}-Instanz, um sicherzustellen, dass die Sicherung verschlüsselt ist. Dem Namen der Dateien ist jetzt die Endung `.gpg` angehängt.![Die {{site.data.keyword.objectstorageshort}}-Benutzerschnittstelle zeigt alle gesicherten Dateien mit der Erweiterung .gpg. Dadurch werden sie als verschlüsselte Dateien gekennzeichnet.](images/volume_backup_encrypt_screenshot.png)
+13. Überprüfen Sie die Dateien in Ihrer {{site.data.keyword.objectstorageshort}}-Instanz, um sicherzustellen, dass die Sicherung verschlüsselt ist. Dem Namen der Dateien ist jetzt die Endung `.gpg` angehängt.![Die Object Storage-Benutzerschnittstelle zeigt alle gesicherten Dateien mit der Erweiterung .gpg. Dadurch werden sie als verschlüsselte Dateien gekennzeichnet.](images/volume_backup_encrypt_screenshot.png)
 
-Ihre Sicherung ist verschlüsselt. Führen Sie zum Wiederherstellen der Dateien die unter [Wiederherstellungsscript ausführen](#restore_script_cli) beschriebenen Schritte aus und nehmen Sie die Datei 'encryption.asc' in das Verzeichnis 'backup_restore' des Containers auf, der für die Ausführung des Wiederherstellungsprozesses verwendet wird. Wenn die Sicherung verschlüsselt ist, müssen Sie ENCRYPTION_REQUIRED und ENCRYPTION_PASSPHRASE beim Erstellen des Wiederherstellungscontainers als Umgebungsvariablen angeben.
+Ihre Sicherung ist verschlüsselt. Führen Sie zum Wiederherstellen der Dateien die unter [Wiederherstellungsscript ausführen](#restore_script_cli) beschriebenen Schritte aus und nehmen Sie die Datei 'encryption.asc' in das Verzeichnis 'backup_restore' des Containers auf, der für die Ausführung des Wiederherstellungsprozesses verwendet wird. Wenn die Sicherung verschlüsselt ist, müssen Sie beim Erstellen des Wiederherstellungscontainers ENCRYPTION_REQUIRED und ENCRYPTION_PASSPHRASE aus der yaml-Sicherungsdatei als Umgebungsvariablen angeben.
 
-## Umgebungsvariablen - Referenz 
+## Umgebungsvariablen - Referenz
 {: #reference_backup_restore}
 
 Überprüfen Sie die vollständige Liste der Felder, die als Umgebungsvariablen übergeben oder in der Datei `config.conf` in einem aktiven Container bearbeitet werden können. Die als Umgebungsvariablen übergebenen Werte setzen den entsprechenden Wert in der Datei `config.conf` außer Kraft. Wenn Sie die Umgebungsvariablen für einen Container überprüfen möchten, melden Sie sich mit `exec` am Container an und führen Sie `env` aus.
@@ -364,7 +470,7 @@ Rufen Sie diese Variablen aus den {{site.data.keyword.objectstorageshort}}-Berec
 |BACKUP_NAME|*volume_backup*: Standardwert. Wählen Sie einen Namen für die Sicherung aus.|
 |BACKUP_TYPE|*full*: Standardwert. Es werden jedes Mal alle Dateien gesichert.<br/> *incremental*: Es werden nur neue oder geänderte Dateien gesichert. Bei Auswahl von *incremental* müssen Sie Werte für SCHEDULING_INFO und SCHEDULING_TYPE festlegen.|
 |SCHEDULE_TYPE|*none*: Standardwert. Es wird eine einmalige Sicherung erstellt.<br/> *periodic*: Ändern Sie den Wert in 'periodic', wenn Sicherungen zu geplanten Zeitpunkten erstellt werden sollen.|
-|SCHEDULE_INFO|*hourly*: Es wird jede Stunde eine Sicherung erstellt. <br/>*daily*: Standardwert. Es wird jeden Tag eine Sicherung erstellt.<br/>*weekly*: Es wird jede Woche eine Sicherung erstellt. Sie müssen diese Variable angeben, wenn Sie eine periodische Aktualisierung planen.|
+|SCHEDULE_INFO|*hourly*: Es wird jede Stunde eine Sicherung erstellt.<br/>*daily*: Standardwert. Es wird jeden Tag eine Sicherung erstellt.<br/>*weekly*: Es wird jede Woche eine Sicherung erstellt. Sie müssen diese Variable angeben, wenn Sie eine periodische Aktualisierung planen.|
 |EXCLUDE_DIRECTORIES|*none*: Standardwert. Geben Sie den absoluten Dateipfad der Verzeichnisse an, die bei der Sicherung ausgeschlossen werden sollen. Trennen Sie die Verzeichnisse durch ein Komma.|
 {: caption="Tabelle 2. Sicherungsvariablen" caption-side="top"}
 
@@ -377,8 +483,187 @@ Rufen Sie diese Variablen aus den {{site.data.keyword.objectstorageshort}}-Berec
 |Schlüssel|Wertoptionen|
 |---|-------------|
 |ENCRYPTION_KEY_FILE|.*/encryption.asc*: Standardwert. Fügen Sie diese Umgebungsvariable ein, wenn Sie den Dateinamen des Verschlüsselungsschlüssels ändern oder wenn sich der Schlüssel in einem anderem Verzeichnis als dem Verzeichnis 'backup_restore' befindet.|
-|ENCRYPTION_REQUIRED|*no*: Standardwert. <br/> *yes*: Fügen Sie keine Umgebungsvariablen für die Verschlüsselung ein, wenn Ihre Sicherung nicht verschlüsselt werden soll. Nehmen Sie diesen Schlüssel mit dem Wert 'yes' auf, wenn Ihre Sicherung verschlüsselt werden soll.|
+|ENCRYPTION_REQUIRED|*no*: Standardwert.<br/> *yes*: Fügen Sie keine Umgebungsvariablen für die Verschlüsselung ein, wenn Ihre Sicherung nicht verschlüsselt werden soll. Nehmen Sie diesen Schlüssel mit dem Wert 'yes' auf, wenn Ihre Sicherung verschlüsselt werden soll.|
 |ENCRYPTION_PASSPHRASE|Fügen Sie eine Kennphrase ein, um die Sicherung zu schützen. Bei dieser Kennphrase handelt es sich um eine andere Kennphrase als die, die Sie beim Erstellen des Verschlüsselungsschlüssel erstellt haben. Sie müssen diese Kennphrase einfügen, wenn Sie Daten sichern und Daten wiederherstellen.|
-|IS_KEY_GENERATED_ON_SYSTEM|*no*: Standardwert. <br/> *yes*: Fügen Sie diese Umgebungsvariable mit dem Wert 'yes' ein, wenn Sie den Verschlüsselungsschlüssel direkt im Container generiert haben. Die Mehrzahl der Benutzer generiert den Schlüssel auf dem lokalen Computer und kopiert ihn in den Container. In diesem Fall kann der Standardwert 'no' beibehalten werden.|
+|IS_KEY_GENERATED_ON_SYSTEM|*no*: Standardwert.<br/> *yes*: Fügen Sie diese Umgebungsvariable mit dem Wert 'yes' ein, wenn Sie den Verschlüsselungsschlüssel direkt im Container generiert haben. Die Mehrzahl der Benutzer generiert den Schlüssel auf dem lokalen Computer und kopiert ihn in den Container. In diesem Fall kann der Standardwert 'no' beibehalten werden.|
 {: caption="Tabelle 4. Verschlüsselungsvariablen" caption-side="top"}
 
+## Migration Ihrer Datenträgerdaten von einzelnen und skalierbaren Containern auf Kubernetes
+{: #migrate_data}
+
+Erstellen Sie eine einmalige Sicherung für einen beliebigen Containerdatenträger. Die Sicherung wird in einer Instanz von {{site.data.keyword.objectstoragefull}} gespeichert. Anschließend können Sie die Daten in einen Persistent Volume Claim in Kubernetes migrieren.
+{:shortdesc}
+
+### Einführung
+{: #how_to_get_started}
+
+Führen Sie zunächst die folgenden Schritte aus:
+
+- [Überprüfen des vollständigen Migrationspfads für das Verschieben von Apps in Kubernetes](../../../containers/cs_classic.html)
+- [Installieren der Befehlszeilenschnittstelle für einzelne und skalierbare Container (bx ic)](../../../containers/container_cli_cfic_install.html)
+- [Installieren der {{site.data.keyword.containershort}}-Befehlszeilenschnittstelle (bx cs and kubectl)](../../../containers/cs_cli_install.html#cs_cli_install)
+- [Erstellen eines Kubernetes-Standardclusters, in den Sie Ihre Dateien migrieren wollen](../../../containers/cs_cluster.html#cs_cluster_cli)
+
+Führen Sie die folgenden Tasks aus, um Sicherungs- und Wiederherstellungsoperationen auszuführen:
+1.  [Erstellen einer {{site.data.keyword.objectstorageshort}}-Serviceinstanz](#object_storage) (wie zuvor bezeichnet)
+2.  [Ausführen einer einmaligen Sicherung](#migrate_backup)
+3.  [Ausführen des Wiederherstellungsscripts in Kubernetes](#migrate_restore)
+
+### Ausführen einer einmaligen Sicherung
+{: #migrate_backup}
+
+Erstellen Sie einen einzelnen Container aus dem Image **ibm-backup-restore** und starten Sie einen Sicherungsvorgang.
+
+1.  Melden Sie sich an der {{site.data.keyword.containershort}}-Befehlszeilenschnittstelle an.
+
+    ```
+    bx login
+    ```
+    {: pre}
+
+    ```
+    bx ic init
+    ```
+    {: pre}
+
+2.  Erstellen Sie eine Datei mit Umgebungsvariablen in einem lokalen Verzeichnis.
+
+    ```
+    touch <umgebungsvariablendateiname_für_sicherung>
+    ```
+    {: pre}
+
+3.  Bearbeiten Sie die Umgebungsvariablendatei und fügen Sie die folgenden Felder hinzu. Geben Sie für die leeren Umgebungsvariablen die Werte aus den {{site.data.keyword.objectstorageshort}}-Berechtigungsnachweisen ein, die Sie zuvor notiert haben. Geben Sie **nicht** die Anführungszeichen an, die in den Berechtigungsnachweisen verwendet werden.
+
+    ```
+    BACKUP_NAME=volume_backup
+    BACKUP_DIRECTORY=/backup
+    PROJECTID=
+    REGION=
+    USERID=
+    PASSWORD=
+    ```
+    {: codeblock}
+
+    Mit diesen Einstellungen wird eine einmalige Sicherung mit dem Standardnamen _volume_backup_ erstellt.
+
+4.  Führen Sie einen Container aus dem Image **ibm-backup-restore** mit einem angehängten Datenträger aus, um eine Sicherungskopie zu erstellen. Geben Sie den Befehl zum Starten des Sicherungsscripts an.
+
+    -   Stellen Sie sicher, dass Sie sich in demselben lokalen Verzeichnis befinden wie die Datei <em>&lt;umgebungsvariablendatei_für_sicherung&gt;</em>.
+    -   Das Verzeichnis, an das der Datenträger angehängt ist, muss mit dem Wert von BACKUP_DIRECTORY in der Umgebungsvariablendatei übereinstimmen.
+    -   Ersetzen Sie <em>&lt;datenträgername&gt;</em> durch den Namen des Datenträgers, der gesichert wird.
+
+    ```
+    bx ic run --name <containername> --volume <datenträgername>:/backup --env-file ./<umgebungsvariablendateiname_für_sicherung> registry.ng.bluemix.net/ibm-backup-restore /bin/bash -c "/backup_restore/vbackup"
+    ```
+    {: pre}
+
+    Wenn der Sicherungsprozess abgeschlossen ist, wird der Container beendet. Wenn der Container nicht gestartet wird, führen Sie `bx ic logs <containername>` aus, um die Protokolle auf Fehlernachrichten zu prüfen.
+
+5.  Überprüfen Sie die Sicherung in {{site.data.keyword.objectstorageshort}} in der {{site.data.keyword.Bluemix_notm}}-Benutzerschnittstelle.
+    1.  Klicken Sie auf die {{site.data.keyword.objectstorageshort}}-Instanz, die Sie für die Sicherung erstellt haben.
+    2.  Klicken Sie auf den {{site.data.keyword.objectstorageshort}}-Container. In diesem Beispiel ist der Containername 'volume_backup'.
+    3.  Überprüfen Sie die komprimierten Dateien.![Der Object Storage-Container in der {{site.data.keyword.Bluemix_notm}}-Benutzerschnittstelle zeigt die Dateien, die gesichert werden.](images/volume_backup_screenshot.png)Sie können die Datei 'vol1.difftar.gz' herunterladen, die Datei extrahieren und die Sicherungsdaten überprüfen. **Wichtig**: Wenn Sie Dateien aus {{site.data.keyword.objectstorageshort}} löschen oder ändern, können diese Dateien nicht wiederhergestellt werden.
+
+### Wiederherstellen Ihrer Daten in einem Kubernetes-Cluster
+{: #migrate_restore}
+
+Stellen Sie Ihre Sicherung von {{site.data.keyword.objectstorageshort}} in einem Persistent Volume Claim in einem Kubernetes-Cluster wieder her.
+
+Führen Sie zunächst die folgenden Schritte aus:
+
+- [Richten Sie Ihre Befehlszeilenschnittstelle](../../../containers/cs_cli_install.html#cs_cli_configure) auf Ihr Cluster aus.
+
+
+1. Erstellen Sie eine Konfigurationsdatei mit dem Namen _restore-pvc.yaml_. Die Konfigurationsdatei erstellt einen Persistent Volume Claim (PVC), den Sie als Datenträger an Ihren Sicherungs-Pod anhängen können.
+
+    ```
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: restorepvc
+      annotations:
+        volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze"
+    spec:
+      accessModes:
+        - ReadWriteMany
+      resources:
+        requests:
+          storage: 20Gi
+    ```
+    {: codeblock}
+
+2. Erstellen Sie den PVC.
+
+    ```
+    kubectl apply -f restore-pvc.yaml 
+    ```
+    {: pre}
+
+3.  Erstellen Sie eine Konfigurationsdatei mit dem Namen _restore.yaml_. Geben Sie für die leeren Umgebungsvariablen die Werte aus den {{site.data.keyword.objectstorageshort}}-Berechtigungsnachweisen ein, die Sie zuvor notiert haben. Geben Sie die Anführungszeichen an, die in den Berechtigungsnachweisen verwendet werden. BACKUP_NAME muss mit dem Namen der Sicherung in {{site.data.keyword.objectstorageshort}} übereinstimmen, die wiederhergestellt wird.
+
+    ```
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: <podname>
+    spec:
+      containers:
+        - name: <containername>
+          image: registry.<region>.bluemix.net/ibm-backup-restore
+          env:
+          - name: USERID
+            value:
+          - name: PASSWORD
+            value:
+          - name: PROJECTID
+            value:
+          - name: REGION
+            value:
+          - name: RESTORE_DIRECTORY
+            value: /restore
+          - name: BACKUP_NAME
+            value: volume_backup
+          command: ["/bin/bash", "./vrestore"]
+          volumeMounts:
+          - mountPath: /restore
+            name: restore-volume
+      volumes:
+      - name: restore-volume 
+        persistentVolumeClaim:
+          claimName: restorepvc
+    ```
+    {: codeblock}
+
+4.  Erstellen Sie einen Pod, der das Wiederherstellungsscript ausführt.
+
+    ```
+    kubectl apply -f restore.yaml
+    ```
+    {: pre}
+    
+5.  Stellen Sie sicher, dass der Pod ausgeführt wird.
+
+    ```
+    kubectl get pods 
+    ```
+    {: pre}
+    
+    ```
+    NAME              READY     STATUS             RESTARTS   AGE
+    <pod_name>        0/1       CrashLoopBackOff   1          1m
+    ```
+    {: screen}
+    
+    Der Pod führt den Wiederherstellungsbefehl aus und wird gestoppt. Die Nachricht _CrashLoopBackOff_ bedeutet, dass Kubernetes versucht, den Pod erneut zu starten.
+
+6.  Entfernen Sie den Pod, um zu verhindern, dass er weitere Ressourcen verbraucht.
+
+    ```
+    kubectl delete -f restore.yaml
+    ```
+    {: pre}
+
+Sie haben Ihre Daten erfolgreich in den Kubernetes-Cluster migriert. Sie können einen beliebigen neuen Pod an den PVC anhängen, um dem betreffenden Pod den Zugriff auf die wiederhergestellten Dateien zu ermöglichen.
+
+**Hinweis**: Befinden sich unter den gesicherten Containerdaten Daten, für die die Berechtigungen eines Benutzers ohne Rootberechtigung erforderlich sind, müssen Sie die Berechtigungen von Benutzern ohne Rootberechtigung zu dem neuen Container hinzufügen. Weitere Informationen hierzu finden Sie unter [Zugriff für Benutzer ohne Rootberechtigung zu Datenträgern hinzufügen](../../../containers/container_volumes_ov.html#container_volumes_write).

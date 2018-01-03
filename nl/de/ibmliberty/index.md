@@ -51,10 +51,11 @@ In der folgenden Tabelle sind die Beschränkungen für die kostenlose Nutzung de
 
 **Anmerkung:** Die Preisstruktur für das Image **ibmliberty** ist unabhängig von der Preisstruktur für die Container, die Sie in {{site.data.keyword.Bluemix_notm}} verwenden.
 
-|Umgebung|Beschränkungen für die kostenlose Nutzung |
+|Umgebung|Beschränkungen für die kostenlose Nutzung|
 |-----------|-----------------------|
 |Entwicklung|**Uneingeschränkte** kostenlose Nutzung des Images **ibmliberty**.|
 |Produktion|Die kostenlose Nutzung des Images **ibmliberty** ist auf einen **Java-Heapspeicher von maximal 2 GB** über alle Containerinstanzen begrenzt, auf denen das Image ausgeführt wird. Sie können z. B. 2 x 1 GB oder 4 x 512 MB Liberty-Heapinstanzen kostenlos nutzen.
+
 Weitere Informationen zum Überwachen der Java-Heapspeicherbelegung Ihrer Containerinstanzen finden Sie unter [Java-Heapspeicherbelegung für einen Container über die Befehlszeilenschnittstelle überwachen](#monitor_heap).
 
 
@@ -87,7 +88,6 @@ Nach dem Erstellen eines Containers aus dem Image **ibmliberty** können Sie all
 
 1.  Listen Sie alle aktiven Prozesse innerhalb des Containers auf.
 
-
     ```
     bx ic top CONTAINER -aux
     ```
@@ -107,7 +107,8 @@ Nach dem Erstellen eines Containers aus dem Image **ibmliberty** können Sie all
 ## WebSphere Application Server-Lizenz abrufen 
 {: #license}
 
-WebSphere Application Server basieren auf der Anzahl der benötigten Processor-Value-Units \(PVUs\). PVU ist eine Maßeinheit für die Lizenzierung von IBM Middleware-Software. Die Anzahl der PVUs gibt die Anzahl der Prozessoren \(Kerne\) an, die für die Software zur Verfügung stehen.{:shortdesc}
+WebSphere Application Server basieren auf der Anzahl der benötigten Processor-Value-Units \(PVUs\). PVU ist eine Maßeinheit für die Lizenzierung von IBM Middleware-Software. Die Anzahl der PVUs gibt die Anzahl der Prozessoren \(Kerne\) an, die für die Software zur Verfügung stehen.
+{:shortdesc}
 
 Für jede Containergröße in {{site.data.keyword.Bluemix_notm}} ist eine bestimmte Anzahl von PVU-Berechtigungen erforderlich, die in der WebSphere Application Server-Lizenz verfügbar sein müssen. Sie müssen daher Ihre **ibmliberty**-Container planen, bevor Sie die Lizenz erwerben.
 
@@ -118,7 +119,8 @@ Wenn Sie nach dem Erwerb der Lizenz feststellen, dass Sie weitere PVUs benötige
 ## Image **ibmliberty** mit Produktionslizenz für die Verwendung mit {{site.data.keyword.containershort_notm}} erstellen 
 {: #prod_image}
 
-Verwenden Sie Ihre Lizenz für WebSphere Application Server zum Erstellen eines Images **ibmliberty** mit Produktionslizenz, das Sie mit {{site.data.keyword.containershort_notm}} verwenden können. Wählen Sie eine der folgenden Tasks aus.{:shortdesc}
+Verwenden Sie Ihre Lizenz für WebSphere Application Server zum Erstellen eines Images **ibmliberty** mit Produktionslizenz, das Sie mit {{site.data.keyword.containershort_notm}} verwenden können. Wählen Sie eine der folgenden Tasks aus.
+{:shortdesc}
 
 -   [Durchführen eines Upgrades des Images von Docker Hub auf ein Produktionsimage](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
 -   [Erstellen eines eigenen Images mit Produktionslizenz](https://github.com/WASdev/ci.docker/tree/master/ga/production-install).
@@ -144,7 +146,7 @@ Gehen Sie wie folgt vor, um ein Image mit Ihrem App-Code aus dem Image **ibmlibe
     ```
     FROM registry.{{site.data.keyword.domainname}}/ibmliberty:<tag>
     COPY <app-name>.<dateierweiterung> /config/dropins/
-
+    
     ```
     {: screen}
 

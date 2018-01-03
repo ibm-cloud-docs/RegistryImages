@@ -28,12 +28,12 @@ ibm-mq 이미지는 {{site.data.keyword.containershort}}용으로 제공됩니�
 
 {{site.data.keyword.Bluemix_notm}}에서 메시징 솔루션과 {{site.data.keyword.IBM_notm}} MQ 애플리케이션을 개발하기 위해 {{site.data.keyword.containershort_notm}}에 ibm-mq Docker 이미지를 배치할 수 있습니다. 그런 다음 큐 관리자를 작성하고 실행한 다음 웹 UI 또는 터미널을 사용하여 메시징 솔루션이나 애플리케이션 요구사항에 맞게 구성할 수 있습니다.
 
-**참고:** 개발 및 단위 테스트에만 ibm-mq 이미지를 사용할 수 있습니다. 또한 이미지를 사용하여 제품을 탐색하고 튜토리얼을 통해 배우며 {{site.data.keyword.IBM_notm}} MQ가 조직에 제공할 수 있는 기여를 평가할 수 있습니다. 
+**참고:** 개발 및 단위 테스트에만 ibm-mq 이미지를 사용할 수 있습니다. 또한 이미지를 사용하여 제품을 탐색하고 튜토리얼을 통해 배우며 {{site.data.keyword.IBM_notm}} MQ가 조직에 제공할 수 있는 기여를 평가할 수 있습니다.
 
 ## 포함된 항목
 {: #ibm_mq_what}
 
-이 ibm-mq 이미지에는 {{site.data.keyword.IBM_notm}} MQ Advanced for Developers 버전 9.0.x의 소프트웨어 패키지가 포함되어 있습니다. 이 버전은 개발 및 단위 테스트에 사용할 수 있는 전체 기능이 포함된 제품입니다. 무료로 이 버전을 다운로드할 수 있으며 라이센스 조건에 따라 자유롭게 사용할 수 있습니다. 
+이 ibm-mq 이미지에는 {{site.data.keyword.IBM_notm}} MQ Advanced for Developers 버전 9.0.x의 소프트웨어 패키지가 포함되어 있습니다. 이 버전은 개발 및 단위 테스트에 사용할 수 있는 전체 기능이 포함된 제품입니다. 무료로 이 버전을 다운로드할 수 있으며 라이센스 조건에 따라 자유롭게 사용할 수 있습니다.
 
 {{site.data.keyword.IBM_notm}} MQ Advanced for Developers는 Windows 64비트 운영 체제 및 x86-64 운영 체제용 Linux에서 사용할 수 있습니다. 모든 제품 필수 소프트웨어는 다운로드 패키지에 포함되어 있습니다. 자세한 정보는 [IBM MQ 다운로드 ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](http://www-03.ibm.com/software/products/lv/ibm-mq-advanced-for-developers){: new_window}를 참조하십시오.
 
@@ -46,7 +46,7 @@ ibm-mq 이미지는 {{site.data.keyword.containershort}}용으로 제공됩니�
 
 다음 표에서는 {{site.data.keyword.Bluemix_notm}}에서 ibm-mq 이미지의 무료 사용량에 적용되는 제한사항을 보여줍니다.
 
-| 환경 | 무료 사용량 제한사항 |
+| 환경	| 무료 사용량 제한사항 |
 |-------------|-------------------------|
 | 개발	| 개발용 단일 컨테이너를 작성하기 위해 ibm-mq 이미지를 무제한으로 무료 사용합니다. |
 | 테스트 | 단위 테스트용 단일 컨테이너를 작성하기 위해 ibm-mq 이미지를 무제한으로 무료 사용합니다. 허용되는 테스트에 대한 자세한 정보는 [라이센스 정보](#ibm_mq_license )를 확인하십시오. |
@@ -145,7 +145,7 @@ IBM MQ에 대한 최신 블로그와 정보는 [MQ Developer 작업 블로그 ![
 
     **참고:** IBM MQ 데이터 디렉토리로 사용할 볼륨을 마운트할 때 */mnt/mqm* 위치에 마운트해야 합니다. */mnt/mqm*으로 마운트하면 ibm-mq 스크립트에서 볼륨을 발견한 다음 IBM MQ 파일 시스템에서 이 볼륨을 사용하도록 구성합니다.
      
-10.	**작성**를 클릭한 다음 컨테이너가 실행을 시작하기를 기다리십시오. 
+10.	**작성**를 클릭한 다음 컨테이너가 실행을 시작하기를 기다리십시오.
 
     컨테이너가 작성되고 나면 컨테이너 대시보드가 열립니다. 컨테이너의 상태가 **실행 중**으로 설정되었는지 확인하십시오. 
 
@@ -155,7 +155,7 @@ IBM MQ에 대한 최신 블로그와 정보는 [MQ Developer 작업 블로그 ![
 
 | 연결 특성 | 값 |
 |-------|-------|
-| IP 주소 | 컨테이너의 공인 IP 주소 |
+| IP 주소  | 컨테이너의 공인 IP 주소 |
 | 포트 | 1414 |
 | 채널 | DEV.APP.SVRCONN |
 
@@ -257,7 +257,7 @@ Docker CLI를 사용하여 컨테이너에서 직접 {{site.data.keyword.IBM_not
     1. `bx login`
     2. `bx ic init`
     3. DOCKER_HOST, DOCKER_CERT_PATH 및 DOCKER_TLS_VERIFY 환경 변수에 제공되는 값을 복사하십시오.
-    4. {{site.data.keyword.containershort_notm}}에 연결하기 위해 다음 변수를 설정하여 로컬 Docker 환경을 대체하십시오. 
+    4. {{site.data.keyword.containershort_notm}}에 연결하기 위해 다음 변수를 설정하여 로컬 Docker 환경을 대체하십시오.
         
         `export DOCKER_HOST=<your_host_value>`
         
@@ -303,8 +303,8 @@ Docker CLI를 사용하여 컨테이너에서 직접 {{site.data.keyword.IBM_not
 | 환경 변수 | 용도 | 기본값 |
 |----------------------|---------|---------|
 | MQ_ADMIN_PASSWORD | 작성한 MQ 관리자의 비밀번호를 기본값에서 사용자가 선택한 값으로 변경하려면 이 변수를 설정하십시오. 비밀번호는 8자 이상이어야 합니다. 관리자의 사용자 이름은 admin으로 고정됩니다. | passw0rd |
-| MQ_APP_PASSWORD | 애플리케이션 사용자의 비밀번호를 설정하려면 이 변수를 설정하십시오. 애플리케이션 사용자의 사용자 이름은 app으로 고정됩니다. 이 환경 변수를 설정하면 MQ 클라이언트를 연결할 때 사용자 ID와 비밀번호를 제공해야 합니다.<br> 비밀번호는 8자 이상이어야 합니다. |  |
-| MQ_TLS_KEYSTORE | MQ 웹 콘솔과 IBM MQ Queue Manager에서 TLS 오퍼레이션에 사용하게 할 인증서를 포함하는 PKCS#12 키 저장소의 위치로 이 환경 변수를 설정하십시오. <br> 이 환경 변수가 설정되어 있으면 작성된 개발자 채널이 CipherSpec ‘TLS_RSA_WITH_AES_256_GCM_SHA384’를 사용하여 TLS용으로 지원됩니다. <br> **참고:** {{site.data.keyword.Bluemix_notm}} 컨테이너에서 키 저장소 파일을 사용 가능하게 해야 합니다. 이 작업을 수행하려면 컨테이너를 작성할 때 키 저장소를 포함하는 볼륨을 마운트할 수 있습니다.|  |
+| MQ_APP_PASSWORD | 애플리케이션 사용자의 비밀번호를 설정하려면 이 변수를 설정하십시오. 애플리케이션 사용자의 사용자 이름은 app으로 고정됩니다. 이 환경 변수를 설정하면 MQ 클라이언트를 연결할 때 사용자 ID와 비밀번호를 제공해야 합니다. <br> 비밀번호는 8자 이상이어야 합니다. |  |
+| MQ_TLS_KEYSTORE | MQ 웹 콘솔과 IBM MQ Queue Manager에서 TLS 오퍼레이션에 사용하게 할 인증서를 포함하는 PKCS#12 키 저장소의 위치로 이 환경 변수를 설정하십시오. <br> 이 환경 변수가 설정되어 있으면 작성된 개발자 채널이 CipherSpec ‘TLS_RSA_WITH_AES_256_GCM_SHA384’를 사용하여 TLS용으로 지원됩니다. <br> **참고:** {{site.data.keyword.Bluemix_notm}} 컨테이너에서 키 저장소 파일을 사용 가능하게 해야 합니다. 이 작업을 수행하려면 컨테이너를 작성할 때 키 저장소를 포함하는 볼륨을 마운트할 수 있습니다. |  |
 | MQ_TLS_PASSPHRASE | MQ_TLS_KEYSTORE ㅗ한경 변수에 지정된 키 저장소의 비밀번호를 설정하려면 이 환경 변수를 설정하십시오. |  |
 | MQ_DEV | {{site.data.keyword.IBM_notm}} MQ Developer 기본 오브젝트 작성 여부를 제어하려면 이 환경 변수를 설정하십시오. | true |
 | MQ_DISABLE_WEB_CONSOLE | 컨테이너의 CPU/RAM 사용을 절약하려는 경우 웹 콘솔의 구성과 시작을 사용하지 않게 설정하도록 이 환경 변수를 설정하십시오. |  |

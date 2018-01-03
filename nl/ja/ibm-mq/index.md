@@ -26,7 +26,7 @@ ibm-mq イメージは {{site.data.keyword.containershort}} 用に提供され�
 
 {{site.data.keyword.IBM_notm}} MQ Advanced for Developers には、ユーザー独自のメッセージング・ソリューションおよび {{site.data.keyword.IBM_notm}} MQ アプリケーションの開発を開始するために必要なものすべてが含まれています。 
 
-{{site.data.keyword.Bluemix_notm}} でメッセージング・ソリューションおよび {{site.data.keyword.IBM_notm}} MQ アプリケーションを開発するために、{{site.data.keyword.containershort_notm}} に ibm-mq Docker イメージをデプロイできます。次に、キュー・マネージャーを作成して実行し、それらのキュー・マネージャーをメッセージング・ソリューションまたはアプリケーションの要件を満たすように、Web UI または端末を使用して構成します。
+{{site.data.keyword.Bluemix_notm}} でメッセージング・ソリューションおよび {{site.data.keyword.IBM_notm}} MQ アプリケーションを開発するために、{{site.data.keyword.containershort_notm}} に ibm-mq Docker イメージをデプロイできます。次に、キュー・マネージャーを作成して実行し、それらのキュー・マネージャーを、メッセージング・ソリューションまたはアプリケーションの要件を満たすように Web UI または端末を使用して構成します。
 
 **注:** ibm-mq イメージは開発および単体テストのみに使用できます。製品の探索、チュートリアルでの学習、そして {{site.data.keyword.IBM_notm}} MQ を使った場合の組織にとってのメリットの評価にも、このイメージを使用できます。
 
@@ -63,7 +63,7 @@ ibm-mq イメージは {{site.data.keyword.containershort}} 用に提供され�
 *	Dockerfile および関連するスクリプトは、[Apache License 2.0 ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](http://www.apache.org/licenses/LICENSE-2.0.html){: new_window} で使用許諾されます。
 * [{{site.data.keyword.IBM_notm}} MQ Advanced for Developers のライセンス情報 ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](http://www-03.ibm.com/software/sla/sladb.nsf/displaylis/973FA648A5DE42948525806E004CC757?OpenDocument){: new_window}。
 
-**注:** 他者へのライセンスの配布は許可されていません。イメージ内の {{site.data.keyword.IBM_notm}} MQ のご利用条件では、開発と単体テストに使用が制限されています。
+**注:** このライセンスでは、他社への配布は許可されていません。イメージ内の {{site.data.keyword.IBM_notm}} MQ のご利用条件では、開発と単体テストに使用が制限されています。
 
 
 ## 概説
@@ -73,7 +73,7 @@ ibm-mq イメージは {{site.data.keyword.containershort}} 用に提供され�
 
 1. [ibm-mq イメージに基づくコンテナーをプロビジョンします](#ibm_mq_provision)。
 
-    **注:** コンテナーは、その内部にあるキュー・マネージャーの実行状態と関係します。コンソールまたはコマンド・ラインを使用してキュー・マネージャーを停止すると、コンテナーは少し後に停止します。 
+    **注:** コンテナーは、その内部にあるキュー・マネージャーの実行状態と連携しています。コンソールまたはコマンド・ラインを使用してキュー・マネージャーを停止すると、コンテナーは少し後に停止します。 
 
 2. コンテナー内で実行中の {{site.data.keyword.IBM_notm}} MQ リソースを管理します。IBM MQ Web コンソールからグラフィカルに行うか、または、端末からコマンドを使用してプログラマチックに行うことができます。 
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-26"
+lastupdated: "2017-11-06"
 
 ---
 
@@ -12,14 +12,14 @@ lastupdated: "2017-10-26"
 {:pre: .pre}
 {:table: .aria-labeledby="caption"}
 
-# Einführung in das Image **ibmnode**{: #getting_started_node}
+# Einführung in das Image **ibmnode** {: #getting_started_node}
 
 Das öffentliche {{site.data.keyword.IBM}} Node-Image (**ibmnode**) wird für {{site.data.keyword.containerlong_notm}} zur Verfügung gestellt.
 {:shortdesc}
 
 **Anmerkung:** Im {{site.data.keyword.IBM_notm}} Node-Image (**ibmnode**) ist keine Node.js-Beispiel-App enthalten. Wenn Sie einen Container aus diesem Image bereitstellen, wird der Container unverzüglich nach seiner Erstellung beendet, da kein aktiver Prozess vorhanden ist. Um dies zu vermeiden, verwenden Sie das {{site.data.keyword.IBM_notm}} Node-Image (**ibmnode**) als übergeordnetes Image und erstellen ein eigenes Image, zu dem Sie einen eigenen Node.js hinzufügen können. Weitere Informationen finden Sie unter [Image mit dem bereitgestellten Image erstellen](#creating_image).
 
-# Funktionsweise{: #how_it_works}
+# Funktionsweise {: #how_it_works}
 
 Verwenden Sie das {{site.data.keyword.IBM_notm}} Node-Image (**ibmnode**) als übergeordnetes Image zum Erstellen eines eigenen Images mit Ihrem eigenen Node.js-App-Code.
 {:shortdesc}
@@ -42,7 +42,7 @@ Verwenden Sie das {{site.data.keyword.IBM_notm}} Node-Image (**ibmnode**) als ü
       </tr>
       <tr>
         <td> ibmnode:latest </td>
-        <td> Die neueste Version von IBM Node, die der Verwendung von ibmnode:v4 entspricht.</td>
+        <td> Die neueste Version von IBM Node, die der Verwendung von ibmnode:v4 entspricht. </td>
       </tr>
       <tr>
         <td> ibmnode:v4 </td>
@@ -59,7 +59,7 @@ Verwenden Sie das {{site.data.keyword.IBM_notm}} Node-Image (**ibmnode**) als ü
     </table>
 
 
-# Image mit dem bereitgestellten Image erstellen{: #creating_image}
+# Image mit dem bereitgestellten Image erstellen {: #creating_image}
 
 Mit dem Image **ibmnode** als übergeordnetem Image können Sie ein untergeordnetes Image erstellen, das Ihren eigenen App-Code enthält. Verwenden Sie den Beispiel-App-Container `Hello World` mit **ibmnode** und das Modul 'Express Node' zum Erstellen eines Images auf Ihrem Computer. Fügen Sie das Image dem privaten {{site.data.keyword.registrylong_notm}}-Repository Ihrer Organisation hinzu und erstellen Sie damit einen Container. Anschließend können Sie die Dockerfile aus dem Beispielprogramm 'Hello World' verwenden, um ein anderes Image mit Ihrer eigenen App zu erstellen.
 {:shortdesc}
@@ -127,7 +127,7 @@ Erstellen Sie ein Image, das auf dem Image **ibmnode** basiert und eine 'Hello W
     ```
     {: pre}
 
-    **Tipp:** Führen Sie `bx ic namespace get` aus, um Ihre Namensbereichsinformationen abzurufen. Geben Sie für _registry.DomainName_ die zuvor in der Dockerfile verwendete Region an.
+    **Tipp:** Führen Sie `bx ic namespace get` aus, um Ihre Namensbereichsinformationen abzurufen.  Geben Sie für _registry.DomainName_ die zuvor in der Dockerfile verwendete Region an.
 
     **Anmerkung:** \*In diesem Befehl können Sie `bx ic` durch `docker` ersetzen, wenn Sie [bei {{site.data.keyword.containershort_notm}} angemeldet sind](/docs/containers/container_cli_cfic_install.html#container_cli_login) und legen Sie Ihre Umgebungsvariablen so fest, dass sie native Docker-Befehle verwenden. Sie können native Docker-Befehle in allen Schritten verwenden, die in diesem Abschnitt mit einem Stern (*) markiert sind.
 

@@ -40,7 +40,8 @@ Vous pouvez utiliser les images publiques suivantes pour créer des conteneurs d
 <li>
 <p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Pour plus d'informations sur l'image ibm-mq, consultez la documentation."></p>
 <p class="runtimeTitle">ibm-mq</p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-mq/index.html" scope="peer" title="Pour plus d'informations sur l'image ibm-mq, consultez la documentation.">AFFICHER LA DOCUMENTATION</a></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-mq/index.html" scope="peer" title="Pour plus d'informations
+sur l'image ibm-mq, consultez la documentation.">AFFICHER LA DOCUMENTATION</a></p>
 </li>
 
 <li>
@@ -60,5 +61,6 @@ Vous pouvez utiliser les images publiques suivantes pour créer des conteneurs d
 <p class="runtimeTitle">ibm-websphere-extreme-scale</p>
 <p class="runtimeLink"><a format="html"
 href="/docs/services/RegistryImages/ibm-websphere-extreme-scale/index.html" scope="peer"
- title="Vous pouvez utiliser les images ibm-websphere-extreme-scale pour maintenir les serveurs de mise en cache distribués eXtremeScale afin qu'ils exécutent vos scénarios d'utilisation, par exemple simple, session et mémoire cache dynamique en se connectent aux serveurs de mise en cache depuis vos applications client Liberty {{site.data.keyword.Bluemix_notm}}.">AFFICHER LA DOCUMENTATION</a></p>
+ title="Vous pouvez utiliser les images ibm-websphere-extreme-scale pour maintenir les serveurs de mise en cache distribués
+eXtremeScale afin qu'ils exécutent vos scénarios d'utilisation, par exemple simple, session et mémoire cache dynamique en se connectent aux serveurs de mise en cache depuis vos applications client Liberty {{site.data.keyword.Bluemix_notm}}.">AFFICHER LA DOCUMENTATION</a></p>
 </li></ul>

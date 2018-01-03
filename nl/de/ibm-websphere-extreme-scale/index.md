@@ -23,7 +23,7 @@ Die **ibm-websphere-extreme-scale**-Images werden für {{site.data.keyword.conta
 
 Das IBM WebSphere&reg; eXtreme Scale-Image ist eine verteilte Speichercachefunktion innerhalb der Liberty-Laufzeitumgebung. Es stellt Liberty-Caching-Server, Tools für das Caching, eine Verwaltungskonsole und sofort einsatzfähige REST-Verwaltungsservices zur Verfügung, die auf den neuesten Branchenstandards und Spezifikationen basieren. Dieses Image basiert auf der Technologie der zentralen Bestandteile von IBM WebSphere eXtreme Scale. Die in diesem Image geladene Caching-Technologie bietet vollständige Unterstützung der JCache-Spezifikation \(JSR107\) und die entsprechende Compliance.
 
-Die Verwendung des Images `ibm-websphere-extreme-scale` weist die folgenden Highlights auf: 
+Die Verwendung des Images `ibm-websphere-extreme-scale` weist die folgenden Highlights auf:
 
 -   Einfach bereitzustellende, einfach zu konfigurierende verteilte Caching-Lösung auf der Grundlage der eXtreme Scale-Technologie
 -   Einfache und benutzerfreundliche Verwaltungskonsole und REST-API
@@ -73,7 +73,7 @@ Sie können das Image **ibm-websphere-extreme-scale** wahlweise über die Konsol
 Diese Prozedur enthält die folgenden Optionen für die Bereitstellung des Images über die Konsole oder über die Befehlszeile:
 
 -   Wählen Sie das Image in der {{site.data.keyword.Bluemix_notm}}[-Konsole](#bmconsole) unter **Katalog** aus.
--   Starten Sie das Image über die CF-[Befehlszeile](#bmcommand). Führen Sie dazu den Befehl 'cf ic' aus. 
+-   Starten Sie das Image über die CF-[Befehlszeile](#bmcommand). Führen Sie dazu den Befehl 'cf ic' aus.
 
 **Wichtig:** Bevor Sie beginnen, lesen Sie die Nutzungsbeschränkungen für **ibm-websphere-extreme-scale**-Images wie im vorhergehenden Abschnitt beschrieben.
 
@@ -95,12 +95,11 @@ Diese Prozedur enthält die folgenden Optionen für die Bereitstellung des Image
         4.  Öffnen Sie das Fenster 'Erweiterte Optionen'. Erstellen Sie einen Datenträger, sodass die Daten der eXtreme Scale-Konfiguration erhalten bleiben, wenn zu einem späteren Zeitpunkt ein schrittweises Upgrade installiert wird. Beispiel:
             1. Klicken Sie unter 'Erweiterte Optionen' auf **Datenträger erstellen** und geben Sie in **Datenträgername** den Namen für den Datenträger an. Geben Sie z. B. 'vol-wxs1' ein.
             2. Klicken Sie auf **Neue Umgebungsvariable hinzufügen**. Das Image **ibm-websphere-extreme-scale** erfordert Umgebungsvariablen, die im Container gespeichert werden und auf die durch berechtigte Benutzer zugegriffen wird.
-
             <table>
             <caption>Tabelle 3. Umgebungsvariablen für das Image 'ibm-websphere-extreme-scale'</caption>
                <tr>
                  <th>Variablenname</th>
-                 <th>Anzugebender Wert</th>
+                 <th>Anzugebender Wert </th>
                </tr>
                <tr>
                  <td>SECRET_KEY</td>
@@ -112,7 +111,7 @@ Diese Prozedur enthält die folgenden Optionen für die Bereitstellung des Image
                </tr>
                </table>
   
-              **Anmerkung:** Sie können das Kennwort und den geheimen Schlüssel ändern, nachdem der eXtreme Scale-Container gestartet wurde. Sowohl der geheime Schlüssel als auch das Kennwort müssen den folgenden Kennwortregeln entsprechen. Stellen Sie sicher, dass Sie beide auf der Grundlage der folgenden Regel definieren: 
+              **Anmerkung:** Sie können das Kennwort und den geheimen Schlüssel ändern, nachdem der eXtreme Scale-Container gestartet wurde. Sowohl der geheime Schlüssel als auch das Kennwort müssen den folgenden Kennwortregeln entsprechen. Stellen Sie sicher, dass Sie beide auf der Grundlage der folgenden Regel definieren:
 
               Kennwort und geheimer Schlüssel müssen jeweils mindestens eine Ziffer [`0-9`], einen Großbuchstaben [`A-Z`] sowie ein Sonderzeichen [`~!@#$%^&*()_-+=:;'[]{}|<>,.?/`] enthalten und sie müssen mindestens 10 Zeichen lang sein.
 
@@ -143,7 +142,7 @@ Diese Prozedur enthält die folgenden Optionen für die Bereitstellung des Image
 
  2.  Geben Sie den folgenden Befehl ein, um Ihren IBM WebSphere eXtreme Scale-Container in {{site.data.keyword.Bluemix_notm}} zu starten:
 
-    **Anmerkung:** Ersetzen Sie 'eigener_geheimer_schlüssel' und 'eigenes_Xsadmin-kennwort' durch Ihre eigenen Angaben, die den bereits erwähnten Kennwortregeln entsprechen müssen. 
+    **Anmerkung:** Ersetzen Sie 'eigener_geheimer_schlüssel' und 'eigenes_Xsadmin-kennwort' durch Ihre eigenen Angaben, die den bereits erwähnten Kennwortregeln entsprechen müssen.
 
    ```
    cf ic run -itdP --volume <vol-wxs1:/vol> --name <wxs1> -m 1024 -e SECRET_KEY=<eigener_geheimer_schlüssel> -e XSADMIN_PWD=<eigenes_Xsadmin-kennwort> registry.ng.bluemix.net/ibm-websphere-extreme-scale:latest
@@ -197,8 +196,8 @@ Diese Prozedur enthält die folgenden Optionen für die Bereitstellung des Image
 2.  Nachdem der Container und die eXtreme Scale-Server vollständig gestartet wurden, melden Sie sich an der eXtreme Scale-Dashboard-Benutzerschnittstelle dieses Members an:
 
     ```
-   https://<ANGEFORDERTE_IP>:9443
-   ```
+    https://<ANGEFORDERTE_IP>:9443
+    ```
     {: pre}
 
 3.  Öffnen Sie die Seite für Data Cache-Member und wählen Sie unter der Aktionsspalte**** für dieses Member die Option **Join** aus.
@@ -417,7 +416,7 @@ Wenn eXtreme Scale in {{site.data.keyword.containershort_notm}} bereitgestellt i
 
     -   Bei UNIX: /etc/hosts
     -   Bei Windows: C:\\Windows\\System32\\drivers\\etc\\hosts
-4.  Greifen Sie in einem Browser auf die Swagger-REST-APIs zu. 
+4.  Greifen Sie in einem Browser auf die Swagger-REST-APIs zu.
     -   Bei CRUD-Operationen:
 
         ```

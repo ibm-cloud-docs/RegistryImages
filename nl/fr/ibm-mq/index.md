@@ -28,16 +28,16 @@ L'image ibm-mq est fournie pour {{site.data.keyword.containershort}}. Elle inclu
 
 Pour développer des solutions de messagerie et des applications {{site.data.keyword.IBM_notm}} MQ dans {{site.data.keyword.Bluemix_notm}}, vous pouvez déployer l'image Docker ibm-mq dans {{site.data.keyword.containershort_notm}}. Vous pouvez ensuite créer et exécuter des gestionnaires de files d'attente d'exécution, et utilisez l'interface utilisateur Web ou un terminal pour les configurer de manière à répondre aux besoins de votre application ou de votre solution de messagerie.
 
-**Remarque :** Vous pouvez utiliser l'image ibm-mq image uniquement à des fins de développement et de test unitaire. Vous pouvez également utiliser l'image pour explorer le produit, dérouler des tutoriels et évaluer la contribution d'{{site.data.keyword.IBM_notm}} MQ à votre organisation. 
+**Remarque :** Vous pouvez utiliser l'image ibm-mq image uniquement à des fins de développement et de test unitaire. Vous pouvez également utiliser l'image pour explorer le produit, dérouler des tutoriels et évaluer la contribution d'{{site.data.keyword.IBM_notm}} MQ à votre organisation.
 
 ## Eléments inclus
 {: #ibm_mq_what}
 
 Cette image ibm-mq contient le package logiciel pour {{site.data.keyword.IBM_notm}} MQ Advanced for Developers version 9.0.x, version complète du produit que vous pouvez utiliser pour le développement et les tests unitaires. Vous pouvez télécharger gratuitement cette version et l'utiliser conformément aux dispositions de la licence.
 
-{{site.data.keyword.IBM_notm}} MQ Advanced for Developers est disponible sur les systèmes d'exploitation Windows 64 bits et Linux x86-64. Tous les services prérequis du produit sont inclus dans le package de téléchargement. Pour plus d'informations, voir le document [IBM MQ Downloads ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www-03.ibm.com/software/products/lv/ibm-mq-advanced-for-developers){: new_window}
+{{site.data.keyword.IBM_notm}} MQ Advanced for Developers est disponible sur les systèmes d'exploitation Windows 64 bits et Linux x86-64. Tous les services prérequis du produit sont inclus dans le package de téléchargement. Pour plus d'informations, voir le document [IBM MQ Downloads ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](http://www-03.ibm.com/software/products/lv/ibm-mq-advanced-for-developers){: new_window}
 
-Pour plus d'informations sur les fonctions incluses dans {{site.data.keyword.IBM_notm}} MQ Advanced for Developers, voir [IBM MQ ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm){: new_window}
+Pour plus d'informations sur les fonctions incluses dans {{site.data.keyword.IBM_notm}} MQ Advanced for Developers, voir [IBM MQ ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm){: new_window}
 
 
 
@@ -60,8 +60,8 @@ Le tableau suivant présente les restrictions qui s'appliquent à l'utilisation 
 
 Informations sur les licences :
 
-*	Les documents Dockerfile et les scripts qui leur sont associés sous licence [Apache License 2.0 ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www.apache.org/licenses/LICENSE-2.0.html){: new_window}.
-* [Informations sur la licence pour {{site.data.keyword.IBM_notm}} MQ Advanced for Developers ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www-03.ibm.com/software/sla/sladb.nsf/displaylis/973FA648A5DE42948525806E004CC757?OpenDocument){: new_window}.
+*	Les documents Dockerfile et les scripts qui leur sont associés sous licence [Apache License 2.0 ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](http://www.apache.org/licenses/LICENSE-2.0.html){: new_window}.
+* [Informations sur la licence pour {{site.data.keyword.IBM_notm}} MQ Advanced for Developers ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](http://www-03.ibm.com/software/sla/sladb.nsf/displaylis/973FA648A5DE42948525806E004CC757?OpenDocument){: new_window}.
 
 **Remarque :** La licence ne permet pas de distribution supplémentaire. Les dispositions relatives à {{site.data.keyword.IBM_notm}} MQ dans l'image limitent l'utilisation à des fins de développement et de test unitaire.
 
@@ -89,17 +89,17 @@ Procédez comme indiqué ci-après pour exécuter et gérer {{site.data.keyword.
     
         * Pour gérer le gestionnaire de files d'attente sous forme graphique, utilisez l'interface utilisateur Web.
         
-    3. Suivez les instructions dans [IBM MQ Knowledge Center ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm){: new_window} pour créer des files d'attente de messages sur votre gestionnaire de files d'attente et placer ou récupérer des messages dans ces files.
+    3. Suivez les instructions dans [IBM MQ Knowledge Center ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](http://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm){: new_window} pour créer des files d'attente de messages sur votre gestionnaire de files d'attente et placer ou récupérer des messages dans ces files.
     
         Par exemple, exécutez dans `runmqsc` la commande suivante pour créer une file d'attente locale : `DEFINE QLOCAL('MY.Q')`, où *MY.Q* désigne le nom de la file d'attente locale sur le terminal. Vous pouvez consulter cette file d'attente dans la console Web ou vous pouvez afficher la file d'attente et ses propriétés en exécutant dans 'runmqsc` la commande suivante : `DISPLAY QLOCAL('MY.Q')`.
     
 3. (Facultatif) Examinez les journaux {{site.data.keyword.IBM_notm}} MQ du conteneur. Pour plus d'informations, voir [Gestion de votre conteneur à l'aide de la ligne de commande](#ibm_mq_access).
 
-Pour en savoir plus sur l'introduction de mise en route d'IBM MQ, voir [IBM MQ Version 9.0.x Welcome page ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm){: new_window}
+Pour en savoir plus sur l'introduction de mise en route d'IBM MQ, voir [IBM MQ Version 9.0.x Welcome page ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](http://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm){: new_window}
 
-Pour toute information sur l'image et la façon de créer votre propre image localement dans Docker, voir [la page MQ Docker GitHub ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://github.com/ibm-messaging/mq-docker){: new_window}
+Pour toute information sur l'image et la façon de créer votre propre image localement dans Docker, voir [la page MQ Docker GitHub ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](https://github.com/ibm-messaging/mq-docker){: new_window}
     
-Pour les informations et blogs les plus récents sur IBM MQ, voir [The MQ Developer works blog ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/developerworks/community/blogs/messaging){: new_window}
+Pour les informations et blogs les plus récents sur IBM MQ, voir [The MQ Developer works blog ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](https://www.ibm.com/developerworks/community/blogs/messaging){: new_window}
 
 
 ### Mise à disposition d'un conteneur basé sur l'image ibm-mq

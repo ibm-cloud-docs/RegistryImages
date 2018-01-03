@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-26"
+lastupdated: "2017-11-06"
 
 ---
 
@@ -85,18 +85,18 @@ lastupdated: "2017-10-26"
     <ul>
     <li>美國南部
 
-		```
-		registry.ng.bluemix.net/ibmnode
-		```
-		{: codeblock}
+	```
+	registry.ng.bluemix.net/ibmnode
+	```
+	{: codeblock}
 
     </li>
     <li>英國
 
-		```
-		registry.eu-gb.bluemix.net/ibmnode
-		```
-		{: codeblock}
+	```
+	registry.eu-gb.bluemix.net/ibmnode
+	```
+	{: codeblock}
 
       </li>
     </ul>
@@ -131,7 +131,7 @@ lastupdated: "2017-10-26"
 
     **提示：**執行 `bx ic namespace get`，以擷取名稱空間資訊。將 _registry.DomainName_ 設為您先前在 Dockerfile 中使用的同一個地區。
 
-    **附註：**在[登入 {{site.data.keyword.containershort_notm}}](/docs/containers/container_cli_cfic_install.html#container_cli_login)，並將環境變數設為使用原生 Docker 指令時，您可以將此指令中的 `bx ic` 取代為 `docker`。您可以在本主題中所有標上星號 (*) 的步驟中使用原生 Docker 指令。
+    **附註：**在[登入 {{site.data.keyword.containershort_notm}}](/docs/containers/container_cli_cfic_install.html#container_cli_login)，並將環境變數設為使用原生 Docker 指令後，您可以將此指令中的 `bx ic` 取代為 `docker`。您可以在本主題中所有標上星號 (*) 的步驟中使用原生 Docker 指令。
 
 1.  從您的映像檔建立容器。
 

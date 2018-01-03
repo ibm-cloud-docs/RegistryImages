@@ -52,12 +52,12 @@ IBM WebSphere&reg; eXtreme Scale 이미지는 Liberty 런타임 환경에서 실
 ## 사용 제한사항 
 {: #usage}
 
-다음 표에서는 {{site.data.keyword.Bluemix_notm}}에서 **ibm-websphere-extreme-scale** 이미지의 무료 사용량에 적용되는 제한사항을 보여줍니다. 
+다음 표에서는 {{site.data.keyword.Bluemix_notm}}에서 **ibm-websphere-extreme-scale** 이미지의 무료 사용량에 적용되는 제한사항을 보여줍니다.
 
 |환경|사용 제한사항|
 |-----------|------------------|
 |개발|`ibm-websphere-extreme-scale` 이미지는 개발에 무료 사용량을 무제한으로 사용할 수 있습니다.|
-|프로덕션 |**ibm-websphere-extreme-scale** 이미지의 프로덕션 사용량은 라이센스가 부여된 IBM WebSphere eXtreme Scale 제품 사용자만 사용할 수 있습니다. 프로덕션 사용에 대한 자세한 정보는 [가격 책정 보기 및 구매](https://www-112.ibm.com/software/howtobuy/buyingtools/paexpress/Express?P0=E1&part_number=D56YTLL,D56YVLL,D572PLL,D572MLL,D0594LL,D059GLL&catalogLocale=en_US&Locale=en_US&country=USA&PT=jsp&CC=USA&VP=&TACTICS=&S_TACT=&S_CMP=&brand=SB05)를 참조하십시오.|
+|프로덕션|**ibm-websphere-extreme-scale** 이미지의 프로덕션 사용량은 라이센스가 부여된 IBM WebSphere eXtreme Scale 제품 사용자만 사용할 수 있습니다. 프로덕션 사용에 대한 자세한 정보는 [가격 책정 보기 및 구매](https://www-112.ibm.com/software/howtobuy/buyingtools/paexpress/Express?P0=E1&part_number=D56YTLL,D56YVLL,D572PLL,D572MLL,D0594LL,D059GLL&catalogLocale=en_US&Locale=en_US&country=USA&PT=jsp&CC=USA&VP=&TACTICS=&S_TACT=&S_CMP=&brand=SB05)를 참조하십시오.|
 {: caption="표 2. {{site.data.keyword.Bluemix_notm}}에서 ibm-websphere-extreme-scale 이미지의 사용량 제한사항" caption-side="top"}
 
 **참고:** **ibm-websphere-extreme-scale** 이미지의 가격은 {{site.data.keyword.Bluemix_notm}}에서 사용하는 컨테이너의 가격 책정과 별도로 책정됩니다.

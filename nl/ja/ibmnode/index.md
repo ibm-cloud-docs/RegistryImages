@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-26"
+lastupdated: "2017-11-06"
 
 ---
 
@@ -12,21 +12,21 @@ lastupdated: "2017-10-26"
 {:pre: .pre}
 {:table: .aria-labeledby="caption"}
 
-# **ibmnode** イメージ概説{: #getting_started_node}
+# **ibmnode** イメージ概説 {: #getting_started_node}
 
 パブリック {{site.data.keyword.IBM}} Node (**ibmnode**) イメージは {{site.data.keyword.containerlong_notm}} 用に提供されています。
 {:shortdesc}
 
 **注:** {{site.data.keyword.IBM_notm}} Node (**ibmnode**) イメージには、サンプル Node.js アプリは含まれていません。このイメージからコンテナーをデプロイすると、長時間実行プロセスが存在しないため、コンテナーはビルド直後にシャットダウンします。これを回避するには、{{site.data.keyword.IBM_notm}} Node (**ibmnode**) イメージを親として使用し、独自の Node.js アプリ・コードを追加することのできる独自のイメージを作成します。詳しくは、[この提供されたイメージからのイメージの作成](#creating_image)を参照してください。
 
-# 機能{: #how_it_works}
+# 機能 {: #how_it_works}
 
 {{site.data.keyword.IBM_notm}} Node (**ibmnode**) イメージを、独自の Node.js アプリ・コードを含む独自のイメージをビルドするための親として使用します。
 {:shortdesc}
 
 **注:** 始める前に、[websphere-liberty Docker ライブラリー ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://github.com/docker-library/docs/tree/master/websphere-liberty){: new_window} の『Usage』セクションで、IBM 認定イメージのご利用条件を確認してください。
 
-# 含まれている内容{: #included}
+# 含まれている内容 {: #included}
 
 * Ubuntu 14.04
 * Python、Git、および build-essentials apt-get パッケージ
@@ -59,7 +59,7 @@ lastupdated: "2017-10-26"
     </table>
 
 
-# この提供されたイメージからのイメージの作成{: #creating_image}
+# この提供されたイメージからのイメージの作成 {: #creating_image}
 
 **ibmnode** イメージを、独自のアプリ・コードを含んだ子イメージを作成するための親として使用できます。サンプルの `Hello World` アプリ・コンテナーを **ibmnode** および Express Node モジュールと共に使用して、ご使用のコンピューターにイメージをビルドします。そのイメージを組織のプライベート {{site.data.keyword.registrylong_notm}} に追加し、そのイメージを使用してコンテナーを作成します。その後、Hello World サンプルからの Dockerfile を使用して、独自のアプリで別のイメージを作成できます。
 {:shortdesc}

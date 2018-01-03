@@ -4,7 +4,7 @@ copyright:
   years: 2017
 lastupdated: "2017-10-30"
 
-  ---
+---
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
@@ -92,15 +92,15 @@ Después de crear un contenedor a partir de la imagen **ibmliberty**, puede list
 
     ```
     bx ic top CONTAINER -aux
- ```
+    ```
     {: pre}
 
     La salida de la CLI es parecida a la siguiente:
 
     ```    
     USER        PID       %CPU   %MEM    VSZ         RSS        TTY     STAT   START    TIME   COMMAND
-    contain+    3322245   3.2    0.0     11522856    216192     ?            Ssl    14:43    0:35   /opt/ibm/java/jre/bin/java -javaagent:/opt/ibm/wlp/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -jar /opt/ibm/wlp/bin/tools/ws-server.jar defaultServer
- ```
+    contain+    3322245   3.2    0.0     11522856    216192     ?       Ssl    14:43    0:35   /opt/ibm/java/jre/bin/java -javaagent:/opt/ibm/wlp/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -jar /opt/ibm/wlp/bin/tools/ws-server.jar defaultServer 
+    ```
     {: screen}
 
 2.  Revise el uso del almacenamiento dinámico de Java en la columna **RSS**. El uso del almacenamiento dinámico de Java se visualiza en kilobytes. Si el uso del almacenamiento dinámico está por debajo de 2097152 kilobytes (2GB) en todas las instancias, no tiene que adquirir una licencia de WebSphere Application Server.
@@ -149,8 +149,8 @@ Para crear una imagen con el código de la app a partir de la imagen **ibmlibert
     ```
     FROM registry.{{site.data.keyword.domainname}}/ibmliberty:<etiqueta>
     COPY <nombre_app>.<extensión_archivo> /config/dropins/
-
- ```
+    
+    ```
     {: screen}
 
     **Nota:** El directorio /config es un atajo para
@@ -177,17 +177,17 @@ Este Dockerfile ilustra cómo se compila la imagen **ibmliberty:webProfile7** en
 ```
 FROM websphere-liberty:webProfile7
 
-  # Actualizar paquetes
+# Actualizar paquetes
 RUN apt-get update &&\
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -y &&\
     apt-get clean &&\
     rm -Rf /var/cache/*
 
-  # Establecer longitud de contraseña y caducidad en conformidad con el asesor de vulnerabilidad
+# Establecer longitud de contraseña y caducidad en conformidad con el asesor de vulnerabilidad
 RUN sed -i 's/^PASS_MAX_DAYS.*/PASS_MAX_DAYS   90/' /etc/login.defs
 RUN sed -i 's/sha512/sha512 minlen=8/' /etc/pam.d/common-password
 
-  # Añadir etiqueta de documentos
+# Añadir etiqueta de documentos
 LABEL doc.url="/docs/services/RegistryImages/ibmliberty/index.html"
 ```
 {: screen}

@@ -75,7 +75,7 @@ Docker Hub の [websphere-liberty イメージ](https://hub.docker.com/_/websphe
     -   [{{site.data.keyword.Bluemix_notm}} ダッシュボードを使用した単一コンテナーの作成](/docs/containers/container_single_ui.html#gui)
     -   [{{site.data.keyword.Bluemix_notm}} ダッシュボードを使用したコンテナー・グループの作成](/docs/containers/container_ha.html#container_group_ui)
     
-    **注:** **ibmliberty** イメージを使用するは、ポート 9080 がパブリックに公開される必要があります。{{site.data.keyword.Bluemix_notm}} ダッシュボードからコンテナーを作成する場合、このポートが**「パブリック・ポート」**フィールドにデフォルトで追加されます。CLI からコンテナーを作成する場合は、`bx ic run` コマンドでこのポートを公開してください。
+    **注:** **ibmliberty** イメージを使用するには、ポート 9080 がパブリックに公開される必要があります。{{site.data.keyword.Bluemix_notm}} ダッシュボードからコンテナーを作成する場合、このポートが**「パブリック・ポート」**フィールドにデフォルトで追加されます。CLI からコンテナーを作成する場合は、`bx ic run` コマンドでこのポートを公開してください。
 
 
 ## CLI を使用した、コンテナーの Java ヒープ・スペース使用量のモニター 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-10-25"
+lastupdated: "2017-11-06"
 
 ---
 
@@ -39,9 +39,9 @@ Cette image IBM Integration Bus contient le package logiciel pour IBM Integratio
 
 IBM Integration Bus for Developers version 10.0 est disponible sur les systèmes d'exploitation Windows™ 64 bits et Linux™ x86-64. Tous les services prérequis du produit sont inclus dans le package de téléchargement.
 
-Pour toute information sur les fonctions incluses dans IBM Integration Bus for Developers, voir [IBM Integration Bus dans IBM Knowledge Center ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www.ibm.com/support/knowledgecenter/SSMKHH_10.0.0/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm){: new_window}.
+Pour toute information sur les fonctions incluses dans IBM Integration Bus for Developers, voir [IBM Integration Bus dans IBM Knowledge Center ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](http://www.ibm.com/support/knowledgecenter/SSMKHH_10.0.0/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm){: new_window}.
 
-Vous pouvez accéder à Developer Edition à partir de la page de téléchargement d'[IBM Integration Bus for Developers![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/marketing/iwm/iwm/web/pick.do?source=swg-wmbfd){: new_window}.
+Vous pouvez accéder à Developer Edition à partir de la page de téléchargement d'[IBM Integration Bus for Developers![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](https://www.ibm.com/marketing/iwm/iwm/web/pick.do?source=swg-wmbfd){: new_window}.
 
 
 ## Restrictions d'utilisation
@@ -57,7 +57,7 @@ Le tableau ci-après présente les restrictions qui s'appliquent à l'utilisatio
 |-----------|-----------------------|
 |Développement|Utilisation gratuite **illimitée** de l'image **ibm-integration-bus** pour créer des conteneurs uniques à des fins de développement et de test unitaire.|
 |Production|Developer Edition est limité au traitement d'une transaction par seconde et son utilisation n'est pas prise en charge dans un environnement de production.|
-{: caption="Tableau 1. Restrictions quant à l'utilisation gratuite de l'image ibm-integration-bus " caption-side="top"}
+{: caption="Tableau 1. Restrictions quant à l'utilisation gratuite de l'image ibm-integration-bus" caption-side="top"}
 
 
 ## Licence
@@ -66,8 +66,8 @@ Le tableau ci-après présente les restrictions qui s'appliquent à l'utilisatio
 Informations sur les licences.
 {:shortdesc}
 
-*   Les documents Dockerfile et les scripts qui leur sont associés sous licence [Apache License 2.0 ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www.apache.org/licenses/LICENSE-2.0.html){: new_window}.
-*   [Informations sur la licence pour IBM Integration Bus for Developers version 10.0 ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www.ibm.com/software/sla/sladb.nsf/displaylis/1BD32B141C9FDAE38525802C0055A956?OpenDocument){: new_window}.
+*   Les documents Dockerfile et les scripts qui leur sont associés sous licence [Apache License 2.0 ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](http://www.apache.org/licenses/LICENSE-2.0.html){: new_window}.
+*   [Informations sur la licence pour IBM Integration Bus for Developers version 10.0 ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](http://www.ibm.com/software/sla/sladb.nsf/displaylis/1BD32B141C9FDAE38525802C0055A956?OpenDocument){: new_window}.
 
     **Remarque** : La licence ne permet pas de distribution supplémentaire. Les dispositions relatives à IBM Integration Bus dans l'image limitent l'utilisation à des fins de développement et de test unitaire.
 
@@ -175,7 +175,7 @@ Une fois que le conteneur exécutant IBM Integration Bus est déployé dans {{si
     ```
     {: screen}
 
-5.  Initialisez l'environnement en exécutant la commande **mqsiprofile**, comme décrit dans [Command environment: Linux and UNIX™ systems ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www.ibm.com/support/knowledgecenter/SSMKHH_9.0.0/com.ibm.etools.mft.doc/an26230_.htm){: new_window}.
+5.  Initialisez l'environnement en exécutant la commande **mqsiprofile**, comme décrit dans [Command environment: Linux and UNIX™ systems ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](http://www.ibm.com/support/knowledgecenter/SSMKHH_9.0.0/com.ibm.etools.mft.doc/an26230_.htm){: new_window}.
 
     La commande permettant d'initialiser l'environnement est disponible dans le répertoire suivant :
 `/opt/ibm/iib-10.0.0.6/server/bin/`
@@ -257,7 +257,6 @@ Choisissez l'une des méthodes suivantes pour surveiller les journaux IBM Integr
             <li>
               <pre class="codeblock">bx ic init</pre>
                Copiez les valeurs fournies pour les variables d'environnement suivantes : &lt;DOCKER_HOST&gt;, &lt;DOCKER_CERT_PATH&gt; et &lt;DOCKER_TLS_VERIFY&gt;.
-
             </li>
             <li>
             Remplacez l'environnement Docker local en définissant les variables suivantes pour vous connecter à {{site.data.keyword.containerlong_notm}} :
@@ -411,14 +410,14 @@ Avant de commencer, configurez l'interface de ligne de commande {{site.data.keyw
 
       <p>Copiez les valeurs fournies pour les variables d'environnement suivantes : &lt;DOCKER_HOST&gt;, &lt;DOCKER_CERT_PATH&gt; et &lt;DOCKER_TLS_VERIFY&gt;.</p>
       </li>
-      <li>  Remplacez l'environnement Docker local en définissant les variables suivantes pour vous connecter à {{site.data.keyword.containershort_notm}} :<ul>
+      <li>  Remplacez l'environnement Docker local en définissant les variables suivantes pour vous connecter à {{site.data.keyword.containershort_notm}} :
+        <ul>
            <li><pre class="codeblock">export DOCKER_HOST=&lt;your_host_value&gt;</pre></li>
            <li><pre class="codeblock">export DOCKER_CERT_PATH=&lt;your_cert_path_value&gt;</pre></li>
            <li><pre class="codeblock">export DOCKER_TLS_VERIFY=1</pre></li>
         </ul>
 
-          <p><b>Remarque</b> : Cette option ne prend en charge que certaines commandes Docker.
-            </p>
+          <p><b>Remarque</b> : Cette option ne prend en charge que certaines commandes Docker.</p>
      </li>
     </ol>
 
@@ -458,6 +457,6 @@ Avant de commencer, configurez l'interface de ligne de commande {{site.data.keyw
 Créez et déployez un flux de messages en suivant les instructions décrites dans IBM Integration Bus Knowledge Center.
 {:shortdesc}
 
-Pour toute information sur la création d'un flux de messages, voir [How do I create and manage message flows? ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www.ibm.com/support/knowledgecenter/SSMKHH_10.0.0/com.ibm.etools.mft.doc/aa40150_.htm){: new_window}.
+Pour toute information sur la création d'un flux de messages, voir [How do I create and manage message flows? ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](http://www.ibm.com/support/knowledgecenter/SSMKHH_10.0.0/com.ibm.etools.mft.doc/aa40150_.htm){: new_window}.
 
-Pour toute information sur le déploiement d'un flux de messages, voir [How do I deploy and configure message flows? ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www.ibm.com/support/knowledgecenter/SSMKHH_10.0.0/com.ibm.etools.mft.doc/aa40180_.htm){: new_window}.
+Pour toute information sur le déploiement d'un flux de messages, voir [How do I deploy and configure message flows? ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](http://www.ibm.com/support/knowledgecenter/SSMKHH_10.0.0/com.ibm.etools.mft.doc/aa40180_.htm){: new_window}.

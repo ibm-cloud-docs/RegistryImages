@@ -6,7 +6,7 @@ Imágenes públicas de contenedor de IBM
 
     {: .navgroup id="learn"}
     index.md
- {: .navgroup-end}
+    {: .navgroup-end}
     
     {: .navgroup id="reference"}
     {: .topicgroup}
@@ -14,7 +14,7 @@ Imágenes públicas de contenedor de IBM
         [Referencia de Dockerfile](http://docs.docker.com/engine/reference/builder/)
         [Usar el supervisor con Docker](https://docs.docker.com/engine/admin/using_supervisord/)
         [Referencia de la CLI de Registry](../../cli/plugins/registry/index.html)
- {: .navgroup-end}
+    {: .navgroup-end}
     
     {: .navgroup id="howto"}
     ibm-backup-restore/index.md
@@ -24,4 +24,4 @@ Imágenes públicas de contenedor de IBM
     ibmnode/index.md
     ibm-node-strong-pm/index.md
     ibm-websphere-extreme-scale/index.md
- {: .navgroup-end}
+    {: .navgroup-end}

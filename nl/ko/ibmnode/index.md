@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-26"
+lastupdated: "2017-11-06"
 
 ---
 
@@ -35,14 +35,14 @@ lastupdated: "2017-10-26"
     **참고:** IBM Node SDK의 여러 다른 버전을 실행할 수 있도록 ibmnode 이미지는 다른 태그와 함께 지원됩니다.
 
     <table>
-    <caption> 표 1. 여러 다른 SDK 버전의 태그</caption>
+    <caption> 표 1. 여러 다른 SDK 버전의 태그 </caption>
       <tr>
         <th> 태그 </th>
         <th> 설명 </th>
       </tr>
       <tr>
         <td> ibmnode:latest </td>
-        <td> 최신 버전의 IBM Node, ibmnode:v4를 사용하는 것과 동일</td>
+        <td> 최신 버전의 IBM Node, ibmnode:v4를 사용하는 것과 동일 </td>
       </tr>
       <tr>
         <td> ibmnode:v4 </td>
@@ -127,7 +127,7 @@ lastupdated: "2017-10-26"
     ```
     {: pre}
 
-    **팁:** `bx ic namespace get`을 실행하여 네임스페이스 정보를 검색하십시오. _registry.DomainName_을 Dockerfile에서 이전에 사용한 동일한 영역으로 설정하십시오.
+    **팁:** `bx ic namespace get`을 실행하여 네임스페이스 정보를 검색하십시오.  _registry.DomainName_을 Dockerfile에서 이전에 사용한 동일한 영역으로 설정하십시오.
 
     **참고:** \*이 명령에서 [{{site.data.keyword.containershort_notm}}에 로그인](/docs/containers/container_cli_cfic_install.html#container_cli_login)할 때 `bx ic`를 `docker`로 바꾸고 고유 Docker 명령을 사용하도록 환경 변수를 설정할 수 있습니다. 이 주제에서 별표(*)로 표시된 모든 단계에서 고유 Docker 명령을 사용할 수 있습니다.
 

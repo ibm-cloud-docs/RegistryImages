@@ -2,9 +2,9 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-10-25"
+lastupdated: "2017-11-06"
 
-  ---
+---
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
@@ -34,7 +34,8 @@ Después de crear una solución de integración, puede utilizar la imagen **ibm-
 ## Qué incluye
 {: #whats_included}
 
-Esta imagen de IBM Integration Bus contiene el paquete de software para IBM Integration Bus for Developers Versión 10 \(también conocido como Developer Edition\), que es una versión con todas las funciones del producto que puede utilizar para el desarrollo y la prueba de unidad. Puede descargar esta versión de forma gratuita y puede utilizarla dentro de los términos de la licencia.{:shortdesc}
+Esta imagen de IBM Integration Bus contiene el paquete de software para IBM Integration Bus for Developers Versión 10 \(también conocido como Developer Edition\), que es una versión con todas las funciones del producto que puede utilizar para el desarrollo y la prueba de unidad. Puede descargar esta versión de forma gratuita y puede utilizarla dentro de los términos de la licencia.
+{:shortdesc}
 
 IBM Integration Bus for Developers Versión 10.0 está disponible en sistemas operativos Windows™ de 64 bits y sistemas operativos Linux™ en x86-64. Todos los requisitos previos del producto se incluyen en el paquete de descarga.
 
@@ -111,7 +112,7 @@ Suministrar un contenedor Docker en {{site.data.keyword.Bluemix_notm}}, basándo
       <li>LICENSE con un valor <i>accept</i>
       <li>NODENAME con un valor &lt;MYNODE&gt; &lpar;donde &lt;MYNODE&gt; es el nombre de nodo elegido&rpar;</li>
       <li>LOG_LOCATIONS con un valor <i>/var/log/syslog</i>
- </ul>
+    </ul>
 
     **Nota**: Si no especifica valores para propiedades LICENSE y NODENAME, el contenedor se crea pero no se inicia.
 
@@ -160,7 +161,7 @@ Después de desplegar el contenedor que ejecuta IBM Integration Bus en {{site.da
 
     ```
     bx ic exec -it <nombre_contenedor> /bin/bash
- ```
+    ```
     {: pre}
 
     donde *nombre_contenedor* es el nombre del contenedor.
@@ -170,7 +171,7 @@ Después de desplegar el contenedor que ejecuta IBM Integration Bus en {{site.da
     ```
     $ bx ic exec -it iib /bin/bash
     (IIB_10:)iibuser@instance-0098858e:/$
- ```
+    ```
     {: screen}
 
 5.  Inicialice el entorno ejecutando el mandato **mqsiprofile**, tal como se describe en [Entorno de mandatos: sistemas Linux y UNIX™ ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](http://www.ibm.com/support/knowledgecenter/SSMKHH_9.0.0/com.ibm.etools.mft.doc/an26230_.htm){: new_window}.
@@ -189,7 +190,7 @@ Después de desplegar el contenedor que ejecuta IBM Integration Bus en {{site.da
     (IIB_10:)iibuser@instance-0098858e:/$ echo $<MQSI_WORKPATH>
     /var/mqsi
     (IIB_10:)iibuser@instance-0098858e:/$
- ```
+    ```
     {: screen}
 
 6.  Ejecute el mandato **mqsilist** para mostrar el estado de un nodo, que debe aparecer como `running`. Por ejemplo:
@@ -237,7 +238,7 @@ Elija una de las siguientes formas de supervisar los registros de IBM Integratio
 
         <ul>
         <li>Para utilizar la CLI de {{site.data.keyword.containerlong_notm}} CLI para gestionar contenedores en {{site.data.keyword.Bluemix_notm}} mientras sigue utilizando la CLI de Docker directamente para gestionar el host de Docker local, realice los siguientes pasos para configurar el entorno:
- <ol>
+           <ol>
              <li>
                <pre class="codeblock">bx login</pre>
              </li>
@@ -247,23 +248,23 @@ Elija una de las siguientes formas de supervisar los registros de IBM Integratio
            </ol>
         </li>
         <li>Para utilizar la CLI de Docker para gestionar contenedores en {{site.data.keyword.Bluemix_notm}}, siga estos pasos:
- <ol>
+          <ol>
             <li>
               <pre class="codeblock">bx login</pre>
             </li>
             <li>
               <pre class="codeblock">bx ic init</pre>
                Copie los valores que se proporcionan para las siguientes variables de entorno: &lt;DOCKER_HOST&gt;, &lt;DOCKER_CERT_PATH&gt; y &lt;DOCKER_TLS_VERIFY&gt;.
- </li>
+            </li>
             <li>
             Altere temporalmente el entorno de Docker local estableciendo las siguientes variables para conectarse a {{site.data.keyword.containerlong_notm}}:
- <ul>
+               <ul>
                  <li><pre class="codeblock">export DOCKER_HOST=&lt;valor_host&gt;</pre></li>
                  <li><pre class="codeblock">export DOCKER_CERT_PATH=&lt;valor_via_acceso_cert&gt;</pre></li>
                  <li><pre class="codeblock">export DOCKER_TLS_VERIFY=1</pre></li>
                </ul>
                 <b>Nota</b>: Esta opción solamente da soporte a algunos mandatos de Docker.
-               </li>
+            </li>
           </ol>
         </li>
       </ul>
@@ -328,7 +329,7 @@ Siga estos pasos para conectar un navegador al host, que ha expuesto en [Iniciac
 
     ```
     http://<IPPúblicaContenedorDocker>:4414
- ```
+    ```
     {: pre}
 
     donde *IPPúblicaContenedorDocker* es la IP pública del contenedor que ha comprobado en el paso anterior.
@@ -361,7 +362,7 @@ Antes de empezar, configure la CLI de {{site.data.keyword.containershort_notm}} 
 
     ```
     bx ic exec -it <nombre_contenedor> /bin/bash
- ```
+    ```
     {: pre}
 
     donde *nombre_contenedor* es el nombre del contenedor.
@@ -370,7 +371,7 @@ Antes de empezar, configure la CLI de {{site.data.keyword.containershort_notm}} 
 
     ```
     bx ic exec -it iib /bin/bash
- ```
+    ```
     {: screen}
 
     Puede suministrar mqsiprofile y ejecutar los mandatos a partir de este punto, en un shell dentro del contenedor.
@@ -381,7 +382,7 @@ Antes de empezar, configure la CLI de {{site.data.keyword.containershort_notm}} 
 
     ```
     bx ic exec iib <nombre_contenedor> /bin/bash -c mqsilist
- ```
+    ```
     {: screen}
 
 
@@ -407,7 +408,7 @@ Antes de empezar, configure la CLI de {{site.data.keyword.containershort_notm}} 
       <p>Copie los valores que se proporcionan para las siguientes variables de entorno: &lt;DOCKER_HOST&gt;, &lt;DOCKER_CERT_PATH&gt; y &lt;DOCKER_TLS_VERIFY&gt;.</p>
       </li>
       <li>  Altere temporalmente el entorno de Docker local estableciendo las siguientes variables para conectarse a {{site.data.keyword.containershort_notm}}:
- <ul>
+        <ul>
            <li><pre class="codeblock">export DOCKER_HOST=&lt;valor_host&gt;</pre></li>
            <li><pre class="codeblock">export DOCKER_CERT_PATH=&lt;valor_via_acceso_cert&gt;</pre></li>
            <li><pre class="codeblock">export DOCKER_TLS_VERIFY=1</pre></li>
@@ -421,7 +422,7 @@ Antes de empezar, configure la CLI de {{site.data.keyword.containershort_notm}} 
 
     ```
     docker exec -it <nombre_contenedor> /bin/bash
- ```
+    ```
     {: pre}
 
     donde *nombre_contenedor* es el nombre del contenedor.
@@ -430,7 +431,7 @@ Antes de empezar, configure la CLI de {{site.data.keyword.containershort_notm}} 
 
     ```
     docker exec -it iib /bin/bash
- ```
+    ```
     {: screen}
 
     Puede suministrar mqsiprofile y ejecutar los mandatos a partir de este punto, en un shell dentro del contenedor.
@@ -443,7 +444,7 @@ Antes de empezar, configure la CLI de {{site.data.keyword.containershort_notm}} 
 
     ```
     docker exec iib <nombre_contenedor> /bin/bash -c mqsilist
- ```
+    ```
     {: screen}
 
 

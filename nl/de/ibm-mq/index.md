@@ -46,9 +46,9 @@ Informationen zu den Features, die in {{site.data.keyword.IBM_notm}} MQ Advanced
 
 In der folgenden Tabelle sind die Beschränkungen für die kostenlose Nutzung des Images 'ibm-mq' in {{site.data.keyword.Bluemix_notm}} angegeben:
 
-| Umgebung| Beschränkungen für die kostenlose Nutzung |
+| Umgebung	| Beschränkungen für die kostenlose Nutzung |
 |-------------|-------------------------|
-| Entwicklung | Uneingeschränkte kostenlose Nutzung des Images 'ibm-mq' zur Erstellung von einzelnen Containern für die Entwicklung. |
+| Entwicklung	| Uneingeschränkte kostenlose Nutzung des Images 'ibm-mq' zur Erstellung von einzelnen Containern für die Entwicklung. |
 | Test | Uneingeschränkte kostenlose Nutzung des Images 'ibm-mq' zur Erstellung von einzelnen Containern für den Komponententest. In den [Lizenzinformationen](#ibm_mq_license ) finden Sie weitere Informationen darüber, welche Tests zulässig sind. |
 | Produktion | Die Nutzung der {{site.data.keyword.IBM_notm}} MQ Advanced for Developer-Lizenz im Produktionsbetrieb ist nicht zulässig. |
 
@@ -227,7 +227,6 @@ Sie sind jetzt bereit, IBM MQ zu verwalten.
 {: #ibm_mq_containers_cli}
 
 Mit der {{site.data.keyword.containershort_notm}}-Befehlszeilenschnittstelle können Sie Verwaltungsbefehle von {{site.data.keyword.IBM_notm}} MQ direkt in einem Container ausführen.
-
 
 Führen Sie die folgenden Schritte aus, um ein Terminal für die Ausführung von `bx ic`-Befehlen zur Verwaltung von IBM MQ zu konfigurieren:
 

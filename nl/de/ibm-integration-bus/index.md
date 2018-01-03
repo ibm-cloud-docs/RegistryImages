@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-10-25"
+lastupdated: "2017-11-06"
 
 ---
 
@@ -34,9 +34,10 @@ Wenn Sie eine Integrationslösung erstellt haben, können Sie das Image **ibm-in
 ## Enthaltene Elemente
 {: #whats_included}
 
-Das Image 'IBM Integration Bus' enthält das Softwarepaket für IBM Integration Bus for Developers Version 10 \(auch als Developer Edition bezeichnet\). Dabei handelt es sich um eine Produktversion mit vollem Funktionsumfang, die Sie für die Entwicklung und für Komponententests verwenden können. Sie können diese Version kostenlos herunterladen und sie gemäß den Lizenzbedingungen nutzen.{:shortdesc}
+Das Image 'IBM Integration Bus' enthält das Softwarepaket für IBM Integration Bus for Developers Version 10 \(auch als Developer Edition bezeichnet\). Dabei handelt es sich um eine Produktversion mit vollem Funktionsumfang, die Sie für die Entwicklung und für Komponententests verwenden können. Sie können diese Version kostenlos herunterladen und sie gemäß den Lizenzbedingungen nutzen.
+{:shortdesc}
 
-IBM Integration Bus for Developers Version 10.0 ist für Windows™-64-Bit-Betriebssystemen und auf Linux™ on x86-64-Betriebssystemen verfügbar. Alle Produktvoraussetzungen sind im Downloadpaket enthalten. 
+IBM Integration Bus for Developers Version 10.0 ist für Windows™-64-Bit-Betriebssystemen und auf Linux™ on x86-64-Betriebssystemen verfügbar. Alle Produktvoraussetzungen sind im Downloadpaket enthalten.
 
 Informationen zu den Features, die in IBM Integration Bus for Developers enthalten sind, finden Sie unter [IBM Integration Bus im IBM Knowledge Center ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](http://www.ibm.com/support/knowledgecenter/SSMKHH_10.0.0/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm){: new_window}.
 
@@ -46,11 +47,12 @@ Der Zugriff auf die Developer Edition ist über die [IBM Integration Bus for Dev
 ## Nutzungsbeschränkungen
 {: #usage}
 
-In der folgenden Tabelle sind die Beschränkungen für die kostenlose Nutzung des Images **ibm-integration-bus** in {{site.data.keyword.Bluemix_notm}} angegeben.{:shortdesc}
+In der folgenden Tabelle sind die Beschränkungen für die kostenlose Nutzung des Images **ibm-integration-bus** in {{site.data.keyword.Bluemix_notm}} angegeben.
+{:shortdesc}
 
 **Anmerkung**: Die Preisstruktur für das Image **ibm-integration-bus** ist unabhängig von der Preisstruktur für die Container, die Sie in {{site.data.keyword.Bluemix_notm}} verwenden.
 
-|Umgebung|Beschränkungen für die kostenlose Nutzung |
+|Umgebung|Beschränkungen für die kostenlose Nutzung|
 |-----------|-----------------------|
 |Entwicklung|**Uneingeschränkte** kostenlose Nutzung des Images **ibm-integration-bus** zur Erstellung von einzelnen Containern für die Entwicklung und den Komponententest.|
 |Produktion|Developer Edition ist auf die Verarbeitung einer Transaktion pro Sekunde begrenzt. Der Einsatz in einer Produktionsumgebung wird nicht unterstützt.|
@@ -96,7 +98,7 @@ Richten Sie einen Docker-Container in {{site.data.keyword.Bluemix_notm}} ein, de
 
   Führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich bei {{site.data.keyword.Bluemix_notm}} an. 
+1.  Melden Sie sich bei {{site.data.keyword.Bluemix_notm}} an.
 2.  Wählen Sie im Katalog **Container** und dann das Image **ibm-integration-bus** aus, aus dem Sie den Container erstellen wollen.
 3.  Wählen Sie **Einzeln** aus, um eine einzelne Instanz eines Containers zu erstellen, die für Entwicklungs- und Testzwecke verwendet werden kann.
 4.  Geben Sie den Namen des Containers ein, z. B. `iib`.
@@ -235,7 +237,8 @@ Wählen Sie eine der folgenden Möglichkeiten aus, um IBM Integration Bus-Protok
        Konfigurieren Sie Ihr Terminal.
 
         <ul>
-        <li>Führen Sie die folgenden Schritte zum Einrichten der Umgebung aus, um die {{site.data.keyword.containerlong_notm}}-Befehlszeilenschnittstelle zum Verwalten von Containern in {{site.data.keyword.Bluemix_notm}} zu verwenden, während Sie die Docker-Befehlszeilenschnittstelle weiterhin direkt zum Verwalten des lokalen Docker-Hosts verwenden:<ol>
+        <li>Führen Sie die folgenden Schritte zum Einrichten der Umgebung aus, um die {{site.data.keyword.containerlong_notm}}-Befehlszeilenschnittstelle zum Verwalten von Containern in {{site.data.keyword.Bluemix_notm}} zu verwenden, während Sie die Docker-Befehlszeilenschnittstelle weiterhin direkt zum Verwalten des lokalen Docker-Hosts verwenden:
+           <ol>
              <li>
                <pre class="codeblock">bx login</pre>
              </li>
@@ -260,7 +263,8 @@ Wählen Sie eine der folgenden Möglichkeiten aus, um IBM Integration Bus-Protok
                  <li><pre class="codeblock">export DOCKER_CERT_PATH=&lt;ihr_wert_für_den_zertifikatspfad&gt;</pre></li>
                  <li><pre class="codeblock">export DOCKER_TLS_VERIFY=1</pre></li>
                </ul>
-                <b>Anmerkung</b>: Durch diese Option werden nur einige Docker-Befehle unterstützt.</li>
+                <b>Anmerkung</b>: Durch diese Option werden nur einige Docker-Befehle unterstützt.
+            </li>
           </ol>
         </li>
       </ul>
@@ -401,10 +405,10 @@ Konfigurieren Sie zuvor die {{site.data.keyword.containershort_notm}}-Befehlszei
      <li>
        <pre class="codeblock">bx ic init</pre>
 
-      <p>Kopieren Sie die Werte, die für die folgenden Umgebungsvariablen zur Verfügung gestellt werden: &lt;DOCKER_HOST&gt;, &lt;DOCKER_CERT_PATH&gt; und &lt;DOCKER_TLS_VERIFY&gt;. </p>
+      <p>Kopieren Sie die Werte, die für die folgenden Umgebungsvariablen zur Verfügung gestellt werden: &lt;DOCKER_HOST&gt;, &lt;DOCKER_CERT_PATH&gt; und &lt;DOCKER_TLS_VERIFY&gt;.</p>
       </li>
       <li>  Überschreiben Sie die lokale Docker-Umgebung, indem Sie die folgenden Variablen festlegen, um eine Verbindung zu {{site.data.keyword.containershort_notm}} herzustellen:
-              <ul>
+        <ul>
            <li><pre class="codeblock">export DOCKER_HOST=&lt;ihr_hostwert&gt;</pre></li>
            <li><pre class="codeblock">export DOCKER_CERT_PATH=&lt;ihr_wert_für_den_zertifikatspfad&gt;</pre></li>
            <li><pre class="codeblock">export DOCKER_TLS_VERIFY=1</pre></li>

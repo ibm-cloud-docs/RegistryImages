@@ -204,7 +204,7 @@ Cette procédure couvre les options suivantes pour déploiement de l'image depui
 
 3.  Ouvrez la page Data Cache Members et sous la colonne **Action** de ce membre, sélectionnez **Join**.
 4.  Entrez l'adresse IP publique demandée pour le premier membre, la clé secrète du premier membre et un nom unique pour ce membre dans le groupe de caches.
-5.  Cliquez sur **Join** et attendez que la tâche soit exécutée. Lorsque la tâche est terminée, tous les membres s'affichent sur la page Data Cache Members. 
+5.  Cliquez sur **Join** et attendez que la tâche soit exécutée. Lorsque la tâche est terminée, tous les membres s'affichent sur la page Data Cache Members.
 
 ## Exécution d'une mise à jour en continu 
 {: #rolling_upgrade}

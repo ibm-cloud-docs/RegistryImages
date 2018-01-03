@@ -3,9 +3,9 @@
 copyright:
   years: 2015, 2017
 
-  lastupdated: "2017-10-30"
+lastupdated: "2017-10-30"
 
-  ---
+---
 
 
 {:shortdesc: .shortdesc}
@@ -35,7 +35,7 @@ Para desarrollar soluciones de mensajería y aplicaciones {{site.data.keyword.IB
 
 Esta imagen ibm-mq contiene el paquete de software para {{site.data.keyword.IBM_notm}} MQ Advanced for Developers Versión 9.0.x, que es una versión con todas las funciones del producto que puede utilizar para el desarrollo y la prueba de unidad. Puede descargar esta versión de forma gratuita y puede utilizarla dentro de los términos de la licencia.
 
-{{site.data.keyword.IBM_notm}} MQ Advanced for Developers está disponible en sistemas operativos Windows de 64 bits y sistemas operativos Linux on x86-64. Todos los requisitos previos del producto se incluyen en el paquete de descarga.Para obtener más información, consulte [Descargas de IBM MQ ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](http://www-03.ibm.com/software/products/lv/ibm-mq-advanced-for-developers){: new_window}.
+{{site.data.keyword.IBM_notm}} MQ Advanced for Developers está disponible en sistemas operativos Windows de 64 bits y sistemas operativos Linux on x86-64. Todos los requisitos previos del producto se incluyen en el paquete de descarga. Para obtener más información, consulte [Descargas de IBM MQ ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](http://www-03.ibm.com/software/products/lv/ibm-mq-advanced-for-developers){: new_window}.
 
 Para obtener información sobre las características que se incluyen en {{site.data.keyword.IBM_notm}} MQ Advanced for Developers, consulte [IBM MQ ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm){: new_window}.
 
@@ -50,7 +50,7 @@ En la siguiente tabla se muestran las restricciones de uso que se aplican al uso
 |-------------|-------------------------|
 | Desarrollo	| Uso gratuito ilimitado de la imagen ibm-mq para crear contenedores únicos para el desarrollo. |
 | Prueba | Uso gratuito ilimitado de la imagen ibm-mq para crear contenedores únicos para pruebas de unidad. Consulte la [Información de licencia](#ibm_mq_license ) para obtener más información sobre qué pruebas se permiten. |
-| Producción| La licencia de {{site.data.keyword.IBM_notm}} MQ Advanced for Developer no permite su uso para producción. |
+| Producción | La licencia de {{site.data.keyword.IBM_notm}} MQ Advanced for Developer no permite su uso para producción. |
 
 **Nota:** El precio de la imagen ibm-mq es independiente del precio de los contenedores que utiliza en {{site.data.keyword.Bluemix_notm}}.
 
@@ -107,7 +107,7 @@ Para ver la información y los artículos más recientes del blog sobre IBM MQ, 
 
 Siga los siguientes pasos para suministrar un contenedor Docker en {{site.data.keyword.Bluemix_notm}} basado en la imagen ibm-mq proporcionada por {{site.data.keyword.IBM_notm}}:
 
-1.	Inicie una sesión en {{site.data.keyword.Bluemix_notm}}.Inicie sesión con su ID de {{site.data.keyword.Bluemix_notm}}.
+1.	Inicie una sesión en {{site.data.keyword.Bluemix_notm}}. Inicie sesión con su ID de {{site.data.keyword.Bluemix_notm}}.
 2.	En el catálogo, seleccione **Contenedores** y seleccione la imagen *ibm-mq*.
 3.	Seleccione **Único** para crear un contenedor de instancia única, que puede utilizarse para fines de desarrollo y pruebas.
 4.	Especifique el nombre del contenedor; por ejemplo, mq.

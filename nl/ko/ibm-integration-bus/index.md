@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-10-25"
+lastupdated: "2017-11-06"
 
 ---
 
@@ -28,7 +28,7 @@ IBM Integration Bus for Developers에는 고유 통합 솔루션의 개발을 �
 
 통합 솔루션을 작성한 후 **ibm-integration-bus** 이미지를 사용하여 {{site.data.keyword.Bluemix_notm}}에서 단일 컨테이너를 프로비저닝할 수 있습니다. 그런 다음 터미널에서 또는 웹 UI를 사용하여 통합 솔루션을 이 컨테이너에 배치할 수 있습니다.
 
-**참고**: 개발 및 단위 테스트에만 **ibm-integration-bus** 이미지를 사용할 수 있습니다. 또한 이미지를 사용하여 제품을 탐색하고 튜토리얼을 통해 배우며 IBM Integration Bus가 조직에 제공할 수 있는 기여를 평가할 수 있습니다. 
+**참고**: 개발 및 단위 테스트에만 **ibm-integration-bus** 이미지를 사용할 수 있습니다. 또한 이미지를 사용하여 제품을 탐색하고 튜토리얼을 통해 배우며 IBM Integration Bus가 조직에 제공할 수 있는 기여를 평가할 수 있습니다.
 
 
 ## 포함된 항목
@@ -37,7 +37,7 @@ IBM Integration Bus for Developers에는 고유 통합 솔루션의 개발을 �
 이 IBM Integration Bus 이미지에는 개발 및 단위 테스트에 사용할 수 있는 제품의 전기능 버전인 IBM Integration Bus for Developers 버전 10\(Developer Edition이라고도 함\)의 소프트웨어 패키지가 포함되어 있습니다. 무료로 이 버전을 다운로드할 수 있으며 라이센스 조건에 따라 자유롭게 사용할 수 있습니다.
 {:shortdesc}
 
-IBM Integration Bus for Developers 버전 10.0은 Windows™ 64비트 운영 체제 및 x86-64 운영 체제용 Linux™에서 사용할 수 있습니다. 모든 제품 필수 소프트웨어는 다운로드 패키지에 포함되어 있습니다. 
+IBM Integration Bus for Developers 버전 10.0은 Windows™ 64비트 운영 체제 및 x86-64 운영 체제용 Linux™에서 사용할 수 있습니다. 모든 제품 필수 소프트웨어는 다운로드 패키지에 포함되어 있습니다.
 
 IBM Integration Bus for Developers에 포함된 기능에 대한 정보는 [IBM Knowledge Center의 IBM Integration Bus ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](http://www.ibm.com/support/knowledgecenter/SSMKHH_10.0.0/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm){: new_window}를 참조하십시오.
 
@@ -54,8 +54,8 @@ IBM Integration Bus for Developers에 포함된 기능에 대한 정보는 [IBM 
 
 |환경|무료 사용량 제한사항|
 |-----------|-----------------------|
-|개발|개발 및 단위 테스트용 단일 컨테이너를 작성하기 위해 **ibm-integration-bus** 이미지를 **무제한**으로 무료 사용합니다. |
-|프로덕션 |Developer Edition은 초당 하나의 트랜잭션 처리로 제한되며 프로덕션 환경에서 사용이 지원되지 않습니다. |
+|개발|개발 및 단위 테스트용 단일 컨테이너를 작성하기 위해 **ibm-integration-bus** 이미지를 **무제한**으로 무료 사용합니다.|
+|프로덕션|Developer Edition은 초당 하나의 트랜잭션 처리로 제한되며 프로덕션 환경에서 사용이 지원되지 않습니다.|
 {: caption="표 1. ibm-integration-bus 이미지의 무료 사용량 제한사항" caption-side="top"}
 
 
@@ -71,14 +71,13 @@ IBM Integration Bus for Developers에 포함된 기능에 대한 정보는 [IBM 
     **참고**: 라이센스에서 추가 배포를 허용하지 않습니다. 이미지로 된 IBM Integration Bus는 개발 및 단위 테스트를 위한 사용량을 제한합니다.
 
 
-
 ## 시작하기
 {: #get_started}
 
 {{site.data.keyword.Bluemix_notm}} 카탈로그에서 **ibm-integration-bus** 이미지를 사용하거나 자체 프로덕션 라이센스 이미지를 선택하여 단일 컨테이너를 작성하십시오.
 {:shortdesc}
 
-**중요**: 시작하기 전에 **ibm-integration-bus** 이미지의 [사용량 제한사항](#usage)을 검토하십시오. 
+**중요**: 시작하기 전에 **ibm-integration-bus** 이미지의 [사용량 제한사항](#usage)을 검토하십시오.
 
 **참고**: 별표(\*)로 표시된 모든 단계에서 고유 Docker 명령을 사용할 수 있습니다.
 
@@ -99,15 +98,15 @@ IBM Integration Bus for Developers에 포함된 기능에 대한 정보는 [IBM 
 
   다음 단계를 완료하십시오.
 
-1.  {{site.data.keyword.Bluemix_notm}}에 로그인하십시오. 
+1.  {{site.data.keyword.Bluemix_notm}}에 로그인하십시오.
 2.  카탈로그에서 **컨테이너**를 선택하고 컨테이너를 빌드할 **ibm-integration-bus** 이미지를 선택하십시오.
 3.  단일 인스턴스 컨테이너를 작성하려면 **단일**을 선택하십시오. 이는 개발 및 테스트용도로 사용될 수 있습니다.
-4.  컨테이너의 이름을 입력하십시오(예: `iib`). 
+4.  컨테이너의 이름을 입력하십시오(예: `iib`).
 5.  컨테이너의 크기를 선택하십시오.
-6.  **공인 IP 주소** 필드에서 *공인 IP 바인드*를 선택하십시오. 
-7.  **공용 포트** 필드에 `4414, 7800`을 지정하십시오. 
-8.  **고급** 옵션을 펼치고 **새 환경 변수 추가**를 클릭하십시오. 
-9.  다음 환경 변수를 추가하십시오. 
+6.  **공인 IP 주소** 필드에서 *공인 IP 바인드*를 선택하십시오.
+7.  **공용 포트** 필드에 `4414, 7800`을 지정하십시오.
+8.  **고급** 옵션을 펼치고 **새 환경 변수 추가**를 클릭하십시오.
+9.  다음 환경 변수를 추가하십시오.
 
     <ul>
       <li>값이 <i>accept</i>인 LICENSE
@@ -118,7 +117,7 @@ IBM Integration Bus for Developers에 포함된 기능에 대한 정보는 [IBM 
     **참고**: LICENSE 및 NODENAME 특성의 값을 지정하지 않으면 컨테이너가 작성되지만 시작되지는 않습니다.
 
     LOG_LOCATIONS 특성은 {{site.data.keyword.Bluemix_notm}} UI를 통해 노출할 컨테이너에 로그를 지정합니다.
-10. **작성**를 클릭한 다음 컨테이너가 실행을 시작하기를 기다리십시오. 
+10. **작성**를 클릭한 다음 컨테이너가 실행을 시작하기를 기다리십시오.
 
 
 ## 컨테이너와 IBM Integration Bus 설치 유효성 검증
@@ -204,7 +203,7 @@ IBM Integration Bus를 실행하는 컨테이너가 {{site.data.keyword.Bluemix_
     ```
     {: screen}
 
-이제 컨테이너가 실행되고 있으며 지원되는 방법을 사용하여 통합 솔루션을 컨테이너에 배치할 수 있습니다. 
+이제 컨테이너가 실행되고 있으며 지원되는 방법을 사용하여 통합 솔루션을 컨테이너에 배치할 수 있습니다.
 
 
 ## 컨테이너의 IBM Integration Bus 로그 모니터
@@ -226,7 +225,7 @@ IBM Integration Bus를 실행하는 컨테이너가 {{site.data.keyword.Bluemix_
     <ol>
        <li>컨테이너 대시보드에서 모니터할 컨테이너를 선택하십시오.</li>
        <li><b>모니터링 및 로깅</b>을 선택하십시오.</li>
-       <li><b>로깅</b>을 선택하십시오. 대시보드에 로그 항목이 나열됩니다. </li>
+       <li><b>로깅</b>을 선택하십시오. 대시보드에 로그 항목이 나열됩니다.</li>
        <li>로그 보기를 사용자 정의하려면 로깅 페이지에서 <b>고급 보기</b>를 선택하여 Kibana를 여십시오. 시작하기에 대한 자세한 정보는
            <a href="https://console.bluemix.net/docs/containers/container_planning.html#container_planning_monlog" target="_blank">모니터링 및 로깅</a>을 확인하십시오.
        </li>
@@ -334,7 +333,7 @@ IBM Integration Bus 웹 UI를 실행하거나 터미널에서 명령을 실행�
     ```
     {: pre}
 
-    여기서 *DockerContainerPublicIP*는 이전 단계에서 확인한 컨테이너의 공인 IP입니다. 
+    여기서 *DockerContainerPublicIP*는 이전 단계에서 확인한 컨테이너의 공인 IP입니다.
 
 4.  브라우저에서 웹 사용자 인터페이스가 열리고 IBM Integration Bus를 관리할 수 있게 됩니다.
 
@@ -407,17 +406,16 @@ Docker CLI를 사용하여 컨테이너에서 직접 IBM Integration Bus 관리 
      <li>
        <pre class="codeblock">bx ic init</pre>
 
-      <p>               환경 변수 &lt;DOCKER_HOST&gt;, &lt;DOCKER_CERT_PATH&gt; 및 &lt;DOCKER_TLS_VERIFY&gt;에 제공된 값을 복사하십시오.
-            </p>
+      <p>               환경 변수 &lt;DOCKER_HOST&gt;, &lt;DOCKER_CERT_PATH&gt; 및 &lt;DOCKER_TLS_VERIFY&gt;에 제공된 값을 복사하십시오.</p>
       </li>
-      <li>  {{site.data.keyword.containershort_notm}}에 연결하기 위해 다음 변수를 설정하여 로컬 Docker 환경을 대체하십시오. <ul>
+      <li>  {{site.data.keyword.containershort_notm}}에 연결하기 위해 다음 변수를 설정하여 로컬 Docker 환경을 대체하십시오.
+        <ul>
            <li><pre class="codeblock">export DOCKER_HOST=&lt;your_host_value&gt;</pre></li>
            <li><pre class="codeblock">export DOCKER_CERT_PATH=&lt;your_cert_path_value&gt;</pre></li>
            <li><pre class="codeblock">export DOCKER_TLS_VERIFY=1</pre></li>
         </ul>
 
-          <p><b>참고</b>: 이 옵션에서는 일부 Docker 명령만 지원됩니다.
-            </p>
+          <p><b>참고</b>: 이 옵션에서는 일부 Docker 명령만 지원됩니다.</p>
      </li>
     </ol>
 

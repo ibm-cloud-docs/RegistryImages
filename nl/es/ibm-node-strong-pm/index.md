@@ -4,7 +4,7 @@ copyright:
   years: 2015, 2017
 lastupdated: "2017-10-30"
 
-  ---
+---
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
@@ -64,14 +64,14 @@ Antes de empezar, instale Node.js y el gestor de paquetes de nodos \(npm\) en la
 
     ```
     npm install -g strongloop
- ```
+    ```
     {: pre}
 
 2.  Después de instalar StrongLoop, ejecute StrongLoop Arc.
 
     ```
     slc arc
- ```
+    ```
     {: pre}
 
 3.  Cuando se le solicite, regístrese o inicie sesión en StrongLoop.
@@ -95,7 +95,7 @@ Después de conectarse al Gestor de procesos de StrongLoop que se ejecuta en el 
 
     ```
     app.listen(process.env.PORT || 3001);
- ```
+    ```
     {: pre}
 
 3.  Despliegue la app siguiendo las instrucciones de la interfaz de usuario de Arc. Seleccione el Gestor de procesos que ha configurado para desplegar la app en {{site.data.keyword.Bluemix_notm}}.
@@ -109,7 +109,7 @@ Después de conectarse al Gestor de procesos de StrongLoop que se ejecuta en el 
 
         ```
         192.0.2.26:3001
- ```
+        ```
         {: pre}
 
     3.  Repita estos pasos para cada app que ha desplegado en {{site.data.keyword.Bluemix_notm}}.
@@ -119,8 +119,7 @@ para obtener más información.
 ## Referencia del Dockerfile de **ibm-node-strong-pm** 
 {: #reference_dockerfile}
 
-Este Dockerfile se ha utilizado para crear la imagen **ibm-node-strong-pm** en el catálogo de {{site.data.keyword.Bluemix_notm}}. Esta información sirve únicamente como referencia.
-No se proporcionan los otros archivos incluidos en la versión de compilación de esta imagen.
+Este Dockerfile se ha utilizado para crear la imagen **ibm-node-strong-pm** en el catálogo de {{site.data.keyword.Bluemix_notm}}. Esta información sirve únicamente como referencia. No se proporcionan los otros archivos incluidos en la versión de compilación de esta imagen.
 
 ```
 FROM registry.ng.bluemix.net/ibmnode:latest
@@ -128,18 +127,18 @@ RUN useradd -ms /bin/bash strong-pm \
     && chown -R strong-pm:strong-pm /usr/local \
     && su strong-pm -c "npm install -g strong-pm && npm cache clear"
 
-  # Configurar algo parecido a un entorno
+# Configurar algo parecido a un entorno
 WORKDIR /home/strong-pm
 ENV HOME=/home/strong-pm PORT=3000
 
-  # Ejecutar como usuario sin privilegios dentro de un contenedor
+# Ejecutar como usuario sin privilegios dentro de un contenedor
 USER strong-pm
 
-  # Exponer puertos de strong-pm y de aplicación
+# Exponer puertos de strong-pm y de aplicación
 EXPOSE 8701
 EXPOSE 3001-3010
 
-  ENTRYPOINT ["/usr/local/bin/sl-pm", "--base", ".", "--listen", "8701"]
+ENTRYPOINT ["/usr/local/bin/sl-pm", "--base", ".", "--listen", "8701"]
 ```
 {: screen}
 
