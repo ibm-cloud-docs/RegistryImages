@@ -136,7 +136,7 @@ Puoi utilizzare una delle immagini **ibmliberty** come immagine principale per c
 Prima di iniziare, esamina la seguente procedura.
 
 -   Crea il tuo codice applicazione in un file WAR, EAR o OSGi.
--   Copia il file nella directory da cui desideri creare la tua immagine. 
+-   Copia il file nella directory da cui desideri creare la tua immagine.
 
 
 Per creare un'immagine con il tuo codice applicazione dall'immagine **ibmliberty**:

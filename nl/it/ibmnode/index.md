@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-26"
+lastupdated: "2017-11-06"
 
 ---
 
@@ -19,14 +19,14 @@ L'immagine pubblica {{site.data.keyword.IBM}} Node (**ibmnode**) viene fornita p
 
 **Nota:** l'immagine {{site.data.keyword.IBM_notm}} Node (**ibmnode**) non include un'applicazione Node.js di esempio. Quando distribuisci un contenitore da questa immagine, il tuo contenitore viene arrestato immediatamente dopo la sua creazione in quanto non esiste alcun processo di lunga durata. Per evitarlo, utilizza l'immagine {{site.data.keyword.IBM_notm}} Node (**ibmnode**) come immagine principale e crea la tua propria immagine in cui puoi aggiungere il tuo codice applicazione Node.js. Per ulteriori informazioni, vedi [Creazione di un'immagine da questa immagine fornita](#creating_image).
 
-# Come funziona{: #how_it_works}
+# Come funziona {: #how_it_works}
 
 Utilizza l'immagine {{site.data.keyword.IBM_notm}} Node (**ibmnode**) come immagine principale per creare la tua propria immagine con il tuo codice applicazione Node.js.
 {:shortdesc}
 
 **Nota:** prima di iniziare, esamina i termini di utilizzo per le immagini certificate da IBM nella sezione Utilizzo della [libreria Docker websphere-liberty![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno:")](https://github.com/docker-library/docs/tree/master/websphere-liberty){: new_window}.
 
-# Elementi inclusi{: #included}
+# Elementi inclusi {: #included}
 
 * Ubuntu 14.04
 * Pacchetti Python, Git e apt-get build-essential
@@ -35,10 +35,10 @@ Utilizza l'immagine {{site.data.keyword.IBM_notm}} Node (**ibmnode**) come immag
     **Nota:** l'immagine ibmnode è disponibile con diverse tag, così da permetterti di eseguire differenti versioni dell'SDK IBM Node.
 
     <table>
-    <caption> Tabella 1. Tag per le diverse versioni SDK</caption>
+    <caption> Tabella 1. Tag per le diverse versioni SDK </caption>
       <tr>
         <th> Tag </th>
-        <th> Descrizione</th>
+        <th> Descrizione </th>
       </tr>
       <tr>
         <td> ibmnode:latest </td>
@@ -59,7 +59,7 @@ Utilizza l'immagine {{site.data.keyword.IBM_notm}} Node (**ibmnode**) come immag
     </table>
 
 
-# Creazione di un'immagine da questa immagine fornita{: #creating_image}
+# Creazione di un'immagine da questa immagine fornita {: #creating_image}
 
 Puoi utilizzare l'immagine **ibmnode** come immagine principale per creare un'immagine secondaria che include il tuo codice applicazione. Utilizza il contenitore dell'applicazione di esempio `Hello World` con **ibmnode** e il modulo Express Node per creare un'immagine sul tuo computer. Aggiungi l'immagine al {{site.data.keyword.registrylong_notm}} privato della tua organizzazione e crea un contenitore con tale immagine. Puoi quindi utilizzare il Dockerfile dell'esempio Hello World per creare un'altra immagine con la tua applicazione.
 {:shortdesc}

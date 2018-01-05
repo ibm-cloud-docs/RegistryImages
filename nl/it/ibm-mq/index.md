@@ -28,7 +28,7 @@ L'immagine ibm-mq viene fornita per {{site.data.keyword.containershort}}. Includ
 
 Per sviluppare soluzioni di messaggistica e applicazioni {{site.data.keyword.IBM_notm}} MQ in {{site.data.keyword.Bluemix_notm}}, puoi distribuire l'immagine Docker ibm-mq nel {{site.data.keyword.containershort_notm}}. Quindi, puoi creare ed eseguire gestori code e utilizzare la IU web o un terminale per configurarli in modo da soddisfare i requisiti della tua soluzione di messaggistica o applicazione.
 
-**Nota:** puoi utilizzare l'immagine ibm-mq solo per lo sviluppo e la verifica di unità. Puoi anche utilizzare l'immagine per esplorare il prodotto, imparare dalle esercitazioni e valutare il contributo che {{site.data.keyword.IBM_notm}} MQ può fornire alla tua organizzazione. 
+**Nota:** puoi utilizzare l'immagine ibm-mq solo per lo sviluppo e la verifica di unità. Puoi anche utilizzare l'immagine per esplorare il prodotto, imparare dalle esercitazioni e valutare il contributo che {{site.data.keyword.IBM_notm}} MQ può fornire alla tua organizzazione.
 
 ## Elementi inclusi
 {: #ibm_mq_what}
@@ -46,11 +46,11 @@ Per informazioni sulle funzioni incluse in {{site.data.keyword.IBM_notm}} MQ Adv
 
 La seguente tabella mostra le restrizioni che si applicano all'utilizzo gratuito dell'immagine ibm-mq in {{site.data.keyword.Bluemix_notm}}:
 
-| Ambiente | Restrizioni di utilizzo gratuito |
+| Ambiente	| Restrizioni di utilizzo gratuito |
 |-------------|-------------------------|
-| Sviluppo | Utilizzo gratuito illimitato dell'immagine ibm-mq per la creazione di singoli contenitori per lo sviluppo. |
-| Test | Utilizzo gratuito illimitato dell'immagine ibm-mq per la creazione di singoli contenitori per la verifica di unità. Per ulteriori informazioni su quali verifiche sono consentite, vedi [Informazioni sulla licenza](#ibm_mq_license ).|
-| Produzione| La licenza di {{site.data.keyword.IBM_notm}} MQ Advanced for Developers non ne consente l'uso per la produzione. |
+| Sviluppo	| Utilizzo gratuito illimitato dell'immagine ibm-mq per la creazione di singoli contenitori per lo sviluppo. |
+| Test | Utilizzo gratuito illimitato dell'immagine ibm-mq per la creazione di singoli contenitori per la verifica di unità. Per ulteriori informazioni su quali verifiche sono consentite, vedi [Informazioni sulla licenza](#ibm_mq_license ). |
+| Produzione | La licenza di {{site.data.keyword.IBM_notm}} MQ Advanced for Developers non ne consente l'uso per la produzione. |
 
 **Nota:** il prezzo dell'immagine ibm-mq è indipendente dal prezzo dei contenitori che utilizzi in {{site.data.keyword.Bluemix_notm}}.
 
@@ -63,7 +63,7 @@ Informazioni sulle licenze:
 *	I Dockerfile e gli script associati sono concessi in licenza con la [Licenza Apache 2.0 ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](http://www.apache.org/licenses/LICENSE-2.0.html){: new_window}.
 * [Informazioni sulla licenza per {{site.data.keyword.IBM_notm}} MQ Advanced for Developers ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](http://www-03.ibm.com/software/sla/sladb.nsf/displaylis/973FA648A5DE42948525806E004CC757?OpenDocument){: new_window}.
 
-**Nota:** la licenza non consente un'ulteriore distribuzione. I termini per {{site.data.keyword.IBM_notm}} MQ nell'immagine limitano l'utilizzo per lo sviluppo e la verifica di unità. 
+**Nota:** la licenza non consente un'ulteriore distribuzione. I termini per {{site.data.keyword.IBM_notm}} MQ nell'immagine limitano l'utilizzo per lo sviluppo e la verifica di unità.
 
 
 ## Introduzione
@@ -111,7 +111,7 @@ Completa la seguente procedura per eseguire il provisioning di un contenitore Do
 2.	Dal catalogo, seleziona **Contenitori** e scegli l'immagine *ibm-mq*.
 3.	Seleziona **Singolo** per creare un singolo contenitore dell'istanza, che può essere utilizzato per scopi di sviluppo e verifica.
 4.	Immetti il nome del contenitore, ad esempio mq.
-5.	Seleziona la dimensione del contenitore. 
+5.	Seleziona la dimensione del contenitore.
 6.	Nel campo Indirizzo IP pubblico, seleziona **Richiedi ed esegui il bind dell'IP pubblico**.
 7.	Nel campo Porte pubbliche, specifica **1414/tcp, 9443/tcp**.
 8.	Espandi le Opzioni avanzate, fai clic su **Aggiungi una nuova variabile di ambiente** e immetti le seguenti variabili di ambiente: LICENSE e MQ_QMGR_NAME.
@@ -128,7 +128,7 @@ Completa la seguente procedura per eseguire il provisioning di un contenitore Do
     
     * (Facoltativo) Per impostazione predefinita, la console di {{site.data.keyword.IBM_notm}} MQ Web viene avviata nel contenitore. Per modificare il comportamento predefinito, imposta il valore della variabile di ambiente **MQ_DISABLE_WEB_CONSOLE** su *true*.
     
-        **Nota:** per utilizzare la console web, non impostare la variabile di ambiente *MQ_DISABLE_WEB_CONSOLE*. 
+        **Nota:** per utilizzare la console web, non impostare la variabile di ambiente *MQ_DISABLE_WEB_CONSOLE*.
 
     * (Facoltativo) Per visualizzare i log MQ attraverso la IU {{site.data.keyword.Bluemix_notm}}, imposta la variabile di ambiente **LOG_LOCATIONS** sul valore `/var/mqm/qmgr/QM_Name/errors/AMQERR01.LOG` dove *QM_Name* è il valore che hai impostato per la variabile di ambiente *MQ_QMGR_NAME*.
     
@@ -186,7 +186,7 @@ Completa la seguente procedura per verificare il setup e la configurazione di {{
 
 | Comando | Azione |
 |---------|---------|
-| dspmqver | Verificare la versione di IBM MQ e le informazioni di build.|
+| dspmqver | Verificare la versione di IBM MQ e le informazioni di build. |
 | dspmq | Controllare lo stato del gestore code in esecuzione nel contenitore. | 
 | runmqsc | Gestire le risorse MQ. |
 
@@ -307,4 +307,4 @@ Se vuoi personalizzare le impostazioni predefinite dello sviluppatore che vengon
 | MQ_TLS_KEYSTORE | Imposta questa variabile di ambiente sul percorso di un keystore PKCS#12 contenente il certificato che vuoi venga utilizzato dalla console web MQ e dal gestore code IBM MQ per le operazioni TLS. <br> Se questa variabile di ambiente è impostata, i canali dello sviluppatore creati verranno abilitati per TLS utilizzando la CipherSpec ‘TLS_RSA_WITH_AES_256_GCM_SHA384’. <br> **Nota:** devi rendere disponibile il file del keystore all'interno del tuo contenitore {{site.data.keyword.Bluemix_notm}}. Per fare ciò, puoi montare un volume contenente il tuo keystore quando crei il contenitore. |  |
 | MQ_TLS_PASSPHRASE | Imposta questa variabile di ambiente per impostare la password per il keystore specificato nella variabile di ambiente MQ_TLS_KEYSTORE. |  |
 | MQ_DEV | Imposta questa variabile di ambiente per controllare se vengono creati gli oggetti predefiniti di {{site.data.keyword.IBM_notm}} MQ Developer. | true |
-| MQ_DISABLE_WEB_CONSOLE | Imposta questa variabile di ambiente per disabilitare la configurazione e l'avvio della console web se vuoi conservare l'utilizzo della CPU/RAM del tuo contenitore.|  |
+| MQ_DISABLE_WEB_CONSOLE | Imposta questa variabile di ambiente per disabilitare la configurazione e l'avvio della console web se vuoi conservare l'utilizzo della CPU/RAM del tuo contenitore. |  |

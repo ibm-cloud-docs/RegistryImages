@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-26"
+lastupdated: "2017-11-06"
 
 ---
 
@@ -37,7 +37,7 @@ Use a imagem Nó {{site.data.keyword.IBM_notm}} (**ibmnode**) como um pai para c
     **Nota:** a imagem ibmnode está disponível com diferentes tags para que seja possível executar diferentes versões do IBM Node SDK.
 
     <table>
-    <caption> Tabela 1. Tags para diferentes versões do SDK</caption>
+    <caption> Tabela 1. Tags para diferentes versões do SDK </caption>
       <tr>
         <th> Marcação </th>
         <th> Descrição </th>
@@ -128,12 +128,13 @@ a região que você deseja usar.
 
 1.  Navegue de volta para o diretório **hellonode**.
 1.  Construa sua imagem e envie-a por push para o seu {{site.data.keyword.registryshort_notm}} privado.*
+
     ```
     bx ic build -t registry.<DomainName>/<namespace>/hellonode .
     ```
     {: pre}
 
-    **Dica:** execute `bx ic namespace get` para recuperar suas informações de namespace. Configure o _registry.DomainName_ para a mesma região que você usou anteriormente no Dockerfile.
+    **Dica:** execute `bx ic namespace get` para recuperar suas informações de namespace.  Configure o _registry.DomainName_ para a mesma região que você usou anteriormente no Dockerfile.
 
     **Nota:** \*neste comando, é possível substituir `bx ic` por `docker` quando estiver [conectado a {{site.data.keyword.containershort_notm}}](/docs/containers/container_cli_cfic_install.html#container_cli_login) e configurar suas variáveis de ambiente para usar comandos do Docker nativos. É possível usar comandos nativos do Docker em todas as etapas que estão marcadas com um asterisco (*) neste tópico.
 
@@ -152,7 +153,9 @@ a região que você deseja usar.
     {: pre}
 
     **Dica:** é possível ver seus endereços IP públicos executando `bx ic ip list`. Para solicitar um novo, execute `bx ic ip request`.
+
 1. Em um navegador, teste o app abrindo **<var class="varname">IPaddress</var>:3000**. A mensagem Hello World! será exibida.
+
 Agora que você criou a imagem hellonode, é possível modificar o Dockerfile para incluir seu
 próprio app e criar outra imagem para esse app.
 

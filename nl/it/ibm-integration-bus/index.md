@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-10-25"
+lastupdated: "2017-11-06"
 
 ---
 
@@ -26,9 +26,9 @@ L'immagine **ibm-integration-bus** viene fornita per {{site.data.keyword.contain
 IBM Integration Bus for Developers contiene tutto ciò che ti serve per iniziare a sviluppare le tue proprie soluzioni di integrazione.
 {:shortdesc}
 
-Dopo aver creato una soluzione di integrazione, puoi utilizzare l'immagine **ibm-integration-bus** per eseguire il provisioning di un singolo contenitore in {{site.data.keyword.Bluemix_notm}}. Puoi quindi distribuire la tua soluzione di integrazione in questo contenitore utilizzando la IU web o da un terminale. 
+Dopo aver creato una soluzione di integrazione, puoi utilizzare l'immagine **ibm-integration-bus** per eseguire il provisioning di un singolo contenitore in {{site.data.keyword.Bluemix_notm}}. Puoi quindi distribuire la tua soluzione di integrazione in questo contenitore utilizzando la IU web o da un terminale.
 
-**Nota**: puoi utilizzare l'immagine **ibm-integration-bus** solo per lo sviluppo e la verifica di unità. Puoi anche utilizzare l'immagine per esplorare il prodotto, imparare dalle esercitazioni e valutare il contributo che IBM Integration Bus può fornire alla tua organizzazione. 
+**Nota**: puoi utilizzare l'immagine **ibm-integration-bus** solo per lo sviluppo e la verifica di unità. Puoi anche utilizzare l'immagine per esplorare il prodotto, imparare dalle esercitazioni e valutare il contributo che IBM Integration Bus può fornire alla tua organizzazione.
 
 
 ## Elementi inclusi
@@ -54,7 +54,7 @@ La seguente tabella mostra le restrizioni che si applicano all'utilizzo gratuito
 
 |Ambiente|Restrizioni di utilizzo gratuito|
 |-----------|-----------------------|
-|Sviluppo|Utilizzo gratuito **illimitato** dell'immagine **ibm-integration-bus** per la creazione di singoli contenitori per lo sviluppo e la verifica di unità. |
+|Sviluppo|Utilizzo gratuito **illimitato** dell'immagine **ibm-integration-bus** per la creazione di singoli contenitori per lo sviluppo e la verifica di unità.|
 |Produzione|La Developer Edition è limitata all'elaborazione di una transazione al secondo e non è supportata per l'utilizzo in un ambiente di produzione.|
 {: caption="Tabella 1. Restrizioni sull'utilizzo gratuito dell'immagine ibm-integration-bus" caption-side="top"}
 
@@ -68,7 +68,7 @@ Informazioni sulle licenze.
 *   I Dockerfile e gli script associati sono concessi in licenza con la [Licenza Apache 2.0 ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](http://www.apache.org/licenses/LICENSE-2.0.html){: new_window}.
 *   [Informazioni sulla licenza per IBM Integration Bus for Developers versione 10.0 ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](http://www.ibm.com/software/sla/sladb.nsf/displaylis/1BD32B141C9FDAE38525802C0055A956?OpenDocument){: new_window}.
 
-    **Nota**: la licenza non consente un'ulteriore distribuzione. I termini per IBM Integration Bus nell'immagine limitano l'utilizzo per lo sviluppo e la verifica di unità. 
+    **Nota**: la licenza non consente un'ulteriore distribuzione. I termini per IBM Integration Bus nell'immagine limitano l'utilizzo per lo sviluppo e la verifica di unità.
 
 
 ## Introduzione
@@ -102,7 +102,7 @@ Esegui il provisioning di un contenitore Docker in {{site.data.keyword.Bluemix_n
 2.  Dal catalogo, seleziona **Contenitori** e scegli l'immagine **ibm-integration-bus** da cui creare il tuo contenitore.
 3.  Seleziona **Singolo** per creare un singolo contenitore dell'istanza, che può essere utilizzato per scopi di sviluppo e verifica.
 4.  Immetti il nome del contenitore, ad esempio `iib`.
-5.  Seleziona la dimensione del contenitore. 
+5.  Seleziona la dimensione del contenitore.
 6.  Nel campo **Indirizzo IP pubblico**, seleziona *Esegui il bind dell'IP pubblico*.
 7.  Nel campo **Porte pubbliche**, specifica `4414, 7800`.
 8.  Espandi le opzioni **Avanzate** e fai clic su **Aggiungi nuove variabili di ambiente**.
@@ -193,7 +193,7 @@ Dopo che il contenitore che esegue IBM Integration Bus viene distribuito in {{si
     ```
     {: screen}
 
-6.  Esegui il comando **mqsilist** per visualizzare lo stato del tuo nodo, che dovrebbe essere elencato come `running`. Ad esempio: 
+6.  Esegui il comando **mqsilist** per visualizzare lo stato del tuo nodo, che dovrebbe essere elencato come `running`. Ad esempio:
 
     ```
     (IIB_10:)iibuser@instance-0098858e:/$ mqsilist

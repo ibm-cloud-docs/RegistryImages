@@ -73,7 +73,7 @@ Prima di iniziare, installa Node.js e il Node package manager \(npm\) sulla macc
     ```
     {: pre}
 
-3.  Quando ti viene richiesto, esegui la registrazione o l'accesso a StrongLoop. 
+3.  Quando ti viene richiesto, esegui la registrazione o l'accesso a StrongLoop.
 4.  Aggiungi StrongLoop Process Manager in esecuzione nel tuo contenitore all'elenco Process Manager in StrongLoop Arc.
     1.  Dal selettore di moduli Arc, passa a **Process Manager**.
     2.  Aggiungi l'indirizzo IP pubblico da associare al tuo contenitore e la porta pubblica 8701 al Process Manager Arc.

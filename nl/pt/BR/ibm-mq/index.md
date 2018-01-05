@@ -49,7 +49,7 @@ A tabela a seguir mostra as restrições que se aplicam ao uso grátis da imagem
 
 | Ambiente	| Restrições de uso grátis |
 |-------------|-------------------------|
-| Desenvolvimento | Uso grátis ilimitado da imagem ibm-mq para criar contêineres únicos para desenvolvimento. |
+| Desenvolvimento	| Uso grátis ilimitado da imagem ibm-mq para criar contêineres únicos para desenvolvimento. |
 | Testar | Uso grátis ilimitado da imagem ibm-mq para criar contêineres únicos para teste de unidade. Verifique as [Informações de licença](#ibm_mq_license ) para obter informações adicionais sobre qual teste é permitido. |
 | Produção | A licença do {{site.data.keyword.IBM_notm}} MQ Advanced for Developer não permite o uso para produção. |
 

@@ -25,9 +25,9 @@ L'immagine IBM WebSphere&reg; eXtreme Scale è una funzione distribuita della ca
 
 Quando utilizzi l'immagine `ibm-websphere-extreme-scale`, sono disponibili i seguenti elementi di rilievo principali:
 
--   Una soluzione di cache distribuita semplice da distribuire e da configurare basata sulla tecnologia eXtreme Scale 
+-   Una soluzione di cache distribuita semplice da distribuire e da configurare basata sulla tecnologia eXtreme Scale
 -   API REST e console di gestione semplici e facili da utilizzare
--   Completa personalizzazione per supportare tutti i casi di utilizzo della cache di eXtreme Scale 
+-   Completa personalizzazione per supportare tutti i casi di utilizzo della cache di eXtreme Scale
 -   Immagine facilmente configurabile che si integra nell'ambiente di cache in pochi minuti
 -   Conformità JCache per supportare la specifica della cache JSR107
 
@@ -181,7 +181,7 @@ Questa procedura include le seguenti opzioni per la distribuzione dell'immagine 
 
     **Nota:** l'avvio del server può richiedere da 5 a 10 minuti.
 
- 7.  Una volta che i server contenitore e di eXtreme Scale sono completamente avviati, accedi all'IU del dashboard eXtreme Scale e verifica la distribuzione: 
+ 7.  Una volta che i server contenitore e di eXtreme Scale sono completamente avviati, accedi all'IU del dashboard eXtreme Scale e verifica la distribuzione:
 
    ```
    https://<REQUESTED_IP>:9443
