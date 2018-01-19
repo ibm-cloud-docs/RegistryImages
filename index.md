@@ -46,12 +46,6 @@ information about the ibm-mq image, check out the documentation.">VIEW DOCS</a><
 </li>
 
 <li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Use the IBM Node (ibmnode) image as a parent to build your own image with your own Node.js app code."></p>
-<p class="runtimeTitle">ibmnode</p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibmnode/index.html" scope="peer" title="Use the IBM Node (ibmnode) image as a parent to build your own image with your own Node.js app code.">VIEW DOCS</a></p>
-</li>
-
-<li>
 <p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="The Strongloop Process Manager enables you to deploy, manage, and monitor Node.js apps in the {{site.data.keyword.cloud_notm}} that were implemented on a remote machine."></p>
 <p class="runtimeTitle">ibm-node-strong-pm</p>
 <p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-node-strong-pm/index.html" scope="peer" title="The Strongloop Process Manager enables you to deploy, manage, and monitor Node.js apps in the {{site.data.keyword.cloud_notm}} that were implemented on a remote machine.">VIEW DOCS</a></p>
