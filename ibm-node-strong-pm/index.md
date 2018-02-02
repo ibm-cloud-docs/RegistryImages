@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-30"
+lastupdated: "2018-02-02"
 
 ---
 
@@ -13,6 +13,6 @@ lastupdated: "2017-10-30"
 
 # This image is no longer available
 
-Instead of the `ibm-node-strong-pm` image, [get started with the IBM Cloud API Connect service](../services/apiconnect/index.html#index). 
+Instead of the `ibm-node-strong-pm` image, [get started with the IBM Cloud API Connect service](../services/apiconnect/index.html#index).
 
 Review other [IBM public images](../index.html).
