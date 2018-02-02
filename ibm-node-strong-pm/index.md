@@ -13,6 +13,6 @@ lastupdated: "2018-02-02"
 
 # This image is no longer available
 
-Instead of the `ibm-node-strong-pm` image, [get started with the IBM Cloud API Connect service](../services/apiconnect/index.html#index).
+Instead of the `ibm-node-strong-pm` image, [get started with the IBM Cloud API Connect service](../../apiconnect/index.html#index).
 
 Review other [IBM public images](../index.html).
