@@ -4,7 +4,7 @@ copyright:
 
   years: 2014, 2017
 
-lastupdated: "2017-10-30"
+lastupdated: "2018-02-02"
 
 ---
 
@@ -43,12 +43,6 @@ information about the ibm-mq image, check out the documentation."></p>
 <p class="runtimeTitle">ibm-mq</p>
 <p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-mq/index.html" scope="peer" title="For more
 information about the ibm-mq image, check out the documentation.">VIEW DOCS</a></p>
-</li>
-
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="The Strongloop Process Manager enables you to deploy, manage, and monitor Node.js apps in the {{site.data.keyword.cloud_notm}} that were implemented on a remote machine."></p>
-<p class="runtimeTitle">ibm-node-strong-pm</p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-node-strong-pm/index.html" scope="peer" title="The Strongloop Process Manager enables you to deploy, manage, and monitor Node.js apps in the {{site.data.keyword.cloud_notm}} that were implemented on a remote machine.">VIEW DOCS</a></p>
 </li>
 
 <li>
