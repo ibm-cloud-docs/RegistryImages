@@ -21,6 +21,5 @@ IBM public container images
     ibm-integration-bus/index.md
     ibmliberty/index.md
     ibm-mq/index.md
-    ibm-node-strong-pm/index.md
     ibm-websphere-extreme-scale/index.md
     {: .navgroup-end}
