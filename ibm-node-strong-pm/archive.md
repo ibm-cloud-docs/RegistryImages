@@ -30,7 +30,7 @@ The remote machine must have installed an instance of StrongLoop Arc. StrongLoop
 ## What is included
 {: #whats_included}
 
--   All software packages that are included in the **ibmnode:latest** image. See the [What is included](/docs/services/RegistryImages/ibmnode/index.html#getting_started_node) in the Getting started with the **ibmnode** image for {{site.data.keyword.Bluemix_notm}} topic.
+-   All software packages that are included in the **ibmnode:latest** image. See the [What is included](/docs/services/RegistryImages/ibmnode/index.html) in the Getting started with the **ibmnode** image for {{site.data.keyword.Bluemix_notm}} topic.
 -   StrongLoop Process Manager
 
 ## Getting started
