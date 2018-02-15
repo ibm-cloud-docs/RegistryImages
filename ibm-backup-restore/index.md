@@ -502,7 +502,7 @@ Before you begin:
 - [Review the full migration path for moving apps to Kubernetes](../../../containers/cs_classic.html)
 - [Install single and scalable containers CLI (bx ic)](../../../containers/container_cli_cfic_install.html)
 - [Install {{site.data.keyword.containershort}} CLI (bx cs and kubectl)](../../../containers/cs_cli_install.html#cs_cli_install)
-- [Create a standard Kubernetes cluster to migrate your data to](../../../containers/cs_cluster.html#cs_cluster_cli)
+- [Create a standard Kubernetes cluster to migrate your data to](../../../containers/cs_clusters.html#clusters_cli)
 
 Complete the following tasks to perform backup and restore operations:
 1.  [Creating an {{site.data.keyword.objectstorageshort}} service instance](#object_storage) (as addressed previously)
