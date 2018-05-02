@@ -13,7 +13,7 @@ IBM public container images
     Related links
         [Dockerfile reference](http://docs.docker.com/engine/reference/builder/)
         [Use Supervisor with Docker](https://docs.docker.com/engine/admin/using_supervisord/)
-        [Registry CLI reference](../../cli/plugins/registry/index.html)
+        [Registry CLI reference](../Registry/registry_cli.html)
     {: .navgroup-end}
     
     {: .navgroup id="howto"}
