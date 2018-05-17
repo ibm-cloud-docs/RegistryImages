@@ -495,7 +495,7 @@ Create a one-time backup for any container volume. The backup is stored within a
 {:shortdesc}
 
 ### Getting started 
-{: #how_to_get_started}
+{: #how_to_get_started_migrating}
 
 Before you begin:
 
