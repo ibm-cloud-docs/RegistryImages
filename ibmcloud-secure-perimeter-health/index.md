@@ -23,7 +23,7 @@ The **ibmcloud-secure-perimeter-health** image contains a tool for scanning vuln
 ## How it works
 {: #how-it-works}
 
-To ensure determine your Secure Perimeter is functioning properly, **ibmcloud-secure-perimeter-health** can scan public or private networks in your IBM Cloud infrastructure account and report vulnerabilities. You can use **ibmcloud-secure-perimeter-health** image in two ways:
+To ensure your Secure Perimeter is functioning properly, **ibmcloud-secure-perimeter-health** can scan public or private networks in your IBM Cloud infrastructure account and report vulnerabilities. You can use **ibmcloud-secure-perimeter-health** image in two ways:
 
 -   Use **ibmcloud-secure-perimeter-health** as a pod on a Kubernetes cluster within your Secure Perimeter to scan for private network exposures.
 -   Use **ibmcloud-secure-perimeter-health** as a stand-alone Docker container on your workstation to scan for public network exposures.
