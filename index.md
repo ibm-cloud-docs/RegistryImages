@@ -4,7 +4,7 @@ copyright:
 
   years: 2014, 2017
 
-lastupdated: "2018-02-02"
+lastupdated: "2018-05-30"
 
 ---
 
@@ -23,6 +23,22 @@ You can use the following public images to create containers in {{site.data.keyw
 <p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="For more information about the ibm-backup-restore image, check out the documentation."></p>
 <p class="runtimeTitle">ibm-backup-restore</p>
 <p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-backup-restore/index.html" scope="peer" title="For more information about the ibm-backup-restore image, check out the documentation.">VIEW DOCS</a></p>
+</li>
+  
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="You can use the ibmcloud-secure-perimeter-health image to scan and report on exposed pathways within IBM Cloud infrastructure networks."></p>
+<p class="runtimeTitle">ibmcloud-secure-perimeter-health</p>
+<p class="runtimeLink"><a format="html"
+href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-health/index.html" scope="peer"
+ title="You can use the ibmcloud-secure-perimeter-health image to scan and report on exposed pathways within IBM Cloud infrastructure networks.">VIEW DOCS</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="You can use the ibmcloud-secure-perimeter-network image to apply Vyatta configuration for a Secure Perimeter Segment."></p>
+<p class="runtimeTitle">ibmcloud-secure-perimeter-network</p>
+<p class="runtimeLink"><a format="html"
+href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-network/index.html" scope="peer"
+ title="You can use the ibmcloud-secure-perimeter-network image to apply Vyatta configuration for a Secure Perimeter Segment.">VIEW DOCS</a></p>
 </li>
 
 <li>
