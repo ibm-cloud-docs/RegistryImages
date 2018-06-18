@@ -4,7 +4,7 @@ copyright:
 
   years: 2014, 2017
 
-lastupdated: "2017-10-30"
+lastupdated: "2018-05-30"
 
 ---
 
@@ -24,6 +24,22 @@ lastupdated: "2017-10-30"
 <p class="runtimeTitle">ibm-backup-restore</p>
 <p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-backup-restore/index.html" scope="peer" title="如需 ibm-backup-restore 映像檔的相關資訊，請參閱文件。">檢視文件</a></p>
 </li>
+  
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="您可以使用 ibmcloud-secure-perimeter-health 映像檔來掃描及報告 IBM Cloud 基礎架構網路內的公開路線。"></p>
+<p class="runtimeTitle">ibmcloud-secure-perimeter-health</p>
+<p class="runtimeLink"><a format="html"
+href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-health/index.html" scope="peer"
+ title="您可以使用 ibmcloud-secure-perimeter-health 映像檔來掃描及報告 IBM Cloud 基礎架構網路內的公開路線。">VIEW DOCS</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="您可以使用 ibmcloud-secure-perimeter-network 映像檔來套用 Secure Perimeter Segment 的 Vyatta 配置。"></p>
+<p class="runtimeTitle">ibmcloud-secure-perimeter-network</p>
+<p class="runtimeLink"><a format="html"
+href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-network/index.html" scope="peer"
+ title="您可以使用 ibmcloud-secure-perimeter-network 映像檔來套用 Secure Perimeter Segment 的 Vyatta 配置。">VIEW DOCS</a></p>
+</li>
 
 <li>
 <p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="在建立整合解決方案之後，您可以使用 ibm-integration-bus 映像檔，在 {{site.data.keyword.Bluemix_notm}} 中佈建單一容器。然後，您可以使用 Web 使用者介面或從終端機，將整合解決方案部署至這個容器。"></p>
@@ -41,18 +57,6 @@ lastupdated: "2017-10-30"
 <p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="如需 ibm-mq 映像檔的相關資訊，請參閱文件。"></p>
 <p class="runtimeTitle">ibm-mq</p>
 <p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-mq/index.html" scope="peer" title="如需 ibm-mq 映像檔的相關資訊，請參閱文件。">檢視文件</a></p>
-</li>
-
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="使用 IBM Node (ibmnode) 映像檔作為母項，建置含有自己的 Node.js 應用程式碼的專屬映像檔。"></p>
-<p class="runtimeTitle">ibmnode</p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibmnode/index.html" scope="peer" title="使用 IBM Node (ibmnode) 映像檔作為母項，建置含有自己的 Node.js 應用程式碼的專屬映像檔。">檢視文件</a></p>
-</li>
-
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Strongloop Process Manager 可讓您部署、管理及監視 {{site.data.keyword.cloud_notm}} 中已在遠端機器上實作的 Node.js 應用程式。"></p>
-<p class="runtimeTitle">ibm-node-strong-pm</p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-node-strong-pm/index.html" scope="peer" title="Strongloop Process Manager 可讓您部署、管理及監視 {{site.data.keyword.cloud_notm}} 中已在遠端機器上實作的 Node.js 應用程式。">檢視文件</a></p>
 </li>
 
 <li>

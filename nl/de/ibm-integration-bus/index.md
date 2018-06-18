@@ -100,7 +100,7 @@ Richten Sie einen Docker-Container in {{site.data.keyword.Bluemix_notm}} ein, de
 
 1.  Melden Sie sich bei {{site.data.keyword.Bluemix_notm}} an.
 2.  Wählen Sie im Katalog **Container** und dann das Image **ibm-integration-bus** aus, aus dem Sie den Container erstellen wollen.
-3.  Wählen Sie **Einzeln** aus, um eine einzelne Instanz eines Containers zu erstellen, die für Entwicklungs- und Testzwecke verwendet werden kann.
+3.  Wählen Sie **Einzeln** aus, um eine einzelne Instanz eines Containers zu erstellen, der für Entwicklungs- und Testzwecke verwendet werden kann.
 4.  Geben Sie den Namen des Containers ein, z. B. `iib`.
 5.  Wählen Sie die Größe des Containers aus.
 6.  Wählen Sie im Feld **Öffentliche IP-Adresse** die Option *Öffentliche IP anfordern und binden* aus.

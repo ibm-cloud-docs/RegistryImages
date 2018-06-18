@@ -4,7 +4,7 @@ copyright:
 
   years: 2014, 2017
 
-lastupdated: "2017-10-30"
+lastupdated: "2018-05-30"
 
 ---
 
@@ -24,6 +24,18 @@ lastupdated: "2017-10-30"
 <p class="runtimeTitle">ibm-backup-restore</p>
 <p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-backup-restore/index.html" scope="peer" title="Para obter mais informações sobre a imagem ibm-backup-restore, efetue check-out da documentação.">VISUALIZAR DOCS</a></p>
 </li>
+  
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="É possível usar a imagem ibmcloud-secure-perimeter-health para varrer e relatar caminhos expostos nas redes da infraestrutura no IBM Cloud."></p>
+<p class="runtimeTitle">ibmcloud-secure-perimeter-health</p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-health/index.html" scope="peer" title="É possível usar a imagem ibmcloud-secure-perimeter-health para varrer e relatar caminhos expostos nas redes da infraestrutura no IBM Cloud.">VISUALIZAR DOCUMENTOS</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="É possível usar a imagem ibmcloud-secure-perimeter-network para aplicar a configuração do Vyatta a um segmento de perímetro seguro."></p>
+<p class="runtimeTitle">ibmcloud-secure-perimeter-network</p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-network/index.html" scope="peer" title="É possível usar a imagem ibmcloud-secure-perimeter-network para aplicar a configuração do Vyatta a um segmento de perímetro seguro.">VISUALIZAR DOCUMENTOS</a></p>
+</li>
 
 <li>
 <p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Após criar uma solução de integração, será possível usar a imagem ibm-integration-bus para provisionar um único contêiner em {{site.data.keyword.Bluemix_notm}}. Em seguida, será possível implementar sua solução de integração nesse contêiner usando a UI da web ou por meio de um terminal."></p>
@@ -41,18 +53,6 @@ lastupdated: "2017-10-30"
 <p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Para obter mais informações sobre a imagem ibm-mq, efetue check-out da documentação."></p>
 <p class="runtimeTitle">ibm-mq</p>
 <p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-mq/index.html" scope="peer" title="Para obter mais informações sobre a imagem ibm-mq, efetue check-out da documentação.">VISUALIZAR DOCS</a></p>
-</li>
-
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Use a imagem IBM Node (ibmnode) como um pai para construir sua própria imagem com seu próprio código de app do Node.js."></p>
-<p class="runtimeTitle">ibmnode</p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibmnode/index.html" scope="peer" title="Use a imagem IBM Node (ibmnode) como um pai para construir sua própria imagem com seu próprio código de app do Node.js.">VISUALIZAR DOCS</a></p>
-</li>
-
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="O Strongloop Process Manager permite implementar, gerenciar e monitorar apps do Node.js no {{site.data.keyword.cloud_notm}} que foram implementados em uma máquina remota."></p>
-<p class="runtimeTitle">ibm-node-strong-pm</p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-node-strong-pm/index.html" scope="peer" title="O Strongloop Process Manager permite implementar, gerenciar e monitorar apps do Node.js no {{site.data.keyword.cloud_notm}} que foram implementados em uma máquina remota.">VISUALIZAR DOCS</a></p>
 </li>
 
 <li>

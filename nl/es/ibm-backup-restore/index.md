@@ -23,7 +23,7 @@ La imagen **ibm-backup-restore** contiene los paquetes preinstalados necesarios 
 ## Modo de funcionamiento 
 {: #how_it_works}
 
-Con la imagen **ibm-backup-restore**, puede crear una copia de seguridad puntual  o programada para cualquier reclamación de volumen permanente (pvc). La copia de seguridad está almacenada en una instancia de {{site.data.keyword.objectstoragefull}}. Puede pasar las credenciales de {{site.data.keyword.objectstorageshort}} a su contenedor **ibm-backup-restore** como variables de entorno o editando el archivo `config.conf` en el contenedor en ejecución. También puede restaurar los datos guardados de la instancia de {{site.data.keyword.objectstorageshort}} en un volumen. Como la imagen contiene scripts para ejecuta r copias de seguridad y restauraciones, el usuario debe especificar un mandato para iniciar el script adecuado.
+Con la imagen **ibm-backup-restore**, puede crear una copia de seguridad puntual o programada para cualquier reclamación de volumen permanente (pvc). La copia de seguridad está almacenada en una instancia de {{site.data.keyword.objectstoragefull}}. Puede pasar las credenciales de {{site.data.keyword.objectstorageshort}} a su contenedor **ibm-backup-restore** como variables de entorno o editando el archivo `config.conf` en el contenedor en ejecución. También puede restaurar los datos guardados de la instancia de {{site.data.keyword.objectstorageshort}} en un volumen. Como la imagen contiene scripts para ejecutar copias de seguridad y restauraciones, el usuario debe especificar un mandato para iniciar el script adecuado.
 
 ## Qué incluye 
 {: #whats_included}
@@ -51,7 +51,7 @@ Cree una instancia de {{site.data.keyword.objectstorageshort}} que sirva como re
 
 1.  Suministre su instancia de {{site.data.keyword.objectstorageshort}} desde la sección **Almacén** del catálogo de {{site.data.keyword.Bluemix_notm}}.
 2.  Pulse {{site.data.keyword.objectstorageshort}}.
-3.  Seleccione {{site.data.keyword.objectstorageshort}} OpenStack Swift para{{site.data.keyword.Bluemix_notm}}. A continuación, pulse crear.
+3.  Seleccione {{site.data.keyword.objectstorageshort}} OpenStack Swift para {{site.data.keyword.Bluemix_notm}}. A continuación, pulse crear.
 3.  Pulse el separador **Credenciales de servicio**.
 4.  Pulse **Nueva credencial**.
 5.  Complete el campo de nombre pero deje los otros campos en blanco. Pulse **Añadir**.
@@ -206,9 +206,7 @@ Antes de empezar:
     ```
     {: pre}
 
-3.  Cree un archivo de configuración con el nombre _restore.yaml_. Para las variables de entorno en blanco, especifique los valores a partir de las credenciales de {{site.data.keyword.objectstorageshort}} que ha anotado anteriormente. Incluya las comillas que se utilizan en las
-credenciales.El BACKUP_NAME debe coincidir con el nombre de la copia de seguridad de {{site.data.keyword.objectstorageshort}} que se esté
-restaurando.
+3.  Cree un archivo de configuración con el nombre _restore.yaml_. Para las variables de entorno en blanco, especifique los valores a partir de las credenciales de {{site.data.keyword.objectstorageshort}} que ha anotado anteriormente. Incluya las comillas que se utilizan en las credenciales. El BACKUP_NAME debe coincidir con el nombre de la copia de seguridad de {{site.data.keyword.objectstorageshort}} que se esté restaurando.
 
     ```
     apiVersion: v1
@@ -279,7 +277,7 @@ Ha restaurado satisfactoriamente la copia de seguridad. Ahora puede montar cualq
 
 Cifre los datos de la instancia de {{site.data.keyword.objectstorageshort}}.
 
-1.  Download <a href="https://www.gnupg.org/download/index.html" target="_blank">GnuPG <img src="../../../icons/launch-glyph.svg" alt="Icono de enlace externo"></a> para crear una clave de cifrado.
+1.  Descargue <a href="https://www.gnupg.org/download/index.html" target="_blank">GnuPG <img src="../../../icons/launch-glyph.svg" alt="Icono de enlace externo"></a> para crear una clave de cifrado.
 2.  Cree una clave de cifrado en su unidad de cifrado local. Puede aceptar los valores predeterminados pulsando ENTER.
 
     **Atención:** Anote la frase de contraseña que haya creado. Si pierde la frase de contraseña, no podrá descifrar ninguna información cifrada con la clave.
@@ -354,9 +352,7 @@ Cifre los datos de la instancia de {{site.data.keyword.objectstorageshort}}.
     ```
     {: pre}
 
-8.  Edite el archivo de configuración de despliegue y añada los campos siguientes. Para las variables de entorno en blanco, especifique los valores a partir de las credenciales de {{site.data.keyword.objectstorageshort}} que ha anotado anteriormente. Incluya las comillas que se utilizan en las
-credenciales.Para
-*ENCRYPTION_PASSPHRASE*, incluya una frase de contraseña para proteger mediante contraseña la copia de seguridad. Esta frase de contraseña es distinta de la que especificó al crear la clave de cifrado. Debe incluir esta frase de contraseña al realizar copia de seguridad de los datos y restaurarlos.
+8.  Edite el archivo de configuración de despliegue y añada los campos siguientes. Para las variables de entorno en blanco, especifique los valores a partir de las credenciales de {{site.data.keyword.objectstorageshort}} que ha anotado anteriormente. Incluya las comillas que se utilizan en las credenciales. Para *ENCRYPTION_PASSPHRASE*, incluya una frase de contraseña para proteger mediante contraseña la copia de seguridad. Esta frase de contraseña es distinta de la que especificó al crear la clave de cifrado. Debe incluir esta frase de contraseña al realizar copia de seguridad de los datos y restaurarlos.
 
     ```
     apiVersion: v1
@@ -369,9 +365,9 @@ credenciales.Para
           image: registry.<region>.bluemix.net/ibm-backup-restore
           env:
           - name: USERID
-            value: 
+            value:
           - name: PASSWORD
-            value: 
+            value:
           - name: PROJECTID
             value:
           - name: REGION
@@ -390,7 +386,7 @@ credenciales.Para
             value: yes
           - name: ENCRYPTION_PASSPHRASE
            # Include this passphrase when your are backing up and restoring encrypted data.
-            value: 
+            value:
           volumeMounts:
           - mountPath: /backup
             name: backup-volume
@@ -402,12 +398,16 @@ credenciales.Para
    
    Estos valores crean una copia de seguridad incremental diaria cifrada con el nombre <em>&lt;nombre_volumen&gt;</em>. Para crear una copia de seguridad con valores diferentes, revise una lista completa de [opciones de variables de entorno](#reference_backup_restore).
 
-9.  Cree un pod que ejecute el script de copia de seguridad.```
+9.  Cree un pod que ejecute el script de copia de seguridad.
+
+    ```
     kubectl apply -f backup.yaml 
     ```
     {: pre}
 
-9.  Confirme que se esté ejecutando el pod.```
+9.  Confirme que se esté ejecutando el pod.
+
+    ```
     kubectl get pods
     ```
     {: pre}
@@ -419,12 +419,13 @@ credenciales.Para
     {: screen}
 
 10.  Copie la clave de cifrado en el directorio /backup_restore del contenedor que se ha creado a partir de la imagen **ibm-backup-restore**.
+
     ```
     kubectl cp ./encryption.asc <container_name>:/backup_restore
     ```
     {: pre}
 
-    Guarde una copia de la clave de cifrado localmente para descrifrar sus datos.
+    Guarde una copia de la clave de cifrado localmente para descifrar sus datos.
 
 11. Inicie la sesión en el contenedor.
 
@@ -463,22 +464,23 @@ Revise la lista completa de campos que pueden pasar como variables de entorno o 
 |REGION|Region from {{site.data.keyword.objectstorageshort}}|
 |USERID|Userid from {{site.data.keyword.objectstorageshort}}|
 |PASSWORD|Password from {{site.data.keyword.objectstorageshort}}|
-{: caption="Table 1. {{site.data.keyword.objectstorageshort}} variables" caption-side="top"}
+{: caption="Tabla 1. Variables de {{site.data.keyword.objectstorageshort}} " caption-side="top"}
 
 Elimine estas variables de las credenciales {{site.data.keyword.objectstorageshort}}. Incluya estas variables de entorno con cada contenedor que ejecute una operación de copia de seguridad o restauración.
 
 |Clave|Opciones de valor|
 |---|-------------|
 |BACKUP_DIRECTORY|*/backup*: Predeterminado. Vía de acceso de archivo absoluta del directorio en el que está montado el volumen. La copia de seguridad de los datos se realiza desde este directorio. No seleccione el directorio backup_restore ya que dicho directorio contiene archivos para los procesos de copia de seguridad y restauración.||BACKUP_NAME|*volume_backup*: Predeterminado. Seleccione un nombre de copia de seguridad.|
-|BACKUP_TYPE|*full*: Predeterminado. Todos los archivos se copiarán cada vez.<br/> *incremental*: Solo se realiza la copia de seguridad de los archivos nuevos o modificados. Si selecciona  *incremental*, debe seleccionar los valores para SCHEDULING_INFO y SCHEDULING_TYPE.|
-|SCHEDULE_TYPE|*none*: Predeterminado. Cree una copia de seguridad puntual.<br/> *periodic*: Cambie el valor a periódico para crear copias de seguridad programadas.|
+|BACKUP_TYPE|*full*: Predeterminado. Todos los archivos se copiarán cada vez.<br/> *incremental*: Solo se realiza la copia de seguridad de los archivos nuevos o modificados. Si selecciona *incremental*, debe seleccionar los valores para SCHEDULING_INFO y SCHEDULING_TYPE.|
+|SCHEDULE_TYPE|*none*: Predeterminado. Cree una copia de seguridad puntual.<br/> **Nota:** Si elige crear una copia de seguridad puntual, el pod se eliminará del clúster una vez que termine la copia de seguridad. <br/>*periodic*: Cambie el valor a periódico para crear copias de seguridad programadas.|
 |SCHEDULE_INFO|*hourly*: Cree una copia de seguridad por hora.<br/>*daily*: Predeterminado. Cree una copia de seguridad diaria.<br/>*weekly*: Crear una copia de seguridad semanal. Debe incluir esta variable si va a programar una actualización periódica.|
 |EXCLUDE_DIRECTORIES|*none*: Predeterminado. Incluya la vía de acceso de archivos absoluta de los directorios que desee excluir de la copia de seguridad. Separe los directorios con una coma.|
 {: caption="Tabla 2. Variables de copia de seguridad" caption-side="top"}
 
 |Clave|Opciones de valor|
 |---|-------------|
-|BACKUP_NAME|*volume_backup*: Predeterminado. Incluya el nombre de la copia de seguridad que se esté restaurando a partir de {{site.data.keyword.objectstorageshort}}.|RESTORE_DIRECTORY|*/backup*: Predeterminado. Directorio absoluto en el que se monta el volumen. Los datos se restauran en este directorio. No seleccione el directorio backup_restore ya que dicho directorio contiene archivos para los procesos de copia de seguridad y restauración.|{: caption="Table 3. Restore variables" caption-side="top"}
+|BACKUP_NAME|*volume_backup*: Predeterminado. Incluya el nombre de la copia de seguridad que se esté restaurando a partir de {{site.data.keyword.objectstorageshort}}.|RESTORE_DIRECTORY|*/backup*: Predeterminado. Directorio absoluto en el que se monta el volumen. Los datos se restauran en este directorio. No seleccione el directorio backup_restore ya que dicho directorio contiene archivos para los procesos de copia de seguridad y restauración.|
+{: caption="Tabla 3. Variables de restauración" caption-side="top"}
 
 |Clave|Opciones de valor|
 |---|-------------|
@@ -496,14 +498,14 @@ Cree una copia de seguridad puntual para cualquier volumen de contendedor. La co
 {:shortdesc}
 
 ### Guía de inicio
-{: #how_to_get_started}
+{: #how_to_get_started_migrating}
 
 Antes de empezar:
 
 - [Revise la vía de acceso de migración para pasar apps a Kubernetes](../../../containers/cs_classic.html)
 - [Instale contenedores individuales y escalables CLI (bx ic)](../../../containers/container_cli_cfic_install.html)
 - [Instale {{site.data.keyword.containershort}} CLI (bx cs and kubectl)](../../../containers/cs_cli_install.html#cs_cli_install)
-- [Cree un clúster de Kubernetes estándar para migrar sus datos a](../../../containers/cs_cluster.html#cs_cluster_cli)
+- [Cree un clúster de Kubernetes estándar para migrar sus datos a](../../../containers/cs_clusters.html#clusters_cli)
 
 Complete las siguientes tareas para realizar copias de seguridad y restaurar operaciones:
 1.  [Crear una instancia de servicio de {{site.data.keyword.objectstorageshort}}](#object_storage) (como se ha gestionado anteriormente)
@@ -547,18 +549,18 @@ Crear un contenedor único desde la imagen **ibm-backup-restore**, e inicie una 
     {: codeblock}
 
     Estos valores crean una copia de seguridad puntual con el nombre predeterminado _volume_backup_.
+
 4.  Ejecute un contenedor desde la imagen **ibm-backup-restore** con un volumen montado para realizar copia de seguridad. Incluya el mandato para iniciar el script de copia de seguridad.
 
     -   Asegúrese de que se encuentre en el mismo directorio local que <em>&lt;backup_env-file&gt;</em>.
-    -   El El directorio en el que está montado el volumen debe coincidir con el  BACKUP_DIRECTORY del archivo de variable de entorno.
+    -   El directorio en el que está montado el volumen debe coincidir con el  BACKUP_DIRECTORY del archivo de variable de entorno.
     -   Sustituya <em>&lt;volume_name&gt;</em> por el nombre del volumen del que se ha realizado copia de seguridad.
     ```
     bx ic run --name <nombre_contenedor> --volume <nombre_volumen>:/backup --env-file ./<nombre_archivo-entorno_copia_seguridad> registry.ng.bluemix.net/ibm-backup-restore /bin/bash -c "/backup_restore/vbackup"
     ```
     {: pre}
 
-    Cuando se haya ejecutado la copia de seguridad, el contenedor finalizará. Si el contenedor no se empieza a ejecutar, ejecute
-`bx ic logs <container_name>` para revisar los mensajes de error.
+    Cuando se haya ejecutado la copia de seguridad, el contenedor finalizará. Si el contenedor no se empieza a ejecutar, ejecute `bx ic logs <container_name>` para revisar los mensajes de error.
 
 5.  Revise la copia de seguridad en {{site.data.keyword.objectstorageshort}} en la GUI de {{site.data.keyword.Bluemix_notm}}.
     1.  Pulse la instancia de {{site.data.keyword.objectstorageshort}} que haya creado para la copia de seguridad.
@@ -569,12 +571,15 @@ Crear un contenedor único desde la imagen **ibm-backup-restore**, e inicie una 
 {: #migrate_restore}
 
 Restaure su copia de seguridad desde {{site.data.keyword.objectstorageshort}} a una reclamación de volumen permanente en un clúster de Kubernetes.
+
 Antes de empezar:
 
 - [Defina el destino de su CLI](../../../containers/cs_cli_install.html#cs_cli_configure) en su clúster.
 
 
-1. Cree un archivo de configuración con el nombre _restore-pvc.yaml_. Este archivo de configuración crea una reclamación de volumen permanente (pvc) que puede montar en su pod de copias de seguridad como un volumen.```
+1. Cree un archivo de configuración con el nombre _restore-pvc.yaml_. Este archivo de configuración crea una reclamación de volumen permanente (pvc) que puede montar en su pod de copias de seguridad como un volumen.
+
+    ```
     apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
@@ -597,9 +602,7 @@ Antes de empezar:
     ```
     {: pre}
 
-3.  Cree un archivo de configuración con el nombre _restore.yaml_. Para las variables de entorno en blanco, especifique los valores a partir de las credenciales de {{site.data.keyword.objectstorageshort}} que ha anotado anteriormente. Incluya las comillas que se utilizan en las
-credenciales.El BACKUP_NAME debe coincidir con el nombre de la copia de seguridad de {{site.data.keyword.objectstorageshort}} que se esté
-restaurando.
+3.  Cree un archivo de configuración con el nombre _restore.yaml_. Para las variables de entorno en blanco, especifique los valores a partir de las credenciales de {{site.data.keyword.objectstorageshort}} que ha anotado anteriormente. Incluya las comillas que se utilizan en las credenciales. El BACKUP_NAME debe coincidir con el nombre de la copia de seguridad de {{site.data.keyword.objectstorageshort}} que se esté restaurando.
 
     ```
     apiVersion: v1
@@ -655,10 +658,13 @@ restaurando.
     {: screen}
     
     El pod ejecuta el mandato restaurar y se detiene. El mensaje de _CrashLoopBackOff_ significa que Kubernetes intenta reiniciar el pod.
-6.  Elimine el pod para evitar que consuma más recursos.```
+6.  Elimine el pod para evitar que consuma más recursos.
+
+    ```
     kubectl delete -f restore.yaml
     ```
     {: pre}
 
-Ha migrado correctamente sus datos al clúster de Kubernetes. Ahora puede montar cualquier nuevo pod en el pvc para darle acceso a los archivos restaurados. **Nota**: Si los datos del contenedor de los que se ha realizado copia de seguridad incluían un usuario no root, deberá añadir permisos no root al nuevo contenedor. Para obtener más información, consulte
-[Adding non-root user access to volumes](../../../containers/container_volumes_ov.html#container_volumes_write).
+Ha migrado correctamente sus datos al clúster de Kubernetes. Ahora puede montar cualquier nuevo pod en el pvc para darle acceso a los archivos restaurados.
+
+**Nota**: Si los datos del contenedor de los que se ha realizado copia de seguridad incluían un usuario no root, deberá añadir permisos no root al nuevo contenedor. Para obtener más información, consulte [Adición de acceso de usuario no root a volúmenes](../../../containers/container_volumes_ov.html#container_volumes_write).

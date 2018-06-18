@@ -13,15 +13,15 @@ Immagini contenitore pubbliche IBM
     Link correlati
         [Guida di riferimento per Dockerfile](http://docs.docker.com/engine/reference/builder/)
         [Utilizzo di Supervisor con Docker](https://docs.docker.com/engine/admin/using_supervisord/)
-        [Guida di riferimento alla CLI del registro](../../cli/plugins/registry/index.html)
+        [Guida di riferimento alla CLI del registro](../Registry/registry_cli.html)
     {: .navgroup-end}
     
     {: .navgroup id="howto"}
     ibm-backup-restore/index.md
+    ibmcloud-secure-perimeter-health/index.md
+    ibmcloud-secure-perimeter-network/index.md
     ibm-integration-bus/index.md
     ibmliberty/index.md
     ibm-mq/index.md
-    ibmnode/index.md
-    ibm-node-strong-pm/index.md
     ibm-websphere-extreme-scale/index.md
     {: .navgroup-end}

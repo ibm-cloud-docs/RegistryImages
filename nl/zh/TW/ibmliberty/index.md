@@ -54,7 +54,9 @@ IBM® WebSphere® Application Server Liberty (**ibmliberty**) 映像檔是提供
 |環境|免費使用限制|
 |-----------|-----------------------|
 |開發|**無限制**免費使用 **ibmliberty** 映像檔。|
-|正式作業|**ibmliberty** 映像檔的免費使用，侷限於所有執行該映像檔的容器實例中，**最多 2 GB Java 資料堆空間**。例如，您可以免費有 2 個 1GB 或 4 個 512 MB 資料堆的 Liberty 實例。若要監視容器實例的 Java 資料堆用量，請參閱[使用 CLI 監視容器的 Java 資料堆空間用量](#monitor_heap)。
+|正式作業|**ibmliberty** 映像檔的免費使用，侷限於所有執行該映像檔的容器實例中，**最多 2 GB Java 資料堆空間**。例如，您可以免費有 2 個 1GB 或 4 個 512 MB 資料堆的 Liberty 實例。
+
+若要監視容器實例的 Java 資料堆用量，請參閱[使用 CLI 監視容器的 Java 資料堆空間用量](#monitor_heap)。
 
 
 請在 Docker Hub 上 [websphere-liberty 映像檔](https://hub.docker.com/_/websphere-liberty/)的 License 一節中，檢閱 IBM 認證映像檔的使用條款。
@@ -87,7 +89,7 @@ IBM® WebSphere® Application Server Liberty (**ibmliberty**) 映像檔是提供
 1.  列出容器內的所有執行中處理程序。
 
     ```
-    bx ic top CONTAINER -aux
+        bx ic top CONTAINER -aux
     ```
     {: pre}
 
@@ -144,6 +146,8 @@ WebSphere Application Server 授權是根據所需的「處理器價值單位 (P
     ```
     FROM registry.{{site.data.keyword.domainname}}/ibmliberty:<tag>
     COPY <app_name>.<file_extension> /config/dropins/
+    
+    
     
     ```
     {: screen}

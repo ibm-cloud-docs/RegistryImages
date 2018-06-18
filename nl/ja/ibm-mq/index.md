@@ -16,7 +16,7 @@ lastupdated: "2017-10-30"
 # **ibm-mq** イメージ概説
 {: #ibm_mq}
 
-ibm-mq イメージは {{site.data.keyword.containershort}} 用に提供されています。これには、{{site.data.keyword.IBM_notm}} MQ Advanced for Developers が含まれています (保証なし)。 
+ibm-mq イメージは {{site.data.keyword.containershort}} 用に提供されています。 これには、{{site.data.keyword.IBM_notm}} MQ Advanced for Developers が含まれています (保証なし)。 
 
 {:shortdesc}
 
@@ -26,16 +26,16 @@ ibm-mq イメージは {{site.data.keyword.containershort}} 用に提供され�
 
 {{site.data.keyword.IBM_notm}} MQ Advanced for Developers には、ユーザー独自のメッセージング・ソリューションおよび {{site.data.keyword.IBM_notm}} MQ アプリケーションの開発を開始するために必要なものすべてが含まれています。 
 
-{{site.data.keyword.Bluemix_notm}} でメッセージング・ソリューションおよび {{site.data.keyword.IBM_notm}} MQ アプリケーションを開発するために、{{site.data.keyword.containershort_notm}} に ibm-mq Docker イメージをデプロイできます。次に、キュー・マネージャーを作成して実行し、それらのキュー・マネージャーを、メッセージング・ソリューションまたはアプリケーションの要件を満たすように Web UI または端末を使用して構成します。
+{{site.data.keyword.Bluemix_notm}} でメッセージング・ソリューションおよび {{site.data.keyword.IBM_notm}} MQ アプリケーションを開発するために、{{site.data.keyword.containershort_notm}} に ibm-mq Docker イメージをデプロイできます。 次に、キュー・マネージャーを作成して実行し、それらのキュー・マネージャーを、メッセージング・ソリューションまたはアプリケーションの要件を満たすように Web UI または端末を使用して構成します。
 
-**注:** ibm-mq イメージは開発および単体テストのみに使用できます。製品の探索、チュートリアルでの学習、そして {{site.data.keyword.IBM_notm}} MQ を使った場合の組織にとってのメリットの評価にも、このイメージを使用できます。
+**注:** ibm-mq イメージは開発および単体テストのみに使用できます。 製品の探索、チュートリアルでの学習、そして {{site.data.keyword.IBM_notm}} MQ を使った場合の組織にとってのメリットの評価にも、このイメージを使用できます。
 
 ## 含まれている内容
 {: #ibm_mq_what}
 
-この ibm-mq イメージには {{site.data.keyword.IBM_notm}} MQ Advanced for Developers バージョン 9.0.x のソフトウェア・パッケージが含まれています。これは、製品の全機能バージョンであり、開発および単体テストに使用できます。このバージョンは無料でダウンロードでき、ライセンス条件の範囲内で自由に使用できます。
+この ibm-mq イメージには {{site.data.keyword.IBM_notm}} MQ Advanced for Developers バージョン 9.0.x のソフトウェア・パッケージが含まれています。これは、製品の全機能バージョンであり、開発および単体テストに使用できます。 このバージョンは無料でダウンロードでき、ライセンス条件の範囲内で自由に使用できます。
 
-{{site.data.keyword.IBM_notm}} MQ Advanced for Developers は、Windows 64 ビット版オペレーティング・システムと Linux (x86-64) オペレーティング・システムで利用できます。この製品の前提条件のすべてがダウンロード・パッケージに含まれています。詳しくは、[IBM MQ Downloads ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](http://www-03.ibm.com/software/products/lv/ibm-mq-advanced-for-developers){: new_window} を参照してください。
+{{site.data.keyword.IBM_notm}} MQ Advanced for Developers は、Windows 64 ビット版オペレーティング・システムと Linux (x86-64) オペレーティング・システムで利用できます。 この製品の前提条件のすべてがダウンロード・パッケージに含まれています。 詳しくは、[IBM MQ Downloads ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](http://www-03.ibm.com/software/products/lv/ibm-mq-advanced-for-developers){: new_window} を参照してください。
 
 {{site.data.keyword.IBM_notm}} MQ Advanced for Developers に含まれるフィーチャーについて詳しくは、[IBM MQ ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm){: new_window} を参照してください。
 
@@ -46,11 +46,11 @@ ibm-mq イメージは {{site.data.keyword.containershort}} 用に提供され�
 
 次の表は、{{site.data.keyword.Bluemix_notm}} での ibm-mq イメージの無料使用に適用される制約事項を示しています。
 
-| 環境| 無料使用上の制約事項|
+| 環境	| 無料使用上の制約事項 |
 |-------------|-------------------------|
-| 開発	| ibm-mq イメージを無制限に無料使用して、開発用に単一コンテナーを作成できます。|
-| テスト | ibm-mq イメージを無制限に無料使用して、単体テスト用に単一コンテナーを作成できます。許可されるテストについて詳しくは、[ライセンス情報](#ibm_mq_license )を参照してください。|
-| 実動 | {{site.data.keyword.IBM_notm}} MQ Advanced for Developer ライセンスは実動での使用を許可していません。|
+| 開発	| ibm-mq イメージを無制限に無料使用して、開発用に単一コンテナーを作成できます。 |
+| テスト | ibm-mq イメージを無制限に無料使用して、単体テスト用に単一コンテナーを作成できます。 許可されるテストについて詳しくは、[ライセンス情報](#ibm_mq_license )を参照してください。 |
+| 実働 | {{site.data.keyword.IBM_notm}} MQ Advanced for Developer ライセンスは実動での使用を許可していません。 |
 
 **注:** ibm-mq イメージの価格設定は、{{site.data.keyword.Bluemix_notm}} で使用するコンテナーの価格設定とは無関係です。
 
@@ -63,7 +63,7 @@ ibm-mq イメージは {{site.data.keyword.containershort}} 用に提供され�
 *	Dockerfile および関連するスクリプトは、[Apache License 2.0 ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](http://www.apache.org/licenses/LICENSE-2.0.html){: new_window} で使用許諾されます。
 * [{{site.data.keyword.IBM_notm}} MQ Advanced for Developers のライセンス情報 ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](http://www-03.ibm.com/software/sla/sladb.nsf/displaylis/973FA648A5DE42948525806E004CC757?OpenDocument){: new_window}。
 
-**注:** このライセンスでは、他社への配布は許可されていません。イメージ内の {{site.data.keyword.IBM_notm}} MQ のご利用条件では、開発と単体テストに使用が制限されています。
+**注:** このライセンスでは、他社への配布は許可されていません。 イメージ内の {{site.data.keyword.IBM_notm}} MQ のご利用条件では、開発と単体テストに使用が制限されています。
 
 
 ## 概説
@@ -73,27 +73,27 @@ ibm-mq イメージは {{site.data.keyword.containershort}} 用に提供され�
 
 1. [ibm-mq イメージに基づくコンテナーをプロビジョンします](#ibm_mq_provision)。
 
-    **注:** コンテナーは、その内部にあるキュー・マネージャーの実行状態と連携しています。コンソールまたはコマンド・ラインを使用してキュー・マネージャーを停止すると、コンテナーは少し後に停止します。 
+    **注:** コンテナーは、その内部にあるキュー・マネージャーの実行状態と連携しています。 コンソールまたはコマンド・ラインを使用してキュー・マネージャーを停止すると、コンテナーは少し後に停止します。 
 
-2. コンテナー内で実行中の {{site.data.keyword.IBM_notm}} MQ リソースを管理します。IBM MQ Web コンソールからグラフィカルに行うか、または、端末からコマンドを使用してプログラマチックに行うことができます。 
+2. コンテナー内で実行中の {{site.data.keyword.IBM_notm}} MQ リソースを管理します。 IBM MQ Web コンソールからグラフィカルに行うか、または、端末からコマンドを使用してプログラマチックに行うことができます。 
 
     1. 以下のいずれかのオプションを選択して、コンテナー内の {{site.data.keyword.IBM_notm}} MQ リソースを管理します。
     
-        *	{{site.data.keyword.IBM_notm}} MQ Web コンソールを起動し、{{site.data.keyword.IBM_notm}} MQ をグラフィカルに管理します。詳しくは、[IBM MQ Web コンソールの起動](#ibm_mq_webui)を参照してください。
-        *	端末から Docker CLI を使用します。詳しくは、[Docker CLI を使用するための端末のセットアップ](#ibm_mq_docker_commands)を参照してください。
-        * 端末から {{site.data.keyword.containershort_notm}} CLI を使用します。詳しくは、[{{site.data.keyword.containershort_notm}} CLI を使用するための端末のセットアップ](#ibm_mq_containers_cli)を参照してください。
+        *	{{site.data.keyword.IBM_notm}} MQ Web コンソールを起動し、{{site.data.keyword.IBM_notm}} MQ をグラフィカルに管理します。 詳しくは、[IBM MQ Web コンソールの起動](#ibm_mq_webui)を参照してください。
+        *	端末から Docker CLI を使用します。 詳しくは、[Docker CLI を使用するための端末のセットアップ](#ibm_mq_docker_commands)を参照してください。
+        * 端末から {{site.data.keyword.containershort_notm}} CLI を使用します。 詳しくは、[{{site.data.keyword.containershort_notm}} CLI を使用するための端末のセットアップ](#ibm_mq_containers_cli)を参照してください。
         
     2. コンテナー内で実行される {{site.data.keyword.IBM_notm}} MQ キュー・マネージャーを構成します。 
 
-        * キュー・マネージャーをコマンド・ラインを介して管理するには、*runmqsc* プログラムを使用します。コマンド `runmqsc QM_Name` を実行します (*QM_Name* は、キュー・マネージャーの名前です)。詳しくは、[コマンド・ラインを使用したコンテナーの管理](#ibm_mq_access)を参照してください。
+        * キュー・マネージャーをコマンド・ラインを介して管理するには、*runmqsc* プログラムを使用します。 コマンド `runmqsc QM_Name` を実行します (*QM_Name* は、キュー・マネージャーの名前です)。 詳しくは、[コマンド・ラインを使用したコンテナーの管理](#ibm_mq_access)を参照してください。
     
         * キュー・マネージャーをグラフィカルに管理するには、Web UI を使用します。
         
     3. [IBM MQ Knowledge Center ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](http://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm){: new_window} で説明されている手順に従って、キュー・マネージャーにメッセージ・キューを作成し、それらのメッセージ・キューにメッセージを出し入れします。
     
-        例えば、端末から `runmqsc` で `DEFINE QLOCAL('MY.Q')` コマンドを実行して新規ローカル・キューを作成します (*MY.Q* は、ローカル・キューの名前です)。Web コンソールでキューを表示するか、runmqsc で `DISPLAY QLOCAL('MY.Q')` コマンドを実行してキューおよびそのプロパティーを表示することができます。
+        例えば、端末から `runmqsc` で `DEFINE QLOCAL('MY.Q')` コマンドを実行して新規ローカル・キューを作成します (*MY.Q* は、ローカル・キューの名前です)。 Web コンソールでキューを表示するか、runmqsc で `DISPLAY QLOCAL('MY.Q')` コマンドを実行してキューおよびそのプロパティーを表示することができます。
     
-3. (オプション) コンテナー内の {{site.data.keyword.IBM_notm}} MQ ログをモニターします。詳しくは、[コマンド・ラインを使用したコンテナーの管理](#ibm_mq_access)を参照してください。
+3. (オプション) コンテナー内の {{site.data.keyword.IBM_notm}} MQ ログをモニターします。 詳しくは、[コマンド・ラインを使用したコンテナーの管理](#ibm_mq_access)を参照してください。
 
 IBM MQ の概要説明について詳しくは、[IBM MQ バージョン 9.0.x ウェルカム・ページ ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](http://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm){: new_window} を参照してください。
 
@@ -107,7 +107,7 @@ IBM MQ に関するブログおよび最新情報については、[MQ Developer
 
 {{site.data.keyword.IBM_notm}} から提供されている ibm-mq イメージに基づく Docker コンテナーを {{site.data.keyword.Bluemix_notm}} でプロビジョンするには、以下の手順を実行します。
 
-1.	{{site.data.keyword.Bluemix_notm}} にログインします。{{site.data.keyword.Bluemix_notm}} ID を使用してログインしてください。
+1.	{{site.data.keyword.Bluemix_notm}} にログインします。 {{site.data.keyword.Bluemix_notm}} ID を使用してログインしてください。
 2.	カタログから**「コンテナー」**を選択し、*ibm-mq* イメージを選択します。
 3.	**「単一」**を選択して単一インスタンス・コンテナーを作成します。このコンテナーは開発およびテストの目的に使用できます。
 4.	コンテナーの名前 (例: mq) を入力します。
@@ -126,36 +126,36 @@ IBM MQ に関するブログおよび最新情報については、[MQ Developer
  
         **注:** 環境変数 LICENSE および MQ_QMGR_NAME に値が指定されていない場合、コンテナーは作成されますが、開始しません。 
     
-    * (オプション) デフォルトでは、{{site.data.keyword.IBM_notm}} MQ Web コンソールがコンテナー内で開始されます。このデフォルト動作を変更するには、**MQ_DISABLE_WEB_CONSOLE** 環境変数の値を *true* に設定します。
+    * (オプション) デフォルトでは、{{site.data.keyword.IBM_notm}} MQ Web コンソールがコンテナー内で開始されます。 このデフォルト動作を変更するには、**MQ_DISABLE_WEB_CONSOLE** 環境変数の値を *true* に設定します。
     
         **注:** Web コンソールを使用するには、*MQ_DISABLE_WEB_CONSOLE* 環境変数を設定しないでください。
 
     * (オプション) {{site.data.keyword.Bluemix_notm}} UI を使用して MQ ログを確認するには、環境変数 **LOG_LOCATIONS** を値 `/var/mqm/qmgr/QM_Name/errors/AMQERR01.LOG` に設定します。ここで、*QM_Name* は、環境変数 *MQ_QMGR_NAME* に設定した値です。
     
-    *	(オプション) デフォルトでは、{{site.data.keyword.IBM_notm}} MQ Developer デフォルト・オブジェクトが作成されます。このデフォルト動作を変更するには、**MQ_DEV** 環境変数を *false* に設定し、IBM MQ のデフォルトのインストール値をカスタム値に変更します。詳しくは、[デフォルトのインストール値の変更](#ibm_mq_dev_default)を参照してください。
+    *	(オプション) デフォルトでは、{{site.data.keyword.IBM_notm}} MQ Developer デフォルト・オブジェクトが作成されます。 このデフォルト動作を変更するには、**MQ_DEV** 環境変数を *false* に設定し、IBM MQ のデフォルトのインストール値をカスタム値に変更します。 詳しくは、[デフォルトのインストール値の変更](#ibm_mq_dev_default)を参照してください。
  
-9. (オプション) 「詳細オプション」セクションで、ボリュームを割り当てます。コンテナーのマイグレーションを経ても {{site.data.keyword.IBM_notm}} MQ データおよび構成が永続的に保管されるようにするには、{{site.data.keyword.Bluemix_notm}} ボリュームを使用します。ボリュームに保管されていない {{site.data.keyword.IBM_notm}} MQ データは、コンテナーが終了すると失われます。
+9. (オプション) 「詳細オプション」セクションで、ボリュームを割り当てます。 コンテナーのマイグレーションを経ても {{site.data.keyword.IBM_notm}} MQ データおよび構成が永続的に保管されるようにするには、{{site.data.keyword.Bluemix_notm}} ボリュームを使用します。 ボリュームに保管されていない {{site.data.keyword.IBM_notm}} MQ データは、コンテナーが終了すると失われます。
 
     ibm-mq イメージは {{site.data.keyword.Bluemix_notm}} ボリュームと共に使用できますが、ボリュームは {{site.data.keyword.IBM_notm}} MQ で検出および利用できるように **/mnt/mqm** にマウントされる必要があります。
 
-    デフォルトでは、ボリュームなしで作成されたコンテナーでは、コンテナーが停止したときに IBM MQ データはすべて失われます。これを防止するには、永続メッセージングおよび {{site.data.keyword.Bluemix_notm}} ボリュームを使用する必要があります。
+    デフォルトでは、ボリュームなしで作成されたコンテナーでは、コンテナーが停止したときに IBM MQ データはすべて失われます。 これを防止するには、永続メッセージングおよび {{site.data.keyword.Bluemix_notm}} ボリュームを使用する必要があります。
 
     1. **「ボリュームの作成」**をクリックし、ボリューム名を入力し、ファイル共有を選択します。
-    2. **「既存ボリュームの割り当て」**をクリックし、作成したボリュームを選択します。パスを入力するボックスに **/mnt/mqm** と入力します。**「読み取り専用」**ボックスがチェックされていないことを確認します。
+    2. **「既存ボリュームの割り当て」**をクリックし、作成したボリュームを選択します。 パスを入力するボックスに **/mnt/mqm** と入力します。 **「読み取り専用」**ボックスがチェックされていないことを確認します。
 
-    **注:** IBM MQ データ・ディレクトリーとして使用するためにボリュームをマウントするときには、ロケーション */mnt/mqm* にマウントする必要があります。*/mnt/mqm* にマウントすることによって、ibm-mq スクリプトは、そのボリュームを検出し、それを使用するように IBM MQ ファイル・システムを構成します。
+    **注:** IBM MQ データ・ディレクトリーとして使用するためにボリュームをマウントするときには、ロケーション */mnt/mqm* にマウントする必要があります。 */mnt/mqm* にマウントすることによって、ibm-mq スクリプトは、そのボリュームを検出し、それを使用するように IBM MQ ファイル・システムを構成します。
      
 10.	**「作成」**をクリックして、コンテナーが実行を開始するまで待ちます。
 
-    コンテナーが作成された後、コンテナー・ダッシュボードが開きます。コンテナーの状況が**実行中**に設定されていることを確認します。 
+    コンテナーが作成された後、コンテナー・ダッシュボードが開きます。 コンテナーの状況が**実行中**に設定されていることを確認します。 
 
-    コンテナーのログを確認するには、**「モニタリングおよびログ」**をクリックし、**「ロギング」**タブを選択します。ログが表示されます。ログの拡張分析を行うには、**「詳細ビュー」**をクリックしてログを Kibana で表示します。
+    コンテナーのログを確認するには、**「モニタリングおよびログ」**をクリックし、**「ロギング」**タブを選択します。 ログが表示されます。 ログの拡張分析を行うには、**「詳細ビュー」**をクリックしてログを Kibana で表示します。
 
-キュー・マネージャーが作成され、開始されました。これで、以下の接続詳細を使用して MQ アプリケーションを接続できるようになりました。
+キュー・マネージャーが作成され、開始されました。 これで、以下の接続詳細を使用して MQ アプリケーションを接続できるようになりました。
 
 | 接続プロパティー | 値 |
 |-------|-------|
-| IP アドレス  | コンテナーのパブリック IP アドレス|
+| IP アドレス  | コンテナーのパブリック IP アドレス |
 | ポート | 1414 |
 | チャネル | DEV.APP.SVRCONN |
 
@@ -167,14 +167,14 @@ IBM MQ に関するブログおよび最新情報については、[MQ Developer
 
 コンテナー内の {{site.data.keyword.IBM_notm}} MQ のセットアップと構成を検証するには、以下の手順を実行します。
 
-1.	{{site.data.keyword.containershort_notm}} CLI をセットアップします。詳しくは、[{{site.data.keyword.Bluemix_notm}} CLI ページ](https://plugins.ng.bluemix.net/ui/home.html)を参照し、指示に従って最新の {{site.data.keyword.containershort_notm}} プラグインをインストールします。
+1.	{{site.data.keyword.containershort_notm}} CLI をセットアップします。 詳しくは、[{{site.data.keyword.Bluemix_notm}} CLI ページ](https://plugins.ng.bluemix.net/ui/home.html)を参照し、指示に従って最新の {{site.data.keyword.containershort_notm}} プラグインをインストールします。
 
-2.	端末から、{{site.data.keyword.Bluemix_notm}} ID を使用して、コンテナーが実行されている {{site.data.keyword.Bluemix_notm}} 組織およびスペースにログインします。以下のコマンドを実行します。
+2.	端末から、{{site.data.keyword.Bluemix_notm}} ID を使用して、コンテナーが実行されている {{site.data.keyword.Bluemix_notm}} 組織およびスペースにログインします。 以下のコマンドを実行します。
 
     1. `bx login`
     2. `bx ic init`
     
-3.	コンテナーの状況を確認します。コマンド `bx ic ps` を実行します。
+3.	コンテナーの状況を確認します。 コマンド `bx ic ps` を実行します。
 
 4.	Bash セッションをコンテナーにアタッチします。
 
@@ -186,9 +186,9 @@ IBM MQ に関するブログおよび最新情報については、[MQ Developer
 
 | コマンド | アクション |
 |---------|---------|
-| dspmqver | IBM MQ バージョンおよびビルド情報を確認します。|
-| dspmq | コンテナー内で実行中のキュー・マネージャーの状況を確認します。| 
-| runmqsc | MQ リソースを管理します。|
+| dspmqver | IBM MQ バージョンおよびビルド情報を確認します。 |
+| dspmq | コンテナー内で実行中のキュー・マネージャーの状況を確認します。 | 
+| runmqsc | MQ リソースを管理します。 |
 
 MQ ログをモニターするには、以下のいずれかのオプションを選択します。
 
@@ -208,9 +208,9 @@ MQ ログをモニターするには、以下のいずれかのオプション�
 3.	コンテナー詳細を確認してパブリック IP を見つけるか、または、まだ行われていない場合はパブリック IP を要求してバインドします。
 4.	Web ブラウザーから URL `https://DockerContainerPublicIP:9443/ibmmq/console/` を起動します。ここで、DockerContainerPublicIP は、コンテナーのパブリック IP です。
 
-    MQ コンソールをホスティングするときに Web サーバーが使用する TLS 証明書が生成され、自己署名されているため、セキュリティー警告が開きます。**「例外の追加」**をクリックし、確認します。
+    MQ コンソールをホスティングするときに Web サーバーが使用する TLS 証明書が生成され、自己署名されているため、セキュリティー警告が開きます。 **「例外の追加」**をクリックし、確認します。
 
-    **注:** 実稼働環境では、ご使用のブラウザーで認識および信頼される独自の証明書を使用してください。この証明書は、認証局によって発行されたものである必要があります。 
+    **注:** 実稼働環境では、ご使用のブラウザーで認識および信頼される独自の証明書を使用してください。 この証明書は、認証局によって発行されたものである必要があります。 
     
     ブラウザーで Web ユーザー・インターフェースが開きます。
     
@@ -228,9 +228,9 @@ MQ ログをモニターするには、以下のいずれかのオプション�
 
 `bx ic` コマンドを実行して IBM MQ を管理するように端末をセットアップするには、以下の手順を実行します。
 
-1.	{{site.data.keyword.containershort_notm}} CLI をセットアップします。詳しくは、[{{site.data.keyword.Bluemix_notm}} CLI ページ](https://plugins.ng.bluemix.net/ui/home.html)を参照し、指示に従って最新の {{site.data.keyword.containershort_notm}} プラグインをインストールします。
+1.	{{site.data.keyword.containershort_notm}} CLI をセットアップします。 詳しくは、[{{site.data.keyword.Bluemix_notm}} CLI ページ](https://plugins.ng.bluemix.net/ui/home.html)を参照し、指示に従って最新の {{site.data.keyword.containershort_notm}} プラグインをインストールします。
 
-2.	端末から、{{site.data.keyword.Bluemix_notm}} にログインします。以下のコマンドを実行します。
+2.	端末から、{{site.data.keyword.Bluemix_notm}} にログインします。 以下のコマンドを実行します。
 
     1. `bx login`
     2. `bx ic init`
@@ -250,9 +250,9 @@ Docker CLI を使用して、コンテナー内で直接 {{site.data.keyword.IBM
 
 Docker コマンドを実行して IBM MQ を管理するように端末をセットアップするには、以下の手順を実行します。
 
-1.	{{site.data.keyword.containershort_notm}} CLI をセットアップします。詳しくは、[{{site.data.keyword.Bluemix_notm}} CLI ページ](https://plugins.ng.bluemix.net/ui/home.html)を参照し、指示に従って最新の {{site.data.keyword.containershort_notm}} プラグインをインストールします。
+1.	{{site.data.keyword.containershort_notm}} CLI をセットアップします。 詳しくは、[{{site.data.keyword.Bluemix_notm}} CLI ページ](https://plugins.ng.bluemix.net/ui/home.html)を参照し、指示に従って最新の {{site.data.keyword.containershort_notm}} プラグインをインストールします。
 
-2.	端末から、{{site.data.keyword.Bluemix_notm}} にログインします。以下のコマンドを実行します。
+2.	端末から、{{site.data.keyword.Bluemix_notm}} にログインします。 以下のコマンドを実行します。
 
     1. `bx login`
     2. `bx ic init`
@@ -279,7 +279,7 @@ Docker コマンドを実行して IBM MQ を管理するように端末をセ�
 ### デフォルトのインストール値の変更
 {: #ibm_mq_dev_default}
 
-キュー・マネージャーが作成される際、{{site.data.keyword.IBM_notm}} MQ Developer のデフォルトを使用して作成されます。これらのデフォルト・オブジェクトは、アプリケーションの開発をすぐに始められるように、あるいは、{{site.data.keyword.IBM_notm}} MQ を試してみることができるように設計されています。 
+キュー・マネージャーが作成される際、{{site.data.keyword.IBM_notm}} MQ Developer のデフォルトを使用して作成されます。 これらのデフォルト・オブジェクトは、アプリケーションの開発をすぐに始められるように、あるいは、{{site.data.keyword.IBM_notm}} MQ を試してみることができるように設計されています。 
 
 キュー・マネージャー作成時に使用されるデフォルト・オブジェクトは次のとおりです。
 
@@ -302,9 +302,9 @@ Docker コマンドを実行して IBM MQ を管理するように端末をセ�
 
 | 環境変数 | 用途 | デフォルト |
 |----------------------|---------|---------|
-| MQ_ADMIN_PASSWORD | 作成された MQ 管理者のパスワードのデフォルトを変更して、自身で選択したものにするには、この変数を設定します。パスワードの長さは、少なくとも 8 文字でなければなりません。管理ユーザーのユーザー名は admin に固定されています。| passw0rd |
-| MQ_APP_PASSWORD | アプリケーション・ユーザーのパスワードを設定するには、この変数を設定します。アプリケーション・ユーザーのユーザー名は app に固定されています。この環境変数が設定されていると、MQ クライアントを接続するときにユーザー ID とパスワードの指定が必要になります。<br> パスワードの長さは、少なくとも 8 文字でなければなりません。|  |
-| MQ_TLS_KEYSTORE | この環境変数を、MQ Web コンソールおよび IBM MQ キュー・マネージャーが TLS 操作に使用するようにしたい証明書を含んでいる PKCS#12 鍵ストアのロケーションに設定します。<br> この環境変数が設定されていると、作成されるデベロッパー・チャネルでは、CipherSpec‘TLS_RSA_WITH_AES_256_GCM_SHA384’を使用して TLS が有効になります。<br> **注:** 鍵ストア・ファイルを {{site.data.keyword.Bluemix_notm}} コンテナー内で使用可能にする必要があります。これを行うには、コンテナーを作成するときに、鍵ストアを含んでいるボリュームをマウントします。|  |
-| MQ_TLS_PASSPHRASE | 環境変数 MQ_TLS_KEYSTORE に指定した鍵ストアのパスワードを設定するには、この環境変数を設定します。|  |
-| MQ_DEV | {{site.data.keyword.IBM_notm}} MQ Developer デフォルト・オブジェクトが作成されるかどうかを制御するには、この環境変数を設定します。| true |
-| MQ_DISABLE_WEB_CONSOLE | コンテナーの CPU/RAM 使用量を節減したい場合は、この環境変数を設定して Web コンソールの構成と開始を無効にします。|  |
+| MQ_ADMIN_PASSWORD | 作成された MQ 管理者のパスワードのデフォルトを変更して、自身で選択したものにするには、この変数を設定します。 パスワードの長さは、少なくとも 8 文字でなければなりません。 管理ユーザーのユーザー名は admin に固定されています。 | passw0rd |
+| MQ_APP_PASSWORD | アプリケーション・ユーザーのパスワードを設定するには、この変数を設定します。 アプリケーション・ユーザーのユーザー名は app に固定されています。 この環境変数が設定されていると、MQ クライアントを接続するときにユーザー ID とパスワードの指定が必要になります。 <br> パスワードの長さは、少なくとも 8 文字でなければなりません。 |  |
+| MQ_TLS_KEYSTORE | この環境変数を、MQ Web コンソールおよび IBM MQ キュー・マネージャーが TLS 操作に使用するようにしたい証明書を含んでいる PKCS#12 鍵ストアのロケーションに設定します。 <br> この環境変数が設定されていると、作成されるデベロッパー・チャネルでは、CipherSpec‘TLS_RSA_WITH_AES_256_GCM_SHA384’を使用して TLS が有効になります。 <br> **注:** 鍵ストア・ファイルを {{site.data.keyword.Bluemix_notm}} コンテナー内で使用可能にする必要があります。 これを行うには、コンテナーを作成するときに、鍵ストアを含んでいるボリュームをマウントします。 |  |
+| MQ_TLS_PASSPHRASE | 環境変数 MQ_TLS_KEYSTORE に指定した鍵ストアのパスワードを設定するには、この環境変数を設定します。 |  |
+| MQ_DEV | {{site.data.keyword.IBM_notm}} MQ Developer デフォルト・オブジェクトが作成されるかどうかを制御するには、この環境変数を設定します。 | true |
+| MQ_DISABLE_WEB_CONSOLE | コンテナーの CPU/RAM 使用量を節減したい場合は、この環境変数を設定して Web コンソールの構成と開始を無効にします。 |  |

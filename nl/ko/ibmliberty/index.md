@@ -89,7 +89,7 @@ Docker 허브의 [websphere-liberty 이미지](https://hub.docker.com/_/webspher
 1.  컨테이너 내의 모든 실행 중인 프로세스를 나열하십시오.
 
     ```
-    bx ic top CONTAINER -aux
+        bx ic top CONTAINER -aux
     ```
     {: pre}
 

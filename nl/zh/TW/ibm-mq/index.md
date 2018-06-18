@@ -46,11 +46,11 @@ ibm-mq 映像檔是提供給 {{site.data.keyword.containershort}}。其中包括
 
 下表顯示適用於在 {{site.data.keyword.Bluemix_notm}} 免費使用 ibm-mq 映像檔的限制：
 
-| 環境| 免費使用限制|
+|環境|免費使用限制|
 |-------------|-------------------------|
-| 開發| 無限制免費使用 ibm-mq 映像檔來建立進行開發的單一容器。|
-| 測試| 無限制免費使用 ibm-mq 映像檔來建立進行單元測試的單一容器。如需允許哪些測試的相關資訊，請檢查[授權資訊](#ibm_mq_license )。|
-| 正式作業| {{site.data.keyword.IBM_notm}}MQ Advanced for Developer 授權不容許它用於正式作業。|
+|開發|無限制免費使用 ibm-mq 映像檔來建立進行開發的單一容器。|
+|測試|無限制免費使用 ibm-mq 映像檔來建立進行單元測試的單一容器。如需允許哪些測試的相關資訊，請檢查[授權資訊](#ibm_mq_license )。|
+|正式作業|{{site.data.keyword.IBM_notm}}MQ Advanced for Developer 授權不容許它用於正式作業。|
 
 **附註：**ibm-mq 映像檔的定價與 {{site.data.keyword.Bluemix_notm}} 中所使用容器的定價無關。
 
@@ -153,11 +153,11 @@ ibm-mq 映像檔是提供給 {{site.data.keyword.containershort}}。其中包括
 
 您已建立並啟動佇列管理程式。您現在可以使用下列連線詳細資料來連接 MQ 應用程式：
 
-| 連線內容| 值|
+|連線內容|值|
 |-------|-------|
-| IP 位址| 容器的公用 IP 位址|
-| 埠| 1414 |
-| 通道| DEV.APP.SVRCONN |
+|IP 位址|容器的公用 IP 位址|
+|埠|1414 |
+|通道|DEV.APP.SVRCONN |
 
 
 ### 透過指令行管理容器
@@ -185,11 +185,11 @@ ibm-mq 映像檔是提供給 {{site.data.keyword.containershort}}。其中包括
     
 5.	執行指令來管理 MQ 設定，例如：
 
-| 指令 | 動作 |
+|指令 |動作 |
 |---------|---------|
-| dspmqver | 驗證 IBM MQ 版本及建置資訊。|
-| dspmq | 檢查在容器中執行的「佇列管理程式」狀態。| 
-| runmqsc | 管理 MQ 資源。|
+|dspmqver |驗證 IBM MQ 版本及建置資訊。|
+|dspmq |檢查在容器中執行的「佇列管理程式」狀態。| 
+|runmqsc |管理 MQ 資源。|
 
 若要監視 MQ 日誌，請選擇下列其中一個選項：
 
@@ -303,11 +303,11 @@ ibm-mq 映像檔是提供給 {{site.data.keyword.containershort}}。其中包括
 
 如果想要自訂所建立的開發人員預設值，在您從 ibm-mq 映像檔建立容器時，可以新增下列環境變數。
 
-| 環境變數| 用途| 預設值|
+|環境變數|用途|預設值|
 |----------------------|---------|---------|
-| MQ_ADMIN_PASSWORD | 設定此變數，可將建立的 MQ 管理者的密碼從預設值變更為您自己選擇的值。密碼長度必須至少為 8 個字元。管理使用者的使用者名稱固定為 admin。| passw0rd |
-| MQ_APP_PASSWORD | 設定此變數，可設定應用程式使用者的密碼。應用程式使用者的使用者名稱固定為 app。如果您設定此環境變數，則在連接 MQ 用戶端時必須提供使用者 ID 及密碼。<br> 密碼長度必須至少為 8 個字元。|  |
-| MQ_TLS_KEYSTORE | 將此環境變數設為 PKCS#12 金鑰儲存庫的位置，該金鑰儲存庫包含您要「MQ Web 主控台」及「IBM MQ 佇列管理程式」用於進行 TLS 作業的憑證。<br> 在設定此環境變數時，將使用 CipherSpec 'TLS_RSA_WITH_AES_256_GCM_SHA384'，針對 TLS 啟用建立的開發人員通道。<br> **附註：**您需要讓金鑰儲存庫檔案可在 {{site.data.keyword.Bluemix_notm}} 容器內使用。若要這麼做，您可以在建立容器時裝載包含金鑰儲存庫的磁區。|  |
-| MQ_TLS_PASSPHRASE | 設定此環境變數，可設定環境變數 MQ_TLS_KEYSTORE 中指定之金鑰儲存庫的密碼。|  |
-| MQ_DEV | 設定此環境變數，可控制是否建立 {{site.data.keyword.IBM_notm}} MQ Developer 預設物件。| true|
-| MQ_DISABLE_WEB_CONSOLE | 如果想要保留容器的 CPU/RAM 用量，請設定此環境變數，以停用 Web 主控台的配置及啟動。|  |
+|MQ_ADMIN_PASSWORD |設定此變數，可將建立的 MQ 管理者的密碼從預設值變更為您自己選擇的值。密碼長度必須至少為 8 個字元。管理使用者的使用者名稱固定為 admin。|passw0rd |
+|MQ_APP_PASSWORD |設定此變數，可設定應用程式使用者的密碼。應用程式使用者的使用者名稱固定為 app。如果您設定此環境變數，則在連接 MQ 用戶端時必須提供使用者 ID 及密碼。<br> 密碼長度必須至少為 8 個字元。|  |
+|MQ_TLS_KEYSTORE |將此環境變數設為 PKCS#12 金鑰儲存庫的位置，該金鑰儲存庫包含您要「MQ Web 主控台」及「IBM MQ 佇列管理程式」用於進行 TLS 作業的憑證。<br> 在設定此環境變數時，將使用 CipherSpec 'TLS_RSA_WITH_AES_256_GCM_SHA384'，針對 TLS 啟用建立的開發人員通道。<br> **附註：**您需要讓金鑰儲存庫檔案可在 {{site.data.keyword.Bluemix_notm}} 容器內使用。若要這麼做，您可以在建立容器時裝載包含金鑰儲存庫的磁區。|  |
+|MQ_TLS_PASSPHRASE |設定此環境變數，可設定環境變數 MQ_TLS_KEYSTORE 中指定之金鑰儲存庫的密碼。|  |
+|MQ_DEV |設定此環境變數，可控制是否建立 {{site.data.keyword.IBM_notm}} MQ Developer 預設物件。|true|
+|MQ_DISABLE_WEB_CONSOLE |如果想要保留容器的 CPU/RAM 用量，請設定此環境變數，以停用 Web 主控台的配置及啟動。|  |

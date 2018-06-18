@@ -30,7 +30,7 @@ lastupdated: "2017-11-09"
 
 每個 **ibm-backup-restore** 映像檔都會包含下列軟體套件：
 
--   Ubuntu 14.04 
+-   Ubuntu 14.04
 -   Duplicity 0.7.10
 -   python、gnupg 及 wget 套件
 
@@ -42,7 +42,7 @@ lastupdated: "2017-11-09"
 2.  [執行排程的備份](#scheduled_backup)
 3.  [執行還原 Script](#restore_script_cli)
 4.  [加密備份](#encrypting_backups)
-5.  [環境變數參照](#reference_backup_restore)
+5.  [環境變數參考資料](#reference_backup_restore)
 
 ## 建立 {{site.data.keyword.objectstorageshort}} 服務實例 
 {: #object_storage}
@@ -92,7 +92,7 @@ lastupdated: "2017-11-09"
 2. 建立 pvc。
 
     ```
-    kubectl apply -f backup-pvc.yaml 
+        kubectl apply -f backup-pvc.yaml 
     ```
     {: pre}
 
@@ -142,19 +142,19 @@ lastupdated: "2017-11-09"
 4.  建立執行備份 Script 的 Pod。
 
     ```
-    kubectl apply -f backup.yaml
+        kubectl apply -f backup.yaml 
     ```
     {: pre}
 
 5.  確認 Pod 在執行中。
 
     ```
-    kubectl get pods 
+        kubectl get pods
     ```
     {: pre}
     
     ```
-    NAME                                    READY     STATUS    RESTARTS   AGE
+        NAME                                    READY     STATUS    RESTARTS   AGE
     <pod_name>                              1/1       Running   0          1hr
     ```
     {: screen}
@@ -162,7 +162,7 @@ lastupdated: "2017-11-09"
 4.  在 {{site.data.keyword.Bluemix_notm}} GUI 中，檢閱 {{site.data.keyword.objectstorageshort}} 中的備份。
     1.  按一下您為備份所建立的 {{site.data.keyword.objectstorageshort}} 實例。
     2.  從**容器**表格的**管理**標籤中，按一下 {{site.data.keyword.objectstorageshort}} 容器。
-    3.  檢閱壓縮檔。![在 {{site.data.keyword.Bluemix_notm}} GUI 中的 Object Storage 容器會顯示備份的檔案。](images/volume_backup_screenshot.png) 您可以下載 vol1.difftar.gz 檔案、解壓縮該檔案，然後驗證已備份的資料。**重要事項**：如果您從 {{site.data.keyword.objectstorageshort}} 中刪除或修改任何檔案，將無法回復這些檔案。
+    3.  檢閱壓縮檔。![在 {{site.data.keyword.Bluemix_notm}} GUI 中的 Object Storage 容器會顯示已備份的檔案。](images/volume_backup_screenshot.png)您可以下載 voll.difftar.gz 檔案、解壓縮該檔案，然後驗證已備份的資料。**重要事項**：如果您從 {{site.data.keyword.objectstorageshort}} 中刪除或修改任何檔案，將無法回復這些檔案。
 
 您的備份可供使用。如果您已配置您的備份來建立一次性完整備份，則必須在每次要建立新的備份時執行備份 Script。如果您已配置容器定期執行增量備份，則會依排程執行備份。
 
@@ -198,7 +198,7 @@ lastupdated: "2017-11-09"
 2. 建立 pvc。
 
     ```
-    kubectl apply -f restore-pvc.yaml 
+    kubectl apply -f restore-pvc.yaml
     ```
     {: pre}
 
@@ -215,9 +215,9 @@ lastupdated: "2017-11-09"
           image: registry.<region>.bluemix.net/ibm-backup-restore
           env:
           - name: USERID
-            value: 
+            value:
           - name: PASSWORD
-            value: 
+            value:
           - name: PROJECTID
             value:
           - name: REGION
@@ -247,7 +247,7 @@ lastupdated: "2017-11-09"
 5.  確認 Pod 在執行中。
 
     ```
-    kubectl get pods 
+    kubectl get pods
     ```
     {: pre}
     
@@ -302,15 +302,15 @@ lastupdated: "2017-11-09"
     ```
     {: screen}
 
-4.  從 `sub` 機碼，匯出含有值的加密金鑰。請將檔案命名為 encryption.asc。
+4.  從 `sub` 金鑰，匯出含有值的加密金鑰。請將檔案命名為 encryption.asc。
 
     ```
     gpg --export-secret-keys -a <SUB_KEY> > encryption.asc
     ```
     {: pre}
 
-    在此範例中，sub 機碼的值為 *YYYYYYYY*
-```
+    在此範例中，sub 金鑰的值為 *YYYYYYYY*
+    ```
     gpg --export-secret-keys -a YYYYYYYY > encryption.asc
     ```
     {: pre}
@@ -343,7 +343,7 @@ lastupdated: "2017-11-09"
 7. 建立 pvc。
 
     ```
-    kubectl apply -f backup-pvc.yaml 
+    kubectl apply -f backup-pvc.yaml
     ```
     {: pre}
 
@@ -381,7 +381,7 @@ lastupdated: "2017-11-09"
             value: yes
           - name: ENCRYPTION_PASSPHRASE
            # Include this passphrase when your are backing up and restoring encrypted data.
-            value: 
+            value:
           volumeMounts:
           - mountPath: /backup
             name: backup-volume
@@ -389,14 +389,14 @@ lastupdated: "2017-11-09"
       - name: backup-volume 
         persistentVolumeClaim:
           claimName: backuppvc
-    ```
+   ```
    
-    這些設定會建立加密的每日增量備份，名稱為 <em>&lt;volume_name&gt;</em>。若要使用不同的設定來建立備份，請檢閱完整[環境變數選項](#reference_backup_restore)清單。
-    
+   這些設定會建立加密的每日增量備份，名稱為 <em>&lt;volume_name&gt;</em>。若要使用不同的設定來建立備份，請檢閱完整[環境變數選項](#reference_backup_restore)清單。
+
 9.  建立執行備份 Script 的 Pod。
 
     ```
-    kubectl apply -f backup.yaml 
+    kubectl apply -f backup.yaml
     ```
     {: pre}
 
@@ -448,7 +448,7 @@ lastupdated: "2017-11-09"
 
 您的備份已加密。若要還原檔案，請遵循[執行還原 Script](#restore_script_cli) 中的步驟，並在執行還原處理程序的容器的 backup_restore 目錄中併入 encryption.asc 檔案。如果備份已加密，您必須在建立還原容器時提供備份 yaml 檔案中的 ENCRYPTION_REQUIRED 及 ENCRYPTION_PASSPHRASE 作為環境變數。
 
-## 環境變數參照 
+## 環境變數參考資料 
 {: #reference_backup_restore}
 
 請檢閱可作為環境變數傳遞或在執行中容器的 `config.conf` 檔案中進行編輯的完整欄位清單。以環境變數傳遞的任何值會取代 `config.conf` 檔案中的值。若要檢閱容器的環境變數，請使用 `exec` 登入容器，然後執行 `env`。
@@ -469,7 +469,7 @@ lastupdated: "2017-11-09"
 |BACKUP_DIRECTORY|*/backup*：預設值。要在其中裝載磁區的目錄的絕對檔案路徑。資料是從此目錄進行備份。請不要選取 backup_restore 目錄，因為該目錄包含用於備份及還原處理程序的檔案。|
 |BACKUP_NAME|*volume_backup*：預設值。選擇備份名稱。|
 |BACKUP_TYPE|*full*：預設值。每次都備份所有檔案。<br/> *incremental*：只備份新的或已變更的檔案。如果您選擇 *incremental*，則必須選擇 SCHEDULING_INFO 及 SCHEDULING_TYPE 的值。|
-|SCHEDULE_TYPE|*none*：預設值。建立一次性備份。<br/> *periodic*：將值變更為 periodic，以建立排定的備份。|
+|SCHEDULE_TYPE|*none*：預設值。建立一次性備份。<br/> **附註：**如果您選擇建立一次性備份，則會在完成備份之後，從叢集中移除 Pod。<br/>*periodic*：將值變更為 periodic，以建立排定的備份。|
 |SCHEDULE_INFO|*hourly*：建立每小時備份。<br/>*daily*：預設值。建立每日備份。<br/>*weekly*：建立每週備份。如果您要排定 periodic 更新，則必須併入此變數。|
 |EXCLUDE_DIRECTORIES|*none*：預設值。包括您要從備份中排除之目錄的絕對檔案路徑。請使用逗點來區隔目錄。|
 {: caption="表 2. 備份變數" caption-side="top"}
@@ -495,14 +495,14 @@ lastupdated: "2017-11-09"
 {:shortdesc}
 
 ### 開始使用 
-{: #how_to_get_started}
+{: #how_to_get_started_migrating}
 
 開始之前：
 
 - [檢閱將應用程式移至 Kubernetes 的完整移轉路徑](../../../containers/cs_classic.html)
 - [安裝單一及可擴充容器 CLI (bx ic)](../../../containers/container_cli_cfic_install.html)
 - [安裝 {{site.data.keyword.containershort}} CLI（bx cs 及 kubectl）](../../../containers/cs_cli_install.html#cs_cli_install)
-- [建立要將資料移轉至其中的標準 Kubernetes 叢集](../../../containers/cs_cluster.html#cs_cluster_cli)
+- [建立要將資料移轉至其中的標準 Kubernetes 叢集](../../../containers/cs_clusters.html#clusters_cli)
 
 請完成下列作業，以執行備份及還原作業：
 1.  [建立 {{site.data.keyword.objectstorageshort}} 服務實例](#object_storage)（如之前所述）
@@ -596,7 +596,7 @@ lastupdated: "2017-11-09"
 2. 建立 pvc。
 
     ```
-    kubectl apply -f restore-pvc.yaml 
+    kubectl apply -f restore-pvc.yaml
     ```
     {: pre}
 
@@ -613,9 +613,9 @@ lastupdated: "2017-11-09"
           image: registry.<region>.bluemix.net/ibm-backup-restore
           env:
           - name: USERID
-            value: 
+            value:
           - name: PASSWORD
-            value: 
+            value:
           - name: PROJECTID
             value:
           - name: REGION
@@ -645,7 +645,7 @@ lastupdated: "2017-11-09"
 5.  確認 Pod 已執行。
 
     ```
-    kubectl get pods 
+    kubectl get pods
     ```
     {: pre}
     

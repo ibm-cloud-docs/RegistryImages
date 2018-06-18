@@ -13,254 +13,251 @@ lastupdated: "2017-10-30"
 {:codeblock: .codeblock}
 {:screen: .screen}
 
-# Initiation à l'image **ibm-mq**
+# Getting started with the **ibm-mq** image
 {: #ibm_mq}
 
-L'image ibm-mq est fournie pour {{site.data.keyword.containershort}}. Elle inclut {{site.data.keyword.IBM_notm}} MQ Advanced for Developers (non garanti). 
+The ibm-mq image is supplied for {{site.data.keyword.containershort}}. It includes {{site.data.keyword.IBM_notm}} MQ Advanced for Developers (non-warranted). 
 
 {:shortdesc}
 
 
-## Fonctionnement
+## How it works
 {: #ibm_mq_how}
 
-{{site.data.keyword.IBM_notm}} MQ Advanced for Developers contient tout ce dont vous avez besoin pour commencer à développer vos propres solutions de messagerie et applications {{site.data.keyword.IBM_notm}} MQ. 
+{{site.data.keyword.IBM_notm}} MQ Advanced for Developers contains everything you need to start developing your own messaging solutions and {{site.data.keyword.IBM_notm}} MQ applications. 
 
-Pour développer des solutions de messagerie et des applications {{site.data.keyword.IBM_notm}} MQ dans {{site.data.keyword.Bluemix_notm}}, vous pouvez déployer l'image Docker ibm-mq dans {{site.data.keyword.containershort_notm}}. Vous pouvez ensuite créer et exécuter des gestionnaires de files d'attente d'exécution, et utilisez l'interface utilisateur Web ou un terminal pour les configurer de manière à répondre aux besoins de votre application ou de votre solution de messagerie.
+To develop messaging solutions and {{site.data.keyword.IBM_notm}} MQ applications in {{site.data.keyword.Bluemix_notm}}, you can deploy the ibm-mq Docker image in the {{site.data.keyword.containershort_notm}}. Then, you can create and run queue managers, and use the web UI or a terminal to configure them to meet your messaging solution or application requirements.
 
-**Remarque :** Vous pouvez utiliser l'image ibm-mq image uniquement à des fins de développement et de test unitaire. Vous pouvez également utiliser l'image pour explorer le produit, dérouler des tutoriels et évaluer la contribution d'{{site.data.keyword.IBM_notm}} MQ à votre organisation.
+**Note:** You can use the ibm-mq image for development and unit test only. You can also use the image to explore the product, learn from tutorials, and evaluate the contribution that {{site.data.keyword.IBM_notm}} MQ can make to your organization.
 
-## Eléments inclus
+## What is included
 {: #ibm_mq_what}
 
-Cette image ibm-mq contient le package logiciel pour {{site.data.keyword.IBM_notm}} MQ Advanced for Developers version 9.0.x, version complète du produit que vous pouvez utiliser pour le développement et les tests unitaires. Vous pouvez télécharger gratuitement cette version et l'utiliser conformément aux dispositions de la licence.
+This ibm-mq image contains the software package for {{site.data.keyword.IBM_notm}} MQ Advanced for Developers Version 9.0.x, which is a full-function version of the product that you can use for development and unit test. You can download this version at no charge and you are free to use it within the terms of the license.
 
-{{site.data.keyword.IBM_notm}} MQ Advanced for Developers est disponible sur les systèmes d'exploitation Windows 64 bits et Linux x86-64. Tous les services prérequis du produit sont inclus dans le package de téléchargement. Pour plus d'informations, voir le document [IBM MQ Downloads ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](http://www-03.ibm.com/software/products/lv/ibm-mq-advanced-for-developers){: new_window}
+{{site.data.keyword.IBM_notm}} MQ Advanced for Developers is available on Windows 64-bit operating systems and Linux on x86-64 operating systems. All product prerequisites are included in the download package. For more information, see [IBM MQ Downloads ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www-03.ibm.com/software/products/lv/ibm-mq-advanced-for-developers){: new_window}
 
-Pour plus d'informations sur les fonctions incluses dans {{site.data.keyword.IBM_notm}} MQ Advanced for Developers, voir [IBM MQ ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm){: new_window}
+For information about the features that are included in {{site.data.keyword.IBM_notm}} MQ Advanced for Developers, see [IBM MQ ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm){: new_window}
 
 
 
-## Restrictions d'utilisation
+## Usage Restrictions
 {: #ibm_mq_usage}
 
-Le tableau suivant présente les restrictions qui s'appliquent à l'utilisation gratuite de l'image ibm-mq dans {{site.data.keyword.Bluemix_notm}} :
+The following table shows the restrictions that apply to the free usage of the ibm-mq image in {{site.data.keyword.Bluemix_notm}}:
 
-| Environnement	| Restrictions quant à l'utilisation gratuite |
+| Environment	| Free Usage Restrictions |
 |-------------|-------------------------|
-| Développement	| Utilisation gratuite illimitée de l'image ibm-mq pour créer des conteneurs uniques à des fins de développement et de test unitaire. |
-| Test | Utilisation gratuite illimitée de l'image ibm-mq pour créer des conteneurs uniques à des fins de développement et de test unitaire. Consultez la rubrique [Informations sur la licence](#ibm_mq_license ) pour en savoir plus sur les tests autorisés. |
-| Production | La licence {{site.data.keyword.IBM_notm}} MQ Advanced for Developer ne permet pas son utilisation à des fins de production. |
+| Development	| Unlimited free usage of the ibm-mq image to create single containers for development. |
+| Test | Unlimited free usage of the ibm-mq image to create single containers for unit testing. Check the [License information](#ibm_mq_license ) for more information about what testing is permitted. |
+| Production | The {{site.data.keyword.IBM_notm}} MQ Advanced for Developer license does not allow it’s use for production. |
 
-**Remarque :** La tarification de l'image ibm-mq est indépendante de celle des conteneurs que vous utilisez dans {{site.data.keyword.Bluemix_notm}}.
+**Note:** The pricing for the ibm-mq image is independent of the pricing for the containers that you use in {{site.data.keyword.Bluemix_notm}}.
 
 
-## Informations sur la licence
+## License information
 {: #ibm_mq_license}
 
-Informations sur les licences :
+Information about licenses:
 
-*	Les documents Dockerfile et les scripts qui leur sont associés sous licence [Apache License 2.0 ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](http://www.apache.org/licenses/LICENSE-2.0.html){: new_window}.
-* [Informations sur la licence pour {{site.data.keyword.IBM_notm}} MQ Advanced for Developers ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](http://www-03.ibm.com/software/sla/sladb.nsf/displaylis/973FA648A5DE42948525806E004CC757?OpenDocument){: new_window}.
+*	The Dockerfiles and associated scripts are licensed under the [Apache License 2.0 ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www.apache.org/licenses/LICENSE-2.0.html){: new_window}.
+* [License information for {{site.data.keyword.IBM_notm}} MQ Advanced for Developers ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www-03.ibm.com/software/sla/sladb.nsf/displaylis/973FA648A5DE42948525806E004CC757?OpenDocument){: new_window}.
 
-**Remarque :** La licence ne permet pas de distribution supplémentaire. Les dispositions relatives à {{site.data.keyword.IBM_notm}} MQ dans l'image limitent l'utilisation à des fins de développement et de test unitaire.
+**Note:** The license does not allow further distribution. The terms for {{site.data.keyword.IBM_notm}} MQ in the image restrict usage for development and unit testing.
 
 
-## Initiation
+## Getting Started
 {: #ibm_mq_get_started}
 
-Procédez comme indiqué ci-après pour exécuter et gérer {{site.data.keyword.IBM_notm}} MQ dans un conteneur s'exécutant sous {{site.data.keyword.Bluemix_notm}} :
+Complete the following steps to run and manage {{site.data.keyword.IBM_notm}} MQ in a container that runs on {{site.data.keyword.Bluemix_notm}}:
 
-1. [Mise à disposition d'un conteneur basé sur l'image ibm-mq](#ibm_mq_provision)
+1. [Provision a container that is based on the ibm-mq image](#ibm_mq_provision)
 
-    **Remarque :** Le conteneur est lié à l'état en cours du gestionnaire de file d'attente à l'intérieur de celui-ci. Si vous arrêtez le gestionnaire de file d'attente à l'aide de la console ou de la ligne de commande, le conteneur s'arrêtera peu de temps après. 
+    **Note:** The container is tied to the running state of the Queue Manager inside it. If you stop the Queue Manager using the console or command line, the container will stop shortly after. 
 
-2. Gestion des ressources {{site.data.keyword.IBM_notm}} MQ qui s'exécutent dans un conteneur. Vous pouvez procéder de manière graphique à partir de la console Web IBM MQ ou à l'aide d'un programme à partir d'un terminal. 
+2. Manage {{site.data.keyword.IBM_notm}} MQ resources that are running in a container. You can do it graphically from the IBM MQ web console or programmatically by using commands from a terminal. 
 
-    1. Choisissez l'une des options suivantes pour gérer les ressources {{site.data.keyword.IBM_notm}} MQ dans le conteneur :
+    1. Choose any of the following options to manage {{site.data.keyword.IBM_notm}} MQ resources in the container:
     
-        *	Lancez la console Web {{site.data.keyword.IBM_notm}} MQ et gérez {{site.data.keyword.IBM_notm}} MQ sous forme graphique. Pour plus d'informations, voir [Lancement de la console Web IBM MQ](#ibm_mq_webui).
-        *	A partir d'un terminal, utilisez l'interface de ligne de commande Docker. Pour plus d'informations, voir [Configuration d'un terminal afin qu'il utilise l'interface de ligne de commande Docker](#ibm_mq_docker_commands).
-        * A partir d'un terminal, utilisez l'interface de ligne de commande {{site.data.keyword.containershort_notm}}. Pour plus d'informations, voir [Configuration d'un terminal afin qu'il utilise l'interface de ligne de commande {{site.data.keyword.containershort_notm}}](#ibm_mq_containers_cli)
+        *	Launch the {{site.data.keyword.IBM_notm}} MQ web console and manage {{site.data.keyword.IBM_notm}} MQ graphically. For more information, see [Launch the IBM MQ web console](#ibm_mq_webui).
+        *	From a terminal, use the Docker CLI. For more information, see [Setting up a terminal to use the Docker CLI](#ibm_mq_docker_commands).
+        * From a terminal, use the {{site.data.keyword.containershort_notm}} CLI. For more information, see [Setting up a terminal to use the {{site.data.keyword.containershort_notm}} CLI](#ibm_mq_containers_cli)
         
-    2. Configurez le gestionnaire de file d'attente {{site.data.keyword.IBM_notm}} MQ qui s'exécute dans le conteneur. 
+    2. Configure the {{site.data.keyword.IBM_notm}} MQ Queue Manager that runs in the container. 
 
-        * Pour gérer le gestionnaire de file d'attente à l'aide de la ligne de commande, utilisez le programme *runmqsc*. Exécutez la commande suivante : `runmqsc QM_Name` où *QM_Name* désigne le nom de votre gestionnaire de files d'attente. Pour plus d'informations, voir [Gestion de votre conteneur à l'aide de la ligne de commande](#ibm_mq_access).
+        * To manage the Queue Manager through the command line, use the *runmqsc* program. Run the following command: `runmqsc QM_Name` where *QM_Name* is the name of your Queue Manager. For more information, see [Managing your container through the command line](#ibm_mq_access).
     
-        * Pour gérer le gestionnaire de files d'attente sous forme graphique, utilisez l'interface utilisateur Web.
+        * To manage the Queue Manager grahically, use the web UI.
         
-    3. Suivez les instructions dans [IBM MQ Knowledge Center ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](http://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm){: new_window} pour créer des files d'attente de messages sur votre gestionnaire de files d'attente et placer ou récupérer des messages dans ces files.
+    3. Follow instructions on the [IBM MQ Knowledge Center ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm){: new_window} to create Message Queues on your Queue Manager and put or get messages to them.
     
-        Par exemple, exécutez dans `runmqsc` la commande suivante pour créer une file d'attente locale : `DEFINE QLOCAL('MY.Q')`, où *MY.Q* désigne le nom de la file d'attente locale sur le terminal. Vous pouvez consulter cette file d'attente dans la console Web ou vous pouvez afficher la file d'attente et ses propriétés en exécutant dans 'runmqsc` la commande suivante : `DISPLAY QLOCAL('MY.Q')`.
+        For example, run in `runmqsc` the following command to create a new Local Queue: `DEFINE QLOCAL('MY.Q')`, where *MY.Q* is the name of the Local Queue from terminal. You can view the queue in the web console, or you can display the queue and its properties by running in 'runmqsc` the following command: `DISPLAY QLOCAL('MY.Q')`.
     
-3. (Facultatif) Examinez les journaux {{site.data.keyword.IBM_notm}} MQ du conteneur. Pour plus d'informations, voir [Gestion de votre conteneur à l'aide de la ligne de commande](#ibm_mq_access).
+3. (Optional) Monitor {{site.data.keyword.IBM_notm}} MQ logs inside the container. For more information, see [Managing your container through the command line](#ibm_mq_access).
 
-Pour en savoir plus sur l'introduction de mise en route d'IBM MQ, voir [IBM MQ Version 9.0.x Welcome page ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](http://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm){: new_window}
+For more information about the IBM MQ Getting started introduction, see [IBM MQ Version 9.0.x Welcome page ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm){: new_window}
 
-Pour toute information sur l'image et la façon de créer votre propre image localement dans Docker, voir [la page MQ Docker GitHub ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](https://github.com/ibm-messaging/mq-docker){: new_window}
+For more information on the image and how to build your own image locally in Docker, see [the MQ Docker GitHub page ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://github.com/ibm-messaging/mq-docker){: new_window}
     
-Pour les informations et blogs les plus récents sur IBM MQ, voir [The MQ Developer works blog ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](https://www.ibm.com/developerworks/community/blogs/messaging){: new_window}
+For the latest blogs and information on IBM MQ, see [The MQ Developer works blog ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/developerworks/community/blogs/messaging){: new_window}
 
 
-### Mise à disposition d'un conteneur basé sur l'image ibm-mq
+### Provisioning a container that is based on the ibm-mq image
 {: #ibm_mq_provision}
 
-Procédez comme indiqué ci-après pour mettre à disposition un conteneur Docker dans {{site.data.keyword.Bluemix_notm}} basé sur l'image ibm-mq image fournie par {{site.data.keyword.IBM_notm}} :
+Complete the following steps to provision a Docker container in {{site.data.keyword.Bluemix_notm}} that is based on the ibm-mq image that is provided by {{site.data.keyword.IBM_notm}}:
 
-1.	Connectez-vous à {{site.data.keyword.Bluemix_notm}}. Connectez-vous à votre ID {{site.data.keyword.Bluemix_notm}}.
-2.	Dans le catalogue, sélectionnez **Conteneurs** et choisissez l'image *ibm-mq*.
-3.	Sélectionnez **Unique** pour créer un conteneur d'instance unique, lequel peut être utilisé à des fins de développement et de test.
-4.	Entrez le nom du conteneur, par exemple mq.
-5.	Sélectionnez la taille du conteneur.
-6.	Dans la zone Adresse IP publique, sélectionnez **Demander et lier une adresse IP publique**.
-7.	Dans la zone Ports publics, spécifiez **1414/tcp, 9443/tcp**.
-8.	Développez les options avancées, cliquez sur **Ajoutez une nouvelle variable d'environnement**, et entrez les variables d'environnement suivantes : LICENSE et MQ_QMGR_NAME.
+1.	Log in to {{site.data.keyword.Bluemix_notm}}. Log in with your {{site.data.keyword.Bluemix_notm}} ID.
+2.	From the catalog, select **Containers** and choose the *ibm-mq* image.
+3.	Select **Single** to create a single instance container, which can be used for development and testing purposes.
+4.	Enter the name of the container; for example, mq.
+5.	Select the size of the container.
+6.	In the Public IP address field, select **Request and Bind Public IP**.
+7.	In the Public Ports field, specify **1414/tcp, 9443/tcp**.
+8.	Expand the Advanced options, click **Add a new environment variable**, and enter the following environment variables: LICENSE, and MQ_QMGR_NAME.
 
-    * Définissez la valeur de **LICENSE** sur **accept** pour accepter les dispositions du contrat de licence IBM MQ Advanced for Developers. 
+    * Set the value of **LICENSE** to **accept** to agree to the IBM MQ Advanced for Developers license terms. 
     
-        Si vous voulez consulter la licence avant d'en accepter les termes, définissez la variable LICENSE sur “view” pour que la licence soit imprimée dans les journaux du conteneur. 
+        If you wish to view the license before accepting it, you can set LICENSE to “view” and the license will be printed in the container logs. 
     
-        Si votre langue principale n'est pas l'anglais, vous pouvez consulter le fichier de licence dans la langue de votre choix, en définissant la variable d'environnement **LANG** sur l'une des valeurs suivantes : *zh_TW* pour le chinois traditionnel, *zh* pour le chinois, *cs* pour le tchèque, *en* pour l'anglais, *fr* pour le français, *de* pour l'allemand, *el* pour le grec, *id* pour l'indonésien, *it* pour l'italien, *ja* pour le japonais, *ko* pour le coréen, *lt* pour le lituanien, *pl* pour le polonais, *pt* pour le portugais, *ru* pour le russe, *sl* pour le slovène, *es* pour l'espagnol ou *tr* pour le turc.
+        If English is not your first language, you can view the license file in a different language by setting another environment variable called **LANG** to one of the following values: *zh_TW* for Chinese_TW, *zh* for Chinese, *cs* for Czech, *en* for English, *fr* for French, *de* for German, *el* for Greek, *id* for Indonesian, *it* for Italian, *ja* for Japanese, *ko* for Korean, *lt* for Lithuanian, *pl* for Polish, *pt* for Portuguese, *ru* for Russian, *sl* for Slovenian, *es* for Spanish, or *tr* for Turkish.
 
-    * Définissez la valeur **MQ_QMGR_NAME** sur *MYMQ* où *MYMQ* est le nom du gestionnaire de files d'attente sélectionné.
+    * Set the value of **MQ_QMGR_NAME** with the value *MYMQ* where *MYMQ* is your chosen Queue Manager name.
  
-        **Remarque :** Si vous ne spécifiez pas de valeurs pour les variables d'environnement LICENSE et MQ_QMGR_NAME, le conteneur est créé, mais ne démarre pas. 
+        **Note:** If you do not specify values for the environment variables LICENSE and MQ_QMGR_NAME, the container is created but does not start. 
     
-    * (Facultatif) Par défaut, la console Web {{site.data.keyword.IBM_notm}} MQ démarre dans le conteneur. Pour modifier ce comportement par défaut, définissez la variable d'environnement **MQ_DISABLE_WEB_CONSOLE** sur *true*.
+    * (Optional) By default, the {{site.data.keyword.IBM_notm}} MQ Web Console is started in the container. To change the default behavior, set the **MQ_DISABLE_WEB_CONSOLE** environment variable value to *true*.
     
-        **Remarque :** Pour utiliser une console Web, ne définissez pas la variable d'environnement *MQ_DISABLE_WEB_CONSOLE*.
+        **Note:** To use the web console, do not set the *MQ_DISABLE_WEB_CONSOLE* environment variable.
 
-    * (Facultatif) Pour afficher les journaux MQ à l'aide de l'interface utilisateur {{site.data.keyword.Bluemix_notm}}, définissez la variable d'environnement **LOG_LOCATIONS** sur la valeur `/var/mqm/qmgr/QM_Name/errors/AMQERR01.LOG` où *QM_Name* est la valeur que vous avez définie pour la variable d'environnement *MQ_QMGR_NAME*.
+    * (Optional) To see the MQ logs through the {{site.data.keyword.Bluemix_notm}} UI, set the environment variable **LOG_LOCATIONS** to the value `/var/mqm/qmgr/QM_Name/errors/AMQERR01.LOG` where *QM_Name* is the value you set for the environment variable *MQ_QMGR_NAME*.
     
-    *	(Facultatif) Par défaut, les objets {{site.data.keyword.IBM_notm}} MQ Developer par défaut sont créés. Pour modifier le comportement par défaut, définissez la variable d'environnement **MQ_DEV** sur *false*, et remplacez les valeurs d'installation par défaut d'IBM MQ par vos propres valeurs. Pour plus d'informations, voir [Modification des valeurs d'installation par défaut](#ibm_mq_dev_default)
+    *	(Optional) By default, the {{site.data.keyword.IBM_notm}} MQ Developer default objects are created. To change the default behavior, set the **MQ_DEV** environment variable to *false*, and modify the default installation values for IBM MQ with your custom values. For more information, see [Modify the default installation values](#ibm_mq_dev_default)
  
-9. (Facultatif) Dans la section des options avancées, affectez un volume. Utilisez des volumes {{site.data.keyword.Bluemix_notm}} pour le stockage des données {{site.data.keyword.IBM_notm}} MQ et de la configuration de manière durable pendant les migrations de conteneur. Les données {{site.data.keyword.IBM_notm}} MQ qui ne sont pas stockées dans un volume seront perdues en cas d'arrêt d'un conteneur.
+9. (Optional) In the Advanced options section, assign a volume. Use {{site.data.keyword.Bluemix_notm}} volumes for storing {{site.data.keyword.IBM_notm}} MQ data and configuration persistently over container migrations. {{site.data.keyword.IBM_notm}} MQ data that is not stored in a volume will be lost if a container is terminated.
 
-    L'image ibm-mq peut être utilisée avec des volumes {{site.data.keyword.Bluemix_notm}} à condition que les volumes soient montés vers **/mnt/mqm** afin d'être détectés et utilisés par {{site.data.keyword.IBM_notm}} MQ.
+    The ibm-mq image can be used with {{site.data.keyword.Bluemix_notm}} volumes, however volumes must be mounted to **/mnt/mqm** to be detected and utilized by {{site.data.keyword.IBM_notm}} MQ.
 
-    Par défaut, tous les conteneurs créés sans volume perdent leurs données IBM MQ en cas d'arrêt du conteneur. Pour que cela ne se produise pas, utilisez une messagerie persistante et des volumes {{site.data.keyword.Bluemix_notm}}.
+    By default, any containers created without a volume will lose any IBM MQ data when the container is stopped. If you want to prevent this, you must use persistent messaging and {{site.data.keyword.Bluemix_notm}} Volumes.
 
-    1. Cliquez sur **Créer un volume**, entrez un nom de volume et sélectionnez un partage de fichiers.
-    2. Cliquez sur **Affecter un volume existant** et sélectionnez le volume que vous avez créé. Entrez **/mnt/mqm** dans la zone du chemin d'accès. Assurez-vous que la case **En lecture seule** n'est pas cochée.
+    1. Click **Create a volume**, enter a volume name, and select a file share.
+    2. Click **Assign an existing volume**, and select the volume you created. Enter **/mnt/mqm** in the path box. Ensure the **Read-only** box is not checked.
 
-    **Remarque :** Lorsque vous montez un volume à des fins d'utilisation avec le répertoire de données IBM MQ, montez-le vers */mnt/mqm*. En le montant vers */mnt/mqm*, le script ibm-mq détecte le volume et configure le système de fichiers IBM MQ de manière à l'utiliser.
+    **Note:** When mounting a volume for use as the IBM MQ data directory, you must mount it to the location */mnt/mqm*. By mounting it to */mnt/mqm* the ibm-mq script will detect the volume and configure the IBM MQ filesystem to use it.
      
-10.	Cliquez sur **Créer**, puis attendez que le conteneur commence à s'exécuter.
+10.	Click **Create** and then wait for the container to start running.
 
-    Une fois le conteneur créé, le tableau de bord du conteneur s'ouvre. Vérifiez que le statut du conteneur indique bien **En cours d'exécution**. 
+    After the container is created, the container dashboard opens. Check the status of the container is set to **Running**. 
 
-    Pour consulter les journaux de votre conteneur, cliquez sur **Surveillance et journaux** et sélectionnez l'onglet **Journalisation**. Les journaux s'affichent. Pour une analyse avancée de vos journaux, cliquez sur **Vue avancée** afin d'afficher vos journaux dans Kibana.
+    To check the logs of you container, click **Monitoring and Logs** and select the **Logging** tab. The logs are displayed. For advanced analysis of you logs, click **Advanced view** to display your logs in Kibana.
 
-Vous avez créé et démarré un gestionnaire de files d'attente. Vous pouvez maintenant connecter une application MQ avec les informations de connexion suivantes :
+You have created and started a queue manager. You can now connect an MQ application with the following connection details:
 
-| Propriété de connexion | Valeur |
+| Connection Property | Value |
 |-------|-------|
-| Adresse IP  | Adresse IP publique du conteneur |
+| IP address  | Container’s public IP address |
 | Port | 1414 |
-| Canal | DEV.APP.SVRCONN |
+| Channel | DEV.APP.SVRCONN |
 
 
-### Gestion de votre conteneur à l'aide de la ligne de commande
+### Managing your container through the command line
 {: #ibm_mq_access}
 
-Une fois que le conteneur exécutant {{site.data.keyword.IBM_notm}} MQ est déployé dans {{site.data.keyword.Bluemix_notm}}, accédez à votre conteneur, vérifiez son état et validez l'installation d'{{site.data.keyword.IBM_notm}} MQ.
+After the container that runs {{site.data.keyword.IBM_notm}} MQ is deployed in {{site.data.keyword.Bluemix_notm}}, you can access your container and the status of the container and validate the {{site.data.keyword.IBM_notm}} MQ installation.
 
-Procédez comme suit pour vérifier l'installation et la configuration d'{{site.data.keyword.IBM_notm}} MQ dans le conteneur :
+Complete the following steps to verify the setup and configuration of {{site.data.keyword.IBM_notm}} MQ in the container:
 
-1.	Installez l'interface de ligne de commande {{site.data.keyword.containershort_notm}}. Pour plus d'informations, voir [la page de l'interface CLI {{site.data.keyword.Bluemix_notm}}](https://plugins.ng.bluemix.net/ui/home.html) et suivez les instructions relatives à l'installation du plug-in {{site.data.keyword.containershort_notm}} le plus récent.
+1.	Set up the {{site.data.keyword.containershort_notm}} CLI. For more information, see [the {{site.data.keyword.Bluemix_notm}} CLI page](https://plugins.ng.bluemix.net/ui/home.html) and follow the instructions to install the latest {{site.data.keyword.containershort_notm}} plugin.
 
-2.	A partir d'un terminal, connectez-vous à votre organisation et espace {{site.data.keyword.Bluemix_notm}} où le conteneur s'exécute avec votre ID {{site.data.keyword.Bluemix_notm}}. Exécutez les commandes suivantes :
+2.	From a terminal, log in to your {{site.data.keyword.Bluemix_notm}} organization and space where the container is running with your {{site.data.keyword.Bluemix_notm}} ID. Run the following commands:
 
-    1. `  bx login
-  `
+    1. `bx login`
     2. `bx ic init`
     
-3.	Vérifiez le statut du conteneur. Exécutez la commande suivante : `bx ic ps`
+3.	Check the status of the container. Run the following command: `bx ic ps`
 
-4.	Associez une session Bash à votre conteneur :
+4.	Attach a Bash session to your container:
 
     `bx ic exec -it container_name /bin/bash`
     
-    où container_name désigne le nom du conteneur
+    where container_name is the name of the container
     
-5.	Exécutez des commandes pour gérer votre installation MQ, par exemple :
+5.	Run commands to manage you MQ setup, for example:
 
-| Commande | Action |
+| Command | Action |
 |---------|---------|
-| dspmqver | Vérifie la version IBM MQ et les informations de génération. |
-| dspmq | Vérifie le statut du gestionnaire de files d'attente qui s'exécute dans le conteneur. | 
-| runmqsc | Gère les ressources MQ. |
+| dspmqver | Verify the IBM MQ version and build information. |
+| dspmq | Check the status of the Queue Manager that is running in the container. | 
+| runmqsc | Manage MQ resources. |
 
-Pour surveiller les journaux MQ, choisissez l'une des options suivantes :
+To monitor MQ logs, choose one of the following options:
 
-* Si votre terminal est configuré pour exécuter des commandes d'interface de ligne de commande {{site.data.keyword.containershort_notm}}, exécutez la commande suivante : `bx ic exec container_id tail -f /var/mqm/qmgr/QM_ Name/errors/AMQERR01.LOG` où *container_id* est le nom de votre conteneur et *QM_ Name* celui de votre gestionnaire de files d'attente.
+* If your terminal is configured to run {{site.data.keyword.containershort_notm}} CLI commands, run the following command: `bx ic exec container_id tail -f /var/mqm/qmgr/QM_ Name/errors/AMQERR01.LOG` where *container_id* is the name of your container and *QM_ Name* is the name of your Queue Manager.
     
-* Si votre terminal est configuré pour exécuter des commandes d'interface de ligne de commande Docker, exécutez la commande suivante : `docker exec container_id tail -f /var/mqm/qmgr/QM_Name/errors/AMQERR01.LOG` où *container_id* est le nom de votre conteneur et *QM_Name* celui de votre gestionnaire de files d'attente.
+* If your terminal is configured to run Docker CLI commands, run the following command: `docker exec container_id tail -f /var/mqm/qmgr/QM_Name/errors/AMQERR01.LOG` where *container_id* is the name of your container and *QM_Name* is the name of your Queue Manager.
     
     
 
-### Lancement de la console Web IBM MQ
+### Launching the IBM MQ web console
 {: #ibm_mq_webui}
 
-Procédez comme indiqué ci-après pour lancer la console Web {{site.data.keyword.IBM_notm}} MQ :
+Complete the following steps to launch the {{site.data.keyword.IBM_notm}} MQ web console:
 
-1.	Dans le tableau de bord {{site.data.keyword.Bluemix_notm}}, sélectionnez votre conteneur et vérifiez que son statut est défini sur *En cours d'exécution*.
-2.	Vérifiez que votre conteneur est bien configuré sur le port public 9443.
-3.	Recherchez l'adresse IP publique dans les détails du conteneur et demandez et liez une adresse si besoin.
-4.	A partir d'un navigateur Web, entrez l'adresse URL suivante : `https://DockerContainerPublicIP:9443/ibmmq/console/` où DockerContainerPublicIP correspond à l'adresse IP publique de votre conteneur.
+1.	In the {{site.data.keyword.Bluemix_notm}} dashboard, select your container, and check the status of the container is set to *Running*.
+2.	Verify that your container has the public port 9443 configured.
+3.	Check the container details to find the Public IP or request and bind one if not already done.
+4.	From a web browser, launch the following URL: `https://DockerContainerPublicIP:9443/ibmmq/console/` where DockerContainerPublicIP is the public IP of your container.
 
-    Un avertissement de sécurité s'affiche, car le certificat TLS utilisé par le serveur Web lors de l'hébergement de la console MQ est généré et auto-signé. Cliquez sur **Ajouter une exception** et confirmez.
+    A security warning opens because the TLS certificate that the web server uses when hosting the MQ console is generated and self-signed. Click **add exception** and confirm.
 
-    **Remarque :** Dans un environnement de production, utilisez votre propre certificat qui est reconnu et considéré comme digne de confiance par votre navigateur. Ce certificat doit avoir été émis par une autorité de certification. 
+    **Note:** In a production environment, use your own certificate which is recognized and trusted by your browser. This certificate should be issued by a certificate authority. 
     
-    Le navigateur ouvre l'interface utilisateur Web.
+    The browser opens the web user interface.
     
-5. Connectez-vous à la console {{site.data.keyword.IBM_notm}} MQ à l'aide des données d'identification suivantes :
+5. Log in to the {{site.data.keyword.IBM_notm}} MQ console with the credentials:
 
-    1.	Utilisateur : admin
-    2.	Mot de passe : passw0rd
+    1.	User: admin
+    2.	Password: passw0rd
     
-Vous êtes maintenant prêt à administrer IBM MQ.
+You are now ready to administer IBM MQ.
 
-### Configuration d'un terminal afin qu'il utilise une interface de ligne de commande {{site.data.keyword.containershort_notm}}
+### Setting up a terminal to use the {{site.data.keyword.containershort_notm}} CLI
 {: #ibm_mq_containers_cli}
 
-Utilisez l'interface de ligne de commande {{site.data.keyword.containershort_notm}} pour exécuter les commandes d'administration {{site.data.keyword.IBM_notm}} MQ directement dans un conteneur.
+Use the {{site.data.keyword.containershort_notm}} CLI to run {{site.data.keyword.IBM_notm}} MQ administration commands directly in a container.
 
-Procédez comme indiqué ci-après pour configurer un terminal afin qu'il exécute des commandes `bx ic` pour gérer IBM MQ :
+Complete the following steps to set up a terminal to run `bx ic` commands to manage IBM MQ:
 
-1.	Installez l'interface de ligne de commande {{site.data.keyword.containershort_notm}}. Pour plus d'informations, voir [la page de l'interface CLI {{site.data.keyword.Bluemix_notm}}](https://plugins.ng.bluemix.net/ui/home.html) et suivez les instructions relatives à l'installation du plug-in {{site.data.keyword.containershort_notm}} le plus récent.
+1.	Set up the {{site.data.keyword.containershort_notm}} CLI. For more information, see [the {{site.data.keyword.Bluemix_notm}} CLI page](https://plugins.ng.bluemix.net/ui/home.html) and follow the instructions to install the latest {{site.data.keyword.containershort_notm}} plugin.
 
-2.	A partir d'un terminal, connectez-vous à {{site.data.keyword.Bluemix_notm}}. Exécutez les commandes suivantes :
+2.	From a terminal, log in to {{site.data.keyword.Bluemix_notm}}. Run the following commands:
 
-    1. `  bx login
-  `
+    1. `bx login`
     2. `bx ic init`
     
-3.	Associez une session Bash à votre conteneur :
+3.	Attach a Bash session to your container:
 
     `bx ic exec -it container_name /bin/bash`
     
-    où container_name est le nom du conteneur.
+    where container_name is the name of the container.
     
 
 
-### Configuration d'un terminal afin qu'il utilise l'interface de ligne de commande Docker
+### Setting up a terminal to use the Docker CLI
 {: #ibm_mq_docker_commands}
 
-Utilisez l'interface de ligne de commande Docker pour exécuter des commandes d'administration {{site.data.keyword.IBM_notm}} MQ directement dans un conteneur.
+Use the Docker CLI to run {{site.data.keyword.IBM_notm}} MQ administration commands directly in a container.
 
-Procédez comme indiqué ci-après pour configurer un terminal afin qu'il exécute des commandes Docker pour gérer IBM MQ :
+Complete the following steps to set up a terminal to run Docker commands to manage IBM MQ:
 
-1.	Installez l'interface de ligne de commande {{site.data.keyword.containershort_notm}}. Pour plus d'informations, voir [la page de l'interface CLI {{site.data.keyword.Bluemix_notm}}](https://plugins.ng.bluemix.net/ui/home.html) et suivez les instructions relatives à l'installation du plug-in {{site.data.keyword.containershort_notm}} le plus récent.
+1.	Set up the {{site.data.keyword.containershort_notm}} CLI. For more information, see [the {{site.data.keyword.Bluemix_notm}} CLI page](https://plugins.ng.bluemix.net/ui/home.html) and follow the instructions to install the latest {{site.data.keyword.containershort_notm}} plugin.
 
-2.	A partir d'un terminal, connectez-vous à {{site.data.keyword.Bluemix_notm}}. Exécutez les commandes suivantes :
+2.	From a terminal, log in to {{site.data.keyword.Bluemix_notm}}. Run the following commands:
 
-    1. `  bx login
-  `
+    1. `bx login`
     2. `bx ic init`
-    3. Copiez les valeurs qui sont fournies pour les variables d'environnement suivantes : DOCKER_HOST, DOCKER_CERT_PATH et DOCKER_TLS_VERIFY.
-    4. Remplacez l'environnement Docker local en définissant les variables suivantes pour vous connecter à {{site.data.keyword.containershort_notm}} :
+    3. Copy the values that are provided for the following environment variables: DOCKER_HOST, DOCKER_CERT_PATH, and DOCKER_TLS_VERIFY.
+    4. Override the local Docker environment by setting the following variables to connect to {{site.data.keyword.containershort_notm}}:
         
         `export DOCKER_HOST=<your_host_value>`
         
@@ -268,46 +265,46 @@ Procédez comme indiqué ci-après pour configurer un terminal afin qu'il exécu
         
         `export DOCKER_TLS_VERIFY=1`
 
-3.	Associez une session Bash à votre conteneur :
+3.	Attach a Bash session to your container:
 
     `bx ic exec -it container_name /bin/bash`
     
-    où container_name désigne le nom du conteneur
+    where container_name is the name of the container
     
-**Remarque :** Cette option ne prend en charge que certaines commandes Docker.
+**Note:** Only some Docker commands are supported by this option.
 
 
 
 
-### Modification des valeurs d'installation par défaut
+### Modify the default installation values
 {: #ibm_mq_dev_default}
 
-Lorsque le gestionnaire de files d'attente est créé, il est créé avec les objets par défaut d'{{site.data.keyword.IBM_notm}} MQ Developer. Ces objets par défaut sont conçus pour vous aider à commencer rapidement à développer des applications ou à tester {{site.data.keyword.IBM_notm}} MQ. 
+When the queue manager is created, it will be created with the {{site.data.keyword.IBM_notm}} MQ Developer defaults. These default objects are designed to help you get started quickly developing applications or even trying out {{site.data.keyword.IBM_notm}} MQ. 
 
-Le gestionnaire de files d'attente est créé avec les objets par défaut suivants :
+The Queue Manager will be created with the following default objects:
 
-* Un utilisateur administrateur MQ **admin** avec un mot de passe *passw0rd*.
-*	Un utilisateur d'application MQ **app** sans mot de passe.
-*	Un programme d'écoute **DEV.LISTENER.TCP** configuré pour se lier au port 1414/TCP.
-*	Un canal **DEV.APP.SVRCONN** configuré pour gérer les connexions d'application client MQ.
-*	Un canal **DEV.ADMIN.SVRCONN** configuré pour gérer les connexions admin MQ.
-*	3 files d'attentes **DEV.QUEUE.1**, **DEV.QUEUE.2**, **DEV.QUEUE.3** dans lesquelles vous pouvez placer des messages.
-*	Une file d'attente de rebut **DEV.DEAD.LETTER.QUEUE** dans laquelle sont placés les messages non livrés.
-*	Une rubrique de base **DEV.BASE.TOPIC** avec la chaîne de rubrique */dev*.
-*	Un enregistrement d'authentification de canal qui bloque toutes les connexions client qui ne se connectent pas via le canal **DEV.APP.SVRCONN** ou **DEV.ADMIN.SVRCONN**.
-*	Un enregistrement d'authentification de canal qui bloque tous les administrateurs qui se connectent à l'exception de ceux qui se connectent via le canal **DEV.ADMIN.SVRCONN**.
-*	Un enregistrement d'authentification de canal qui autorise les administrateurs à se connecter uniquement au canal **DEV.ADMIN.SVRCONN**.
-*	Authentification de connexion configurée de manière à exiger que les applications admin fournissent des données d'identification valides au moment de la connexion et utilisent cet ID utilisateur pour la vérification des droits.
+* A MQ Administrator user **admin** with a password of *passw0rd*.
+*	A MQ Application user **app** with no password.
+*	A listener **DEV.LISTENER.TCP** configured to bind to port 1414/TCP.
+*	A channel **DEV.APP.SVRCONN** configured to handle MQ client application connections.
+*	A channel **DEV.ADMIN.SVRCONN** configured to handle MQ admin connections.
+*	3 Queues **DEV.QUEUE.1**, **DEV.QUEUE.2**, **DEV.QUEUE.3** where you can place messages.
+*	A Dead Letter Queue **DEV.DEAD.LETTER.QUEUE** where undeliverable messages will be placed.
+*	A base topic **DEV.BASE.TOPIC** with the topic string of */dev*.
+*	A Channel Authentication record to block all client connections unless they are connecting through the channel **DEV.APP.SVRCONN** or **DEV.ADMIN.SVRCONN**.
+*	A Channel Authentication record to block all admin users connecting except through the **DEV.ADMIN.SVRCONN** channel.
+*	A Channel Authentication record to only allow the user admin to connect to the **DEV.ADMIN.SVRCONN** channel.
+*	Connection authentication set to require admin applications to pass valid credentials when connecting and to adopt that user ID for authority checks.
 
-Grâce à ces objets par défaut, vous pouvez connecter une application client qui peut placer et récupérer des messages dans une file d'attente, ou vous abonner et publier dans une rubrique.
+With these default objects, you could connect a client application that can put and get messages to a queue, or subscribe and publish to the topic.
 
-Si vous souhaitez personnaliser les objets par défaut, ajoutez les variables d'environnement suivantes lorsque vous créez votre conteneur à partir de l'image ibm-mq.
+If you wish to customize the developer defaults that are created, you can add the following environment variables when you create your container from the ibm-mq image.
 
-| Variable d'environnement | Objet | Valeur par défaut |
+| Environment variable | Purpose | Default |
 |----------------------|---------|---------|
-| MQ_ADMIN_PASSWORD | Définissez cette variable pour modifier le mot de passe de l'administrateur MQ créé par défaut sur une valeur de votre choix. Le mot de passe doit contenir au minimum 8 caractères. Le nom d'utilisateur de l'administrateur est admin. | passw0rd |
-| MQ_APP_PASSWORD | Définissez cette variable pour configurer le mot de passe de l'utilisateur d'application. Le nom d'utilisateur de l'utilisateur d'application est app. Si vous définissez cette variable d'environnement, vous devez ensuite fournir l'ID utilisateur et le mot de passe correspondant lorsque vous connectez des clients MQ. <br> Le mot de passe doit contenir au minimum 8 caractères. |  |
-| MQ_TLS_KEYSTORE | Définissez cette variable d'environnement sur l'emplacement d'un magasin de clés PKCS#12 qui contient le certificat que doit utiliser la console Web et le gestionnaire de files d'attente MQ pour les opérations TLS. <br> Lorsque cette variable d'environnement est définie, les canaux de développement créés sont activés pour le protocole TLS à l'aide de CipherSpec ‘TLS_RSA_WITH_AES_256_GCM_SHA384’. <br> **Remarque :** Vous devez rendre le fichier de clés disponible dans votre conteneur {{site.data.keyword.Bluemix_notm}}. Pour ce faire, vous pouvez monter un volume qui contient votre magasin de clés lorsque vous créez le conteneur. |  |
-| MQ_TLS_PASSPHRASE | Définissez cette variable d'environnement pour configurer le mot de passe du magasin de clés spécifié dans la variable d'environnement MQ_TLS_KEYSTORE. |  |
-| MQ_DEV | Définissez cette variable d'environnement pour vérifier que les objets {{site.data.keyword.IBM_notm}} MQ Developer par défaut ont bien été créés. | true |
-| MQ_DISABLE_WEB_CONSOLE | Définissez cette variable d'environnement pour désactiver la configuration et le démarrage de la console Web si vous souhaitez conserver l'utilisation de l'unité centrale/la mémoire RAM de votre conteneur. |  |
+| MQ_ADMIN_PASSWORD | Set this variable to change the password of the created MQ administrator from the default to your own choice. The password must be at least 8 characters long. The username for the admin user is fixed as admin. | passw0rd |
+| MQ_APP_PASSWORD | Set this variable to set the password for the application user. The username for the application user is fixed as app. If you set this environment variable, then you must supply the userid and password when you connect MQ clients. <br> The password must be at least 8 characters long. |  |
+| MQ_TLS_KEYSTORE | Set this environment variable to the location of a PKCS#12 keystore that contains the certificate you want the MQ Web Console and IBM MQ Queue Manager to use for TLS operations. <br> When this environment variable is set, the developer channels created will be enabled for TLS using the CipherSpec ‘TLS_RSA_WITH_AES_256_GCM_SHA384’. <br> **Note:** You need to make the key store file available inside your {{site.data.keyword.Bluemix_notm}} container. To do this, you can mount a volume containing your keystore when you create the container. |  |
+| MQ_TLS_PASSPHRASE | Set this environment variable to set the password for the keystore specified in the environment variable MQ_TLS_KEYSTORE. |  |
+| MQ_DEV | Set this environment variable to control whether the {{site.data.keyword.IBM_notm}} MQ Developer default objects are created. | true |
+| MQ_DISABLE_WEB_CONSOLE | Set this environment variable to disable the configuration and starting of the web console if you wish to conserve CPU/RAM usage of your container. |  |

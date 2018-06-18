@@ -144,14 +144,14 @@ LOG_LOCATIONS 属性指定容器内部要通过 {{site.data.keyword.Bluemix_notm
 3.  检查容器的状态。\*
 
     ```
-    bx ic ps
+        bx ic ps
     ```
     {: pre}
 
     **注**：在此命令中，您可以在[登录到 {{site.data.keyword.containershort_notm}}](/docs/containers/container_cli_cfic_install.html#container_cli_login) 时，将 **bx ic** 替换为 **docker**，并设置环境变量以使用本机 Docker 命令。您可以在所有用星号 (\*) 标记的步骤中使用本机 Docker 命令。
 
     ```
-    $ bx ic ps
+        $ bx ic ps
     CONTAINER ID        IMAGE                                                       COMMAND             CREATED             STATUS                 PORTS                                                        NAMES
     46d9ec1e-952        registry.ng.bluemix.net/ibm-integration-bus:latest   ""                  2 minutes ago       Running a minute ago   xxx.xxx.xxx.xxx:4414->4414/tcp, xxx.xxx.xxx.xxx:7800->7800/tcp   iib
     ```
@@ -160,7 +160,7 @@ LOG_LOCATIONS 属性指定容器内部要通过 {{site.data.keyword.Bluemix_notm
 4.  将 Bash 会话附加到容器。\*
 
     ```
-    bx ic exec -it <container_name> /bin/bash
+        bx ic exec -it <container_name> /bin/bash
     ```
     {: pre}
 
@@ -169,7 +169,7 @@ LOG_LOCATIONS 属性指定容器内部要通过 {{site.data.keyword.Bluemix_notm
     例如：
 
     ```
-    $ bx ic exec -it iib /bin/bash
+        $ bx ic exec -it iib /bin/bash
     (IIB_10:)iibuser@instance-0098858e:/$
     ```
     {: screen}
@@ -271,7 +271,7 @@ LOG_LOCATIONS 属性指定容器内部要通过 {{site.data.keyword.Bluemix_notm
       </ul>
       </li>
       <li>
-访问日志。选择以下某个选项：
+      访问日志。选择以下某个选项：
 
       <ul>
          <li>如果终端配置为运行 {{site.data.keyword.containerlong_notm}} CLI 命令，请运行以下命令：
@@ -329,7 +329,7 @@ LOG_LOCATIONS 属性指定容器内部要通过 {{site.data.keyword.Bluemix_notm
 3.  使用以下 URL 打开 Web 浏览器：
 
     ```
-    http://<DockerContainerPublicIP>:4414
+        http://<DockerContainerPublicIP>:4414
     ```
     {: pre}
 
@@ -362,7 +362,7 @@ LOG_LOCATIONS 属性指定容器内部要通过 {{site.data.keyword.Bluemix_notm
 2.  将 Bash 会话附加到容器，以设置交互式会话。\*
 
     ```
-    bx ic exec -it <container_name> /bin/bash
+        bx ic exec -it <container_name> /bin/bash
     ```
     {: pre}
 
@@ -371,7 +371,7 @@ LOG_LOCATIONS 属性指定容器内部要通过 {{site.data.keyword.Bluemix_notm
     例如：
 
     ```
-    bx ic exec -it iib /bin/bash
+        bx ic exec -it iib /bin/bash
     ```
     {: screen}
 
@@ -382,7 +382,7 @@ LOG_LOCATIONS 属性指定容器内部要通过 {{site.data.keyword.Bluemix_notm
     例如：
 
     ```
-    bx ic exec iib <container_name> /bin/bash -c mqsilist
+        bx ic exec iib <container_name> /bin/bash -c mqsilist
     ```
     {: screen}
 
@@ -422,7 +422,7 @@ LOG_LOCATIONS 属性指定容器内部要通过 {{site.data.keyword.Bluemix_notm
 2.  将 Bash 会话附加到容器，以设置交互式会话。运行以下命令：
 
     ```
-    docker exec -it <container_name> /bin/bash
+        docker exec -it <container_name> /bin/bash
     ```
     {: pre}
 
@@ -431,7 +431,7 @@ LOG_LOCATIONS 属性指定容器内部要通过 {{site.data.keyword.Bluemix_notm
     例如：
 
     ```
-    docker exec -it iib /bin/bash
+        docker exec -it iib /bin/bash
     ```
     {: screen}
 
@@ -444,7 +444,7 @@ LOG_LOCATIONS 属性指定容器内部要通过 {{site.data.keyword.Bluemix_notm
     例如：
 
     ```
-    docker exec iib <container_name> /bin/bash -c mqsilist
+        docker exec iib <container_name> /bin/bash -c mqsilist
     ```
     {: screen}
 

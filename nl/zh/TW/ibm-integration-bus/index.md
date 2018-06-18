@@ -144,14 +144,14 @@ IBM Integration Bus for Developers 10.0 版適用於 Windows™ 64 位元作業�
 3.  檢查容器的狀態。
 
     ```
-    bx ic ps
+        bx ic ps
     ```
     {: pre}
 
     **附註**：在[登入 {{site.data.keyword.containershort_notm}}](/docs/containers/container_cli_cfic_install.html#container_cli_login)，並將環境變數設為使用原生 Docker 指令時，您可以將此指令中的 **bx ic** 取代為 **docker**。您可以在所有標上星號 (\*) 的步驟中使用原生 Docker 指令。
 
     ```
-    $ bx ic ps
+        $ bx ic ps
     CONTAINER ID        IMAGE                                                       COMMAND             CREATED             STATUS                 PORTS                                                        NAMES
     46d9ec1e-952        registry.ng.bluemix.net/ibm-integration-bus:latest   ""                  2 minutes ago       Running a minute ago   xxx.xxx.xxx.xxx:4414->4414/tcp, xxx.xxx.xxx.xxx:7800->7800/tcp   iib
     ```
@@ -160,7 +160,7 @@ IBM Integration Bus for Developers 10.0 版適用於 Windows™ 64 位元作業�
 4.  將 Bash 階段作業附加至容器。\*
 
     ```
-    bx ic exec -it <container_name> /bin/bash
+        bx ic exec -it <container_name> /bin/bash
     ```
     {: pre}
 
@@ -169,7 +169,7 @@ IBM Integration Bus for Developers 10.0 版適用於 Windows™ 64 位元作業�
     例如：
 
     ```
-    $ bx ic exec -it iib /bin/bash
+        $ bx ic exec -it iib /bin/bash
     (IIB_10:)iibuser@instance-0098858e:/$
     ```
     {: screen}
@@ -181,10 +181,14 @@ IBM Integration Bus for Developers 10.0 版適用於 Windows™ 64 位元作業�
     例如：
 
     ```
-    (IIB_10:)iibuser@instance-0098858e:/$ . ./opt/ibm/iib-10.0.0.6/server/bin/mqsiprofile
+        (IIB_10:)iibuser@instance-0098858e:/$ . ./opt/ibm/iib-10.0.0.6/server/bin/mqsiprofile
+
+    
 
     MQSI 10.0.0.6
     /opt/ibm/iib-10.0.0.6/server
+
+    
 
     # Check the environment variable <MQSI_WORKPATH> is set
     (IIB_10:)iibuser@instance-0098858e:/$ echo $<MQSI_WORKPATH>
@@ -196,7 +200,7 @@ IBM Integration Bus for Developers 10.0 版適用於 Windows™ 64 位元作業�
 6.  執行 **mqsilist** 指令以顯示應該列為 `running` 的節點狀態。例如：
 
     ```
-    (IIB_10:)iibuser@instance-0098858e:/$ mqsilist
+        (IIB_10:)iibuser@instance-0098858e:/$ mqsilist
     BIP1325I: Integration node 'MYNODE' with administration URI 'http://instance-0098858e:4414' is running.
     BIP8071I: Successful command completion.
     (IIB_10:)iibuser@instance-0098858e:/$
@@ -326,7 +330,7 @@ IBM Integration Bus for Developers 10.0 版適用於 Windows™ 64 位元作業�
 3.  開啟具有下列 URL 的 Web 瀏覽器：
 
     ```
-    http://<DockerContainerPublicIP>:4414
+        http://<DockerContainerPublicIP>:4414
     ```
     {: pre}
 
@@ -359,7 +363,7 @@ IBM Integration Bus for Developers 10.0 版適用於 Windows™ 64 位元作業�
 2.  將 Bash 階段作業附加至容器，以設定互動式階段作業。
 
     ```
-    bx ic exec -it <container_name> /bin/bash
+        bx ic exec -it <container_name> /bin/bash
     ```
     {: pre}
 
@@ -368,7 +372,7 @@ IBM Integration Bus for Developers 10.0 版適用於 Windows™ 64 位元作業�
     例如：
 
     ```
-    bx ic exec -it iib /bin/bash
+        bx ic exec -it iib /bin/bash
     ```
     {: screen}
 
@@ -379,7 +383,7 @@ IBM Integration Bus for Developers 10.0 版適用於 Windows™ 64 位元作業�
     例如：
 
     ```
-    bx ic exec iib <container_name> /bin/bash -c mqsilist
+        bx ic exec iib <container_name> /bin/bash -c mqsilist
     ```
     {: screen}
 
@@ -418,7 +422,7 @@ IBM Integration Bus for Developers 10.0 版適用於 Windows™ 64 位元作業�
 2.  將 Bash 階段作業附加至容器，以設定互動式階段作業。請執行下列指令：
 
     ```
-    docker exec -it <container_name> /bin/bash
+        docker exec -it <container_name> /bin/bash
     ```
     {: pre}
 
@@ -427,7 +431,7 @@ IBM Integration Bus for Developers 10.0 版適用於 Windows™ 64 位元作業�
     例如：
 
     ```
-    docker exec -it iib /bin/bash
+        docker exec -it iib /bin/bash
     ```
     {: screen}
 
@@ -440,7 +444,7 @@ IBM Integration Bus for Developers 10.0 版適用於 Windows™ 64 位元作業�
     例如：
 
     ```
-    docker exec iib <container_name> /bin/bash -c mqsilist
+        docker exec iib <container_name> /bin/bash -c mqsilist
     ```
     {: screen}
 

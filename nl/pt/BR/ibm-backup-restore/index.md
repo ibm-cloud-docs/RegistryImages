@@ -162,7 +162,7 @@ Antes de começar:
 4.  Revise o backup no {{site.data.keyword.objectstorageshort}} na GUI do {{site.data.keyword.Bluemix_notm}}.
     1.  Clique na instância do {{site.data.keyword.objectstorageshort}} que você criou para o backup.
     2.  Na guia **Gerenciar** na tabela **Contêineres**, clique no contêiner do {{site.data.keyword.objectstorageshort}}.
-    3.  Revise os arquivos compactados.![O contêiner do Object Storage na GUI do {{site.data.keyword.Bluemix_notm}} mostra os arquivos que submetidos a backup.](images/volume_backup_screenshot.png)É possível fazer download do arquivo vol1.difftar.gz, extrair o arquivo e verificar os dados de backup. **Importante**: se você excluir ou modificar quaisquer arquivos do {{site.data.keyword.objectstorageshort}}, esses arquivos não poderão ser recuperados.
+    3.  Revise os arquivos compactados.![O contêiner do Object Storage na GUI do {{site.data.keyword.Bluemix_notm}} mostra os arquivos que são submetidos a backup.](images/volume_backup_screenshot.png)É possível fazer download do arquivo vol1.difftar.gz, extrair o arquivo e verificar os dados de backup. **Importante**: se você excluir ou modificar quaisquer arquivos do {{site.data.keyword.objectstorageshort}}, esses arquivos não poderão ser recuperados.
 
 Seu backup está disponível. Se você configurou seu backup para criar um backup completo único, deve-se executar o script de backup toda vez que deseja criar um novo backup. Se você configurou o contêiner para executar um backup incremental periodicamente, o backup será executado como planejado.
 
@@ -259,7 +259,7 @@ Antes de começar:
 
     O pod executa o comando de restauração e é parado. A mensagem _CrashLoopBackOff_ significa que o Kubernetes está tentando reiniciar o pod.
 
-6.  Remova o pod para evitar que o pod consuma mais recursos.
+6.  Remova o pod para evitar que ele consuma mais recursos.
 
     ```
     kubectl delete -f restore.yaml
@@ -309,7 +309,8 @@ Criptografe os dados em sua instância do {{site.data.keyword.objectstorageshort
     ```
     {: pre}
 
-    Nesse exemplo, a chave sub tem o valor *YYYYYYYY*.
+    Neste exemplo, a subchave tem o valor
+*YYYYYYYY*
 
     ```
     gpg --export-secret-keys -a YYYYYYYY > encryption.asc
@@ -392,15 +393,16 @@ Criptografe os dados em sua instância do {{site.data.keyword.objectstorageshort
           claimName: backuppvc
    ```
    
-   Essas configurações criam um backup incremental diário criptografado com o nome <em>&lt;volume_name&gt;</em>. Para criar um backup com configurações diferentes, revise uma lista integral de [opções de variável de ambiente](#reference_backup_restore).
-9. Crie um pod que execute o script de backup.
+   Essas configurações criam um backup incremental diário criptografado com o nome <em>&lt;volume_name&gt;</em>. Para criar um backup com configurações diferentes, revise uma lista completa de [opções de variável de ambiente](#reference_backup_restore).
+    
+9.  Crie um pod que execute o script de backup.
 
     ```
     kubectl apply -f backup.yaml 
     ```
     {: pre}
 
-9. Confirme se o pod está em execução.
+9.  Confirme se o pod está em execução.
 
     ```
     kubectl get pods
@@ -451,7 +453,7 @@ Seu backup está criptografado. Para restaurar os arquivos, siga as etapas em [E
 ## Referência de variável de ambiente
 {: #reference_backup_restore}
 
-Revise a lista integral de campos que podem ser passados como variáveis de ambiente ou editados no arquivo `config.conf` em um contêiner em execução. Qualquer valor que é passado como variável de ambiente suplanta o valor no arquivo `config.conf`. Para revisar as variáveis de ambiente para um contêiner, efetue login no contêiner usando `exec` e execute `env`.
+Revise a lista completa de campos que podem ser passados como variáveis de ambiente ou editados no arquivo `config.conf` em um contêiner em execução. Qualquer valor que é passado como variável de ambiente suplanta o valor no arquivo `config.conf`. Para revisar as variáveis de ambiente para um contêiner, efetue login no contêiner usando `exec` e execute `env`.
 
 |Chave|Opções de valor|
 |---|-------------|
@@ -468,7 +470,7 @@ Recupere essas variáveis das credenciais do {{site.data.keyword.objectstoragesh
 |BACKUP_DIRECTORY|*/backup*: padrão. Caminho de arquivo absoluto do diretório no qual o volume é montado. O backup dos dados é feito a partir desse diretório. Não selecione o diretório backup_restore porque ele contém arquivos para os processos de backup e restauração.|
 |BACKUP_NAME|*volume_backup*: padrão. Escolha um nome de backup.|
 |BACKUP_TYPE|*full*: padrão. É feito backup de todos os arquivos toda vez.<br/> *incremental*: somente arquivos novos ou mudados são submetidos a backup. Se você escolhe *incremental*, deve-se escolher valores para SCHEDULING_INFO e SCHEDULING_TYPE.|
-|SCHEDULE_TYPE|*none*: padrão. Crie um backup único.<br/> *periodic*: mude o valor para periodic para criar backups planejados.|
+|SCHEDULE_TYPE|*none*: padrão. Crie um backup único.<br/> **Observação:** se optar por criar um backup único, seu pod será removido do cluster após a conclusão do backup. <br/>*periodic*: mude o valor para periodic para criar backups planejados.|
 |SCHEDULE_INFO|*hourly*: crie um backup a cada hora.<br/>*daily*: padrão. Crie um backup diário.<br/>*weekly*: crie um backup semanal. Deve-se incluir essa variável se você está planejando uma atualização periódica.|
 |EXCLUDE_DIRECTORIES|*none*: padrão. Inclua o caminho de arquivo absoluto dos diretórios que você deseja excluir do backup. Separe os diretórios com uma vírgula.|
 {: caption="Tabela 2. Variáveis de backup" caption-side="top"}
@@ -481,7 +483,7 @@ Recupere essas variáveis das credenciais do {{site.data.keyword.objectstoragesh
 
 |Chave|Opções de valor|
 |---|-------------|
-|ENCRYPTION_KEY_FILE|.*/encryption.asc*: padrão. Inclua essa variável de ambiente se você mudar o nome do arquivo da chave de criptografia ou a chave estiver localizada em um diretório diferente de backup_restore.|
+|ENCRYPTION_KEY_FILE|.*/encryption.asc*: padrão. Inclua essa variável de ambiente se você mudar o nome do arquivo da chave de criptografia ou se a chave estiver localizada em um diretório diferente de backup_restore.|
 |ENCRYPTION_REQUIRED|*no*: padrão.<br/> *yes*: se você não estiver criptografando seu backup, não inclua nenhuma variável de ambiente de criptografia. Se você estiver criptografando seu backup, inclua essa chave com o valor yes.|
 |ENCRYPTION_PASSPHRASE|Inclua uma passphrase para assegurar um backup. Essa passphrase é diferente da frase que você criou quando criou a chave de criptografia. Deve-se incluir essa passphrase quando você estiver fazendo backup dos dados e restaurando os dados.|
 |IS_KEY_GENERATED_ON_SYSTEM|*no*: padrão.<br/> *yes*: inclua essa variável de ambiente com yes se você gerou a chave de criptografia diretamente no contêiner. A maioria dos usuários gera a chave em seu computador local e copia a chave para o contêiner e pode deixar o padrão como no.|
@@ -494,15 +496,14 @@ Crie um backup único para qualquer volume de contêiner. O backup é armazenado
 {:shortdesc}
 
 ### Introdução
-{: #how_to_get_started}
+{: #how_to_get_started_migrating}
 
 Antes de iniciar:
 
 - [Revise o caminho completo de migração para mover apps para o Kubernetes](../../../containers/cs_classic.html)
 - [Instale a CLI de contêineres únicos e escaláveis (bx ic)](../../../containers/container_cli_cfic_install.html)
 - [Instale a CLI do {{site.data.keyword.containershort}} (bx cs e kubectl)](../../../containers/cs_cli_install.html#cs_cli_install)
-- [Crie um cluster do Kubernetes padrão para migrar seus dados para](../../../containers/cs_cluster.html#cs_cluster_cli)
-
+- [Crie um cluster do Kubernetes padrão para migrar seus dados para](../../../containers/cs_clusters.html#clusters_cli)
 Conclua as tarefas a seguir para executar as operações de backup e restauração:
 1.  [Criando uma instância de serviço do {{site.data.keyword.objectstorageshort}}](#object_storage) (conforme abordado anteriormente)
 2.  [Executando um backup único](#migrate_backup)
@@ -551,7 +552,7 @@ Crie um contêiner único da imagem **ibm-backup-restore** e inicie um backup.
     -  Assegure-se de que você esteja no mesmo diretório local que o <em>&lt;backup_env-file&gt;</em>.
     -  O diretório no qual o volume é montado deve corresponder ao BACKUP_DIRECTORY no arquivo de variável de ambiente.
     -  Substitua <em>&lt;volume_name&gt;</em> pelo nome do volume que está sendo submetido a backup.
-
+    
     ```
     bx ic run --name <container_name> --volume <volume_name>:/backup --env-file ./<backup_env-file_name> registry.ng.bluemix.net/ibm-backup-restore /bin/bash -c "/backup_restore/vbackup"
     ```
@@ -656,13 +657,13 @@ Antes de começar:
     
     O pod executa o comando de restauração e é parado. A mensagem _CrashLoopBackOff_ significa que o Kubernetes está tentando reiniciar o pod.
 
-6.  Remova o pod para evitar que o pod consuma mais recursos.
+6.  Remova o pod para evitar que ele consuma mais recursos.
 
     ```
     kubectl delete -f restore.yaml
     ```
     {: pre}
 
-Você migrou com êxito seus dados para o cluster do Kubernetes. Agora é possível montar qualquer novo pod no pvc para conceder a esse pod acesso aos arquivos restaurados.
+Você migrou com êxito seus dados para o cluster do Kubernetes. Agora é possível montar qualquer novo pod no pvc para conceder a esse pod acesso aos arquivos restaurados. 
 
 **Nota**: se os dados do contêiner que foram submetidos a backup incluíam um usuário não raiz, deve-se incluir permissões não raiz no novo contêiner. Para obter mais informações, veja [Incluindo acesso de usuário não raiz para volumes](../../../containers/container_volumes_ov.html#container_volumes_write).

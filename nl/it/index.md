@@ -4,7 +4,7 @@ copyright:
 
   years: 2014, 2017
 
-lastupdated: "2017-10-30"
+lastupdated: "2018-05-30"
 
 ---
 
@@ -23,6 +23,22 @@ Puoi utilizzare le seguenti immagini pubbliche per creare contenitori in {{site.
 <p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Per ulteriori informazioni sull'immagine ibm-backup-restore, consulta la documentazione."></p>
 <p class="runtimeTitle">ibm-backup-restore</p>
 <p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-backup-restore/index.html" scope="peer" title="Per ulteriori informazioni sull'immagine ibm-backup-restore, consulta la documentazione.">VISUALIZZA DOCUMENTI</a></p>
+</li>
+  
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Puoi utilizzare l'immagine ibmcloud-secure-perimeter-health per eseguire la scansione dei percorsi esposti nelle reti dell'infrastruttura IBM Cloud e notificarli."></p>
+<p class="runtimeTitle">ibmcloud-secure-perimeter-health</p>
+<p class="runtimeLink"><a format="html"
+href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-health/index.html" scope="peer"
+ title="Puoi utilizzare l'immagine ibmcloud-secure-perimeter-health per eseguire la scansione dei percorsi esposti nelle reti dell'infrastruttura IBM Cloud e notificarli.">VISUALIZZA DOCUMENTI</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Puoi utilizzare l'immagine ibmcloud-secure-perimeter-network per applicare la configurazione Vyatta per un Secure Perimeter Segment."></p>
+<p class="runtimeTitle">ibmcloud-secure-perimeter-network</p>
+<p class="runtimeLink"><a format="html"
+href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-network/index.html" scope="peer"
+ title="Puoi utilizzare l'immagine ibmcloud-secure-perimeter-network per applicare la configurazione Vyatta per un Secure Perimeter Segment.">VISUALIZZA DOCUMENTI</a></p>
 </li>
 
 <li>
@@ -43,18 +59,6 @@ informazioni sull'immagine ibm-mq, consulta la documentazione."></p>
 <p class="runtimeTitle">ibm-mq</p>
 <p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-mq/index.html" scope="peer" title="Per ulteriori
 informazioni sull'immagine ibm-mq, consulta la documentazione.">VISUALIZZA DOCUMENTI</a></p>
-</li>
-
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Utilizza l'immagine IBM Node (ibmnode) come immagine principale per creare la tua propria immagine con il tuo codice applicazione Node.js."></p>
-<p class="runtimeTitle">ibmnode</p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibmnode/index.html" scope="peer" title="Utilizza l'immagine IBM Node (ibmnode) come immagine principale per creare la tua propria immagine con il tuo codice applicazione Node.js.">VISUALIZZA DOCUMENTI</a></p>
-</li>
-
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Strongloop Process Manager ti consente di distribuire, gestire e monitorare le applicazioni Node.js nel {{site.data.keyword.cloud_notm}} che sono state implementate in una macchina remota."></p>
-<p class="runtimeTitle">ibm-node-strong-pm</p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-node-strong-pm/index.html" scope="peer" title="Strongloop Process Manager ti consente di distribuire, gestire e monitorare le applicazioni Node.js nel {{site.data.keyword.cloud_notm}} implementate su una macchina remota.">VISUALIZZA DOCUMENTI</a></p>
 </li>
 
 <li>

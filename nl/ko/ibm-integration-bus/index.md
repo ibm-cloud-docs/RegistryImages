@@ -144,14 +144,14 @@ IBM Integration Bus를 실행하는 컨테이너가 {{site.data.keyword.Bluemix_
 3.  컨테이너의 상태를 확인하십시오.\*
 
     ```
-    bx ic ps
+        bx ic ps
     ```
     {: pre}
 
     **참고**: [{{site.data.keyword.containershort_notm}}에 로그인](/docs/containers/container_cli_cfic_install.html#container_cli_login)할 때 이 명령에서 **bx ic**를 **docker**로 바꾸고 고유 Docker 명령을 사용하도록 환경 변수를 설정할 수 있습니다. 별표(\*)로 표시된 모든 단계에서 고유 Docker 명령을 사용할 수 있습니다.
 
     ```
-    $ bx ic ps
+        $ bx ic ps
     CONTAINER ID        IMAGE                                                       COMMAND             CREATED             STATUS                 PORTS                                                        NAMES
     46d9ec1e-952        registry.ng.bluemix.net/ibm-integration-bus:latest   ""                  2 minutes ago       Running a minute ago   xxx.xxx.xxx.xxx:4414->4414/tcp, xxx.xxx.xxx.xxx:7800->7800/tcp   iib
     ```
@@ -160,7 +160,7 @@ IBM Integration Bus를 실행하는 컨테이너가 {{site.data.keyword.Bluemix_
 4.  Bash 세션을 컨테이너에 연결하십시오.\*
 
     ```
-    bx ic exec -it <container_name> /bin/bash
+        bx ic exec -it <container_name> /bin/bash
     ```
     {: pre}
 
@@ -169,7 +169,7 @@ IBM Integration Bus를 실행하는 컨테이너가 {{site.data.keyword.Bluemix_
     예를 들면 다음과 같습니다.
 
     ```
-    $ bx ic exec -it iib /bin/bash
+        $ bx ic exec -it iib /bin/bash
     (IIB_10:)iibuser@instance-0098858e:/$
     ```
     {: screen}
@@ -181,7 +181,7 @@ IBM Integration Bus를 실행하는 컨테이너가 {{site.data.keyword.Bluemix_
     예를 들면 다음과 같습니다.
 
     ```
-    (IIB_10:)iibuser@instance-0098858e:/$ . ./opt/ibm/iib-10.0.0.6/server/bin/mqsiprofile
+        (IIB_10:)iibuser@instance-0098858e:/$ . ./opt/ibm/iib-10.0.0.6/server/bin/mqsiprofile
 
     MQSI 10.0.0.6
     /opt/ibm/iib-10.0.0.6/server
@@ -196,7 +196,7 @@ IBM Integration Bus를 실행하는 컨테이너가 {{site.data.keyword.Bluemix_
 6.  **mqsilist** 명령을 사용하여 노드의 상태를 표시하십시오. 노드의 상태는 `running`으로 나열되어야 합니다. 예를 들면 다음과 같습니다.
 
     ```
-    (IIB_10:)iibuser@instance-0098858e:/$ mqsilist
+        (IIB_10:)iibuser@instance-0098858e:/$ mqsilist
     BIP1325I: Integration node 'MYNODE' with administration URI 'http://instance-0098858e:4414' is running.
     BIP8071I: Successful command completion.
     (IIB_10:)iibuser@instance-0098858e:/$
@@ -329,7 +329,7 @@ IBM Integration Bus 웹 UI를 실행하거나 터미널에서 명령을 실행�
 3.  웹 브라우저에서 다음 URL을 여십시오.
 
     ```
-    http://<DockerContainerPublicIP>:4414
+        http://<DockerContainerPublicIP>:4414
     ```
     {: pre}
 
@@ -362,7 +362,7 @@ IBM Integration Bus 웹 UI를 실행하거나 터미널에서 명령을 실행�
 2.  Bash 세션을 컨테이너에 연결하여 대화식 세션을 설정하십시오.\*
 
     ```
-    bx ic exec -it <container_name> /bin/bash
+        bx ic exec -it <container_name> /bin/bash
     ```
     {: pre}
 
@@ -371,7 +371,7 @@ IBM Integration Bus 웹 UI를 실행하거나 터미널에서 명령을 실행�
     예를 들면 다음과 같습니다.
 
     ```
-    bx ic exec -it iib /bin/bash
+        bx ic exec -it iib /bin/bash
     ```
     {: screen}
 
@@ -382,7 +382,7 @@ IBM Integration Bus 웹 UI를 실행하거나 터미널에서 명령을 실행�
     예를 들면 다음과 같습니다.
 
     ```
-    bx ic exec iib <container_name> /bin/bash -c mqsilist
+        bx ic exec iib <container_name> /bin/bash -c mqsilist
     ```
     {: screen}
 
@@ -422,7 +422,7 @@ Docker CLI를 사용하여 컨테이너에서 직접 IBM Integration Bus 관리 
 2.  Bash 세션을 컨테이너에 연결하여 대화식 세션을 설정하십시오. 다음 명령을 실행하십시오.
 
     ```
-    docker exec -it <container_name> /bin/bash
+        docker exec -it <container_name> /bin/bash
     ```
     {: pre}
 
@@ -431,7 +431,7 @@ Docker CLI를 사용하여 컨테이너에서 직접 IBM Integration Bus 관리 
     예를 들면 다음과 같습니다.
 
     ```
-    docker exec -it iib /bin/bash
+        docker exec -it iib /bin/bash
     ```
     {: screen}
 
@@ -444,7 +444,7 @@ Docker CLI를 사용하여 컨테이너에서 직접 IBM Integration Bus 관리 
     예를 들면 다음과 같습니다.
 
     ```
-    docker exec iib <container_name> /bin/bash -c mqsilist
+        docker exec iib <container_name> /bin/bash -c mqsilist
     ```
     {: screen}
 

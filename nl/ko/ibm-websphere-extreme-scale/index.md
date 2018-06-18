@@ -93,7 +93,7 @@ IBM WebSphere&reg; eXtreme Scale 이미지는 Liberty 런타임 환경에서 실
         2.  **크기**에는 ibm-eXtreme-scale 이미지를 시작하는 데 사용한 컨테이너의 크기를 지정하십시오.
         3.  **공인 IP 주소**에는 공인 IP 요청 및 바인드를 지정하십시오.
         4.  고급 옵션 패널을 여십시오. 나중에 롤링 업그레이드를 설치할 때 eXtreme Scale 구성 데이터를 지속할 수 있도록 볼륨을 작성하십시오. 예를 들어 다음과 같습니다.
-            1. 고급 옵션에서 **볼륨 작성**을 크릭하고 **볼륨 이름**을 지정하십시오. 예를 들어 다음 명령을 입력하십시오.
+            1. 고급 옵션에서 **볼륨 작성**을 크릭하고 **볼륨 이름**을 지정하십시오. 예를 들어 vol-wxs1을 입력하십시오.
             2. **새 환경 변수 추가**를 클릭하십시오. **ibm-websphere-extreme-scale** 이미지에는 컨테이너에 저장되고 권한 부여된 사용자가 액세스하는 환경 변수가 필요합니다.
             <table>
             <caption>표 3. ibm-websphere-extreme-scale 이미지의 환경 변수</caption>
@@ -124,7 +124,7 @@ IBM WebSphere&reg; eXtreme Scale 이미지는 Liberty 런타임 환경에서 실
    5.  컨테이너와 eXtreme Scale 서버가 완전히 시작되고 나면 eXtreme Scale 대시보드 UI에 로그온하여 배치를 확인하십시오. {{site.data.keyword.Bluemix_notm}} 콘솔에서 컨테이너를 클릭하여 공인 IP를 보십시오. WebSphere eXtreme Scale 컨테이너는 다음 URL에서 액세스할 수 있습니다.
 
     ```
-    https://<Public_IP>:9443
+        https://<Public_IP>:9443
     ```
     {: pre}
 
@@ -196,7 +196,7 @@ IBM WebSphere&reg; eXtreme Scale 이미지는 Liberty 런타임 환경에서 실
 2.  컨테이너와 eXtreme Scale 서버가 완전히 시작되고 나면 이 멤버의 eXtreme Scale 대시보드 UI에 로그온하십시오.
 
     ```
-    https://<REQUESTED_IP>:9443
+       https://<REQUESTED_IP>:9443
     ```
     {: pre}
 
@@ -215,12 +215,12 @@ IBM WebSphere&reg; eXtreme Scale 이미지는 Liberty 런타임 환경에서 실
 2.  업데이트된 eXtreme Scale .zip 파일을 wxsmigrate 컨테이너에서 {{site.data.keyword.containershort_notm}} CLI가 실행 중인 로컬 시스템으로 복사하십시오.
 
     ```
-    cf ic cp wxsmigrate:/tmp/xsld-bin-update.zip
+        cf ic cp wxsmigrate:/tmp/xsld-bin-update.zip
     ```
     {: pre}
     
     ```
-    cf ic cp wxsmigrate:/tmp/xsld-derby-update.zip
+        cf ic cp wxsmigrate:/tmp/xsld-derby-update.zip
     ```
     {: pre}
 
@@ -229,26 +229,26 @@ IBM WebSphere&reg; eXtreme Scale 이미지는 Liberty 런타임 환경에서 실
     1. 업데이트된 eXtreme Scale .zip 파일을 로컬 시스템에서 업그레이드할 eXtreme Scale 컨테이너로 복사하십시오.
     
       ```
-      cf ic cp  xsld-bin-update.zip  <container_name>:/tmp/xsld-bin-update.zip
+            cf ic cp  xsld-bin-update.zip  <container_name>:/tmp/xsld-bin-update.zip
       ```
       {: pre}
   
       ```
-      cf ic cp  xsld-derby-update.zip  <container_name>:/tmp/xsld-derby-update.zip
+            cf ic cp  xsld-derby-update.zip  <container_name>:/tmp/xsld-derby-update.zip
       ```
       {: pre}
      
     2. 업그레이드할 컨테이너에 연결하십시오. 
     
       ```
-      cf ic exec -it <container_name> bash
+          cf ic exec -it <container_name> bash
       ```
       {: pre}
 
     3. 업그레이드할 준비가 된 컨테이너에서 XSLD 서버를 중지하십시오.
       
       ```
-      /opt/ibm/WebSphere/eXtremeScale/wxs/stopXSLD.sh
+          /opt/ibm/WebSphere/eXtremeScale/wxs/stopXSLD.sh
       ```
       {: pre}
       
@@ -257,26 +257,26 @@ IBM WebSphere&reg; eXtreme Scale 이미지는 Liberty 런타임 환경에서 실
     4. 컨테이너에 있는 최신 eXtreme Scale 업데이트 코드의 압축을 해제하십시오.
       
       ```
-      unzip  -o  /tmp/xsld-bin-update.zip   -d /opt/ibm/WebSphere/eXtremeScale
+            unzip  -o  /tmp/xsld-bin-update.zip   -d /opt/ibm/WebSphere/eXtremeScale
       ```
       {: pre}
       
       ```
-      unzip  -o  /tmp/xsld-derby-update.zip -d /opt/ibm/WebSphere/eXtremeScale
+            unzip  -o  /tmp/xsld-derby-update.zip -d /opt/ibm/WebSphere/eXtremeScale
       ```
       {: pre}
     
     5. 다음과 같이 XSLD 서버를 다시 시작하십시오.
     
       ```
-      /opt/ibm/WebSphere/eXtremeScale/wxs/startXSLD.sh
+            /opt/ibm/WebSphere/eXtremeScale/wxs/startXSLD.sh
       ```
       {: pre}
       
     6. nanny 로그를 모니터하여 서버가 시작되었는지 확인하십시오.
     
       ```
-      tail -f /opt/ibm/WebSphere/eXtremeScale/wlp/startscripts/nanny/log/nanny.log
+            tail -f /opt/ibm/WebSphere/eXtremeScale/wlp/startscripts/nanny/log/nanny.log
       ```
       {: pre}
       
@@ -298,7 +298,7 @@ IBM WebSphere&reg; eXtreme Scale 이미지는 Liberty 런타임 환경에서 실
 1.  다음과 같이 각 컨테이너에 연결하십시오.
 
     ```
-    cf ic exec -it <container_name> bash
+        cf ic exec -it <container_name> bash
     ```
     {: pre}
 
@@ -307,14 +307,14 @@ IBM WebSphere&reg; eXtreme Scale 이미지는 Liberty 런타임 환경에서 실
     호스트 별명은 XSLD_CONTAINER_ALIAS 환경 변수의 값입니다.
 
     ```
-    echo ${<XSLD_CONTAINER_ALIAS>}
+        echo ${<XSLD_CONTAINER_ALIAS>}
     ```
     {: pre}
 
     사설 IP는 컨테이너에서 hostname -I 명령을 실행하면 리턴되는 IP 주소입니다.
 
     ```
-    hostname -I
+        hostname -I
     ```
     {: pre}
 
@@ -324,14 +324,14 @@ IBM WebSphere&reg; eXtreme Scale 이미지는 Liberty 런타임 환경에서 실
 3.  기타 모든 멤버 별명, IP 및 호스트 이름으로 전달되는 각 멤버에서 recoverXSLD.sh 스크립트를 실행하십시오.
 
     ```
-    /opt/ibm/WebSphere/eXtremeScale/wxs/recoverXSLD.sh <member2_alias> <member2_private_ip> <member2_hostname> ... <memberN_alias> <memberN_private_ip> <memberN_hostname>
+        /opt/ibm/WebSphere/eXtremeScale/wxs/recoverXSLD.sh <member2_alias> <member2_private_ip> <member2_hostname> ... <memberN_alias> <memberN_private_ip> <memberN_hostname>
     ```
     {: pre}
 
 4.  캐시 그룹의 각 컨테이너에서 stopXSLD.sh를 실행하여 실행 중인 서버를 중지하십시오. 다음과 같이 stopXSLD.sh를 실행하십시오.
 
     ```
-    /opt/ibm/WebSphere/eXtremeScale/wxs/stopXSLD.sh
+        /opt/ibm/WebSphere/eXtremeScale/wxs/stopXSLD.sh
     ```
     {: pre}
 
@@ -339,28 +339,28 @@ IBM WebSphere&reg; eXtreme Scale 이미지는 Liberty 런타임 환경에서 실
     1.  다음과 같이 카탈로그 서버 프로세스 목록을 표시하십시오.
 
         ```
-        ps -ef | grep cs-default
+                ps -ef | grep cs-default
         ```
         {: pre}
 
     2.  다음과 같이 프로세스 ID를 사용하여 카탈로그 서버 프로세스를 종료하십시오.
 
         ```
-        kill -9 <catalog_server_process_id>
+                kill -9 <catalog_server_process_id>
         ```
         {: pre}
 
     3.  다음과 같이 stopXSLD.sh를 다시 실행하십시오.
 
         ```
-        /opt/ibm/WebSphere/eXtremeScale/wxs/stopXSLD.sh
+            /opt/ibm/WebSphere/eXtremeScale/wxs/stopXSLD.sh
         ```
         {: pre}
 
 6.  모든 컨테이너에서 거의 동시에 XSLD를 시작하십시오. 다음과 같이 startXSLD.sh를 실행하십시오.
 
     ```
-    /opt/ibm/WebSphere/eXtremeScale/wxs/startXSLD.sh
+          /opt/ibm/WebSphere/eXtremeScale/wxs/startXSLD.sh
     ```
     {: pre}
 
@@ -368,12 +368,12 @@ IBM WebSphere&reg; eXtreme Scale 이미지는 Liberty 런타임 환경에서 실
 ### 중지된 Derby 복제 태스크의 문제점 해결 
 {: #troubleshoot_derby}
 
-Derby 복제 태스크가 10분이 넘도록 45% 이상 진행되지 않으면 네트워크 문제 때문일 가능성이 큽니다. 다음 단계를 완료하여 문제점을 해결하십시오.
+Derby 복제 태스크가 10분이 넘도록 45% 이상 진행되지 않으면 네트워크 문제 때문일 가능성이 높습니다. 다음 단계를 완료하여 문제점을 해결하십시오.
 
 1.  cURL과 같은 REST POSTing 유틸리티를 사용하여 Derby 복제 태스크를 취소하십시오.
 
     ```
-    curl -X PUT --header "Content-Type: application/json" --header "Accept: application/json" "https://<PUBLIC_IP>:9445/wxsadmin/v1/task/cancel/<DERBY_REPLICATION_TASK_ID>/force"
+        curl -X PUT --header "Content-Type: application/json" --header "Accept: application/json" "https://<PUBLIC_IP>:9445/wxsadmin/v1/task/cancel/<DERBY_REPLICATION_TASK_ID>/force"
     ```
     {: pre}
 
@@ -390,14 +390,14 @@ eXtreme Scale이 {{site.data.keyword.containershort_notm}}에 배치된 경우 �
     1.  다음과 같이 컨테이너에 연결하십시오.
 
         ```
-        cf ic exec -it <container_name> bash
+            cf ic exec -it <container_name> bash
         ```
         {: pre}
 
     2.  호스트 이름을 나열하십시오.
 
         ```
-        hostname
+                hostname
         ```
         {: pre}
 
@@ -408,7 +408,7 @@ eXtreme Scale이 {{site.data.keyword.containershort_notm}}에 배치된 경우 �
 3.  공인 IP와 컨테이너 호스트 이름을 함께 맵핑하는 로컬 클라이언트 컴퓨터의 호스트 파일에 항목을 작성하십시오. 이 항목은 다음과 유사합니다.
 
     ```
-    169.44.8.87 instance-05106102
+        169.44.8.87 instance-05106102
     ```
     {: pre}
 
@@ -420,14 +420,14 @@ eXtreme Scale이 {{site.data.keyword.containershort_notm}}에 배치된 경우 �
     -   CRUD 오퍼레이션의 경우:
 
         ```
-        https://<host_name>:9444/ibm/api/explorer
+                https://<host_name>:9444/ibm/api/explorer
         ```
         {: pre}
 
     -   관리 오퍼레이션의 경우:
 
         ```
-        https://<host_name>:9445/ibm/api/explorer
+                https://<host_name>:9445/ibm/api/explorer
         ```
         {: pre}
 

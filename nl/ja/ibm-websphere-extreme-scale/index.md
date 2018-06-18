@@ -21,7 +21,7 @@ lastupdated: "2017-10-30"
 ## 機能 
 {: #how_it_works}
 
-IBM WebSphere&reg; eXtreme Scale イメージは、Liberty ランタイム環境内で実行される分散型のメモリー内キャッシュ・フィーチャーです。そこには最新の業界標準および仕様に基づく Liberty キャッシング・サーバー、キャッシング操作ツール、管理コンソール、すぐに使用可能な REST 管理サービスが用意されています。このイメージを構築する上で使用される中核となるテクノロジーは、IBM WebSphere eXtreme Scale です。このイメージ内にロードされるキャッシング・テクノロジーは、JCache \(JSR107\) 仕様とコンプライアンスを完全にサポートしています。
+IBM WebSphere&reg; eXtreme Scale イメージは、Liberty ランタイム環境内で実行される分散型のメモリー内キャッシュ・フィーチャーです。 そこには最新の業界標準および仕様に基づく Liberty キャッシング・サーバー、キャッシング操作ツール、管理コンソール、すぐに使用可能な REST 管理サービスが用意されています。 このイメージを構築する上で使用される中核となるテクノロジーは、IBM WebSphere eXtreme Scale です。 このイメージ内にロードされるキャッシング・テクノロジーは、JCache \(JSR107\) 仕様とコンプライアンスを完全にサポートしています。
 
 `ibm-websphere-extreme-scale` イメージを使用すると、以下のような主要な機能を活用できます。
 
@@ -41,7 +41,7 @@ IBM WebSphere&reg; eXtreme Scale イメージは、Liberty ランタイム環境
 -   IBM WebSphere eXtreme Scale
 -   IBM Java Runtime Environment 8.0
 
-イメージにインストールされている固有のフィーチャーは、選択するタグによって異なります。次の表に、**ibm-websphere-extreme-scale** の各イメージに含まれているコード・レベルを示します。これらのフィーチャーについて詳しくは、[eXtreme Scale の資料](http://www.ibm.com/support/knowledgecenter/SSTVLU)を参照してください。
+イメージにインストールされている固有のフィーチャーは、選択するタグによって異なります。 次の表に、**ibm-websphere-extreme-scale** の各イメージに含まれているコード・レベルを示します。 これらのフィーチャーについて詳しくは、[eXtreme Scale の資料](http://www.ibm.com/support/knowledgecenter/SSTVLU)を参照してください。
 
 |タグ|説明|
 |---|-----------|
@@ -57,11 +57,10 @@ IBM WebSphere&reg; eXtreme Scale イメージは、Liberty ランタイム環境
 |環境|使用上の制約事項|
 |-----------|------------------|
 |開発|`ibm-websphere-extreme-scale` イメージは、開発時には無制限かつ無料で使用できます。|
-|実動|**ibm-websphere-extreme-scale** イメージの実動使用は、ライセンス交付を受けた IBM WebSphere eXtreme Scale 製品ユーザーに限定されます。実動使用について詳しくは、[View Pricing and Buy](https://www-112.ibm.com/software/howtobuy/buyingtools/paexpress/Express?P0=E1&part_number=D56YTLL,D56YVLL,D572PLL,D572MLL,D0594LL,D059GLL&catalogLocale=en_US&Locale=en_US&country=USA&PT=jsp&CC=USA&VP=&TACTICS=&S_TACT=&S_CMP=&brand=SB05) を参照してください。|
+|実動|**ibm-websphere-extreme-scale** イメージの実動使用は、ライセンス交付を受けた IBM WebSphere eXtreme Scale 製品ユーザーに限定されます。 実動使用について詳しくは、[View Pricing and Buy](https://www-112.ibm.com/software/howtobuy/buyingtools/paexpress/Express?P0=E1&part_number=D56YTLL,D56YVLL,D572PLL,D572MLL,D0594LL,D059GLL&catalogLocale=en_US&Locale=en_US&country=USA&PT=jsp&CC=USA&VP=&TACTICS=&S_TACT=&S_CMP=&brand=SB05) を参照してください。|
 {: caption="表 2. {{site.data.keyword.Bluemix_notm}} での ibm-websphere-extreme-scale イメージの使用上の制約事項" caption-side="top"}
 
 **注:** **ibm-websphere-extreme-scale** イメージの価格設定は、{{site.data.keyword.Bluemix_notm}} で使用するコンテナーの価格設定とは無関係です。
-
 
 [License information documents](http://www-03.ibm.com/software/sla/sladb.nsf/displaylis/A44EE6829150B2998525801700516718?OpenDocument) の『License』セクションで、IBM 認定イメージのご利用条件を確認してください。
 
@@ -70,7 +69,6 @@ IBM WebSphere&reg; eXtreme Scale イメージは、Liberty ランタイム環境
 {: #get_started}
 
 **ibm-websphere-extreme-scale** イメージは、コンソールとコマンド・ラインのいずれを使用してもデプロイできます。
-
 
 この手順には、イメージをコンソールまたはコマンド・ラインのいずれかを使用してデプロイする場合の、以下のようなオプションが含まれています。
 
@@ -87,25 +85,25 @@ IBM WebSphere&reg; eXtreme Scale イメージは、Liberty ランタイム環境
    2.  **「タグ/バージョン」**ドロップダウン・メニューから、使用する **ibm-websphere-extreme-scale** イメージのバージョンを選択します。
    3.  単一コンテナーを作成します。
 
-        **注:** 複数のコンテナーを作成する場合、**「スケーラブル」**オプションを使用して複数の eXtreme Scale キャッシュ・メンバー・グループを作成することはしないでください。代わりに、**「単一」**オプションを選択して複数のコンテナーを作成し、eXtreme Scale ダッシュボード UI を使用してキャッシュ・メンバーを結合してください。
+        **注:** 複数のコンテナーを作成する場合、**「スケーラブル」**オプションを使用して複数の eXtreme Scale キャッシュ・メンバー・グループを作成することはしないでください。 代わりに、**「単一」**オプションを選択して複数のコンテナーを作成し、eXtreme Scale ダッシュボード UI を使用してキャッシュ・メンバーを結合してください。
 
         詳しくは、[{{site.data.keyword.Bluemix_notm}} ダッシュボードを使用した単一コンテナーの作成](/docs/containers/container_single_ui.html#gui)を参照してください。
 
-        1.  「コンテナーの作成」パネルから**コンテナー名** (例えば、`wxs1`) を指定します。コンテナー名にスペースやその他の印刷できない文字を使用することはできません。
+        1.  「コンテナーの作成」パネルから**コンテナー名** (例えば、`wxs1`) を指定します。 コンテナー名にスペースやその他の印刷できない文字を使用することはできません。
         2.  **「サイズ」**には、ibm-eXtreme-scale イメージの開始に使用するコンテナーのサイズを指定します。
         3.  **「パブリック IP アドレス」**には、「要求およびバインド・パブリック IP」を指定します。
-        4.  「詳細オプション」パネルを開きます。後でローリング・アップグレードのインストール時に eXtreme Scale 構成データが永続するようにボリュームを作成します。例えば、次のようにします。
-            1. 「詳細オプション」で**「ボリュームの作成」**をクリックし、**「ボリューム名」**を指定します。例えば、「vol-wxs1」と入力します。
-            2. **「新規環境変数の追加」**をクリックします。**ibm-websphere-extreme-scale** イメージで必要な環境変数は、コンテナー内に保管されて、許可ユーザーがアクセスします。
-<table>
+        4.  「詳細オプション」パネルを開きます。 後でローリング・アップグレードのインストール時に eXtreme Scale 構成データが永続するようにボリュームを作成します。例えば、次のようにします。
+            1. 「詳細オプション」で**「ボリュームの作成」**をクリックし、**「ボリューム名」**を指定します。 例えば、「vol-wxs1」と入力します。
+            2. **「新規環境変数の追加」**をクリックします。 **ibm-websphere-extreme-scale** イメージで必要な環境変数は、コンテナー内に保管されて、許可ユーザーがアクセスします。
+            <table>
             <caption>表 3. ibm-websphere-extreme-scale イメージの環境変数</caption>
                <tr>
                  <th>変数名</th>
-                 <th>指定される値</th>
+                 <th>指定される値 </th>
                </tr>
                <tr>
                  <td>SECRET_KEY</td>
-                 <td>秘密鍵の値 (例えば、<var class="keyword varname">s3cretKey!</var>)。これは、キャッシュ・メンバー・グループに属する複数のメンバー間で内部通信を送信するときに、eXtreme Scale サーバーで使用される秘密鍵です。詳しくは、[キャッシュ・メンバー・グループのセクション](http://www.ibm.com/support/knowledgecenter/SSTVLU_8.6.1/com.ibm.websphere.extremescale.doc/txscreategridtut1.html)を参照してください。</td>
+                 <td>秘密鍵の値 (例えば、<var class="keyword varname">s3cretKey!</var>)。 これは、キャッシュ・メンバー・グループに属する複数のメンバー間で内部通信を送信するときに、eXtreme Scale サーバーで使用される秘密鍵です。 詳しくは、[キャッシュ・メンバー・グループのセクション](http://www.ibm.com/support/knowledgecenter/SSTVLU_8.6.1/com.ibm.websphere.extremescale.doc/txscreategridtut1.html)を参照してください。</td>
                </tr>
                <tr>
                  <td>XSADMIN_PWD</td>
@@ -113,7 +111,7 @@ IBM WebSphere&reg; eXtreme Scale イメージは、Liberty ランタイム環境
                </tr>
                </table>
   
-              **注:** パスワードと秘密鍵は、eXtreme Scale コンテナーの開始後に変更できます。秘密鍵とパスワードの両方に、以下のパスワード規則があります。以下の規則に基づいて、これら 2 つを入力するようにしてください。
+              **注:** パスワードと秘密鍵は、eXtreme Scale コンテナーの開始後に変更できます。 秘密鍵とパスワードの両方に、以下のパスワード規則があります。 以下の規則に基づいて、これら 2 つを入力するようにしてください。
 
               パスワードと秘密鍵は最低 10 文字で、この中には、少なくとも 1 つの数字 [`0-9`]、1 つの大文字 [`A-Z`]、1 つの特殊文字 [`~!@#$%^&*()_-+=:;'[]{}|<>,.?/`] が含まれていなければなりません。
 
@@ -123,7 +121,7 @@ IBM WebSphere&reg; eXtreme Scale イメージは、Liberty ランタイム環境
 
    4.  {{site.data.keyword.Bluemix_notm}} ダッシュボードで**「作成」**をクリックしてコンテナーを作成します。
     
-   5.  コンテナーと eXtreme Scale サーバーが完全に開始した後で、eXtreme Scale ダッシュボード UI にログオンし、デプロイメントを検証します。{{site.data.keyword.Bluemix_notm}} コンソールでコンテナーをクリックしてパブリック IP を確認します。WebSphere eXtreme Scale コンテナーには、次の URL からアクセスできます。
+   5.  コンテナーと eXtreme Scale サーバーが完全に開始した後で、eXtreme Scale ダッシュボード UI にログオンし、デプロイメントを検証します。 {{site.data.keyword.Bluemix_notm}} コンソールでコンテナーをクリックしてパブリック IP を確認します。 WebSphere eXtreme Scale コンテナーには、次の URL からアクセスできます。
 
     ```
     https://<Public_IP>:9443
@@ -135,7 +133,7 @@ IBM WebSphere&reg; eXtreme Scale イメージは、Liberty ランタイム環境
 
 ### コマンド・ラインからイメージをデプロイします。
 {: #bmcommand}
- 1.  Docker ボリュームを作成して、IBM WebSphere eXtreme Scale の永続データを保管します。例えば、次のコマンドを入力します。
+ 1.  Docker ボリュームを作成して、IBM WebSphere eXtreme Scale の永続データを保管します。 例えば、次のコマンドを入力します。
 
   ```
   cf ic volume create <vol-wxs1>
@@ -151,9 +149,9 @@ IBM WebSphere&reg; eXtreme Scale イメージは、Liberty ランタイム環境
    ```
    {: pre}
         
-     **注:** コンテナー名には英数字のみを使用し、文字で始める必要があります。または、コンテナー名に他の非英数字を含める必要がある場合は、<code>-e XSLD_CONTAINER_ALIAS=<wxs1></code> を設定することもできます。
+     **注:** コンテナー名には英数字のみを使用し、文字で始める必要があります。 または、コンテナー名に他の非英数字を含める必要がある場合は、<code>-e XSLD_CONTAINER_ALIAS=<wxs1></code> を設定することもできます。
 
- 3.  最初の IBM WebSphere eXtreme Scale コンテナーに使用するパブリック IP を要求します。次のコマンドを入力して、IP アドレスを書き留めます。
+ 3.  最初の IBM WebSphere eXtreme Scale コンテナーに使用するパブリック IP を要求します。 次のコマンドを入力して、IP アドレスを書き留めます。
 
    ```
    cf ic ip request
@@ -204,16 +202,16 @@ IBM WebSphere&reg; eXtreme Scale イメージは、Liberty ランタイム環境
 
 3.  「データ・キャッシュ・メンバー」ページを開き、このメンバーの**「アクション」**列の下で**「結合」**を選択します。
 4.  最初のメンバーが要求したパブリック IP、最初のメンバーの秘密鍵、およびキャッシュ・グループ内でのこのメンバーの固有名を入力します。
-5.  **「結合」**をクリックして、タスクが完了するのを待ちます。タスクが完了すると、「データ・キャッシュ・メンバー」ページにすべてのメンバーが表示されます。
+5.  **「結合」**をクリックして、タスクが完了するのを待ちます。 タスクが完了すると、「データ・キャッシュ・メンバー」ページにすべてのメンバーが表示されます。
 
 ## ローリング・アップグレードの実行 
 {: #rolling_upgrade}
 
 {{site.data.keyword.containershort_notm}} で `ibm-websphere-extreme-scale` を実行しているコンテナーのローリング・アップグレードを実行するには、以下の手順を実行する必要があります。
 
-**注:** eXtreme Scale キャッシュ・メンバー・グループのメンバーが 1 人だけである場合は、この {{site.data.keyword.IBM_notm}} コンテナーを削除し、最初から作成しなおします。ただし、eXtreme Scale キャッシュ・メンバー・グループに複数のメンバーが含まれていて、複数のカタログ・サーバーがデプロイされている場合に、キャッシュされたデータを {{site.data.keyword.containershort_notm}} で保持するときは、以下のローリング・アップグレードの手順を実行して、キャッシュされたデータが失われないようにしてください。最初にコンテナー・サーバーだけを持っているキャッシュ・メンバーをアップグレードしてから、カタログ・サーバーも持っているキャッシュ・メンバーをアップグレードしてください。
+**注:** eXtreme Scale キャッシュ・メンバー・グループのメンバーが 1 人だけである場合は、この {{site.data.keyword.IBM_notm}} コンテナーを削除し、最初から作成しなおします。 ただし、eXtreme Scale キャッシュ・メンバー・グループに複数のメンバーが含まれていて、複数のカタログ・サーバーがデプロイされている場合に、キャッシュされたデータを {{site.data.keyword.containershort_notm}} で保持するときは、以下のローリング・アップグレードの手順を実行して、キャッシュされたデータが失われないようにしてください。 最初にコンテナー・サーバーだけを持っているキャッシュ・メンバーをアップグレードしてから、カタログ・サーバーも持っているキャッシュ・メンバーをアップグレードしてください。
 
-1.  wxsmigrate という新規コンテナーを開始し、それをすべての既存の eXtreme Scale コンテナーのアップグレードに使用します。詳しくは、このページの『[概説](#get_started)』セクションを参照してください。eXtreme Scale の最新の更新が含まれる .zip ファイルは、新規コンテナー wxsmigrate 上の /tmp フォルダーの下にデプロイされます。
+1.  wxsmigrate という新規コンテナーを開始し、それをすべての既存の eXtreme Scale コンテナーのアップグレードに使用します。 詳しくは、このページの『[概説](#get_started)』セクションを参照してください。 eXtreme Scale の最新の更新が含まれる .zip ファイルは、新規コンテナー wxsmigrate 上の /tmp フォルダーの下にデプロイされます。
 2.  更新した eXtreme Scale .zip ファイルを、wxsmigrate コンテナーから {{site.data.keyword.containershort_notm}} CLI プラグインが実行されているローカル・システムにコピーします。
 
     ```
@@ -330,7 +328,7 @@ IBM WebSphere&reg; eXtreme Scale イメージは、Liberty ランタイム環境
     ```
     {: pre}
 
-4.  キャッシュ・グループ内の各コンテナーについて stopXSLD.sh を実行して、実行中のサーバーを停止します。stopXSLD.sh を実行します。
+4.  キャッシュ・グループ内の各コンテナーについて stopXSLD.sh を実行して、実行中のサーバーを停止します。 stopXSLD.sh を実行します。
 
     ```
     /opt/ibm/WebSphere/eXtremeScale/wxs/stopXSLD.sh
@@ -359,7 +357,7 @@ IBM WebSphere&reg; eXtreme Scale イメージは、Liberty ランタイム環境
         ```
         {: pre}
 
-6.  すべてのコンテナー上でほぼ同時に XSLD を開始します。startXSLD.sh を実行します。
+6.  すべてのコンテナー上でほぼ同時に XSLD を開始します。 startXSLD.sh を実行します。
 
     ```
     /opt/ibm/WebSphere/eXtremeScale/wxs/startXSLD.sh
@@ -370,7 +368,7 @@ IBM WebSphere&reg; eXtreme Scale イメージは、Liberty ランタイム環境
 ### 停止した Derby レプリケーション・タスクのトラブルシューティング 
 {: #troubleshoot_derby}
 
-Derby レプリケーション・タスクが 45% より先に進まない状態が 10 分以上続く場合は、ネットワークの問題が原因である可能性があります。以下の手順を実行して、この問題をトラブルシューティングしてください。
+Derby レプリケーション・タスクが 45% より先に進まない状態が 10 分以上続く場合は、ネットワークの問題が原因である可能性があります。 以下の手順を実行して、この問題をトラブルシューティングしてください。
 
 1.  cURL などの REST POSTing ユーティリティーを使用して、Derby レプリケーション・タスクを取り消します。
 
@@ -407,7 +405,7 @@ eXtreme Scale が {{site.data.keyword.containershort_notm}} にデプロイさ�
 
     コンテナーにパブリック IP がない場合は『概説』セクションのステップに従って、{{site.data.keyword.Bluemix_notm}} [コンソール](#bmconsole)または[コマンド・ライン](#bmcommand)を使用してコンテナーにパブリック IP を指定します。
 
-3.  ご使用のローカル・クライアント・コンピューターの hosts ファイルに、パブリック IP とコンテナーのホスト名を一緒にマッピングするエントリーを作成します。このエントリーは、以下のようになります。
+3.  ご使用のローカル・クライアント・コンピューターの hosts ファイルに、パブリック IP とコンテナーのホスト名を一緒にマッピングするエントリーを作成します。 このエントリーは、以下のようになります。
 
     ```
     169.44.8.87 instance-05106102
@@ -434,7 +432,7 @@ eXtreme Scale が {{site.data.keyword.containershort_notm}} にデプロイさ�
         {: pre}
 
 
-サンプルと最新の更新情報については、[GitHub の WebSphere eXtreme Scale](https://github.com/ibmWebsphereExtremeScale) にアクセスしてください。また、eXtreme Scale のデプロイに役立つ以下のサポート資料とビデオも参照してください。
+サンプルと最新の更新情報については、[GitHub の WebSphere eXtreme Scale](https://github.com/ibmWebsphereExtremeScale) にアクセスしてください。 また、eXtreme Scale のデプロイに役立つ以下のサポート資料とビデオも参照してください。
 
 -   [IBM WebSphere eXtreme Scale の資料](http://www.ibm.com/support/knowledgecenter/SSTVLU_8.6.1/com.ibm.websphere.extremescale.doc/cxsgetstartxsld.html)
 -   [XS developerWorks フォーラム](https://www.ibm.com/developerworks/community/forums/html/forum?id=11111111-0000-0000-0000-000000000778&ps=25)

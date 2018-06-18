@@ -123,7 +123,7 @@ IBM WebSphere&reg; eXtreme Scale 映像是一种在 Liberty 运行时环境内�
    5.  容器和 eXtreme Scale 服务器完全启动后，登录到 eXtreme Scale 仪表板 UI，并验证部署。在 {{site.data.keyword.Bluemix_notm}} 控制台中，单击要查看其公共 IP 的容器。WebSphere eXtreme Scale 容器可以通过以下 URL 访问：
 
     ```
-    https://<Public_IP>:9443
+        https://<Public_IP>:9443
     ```
     {: pre}
 
@@ -195,8 +195,8 @@ IBM WebSphere&reg; eXtreme Scale 映像是一种在 Liberty 运行时环境内�
 2.  容器和 eXtreme Scale 服务器完全启动后，登录到此成员的 eXtreme Scale 仪表板 UI：
 
     ```
-    https://<REQUESTED_IP>:9443
-    ```
+       https://<REQUESTED_IP>:9443
+   ```
     {: pre}
 
 3.  打开“数据高速缓存成员”页面，并在此成员的**操作**列下选择**加入**。
@@ -214,12 +214,12 @@ IBM WebSphere&reg; eXtreme Scale 映像是一种在 Liberty 运行时环境内�
 2.  将更新后的 eXtreme Scale .zip 文件从 wxsmigrate 容器复制到您在其中运行 {{site.data.keyword.containershort_notm}} CLI 插件的本地系统：
 
     ```
-    cf ic cp wxsmigrate:/tmp/xsld-bin-update.zip
+        cf ic cp wxsmigrate:/tmp/xsld-bin-update.zip
     ```
     {: pre}
     
     ```
-    cf ic cp wxsmigrate:/tmp/xsld-derby-update.zip
+        cf ic cp wxsmigrate:/tmp/xsld-derby-update.zip
     ```
     {: pre}
 
@@ -228,27 +228,27 @@ IBM WebSphere&reg; eXtreme Scale 映像是一种在 Liberty 运行时环境内�
     1. 将更新后的 eXtreme Scale .zip 文件从本地系统复制到要升级的 eXtreme Scale 容器：
     
       ```
-      cf ic cp  xsld-bin-update.zip  <container_name>:/tmp/xsld-bin-update.zip
+            cf ic cp  xsld-bin-update.zip  <container_name>:/tmp/xsld-bin-update.zip
       ```
       {: pre}
   
       ```
-      cf ic cp  xsld-derby-update.zip  <container_name>:/tmp/xsld-derby-update.zip
+            cf ic cp  xsld-derby-update.zip  <container_name>:/tmp/xsld-derby-update.zip
       ```
       {: pre}
      
     2. 连接到要升级的容器： 
     
       ```
-      cf ic exec -it <container_name> bash
-      ```
+          cf ic exec -it <container_name> bash
+    ```
       {: pre}
 
     3. 停止已准备就绪可升级的容器上的 XSLD 服务器。
       
       ```
-      /opt/ibm/WebSphere/eXtremeScale/wxs/stopXSLD.sh
-      ```
+          /opt/ibm/WebSphere/eXtremeScale/wxs/stopXSLD.sh
+    ```
       {: pre}
       
       等待这些服务器停止。
@@ -256,26 +256,26 @@ IBM WebSphere&reg; eXtreme Scale 映像是一种在 Liberty 运行时环境内�
     4. 解压缩容器内最新的 eXtreme Scale 更新代码：
       
       ```
-      unzip  -o  /tmp/xsld-bin-update.zip   -d /opt/ibm/WebSphere/eXtremeScale
+            unzip  -o  /tmp/xsld-bin-update.zip   -d /opt/ibm/WebSphere/eXtremeScale
       ```
       {: pre}
       
       ```
-      unzip  -o  /tmp/xsld-derby-update.zip -d /opt/ibm/WebSphere/eXtremeScale
+            unzip  -o  /tmp/xsld-derby-update.zip -d /opt/ibm/WebSphere/eXtremeScale
       ```
       {: pre}
     
     5. 再次启动 XSLD 服务器：
     
       ```
-      /opt/ibm/WebSphere/eXtremeScale/wxs/startXSLD.sh
+            /opt/ibm/WebSphere/eXtremeScale/wxs/startXSLD.sh
       ```
       {: pre}
       
     6. 监视 nanny 日志以确保服务器已启动：
     
       ```
-      tail -f /opt/ibm/WebSphere/eXtremeScale/wlp/startscripts/nanny/log/nanny.log
+            tail -f /opt/ibm/WebSphere/eXtremeScale/wlp/startscripts/nanny/log/nanny.log
       ```
       {: pre}
       
@@ -297,7 +297,7 @@ IBM WebSphere&reg; eXtreme Scale 映像是一种在 Liberty 运行时环境内�
 1.  连接到每个容器：
 
     ```
-    cf ic exec -it <container_name> bash
+        cf ic exec -it <container_name> bash
     ```
     {: pre}
 
@@ -306,14 +306,14 @@ IBM WebSphere&reg; eXtreme Scale 映像是一种在 Liberty 运行时环境内�
     主机别名是 XSLD_CONTAINER_ALIAS 环境变量的值：
 
     ```
-    echo ${<XSLD_CONTAINER_ALIAS>}
+        echo ${<XSLD_CONTAINER_ALIAS>}
     ```
     {: pre}
 
     专用 IP 是在容器内部运行 hostname -I 命令时返回的 IP 地址：
 
     ```
-    hostname -I
+        hostname -I
     ```
     {: pre}
 
@@ -323,14 +323,14 @@ IBM WebSphere&reg; eXtreme Scale 映像是一种在 Liberty 运行时环境内�
 3.  对每个成员运行 recoverXSLD.sh 脚本，同时传入其他所有成员别名、IP 和主机名：
 
     ```
-    /opt/ibm/WebSphere/eXtremeScale/wxs/recoverXSLD.sh <member2_alias> <member2_private_ip> <member2_hostname> ... <memberN_alias> <memberN_private_ip> <memberN_hostname>
+        /opt/ibm/WebSphere/eXtremeScale/wxs/recoverXSLD.sh <member2_alias> <member2_private_ip> <member2_hostname> ... <memberN_alias> <memberN_private_ip> <memberN_hostname>
     ```
     {: pre}
 
 4.  通过对高速缓存组中的每个容器运行 stopXSLD.sh 来停止正在运行的服务器。运行 stopXSLD.sh：
 
     ```
-    /opt/ibm/WebSphere/eXtremeScale/wxs/stopXSLD.sh
+        /opt/ibm/WebSphere/eXtremeScale/wxs/stopXSLD.sh
     ```
     {: pre}
 
@@ -338,29 +338,29 @@ IBM WebSphere&reg; eXtreme Scale 映像是一种在 Liberty 运行时环境内�
     1.  列出目录服务器进程：
 
         ```
-        ps -ef | grep cs-default
+                ps -ef | grep cs-default
         ```
         {: pre}
 
     2.  使用进程标识结束目录服务器进程：
 
         ```
-        kill -9 <catalog_server_process_id>
+                kill -9 <catalog_server_process_id>
         ```
         {: pre}
 
     3.  再次运行 stopXSLD.sh：
 
         ```
-        /opt/ibm/WebSphere/eXtremeScale/wxs/stopXSLD.sh
-        ```
+            /opt/ibm/WebSphere/eXtremeScale/wxs/stopXSLD.sh
+    ```
         {: pre}
 
 6.  大约同一时间在所有容器上启动 XSLD。运行 startXSLD.sh：
 
     ```
-    /opt/ibm/WebSphere/eXtremeScale/wxs/startXSLD.sh
-    ```
+          /opt/ibm/WebSphere/eXtremeScale/wxs/startXSLD.sh
+      ```
     {: pre}
 
 
@@ -372,7 +372,7 @@ IBM WebSphere&reg; eXtreme Scale 映像是一种在 Liberty 运行时环境内�
 1.  使用 REST POSTing 实用程序（如 cURL）来取消 Derby 复制任务。
 
     ```
-    curl -X PUT --header "Content-Type: application/json" --header "Accept: application/json" "https://<PUBLIC_IP>:9445/wxsadmin/v1/task/cancel/<DERBY_REPLICATION_TASK_ID>/force"
+        curl -X PUT --header "Content-Type: application/json" --header "Accept: application/json" "https://<PUBLIC_IP>:9445/wxsadmin/v1/task/cancel/<DERBY_REPLICATION_TASK_ID>/force"
     ```
     {: pre}
 
@@ -389,14 +389,14 @@ eXtreme Scale 部署在 {{site.data.keyword.containershort_notm}} 中时，请�
     1.  连接到容器：
 
         ```
-        cf ic exec -it <container_name> bash
-        ```
+            cf ic exec -it <container_name> bash
+    ```
         {: pre}
 
     2.  列出主机名：
 
         ```
-        hostname
+                hostname
         ```
         {: pre}
 
@@ -407,7 +407,7 @@ eXtreme Scale 部署在 {{site.data.keyword.containershort_notm}} 中时，请�
 3.  在本地客户端计算机的 hosts 文件中创建一个条目，用于将公共 IP 和容器主机名映射在一起。该条目类似于：
 
     ```
-    169.44.8.87 instance-05106102
+        169.44.8.87 instance-05106102
     ```
     {: pre}
 
@@ -419,14 +419,14 @@ eXtreme Scale 部署在 {{site.data.keyword.containershort_notm}} 中时，请�
     -   对于 CRUD 操作：
 
         ```
-        https://<host_name>:9444/ibm/api/explorer
+                https://<host_name>:9444/ibm/api/explorer
         ```
         {: pre}
 
     -   对于管理操作：
 
         ```
-        https://<host_name>:9445/ibm/api/explorer
+                https://<host_name>:9445/ibm/api/explorer
         ```
         {: pre}
 

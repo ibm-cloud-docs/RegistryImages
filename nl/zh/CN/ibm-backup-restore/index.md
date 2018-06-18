@@ -94,7 +94,7 @@ lastupdated: "2017-11-09"
 2. 创建 pvc。
 
     ```
-    kubectl apply -f backup-pvc.yaml
+        kubectl apply -f backup-pvc.yaml
     ```
     {: pre}
 
@@ -111,9 +111,9 @@ lastupdated: "2017-11-09"
           image: registry.<region>.bluemix.net/ibm-backup-restore
           env:
           - name: USERID
-            value:
+            value: 
           - name: PASSWORD
-            value:
+            value: 
           - name: PROJECTID
             value:
           - name: REGION
@@ -144,19 +144,19 @@ lastupdated: "2017-11-09"
 4.  创建用于运行备份脚本的 pod。
 
     ```
-    kubectl apply -f backup.yaml
+        kubectl apply -f backup.yaml
     ```
     {: pre}
 
 5.  确认 pod 正在运行。
 
     ```
-    kubectl get pods
+        kubectl get pods
     ```
     {: pre}
     
     ```
-    NAME                                    READY     STATUS    RESTARTS   AGE
+        NAME                                    READY     STATUS    RESTARTS   AGE
     <pod_name>                              1/1       Running   0          1hr
     ```
     {: screen}
@@ -183,7 +183,7 @@ lastupdated: "2017-11-09"
 1. 创建名为 _restore-pvc.yaml_ 的配置文件。此配置文件会创建持久性卷申领 (pvc)，可将此 pvc 作为卷安装到复原 pod。
 
     ```
-    apiVersion: v1
+        apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
       name: restorepvc
@@ -191,6 +191,7 @@ lastupdated: "2017-11-09"
         volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze"
     spec:
       accessModes:
+
         - ReadWriteMany
       resources:
         requests:
@@ -201,14 +202,14 @@ lastupdated: "2017-11-09"
 2. 创建 pvc。
 
     ```
-    kubectl apply -f restore-pvc.yaml
+        kubectl apply -f restore-pvc.yaml
     ```
     {: pre}
 
 3.  创建名为 _restore.yaml_ 的配置文件。对于空白的环境变量，请从之前记下的 {{site.data.keyword.objectstorageshort}} 凭证输入值。包含在凭证中使用的引号。BACKUP_NAME 必须与 {{site.data.keyword.objectstorageshort}} 中要复原的备份名称匹配。
 
     ```
-    apiVersion: v1
+        apiVersion: v1
     kind: Pod
     metadata:
       name: <pod_name>
@@ -243,19 +244,19 @@ lastupdated: "2017-11-09"
 4.  创建用于运行复原脚本的 pod。
     
     ```
-    kubectl apply -f restore.yaml
+        kubectl apply -f restore.yaml
     ```
     {: pre}
     
 5.  确认 pod 正在运行。
 
     ```
-    kubectl get pods
+        kubectl get pods
     ```
     {: pre}
     
     ```
-    NAME              READY     STATUS             RESTARTS   AGE
+        NAME              READY     STATUS             RESTARTS   AGE
     <pod_name>        0/1       CrashLoopBackOff   1          1m
     ```
     {: screen}
@@ -265,7 +266,7 @@ lastupdated: "2017-11-09"
 6.  除去 pod 以阻止 pod 使用更多资源。
 
     ```
-    kubectl delete -f restore.yaml
+        kubectl delete -f restore.yaml
     ```
     {: pre}
 
@@ -283,7 +284,7 @@ lastupdated: "2017-11-09"
 
 
     ```
-    gpg --gen-key
+        gpg --gen-key
     ```
     {: pre}
 
@@ -292,7 +293,7 @@ lastupdated: "2017-11-09"
 3.  验证密钥。
 
     ```
-    gpg --list-keys
+        gpg --list-keys
     ```
     {: pre}
 
@@ -309,21 +310,21 @@ lastupdated: "2017-11-09"
 4.  从 `sub` 密钥导出具有值的加密密钥。将该文件命名为 encryption.asc。
 
     ```
-    gpg --export-secret-keys -a <SUB_KEY> > encryption.asc
+        gpg --export-secret-keys -a <SUB_KEY> > encryption.asc
     ```
     {: pre}
 
     在本示例中，sub 密钥具有值 *YYYYYYYY*
 
     ```
-    gpg --export-secret-keys -a YYYYYYYY > encryption.asc
+        gpg --export-secret-keys -a YYYYYYYY > encryption.asc
     ```
     {: pre}
 
 5.  在本地目录中为已加密的备份容器创建环境变量文件。
 
     ```
-    touch <encryption_env-file_name>
+        touch <encryption_env-file_name>
     ```
     {: pre}
     
@@ -348,7 +349,7 @@ lastupdated: "2017-11-09"
 7. 创建 pvc。
 
     ```
-    kubectl apply -f backup-pvc.yaml
+        kubectl apply -f backup-pvc.yaml
     ```
     {: pre}
 
@@ -365,9 +366,9 @@ lastupdated: "2017-11-09"
           image: registry.<region>.bluemix.net/ibm-backup-restore
           env:
           - name: USERID
-            value:
+            value: 
           - name: PASSWORD
-            value:
+            value: 
           - name: PROJECTID
             value:
           - name: REGION
@@ -394,9 +395,10 @@ lastupdated: "2017-11-09"
       - name: backup-volume 
         persistentVolumeClaim:
           claimName: backuppvc
+   
    ```
    
-   这些设置可创建使用名称 <em>&lt;volume_name&gt;</em> 加密的每日增量备份。要使用不同的设置创建备份，请复查 [环境变量选项](#reference_backup_restore) 的完整列表。
+这些设置可创建使用名称 <em>&lt;volume_name&gt;</em> 加密的每日增量备份。要使用不同的设置创建备份，请复查 [环境变量选项](#reference_backup_restore) 的完整列表。
 
 9.  创建用于运行备份脚本的 pod。
 
@@ -408,12 +410,12 @@ lastupdated: "2017-11-09"
 9.  确认 pod 正在运行。
 
     ```
-    kubectl get pods
+        kubectl get pods
     ```
     {: pre}
-
+    
     ```
-    NAME                                    READY     STATUS    RESTARTS   AGE
+        NAME                                    READY     STATUS    RESTARTS   AGE
     <pod_name>                              1/1       Running   0          1hr
     ```
     {: screen}
@@ -421,7 +423,7 @@ lastupdated: "2017-11-09"
 10.  将加密密钥复制到容器的 /backup_restore 目录，该容器是基于 **ibm-backup-restore** 映像构建的。
 
     ```
-    kubectl cp ./encryption.asc <container_name>:/backup_restore
+        kubectl cp ./encryption.asc <container_name>:/backup_restore
     ```
     {: pre}
 
@@ -429,51 +431,59 @@ lastupdated: "2017-11-09"
 
 11. 登录到容器。
 
+    
+
     ```
-    kubecl exec -it <container_name> bash
+        kubecl exec -it <container_name> bash
     ```
     {: pre}
 
 12. 确认 *encryption.asc* 已复制到 backup_restore 文件夹。
 
     ```
-    root@instance:/backup_restore# ls                                                                                                                                                         
+        root@instance:/backup_restore# ls                                                                                                                                                         
     __init__.py  backup.py  config.conf  configureOS.py  encryption.asc  restore.py  run.py  utilities.py  vbackup  vrestore
     ```
     {: screen}
 
 13. 从 backup_restore 文件夹运行备份脚本。
 
+    
+
     ```
-    ./vbackup &
+        ./vbackup &
     ```
     {: codeblock}
 
-13. 要确认已加密备份，请复查 {{site.data.keyword.objectstorageshort}} 实例中的文件。现在，文件在文件名末尾附加了 `.gpg`。![Object Storage GUI 显示附加了 .gpg 的所有备份文件，这说明这些文件已加密。](images/volume_backup_encrypt_screenshot.png)
+13. 要确认已加密备份，请复查 {{site.data.keyword.objectstorageshort}} 实例中的文件。现在，这些文件的文件名末尾附加了 `.gpg`。![Object Storage GUI 显示附加了 .gpg 的所有备份文件，这说明这些文件已加密。](images/volume_backup_encrypt_screenshot.png)
 
-您的备份已加密。要复原文件，请遵循 [运行复原脚本] (#restore_script_cli) 中的步骤，并在运行复原过程的容器上的 backup_restore 目录中包含 encryption.asc 文件。如果备份已加密，那么您必须在创建复原容器时提供备份 yaml 文件中的 ENCRYPTION_REQUIRED 和 ENCRYPTION_PASSPHRASE 作为环境变量。
+您的备份已加密。要复原文件，请遵循[运行复原脚本](#restore_script_cli)中的步骤，并在运行复原过程的容器上将 encryption.asc 文件包含在 backup_restore 目录中。如果备份已加密，那么您必须在创建复原容器时提供备份 yaml 文件中的 ENCRYPTION_REQUIRED 和 ENCRYPTION_PASSPHRASE 作为环境变量。
 
-## 环境变量参考
+
+
+## 环境变量参考 
 {: #reference_backup_restore}
 
-复查可作为环境变量传递或可在运行中容器的 `config.conf` 文件中编辑的字段的完整列表。作为环境变量传递的任何值会取代 `config.conf` 文件中的值。要复查容器的环境变量，请使用 `exec` 登录到容器并运行 `env` 。
+复查可作为环境变量传递或可在运行中容器的 `config.conf` 文件中编辑的字段完整列表。作为环境变量传递的任何值会取代 `config.conf` 文件中的值。要复查容器的环境变量，请使用 `exec` 登录到容器并运行 `env`。
 
 |密钥|值选项|
 |---|-------------|
-|PROJECTID|{{site.data.keyword.objectstorageshort}} 中的项目标识|
-|REGION|{{site.data.keyword.objectstorageshort}} 中的区域|
-|USERID|{{site.data.keyword.objectstorageshort}} 中的用户标识|
-|PASSWORD|{{site.data.keyword.objectstorageshort}} 中的密码|
+|PROJECTID|{{site.data.keyword.objectstorageshort}} 的项目标识|
+|REGION|{{site.data.keyword.objectstorageshort}} 的区域|
+|USERID|{{site.data.keyword.objectstorageshort}} 的用户标识|
+|PASSWORD|{{site.data.keyword.objectstorageshort}} 的密码|
 {: caption="表 1. {{site.data.keyword.objectstorageshort}} 变量" caption-side="top"}
 
 从 {{site.data.keyword.objectstorageshort}} 凭证检索这些变量。在运行备份或复原操作的每个容器中包含这些环境变量。
+
+
 
 |密钥|值选项|
 |---|-------------|
 |BACKUP_DIRECTORY|*/backup*：缺省值。卷要安装到的目录的绝对文件路径。数据从此目录进行备份。请勿选择目录 backup_restore，因为该目录包含用于备份和复原过程的文件。|
 |BACKUP_NAME|*volume_backup*：缺省值。选择备份名称。|
 |BACKUP_TYPE|*full*：缺省值。每次备份所有文件。<br/> *incremental*：仅备份新的或更改的文件。如果选择 *incremental*，那么必须选择 SCHEDULING_INFO 和 SCHEDULING_TYPE 的值。|
-|SCHEDULE_TYPE|*none*：缺省值。创建一次性备份。<br/> *periodic*：将值更改为 periodic，以创建所安排的备份。|
+|SCHEDULE_TYPE|*none*：缺省值。创建一次性备份。<br/> **注：**如果选择创建一次性备份，那么备份完成后，会从集群中除去您的 pod。<br/>*periodic*：将值更改为 periodic，以创建所安排的备份。|
 |SCHEDULE_INFO|*hourly*：创建每小时备份。<br/>*daily*：缺省值。创建每日备份。<br/>*weekly*：创建每周备份。如果您安排定期更新，那么您必须包括此变量。|
 |EXCLUDE_DIRECTORIES|*none*：缺省值。包括您要从备份排除的目录的绝对文件路径。以逗号分隔目录。|
 {: caption="表 2. 备份变量" caption-side="top"}
@@ -498,49 +508,53 @@ lastupdated: "2017-11-09"
 为任何容器卷创建一次性备份。备份存储在 {{site.data.keyword.objectstoragefull}} 实例内。然后，可以将数据迁移到 Kubernetes 中的持久性卷申领。
 {:shortdesc}
 
-### 入门
-{: #how_to_get_started}
+### 入门 
+{: #how_to_get_started_migrating}
 
 开始之前：
 
 - [复查用于将应用程序移动到 Kubernetes 的完整迁移路径](../../../containers/cs_classic.html)
 - [安装单个可扩展容器 CLI (bx ic)](../../../containers/container_cli_cfic_install.html)
-- [安装 {{site.data.keyword.containershort}} CLI（bx cs 和 kubectl）](../../../containers/cs_cli_install.html#cs_cli_install)
-- [创建要将数据迁移到其中的标准 Kubernetes 集群](../../../containers/cs_cluster.html#cs_cluster_cli)
+- [安装 {{site.data.keyword.containershort}} CLI (bx cs 和 kubectl)](../../../containers/cs_cli_install.html#cs_cli_install)
+- [创建要将数据迁移到其中的标准 Kubernetes 集群](../../../containers/cs_clusters.html#clusters_cli)
 
 完成以下任务以执行备份和复原操作：
 1.  [创建 {{site.data.keyword.objectstorageshort}} 服务实例](#object_storage)（先前已进行说明）
 2.  [运行一次性备份](#migrate_backup)
 3.  [在 Kubernetes 中运行复原脚本](#migrate_restore)
 
-### 运行一次性备份
+### 运行一次性备份 
 {: #migrate_backup}
 
-从 **ibm-backup-restore** 映像创建单个容器并启动备份。
+通过 **ibm-backup-restore** 映像创建单个容器，并启动备份。
 
 1.  登录到 {{site.data.keyword.containershort}} CLI。
 
+    
+
     ```
-    bx login
+        bx login
     ```
     {: pre}
 
     ```
-    bx ic init
+        bx ic init
     ```
     {: pre}
 
 2.  在本地目录中创建环境变量文件。
 
+    
+
     ```
-    touch <backup_env-file_name>
+        touch <backup_env-file_name>
     ```
     {: pre}
 
 3.  编辑环境变量文件并添加以下字段。对于空白的环境变量，请从之前记下的 {{site.data.keyword.objectstorageshort}} 凭证输入值。**请勿**包含在凭证中使用的引号。
 
     ```
-    BACKUP_NAME=volume_backup
+        BACKUP_NAME=volume_backup
     BACKUP_DIRECTORY=/backup
     PROJECTID=
     REGION=
@@ -549,16 +563,18 @@ lastupdated: "2017-11-09"
     ```
     {: codeblock}
 
-   这些设置可使用缺省名称 _volume_backup_ 创建一次性备份。
+    这些设置可使用缺省名称 _volume_backup_ 创建一次性备份。
 
 4.  通过 **ibm-backup-restore** 映像运行具有要备份的已安装卷的容器。请包含用于启动备份脚本的命令。
+
+    
 
     -   请确保处于与 <em>&lt;backup_env-file&gt;</em> 相同的本地目录中。
     -   卷要安装到的目录必须与环境变量文件中的 BACKUP_DIRECTORY 匹配。
     -   将 <em>&lt;volume_name&gt;</em> 替换为要备份的卷名称。
-
+    
     ```
-    bx ic run --name <container_name> --volume <volume_name>:/backup --env-file ./<backup_env-file_name> registry.ng.bluemix.net/ibm-backup-restore /bin/bash -c "/backup_restore/vbackup"
+        bx ic run --name <container_name> --volume <volume_name>:/backup --env-file ./<backup_env-file_name> registry.ng.bluemix.net/ibm-backup-restore /bin/bash -c "/backup_restore/vbackup"
     ```
     {: pre}
 
@@ -566,17 +582,19 @@ lastupdated: "2017-11-09"
 
 5.  在 {{site.data.keyword.Bluemix_notm}} GUI 中复查 {{site.data.keyword.objectstorageshort}} 中的备份。
     1.  单击您为备份所创建的 {{site.data.keyword.objectstorageshort}} 实例。
-    2.  单击 {{site.data.keyword.objectstorageshort}} 容器。在本示例中，容器名称为 volume_backup。
-    3.  复查压缩文件。![{{site.data.keyword.Bluemix_notm}} GUI 中的 Object Storage 容器显示备份的文件。](images/volume_backup_screenshot.png)您可以下载 difftar.gz 文件，解压缩该文件，然后验证备份数据。**重要信息**：如果您从 {{site.data.keyword.objectstorageshort}} 删除或修改任何文件，那么无法恢复那些文件。
 
-### 将数据复原到 Kubernetes 集群
+    2.  单击 {{site.data.keyword.objectstorageshort}} 容器。在本示例中，容器名称为 volume_backup。
+    
+    3.  复查压缩文件。![位于 {{site.data.keyword.Bluemix_notm}} GUI 中的 Object Storage 容器显示备份的文件。](images/volume_backup_screenshot.png)您可以下载 difftar.gz 文件，解压缩该文件，然后验证备份数据。**重要信息**：如果您从 {{site.data.keyword.objectstorageshort}} 删除或修改任何文件，那么无法恢复那些文件。
+
+### 将数据复原到 Kubernetes 集群 
 {: #migrate_restore}
 
 将备份从 {{site.data.keyword.objectstorageshort}} 复原到 Kubernetes 集群中的持久性卷申领。
 
 开始之前：
 
-- [设定 CLI 的目标](../../../containers/cs_cli_install.html#cs_cli_configure) 为集群。
+- [设定 CLI 的目标](../../../containers/cs_cli_install.html#cs_cli_configure)为集群。
 
 
 1. 创建名为 _restore-pvc.yaml_ 的配置文件。此配置文件会创建持久性卷申领 (pvc)，可将此 pvc 作为卷安装到备份 pod。
@@ -600,14 +618,14 @@ lastupdated: "2017-11-09"
 2. 创建 pvc。
 
     ```
-    kubectl apply -f restore-pvc.yaml
+        kubectl apply -f restore-pvc.yaml
     ```
     {: pre}
 
 3.  创建名为 _restore.yaml_ 的配置文件。对于空白的环境变量，请从之前记下的 {{site.data.keyword.objectstorageshort}} 凭证输入值。包含在凭证中使用的引号。BACKUP_NAME 必须与 {{site.data.keyword.objectstorageshort}} 中要复原的备份名称匹配。
 
     ```
-    apiVersion: v1
+        apiVersion: v1
     kind: Pod
     metadata:
       name: <pod_name>
@@ -641,33 +659,39 @@ lastupdated: "2017-11-09"
 
 4.  创建用于运行复原脚本的 pod。
 
+    
+
     ```
-    kubectl apply -f restore.yaml
+        kubectl apply -f restore.yaml
     ```
     {: pre}
-
+    
 5.  确认 pod 已运行。
 
-    ```
-    kubectl get pods
-    ```
-    {: pre}
+    
 
     ```
-    NAME              READY     STATUS             RESTARTS   AGE
+        kubectl get pods
+    ```
+    {: pre}
+    
+    ```
+        NAME              READY     STATUS             RESTARTS   AGE
     <pod_name>        0/1       CrashLoopBackOff   1          1m
     ```
     {: screen}
-
+    
     pod 运行复原命令并停止。_CrashLoopBackOff_ 消息表示 Kubernetes 正尝试重新启动 pod。
 
 6.  除去 pod 以阻止 pod 使用更多资源。
 
     ```
-    kubectl delete -f restore.yaml
+        kubectl delete -f restore.yaml
     ```
     {: pre}
 
 您已成功将数据迁移到 Kubernetes 集群。现在，您可以将任何新 pod 安装到 pvc，以向该 pod 提供对已复原文件的访问权。
 
-**注**：如果备份的容器数据包含非 root 用户，那么您必须添加新容器的非 root 许可权。有关更多信息，请参阅 [添加卷的非 root 用户访问权](../../../containers/container_volumes_ov.html#container_volumes_write)。
+ 
+
+**注**：如果备份的容器数据包含非 root 用户，那么您必须向新容器添加非 root 许可权。有关更多信息，请参阅[添加卷的非 root 用户访问权](../../../containers/container_volumes_ov.html#container_volumes_write)。

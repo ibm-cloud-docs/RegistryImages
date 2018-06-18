@@ -100,7 +100,8 @@ Provisione um contêiner do Docker em {{site.data.keyword.Bluemix_notm}}, com ba
 
 1.  Efetue login no {{site.data.keyword.Bluemix_notm}}.
 2.  No catálogo, selecione **Contêineres** e escolha a imagem **ibm-integration-bus** da qual construir seu contêiner.
-3.  Selecione **Único** para criar um contêiner de instância única, que pode ser usado para propósitos de desenvolvimento e teste.
+3.  Selecione **Único** para criar um contêiner de instância única, que pode ser usado
+para propósitos de desenvolvimento e teste.
 4.  Insira o nome do contêiner; por exemplo, `iib`.
 5.  Selecione o tamanho do contêiner.
 6.  No campo **Endereço IP público**, selecione *Ligar IP público*.

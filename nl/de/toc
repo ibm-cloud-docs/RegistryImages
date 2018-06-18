@@ -13,15 +13,15 @@ IBM Images für öffentliche Container
     Zugehörige Links
         [Dockerfile - Referenz](http://docs.docker.com/engine/reference/builder/)
         [Supervisor mit Docker verwenden](https://docs.docker.com/engine/admin/using_supervisord/)
-        [Registry-Befehlszeilenschnittstelle - Referenz](../../cli/plugins/registry/index.html)
+        [Registry-Befehlszeilenschnittstelle - Referenz](../Registry/registry_cli.html)
     {: .navgroup-end}
     
     {: .navgroup id="howto"}
     ibm-backup-restore/index.md
+    ibmcloud-secure-perimeter-health/index.md
+    ibmcloud-secure-perimeter-network/index.md
     ibm-integration-bus/index.md
     ibmliberty/index.md
     ibm-mq/index.md
-    ibmnode/index.md
-    ibm-node-strong-pm/index.md
     ibm-websphere-extreme-scale/index.md
     {: .navgroup-end}

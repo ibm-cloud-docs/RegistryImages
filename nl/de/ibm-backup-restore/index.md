@@ -173,7 +173,7 @@ Stellen Sie Ihre Sicherung von {{site.data.keyword.objectstorageshort}} auf eine
 
 Führen Sie zunächst die folgenden Schritte aus:
 
--   Installieren Sie die erforderlichen [Benutzerschnittstellen (CLIs)](../../../containers/cs_cli_install.html#cs_cli_install).
+-   Installieren Sie die erforderlichen [Befehlszeilenschnittstellen (CLIs)](../../../containers/cs_cli_install.html#cs_cli_install).
 -   [Richten Sie Ihre Befehlszeilenschnittstelle](../../../containers/cs_cli_install.html#cs_cli_configure) auf Ihren Cluster aus.
 
 
@@ -393,7 +393,7 @@ Verschlüsseln Sie die Daten in Ihrer {{site.data.keyword.objectstorageshort}}-I
    ```
    
    Mit diesen Einstellungen wird eine tägliche inkrementelle Sicherung erstellt, die mit dem Namen <em>&lt;datenträgername&gt;</em> verschlüsselt wird. Wenn Sie eine Sicherung mit anderen Einstellungen erstellen möchten, finden Sie weitere Informationen dazu in der vollständigen Liste von [Umgebungsvariablenoptionen](#reference_backup_restore).
-
+    
 9.  Erstellen Sie einen Pod, der das Sicherungsscript ausführt.
 
     ```
@@ -469,7 +469,7 @@ Rufen Sie diese Variablen aus den {{site.data.keyword.objectstorageshort}}-Berec
 |BACKUP_DIRECTORY|*/backup*: Standardwert. Absoluter Dateipfad des Verzeichnisses, an das der Datenträger angehängt ist. Die Daten werden aus diesem Verzeichnis gesichert. Verwenden Sie nicht das Verzeichnis backup_restore, da dieses Verzeichnis Dateien für die Sicherungs- und Wiederherstellungsprozesse enthält.|
 |BACKUP_NAME|*volume_backup*: Standardwert. Wählen Sie einen Namen für die Sicherung aus.|
 |BACKUP_TYPE|*full*: Standardwert. Es werden jedes Mal alle Dateien gesichert.<br/> *incremental*: Es werden nur neue oder geänderte Dateien gesichert. Bei Auswahl von *incremental* müssen Sie Werte für SCHEDULING_INFO und SCHEDULING_TYPE festlegen.|
-|SCHEDULE_TYPE|*none*: Standardwert. Es wird eine einmalige Sicherung erstellt.<br/> *periodic*: Ändern Sie den Wert in 'periodic', wenn Sicherungen zu geplanten Zeitpunkten erstellt werden sollen.|
+|SCHEDULE_TYPE|*none*: Standardwert. Es wird eine einmalige Sicherung erstellt.<br/> **Hinweis:** Wenn Sie eine einmalige Sicherung erstellen, wird der Pod nach dem Beenden der Sicherung aus dem Cluster entfernt.<br/>*periodic*: Ändern Sie den Wert in 'periodic', wenn Sicherungen zu geplanten Zeitpunkten erstellt werden sollen.|
 |SCHEDULE_INFO|*hourly*: Es wird jede Stunde eine Sicherung erstellt.<br/>*daily*: Standardwert. Es wird jeden Tag eine Sicherung erstellt.<br/>*weekly*: Es wird jede Woche eine Sicherung erstellt. Sie müssen diese Variable angeben, wenn Sie eine periodische Aktualisierung planen.|
 |EXCLUDE_DIRECTORIES|*none*: Standardwert. Geben Sie den absoluten Dateipfad der Verzeichnisse an, die bei der Sicherung ausgeschlossen werden sollen. Trennen Sie die Verzeichnisse durch ein Komma.|
 {: caption="Tabelle 2. Sicherungsvariablen" caption-side="top"}
@@ -495,14 +495,14 @@ Erstellen Sie eine einmalige Sicherung für einen beliebigen Containerdatenträg
 {:shortdesc}
 
 ### Einführung
-{: #how_to_get_started}
+{: #how_to_get_started_migrating}
 
-Führen Sie zunächst die folgenden Schritte aus:
+Vorbereitung:
 
 - [Überprüfen des vollständigen Migrationspfads für das Verschieben von Apps in Kubernetes](../../../containers/cs_classic.html)
 - [Installieren der Befehlszeilenschnittstelle für einzelne und skalierbare Container (bx ic)](../../../containers/container_cli_cfic_install.html)
 - [Installieren der {{site.data.keyword.containershort}}-Befehlszeilenschnittstelle (bx cs and kubectl)](../../../containers/cs_cli_install.html#cs_cli_install)
-- [Erstellen eines Kubernetes-Standardclusters, in den Sie Ihre Dateien migrieren wollen](../../../containers/cs_cluster.html#cs_cluster_cli)
+- [Erstellen eines Kubernetes-Standardclusters, in den Sie Ihre Dateien migrieren wollen](../../../containers/cs_clusters.html#clusters_cli)
 
 Führen Sie die folgenden Tasks aus, um Sicherungs- und Wiederherstellungsoperationen auszuführen:
 1.  [Erstellen einer {{site.data.keyword.objectstorageshort}}-Serviceinstanz](#object_storage) (wie zuvor bezeichnet)
@@ -552,7 +552,7 @@ Erstellen Sie einen einzelnen Container aus dem Image **ibm-backup-restore** und
     -   Stellen Sie sicher, dass Sie sich in demselben lokalen Verzeichnis befinden wie die Datei <em>&lt;umgebungsvariablendatei_für_sicherung&gt;</em>.
     -   Das Verzeichnis, an das der Datenträger angehängt ist, muss mit dem Wert von BACKUP_DIRECTORY in der Umgebungsvariablendatei übereinstimmen.
     -   Ersetzen Sie <em>&lt;datenträgername&gt;</em> durch den Namen des Datenträgers, der gesichert wird.
-
+    
     ```
     bx ic run --name <containername> --volume <datenträgername>:/backup --env-file ./<umgebungsvariablendateiname_für_sicherung> registry.ng.bluemix.net/ibm-backup-restore /bin/bash -c "/backup_restore/vbackup"
     ```
@@ -651,7 +651,7 @@ Führen Sie zunächst die folgenden Schritte aus:
     
     ```
     NAME              READY     STATUS             RESTARTS   AGE
-    <pod_name>        0/1       CrashLoopBackOff   1          1m
+    <podname>        0/1       CrashLoopBackOff   1          1m
     ```
     {: screen}
     
@@ -664,6 +664,6 @@ Führen Sie zunächst die folgenden Schritte aus:
     ```
     {: pre}
 
-Sie haben Ihre Daten erfolgreich in den Kubernetes-Cluster migriert. Sie können einen beliebigen neuen Pod an den PVC anhängen, um dem betreffenden Pod den Zugriff auf die wiederhergestellten Dateien zu ermöglichen.
+Sie haben Ihre Daten erfolgreich in den Kubernetes-Cluster migriert. Sie können einen beliebigen neuen Pod an den PVC anhängen, um dem betreffenden Pod den Zugriff auf die wiederhergestellten Dateien zu ermöglichen. 
 
 **Hinweis**: Befinden sich unter den gesicherten Containerdaten Daten, für die die Berechtigungen eines Benutzers ohne Rootberechtigung erforderlich sind, müssen Sie die Berechtigungen von Benutzern ohne Rootberechtigung zu dem neuen Container hinzufügen. Weitere Informationen hierzu finden Sie unter [Zugriff für Benutzer ohne Rootberechtigung zu Datenträgern hinzufügen](../../../containers/container_volumes_ov.html#container_volumes_write).

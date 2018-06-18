@@ -46,11 +46,11 @@ lastupdated: "2017-10-30"
 
 下表显示适用于 {{site.data.keyword.Bluemix_notm}} 中 ibm-mq 映像免费使用的限制：
 
-| 环境| 免费使用限制|
+|环境|免费使用限制|
 |-------------|-------------------------|
-| 开发| 无限免费使用 ibm-mq 映像，以创建单个容器用于开发。|
-| 测试| 无限免费使用 ibm-mq 映像，以创建单个容器用于单元测试。检查[许可证信息](#ibm_mq_license )以获取有关允许的测试的更多信息。|
-| 生产| {{site.data.keyword.IBM_notm}} MQ Advanced for Developer 许可证不允许用于生产。|
+|开发|无限免费使用 ibm-mq 映像，以创建单个容器用于开发。|
+|测试|无限免费使用 ibm-mq 映像，以创建单个容器用于单元测试。检查[许可证信息](#ibm_mq_license )以获取有关允许的测试的更多信息。|
+|生产|{{site.data.keyword.IBM_notm}} MQ Advanced for Developer 许可证不允许用于生产。|
 
 **注**：ibm-mq 映像的定价与 {{site.data.keyword.Bluemix_notm}} 中使用的容器的定价无关。
 
@@ -154,11 +154,11 @@ lastupdated: "2017-10-30"
 
 您已创建并启动了一个队列管理器。现在，您可以使用以下连接详细信息来连接 MQ 应用程序：
 
-| 连接属性| 值|
+|连接属性|值|
 |-------|-------|
-| IP 地址| 容器的公共 IP 地址|
-| 端口| 1414 |
-| 通道| DEV.APP.SVRCONN |
+|IP 地址|容器的公共 IP 地址|
+|端口|1414 |
+|通道|DEV.APP.SVRCONN |
 
 
 ### 通过命令行管理容器
@@ -186,11 +186,11 @@ lastupdated: "2017-10-30"
     
 5.	运行命令以管理 MQ 设置，例如：
 
-| 命令| 操作|
+|命令|操作|
 |---------|---------|
-| dspmqver | 验证 IBM MQ 版本和构建信息。|
-| dspmq | 检查正在容器中运行的“队列管理器”的状态。| 
-| runmqsc | 管理 MQ 资源。|
+|dspmqver |验证 IBM MQ 版本和构建信息。|
+|dspmq |检查正在容器中运行的“队列管理器”的状态。| 
+|runmqsc |管理 MQ 资源。|
 
 要监视 MQ 日志，请选择以下某个选项：
 
@@ -304,14 +304,14 @@ lastupdated: "2017-10-30"
 
 如果您想要定义所创建的开发者缺省值，那么您可以在通过 ibm-mq 映像创建容器时，添加以下环境变量。
 
-| 环境变量| 用途| 缺省值|
+|环境变量|用途|缺省值|
 |----------------------|---------|---------|
-| MQ_ADMIN_PASSWORD | 设置此变量以将已创建的 MQ 管理员的密码从缺省值更改为您自己的选择。密码的长度必须至少为 8 个字符。
-admin 用户的用户名为固定为 admin。| passw0rd |
-| MQ_APP_PASSWORD | 设置此变量以设置应用程序用户的密码。应用程序用户的用户名固定为 app。如果设置此环境变量，那么在连接 MQ 客户机时必须提供用户标识和密码。<br> 密码的长度必须至少为 8 个字符。
+|MQ_ADMIN_PASSWORD |设置此变量以将已创建的 MQ 管理员的密码从缺省值更改为您自己的选择。密码的长度必须至少为 8 个字符。
+admin 用户的用户名为固定为 admin。|passw0rd |
+|MQ_APP_PASSWORD |设置此变量以设置应用程序用户的密码。应用程序用户的用户名固定为 app。如果设置此环境变量，那么在连接 MQ 客户机时必须提供用户标识和密码。<br> 密码的长度必须至少为 8 个字符。
 |  |
-| MQ_TLS_KEYSTORE | 将此环境变量设置为包含您希望 MQ Web 控制台和 IBM MQ“队列管理器”用于 TLS 操作的证书的 PKCS#12 密钥库所在的位置。<br> 当设置了此环境变量时，将使用 CipherSpec“TLS_RSA_WITH_AES_256_GCM_SHA384”为 TLS 启用创建的开发者通道。
+|MQ_TLS_KEYSTORE |将此环境变量设置为包含您希望 MQ Web 控制台和 IBM MQ“队列管理器”用于 TLS 操作的证书的 PKCS#12 密钥库所在的位置。<br> 当设置了此环境变量时，将使用 CipherSpec“TLS_RSA_WITH_AES_256_GCM_SHA384”为 TLS 启用创建的开发者通道。
 <br> **注：**您需要使密钥库文件在 {{site.data.keyword.Bluemix_notm}} 容器中可用。为此，您可以在创建容器时安装包含密钥库的卷。|  |
-| MQ_TLS_PASSPHRASE | 设置此环境变量以设置环境变量 MQ_TLS_KEYSTORE 中指定的密钥库的密码。|  |
-| MQ_DEV | 设置此环境变量以控制是否创建 {{site.data.keyword.IBM_notm}} MQ Developer 缺省对象。| true|
-| MQ_DISABLE_WEB_CONSOLE | 如果希望保留容器的 CPU/RAM 使用量，请设置此环境变以禁用 Web 控制台的配置和启动。|  |
+|MQ_TLS_PASSPHRASE |设置此环境变量以设置环境变量 MQ_TLS_KEYSTORE 中指定的密钥库的密码。|  |
+|MQ_DEV |设置此环境变量以控制是否创建 {{site.data.keyword.IBM_notm}} MQ Developer 缺省对象。|true|
+|MQ_DISABLE_WEB_CONSOLE |如果希望保留容器的 CPU/RAM 使用量，请设置此环境变以禁用 Web 控制台的配置和启动。|  |

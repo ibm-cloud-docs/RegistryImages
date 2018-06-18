@@ -23,7 +23,7 @@ L'immagine **ibm-backup-restore** contiene i pacchetti pre-installati necessari 
 ## Come funziona 
 {: #how_it_works}
 
-Con l'immagine **ibm-backup-restore**, puoi creare un backup monouso o pianificato per ogni attestazione del volume persistente (pvc). Il backup viene archiviato nell'istanza {{site.data.keyword.objectstoragefull}}. Puoi trasmettere le credenziali {{site.data.keyword.objectstorageshort}} al tuo contenitore **ibm-backup-restore** come variabili di ambiente o modificando il file `config.conf` nel contenitore in esecuzione. Puoi anche ripristinare i tuoi dati salvati dall'istanza {{site.data.keyword.objectstorageshort}} in un volume. Poiché l'immagine contiene gli script per l'esecuzione sia dei backup che dei ripristini, l'utente deve immettere un comando per avviare lo script appropriato. 
+Con l'immagine **ibm-backup-restore**, puoi creare un backup una tantum o pianificato per ogni attestazione del volume persistente (pvc). Il backup viene archiviato nell'istanza {{site.data.keyword.objectstoragefull}}. Puoi trasmettere le credenziali {{site.data.keyword.objectstorageshort}} al tuo contenitore **ibm-backup-restore** come variabili di ambiente o modificando il file `config.conf` nel contenitore in esecuzione. Puoi anche ripristinare i tuoi dati salvati dall'istanza {{site.data.keyword.objectstorageshort}} in un volume. Poiché l'immagine contiene gli script per l'esecuzione sia dei backup che dei ripristini, l'utente deve immettere un comando per avviare lo script appropriato.
 
 ## Elementi inclusi 
 {: #whats_included}
@@ -37,7 +37,7 @@ Ogni immagine **ibm-backup-restore** contiene i seguenti pacchetti software:
 ## Introduzione 
 {: #how_to_get_started}
 
-Rivedi le seguenti attività per eseguire il backup e ripristinare i dati: 
+Rivedi le seguenti attività per eseguire il backup e ripristinare i dati:
 1.  [Creazione di un'istanza del servizio {{site.data.keyword.objectstorageshort}}](#object_storage)
 2.  [Esecuzione di un backup pianificato](#scheduled_backup)
 3.  [Esecuzione dello script di ripristino](#restore_script_cli)
@@ -63,7 +63,7 @@ Rivedi la documentazione [{{site.data.keyword.objectstorageshort}}](../../Object
 ## Esecuzione di un backup pianificato 
 {: #scheduled_backup}
 
-Crea un pod del contenitore dall'immagine **ibm-backup-restore** e avvia un backup pianificato regolarmente. 
+Crea un pod del contenitore dall'immagine **ibm-backup-restore** e avvia un backup pianificato regolarmente.
 
 Prima di iniziare:
 
@@ -71,7 +71,7 @@ Prima di iniziare:
 -   [Indirizza la tua CLI](../../../containers/cs_cli_install.html#cs_cli_configure) al tuo cluster.
 
 
-1. Crea un file di configurazione denominato _backup-pvc.yaml_. Questo file di configurazione crea un'attestazione del volume persistente (pvc) che puoi montare nel tuo pod di backup come un volume. 
+1. Crea un file di configurazione denominato _backup-pvc.yaml_. Questo file di configurazione crea un'attestazione del volume persistente (pvc) che puoi montare nel tuo pod di backup come un volume.
 
     ```
     apiVersion: v1
@@ -162,14 +162,14 @@ Prima di iniziare:
 4.  Controlla il backup in {{site.data.keyword.objectstorageshort}} nella GUI {{site.data.keyword.Bluemix_notm}}.
     1.  Fai clic sull'istanza {{site.data.keyword.objectstorageshort}} creata per il backup.
     2.  Dalla scheda **Gestisci** nella tabella **Contenitori**, fai clic sul contenitore {{site.data.keyword.objectstorageshort}}.
-    3.  Controlla i file compressi.![Il contenitore Object Storage nella GUI {{site.data.keyword.Bluemix_notm}} mostra i file di cui è stato eseguito il backup.](images/volume_backup_screenshot.png)Puoi scaricare il file vol1.difftar.gz, estrarlo e verificare i dati del backup. **Importante**: se elimini o modifichi i file da {{site.data.keyword.objectstorageshort}}, questi file non potranno essere ripristinati.
+    3.  Rivedi i file compressi.![Il contenitore Object Storage nella GUI {{site.data.keyword.Bluemix_notm}} mostra i file di cui è stato eseguito il backup.](images/volume_backup_screenshot.png)Puoi scaricare il file vol1.difftar.gz, estrarlo e verificare i dati di cui è stato eseguito il backup. **Importante**: se elimini o modifichi i file da {{site.data.keyword.objectstorageshort}}, questi file non potranno essere ripristinati.
 
-Il tuo backup è disponibile. Se hai configurato il tuo backup per creare un backup completo monouso, devi eseguire lo script di backup ogni volta che vuoi creare un nuovo backup. Se hai configurato il contenitore per eseguire un backup incrementale periodico, i tuoi backup vengono eseguiti come pianificato.
+Il tuo backup è disponibile. Se hai configurato il tuo backup per creare un backup completo una tantum, devi eseguire lo script di backup ogni volta che vuoi creare un nuovo backup. Se hai configurato il contenitore per eseguire un backup incrementale periodico, i tuoi backup vengono eseguiti come pianificato.
 
 ## Esecuzione dello script di ripristino 
 {: #restore_script_cli}
 
-Ripristina il tuo backup da {{site.data.keyword.objectstorageshort}} in un volume nuovo o esistente. 
+Ripristina il tuo backup da {{site.data.keyword.objectstorageshort}} in un volume nuovo o esistente.
 
 Prima di iniziare:
 
@@ -177,7 +177,7 @@ Prima di iniziare:
 -   [Indirizza la tua CLI](../../../containers/cs_cli_install.html#cs_cli_configure) al tuo cluster.
 
 
-1. Crea un file di configurazione denominato _restore-pvc.yaml_. Questo file di configurazione crea un'attestazione del volume persistente (pvc) che puoi montare nel tuo pod di ripristino come un volume. 
+1. Crea un file di configurazione denominato _restore-pvc.yaml_. Questo file di configurazione crea un'attestazione del volume persistente (pvc) che puoi montare nel tuo pod di ripristino come un volume.
 
     ```
     apiVersion: v1
@@ -237,7 +237,7 @@ Prima di iniziare:
     ```
     {: codeblock}
 
-4.  crea un pod che esegue lo script di ripristino. 
+4.  crea un pod che esegue lo script di ripristino.
     
     ```
     kubectl apply -f restore.yaml
@@ -266,7 +266,7 @@ Prima di iniziare:
     ```
     {: pre}
 
-Il backup è stato ripristinato correttamente. Puoi ora montare ogni nuovo pod nel pvc per fornire a tale contenitore l'accesso ai file ripristinati. Se i dati del contenitore di cui è stato eseguito il backup includono un utente non root, devi aggiungere le autorizzazioni non root al tuo nuovo contenitore. Per ulteriori informazioni, consulta [Aggiunta di accesso utente non root ai volumi](../../../containers/container_volumes_ov.html#container_volumes_write).
+Il backup è stato ripristinato correttamente. Puoi ora montare ogni nuovo pod nel pvc per fornire a tale contenitore l'accesso ai file ripristinati. Se i dati del contenitore di cui è stato eseguito il backup includevano un utente non root, devi aggiungere le autorizzazioni non root al tuo nuovo contenitore. Per ulteriori informazioni, consulta [Aggiunta di accesso utente non root ai volumi](../../../containers/container_volumes_ov.html#container_volumes_write).
 
 ## Crittografia dei tuoi backup 
 {: #encrypting_backups}
@@ -297,7 +297,7 @@ Codifica i dati nella tua istanza {{site.data.keyword.objectstorageshort}}.
     /Users/Username/.gnupg/pubring.gpg
     ------------------------------------
     pub   2048R/XXXXXXXX 2016-10-27
-    uid       [ultimate] Example Name (This is an example key) <example_email_address>
+    uid       [ultimate] Example Name (Questa è una chiave di esempio) <example_email_address>
     sub   2048R/YYYYYYYY 2016-10-27
     ```
     {: screen}
@@ -323,7 +323,7 @@ Codifica i dati nella tua istanza {{site.data.keyword.objectstorageshort}}.
     ```
     {: pre}
     
-6. Crea un file di configurazione denominato _backup-pvc.yaml_. Questo file di configurazione crea un'attestazione del volume persistente (pvc) che puoi montare nel tuo pod di backup come un volume. 
+6. Crea un file di configurazione denominato _backup-pvc.yaml_. Questo file di configurazione crea un'attestazione del volume persistente (pvc) che puoi montare nel tuo pod di backup come un volume.
 
     ```
     apiVersion: v1
@@ -393,7 +393,7 @@ Codifica i dati nella tua istanza {{site.data.keyword.objectstorageshort}}.
    ```
    
    Queste impostazioni creano un backup incrementale giornaliero che viene crittografato con il nome <em>&lt;volume_name&gt;</em>. Per creare un backup con impostazioni differenti, rivedi l'elenco completo di [opzioni di variabili di ambiente](#reference_backup_restore).
-
+    
 9.  crea un pod che esegue lo script di backup.
 
     ```
@@ -445,22 +445,22 @@ Codifica i dati nella tua istanza {{site.data.keyword.objectstorageshort}}.
     ```
     {: codeblock}
 
-13. Per confermare che il tuo backup è crittografato, controlla i file nella tua istanza {{site.data.keyword.objectstorageshort}}. I file ora hanno `.gpg` accodato alla fine del nome file.![La GUI Object Storage mostra tutti i file di backup con accodato .gpg, che illustra che sono stati codificati.](images/volume_backup_encrypt_screenshot.png)
+13. Per confermare che il tuo backup è crittografato, controlla i file nella tua istanza {{site.data.keyword.objectstorageshort}}. I file hanno ora `.gpg` accodato al nome. ![La GUI Object Storage mostra i file oggetto del backup con accodato .gpg, che mostra che sono crittografati.](images/volume_backup_encrypt_screenshot.png)
 
 Il tuo backup è crittografato. Per ripristinare i file, segui la procedura in [Esecuzione dello script di ripristino](#restore_script_cli) e includi il file encryption.asc nella directory backup_restore sul contenitore che sta eseguendo il processo di ripristino. Se il backup è crittografato, devi fornire ENCRYPTION_REQUIRED e ENCRYPTION_PASSPHRASE dal file yaml di backup come variabili di ambiente durante la creazione del contenitore di ripristino.
 
-## Riferimenti alla variabile di ambiente
+## Riferimenti alla variabile di ambiente 
 {: #reference_backup_restore}
 
 Rivedi l'elenco completo dei campi che possono essere trasmessi come variabili di ambiente o modificati nel file `config.conf` in un contenitore in esecuzione. Ogni valore trasmesso come variabile di ambiente sostituisce il valore nel file `config.conf`. Per controllare le variabili di ambiente di un contenitore, accedi ad esso utilizzando `exec` ed esegui `env`.
 
 |Chiave|Opzioni valore|
 |---|-------------|
-|PROJECTID|ProjectID da {{site.data.keyword.objectstorageshort}}|
-|REGION|Region da {{site.data.keyword.objectstorageshort}}|
-|USERID|Userid da {{site.data.keyword.objectstorageshort}}|
-|PASSWORD|Password da {{site.data.keyword.objectstorageshort}}|
-{: caption="Tabella 1. {{site.data.keyword.objectstorageshort}} variables" caption-side="top"}
+|PROJECTID|Il ProjectID da {{site.data.keyword.objectstorageshort}}|
+|REGION|La regione da {{site.data.keyword.objectstorageshort}}|
+|USERID|L''Userid da {{site.data.keyword.objectstorageshort}}|
+|PASSWORD|La password da {{site.data.keyword.objectstorageshort}}|
+{: caption="Tabella 1. Variabili {{site.data.keyword.objectstorageshort}}" caption-side="top"}
 
 Richiama queste variabili dalle credenziali {{site.data.keyword.objectstorageshort}}. Includi queste variabili di ambiente in ogni contenitore che sta eseguendo un'operazione di backup o ripristino.
 
@@ -469,8 +469,8 @@ Richiama queste variabili dalle credenziali {{site.data.keyword.objectstoragesho
 |BACKUP_DIRECTORY|*/backup*: predefinito. Il percorso file assoluto della directory su cui è montato il volume. Viene eseguito il backup dei dati da questa directory. Non selezionare la directory backup_restore poiché tale directory contiene i file per i processi di backup e ripristino.|
 |BACKUP_NAME|*volume_backup*: predefinito. Scegli un nome di backup.|
 |BACKUP_TYPE|*full*: predefinito. Viene eseguito ogni volta il backup di tutti i file.<br/> *incremental*: viene eseguito il backup solo dei file nuovi o modificati. Se scegli *incremental*, devi scegliere i valori per SCHEDULING_INFO e SCHEDULING_TYPE.|
-|SCHEDULE_TYPE|*none*: predefinito. Crea un backup monouso.<br/> *periodic*: modifica il valore con periodic per creare backup pianificati.|
-|SCHEDULE_INFO|*hourly*: crea un backup orario.<br/>*daily*: predefinito. Crea un backup giornaliero.<br/>*weekly*: crea un backup settimanale. Devi includere questa variabile se stai pianificando un aggiornamento periodico.|
+|SCHEDULE_TYPE|*none*: predefinito. Crea un backup una tantum.<br/> **Nota:** se scegli di creare un backup una tantum, il tuo pod viene rimosso dal cluster dopo che il backup è terminato. <br/>*periodic*: modifica il valore con periodic per creare backup pianificati.|
+|SCHEDULE_INFO|*hourly*: crea un backup orario.<br/>*daily*: predefinito. Crea un backup giornaliero.<br/>*weekly*: Crea un backup settimanale. Devi includere questa variabile se stai pianificando un aggiornamento periodico.|
 |EXCLUDE_DIRECTORIES|*none*: predefinito. Includi il percorso file assoluto delle directory che desideri escludere dal backup. Separa le directory con una virgola.|
 {: caption="Tabella 2. Variabili di backup" caption-side="top"}
 
@@ -483,36 +483,36 @@ Richiama queste variabili dalle credenziali {{site.data.keyword.objectstoragesho
 |Chiave|Opzioni valore|
 |---|-------------|
 |ENCRYPTION_KEY_FILE|.*/encryption.asc*: predefinito. Includi questa variabile di ambiente se modifichi il nome file della chiave di crittografia o se la chiave è ubicata in una directory diversa da backup_restore.|
-|ENCRYPTION_REQUIRED|*no*: predefinito. <br/> *yes*: se non stai crittografando il tuo backup, non includere le variabili di ambiente di crittografia. Se stai crittografando il tuo backup, includi questa chiave con il valore yes.|
+|ENCRYPTION_REQUIRED|*no*: predefinito.<br/> *yes*: se non stai crittografando il tuo backup, non includere le variabili di ambiente di crittografia. Se stai crittografando il tuo backup, includi questa chiave con il valore yes.|
 |ENCRYPTION_PASSPHRASE|Includi una passphrase per proteggere un backup. Questa passphrase è diversa dalla frase che hai utilizzato quando hai creato la chiave di crittografia. Devi includere questa passphrase quando eseguirai il backup e il ripristino dei dati.|
-|IS_KEY_GENERATED_ON_SYSTEM|*no*: predefinito. <br/> *yes*: includi questa variabile di ambiente con yes se hai generato la chiave di crittografia direttamente nel contenitore. La maggior parte degli utenti genera la chiave sul proprio computer locale e la copia nel contenitore e può lasciare il valore predefinito di no.|
-{: caption="Tabella 4. Variabili di codifica" caption-side="top"}
+|IS_KEY_GENERATED_ON_SYSTEM|*no*: predefinito.<br/> *yes*: includi questa variabile di ambiente con yes se hai generato la chiave di crittografia direttamente nel contenitore. La maggior parte degli utenti genera la chiave sul proprio computer locale e la copia nel contenitore e può lasciare il valore predefinito di no.|
+{: caption="Tabella 4. Variabili di crittografia" caption-side="top"}
 
 ## Migrazione dei tuoi dati del volume da contenitori singoli e scalabili a Kubernetes
 {: #migrate_data}
 
-Crea un backup monouso per ogni volume del contenitore. Il backup viene archiviato nell'istanza {{site.data.keyword.objectstoragefull}}. Successivamente, puoi migrare i dati a un'attestazione del volume persistente in Kubernetes.
+Crea un backup una tantum per qualsiasi volume del contenitore. Il backup viene archiviato nell'istanza {{site.data.keyword.objectstoragefull}}. Successivamente, puoi migrare i dati a un'attestazione del volume persistente in Kubernetes.
 {:shortdesc}
 
-### Introduzione
-{: #how_to_get_started}
+### Introduzione 
+{: #how_to_get_started_migrating}
 
-Prima di cominciare:
+Prima di iniziare:
 
 - [Controlla il percorso di migrazione completo per lo spostamento delle applicazioni a Kubernetes](../../../containers/cs_classic.html)
 - [Installa la CLI dei contenitori singoli e scalabili (bx ic)](../../../containers/container_cli_cfic_install.html)
 - [Installa la CLI {{site.data.keyword.containershort}} (bx cs e kubectl)](../../../containers/cs_cli_install.html#cs_cli_install)
-- [Crea un cluster Kubernetes standard a cui migrare i tuoi dati](../../../containers/cs_cluster.html#cs_cluster_cli)
+- [Crea un cluster Kubernetes standard a cui migrare i tuoi dati](../../../containers/cs_clusters.html#clusters_cli)
 
 Completa le seguenti attività per eseguire le operazioni di backup e ripristino:
-1.  [Creazione di un'istanza del servizio {{site.data.keyword.objectstorageshort}}](#object_storage) (come affrontato precedentemente)
-2.  [Esecuzione di un backup monouso](#migrate_backup)
+1.  [Creazione di un'istanza del servizio {{site.data.keyword.objectstorageshort}}](#object_storage) (come ce ne si occupava in precedenza)
+2.  [Esecuzione di un backup una tantum](#migrate_backup)
 3.  [Esecuzione dello script di ripristino in Kubernetes](#migrate_restore)
 
-### Esecuzione di un backup monouso
+### Esecuzione di un backup una tantum 
 {: #migrate_backup}
 
-Crea un solo contenitore dall'immagine **ibm-backup-restore** e avvia un backup.
+Crea un singolo contenitore dall'immagine **ibm-backup-restore** e avvia un backup.
 
 1.  Accedi alla CLI {{site.data.keyword.containershort}}.
 
@@ -545,30 +545,30 @@ Crea un solo contenitore dall'immagine **ibm-backup-restore** e avvia un backup.
     ```
     {: codeblock}
 
-    Queste impostazioni creano un backup monouso con il nome predefinito _volume_backup_.
+    Queste impostazioni creano un backup una tantum con il nome predefinito _volume_backup_. 
 
 4.  Esegui un contenitore dall'immagine **ibm-backup-restore** con un volume montato di cui eseguire il backup. Includi il comando per avviare lo script di backup.
 
     -   Assicurati di essere nella stessa directory locale di <em>&lt;backup_env-file&gt;</em>.
     -   La directory su cui è montato il volume deve corrispondere alla BACKUP_DIRECTORY nel file di variabili di ambiente.
-    -   Sostituisci <em>&lt;volume_name&gt;</em> con il nome del volume di cui si eseguirà il backup.
-
+    -   Sostituisci <em>&lt;volume_name&gt;</em> con il nome del volume di cui si sta eseguendo il backup
+    
     ```
     bx ic run --name <container_name> --volume <volume_name>:/backup --env-file ./<backup_env-file_name> registry.ng.bluemix.net/ibm-backup-restore /bin/bash -c "/backup_restore/vbackup"
     ```
     {: pre}
 
-    Dopo aver eseguito il backup, il contenitore si arresta. Se il contenitore non avvia l'esecuzione, esegui `bx ic logs <container_name>` per controllare i log per i messaggi di errore.
+    Dopo aver eseguito il backup, il contenitore si arresta. Se il contenitore non avvia l'esecuzione, esegui `bx ic logs <container_name>` per controllare i messaggi di errore nei log.
 
 5.  Controlla il backup in {{site.data.keyword.objectstorageshort}} nella GUI {{site.data.keyword.Bluemix_notm}}.
     1.  Fai clic sull'istanza {{site.data.keyword.objectstorageshort}} creata per il backup.
     2.  Fai clic sul contenitore {{site.data.keyword.objectstorageshort}}. In questo esempio, il nome del contenitore è volume_backup.
-    3.  Controlla i file compressi.![Il contenitore Object Storage nella GUI {{site.data.keyword.Bluemix_notm}} mostra i file di cui è stato eseguito il backup.](images/volume_backup_screenshot.png)Puoi scaricare il file difftar.gz, estrarlo e verificare i dati del backup. **Importante**: se elimini o modifichi i file da {{site.data.keyword.objectstorageshort}}, questi file non potranno essere ripristinati.
+    3.  Controlla i file compressi.![Il contenitore Object Storage nella GUI {{site.data.keyword.Bluemix_notm}} mostra i file di cui è stato eseguito il backup.](images/volume_backup_screenshot.png)Puoi scaricare il file difftar.gz, estrarlo e verificare i dati di cui è stato eseguito il backup. **Importante**: se elimini o modifichi i file da {{site.data.keyword.objectstorageshort}}, questi file non potranno essere ripristinati.
 
-### Ripristino dei tuoi dati in un cluster Kubernetes
+### Ripristino dei tuoi dati in un cluster Kubernetes 
 {: #migrate_restore}
 
-Ripristina il tuo backup da {{site.data.keyword.objectstorageshort}} a un'attestazione del volume persistente in un cluster Kubernetes.
+Ripristina il tuo backup da {{site.data.keyword.objectstorageshort}} in un'attestazione del volume persistente in un cluster Kubernetes.
 
 Prima di iniziare:
 
@@ -664,6 +664,6 @@ Prima di iniziare:
     ```
     {: pre}
 
-Hai correttamente migrato i tuoi dati al tuo cluster Kubernetes. Puoi ora montare ogni nuovo pod nel pvc per fornire a tale pod l'accesso ai file ripristinati.
+Hai correttamente migrato i tuoi dati al tuo cluster Kubernetes. Puoi ora montare ogni nuovo pod nel pvc per fornire a tale pod l'accesso ai file ripristinati. 
 
-**Nota**: se i dati del contenitore di cui è stato eseguito il backup includono un utente non root, devi aggiungere le autorizzazioni non root al tuo nuovo contenitore. Per ulteriori informazioni, consulta [Aggiunta di accesso utente non root ai volumi](../../../containers/container_volumes_ov.html#container_volumes_write).
+**Nota**: se i dati del contenitore di cui è stato eseguito il backup includevano un utente non root, devi aggiungere le autorizzazioni non root al tuo nuovo contenitore. Per ulteriori informazioni, consulta [Aggiunta di accesso utente non root ai volumi](../../../containers/container_volumes_ov.html#container_volumes_write).

@@ -54,7 +54,9 @@ lastupdated: "2017-10-30"
 |环境|免费使用限制|
 |-----------|-----------------------|
 |开发|**无限**免费使用 **ibmliberty** 映像。|
-|生产|**ibmliberty** 映像的免费使用限制为在运行映像的所有容器实例中，**最大为 2 GB 的 Java 堆空间**。例如，您可以免费拥有 2 x 1GB 或 4 x 512 MB 的堆 Liberty 实例。要监视容器实例的 Java 堆使用量，请参阅[使用 CLI 监视容器的 Java 堆空间使用量](#monitor_heap)。
+|生产|**ibmliberty** 映像的免费使用限制为在运行映像的所有容器实例中，**最大为 2 GB 的 Java 堆空间**。例如，您可以免费拥有 2 x 1GB 或 4 x 512 MB 的堆 Liberty 实例。
+
+要监视容器实例的 Java 堆使用量，请参阅[使用 CLI 监视容器的 Java 堆空间使用量](#monitor_heap)。
 
 
 在 Docker Hub 上 [websphere-liberty 映像的](https://hub.docker.com/_/websphere-liberty/)“许可”部分中复查 IBM 认证映像的使用条款。
@@ -88,7 +90,7 @@ Java 堆空间是在运行时可用于 Java 应用程序的内存。
 1.  列出容器中的所有正在运行的流程。
 
     ```
-    bx ic top CONTAINER -aux
+        bx ic top CONTAINER -aux
     ```
     {: pre}
 
@@ -149,6 +151,8 @@ Application Server V8.5 或更新版本的许可，那么可以使用现有授�
     ```
     FROM registry.{{site.data.keyword.domainname}}/ibmliberty:<tag>
     COPY <app_name>.<file_extension> /config/dropins/
+    
+    
     
     ```
     {: screen}

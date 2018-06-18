@@ -56,6 +56,8 @@ La siguiente tabla muestra las restricciones de uso que se aplican al uso gratui
 |Desarrollo|Uso gratuito **ilimitado** de la imagen **ibmliberty**.|
 |Producción|El uso gratuito de la imagen **ibmliberty** está limitado a un **máximo de 2 GB de espacio del almacenamiento dinámico de Java** en todas las instancias de contenedor que ejecutan la imagen. Por ejemplo, puede tener 2 x 1 GB, o 4 x 512 MB instancias de liberty de almacenamiento dinámico de forma gratuita.
 
+
+
 Para supervisar el uso del almacenamiento dinámico de Java de las instancias de contenedor, consulte [Supervisión del uso del espacio de almacenamiento dinámico de Java de un contenedor con la CLI](#monitor_heap).
 
 

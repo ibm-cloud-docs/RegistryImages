@@ -102,7 +102,7 @@ Dopo aver creato un contenitore dall'immagine **ibmliberty**, puoi elencare tutt
     {: screen}
 
 2.  Rivedi l'utilizzo heap Java nella colonna **RSS**. L'utilizzo heap Java viene visualizzato in kilobyte. Se il tuo utilizzo heap è inferiore a 2097152 kilobyte (2GB) tra tutte le istanze, non dovrai acquistare una licenza WebSphere Application Server.
-3.  Regola l'utilizzo heap massimo per la tua istanza WebSphere Application Server. Vedi [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) per ulteriori informazioni.
+3.  Regola l'utilizzo heap massimo per la tua istanza WebSphere Application Server. Per ulteriori informazioni, vedi [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile](http://www-01.ibm.com/support/docview.wss?uid=swg21596474).
 
 ## Come ottenere una licenza WebSphere Application Server 
 {: #license}

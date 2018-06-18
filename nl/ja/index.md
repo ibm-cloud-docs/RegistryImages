@@ -4,7 +4,7 @@ copyright:
 
   years: 2014, 2017
 
-lastupdated: "2017-10-30"
+lastupdated: "2018-05-30"
 
 ---
 
@@ -14,7 +14,7 @@ lastupdated: "2017-10-30"
 # IBM のパブリック・イメージ
 {: #ibm_images}
 
-{{site.data.keyword.containerlong}} で以下のパブリック・イメージを使用してコンテナーを作成できます。{{site.data.keyword.Bluemix_notm}} で独自のプライベート・イメージ・レジストリーを作成するには、[「概説 (Getting started)」](/docs/services/Registry/index.html)を参照してください。
+{{site.data.keyword.containerlong}} で以下のパブリック・イメージを使用してコンテナーを作成できます。 {{site.data.keyword.Bluemix_notm}} で独自のプライベート・イメージ・レジストリーを作成するには、[「概説 (Getting started)」](/docs/services/Registry/index.html)を参照してください。
 {:shortdesc}
 
 
@@ -23,6 +23,22 @@ lastupdated: "2017-10-30"
 <p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="ibm-backup-restore イメージについて詳しくは、資料を確認してください。"></p>
 <p class="runtimeTitle">ibm-backup-restore</p>
 <p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-backup-restore/index.html" scope="peer" title="ibm-backup-restore イメージについて詳しくは、資料を確認してください。">資料の表示</a></p>
+</li>
+  
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="ibmcloud-secure-perimeter-health イメージを使用して、IBM Cloud インフラストラクチャー・ネットワーク内のパスをスキャンし、露出しているパスについてのレポートを作成できます。"></p>
+<p class="runtimeTitle">ibmcloud-secure-perimeter-health</p>
+<p class="runtimeLink"><a format="html"
+href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-health/index.html" scope="peer"
+ title="ibmcloud-secure-perimeter-health イメージを使用して、IBM Cloud インフラストラクチャー・ネットワーク内のパスをスキャンし、露出しているパスについてのレポートを生成できます。">資料の表示</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="ibmcloud-secure-perimeter-network イメージを使用して、Secure Perimeter Segment 用の Vyatta 構成を適用できます。"></p>
+<p class="runtimeTitle">ibmcloud-secure-perimeter-network</p>
+<p class="runtimeLink"><a format="html"
+href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-network/index.html" scope="peer"
+ title="ibmcloud-secure-perimeter-network イメージを使用して、Secure Perimeter Segment 用の Vyatta 構成を適用できます。">資料の表示</a></p>
 </li>
 
 <li>
@@ -43,18 +59,6 @@ ibm-mq イメージについて詳しくは、資料を確認してください�
 <p class="runtimeTitle">ibm-mq</p>
 <p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-mq/index.html" scope="peer" title="
 ibm-mq イメージについて詳しくは、資料を確認してください。">資料の表示</a></p>
-</li>
-
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="IBM Node (ibmnode) イメージは、独自の Node.js アプリ・コードで独自のイメージをビルドするための親として使用します。"></p>
-<p class="runtimeTitle">ibmnode</p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibmnode/index.html" scope="peer" title="IBM Node (ibmnode) イメージは、独自の Node.js アプリ・コードで独自のイメージをビルドするための親として使用します。">資料の表示</a></p>
-</li>
-
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Strongloop Process Manager を使用すると、リモート・マシン上に実装された {{site.data.keyword.cloud_notm}} 中の Node.js アプリをデプロイ、管理、およびモニターすることができます。"></p>
-<p class="runtimeTitle">ibm-node-strong-pm</p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-node-strong-pm/index.html" scope="peer" title="Strongloop Process Manager を使用すると、リモート・マシン上に実装された {{site.data.keyword.cloud_notm}} 中の Node.js アプリをデプロイ、管理、およびモニターすることができます。">資料の表示</a></p>
 </li>
 
 <li>

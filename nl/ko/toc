@@ -13,15 +13,15 @@ IBM 공용 컨테이너 이미지
     관련 링크
         [Dockerfile 참조](http://docs.docker.com/engine/reference/builder/)
         [Docker와 함께 Supervisor 사용](https://docs.docker.com/engine/admin/using_supervisord/)
-        [Registry CLI 참조](../../cli/plugins/registry/index.html)
+        [Registry CLI 참조](../Registry/registry_cli.html)
     {: .navgroup-end}
     
     {: .navgroup id="howto"}
     ibm-backup-restore/index.md
+    ibmcloud-secure-perimeter-health/index.md
+    ibmcloud-secure-perimeter-network/index.md
     ibm-integration-bus/index.md
     ibmliberty/index.md
     ibm-mq/index.md
-    ibmnode/index.md
-    ibm-node-strong-pm/index.md
     ibm-websphere-extreme-scale/index.md
     {: .navgroup-end}
