@@ -14,25 +14,25 @@ lastupdated: "2018-05-25"
 {:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
-# Getting started with the ibmcloud-secure-perimeter-health image
+# Initiation à l'image ibmcloud-secure-perimeter-health
 {: #ibmcloud-secure-perimeter-health}
 
-The **ibmcloud-secure-perimeter-health** image contains a tool for scanning vulnerabilities in a Secure Perimeter in IBM Cloud.
+L'image **ibmcloud-secure-perimeter-health** contient un outil d'analyse des vulnérabilités dans un périmètre sécurisé (Secure Perimeter) d'IBM Cloud.
 {:shortdesc}
 
-## How it works
+## Fonctionnement
 {: #how-it-works}
 
-To ensure your Secure Perimeter is functioning properly, **ibmcloud-secure-perimeter-health** can scan public or private networks in your IBM Cloud infrastructure account and report vulnerabilities. You can use **ibmcloud-secure-perimeter-health** image in two ways:
+Pour garantir le bon fonctionnement de votre périmètre sécurisé, **ibmcloud-secure-perimeter-health** peut analyser le réseau public ou privé de votre compte d'infrastructure IBM Cloud et signaler les vulnérabilités. Vous pouvez utiliser l'image **ibmcloud-secure-perimeter-health** de deux façons :
 
--   Use **ibmcloud-secure-perimeter-health** as a pod on a Kubernetes cluster within your Secure Perimeter to scan for private network exposures.
--   Use **ibmcloud-secure-perimeter-health** as a stand-alone Docker container on your workstation to scan for public network exposures.
+-   Utiliser **ibmcloud-secure-perimeter-health** en tant que pod sur un cluster Kubernetes au sein de votre périmètre sécurisé pour rechercher les expositions de réseau privé.
+-   Utiliser **ibmcloud-secure-perimeter-health** en tant que conteneur Docker autonome sur votre poste de travail pour rechercher les expositions de réseau public.
 
-More information on Secure Perimeter can be found in these blog articles:
+Vous trouverez des informations supplémentaires sur le périmètre sécurisé dans les articles de blogue suivants :
   * [Set up a Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
   * [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
 
-After scanning, the **ibmcloud-secure-perimeter-health** image produces a report on which networks were reachable from within the Secure Perimeter Segment. Each report details the name of the network gateway, VLAN, its subnets, and any offending hosts. An example report of a user that scanned for private network vulnerabilities:
+Après l'analyse, l'image **ibmcloud-secure-perimeter-health** génère un rapport sur les réseaux accessibles depuis le segment de périmètre sécurisé (Secure Perimeter Segment). Chaque rapport indique le nom de la passerelle réseau, le réseau local virtuel (VLAN), ses sous-réseaux ainsi que les éventuels hôtes incriminés. Exemple de rapport d'un utilisateur ayant recherché des vulnérabilité du réseau privé :
 ```
 #-------- Running Secure Perimeter exposure scan 2018-05-24 12:00:00 --------#
 
@@ -55,52 +55,52 @@ sp-gateway-8a9031ab:
 ```
 {: screen}
 
-## What is included
+## Eléments inclus
 {: #whats_included}
 
-The **ibmcloud-secure-perimeter-health** image provides the following software packages.
+L'image **ibmcloud-secure-perimeter-health** fournit les progiciels suivants.
 {:shortdesc}
 
 -   Alpine Linux
--   Python runtime
--   SoftLayer Python Client
--   Nmap port scanner
+-   Exécution Python
+-   Client SoftLayer Python
+-   Analyseur de port Nmap
 
-## Getting started
+## Initiation
 {: #how_to_get_started}
 
-Review the following tasks to learn how to use **ibmcloud-secure-perimeter-health**:
+Passez en revue les tâches suivantes pour apprendre à utiliser **ibmcloud-secure-perimeter-health** :
 
-1.  [Provision a Kubernetes cluster within a Secure Perimeter using {{site.data.keyword.containerlong}}](#provision_cluster)
-2.  [Scan private networks within a Secure Perimeter](#private_networks)
-3.  [Scan public networks outside a Secure Perimeter](#public_networks)
-4.  [Understanding scan results](#scan_results)
-5.  [Container argument reference](#reference_container_arg)
-6.  [Environment variable reference](#reference_env_var)
+1.  [Mettre à disposition un cluster Kubernetes dans un périmètre sécurisé via {{site.data.keyword.containerlong}}](#provision_cluster)
+2.  [Analyser les réseaux privés au sein d'un périmètre sécurisé](#private_networks)
+3.  [Analyser les réseaux publics hors d'un périmètre sécurisé](#public_networks)
+4.  [Comprendre les résultats d'analyse](#scan_results)
+5.  [Référence d'argument de conteneur](#reference_container_arg)
+6.  [Référence de variable d'environnement](#reference_env_var)
 
 
-## Provision a Kubernetes cluster within a Secure Perimeter using {{site.data.keyword.containerlong}}
+## Mettre à disposition un cluster Kubernetes dans un périmètre sécurisé via {{site.data.keyword.containerlong}}
 {: #provision_cluster}
 
-1.  Provision your Kubernetes cluster from the **Containers** section in IBM Cloud catalog.
-2.  Click Create.
-3.  Select the Secure Perimeter Segment public and private VLANs from the VLAN dropdown menus.
-4.  Fill out all other details as you deem fit.
-5.  Click Create Cluster.
+1.  Mettez votre cluster Kubernetes à disposition depuis la section **Conteneurs** du catalogue IBM Cloud.
+2.  Cliquez sur Créer.
+3.  Sélectionnez les réseaux locaux virtuels public et privé du segment de paramètre sécurisé (Secure Perimeter Segment) à partir des menus déroulants VLAN.
+4.  Renseignez les autres détails en fonction de vos besoins.
+5.  Cliquez sur Créer un cluster.
 
-Review [{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) documentation on how to get access to your cluster once it has been deployed.
+Consultez la documentation [{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) pour savoir comment accéder à votre cluster une fois celui-ci déployé.
 
-## Scan private networks within a Secure Perimeter
+## Analyser les réseaux privés au sein d'un périmètre sécurisé
 {: #private_networks}
 
-Create a container pod from the **ibmcloud-secure-perimeter-health** image, and set up a routine scan.
+Créez un pod de conteneur à partir de l'image **ibmcloud-secure-perimeter-health**, puis configurez une analyse de routine.
 
-Before you begin:
+Avant de commencer :
 
--   Install the required [CLIs](../../../containers/cs_cli_install.html#cs_cli_install).
--   [Target your CLI](../../../containers/cs_cli_install.html#cs_cli_configure) to your cluster.
+-   Installez les [interfaces de ligne de commande](../../../containers/cs_cli_install.html#cs_cli_install) requises.
+-   [Ciblez votre interface de ligne de commande](../../../containers/cs_cli_install.html#cs_cli_configure) vers votre cluster.
 
-1. Create a configuration file that is named _health-pod.yaml_. This file creates a highly-available deployment of the container pod.
+1. Créez un fichier de configuration nommé _health-pod.yaml_. Ce fichier crée un déploiement hautement disponible du pod de conteneur.
 
     ```
     apiVersion: extensions/v1beta1
@@ -135,14 +135,14 @@ Before you begin:
     ```
     {: codeblock}
 
-2. Create the deployment.
+2. Créez le déploiement.
 
     ```
     kubectl apply -f health-pod.yaml
     ```
     {: pre}
 
-3. Confirm the pod is running.
+3. Assurez-vous que le pod est en cours d'exécution.
 
     ```
     kubectl get pods
@@ -155,28 +155,28 @@ Before you begin:
     ```
     {: screen}
 
-## Scan public networks outside a Secure Perimeter
+## Analyser les réseaux publics hors d'un périmètre sécurisé
 {: #public_networks}
 
-Create a Docker container from the **ibmcloud-secure-perimeter-health** image and scan public networks.
+Créez un conteneur Docker à partir de l'image **ibmcloud-secure-perimeter-health** et analysez des réseaux publics.
 
-Before you begin:
+Avant de commencer :
 
--  Install Docker
+-  Installez Docker
 
-1. Create a Docker container from your own workstation as follows:
+1. Créez un conteneur Docker à partir de votre propre poste de travail à l'aide de la commande suivante :
 
     ```
     docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
     ```
     {: pre}
 
-2. After the container produces a report, review the [Analysing scan results](#scan_results) section to understand the results.
+2. Une fois que le conteneur a produit un rapport, passez à la section [Comprendre les résultats d'analyse](#scan_results).
 
-## Analysing scan results
+## Comprendre les résultats d'analyse
 {: #scan_results}
 
-The **ibmcloud-secure-perimeter-health** produces a formatted report on functioning health of a Secure Perimeter:
+**ibmcloud-secure-perimeter-health** produit un rapport mis en forme sur la santé du fonctionnement d'un périmètre sécurisé :
 ```
 #-------- Running Secure Perimeter exposure scan 2018-05-24 12:00:00 --------#
 
@@ -199,34 +199,34 @@ sp-gateway-8a9031ab:
 ```
 {: screen}
 
-The format of the report is as follows:
+Le format du rapport est le suivant :
 ```
-<gateway name>:
-  <vlan name>:
-    <subnet>:    PASS
-    <subnet>:    FAIL
-      host = <ip address>, ports = [<exposed port>, <exposed port>, ...]
+<nom de la passerelle> :
+  <nom du VLAN> :
+    <sous-réseau> :    PASS
+    <sous-réseau> :    FAIL
+      host = <adresse IP>, ports = [<port exposé>, <port exposé>, ...]
 ```
 {: screen}
 
-The **ibmcloud-secure-perimeter-health** determines a subnet as `PASS` if no hosts in the subnet were reachable, otherwise it returns with `FAIL` and lists the hosts that were reachable, along with the ports that were accessible.
+**ibmcloud-secure-perimeter-health** détermine un sous-réseau comme `PASS` si aucun hôte du sous-réseau n'est accessible, ou bien renvoie `FAIL` et répertorie les hôtes accessibles ainsi que les ports accessibles.
 
-## Container argument reference
+## Référence d'argument de conteneur
 {: #reference_container_arg}
 
-|Key|Description|Default
+|Clé|Description|Valeur par défaut
 |---|-------------|---|
-|scan|The type of exposure scan ("public" or "private") |None (scan both)
-|exclude-vlan-ids|List of VLANs by IDs to avoid scanning|None
-|poll-interval|Set the number of seconds until the next scan|0 (run once)
-|allowed-public-ports|List of ports to whitelist under the scan|80, 443, 9000-9999
-{: caption="Table 1. container arguments" caption-side="top"}
+|scan|Type d'analyse d'exposition ("publique" ou "privée") |Aucun (analyser les deux)
+|exclude-vlan-ids|Liste des réseaux locaux virtuels (VLAN) par ID pour éviter l'analyse|Aucun
+|poll-interval|Définit le nombre de secondes écoulées entre deux analyses|0 (une seule exécution)
+|allowed-public-ports|Liste des ports à placer sur liste blanche sous l'analyse|80, 443, 9000-9999
+{: caption="Tableau 1. Arguments de conteneur" caption-side="top"}
 
-## Environment variable reference
+## Référence de variable d'environnement
 {: #reference_env_var}
 
-|Key|Description|
+|Clé|Description|
 |---|-------------|
-|SL_USER|Your IBM Cloud infrastructure user name|
-|SL_APIKEY|Your IBM Cloud infrastructure API key|
-{: caption="Table 2. environment variables" caption-side="top"}
+|SL_USER|Votre nom d'utilisateur d'infrastructure IBM Cloud|
+|SL_APIKEY|Votre clé d'API d'infrastructure IBM Cloud|
+{: caption="Tableau 2. Variables d'environnement" caption-side="top"}

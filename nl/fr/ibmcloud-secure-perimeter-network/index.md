@@ -14,62 +14,62 @@ lastupdated: "2018-05-25"
 {:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
-# Getting started with the ibmcloud-secure-perimeter-network image
+# Initiation à l'image ibmcloud-secure-perimeter-network
 {: #ibmcloud-secure-perimeter-network}
 
-The **ibmcloud-secure-perimeter-network** image contains tools for automating the configuration of Vyatta virtual router appliances within a Secure Perimeter.
+L'image **ibmcloud-secure-perimeter-network** contient des outils pour l'automatisation de la configuration des dispositifs de routeur virtuel Vyatta au sein d'un paramètre sécurisé.
 {:shortdesc}
 
-## How it works
+## Fonctionnement
 {: #how-it-works}
 
-With **ibmcloud-secure-perimeter-network**, you can automate the configuration of your Secure Perimeter's Vyatta virtual router appliance.
+**ibmcloud-secure-perimeter-network** permet d'automatiser la configuration du dispositif de routeur virtuel Vyatta de votre paramètre sécurisé.
 
-More information on Secure Perimeter can be found in these blog articles:
+Vous trouverez des informations supplémentaires sur le périmètre sécurisé dans les articles de blogue suivants :
   * [Set up a Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
   * [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
 
-You can use the  **ibmcloud-secure-perimeter-network** image in two ways:
--  Use **ibmcloud-secure-perimeter-network** as a Docker container to initialize the Secure Perimeter firewall rules configuration.
--  Use **ibmcloud-secure-perimeter-network** as a pod on a Kubernetes cluster to poll the IBM Cloud infrastructure account for new subnets created on your Secure Perimeter Segment VLANs and add them to the Vyatta firewall configuration.
+Vous pouvez utiliser l'image **ibmcloud-secure-perimeter-network** de deux façons :
+-  Utiliser **ibmcloud-secure-perimeter-network** en tant que conteneur Docker pour initialiser la configuration des règles de pare-feu du périmètre sécurisé.
+-  Utiliser **ibmcloud-secure-perimeter-network** en tant que pod sur un cluster Kubernetes afin d'interroger le compte d'infrastructure IBM Cloud à propos de nouveaux sous-réseaux créés sur les réseaux locaux virtuels (VLAN) de votre segment de périmètre sécurisé (Secure Perimeter Segment) et les ajouter à la configuration de pare-feu Vyatta.
 
-## What is included
+## Eléments inclus
 {: #whats_included}
 
-The **ibmcloud-secure-perimeter-network** image provides the following software packages.
+L'image **ibmcloud-secure-perimeter-network** fournit les progiciels suivants.
 {:shortdesc}
 
 -   Alpine Linux
--   Python runtime
--   SoftLayer Python Client
+-   Exécution Python
+-   Client SoftLayer Python
 -   Ansible
 
-## Getting started
+## Initiation
 {: #how_to_get_started}
 
-Review the following tasks to learn how to use **ibmcloud-secure-perimeter-network**:
+Passez en revue les tâches suivantes pour apprendre à utiliser **ibmcloud-secure-perimeter-network** :
 
-1.  [Provision a Kubernetes cluster within a Secure Perimeter using {{site.data.keyword.containerlong}}](#provision_cluster)
-2.  [Run initial config of your Secure Perimeter Vyatta](#initial_setup)
-3.  [Set-up as a Kubernetes pod within your Secure Perimeter](#setup)
-4.  [config.json reference](#reference_config_json)
-5.  [rules.conf reference](#reference_rules_conf)
+1.  [Mettre à disposition un cluster Kubernetes dans un périmètre sécurisé via {{site.data.keyword.containerlong}}](#provision_cluster)
+2.  [Exécuter la configuration initiale de votre périmètre sécurisé Vyatta](#initial_setup)
+3.  [Configuration en tant que pod Kubernetes au sein de votre périmètre sécurisé](#setup)
+4.  [Référence config.json](#reference_config_json)
+5.  [Référence rules.conf](#reference_rules_conf)
 
-## Provision a Kubernetes cluster within a Secure Perimeter using {{site.data.keyword.containerlong}}
+## Mettre à disposition un cluster Kubernetes dans un périmètre sécurisé via {{site.data.keyword.containerlong}}
 {: #provision_cluster}
 
-1.  Provision your Kubernetes cluster from the **Containers** section in IBM Cloud catalog.
-2.  Click Create.
-3.  Select the Secure Perimeter Segment public and private VLANs from the VLAN dropdown menus.
-4.  Fill out all other details as you deem fit.
-5.  Click Create Cluster.
+1.  Mettez votre cluster Kubernetes à disposition depuis la section **Conteneurs** du catalogue IBM Cloud.
+2.  Cliquez sur Créer.
+3.  Sélectionnez les réseaux locaux virtuels public et privé du segment de paramètre sécurisé (Secure Perimeter Segment) à partir des menus déroulants VLAN.
+4.  Renseignez les autres détails en fonction de vos besoins.
+5.  Cliquez sur Créer un cluster.
 
-Review [{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) documentation on how to get access to your cluster once it has been deployed.
+Consultez la documentation [{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) pour savoir comment accéder à votre cluster une fois celui-ci déployé.
 
-## Run initial config of your Secure Perimeter Vyatta
+## Exécuter la configuration initiale de votre périmètre sécurisé Vyatta
 {: #initial_setup}
 
-1. Create a file that is named _config.json_. This file contains the basic parameters needed by **ibmcloud-secure-perimeter-network** to access the Vyatta.
+1. Créez un fichier nommé _config.json_. Ce fichier contiendra les paramètres de base nécessaires à **ibmcloud-secure-perimeter-network** pour accéder à Vyatta.
 
   ```
   {
@@ -100,23 +100,24 @@ Review [{{site.data.keyword.containerlong}}](../../../containers/container_index
   ```
   {: codeblock}
 
-  See the [config.json reference table](#reference_config_json) for details on how to populate _config.json_. This file can also be used in the [set-up of **ibmcloud-secure-perimeter-network** as a Kubernetes pod](#setup) process.
+  Voir le [tableau de référence config.json](#reference_config_json) pour plus de détails sur la façon de renseigner le fichier _config.json_. Ce fichier peut également être utilisé dans le processus de [configuration de **ibmcloud-secure-perimeter-network** en tant que pod Kubernetes](#setup).
 
-2. Run **ibmcloud-secure-perimeter-network** as a Docker container to begin initial set-up.
+2. Exécutez **ibmcloud-secure-perimeter-network** en tant que conteneur Docker pour commencer la configuration initiale.
 
   ```
   docker run registry.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0 python config-secure-perimeter.py -v /path/to/current/dir:/opt/secure-perimeter
   ```
   {: pre}
 
-  This will create a file _state.json_ in your working directory. This file is used in the [set-up of **ibmcloud-secure-perimeter-network** as a Kubernetes pod](#setup).
+  Cette commande crée un fichier _state.json_ dans votre répertoire de travail. Ce fichier est utilisé dans la [configuration de **ibmcloud-secure-perimeter-network** en tant que pod Kubernetes](#setup).
 
-## Set-up as a Kubernetes pod within your Secure Perimeter
+## Configuration en tant que pod Kubernetes au sein de votre périmètre sécurisé
 {: #setup}
 
-In order for **ibmcloud-secure-perimeter-network** image to manage subnets on your Secure Perimeter, you can run it as a long-lived process using a Kubernetes pod. The **ibmcloud-secure-perimeter-network** has several configuration files and folders that need to be copied to the pod to configure it for the Vyatta:
+Pour que l'image **ibmcloud-secure-perimeter-network** puisse gérer des sous-réseaux dans votre périmètre sécurisé, vous pouvez l'exécuter en tant que processus de longue durée à l'aide d'un pod Kubernetes. **ibmcloud-secure-perimeter-network** comporte plusieurs dossiers et fichiers de configuration qui doivent être copiés sur le pod pour le configurer pour Vyatta :
 
-1. Create a file that is named _pvc.yaml_. This configuration file creates a persistent volume claim (pvc) that you can mount to your pod as a volume.
+1. Créez un fichier nommé _pvc.yaml_. Ce fichier de configuration crée une réclamation de volume persistant (pvc) que vous pouvez monter sur votre pod en tant que volume.
+    
 
   ```
   apiVersion: v1
@@ -134,14 +135,14 @@ In order for **ibmcloud-secure-perimeter-network** image to manage subnets on yo
   ```
   {: codeblock}
 
-2. Create the pvc.
+2. Créez la réclamation de volume persistant.
 
     ```
     kubectl apply -f restore-pvc.yaml
     ```
     {: pre}
 
-3. Create a file that is named _network-pod.yaml_. This configuration file deploys the **ibmcloud-secure-perimeter-network** image as a pod in your Kubernetes cluster and mounts your persistent volume claim as a volume.
+3. Créez un fichier nommé _network-pod.yaml_. Ce fichier de configuration déploie l'image **ibmcloud-secure-perimeter-network** en tant que pod dans votre cluster Kubernetes et monte votre réclamation de volume persistant en tant que volume.
 
   ```
   apiVersion: v1
@@ -166,7 +167,7 @@ In order for **ibmcloud-secure-perimeter-network** image to manage subnets on yo
   ```
   {: codeblock}
 
-4. Create a file that is named _rules.conf_. This configuration file tells **ibmcloud-secure-perimeter-network** which external subnets and ports from the public internet to whitelist into the Secure Perimeter.
+4. Créez un fichier nommé _rules.conf_. Ce fichier de configuration indique à **ibmcloud-secure-perimeter-network** quels sous-réseaux et ports externes de l'Internet public placer sur liste blanche dans le périmètre sécurisé.
 
   ```
   {
@@ -186,7 +187,7 @@ In order for **ibmcloud-secure-perimeter-network** image to manage subnets on yo
   ```
   {: codeblock}
 
-5. Copy the files onto the **ibmcloud-secure-perimeter-network** pod.
+5. Copiez les fichier sur le pod **ibmcloud-secure-perimeter-network**.
 
   ```
   kubectl cp keys network-pod:/opt/secure-perimeter/
@@ -196,37 +197,37 @@ In order for **ibmcloud-secure-perimeter-network** image to manage subnets on yo
   ```
   {: pre}
 
-  The directory _keys_ contains the SSH keys needed for **ibmcloud-secure-perimeter-network** to access the Vyatta. See the [prerequisites section](#prerequisites) for more information on the SSH keys.
+  Le répertoire _keys_ contient les clés SSH permettant à **ibmcloud-secure-perimeter-network** d'accéder à Vyatta. Voir la [section des prérequis](#prerequisites) pour plus d'informations sur les clés SSH.
 
-## config.json reference
+## Référence config.json
 {: #reference_config_json}
 
-|Key|Description
+|Clé|Description
 |---|-------------|---|
-|slid|Your IBM Cloud infrastructure user name
-|apikey|Your IBM Cloud infrastructure api key
-|region|The IBM Cloud region where the Vyatta is deployed
-|inf_name_private|The name of the Vyatta private interface
-|inf_name_public|The name of the Vyatta public interface
-|gatewayid|The Vyatta gateway ID
-|vlans|List of Secure Perimeter Segment VLANs containing the type, VLAN number and VLAN ID
-|vyatta_gateway_vip|The VIP of the Gateway
-|vyatta_primary|Object that contains the private and public IP of the primary Vyatta member
-|vyatta_secondary|Object that contains the private and public IP of the secondary Vyatta member
-{: caption="Table 1. config.json" caption-side="top"}
+|slid|Votre nom d'utilisateur d'infrastructure IBM Cloud
+|apikey|Votre clé d'API d'infrastructure IBM Cloud
+|region|Région IBM Cloud où Vyatta est déployé
+|inf_name_private|Nom de l'interface privée Vyatta
+|inf_name_public|Nom de l'interface publique Vyatta
+|gatewayid|ID passerelle Vyatta
+|vlans|Liste des réseaux locaux virtuels (VLAN) de segment de périmètre sécurisé (Secure Perimeter Segment), avec le type, le numéro VLAN et l'ID VLAN
+|vyatta_gateway_vip|IP virtuelle de la passerelle
+|vyatta_primary|Objet contenant les IP privée et publique du membre Vyatta principal
+|vyatta_secondary|Objet contenant les IP privée et publique du membre Vyatta secondaire
+{: caption="Tableau 1. Fichier config.json" caption-side="top"}
 
-## rules.conf reference
+## Référence rules.conf
 {: #reference_rules_conf}
 
-|Key|Description
+|Clé|Description
 |---|-------------|---|
-|external_subnets|List of subnets on the public internet to expose Secure Perimeter to
-|external_ports|List of ports to expose Secure Perimeter to
-|userips|List of user IPs to whitelist to Secure Perimeter
-{: caption="Table 2. rules.conf" caption-side="top"}
+|external_subnets|Liste des sous-réseaux sur l'Internet public sur lesquels exposer le périmètre sécurisé
+|external_ports|Liste des ports sur lesquels exposer le périmètre sécurisé
+|userips|Liste des IP utilisateur à placer sur liste blanche pour le périmètre sécurisé
+{: caption="Tableau 2. Fichier rules.conf" caption-side="top"}
 
-## Prerequisites
+## Prérequis
 {: #prerequisites}
 
--   Vyatta and VLANs that have been ordered from IBM Cloud infrastructure portal and VLANs have been associated to the Vyatta.
--   The automated Secure Perimeter deployment pre-loads the Vyatta with SSH keys that **ibmcloud-secure-perimeter-network** uses to access the gateway. SSH keys will need to be loaded either manually or through the Secure Perimeter installation process. Review the article [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) for more information.
+-   Vyatta et réseaux locaux virtuels (VLAN) classés à partir du portail d'infrastructure IBM Cloud et VLAN associés à Vyatta.
+-   Le déploiement automatisé du paramètre sécurisé précharge Vyatta avec les clés SSH utilisées par **ibmcloud-secure-perimeter-network** pour accéder à la passerelle. Les clés SSH doivent être chargées manuellement ou via le processus d'installation du périmètre sécurisé. Consultez l'article [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) pour plus d'informations.

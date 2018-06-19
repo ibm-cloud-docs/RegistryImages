@@ -13,175 +13,177 @@ lastupdated: "2017-10-30"
 {:table: .aria-labeledby="caption"}
 
 
-# Getting started with the **ibm-websphere-extreme-scale** image 
+# Initiation à l'image **ibm-websphere-extreme-scale** 
 {: #ibm-websphere-extreme-scale}
 
-The **ibm-websphere-extreme-scale** images are supplied for {{site.data.keyword.containerlong}}.
+Les images **ibm-websphere-extreme-scale** sont fournies pour {{site.data.keyword.containerlong}}.
 
-## How it works 
+## Fonctionnement 
 {: #how_it_works}
 
-The IBM WebSphere&reg; eXtreme Scale image is a distributed, in-memory cache feature running within the Liberty runtime environment. It provides Liberty caching servers, caching operation tools, an administrative console, and the out-of-the-box REST administration services based on the latest industry standards and specifications. This image is built on the core IBM WebSphere eXtreme Scale technology. The caching technology loaded within this image fully supports JCache \(JSR107\) specification and compliance.
+L'image IBM WebSphere&reg; eXtreme Scale est une fonction de mémoire cache interne distribuée qui s'exécute dans l'environnement d'exécution Liberty. Elle fournit des serveurs de mise en cache Liberty, des outils d'exploitation de mise en cache, une console d'administration et les services d'administration REST prêts à l'emploi basés sur les dernières normes et spécifications de l'industrie. Cette image est générée sur la technologie IBM WebSphere eXtreme Scale centrale. La technologie de mise en cache chargée dans cette image prend totalement en charge la spécification et la conformité JCache \(JSR107\).
 
-The following main highlights are available when you use the `ibm-websphere-extreme-scale` image:
+Les points forts de l'utilisation de l'image `ibm-websphere-extreme-scale` sont les suivants :
 
--   An easy-to-deploy, easy-to-configure, distributed caching solution based on eXtreme Scale technology
--   Simple and easy-to-use administrative console and REST API
--   Full customization to support all eXtreme Scale caching use cases
--   Easily configurable image that integrates within your caching environment in minutes
--   JCache compliance to support JSR107 caching specification
+-   Solution de mise en cache distribuée facile à déployer et à configurer, basée sur la technologie eXtreme Scale
+-   Console d'administration et API REST faciles à utiliser
+-   Personnalisation complète permettant la prise en charge de tous les cas d'utilisation de la mise en cache eXtreme Scale
+-   Image facilement configurable qui s'intègre à votre environnement de mise en cache en quelques minutes
+-   Conformité JCache permettant la prise en charge de la spécification de mise en cache JSR107
 
 
-## What is included 
+## Eléments inclus 
 {: #whats_included}
 
-Every **ibm-websphere-extreme-scale** image provides the following software packages.
+Chaque
+image **ibm-websphere-extreme-scale** fournit les progiciels suivants :
 
--   Ubuntu 16.04 base image, 64-bit
+-   Image de base Ubuntu 16.04, 64 bits
 -   IBM WebSphere eXtreme Scale
 -   IBM Java Runtime Environment 8.0
 
-The specific features that are installed in the image depend on the tag that you select. The following table shows which code level is included in each of the **ibm-websphere-extreme-scale** images. For more information about these features, see the [eXtreme Scale documentation](http://www.ibm.com/support/knowledgecenter/SSTVLU).
+Les fonctions spécifiques qui sont installées dépendent de l'étiquette que vous sélectionnez. Le tableau suivant répertorie le niveau de code inclus dans chacune des images **ibm-websphere-extreme-scale**. Pour plus d'informations sur ces fonctions, voir la [documentation eXtreme Scale](http://www.ibm.com/support/knowledgecenter/SSTVLU).
 
-|Tag|Description|
+|Etiquette|Description|
 |---|-----------|
-|**ibm-websphere-extreme-scale:latest**|Use this tag to specify the latest IBM WebSphere eXtreme Scale image.|
-|**ibm-websphere-extreme-scale:8.6.1.x**|Use this tag to specify a specific release level of WebSphere eXtreme Scale.|
-{: caption="Table 1. IBM WebSphere eXtreme Scale images" caption-side="top"}
+|**ibm-websphere-extreme-scale:latest**|Cette étiquette vous permet de spécifier l'image IBM WebSphere eXtreme Scale la plus récente.|
+|**ibm-websphere-extreme-scale:8.6.1.x**|Cette étiquette vous permet de spécifier un niveau d'édition spécifique de WebSphere eXtreme Scale.|
+{: caption="Tableau 1. Images IBM WebSphere eXtreme Scale" caption-side="top"}
 
-## Usage restrictions 
+## Restrictions d'utilisation 
 {: #usage}
 
-The following table shows the restrictions that apply to the free usage of the **ibm-websphere-extreme-scale** image in {{site.data.keyword.Bluemix_notm}}.
+Le tableau suivant présente les restrictions qui s'appliquent à l'utilisation gratuite de l'image
+**ibm-websphere-extreme-scale** dans {{site.data.keyword.Bluemix_notm}}.
 
-|Environment|Usage restrictions|
+|Environnement|Restrictions d'utilisation|
 |-----------|------------------|
-|Development|The `ibm-websphere-extreme-scale` image allows for unlimited free usage for development.|
-|Production|Production usage of the **ibm-websphere-extreme-scale** image is limited to licensed IBM WebSphere eXtreme Scale product users. For more information about production use, see [View Pricing and Buy](https://www-112.ibm.com/software/howtobuy/buyingtools/paexpress/Express?P0=E1&part_number=D56YTLL,D56YVLL,D572PLL,D572MLL,D0594LL,D059GLL&catalogLocale=en_US&Locale=en_US&country=USA&PT=jsp&CC=USA&VP=&TACTICS=&S_TACT=&S_CMP=&brand=SB05).|
-{: caption="Table 2. Usage restrictions for the ibm-websphere-extreme-scale images in {{site.data.keyword.Bluemix_notm}}" caption-side="top"}
+|Développement|L'image `ibm-websphere-extreme-scale` permet une utilisation gratuite et illimitée à des fins de développement.|
+|Production|L'utilisation de l'image **ibm-websphere-extreme-scale** à des fins de production est limitée aux utilisateurs disposant d'un produit IBM WebSphere eXtreme Scale sous licence. Pour plus d'informations sur l'utilisation à des fins de production, voir [View Pricing and Buy](https://www-112.ibm.com/software/howtobuy/buyingtools/paexpress/Express?P0=E1&part_number=D56YTLL,D56YVLL,D572PLL,D572MLL,D0594LL,D059GLL&catalogLocale=en_US&Locale=en_US&country=USA&PT=jsp&CC=USA&VP=&TACTICS=&S_TACT=&S_CMP=&brand=SB05).|
+{: caption="Tableau 2. Restrictions quant à l'utilisation des images ibm-websphere-extreme-scale dans {{site.data.keyword.Bluemix_notm}}" caption-side="top"}
 
-**Note:** The pricing for the **ibm-websphere-extreme-scale** image is independent of the pricing for the containers that you use in {{site.data.keyword.Bluemix_notm}}.
+**Remarque :** La tarification de l'image **ibm-websphere-extreme-scale** est indépendante de celle des conteneurs que vous utilisez dans {{site.data.keyword.Bluemix_notm}}.
 
-Review the terms of use for IBM certified images in the License section of the [License information documents](http://www-03.ibm.com/software/sla/sladb.nsf/displaylis/A44EE6829150B2998525801700516718?OpenDocument).
+Examinez les conditions d'utilisation des images certifiées IBM dans la section Licence des documents [Informations sur la licence](http://www-03.ibm.com/software/sla/sladb.nsf/displaylis/A44EE6829150B2998525801700516718?OpenDocument).
 
 
-## Getting started 
+## Initiation 
 {: #get_started}
 
-You can either use the console or the command line to deploy the **ibm-websphere-extreme-scale** image.
+Vous pouvez utiliser la console ou la ligne de commande pour déployer l'image **ibm-websphere-extreme-scale**.
 
-This procedure includes the following options for either deploying the image with the console or the command line:
+Cette procédure couvre les options suivantes pour déploiement de l'image depuis la console ou depuis la ligne de commande :
 
--   Select the image from the {{site.data.keyword.Bluemix_notm}} [console](#bmconsole) from the **Catalog**.
--   Use the cf ic command to start the image with the CF [command line](#bmcommand).
+-   Sélectionnez l'image en vous servant de la [console](#bmconsole) {{site.data.keyword.Bluemix_notm}} dans le **catalogue**.
+-   Utilisez la commande cf ic pour lancer l'image depuis la [ligne de commande](#bmcommand) CF.
 
-**Important:** Before you begin, review the usage restrictions as described in the previous section for the **ibm-websphere-extreme-scale** images.
+**Important :** Avant de commencer, passez en revue les restrictions d'utilisation décrites dans la section précédente pour les images **ibm-websphere-extreme-scale**.
 
 
-### Deploy from the {{site.data.keyword.Bluemix_notm}} console.
+### Effectuez un déploiement depuis la console {{site.data.keyword.Bluemix_notm}}.
 {: #bmconsole}
 
-   1.  From the catalog, select **Containers** and choose the **ibm-websphere-extreme-scale** image to start building your container.
-   2.  Select the version of the **ibm-websphere-extreme-scale** image that you want to use from the **TAG/Version** drop-down menu.
-   3.  Create a single container.
+   1.  Dans le catalogue, sélectionnez **Conteneurs** et choisissez l'image **ibm-websphere-extreme-scale** afin de commencer à générer votre conteneur.
+   2.  Sélectionnez dans le menu déroulant **Etiquette/Version** la version de l'image **ibm-websphere-extreme-scale** que vous souhaitez utiliser.
+   3.  Créez un conteneur unique.
 
-        **Note:** If you want to create more than one container, do not use the **Scalable** option to create two or more eXtreme Scale cache member groups. Instead, select the **Single** option to create multiple containers, and use the eXtreme Scale dashboard UI to join cache members.
+        **Remarque :** Si vous souhaitez créer plus d'un conteneur, n'utilisez pas l'option **Evolutif** pour créer au moins deux groupes de membres de cache eXtreme Scale. Sélectionnez à la place l'option **Unique** pour créer plusieurs conteneurs et utilisez l'interface utilisateur du tableau de bord eXtreme Scale pour joindre les membres de cache.
 
-        For more information, see [Creating a single container by using the {{site.data.keyword.Bluemix_notm}} Dashboard](/docs/containers/container_single_ui.html#gui).
+        Pour plus d'informations, voir [Création d'un conteneur unique à l'aide du tableau de bord {{site.data.keyword.Bluemix_notm}}](/docs/containers/container_single_ui.html#gui).
 
-        1.  From the Create a Container panel, specify a **Container name**; for example, `wxs1`. No spaces or other non-printable characters are allowed in the container name.
-        2.  For **Size**, specify the size of the containers used for starting the ibm-eXtreme-scale image.
-        3.  For **Public IP address**, specify Request and Bind Public IP.
-        4.  Open the Advanced Options panel. Create a volume so that the eXtreme Scale configuration data can be persisted when installing a rolling upgrade at a later time; for example:
-            1. Click **Create a volume** from Advanced Options, and specify the **Volume name**. For example, type vol-wxs1.
-            2. Click **Add a new environment variable**. The **ibm-websphere-extreme-scale** image requires environment variables that are stored within the container and accessed by authorized users.
+        1.  Sur le panneau Créer un conteneur, renseignez la zone **Nom de conteneur** ; par exemple, entrez `wxs1`. Aucun espace ou autre caractère non imprimable n'est autorisé dans le nom de conteneur.
+        2.  Pour la zone **Taille**, spécifiez la taille des conteneurs utilisés pour lancer l'image ibm-eXtreme-scale.
+        3.  Pour la zone **Adresse IP publique**, spécifiez Demander et lier une adresse IP publique.
+        4.  Ouvrez le panneau Options avancées. Créez un volume de sorte que les données de configuration eXtreme Scale soient conservées lors de l'installation d'une mise à jour tournante à un moment ultérieur ; par exemple :
+            1. Cliquez sur **Créer un volume** dans Options avancées et renseignez la zone **Nom de volume**. Par exemple, tapez vol-wxs1.
+            2. Cliquez sur **Ajoutez une nouvelle variable d'environnement**. l'image **ibm-websphere-extreme-scale** requiert des variables d'environnement stockées dans le conteneur et accessibles par les utilisateurs autorisés.
             <table>
-            <caption>Table 3. Environment variables for the ibm-websphere-extreme-scale image</caption>
+            <caption>Tableau 3. Variables d'environnement pour l'image ibm-websphere-extreme-scale</caption>
                <tr>
-                 <th>Variable Name</th>
-                 <th>Value to be Specified </th>
+                 <th>Nom de variable</th>
+                 <th>Valeur à spécifier </th>
                </tr>
                <tr>
                  <td>SECRET_KEY</td>
-                 <td>The value of the secret key; for example, <var class="keyword varname">s3cretKey!</var>. This is the secret key used by eXtreme Scale servers to send internal communication across the multiple members in a cache member group. For more information, see the [Cache member group section](http://www.ibm.com/support/knowledgecenter/SSTVLU_8.6.1/com.ibm.websphere.extremescale.doc/txscreategridtut1.html).</td>
+                 <td>Valeur de la clé secrète ; par exemple, <var class="keyword varname">s3cretKey!</var>. Il s'agit de la clé secrète utilisée par les serveurs eXtreme Scale pour envoyer les communications internes entre les membres d'un groupe de membres de cache. Pour plus d'informations, voir la [section sur le groupe de membres de cache](http://www.ibm.com/support/knowledgecenter/SSTVLU_8.6.1/com.ibm.websphere.extremescale.doc/txscreategridtut1.html).</td>
                </tr>
                <tr>
                  <td>XSADMIN_PWD</td>
-                 <td>The password of the xsadmin user that logs on to the eXtremeScale dashboard UI; for example, <var class="keyword varname">xsadmin4Me!</var>.</td>
+                 <td>Mot de passe de l'utilisateur xsadmin qui se connecte à l'interface utilisateur du tableau de bord eXtremeScale ; par exemple, <var class="keyword varname">xsadmin4Me!</var>.</td>
                </tr>
                </table>
   
-              **Note:** You can change the password and secret key after the eXtreme Scale container starts. Both the secret key and password have the following password rules. Be sure to enter them both based on the following rule:
+              **Remarque :** Vous pouvez modifier le mot de passe et la clé secrète après le démarrage du conteneur eXtreme Scale. Les règles d'administration de mot de passe décrites ci-après s'appliquent à la clé secrète et au mot de passe. Prenez soin d'entrer la clé secrète et le mot de passe en respectant la règle suivante :
 
-              The password and secret key must contain at least one number [`0-9`], one uppercase character [`A-Z`], one special character [`~!@#$%^&*()_-+=:;'[]{}|<>,.?/`] and be at least 10 characters.
+              Le mot de passe et la clé secrète doivent comporter au moins un chiffre [`0-9`], un caractère en majuscules [`A-Z`], un caractère spécial [`~!@#$%^&*()_-+=:;'[]{}|<>,.?/`] et être composés d'au moins 10 caractères.
 
-              For more information about how to change the password, see the [Administering documentation](http://www.ibm.com/support/knowledgecenter/SSTVLU_8.6.1/com.ibm.websphere.extremescale.doc/txsadministerxsld.html).
+              Pour plus d'informations sur la modification du mot de passe, voir la [documentation Administration](http://www.ibm.com/support/knowledgecenter/SSTVLU_8.6.1/com.ibm.websphere.extremescale.doc/txsadministerxsld.html).
 
-              The port is added in the **Public Port** field by default.
+              Le port est ajouté dans la zone **Port public** par défaut.
 
-   4.  Click **Create** to create a container from the {{site.data.keyword.Bluemix_notm}} Dashboard.
+   4.  Cliquez sur **Créer** pour créer un conteneur à partir du tableau de bord {{site.data.keyword.Bluemix_notm}}.
     
-   5.  After the container and eXtreme Scale servers are fully started, log on to the eXtreme Scale dashboard UI and verify the deployment. From the {{site.data.keyword.Bluemix_notm}} console, click a container to view the Public IP. The WebSphere eXtreme Scale container can be accessed from the following URL:
+   5.  Après le démarrage complet du conteneur et des serveurs eXtreme Scale, connectez-vous à l'interface graphique d'eXtreme Scale et vérifiez le déploiement. A partir de la console {{site.data.keyword.Bluemix_notm}}, cliquez sur un conteneur pour afficher l'adresse IP publique. Le conteneur WebSphere eXtreme Scale est accessible à partir de l'URL suivante :
 
     ```
     https://<Public_IP>:9443
     ```
     {: pre}
 
-   **Note:** It can take anywhere from 5-10 minutes for the server to completely start.
+   **Remarque :** Il peut s'écouler 5 à 10 minutes avant que le serveur soit complètement démarré.
 
 
-### Deploy the image from the command line.
+### Déployez l'image à partir de la ligne de commande.
 {: #bmcommand}
- 1.  Create a Docker volume to store IBM WebSphere eXtreme Scale persistent data. For example, enter the following command:
+ 1.  Créez un volume Docker dans lequel stocker des données persistantes IBM WebSphere eXtreme Scale. Par exemple, entrez la commande suivante :
 
   ```
   cf ic volume create <vol-wxs1>
   ```
   {: pre}
 
- 2.  Enter the following command to start your IBM WebSphere eXtreme Scale container in {{site.data.keyword.Bluemix_notm}}:
+ 2.  Entrez la commande suivante pour lancer votre conteneur IBM WebSphere eXtreme Scale dans {{site.data.keyword.Bluemix_notm}} :
 
-    **Note:** Replace yourSecretKey and yourXsadminPassword with your own password based on the password rule previously mentioned.
+    **Remarque :** Remplacez yourSecretKey et yourXsadminPassword par votre propre mot de passe basé sur la règle d'administration de mot de passe précédemment mentionnée.
 
    ```
    cf ic run -itdP --volume <vol-wxs1:/vol> --name <wxs1> -m 1024 -e SECRET_KEY=<yourSecretKey> -e XSADMIN_PWD=<yourXsadminPassword> registry.ng.bluemix.net/ibm-websphere-extreme-scale:latest
    ```
    {: pre}
         
-     **Note:** The container name must contain only alphanumeric characters and begin with a letter. Alternatively, you can set <code>-e XSLD_CONTAINER_ALIAS=<wxs1></code> if you require your container name to contain other non-alphanumeric characters.
+     **Remarque :** Le nom de conteneur doit inclure uniquement des caractères alphanumériques et commencer par une lettre. Vous pouvez aussi définir <code>-e XSLD_CONTAINER_ALIAS=<wxs1></code> si votre nom de conteneur doit comporter d'autres caractères non alphanumériques.
 
- 3.  Request a public IP to be used for your first IBM WebSphere eXtreme Scale container. Enter the following command to write the IP address:
+ 3.  Réclamez une adresse IP publique pour son utilisation avec votre premier conteneur IBM WebSphere eXtreme Scale. Entrez la commande suivante pour écrire l'adresse IP :
 
    ```
    cf ic ip request
    ```
    {: pre}
 
- 4.  Enter the following command to bind your WebSphere eXtreme Scale container to the public IP address that you requested:
+ 4.  Entrez la commande suivante pour lier votre conteneur WebSphere eXtreme Scale à l'adresse IP publique que vous avez demandée :
 
    ```
    cf ic ip bind <REQUESTED_IP> wxs1
    ```
    {: pre}
 
- 5.  Enter the following command to verify that the `wxs1` container status is Running:
+ 5.  Entrez la commande suivante pour vérifier que le statut de conteneur `wxs1` est En cours d'exécution :
 
    ```
    cf ic ps -a
    ```
    {: pre}
 
- 6.  Enter the following command to connect to the `wxs1` container and monitor the nanny log:
+ 6.  Entrez la commande suivante pour vous connecter au conteneur `wxs1` et surveiller le journal de contrôle d'accès :
 
    ```
    cf ic exec -it <wxs1> tail -f /opt/ibm/WebSphere/eXtremeScale/wlp/startscripts/nanny/log/nanny.log
         ```
    {: pre}
 
-    **Note:** It can take anywhere from 5-10 minutes for the server to start.
+    **Remarque :** Il peut s'écouler 5 à 10 minutes avant que le serveur soit complètement démarré.
 
- 7.  After the container and eXtreme Scale servers are fully started, log on to the eXtreme Scale dashboard UI and verify the deployment:
+ 7.  Après le démarrage complet du conteneur et des serveurs eXtreme Scale, connectez-vous à l'interface graphique d'eXtreme Scale et vérifiez son déploiement:
 
    ```
    https://<REQUESTED_IP>:9443
@@ -189,30 +191,30 @@ This procedure includes the following options for either deploying the image wit
    {: pre}
 
 
-## Adding caching capacity 
+## Ajout de capacité du cache 
 {: #caching}
 
-1.  Deploy another image from the console or from the command line following the same steps as before.
-2.  After the container and eXtreme Scale servers are fully started, log on to this member’s eXtreme Scale dashboard UI:
+1.  Déployez une autre image à partir de la console ou de la ligne de commande en exécutant les mêmes étapes que celles décrites précédemment.
+2.  Une fois le conteneur et les serveurs eXtreme Scale complètement démarrés, connectez-vous à l'interface utilisateur du tableau de bord eXtreme Scale de ce membre :
 
     ```
     https://<REQUESTED_IP>:9443
     ```
     {: pre}
 
-3.  Open the Data Cache Members page and under the **Action** column of this member select **Join**.
-4.  Enter the first member’s requested public IP, the first member’s secret key, and a unique name for this member in the cache group.
-5.  Click **Join**, and wait for the task to complete. When the task is complete, all members are displayed on the Data Cache Members page.
+3.  Ouvrez la page Data Cache Members et sous la colonne **Action** de ce membre, sélectionnez **Join**.
+4.  Entrez l'adresse IP publique demandée pour le premier membre, la clé secrète du premier membre et un nom unique pour ce membre dans le groupe de caches.
+5.  Cliquez sur **Join** et attendez que la tâche soit exécutée. Lorsque la tâche est terminée, tous les membres s'affichent sur la page Data Cache Members.
 
-## Performing a rolling upgrade 
+## Exécution d'une mise à jour en continu 
 {: #rolling_upgrade}
 
-The following steps are required to perform a rolling upgrade of containers that run `ibm-websphere-extreme-scale` in {{site.data.keyword.containershort_notm}}.
+Les étapes ci-après sont requises pour effectuer une mise à jour en continu des conteneurs qui exécutent `ibm-websphere-extreme-scale` dans {{site.data.keyword.containershort_notm}}.
 
-**Note:** If your eXtreme Scale cache member group only has one member, remove this {{site.data.keyword.IBM_notm}} container, and create it again from scratch. However, if your eXtreme Scale cache member group has more than one member and multiple catalog servers deployed, and you want to keep the cached data in {{site.data.keyword.containershort_notm}}, complete the following rolling upgrade steps to avoid the loss of any cached data. Upgrade cache members that only have container servers first, and then upgrade cache members that also have catalog servers.
+**Remarque :** Si votre groupe de membres de cache eXtreme Scale ne comprend qu'un seul membre, retirez ce conteneur {{site.data.keyword.IBM_notm}} et recréez-le entièrement. Toutefois, si votre groupe de membres de cache eXtreme Scale comprend plus d'un membre et plusieurs serveurs de catalogue déployés et que vous souhaitez conserver les données mises en cache dans {{site.data.keyword.containershort_notm}}, exécutez les étapes de mise à jour en continu décrites ci-après pour éviter toute perte de données mises en cache. Mettez à niveau en premier les membres de cache qui ne contiennent que des serveurs de conteneur, puis mettez à niveau les membres de cache qui comportent également des serveurs de catalogue.
 
-1.  Start a new container called wxsmigrate, and use it for upgrading all existing eXtreme Scale containers. See the [Getting started section](#get_started) on this page for more information. The latest eXtreme Scale update .zip files will be deployed under the /tmp folder on your new wxsmigrate container.
-2.  Copy the updated eXtreme Scale .zip files from the wxsmigrate container to your local system, where you are running the {{site.data.keyword.containershort_notm}} CLI plug-in:
+1.  Démarrez un nouveau conteneur appelé wxsmigrate, et utilisez-le pour mettre à niveau tous les conteneurs eXtreme Scale existants. Pour plus d'informations, reportez-vous à la section [Initiation](#get_started) sur cette page. Les fichiers .zip eXtreme Scale les plus récents seront déployés dans le dossier /tmp de votre nouveau conteneur wxsmigrate.
+2.  Copiez les fichiers .zip eXtreme Scale mis à jour depuis le conteneur wxsmigrate sur le système local où vous exécutez le plug-in d'interface de ligne de commande {{site.data.keyword.containershort_notm}} :
 
     ```
     cf ic cp wxsmigrate:/tmp/xsld-bin-update.zip
@@ -224,9 +226,9 @@ The following steps are required to perform a rolling upgrade of containers that
     ```
     {: pre}
 
-3.  Now, for each cache member within a cache member group, complete the following steps one container at a time:
+3.  A présent, pour chaque membre de cache d'un groupe de membres de cache, suivez la procédure ci-après pour un conteneur à la fois :
 
-    1. Copy the updated eXtreme Scale .zip files from your local system to the eXtreme Scale container that you want to upgrade:
+    1. Copiez les fichiers .zip eXtreme Scale mis à jour depuis le système local sur le conteneur eXtreme Scale que vous souhaitez mettre à niveau :
     
       ```
       cf ic cp  xsld-bin-update.zip  <container_name>:/tmp/xsld-bin-update.zip
@@ -238,23 +240,23 @@ The following steps are required to perform a rolling upgrade of containers that
       ```
       {: pre}
      
-    2. Connect to the container that you want to upgrade: 
+    2. Connectez-vous au conteneur que vous souhaitez mettre à niveau : 
     
       ```
       cf ic exec -it <container_name> bash
       ```
       {: pre}
 
-    3. Stop the XSLD servers on the container that is ready for the upgrade.
+    3. Arrêtez les serveurs XSLD sur le conteneur prêt à être mis à niveau.
       
       ```
       /opt/ibm/WebSphere/eXtremeScale/wxs/stopXSLD.sh
       ```
       {: pre}
       
-      Wait until the servers are stopped.
+      Attendez que les serveurs soient arrêtés.
       
-    4. Unzip the latest eXtreme Scale update code inside the container:
+    4. Décompressez le code de mise à jour eXtreme Scale le plus récent dans le conteneur :
       
       ```
       unzip  -o  /tmp/xsld-bin-update.zip   -d /opt/ibm/WebSphere/eXtremeScale
@@ -266,98 +268,98 @@ The following steps are required to perform a rolling upgrade of containers that
       ```
       {: pre}
     
-    5. Start the XSLD server again:
+    5. Redémarrez le serveur XSLD :
     
       ```
       /opt/ibm/WebSphere/eXtremeScale/wxs/startXSLD.sh
       ```
       {: pre}
       
-    6. Monitor the nanny log to ensure servers are started:
+    6. Surveillez le journal de contrôle d'accès pour vous assurer que les serveurs sont démarrés :
     
       ```
       tail -f /opt/ibm/WebSphere/eXtremeScale/wlp/startscripts/nanny/log/nanny.log
       ```
       {: pre}
       
-4. After the upgrade is complete on all IBM containers, remove the wxsmigrate container:
+4. Une fois la mise à niveau terminée sur tous les conteneurs IBM, retirez le conteneur wxsmigrate :
 
  ```
  cf ic rm -f <wxsmigrate>
  ```
  {: pre}
 
-## Troubleshooting 
+## Identification et résolution des problèmes 
 {: #troubleshoot}
 
-###Troubleshooting cache member connectivity when host mapping is lost 
+###Traitement des incidents liés à la connectivité de membre de cache lorsque le mappage d'hôte est perdu 
 {: #troubleshoot_cache}
 
-Complete the following steps when members of a cache group lose connectivity because of a lost host mapping between containers.
+Procédez comme indiqué ci-après en cas de perte de connectivité pour les membres d'un groupe de cache lorsque le mappage d'hôte entre les conteneurs est perdu.
 
-1.  Connect to each container:
+1.  Connectez-vous à chaque conteneur :
 
     ```
     cf ic exec -it <container_name> bash
     ```
     {: pre}
 
-2.  Gather the private IP, host name, and host alias for each member.
+2.  Rassemblez l'adresse IP privée, le nom d'hôte et l'alias d'hôte pour chaque membre.
 
-    The host alias is the value of the XSLD_CONTAINER_ALIAS environment variable:
+    L'alias d'hôte est la valeur de la variable d'environnement XSLD_CONTAINER_ALIAS :
 
     ```
     echo ${<XSLD_CONTAINER_ALIAS>}
     ```
     {: pre}
 
-    The private IP is the IP address returned from running the hostname -I command inside the container:
+    L'adresse IP privée est celle renvoyée par l'exécution de la commande hostname -I dans le conteneur :
 
     ```
     hostname -I
     ```
     {: pre}
 
-    The host name is the host name returned from running the hostname command inside the container.
+    Le nom d'hôte est celui renvoyé par l'exécution de la commande hostname dans le conteneur.
 
 
-3.  Run the recoverXSLD.sh script on each member passing in all other member aliases, IPs, and host names:
+3.  Exécutez le script recoverXSLD.sh sur chaque membre pour transmettre tous les autres alias, adresses IP et noms d'hôte de membre :
 
     ```
     /opt/ibm/WebSphere/eXtremeScale/wxs/recoverXSLD.sh <member2_alias> <member2_private_ip> <member2_hostname> ... <memberN_alias> <memberN_private_ip> <memberN_hostname>
     ```
     {: pre}
 
-4.  Stop running servers by running stopXSLD.sh on each container in the cache group. Run stopXSLD.sh:
+4.  Arrêtez les serveurs en cours d'exécution en exécutant stopXSLD.sh sur chaque conteneur du groupe de caches. Exécutez stopXSLD.sh :
 
     ```
     /opt/ibm/WebSphere/eXtremeScale/wxs/stopXSLD.sh
     ```
     {: pre}
 
-5.  If stopXSLD.sh does not progress while trying to stop the catalog server, follow the following steps:
-    1.  List the catalog server process:
+5.  Si stopXSLD.sh n'est pas en cours de progression lorsque vous tentez d'arrêter le serveur de catalogue, procédez comme suit :
+    1.  Répertoriez le processus de serveur de catalogue :
 
         ```
         ps -ef | grep cs-default
         ```
         {: pre}
 
-    2.  End the catalog server process using the process ID:
+    2.  Arrêtez le processus de serveur de catalogue à l'aide de l'ID de processus :
 
         ```
         kill -9 <catalog_server_process_id>
         ```
         {: pre}
 
-    3.  Run stopXSLD.sh again:
+    3.  Exécutez de nouveau stopXSLD.sh :
 
         ```
         /opt/ibm/WebSphere/eXtremeScale/wxs/stopXSLD.sh
         ```
         {: pre}
 
-6.  Start XSLD on all containers at around the same time. Run startXSLD.sh:
+6.  Lancement de XSLD sur tous les conteneurs approximativement au même moment. Exécutez startXSLD.sh :
 
     ```
     /opt/ibm/WebSphere/eXtremeScale/wxs/startXSLD.sh
@@ -365,77 +367,78 @@ Complete the following steps when members of a cache group lose connectivity bec
     {: pre}
 
 
-### Troubleshooting a stopped Derby replication task 
+### Traitement des incidents liés à une tâche de réplication Derby arrêtée 
 {: #troubleshoot_derby}
 
-If a Derby replication task has not progressed beyond 45% for more than ten minutes, it is likely due to a network issue. Complete the following steps to troubleshoot the issue:
+Si la progression d'une tâche de réplication Derby n'a pas atteint plus 45 % au bout de plus de dix minutes, il s'agit probablement d'un problème réseau. Procédez comme suit pour résoudre ce problème :
 
-1.  Use a REST POSTing utility, such as cURL, to cancel the derby replication task.
+1.  Utilisez un utilitaire de publication REST, tel que cURL, pour annuler la tâche de réplication Derby.
 
     ```
-    curl -X PUT --header "Content-Type: application/json" --header "Accept: application/json" "https://<PUBLIC_IP>:9445/wxsadmin/v1/task/cancel/<DERBY_REPLICATION_TASK_ID>/force"
+    curl -X PUT --header "Content-Type: application/json" --header "Accept: application/json" "https://<IP_publique>:9445/wxsadmin/v1/task/cancel/<tâche_réplication_Derby>/force"
     ```
     {: pre}
 
-    **Note:** The <PUBLIC_IP> is the one that was used in the command to start the Derby replication task, and the <DERBY_REPLICATION_TASK_ID> is the task ID output from that command.
+    **Remarque :** La variable <PUBLIC_IP> est la même que celle qui a été utilisée dans la commande pour démarrer la tâche de réplication Derby, et la variable <DERBY_REPLICATION_TASK_ID> correspond au résultat d'ID tâche généré par cette commande.
 
-2.  Run the derby replication task again.
+2.  Relancez la tâche de réplication Derby.
 
-## Accessing the REST API 
+## Accès à l'API REST 
 {: #api}
 
-When eXtreme Scale is deployed in {{site.data.keyword.containershort_notm}}, complete the following steps to access the  REST API:
+Lorsque eXtreme Scale est déployé dans {{site.data.keyword.containershort_notm}}, procédez comme suit pour accéder à l'API REST :
 
-1.  Retrieve the host name of the container you plan to use to connect to the REST API.
-    1.  Connect to the container:
+1.  Extrayez le nom d'hôte du conteneur que vous comptez utiliser pour vous connecter à l'API REST.
+    1.  Connectez-vous au conteneur :
 
         ```
         cf ic exec -it <container_name> bash
         ```
         {: pre}
 
-    2.  List the host name:
+    2.  Listez son nom d'hôte :
 
         ```
         hostname
         ```
         {: pre}
 
-2.  Retrieve the public IP of the same container.
+2.  Extrayez l'IP publique de ce même conteneur.
 
-    If the container does not have a public IP, follow the steps in the Getting started section to provide the container a public IP by using the {{site.data.keyword.Bluemix_notm}} [console](#bmconsole) or [command line](#bmcommand).
+    Si le conteneur ne dispose pas d'une adresse IP publique, suivez la procédure de la section Initiation pour lui en attribuer une depuis la [console](#bmconsole) ou la [ligne de commande](#bmcommand) {{site.data.keyword.Bluemix_notm}}.
 
-3.  Create an entry in the hosts file of your local client computer that maps the public IP and the container host name together. The entry looks like:
+3.  Créez dans le fichier hôte de votre ordinateur client local une entrée mappant l'adresse IP publique au nom d'hôte du conteneur. L'entrée doit être similaire à ceci :
 
     ```
     169.44.8.87 instance-05106102
     ```
     {: pre}
 
-    Typical full path names for hosts files are:
+    Noms de chemin usuels complets pour les fichiers hôtes :
 
-    -   For UNIX: /etc/hosts
-    -   For Windows: C:\\Windows\\System32\\drivers\\etc\\hosts
-4.  Access the Swagger REST APIs in a browser.
-    -   For CRUD operations:
-
-        ```
-        https://<host_name>:9444/ibm/api/explorer
-        ```
-        {: pre}
-
-    -   For administrative operations:
+    -   UNIX : /etc/hosts
+    -   Windows : C:\\Windows\\System32\\drivers\\etc\\hosts
+4.  Accédez aux API REST Swagger dans un navigateur.
+    -   Pour opérations CRUD :
 
         ```
-        https://<host_name>:9445/ibm/api/explorer
+        https://<nom_d'hote>:9444/ibm/api/explorer
         ```
         {: pre}
 
+    -   Pour opérations d'administration :
 
-For samples and for recent updates, visit [WebSphere eXtreme Scale in GitHub](https://github.com/ibmWebsphereExtremeScale). Also, see the following supporting documentation and videos for more help with deploying eXtreme Scale:
+        ```
+        https://<nom_d'hôte>:9445/ibm/api/explorer
+        ```
+        {: pre}
 
--   [IBM WebSphere eXtreme Scale documentation](http://www.ibm.com/support/knowledgecenter/SSTVLU_8.6.1/com.ibm.websphere.extremescale.doc/cxsgetstartxsld.html)
--   [XS developerWorks Forum](https://www.ibm.com/developerworks/community/forums/html/forum?id=11111111-0000-0000-0000-000000000778&ps=25)
+
+Pour consulter des exemples et pour obtenir les mises à jour récentes, visitez le site [WebSphere eXtreme
+Scale sur GitHub](https://github.com/ibmWebsphereExtremeScale). Pour obtenir plus d'aide sur le déploiement d'eXtreme Scale, voir la documentation et les vidéos mentionnés ci-dessous :
+
+-   [Documentation IBM WebSphere eXtreme Scale](http://www.ibm.com/support/knowledgecenter/SSTVLU_8.6.1/com.ibm.websphere.extremescale.doc/cxsgetstartxsld.html)
+-   [Forum XS developerWorks](https://www.ibm.com/developerworks/community/forums/html/forum?id=11111111-0000-0000-0000-000000000778&ps=25)
 -   [Getting started with WebSphere eXtreme Scale V8.6.x](https://www.youtube.com/watch?v=xw7Ck3c40rA)
 -   [Adding cache with WebSphere eXtreme Scale - Liberty Deployment](https://www.youtube.com/watch?v=I1g88bnstn8)
 -   [Setting up a WAS client to work with an WebSphere eXtreme Scale Liberty Deployment DynaCache grid](https://www.youtube.com/watch?v=RvhcknNX-4Q)
