@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-06-21"
 
 ---
 
@@ -55,7 +55,7 @@ Review the following tasks to learn how to use **ibmcloud-secure-perimeter-netwo
 4.  [config.json reference](#reference_config_json)
 5.  [rules.conf reference](#reference_rules_conf)
 
-## Provision a Kubernetes cluster within a Secure Perimeter using {{site.data.keyword.containerlong}}
+## Provision a Kubernetes cluster within a Secure Perimeter by using {{site.data.keyword.containerlong_notm}}
 {: #provision_cluster}
 
 1.  Provision your Kubernetes cluster from the **Containers** section in IBM Cloud catalog.
