@@ -76,7 +76,7 @@ Use one of the free **ibmliberty** images from the {{site.data.keyword.Bluemix_n
     -   [Building containers from images](/docs/containers/cs_images.html#images)
     -   [Getting started with IBM Cloud Kubernetes Service](/docs/containers/container_index.html#container_index)
     
-    **Note:** The **ibmliberty** image requires port 9080 to be exposed publicly. When you create a container from the {{site.data.keyword.Bluemix_notm}} Dashboard, the port is added in the **Public Port** field by default. If you create a container from the CLI, expose the port in your `docker run --expose=9080 IMAGE` command.
+    **Note:** The **ibmliberty** image requires port 9080 to be exposed publicly. When you create a container from the {{site.data.keyword.Bluemix_notm}} Dashboard, the port is added in the **Public Port** field by default. If you create a container from the CLI, expose the port in your `docker run` command with `--expose=9080` option.
 
 
 ## Monitoring the Java heap space usage for a container with the CLI 
@@ -101,7 +101,9 @@ After you create a container from the **ibmliberty** image, you can list all run
     ```
     {: screen}
 
-2.  Review the Java heap usage in the **RSS** column. The Java heap usage is displayed in kilobytes. If your heap usage is under 2097152 kilobytes (2GB) across all instances, then you do not have to purchase a WebSphere Application Server license.
+2.  To review the Java heap usage, you need to access the **RSS** memory stat. Review [Runtime metrics](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) on how to do that.
+The Java heap usage is displayed in kilobytes. If your heap usage is under 2097152 kilobytes (2GB) across all instances, then you do not have to purchase a WebSphere Application Server license.
+
 3.  Adjust the maximum heap usage for your WebSphere Application Server instance. See [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) for more information.
 
 ## Getting a WebSphere Application Server license 
