@@ -100,6 +100,8 @@ After you create a container from the **ibmliberty** image, you can list all run
     4772       root       0:35   /opt/ibm/java/jre/bin/java -javaagent:/opt/ibm/wlp/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -jar /opt/ibm/wlp/bin/tools/ws-server.jar defaultServer 
     ```
     {: screen}
+    
+    For more container statistics, run `docker stats CONTAINER`.
 
 2.  To review the Java heap usage, you need to access the **RSS** memory stat. Review [Runtime metrics](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) on how to do that.
 The Java heap usage is displayed in kilobytes. If your heap usage is under 2097152 kilobytes (2GB) across all instances, then you do not have to purchase a WebSphere Application Server license.
