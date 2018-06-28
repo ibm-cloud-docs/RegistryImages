@@ -71,39 +71,30 @@ Use one of the free **ibmliberty** images from the {{site.data.keyword.Bluemix_n
 
 1.  From the catalog, select **Containers** --> **IBM Cloud Container Registry** --> **IBM Public Respositories** on the side panel. Search for the **ibmliberty** image to build your container from. If you created your own production-licensed image and deployed it to {{site.data.keyword.Bluemix_notm}}, select this image from the catalog. The container creation page opens.
 2.  Select the version of the **ibmliberty** image that you want to use from the **TAG/ VERSION** drop down box.
-3.  For more information on building containers from images and setting up clusters, follow links below.
+3.  For more information on building containers from images, setting up clusters, and deploying apps in clusters, follow links below.
 
     -   [Building containers from images](/docs/containers/cs_images.html#images)
     -   [Getting started with IBM Cloud Kubernetes Service](/docs/containers/container_index.html#container_index)
+    -   [Deploying apps in clusters](docs/containers/cs_app.html#app)
     
-    **Note:** The **ibmliberty** image requires port 9080 to be exposed publicly. When you create a container from the {{site.data.keyword.Bluemix_notm}} Dashboard, the port is added in the **Public Port** field by default. If you create a container from the CLI, expose the port in your `docker run` command with `--expose=9080` option.
+    **Note:** The **ibmliberty** image requires port 9080 to be exposed publicly. When you create a container from the {{site.data.keyword.Bluemix_notm}} Dashboard, the port is added in the **Public Port** field by default. If you create a container from the CLI, expose the port in your `kubectl run` command with `--port=9080` option.
 
 
 ## Monitoring the Java heap space usage for a container with the CLI 
 {: #monitor_heap}
 
 
-After you create a container from the **ibmliberty** image, you can list all running processes and review the Java heap usage. The Java heap space is the memory that is available to the Java application during runtime.
+After you create a container from the **ibmliberty** image, you can view metrics on a particular pod and its containers and review the Java heap usage. The Java heap space is the memory that is available to the Java application during runtime.
 {:shortdesc}
 
-1.  List all running processes inside the container.
+1.  See metrics on a particular pod and its containers
 
     ```
-    docker top CONTAINER [ps OPTIONS]
+    kubectl top pod POD_NAME --containers
     ```
     {: pre}
 
-    Your CLI output looks as follows.
-
-    ```    
-    PID        USER       TIME   COMMAND
-    4772       root       0:35   /opt/ibm/java/jre/bin/java -javaagent:/opt/ibm/wlp/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -jar /opt/ibm/wlp/bin/tools/ws-server.jar defaultServer 
-    ```
-    {: screen}
-    
-    For more container statistics, run `docker stats CONTAINER`.
-
-2.  To review the Java heap usage, you need to access the **RSS** memory stat. Review [Runtime metrics](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) on how to do that.
+2.  To review the Java heap usage, you need to access the **RSS** memory stat. Follow the guidelines on how to access a shell of a container [here](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) and then review [Runtime metrics](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) on how to find and format memory stat information for a container.
 The Java heap usage is displayed in kilobytes. If your heap usage is under 2097152 kilobytes (2GB) across all instances, then you do not have to purchase a WebSphere Application Server license.
 
 3.  Adjust the maximum heap usage for your WebSphere Application Server instance. See [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) for more information.
