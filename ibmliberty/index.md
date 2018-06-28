@@ -39,6 +39,7 @@ The specific Liberty features that are installed in the image depend on the tag 
 |---|-----------|
 |All **ibmliberty** images|All **ibmliberty** images include the following features. <ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |**ibmliberty:latest**|This image points to the **ibmliberty:javaee7** image.|
+|**ibmliberty:microProfile**|This image contains the features that provide the capabilities specified by [MicroProfile](https://microprofile.io).|
 |**ibmliberty:webProfile6**|This image includes all features that are required for Java EE6 Web Profile compliance. It also pulls in additional features to bring the contents in to line with the features available for download by using the runtime JAR from [http://wasdev.net/](http://wasdev.net/), most notably the features that are required for OSGi applications.|
 |**ibmliberty:webProfile7**|This image includes all features required for Java EE7 Web Profile compliance.|
 |**ibmliberty:javaee7**|This image includes all features from the **ibmliberty:webProfile7** image, plus features that are required for Java EE7 Full Platform compliance.|
