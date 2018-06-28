@@ -70,7 +70,7 @@ Use one of the free **ibmliberty** images from the {{site.data.keyword.Bluemix_n
 
 **Important:** Before you begin, review the [usage restrictions](#usage) for the **ibmliberty** images.
 
-1.  From the catalog, select **Containers** --> **IBM Cloud Container Registry** --> **IBM Public Respositories** on the side panel. Search for the **ibmliberty** image to build your container from. If you created your own production-licensed image and deployed it to {{site.data.keyword.Bluemix_notm}}, select this image from the catalog. The container creation page opens.
+1.  From the catalog, select **Containers** > **IBM Cloud Container Registry** > **IBM Public Repositories** on the side panel. Search for the **ibmliberty** image to build your container from. If you created your own production-licensed image and deployed it to {{site.data.keyword.Bluemix_notm}}, select this image from the catalog. The container creation page opens.
 2.  Select the version of the **ibmliberty** image that you want to use from the **TAG/ VERSION** drop down box.
 3.  For more information on building containers from images, setting up clusters, and deploying apps in clusters, follow links below.
 
@@ -88,17 +88,23 @@ Use one of the free **ibmliberty** images from the {{site.data.keyword.Bluemix_n
 After you create a container from the **ibmliberty** image, you can view metrics on a particular pod and its containers and review the Java heap usage. The Java heap space is the memory that is available to the Java application during runtime.
 {:shortdesc}
 
-1.  See metrics on a particular pod and its containers
+1.  Get the name of the pod that you want to view metrics for.
+  
+    ```
+    kubectl get pods
+    ```
+
+2.  See metrics on a particular pod and its containers
 
     ```
     kubectl top pod POD_NAME --containers
     ```
     {: pre}
 
-2.  To review the Java heap usage, you need to access the **RSS** memory stat. Follow the guidelines on how to access a shell of a container [here](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) and then review [Runtime metrics](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) on how to find and format memory stat information for a container.
+3.  To review the Java heap usage, you need to access the **RSS** memory stat. Follow the guidelines on how to access a shell of a container [here](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) and then review [Runtime metrics](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) on how to find and format memory stat information for a container.
 The Java heap usage is displayed in kilobytes. If your heap usage is under 2097152 kilobytes (2GB) across all instances, then you do not have to purchase a WebSphere Application Server license.
 
-3.  Adjust the maximum heap usage for your WebSphere Application Server instance. See [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) for more information.
+4.  Adjust the maximum heap usage for your WebSphere Application Server instance. See [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) for more information.
 
 ## Getting a WebSphere Application Server license 
 {: #license}
