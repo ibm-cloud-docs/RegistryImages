@@ -39,6 +39,7 @@ The specific Liberty features that are installed in the image depend on the tag 
 |---|-----------|
 |All **ibmliberty** images|All **ibmliberty** images include the following features. <ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |**ibmliberty:latest**|This image points to the **ibmliberty:javaee7** image.|
+|**ibmliberty:microProfile**|This image contains the features that provide the capabilities specified by [MicroProfile](https://microprofile.io).|
 |**ibmliberty:webProfile6**|This image includes all features that are required for Java EE6 Web Profile compliance. It also pulls in additional features to bring the contents in to line with the features available for download by using the runtime JAR from [http://wasdev.net/](http://wasdev.net/), most notably the features that are required for OSGi applications.|
 |**ibmliberty:webProfile7**|This image includes all features required for Java EE7 Web Profile compliance.|
 |**ibmliberty:javaee7**|This image includes all features from the **ibmliberty:webProfile7** image, plus features that are required for Java EE7 Full Platform compliance.|
@@ -69,40 +70,41 @@ Use one of the free **ibmliberty** images from the {{site.data.keyword.Bluemix_n
 
 **Important:** Before you begin, review the [usage restrictions](#usage) for the **ibmliberty** images.
 
-1.  From the catalog, select **Containers** and choose the **ibmliberty** image to build your container from. If you created your own production-licensed image and deployed it to {{site.data.keyword.Bluemix_notm}}, select this image from the catalog. The container creation page opens.
+1.  From the catalog, select **Containers** > **IBM Cloud Container Registry** > **IBM Public Repositories** on the side panel. Search for the **ibmliberty** image to build your container from. If you created your own production-licensed image and deployed it to {{site.data.keyword.Bluemix_notm}}, select this image from the catalog. The container creation page opens.
 2.  Select the version of the **ibmliberty** image that you want to use from the **TAG/ VERSION** drop down box.
-3.  Choose whether to create a single container or a scalable container group. Refer to the following topics for more information about how to create containers.
+3.  For more information on building containers from images, setting up clusters, and deploying apps in clusters, follow links below.
 
-    -   [Creating a single container by using the {{site.data.keyword.Bluemix_notm}} Dashboard](/docs/containers/container_single_ui.html#gui)
-    -   [Creating a container group by using the {{site.data.keyword.Bluemix_notm}} Dashboard](/docs/containers/container_ha.html#container_group_ui)
+    -   [Building containers from images](/docs/containers/cs_images.html#images)
+    -   [Getting started with IBM Cloud Kubernetes Service](/docs/containers/container_index.html#container_index)
+    -   [Deploying apps in clusters](docs/containers/cs_app.html#app)
     
-    **Note:** The **ibmliberty** image requires port 9080 to be exposed publicly. When you create a container from the {{site.data.keyword.Bluemix_notm}} Dashboard, the port is added in the **Public Port** field by default. If you create a container from the CLI, expose the port in your `bx ic run` command.
+    **Note:** The **ibmliberty** image requires port 9080 to be exposed publicly. When you create a container from the {{site.data.keyword.Bluemix_notm}} Dashboard, the port is added in the **Public Port** field by default. If you create a container from the CLI, expose the port in your `kubectl run` command with `--port=9080` option.
 
 
 ## Monitoring the Java heap space usage for a container with the CLI 
 {: #monitor_heap}
 
 
-After you create a container from the **ibmliberty** image, you can list all running processes and review the Java heap usage. The Java heap space is the memory that is available to the Java application during runtime.
+After you create a container from the **ibmliberty** image, you can view metrics on a particular pod and its containers and review the Java heap usage. The Java heap space is the memory that is available to the Java application during runtime.
 {:shortdesc}
 
-1.  List all running processes inside the container.
+1.  Get the name of the pod that you want to view metrics for.
+  
+    ```
+    kubectl get pods
+    ```
+
+2.  See metrics on a particular pod and its containers
 
     ```
-    bx ic top CONTAINER -aux
+    kubectl top pod POD_NAME --containers
     ```
     {: pre}
 
-    Your CLI output looks as follows.
+3.  To review the Java heap usage, you need to access the **RSS** memory stat. Follow the guidelines on how to access a shell of a container [here](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) and then review [Runtime metrics](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) on how to find and format memory stat information for a container.
+The Java heap usage is displayed in kilobytes. If your heap usage is under 2097152 kilobytes (2GB) across all instances, then you do not have to purchase a WebSphere Application Server license.
 
-    ```    
-    USER        PID       %CPU   %MEM    VSZ         RSS        TTY     STAT   START    TIME   COMMAND
-    contain+    3322245   3.2    0.0     11522856    216192     ?       Ssl    14:43    0:35   /opt/ibm/java/jre/bin/java -javaagent:/opt/ibm/wlp/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -jar /opt/ibm/wlp/bin/tools/ws-server.jar defaultServer 
-    ```
-    {: screen}
-
-2.  Review the Java heap usage in the **RSS** column. The Java heap usage is displayed in kilobytes. If your heap usage is under 2097152 kilobytes (2GB) across all instances, then you do not have to purchase a WebSphere Application Server license.
-3.  Adjust the maximum heap usage for your WebSphere Application Server instance. See [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) for more information.
+4.  Adjust the maximum heap usage for your WebSphere Application Server instance. See [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) for more information.
 
 ## Getting a WebSphere Application Server license 
 {: #license}
