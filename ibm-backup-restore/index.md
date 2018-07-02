@@ -73,7 +73,7 @@ Create and configure an {{site.data.keyword.cos_full_notm}} service instance to 
    3. Make note of the public URL that you can use to access the data in your bucket. 
 
 
-Review the [{{site.data.keyword.cos_full_notm}}](/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) documentation for more information on configuring your service instance.
+Review the [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) documentation for more information on configuring your service instance.
 
 ## Backing up data from a persistent volume
 {: #scheduled_backup}
@@ -331,7 +331,7 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV:
     ```
     {: pre}
 
-You successfully restored your backup. You can now mount the PVC that binds the PV to any other pod in your cluster to access the restored files. If the container data that was backed up included a non-root user, you must add non-root permissions to your new container. For more information, see [Adding non-root user access to volumes](/docs/containers/container_volumes_ov.html#container_volumes_write).
+You successfully restored your backup. You can now mount the PVC that binds the PV to any other pod in your cluster to access the restored files. If the container data that was backed up included a non-root user, you must add non-root permissions to your new container. For more information, see [Adding non-root user access to volumes](/docs/containers/cs_troubleshoot_storage.html#cs_storage_nonroot).
 
 ## Encrypting your backups 
 {: #encrypting_backups}
