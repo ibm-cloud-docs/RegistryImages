@@ -109,7 +109,7 @@ To back up an existing PV:
      name: backuppod
    spec:
      containers:
-     - image: registry.<region>.bluemix.net/ibm-backup-restore
+     - image: registry.bluemix.net/ibm-backup-restore
        name: backupcontainer
        env:
        - name: OBJECTSTORAGE
@@ -236,7 +236,7 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV:
      name: restorepod
    spec:
      containers:
-     - image: registry.<region>.bluemix.net/ibm-backup-restore 
+     - image: registry.bluemix.net/ibm-backup-restore 
        name: restorecontainer
        env:
        - name: OBJECTSTORAGE
@@ -397,7 +397,7 @@ Encrypt the data in your {{site.data.keyword.cos_full_notm}} instance.
       name: backuppod
     spec:
       containers:
-      - image: registry.<region>.bluemix.net/ibm-backup-restore
+      - image: registry.bluemix.net/ibm-backup-restore
         name: backupcontainer
         env:
         - name: OBJECTSTORAGE
