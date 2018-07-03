@@ -102,7 +102,7 @@ To back up an existing PV:
 2. Create a backup pod from the **ibm-backup-restore** image. To access the data in the PV, you must mount the PVC that binds the PV to your backup pod. The following example creates a backup pod that runs a daily incremental backup. To create a backup with different settings, review a full list of [environment variable options](#reference_backup_restore).</br>
    **Important:** The **ibm-backup-restore** image must be deployed in a single pod and cannot be used as part of a Kubernetes deployment.
    
-   To view the image, target the global registry by running `bx cr region-set global`. Then, run `bx cr images --include-ibm` to list IBM public images. 
+   To view the image, target the global registry by running the `bx cr region-set global` command. Then, run `bx cr images --include-ibm` to list IBM public images. 
    {: tip}
   
    ```
