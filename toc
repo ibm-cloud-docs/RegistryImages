@@ -18,6 +18,7 @@ IBM public container images
     
     {: .navgroup id="howto"}
     ibm-backup-restore/index.md
+    ibm-cluster-autoscaler/index.md
     ibmcloud-secure-perimeter-health/index.md
     ibmcloud-secure-perimeter-network/index.md
     ibm-integration-bus/index.md
