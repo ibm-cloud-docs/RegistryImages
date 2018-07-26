@@ -2,9 +2,9 @@
 
 copyright:
 
-  years: 2014, 2017
+  years: 2014, 2018
 
-lastupdated: "2018-05-30"
+lastupdated: "2018-07-26"
 
 ---
 
@@ -39,6 +39,14 @@ href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-health/index.html"
 <p class="runtimeLink"><a format="html"
 href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-network/index.html" scope="peer"
  title="You can use the ibmcloud-secure-perimeter-network image to apply Vyatta configuration for a Secure Perimeter Segment.">VIEW DOCS</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="You can use the iccs-cluster-autoscaler image to automatically scale your Kubernetes clusters on {{site.data.keyword.Bluemix_notm}} based on policies that you configure."></p>
+<p class="runtimeTitle">iccs-cluster-autoscaler<br /> <br /></p>
+<p class="runtimeLink"><a format="html"
+href="/docs/services/RegistryImages/ibm-cluster-autoscaler/index.html" scope="peer"
+ title="You can use the iccs-cluster-autoscaler image to automatically scale your Kubernetes clusters on {{site.data.keyword.Bluemix_notm}} based on policies that you configure.">VIEW DOCS</a></p>
 </li>
 
 <li>
