@@ -157,7 +157,7 @@ To back up an existing PV:
      <td>The access key ID that you retrieved as part of your {{site.data.keyword.cos_full_notm}} service instance credentials.</td>
      </tr>
      <tr>
-     <td><code>&lt;secret_access_key&gt;</em></code></td>
+     <td><code>&lt;secret_access_key&gt;</code></td>
      <td>The secret access key that you retrieved as part of your {{site.data.keyword.cos_full_notm}} service instance credentials.</td>
      </tr>
      <tr>
@@ -278,7 +278,7 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV:
      <td>The access key ID that you retrieved as part of your {{site.data.keyword.cos_full_notm}} service instance credentials.</td>
      </tr>
      <tr>
-     <td><code>&lt;secret_access_key&gt;</em></code></td>
+     <td><code>&lt;secret_access_key&gt;</code></td>
      <td>The secret access key that you retrieved as part of your {{site.data.keyword.cos_full_notm}} service instance credentials.</td>
      </tr>
      <tr>
