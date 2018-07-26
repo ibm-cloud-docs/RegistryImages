@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-21"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -155,7 +155,7 @@ In order for **ibmcloud-secure-perimeter-network** image to manage subnets on yo
       spec:
         containers:
         - name: network-pod
-          image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
+          image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
           volumeMounts:
           - name: network-vol
             mountPath: /opt/secure-perimeter
