@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-10-30"
+  years: 2017, 2018
+lastupdated: "2018-07-25"
 
 ---
 
@@ -146,7 +146,7 @@ To create an image with your app code from the **ibmliberty** image:
 1. With a text editor, create a file that is named Dockerfile and copy the following information into it.
 
     ```
-    FROM registry.{{site.data.keyword.domainname}}/ibmliberty:<tag>
+    FROM registry.bluemix.net/ibmliberty:<tag>
     COPY <app_name>.<file_extension> /config/dropins/
     
     ```
