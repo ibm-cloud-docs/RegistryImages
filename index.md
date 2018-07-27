@@ -42,14 +42,6 @@ href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-network/index.html
 </li>
 
 <li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="You can use the iccs-cluster-autoscaler image to automatically scale your Kubernetes clusters on {{site.data.keyword.Bluemix_notm}} based on policies that you configure."></p>
-<p class="runtimeTitle">iccs-cluster-autoscaler<br /> <br /></p>
-<p class="runtimeLink"><a format="html"
-href="/docs/services/RegistryImages/ibm-cluster-autoscaler/index.html" scope="peer"
- title="You can use the iccs-cluster-autoscaler image to automatically scale your Kubernetes clusters on {{site.data.keyword.Bluemix_notm}} based on policies that you configure.">VIEW DOCS</a></p>
-</li>
-
-<li>
 <p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="After you create an integration solution, you can use the ibm-integration-bus image to provision a single container in {{site.data.keyword.Bluemix_notm}}. You can then deploy your integration solution into this container by using the web UI or from a terminal."></p>
 <p class="runtimeTitle">ibm-integration-bus<br /> <br /></p>
 <p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-integration-bus/index.html" scope="peer" title="After you create an integration solution, you can use the ibm-integration-bus image to provision a single container in {{site.data.keyword.Bluemix_notm}}. You can then deploy your integration solution into this container by using the web UI or from a terminal.">VIEW DOCS</a></p>
