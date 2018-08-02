@@ -15,4 +15,4 @@ lastupdated: "2018-08-01"
 
 The `ibm-mq` image is no longer available.
 
-Review other [IBM public images](docs/services/RegistryImages/index.html#ibm_images).
+Review other [IBM public images](../index.html).
