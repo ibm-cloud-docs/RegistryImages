@@ -72,8 +72,7 @@ Create and configure an {{site.data.keyword.cos_full_notm}} service instance to 
    2. In the navigation on the service details page, click **Buckets** > **Configuration**. 
    3. Make note of the public URL that you can use to access the data in your bucket. 
 
-
-Review the [{{site.data.keyword.cos_full_notm}}](/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) documentation for more information on configuring your service instance.
+Review the [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) documentation for more information on configuring your service instance.
 
 ## Backing up data from a persistent volume
 {: #scheduled_backup}
@@ -89,7 +88,7 @@ Before you begin:
 -   Install the required [CLIs](/docs/containers/cs_cli_install.html#cs_cli_install) to create and work with your cluster.
 -   [Create a standard cluster](/docs/containers/cs_clusters.html#clusters_cli) or use an existing one.
 -   [Target your CLI to your cluster](/docs/containers/cs_cli_install.html#cs_cli_configure).
--   [Create a persistent volume claim (PVC) and mount it to your app deployment](/docs/containers/cs_storage.html#create).
+-   Create a persistent volume claim (PVC) for you [file storage](/docs/containers/cs_storage_file.html#add_file) or [block storage](/docs/containers/cs_storage_block.html#add_block) and mount it to your app deployment.
 
 To back up an existing PV: 
 
@@ -334,7 +333,7 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV:
     ```
     {: pre}
 
-You successfully restored your backup. You can now mount the PVC that binds the PV to any other pod in your cluster to access the restored files. If the container data that was backed up included a non-root user, you must add non-root permissions to your new container. For more information, see [Adding non-root user access to volumes](../../../containers/container_volumes_ov.html#container_volumes_write).
+You successfully restored your backup. You can now mount the PVC that binds the PV to any other pod in your cluster to access the restored files. If the container data that was backed up included a non-root user, you must add non-root permissions to your new container. For more information, see [Adding non-root user access to volumes](/docs/containers/cs_troubleshoot_storage.html#cs_storage_nonroot).
 
 ## Encrypting your backups 
 {: #encrypting_backups}
