@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -55,7 +55,7 @@ Passez en revue les tâches suivantes pour apprendre à utiliser **ibmcloud-secu
 4.  [Référence config.json](#reference_config_json)
 5.  [Référence rules.conf](#reference_rules_conf)
 
-## Mettre à disposition un cluster Kubernetes dans un périmètre sécurisé via {{site.data.keyword.containerlong}}
+## Mettre à disposition un cluster Kubernetes dans un périmètre sécurisé via {{site.data.keyword.containerlong_notm}}
 {: #provision_cluster}
 
 1.  Mettez votre cluster Kubernetes à disposition depuis la section **Conteneurs** du catalogue IBM Cloud.
@@ -117,7 +117,6 @@ Consultez la documentation [{{site.data.keyword.containerlong}}](../../../contai
 Pour que l'image **ibmcloud-secure-perimeter-network** puisse gérer des sous-réseaux dans votre périmètre sécurisé, vous pouvez l'exécuter en tant que processus de longue durée à l'aide d'un pod Kubernetes. **ibmcloud-secure-perimeter-network** comporte plusieurs dossiers et fichiers de configuration qui doivent être copiés sur le pod pour le configurer pour Vyatta :
 
 1. Créez un fichier nommé _pvc.yaml_. Ce fichier de configuration crée une réclamation de volume persistant (pvc) que vous pouvez monter sur votre pod en tant que volume.
-    
 
   ```
   apiVersion: v1
@@ -156,7 +155,7 @@ Pour que l'image **ibmcloud-secure-perimeter-network** puisse gérer des sous-r�
       spec:
         containers:
         - name: network-pod
-          image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
+          image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
           volumeMounts:
           - name: network-vol
             mountPath: /opt/secure-perimeter

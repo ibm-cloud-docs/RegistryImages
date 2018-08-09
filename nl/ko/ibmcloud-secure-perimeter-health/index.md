@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -79,7 +79,7 @@ sp-gateway-8a9031ab:
 6.  [환경 변수 참조](#reference_env_var)
 
 
-## {{site.data.keyword.containerlong}}를 사용하여 보안 경계 내에서 Kubernetes 클러스터 프로비저닝
+## {{site.data.keyword.containerlong_notm}}를 사용하여 보안 경계 내에서 Kubernetes 클러스터 프로비저닝
 {: #provision_cluster}
 
 1.  IBM Cloud 카탈로그의 **컨테이너** 섹션에서 Kubernetes 클러스터를 프로비저닝하십시오.
@@ -103,7 +103,7 @@ sp-gateway-8a9031ab:
 1. 구성 파일 _health-pod.yaml_을 작성하십시오. 이 파일은 컨테이너 팟(Pod)의 고가용성 배치를 작성합니다.
 
     ```
-    apiVersion: extensions/v1beta1
+apiVersion: extensions/v1beta1
     kind: Deployment
     metadata:
       name: health-pod
@@ -117,7 +117,7 @@ sp-gateway-8a9031ab:
         spec:
           containers:
           - name: health-pod
-            image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
+            image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
             args:
             - /usr/local/bin/python
             - /run.py
@@ -138,19 +138,19 @@ sp-gateway-8a9031ab:
 2. 배치를 작성하십시오.
 
     ```
-    kubectl apply -f health-pod.yaml
+kubectl apply -f health-pod.yaml
     ```
     {: pre}
 
 3. 팟(Pod)이 실행 중인지 확인하십시오.
 
     ```
-        kubectl get pods
+    kubectl get pods
     ```
     {: pre}
 
     ```
-    NAME                                    READY     STATUS    RESTARTS   AGE
+NAME                                    READY     STATUS    RESTARTS   AGE
     health-pod-<random-id>                  1/1       Running   0          1hr
     ```
     {: screen}
@@ -167,7 +167,7 @@ sp-gateway-8a9031ab:
 1. 다음과 같이 고유 워크스테이션에서 Docker 컨테이너 작성:
 
     ```
-    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
+    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
     ```
     {: pre}
 

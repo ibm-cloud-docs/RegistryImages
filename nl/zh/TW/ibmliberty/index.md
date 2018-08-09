@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-10-30"
+  years: 2017, 2018
+lastupdated: "2018-07-25"
 
 ---
 
@@ -39,6 +39,7 @@ IBM® WebSphere® Application Server Liberty (**ibmliberty**) 映像檔是提供
 |---|-----------|
 |所有 **ibmliberty** 映像檔|所有 **ibmliberty** 映像檔包含下列特性。<ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |**ibmliberty:latest**|此映像檔指向 **ibmliberty:javaee7** 映像檔。|
+|**ibmliberty:microProfile**|此映像檔包含提供 [MicroProfile](https://microprofile.io) 指定功能的特性。|
 |**ibmliberty:webProfile6**|此映像檔包含「Java EE6 Web 設定檔」相符性所需的一切特性。它也會取回其他特性，使內容與可以使用運行環境 JAR 從 [http://wasdev.net/](http://wasdev.net/) 下載之特性保持一致，最值得注意的是 OSGi 應用程式所需的特性。|
 |**ibmliberty:webProfile7**|此映像檔包含「Java EE7 Web 設定檔」相符性所需的一切特性。|
 |**ibmliberty:javaee7**|此映像檔包含來自 **ibmliberty:webProfile7** 映像檔的所有特性，加上「Java EE7 完整平台」相符性所需的特性。|
@@ -69,40 +70,40 @@ IBM® WebSphere® Application Server Liberty (**ibmliberty**) 映像檔是提供
 
 **重要事項：**開始之前，請檢閱 **ibmliberty** 映像檔的[使用限制](#usage)。
 
-1.  從型錄中，選取**容器**，然後選擇用來建置容器的 **ibmliberty** 映像檔。如果您已自行建立正式作業授權映像檔，並將它部署至 {{site.data.keyword.Bluemix_notm}}，請從型錄中選取此映像檔。即會開啟建立容器頁面。
+1.  從型錄選取側邊畫面上的**容器** > **IBM Cloud Container Registry** > **IBM 公用儲存庫**。搜尋 **ibmliberty** 映像檔，以用來建置容器。如果您已自行建立正式作業授權映像檔，並將它部署至 {{site.data.keyword.Bluemix_notm}}，請從型錄中選取此映像檔。即會開啟建立容器頁面。
 2.  從**標籤/版本**下拉方框中，選取您要使用的 **ibmliberty** 映像檔的版本。
-3.  選擇要建立單一容器還是可擴充容器群組。如需如何建立容器的相關資訊，請參閱下列主題。
+3.  如需從映像檔建置容器、設定叢集以及在叢集裡部署應用程式的相關資訊，請遵循底下的鏈結。
 
-    -   [使用 {{site.data.keyword.Bluemix_notm}} 儀表板建立單一容器](/docs/containers/container_single_ui.html#gui)
-    -   [使用 {{site.data.keyword.Bluemix_notm}} 儀表板建立容器群組](/docs/containers/container_ha.html#container_group_ui)
+    -   [從映像檔建置容器](/docs/containers/cs_images.html#images)
+    -   [開始使用 IBM Cloud Kubernetes Service](/docs/containers/container_index.html#container_index)
+    -   [在叢集中部署應用程式](docs/containers/cs_app.html#app)
     
-    **附註：****ibmliberty** 映像檔需要公開埠 9080。從「{{site.data.keyword.Bluemix_notm}} 儀表板」中建立容器時，預設會在**公用埠**欄位中新增埠。如果從 CLI 建立容器，請在 `bx ic run` 指令中公開埠。
+    **附註：****ibmliberty** 映像檔需要公開埠 9080。從「{{site.data.keyword.Bluemix_notm}} 儀表板」中建立容器時，預設會在**公用埠**欄位中新增埠。如果從 CLI 建立容器，請在 `kubectl run` 指令中以 `--port=9080` 選項公開埠。
 
 
 ## 使用 CLI 監視容器的 Java 資料堆空間用量 
 {: #monitor_heap}
 
 
-從 **ibmliberty** 映像檔中建立容器之後，即可列出所有執行中的處理程序，以及檢閱 Java 資料堆用量。Java 資料堆空間是在執行時可供 Java 應用程式使用的記憶體。
+從 **ibmliberty** 映像檔中建立容器之後，即可檢視特定 Pod 及其容器的度量值，以及檢閱 Java 資料堆用量。Java 資料堆空間是在執行時可供 Java 應用程式使用的記憶體。
 {:shortdesc}
 
-1.  列出容器內的所有執行中處理程序。
+1.  取得您要檢視其度量值的 Pod 名稱。
+  
+    ```
+    kubectl get pods
+    ```
+
+2.  查看特定 Pod 及其容器的度量值
 
     ```
-        bx ic top CONTAINER -aux
+    kubectl top pod POD_NAME --containers
     ```
     {: pre}
 
-    您的 CLI 輸出看起來如下。
+3.  若要檢閱 Java 資料堆使用情形，您需要存取 **RSS** 記憶體統計資料。請遵循[這裡](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)的容器 Shell 存取準則，然後檢閱[運行環境度量值](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io)，以瞭解如何尋找和格式化容器的記憶體統計資訊。Java 資料堆用量會以 KB 為單位來顯示。如果所有實例的資料堆用量低於 2097152 KB (2GB)，則不需要購買 WebSphere Application Server 授權。
 
-    ```    
-    USER        PID       %CPU   %MEM    VSZ         RSS        TTY     STAT   START    TIME   COMMAND
-    contain+    3322245   3.2    0.0     11522856    216192     ?       Ssl    14:43    0:35   /opt/ibm/java/jre/bin/java -javaagent:/opt/ibm/wlp/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -jar /opt/ibm/wlp/bin/tools/ws-server.jar defaultServer
-    ```
-    {: screen}
-
-2.  在 **RSS** 直欄中檢閱 Java 資料堆用量。Java 資料堆用量會以 KB 為單位來顯示。如果所有實例的資料堆用量低於 2097152 KB (2GB)，則不需要購買 WebSphere Application Server 授權。
-3.  調整 WebSphere Application Server 實例的資料堆用量上限。如需相關資訊，請參閱[在 WebSphere Application Server 8.5 版 Liberty 設定檔中設定通用 JVM 引數](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)。
+4.  調整 WebSphere Application Server 實例的資料堆用量上限。如需相關資訊，請參閱[在 WebSphere Application Server 8.5 版 Liberty 設定檔中設定通用 JVM 引數](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)。
 
 ## 取得 WebSphere Application Server 授權 
 {: #license}
@@ -144,10 +145,8 @@ WebSphere Application Server 授權是根據所需的「處理器價值單位 (P
 1. 使用文字編輯器，建立名為 Dockerfile 的檔案，並將下列資訊複製到其中：
 
     ```
-    FROM registry.{{site.data.keyword.domainname}}/ibmliberty:<tag>
+    FROM registry.bluemix.net/ibmliberty:<tag>
     COPY <app_name>.<file_extension> /config/dropins/
-    
-    
     
     ```
     {: screen}

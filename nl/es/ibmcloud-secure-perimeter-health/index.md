@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -79,7 +79,7 @@ Revise las siguientes tareas para aprender a utilizar **ibmcloud-secure-perimete
 6.  [Referencia de variables de entorno](#reference_env_var)
 
 
-## Suministre un clúster de Kubernetes dentro de un Secure Perimeter utilizando {{site.data.keyword.containerlong}}
+## Suministro de un clúster de Kubernetes dentro de un perímetro seguro mediante {{site.data.keyword.containerlong_notm}}
 {: #provision_cluster}
 
 1.  Suministre el clúster de Kubernetes desde la sección **Contenedores** del catálogo de IBM Cloud.
@@ -117,7 +117,7 @@ Antes de empezar:
         spec:
           containers:
           - name: health-pod
-            image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
+            image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
             args:
             - /usr/local/bin/python
             - /run.py
@@ -135,7 +135,7 @@ Antes de empezar:
     ```
     {: codeblock}
 
-2. Cree el despliegue. 
+2. Cree el despliegue.
 
     ```
     kubectl apply -f health-pod.yaml
@@ -167,7 +167,7 @@ Antes de empezar:
 1. Cree un contenedor de Docker desde su propia estación de trabajo de la forma siguiente:
 
     ```
-    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
+    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
     ```
     {: pre}
 
@@ -214,7 +214,8 @@ El formato del informe es el siguiente:
 ## Referencia de argumentos del contenedor
 {: #reference_container_arg}
 
-|Clave|Descripción|Valor pred. |---|-------------|---|
+|Clave|Descripción|Valor pred.
+|---|-------------|---|
 |scan|El tipo de escaneo de exposición ("public" o "private") |Ninguno (escanear ambos)
 |exclude-vlan-ids|Lista de VLAN por ID para evitar el escaneado|Ninguno
 |poll-interval|Establecer el número de segundos hasta el siguiente escaneo|0 (ejecutar una vez)

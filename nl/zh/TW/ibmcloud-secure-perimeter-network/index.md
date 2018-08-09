@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -55,7 +55,7 @@ lastupdated: "2018-05-25"
 4.  [config.json 參考資料](#reference_config_json)
 5.  [rules.conf 參考資料](#reference_rules_conf)
 
-## 使用 {{site.data.keyword.containerlong}} 在 Secure Perimeter 內佈建 Kubernetes 叢集
+## 使用 {{site.data.keyword.containerlong_notm}} 在 Secure Perimeter 內佈建 Kubernetes 叢集
 {: #provision_cluster}
 
 1.  從 IBM Cloud 型錄中的**容器**區段中，佈建您的 Kubernetes 叢集。
@@ -116,7 +116,7 @@ lastupdated: "2018-05-25"
 
 為了讓 **ibmcloud-secure-perimeter-network** 映像檔管理 Secure Perimeter 上的子網路，您可以使用 Kubernetes Pod，將其當作長期執行的處理程序來執行。**ibmcloud-secure-perimeter-network** 有數個配置檔及資料夾需要複製到 Pod 中，才能針對 Vyatta 進行配置：
 
-1. 建立名為 _pvc.yaml_ 的檔案。這個配置檔會建立持續性磁區宣告 (pvc)，您可以將其裝載至您的 Pod 作為磁區。
+1. 建立名為 _pvc.yaml_ 的檔案。這個配置檔會建立持續性磁區要求 (pvc)，您可以將其裝載至您的 Pod 作為磁區。
 
   ```
   apiVersion: v1
@@ -137,11 +137,11 @@ lastupdated: "2018-05-25"
 2. 建立 pvc。
 
     ```
-    kubectl apply -f restore-pvc.yaml
+kubectl apply -f restore-pvc.yaml
     ```
     {: pre}
 
-3. 建立名為 _network-pod.yaml_ 的檔案。此配置檔會將 **ibmcloud-secure-perimeter-network** 映像檔部署為您 Kubernetes 叢集中的 Pod，並將您的持續性磁區宣告裝載為磁區。
+3. 建立名為 _network-pod.yaml_ 的檔案。此配置檔會將 **ibmcloud-secure-perimeter-network** 映像檔部署為您 Kubernetes 叢集中的 Pod，並將您的持續性磁區要求裝載為磁區。
 
   ```
   apiVersion: v1
@@ -155,7 +155,7 @@ lastupdated: "2018-05-25"
       spec:
         containers:
         - name: network-pod
-          image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
+          image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
           volumeMounts:
           - name: network-vol
             mountPath: /opt/secure-perimeter

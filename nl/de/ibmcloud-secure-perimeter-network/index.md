@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -55,7 +55,7 @@ Die folgenden Aufgaben beschreiben die Verwendung von **ibmcloud-secure-perimete
 4.  [Referenzinformationen zu 'config.json'](#reference_config_json)
 5.  [Referenzinformationen zu 'rules.conf'](#reference_rules_conf)
 
-## Bereitstellen eines Kubernetes-Clusters in einem Secure Perimeter mit {{site.data.keyword.containerlong}}
+## Bereitstellen eines Kubernetes-Clusters in einem Secure Perimeter mit {{site.data.keyword.containerlong_notm}}
 {: #provision_cluster}
 
 1.  Stellen Sie den Kubernetes-Cluster im Abschnitt **Container** im IBM Cloud-Katalog bereit.
@@ -155,7 +155,7 @@ Damit das Image **ibmcloud-secure-perimeter-network** zur Verwaltung von Teilnet
       spec:
         containers:
         - name: network-pod
-          image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
+          image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
           volumeMounts:
           - name: network-vol
             mountPath: /opt/secure-perimeter

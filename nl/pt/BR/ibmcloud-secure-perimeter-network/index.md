@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -17,7 +17,8 @@ lastupdated: "2018-05-25"
 # Introdução à imagem ibmcloud-secure-perimeter-network
 {: #ibmcloud-secure-perimeter-network}
 
-A imagem **ibmcloud-secure-perimeter-network** contém ferramentas para automatizar a configuração de dispositivos roteadores virtuais Vyatta dentro de um perímetro seguro.{:shortdesc}
+A imagem **ibmcloud-secure-perimeter-network** contém ferramentas para automatizar a configuração de dispositivos roteadores virtuais Vyatta dentro de um perímetro seguro.
+{:shortdesc}
 
 ## Como ele Funciona
 {: #how-it-works}
@@ -36,11 +37,12 @@ encontradas nestes artigos do blog:
 ## O que está incluído
 {: #whats_included}
 
-A imagem **ibmcloud-secure-perimeter-network** fornece os pacotes de software a seguir.{:shortdesc}
+A imagem **ibmcloud-secure-perimeter-network** fornece os pacotes de software a seguir.
+{:shortdesc}
 
 -   Alpine Linux
 -   Tempo de execução Python
--   Cliente Python do SoftLayer 
+-   Cliente Python do SoftLayer
 -   Ansible
 
 ## Iniciar
@@ -54,9 +56,7 @@ Revise as tarefas a seguir para aprender a usar **ibmcloud-secure-perimeter-netw
 4.  [Referência de config.json](#reference_config_json)
 5.  [Referência de rules.conf](#reference_rules_conf)
 
-## Provisionar um cluster do Kubernetes dentro de um
-perímetro seguro usando o
-{{site.data.keyword.containerlong}}
+## Provisionar um cluster do Kubernetes dentro de um Perímetro seguro usando o {{site.data.keyword.containerlong_notm}}
 {: #provision_cluster}
 
 1.  Provisione o cluster do Kubernetes por meio da seção **Contêineres** no catálogo do IBM Cloud.
@@ -72,7 +72,6 @@ sobre como obter acesso ao cluster depois que ele for
 implementado.
 
 ## Executar a configuração inicial do seu Vyatta de perímetro seguro
-
 {: #initial_setup}
 
 1. Crie um arquivo denominado _config.json_. Esse arquivo contém os parâmetros básicos necessários para que a **ibmcloud-secure-perimeter-network** acesse o Vyatta.
@@ -162,7 +161,7 @@ Para que a imagem **ibmcloud-secure-perimeter-network** gerencie as sub-redes em
       spec:
         containers:
         - name: network-pod
-          image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
+          image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
           volumeMounts:
           - name: network-vol
             mountPath: /opt/secure-perimeter
@@ -211,10 +210,15 @@ _rules.conf_. Esse arquivo de configuração informa a **ibmcloud-secure-perimet
 
 |Chave|Descrição
 |---|-------------|---|
-|slid|Seu nome do usuário da infraestrutura no IBM Cloud|apikey|Sua chave API da infraestrutura no IBM Cloud|region|A região do IBM Cloud em que o Vyatta está implementado|inf_name_private|O nome da interface privada do Vyatta
-|inf_name_public|O nome da interface pública do Vyatta|gatewayid|O ID do gateway do Vyatta
+|slid|Seu nome do usuário da infraestrutura no IBM Cloud
+|apikey|Sua chave API da infraestrutura no IBM Cloud
+|region|A região do IBM Cloud em que o Vyatta está implementado
+|inf_name_private|O nome da interface privada do Vyatta
+|inf_name_public|O nome da interface pública do Vyatta
+|gatewayid|O ID do gateway do Vyatta
 |vlans|Lista de VLANs de segmento de perímetro seguro contendo o tipo, o número da VLAN e o ID da VLAN
-|vyatta_gateway_vip|O VIP do gateway|vyatta_primary|Objeto que contém o IP privado e público do membro primário do Vyatta
+|vyatta_gateway_vip|O VIP do gateway
+|vyatta_primary|Objeto que contém o IP privado e público do membro primário do Vyatta
 |vyatta_secondary|Objeto que contém o IP privado e público do membro secundário do Vyatta
 {: caption="Tabela 1. config.json" caption-side="top"}
 
@@ -228,7 +232,7 @@ _rules.conf_. Esse arquivo de configuração informa a **ibmcloud-secure-perimet
 |userips|Lista de IPs do usuário a serem inseridos na lista de desbloqueio para o perímetro seguro
 {: caption="Tabela 2. rules.conf" caption-side="top"}
 
-## Pré-requisitos 
+## Pré-requisitos
 {: #prerequisites}
 
 -   O Vyatta e as VLANs que foram solicitados por meio do portal de infraestrutura no IBM Cloud e as VLANs que foram associadas ao Vyatta.

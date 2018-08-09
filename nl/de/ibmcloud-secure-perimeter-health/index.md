@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -79,7 +79,7 @@ Die folgenden Aufgaben beschreiben die Verwendung von **ibmcloud-secure-perimete
 6.  [Referenzinformationen zu Umgebungsvariablen](#reference_env_var)
 
 
-## Bereitstellen eines Kubernetes-Clusters in einem Secure Perimeter mit {{site.data.keyword.containerlong}}
+## Bereitstellen eines Kubernetes-Clusters in einem Secure Perimeter mit {{site.data.keyword.containerlong_notm}}
 {: #provision_cluster}
 
 1.  Stellen Sie den Kubernetes-Custer im Abschnitt **Container** im IBM Cloud-Katalog bereit.
@@ -117,21 +117,21 @@ Führen Sie zunächst die folgenden Schritte aus:
         spec:
           containers:
           - name: health-pod
-            image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
+            image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
             args:
             - /usr/local/bin/python
             - /run.py
             - --scan
             - private
             - --exclude-vlan-ids
-            - <Secure Perimeter Segment-VLAN-ID (privat)>
+            - <VLAN-ID des privaten Secure Perimeter-Segments>
             - --poll-interval
             - 1800
             env:
             - name: SL_USER
-              value: <IBM Cloud Infrastructure-Benutzername>
+              value: <Benutzername für die IBM Cloud-Infrastruktur>
             - name: SL_APIKEY
-              value: <IBM Cloud Infrastructure-API-Schlüssel>
+              value: <API-Schlüssel für die IBM Cloud-Infrastruktur>
     ```
     {: codeblock}
 
@@ -167,7 +167,7 @@ Führen Sie zunächst die folgenden Schritte aus:
 1. Erstellen Sie wie folgt einen Docker-Container für die eigene Workstation:
 
     ```
-    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
+    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
     ```
     {: pre}
 

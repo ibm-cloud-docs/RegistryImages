@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-10-30"
+  years: 2017, 2018
+lastupdated: "2018-07-25"
 
 ---
 
@@ -45,6 +45,7 @@ dans IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5
 |---|-----------|
 |Toutes les images **ibmliberty**|Toutes les images **ibmliberty** incluent les fonctions suivantes. <ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |**ibmliberty:latest**|Cette image pointe sur l'image **ibmliberty:javaee7**.|
+|**ibmliberty:microProfile**|Cette image contient les options qui fournissent les fonctionnalités spécifiées par [MicroProfile](https://microprofile.io).|
 |**ibmliberty:webProfile6**|Cette image inclut toutes les fonctions requises pour conformité avec Java EE6 Web Profile. Elle adjoint également des fonctions supplémentaires disponibles pour leur téléchargement dans un fichier d'exécution JAR depuis [http://wasdev.net/](http://wasdev.net/), notamment celles requises pour les applications OSGi.|
 |**ibmliberty:webProfile7**|Cette image inclut toutes les fonctions requises pour conformité avec Java EE7 Web Profile.|
 |**ibmliberty:javaee7**|Cette image inclut toutes les fonctions de l'image **ibmliberty:webProfile7**, en leur adjoignant celles requises pour conformité avec Java EE7 Full Platform.|
@@ -78,47 +79,45 @@ avec licence pour environnement de production afin de créer un conteneur unique
 
 **Important :** Avant de commencer, passez en revue les [restrictions d'utilisation](#usage) des images **ibmliberty**.
 
-1.  Dans le catalogue, sélectionnez **Conteneurs** et choisissez l'image **ibmliberty** à partir de laquelle générer votre conteneur. Si vous avez créé votre propre image avec licence pour environnement de production et l'avez déployée dans
-{{site.data.keyword.Bluemix_notm}}, sélectionnez cette image dans le catalogue. La page de création de conteneur s'ouvre.
+1.  Dans le catalogue, sélectionnez **Conteneurs** > **IBM Cloud Container Registry** > **Référentiels publics IBM** sur le panneau latéral. Recherchez l'image **ibmliberty** à partir de laquelle générer votre conteneur. Si vous avez créé votre propre image avec licence pour environnement de production et l'avez déployée dans {{site.data.keyword.Bluemix_notm}}, sélectionnez cette image dans le catalogue. La page de création de conteneur s'ouvre.
 2.  Sélectionnez la version de l'image **ibmliberty** que vous désirez utiliser dans la zone déroulante
 **TAG/ VERSION**.
-3.  Choisissez de créer un conteneur unique ou un groupe de conteneurs évolutif. Reportez-vous aux rubriques suivantes pour plus d'informations sur la création
-de conteneurs.
+3.  Pour plus d'informations sur la génération de conteneurs à partir d'images, la configuration de clusters et le déploiement d'applications dans des clusters, suivez les liens ci-après.
 
-    -   [Création d'un conteneur unique à l'aide du tableau de bord {{site.data.keyword.Bluemix_notm}}](/docs/containers/container_single_ui.html#gui)
-    -   [Création d'un groupe de conteneurs à l'aide du tableau de bord {{site.data.keyword.Bluemix_notm}}](/docs/containers/container_ha.html#container_group_ui)
+    -   [Génération de conteneurs à partir d'images](/docs/containers/cs_images.html#images)
+    -   [Initiation à IBM Cloud Kubernetes Service](/docs/containers/container_index.html#container_index)
+    -   [Déploiement d'applications dans des clusters](docs/containers/cs_app.html#app)
     
-    **Remarque :** L'image **ibmliberty** exige que le port 9080 soit exposé comme port public. Lorsque vous créez un conteneur depuis le tableau de bord {{site.data.keyword.Bluemix_notm}}, le port est ajouté par défaut dans la zone **Port public**. Si vous créez un conteneur depuis l'interface de
-ligne de commande, exposez le port dans votre commande `bx ic run`.
+    **Remarque :** L'image **ibmliberty** exige que le port 9080 soit exposé comme port public. Lorsque vous créez un conteneur depuis le tableau de bord {{site.data.keyword.Bluemix_notm}}, le port est ajouté par défaut dans la zone **Port public**. Si vous créez un conteneur depuis l'interface de ligne de commande, exposez le port dans votre commande `kubectl run` avec l'option `--port=9080`.
 
 
 ## Surveillance de l'utilisation du segment de mémoire Java par un conteneur avec l'interface de ligne de commande 
 {: #monitor_heap}
 
 
-Après avoir créé un conteneur depuis l'image **ibmliberty**, vous pouvez lister tous les processus en exécution et
+Après avoir créé un conteneur depuis l'image **ibmliberty**, vous pouvez afficher les métriques sur un pod particulier et ses conteneurs et
 examiner l'utilisation du segment de mémoire Java. Ce segment de mémoire Java représente la mémoire disponible pour l'application
 Java en phase d'exécution.
 {:shortdesc}
 
-1.  Répertoriez tous les processus en exécution dans le conteneur.
+1.  Obtenez le nom du pod pour lequel vous voulez afficher les métriques.
+  
+    ```
+    kubectl get pods
+    ```
+
+2.  Affichez les métriques sur un port particulier et ses conteneurs.
 
     ```
-    bx ic top CONTAINER -aux
+    kubectl top pod POD_NAME --containers
     ```
     {: pre}
 
-    La sortie de l'interface de ligne de commande se présente comme suit.
-
-    ```    
-    USER        PID       %CPU   %MEM    VSZ         RSS        TTY     STAT   START    TIME   COMMAND
-    contain+    3322245   3.2    0.0     11522856    216192     ?       Ssl    14:43    0:35   /opt/ibm/java/jre/bin/java -javaagent:/opt/ibm/wlp/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -jar /opt/ibm/wlp/bin/tools/ws-server.jar defaultServer 
-    ```
-    {: screen}
-
-2.  Examinez l'utilisation du segment de mémoire Java dans la colonne **RSS**. L'utilisation du segment de mémoire Java est affichée en kilooctets. Si son utilisation est en-dessous de 2097152 kilooctets
+3.  Pour examiner l'utilisation du segment de mémoire Java, vous devez accéder aux statistiques de mémoire **RSS**. Suivez les instructions sur la façon d'accéder à un shell de conteneur, proposées [ici](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/), puis prenez connaissance des [métriques d'exécution](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) pour trouver et mettre en forme les informations statistiques relatives à la mémoire pour un conteneur.
+L'utilisation du segment de mémoire Java est affichée en kilooctets. Si son utilisation est en-dessous de 2097152 kilooctets
 (2 Go) entre toutes les instances, vous n'avez pas besoin d'acquérir une licence de WebSphere Application Server.
-3.  Paramétrez l'utilisation maximale du segment de mémoire par votre instance WebSphere Application Server. Pour plus d'informations, voir
+
+4.  Paramétrez l'utilisation maximale du segment de mémoire par votre instance WebSphere Application Server. Pour plus d'informations, voir
 [Définition d'arguments JVM génériques dans le profil
 WebSphere Application Server V8.5 Liberty](http://www-01.ibm.com/support/docview.wss?uid=swg21596474).
 
@@ -172,7 +171,7 @@ Pour créer une image avec votre code d'application à partir de l'image **ibmli
 1. Dans un éditeur de texte, créez un fichier nommé Dockerfile et copiez les informations suivantes dans ce fichier.
 
     ```
-    FROM registry.{{site.data.keyword.domainname}}/ibmliberty:<tag>
+    FROM registry.bluemix.net/ibmliberty:<tag>
     COPY <app_name>.<file_extension> /config/dropins/
     
     ```

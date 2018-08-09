@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-10-30"
+  years: 2017, 2018
+lastupdated: "2018-07-25"
 
 ---
 
@@ -39,6 +39,7 @@ Las características de Liberty específicas que se instalan en la imagen depend
 |---|-----------|
 |Todas las imágenes **ibmliberty**|Todas las imágenes **ibmliberty** incluyen las siguientes características. <ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |**ibmliberty:latest**|Esta imagen apunta a la imagen **ibmliberty:javaee7**.|
+|**ibmliberty:microProfile**|Esta imagen contiene las características que proporcionan las prestaciones especificadas por [MicroProfile](https://microprofile.io).|
 |**ibmliberty:webProfile6**|Esta imagen incluye todas las características necesarias para la conformidad con EE6 Web Profile. También incorpora características adicionales para visualizar el contenido en línea con las características disponibles para descargar utilizando el JAR de tiempo de ejecución desde [http://wasdev.net/](http://wasdev.net/), especialmente las características que son necesarias para las aplicaciones OSGi.|
 |**ibmliberty:webProfile7**|Esta imagen incluye todas las características necesarias para la conformidad con Java EE7 Web Profile.|
 |**ibmliberty:javaee7**|Esta imagen incluye todas las características de la imagen **ibmliberty:webProfile7**, más las características que son necesarias para la conformidad con Java EE7 Full Platform.|
@@ -56,8 +57,6 @@ La siguiente tabla muestra las restricciones de uso que se aplican al uso gratui
 |Desarrollo|Uso gratuito **ilimitado** de la imagen **ibmliberty**.|
 |Producción|El uso gratuito de la imagen **ibmliberty** está limitado a un **máximo de 2 GB de espacio del almacenamiento dinámico de Java** en todas las instancias de contenedor que ejecutan la imagen. Por ejemplo, puede tener 2 x 1 GB, o 4 x 512 MB instancias de liberty de almacenamiento dinámico de forma gratuita.
 
-
-
 Para supervisar el uso del almacenamiento dinámico de Java de las instancias de contenedor, consulte [Supervisión del uso del espacio de almacenamiento dinámico de Java de un contenedor con la CLI](#monitor_heap).
 
 
@@ -72,41 +71,41 @@ Utilice una de las imágenes gratuitas **ibmliberty** del catálogo de {{site.da
 **Importante:** Antes de empezar, revise las [restricciones de uso](#usage)
 para las imágenes **ibmliberty**.
 
-1.  Desde el catálogo, seleccione **Contenedores** y elija la imagen **ibmliberty** a partir de la que se va a crear el contenedor. Si ha creado su propia imagen con licencia de producción y la ha desplegado en {{site.data.keyword.Bluemix_notm}}, seleccione esta imagen en el catálogo. Se abre la página de creación de contenedor.
+1.  En el catálogo, seleccione **Contenedores** > **Registro de contenedores de IBM Cloud** > **Repositorios públicos de IBM** en el panel lateral. Busque la imagen **ibmliberty** como base a partir de la cual crear su contenedor. Si ha creado su propia imagen con licencia de producción y la ha desplegado en {{site.data.keyword.Bluemix_notm}}, seleccione esta imagen en el catálogo. Se abre la página de creación de contenedor.
 2.  Seleccione la versión de la imagen **ibmliberty** que desea utilizar en el recuadro desplegable **TAG/ VERSION**.
-3.  Seleccione si desea crear un contenedor o un grupo de contenedores escalable. Revise los siguientes temas para obtener más información sobre cómo crear contenedores.
+3.  Para obtener más información sobre la creación de contenedores a partir de imágenes, la configuración de clústeres y el despliegue de apps en clústeres, siga los enlaces siguientes.
 
-    -   [Creación de un contenedor mediante el panel de control de {{site.data.keyword.Bluemix_notm}}](/docs/containers/container_single_ui.html#gui)
-    -   [Creación de un grupo de contenedores mediante el panel de control de {{site.data.keyword.Bluemix_notm}}](/docs/containers/container_ha.html#container_group_ui)
+    -   [Creación de contenedores a partir de imágenes](/docs/containers/cs_images.html#images)
+    -   [Iniciación al servicio IBM Cloud Kubernetes](/docs/containers/container_index.html#container_index)
+    -   [Despliegue de apps en clústeres](docs/containers/cs_app.html#app)
     
-    **Nota:** La imagen **ibmliberty** requiere que el puerto 9080 esté expuesto públicamente. Cuando crea un contenedor desde el Panel de control de {{site.data.keyword.Bluemix_notm}}, de forma predeterminada el puerto se añade en el campo **Puerto público**. Si crea un contenedor desde la CLI, exponga el puerto en el mandato
-`bx ic run`.
+    **Nota:** La imagen **ibmliberty** requiere que el puerto 9080 esté expuesto públicamente. Cuando crea un contenedor desde el Panel de control de {{site.data.keyword.Bluemix_notm}}, de forma predeterminada el puerto se añade en el campo **Puerto público**. Si crea un contenedor desde la CLI, exponga el puerto en el mandato `kubectl run` con la opción `--port=9080`.
 
 
 ## Supervisión del uso del espacio de almacenamiento dinámico de Java de un contenedor con la CLI 
 {: #monitor_heap}
 
 
-Después de crear un contenedor a partir de la imagen **ibmliberty**, puede listar todos los procesos en ejecución y revisar el uso del almacenamiento dinámico de Java. El espacio del almacenamiento dinámico de Java es la memoria que está disponible para la aplicación Java durante el tiempo de ejecución.
+Después de crear un contenedor a partir de la imagen **ibmliberty**, puede ver métricas sobre un determinado pod y sus contenedores y revisar el uso del almacenamiento dinámico de Java. El espacio del almacenamiento dinámico de Java es la memoria que está disponible para la aplicación Java durante el tiempo de ejecución.
 {:shortdesc}
 
-1.  Liste todos los procesos en ejecución dentro del contenedor.
+1.  Obtenga el nombre del pod cuyas métricas desea ver.
+  
+    ```
+    kubectl get pods
+    ```
+
+2.  Consulte las métricas en un pod determinado y sus contenedores
 
     ```
-    bx ic top CONTAINER -aux
+    kubectl top pod POD_NAME --containers
     ```
     {: pre}
 
-    La salida de la CLI es parecida a la siguiente:
+3.  Para revisar el uso del almacenamiento dinámico de Java, tiene que acceder a las estadísticas de memoria de **RSS**. Siga las directrices sobre cómo acceder a un shell de un contenedor [aquí](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) y luego revise las [Métricas de tiempo de ejecución](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) para ver cómo encontrar y formatear información de estadísticas de memoria para un contenedor.
+El uso del almacenamiento dinámico de Java se visualiza en kilobytes. Si el uso del almacenamiento dinámico está por debajo de 2097152 kilobytes (2GB) en todas las instancias, no tiene que adquirir una licencia de WebSphere Application Server.
 
-    ```    
-    USER        PID       %CPU   %MEM    VSZ         RSS        TTY     STAT   START    TIME   COMMAND
-    contain+    3322245   3.2    0.0     11522856    216192     ?       Ssl    14:43    0:35   /opt/ibm/java/jre/bin/java -javaagent:/opt/ibm/wlp/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -jar /opt/ibm/wlp/bin/tools/ws-server.jar defaultServer 
-    ```
-    {: screen}
-
-2.  Revise el uso del almacenamiento dinámico de Java en la columna **RSS**. El uso del almacenamiento dinámico de Java se visualiza en kilobytes. Si el uso del almacenamiento dinámico está por debajo de 2097152 kilobytes (2GB) en todas las instancias, no tiene que adquirir una licencia de WebSphere Application Server.
-3.  Ajuste el máximo uso del almacenamiento dinámico para la instancia de WebSphere Application Server. Consulte [Establecer argumentos JVM genéricos en el perfil de WebSphere Application Server V8.5 Liberty](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) para obtener más información.
+4.  Ajuste el máximo uso del almacenamiento dinámico para la instancia de WebSphere Application Server. Consulte [Establecer argumentos JVM genéricos en el perfil de WebSphere Application Server V8.5 Liberty](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) para obtener más información.
 
 ## Obtención de una licencia de WebSphere Application Server 
 {: #license}
@@ -149,8 +148,8 @@ Para crear una imagen con el código de la app a partir de la imagen **ibmlibert
 1. Con un editor de texto, cree un archivo denominado Dockerfile y copie en él la siguiente información.
 
     ```
-    FROM registry.{{site.data.keyword.domainname}}/ibmliberty:<etiqueta>
-    COPY <nombre_app>.<extensión_archivo> /config/dropins/
+    FROM registry.bluemix.net/ibmliberty:<tag>
+    COPY <app_name>.<file_extension> /config/dropins/
     
     ```
     {: screen}

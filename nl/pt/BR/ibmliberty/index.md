@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-10-30"
+  years: 2017, 2018
+lastupdated: "2018-07-25"
 
 ---
 
@@ -47,6 +47,7 @@ geral dos recursos do Liberty no IBM Knowledge Center](http://www.ibm.com/suppor
 |Todas as imagens **ibmliberty**|Todas as imagens **ibmliberty** incluem os recursos a
 seguir. <ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |**ibmliberty:latest**|Esta imagem aponta para a imagem **ibmliberty:javaee7**.|
+|** ibmliberty:microProfile **|Esta imagem contém os recursos que fornecem as capacidades especificadas pelo [MicroProfile](https://microprofile.io).|
 |**ibmliberty:webProfile6**|Esta imagem inclui todos os recursos que são necessários para conformidade com o
 perfil da web do Java EE6. Ela também puxa recursos adicionais para alinhar o conteúdo aos recursos disponíveis para download, usando o JAR de tempo de execução do [http://wasdev.net/](http://wasdev.net/), principalmente os recursos que são necessários para aplicativos OSGi.|
 |**ibmliberty:webProfile7**|Esta imagem inclui todos os recursos necessários para conformidade com o
@@ -85,46 +86,44 @@ imagem licenciada para produção para criar um contêiner único ou um grupo de
 
 **Importante:** antes de iniciar, revise as [restrições de uso](#usage) para as imagens **ibmliberty**.
 
-1.  No catálogo, selecione **Contêineres** e escolha a
-imagem **ibmliberty** da qual construir seu contêiner. Se você criou sua própria imagem licenciada para produção e a implementou no {{site.data.keyword.Bluemix_notm}}, selecione essa imagem no catálogo. A página de criação do contêiner é aberta.
+1.  No catálogo, selecione **Contêineres** > **IBM Cloud Container Registry** > **IBM Public Repositories** no painel lateral. Procure a imagem **ibmliberty** da qual construir seu contêiner. Se você criou sua própria imagem licenciada para produção e a implementou no {{site.data.keyword.Bluemix_notm}}, selecione essa imagem no catálogo. A página de criação do contêiner é aberta.
 2.  Selecione a versão da imagem **ibmliberty** que você deseja usar na
 caixa suspensa **TAG/VERSÃO**.
-3.  Escolha se deseja criar um único contêiner ou um grupo de contêineres escalável. Consulte
-os tópicos a seguir para obter mais informações sobre como criar contêineres.
+3.  Para obter mais informações sobre como construir contêineres por meio de imagens, configurar clusters e implementar apps em clusters, siga os links abaixo.
 
-    -   [Criando um único contêiner usando o Painel do {{site.data.keyword.Bluemix_notm}} ](/docs/containers/container_single_ui.html#gui)
-    -   [Criando um grupo de contêineres usando o Painel do {{site.data.keyword.Bluemix_notm}} ](/docs/containers/container_ha.html#container_group_ui)
+    -   [Construindo contêineres de imagens](/docs/containers/cs_images.html#images)
+    -   [Introdução ao IBM Cloud Kubernetes Service](/docs/containers/container_index.html#container_index)
+    -   [Implementando apps em clusters](docs/containers/cs_app.html#app)
     
-    **Nota:** a imagem **ibmliberty** requer que a porta 9080 seja exposta publicamente. Ao criar um contêiner por meio do Painel do {{site.data.keyword.Bluemix_notm}}, a porta é incluída no campo **Porta pública** por padrão. Se você criar um contêiner por meio da CLI, exponha a porta em seu comando `bx ic run`.
+    **Nota:** a imagem **ibmliberty** requer que a porta 9080 seja exposta publicamente. Ao criar um contêiner por meio do Painel do {{site.data.keyword.Bluemix_notm}}, a porta é incluída no campo **Porta pública** por padrão. Se você criar um contêiner por meio da CLI, exponha a porta em seu comando `kubectl run` com a opção `--port=9080`.
 
 
 ## Monitorando o uso de espaço de heap Java para um contêiner com a CLI 
 {: #monitor_heap}
 
 
-Depois de criar um contêiner a partir da imagem **ibmliberty**, será possível
-listar todos os processos em execução e revisar o uso do heap Java. O espaço de heap Java é a memória que está
+Depois de criar um contêiner por meio da imagem **ibmliberty**, será possível visualizar métricas de um pod específico e seus contêineres e revisar o uso de heap Java. O espaço de heap Java é a memória que está
 disponível para o aplicativo Java durante o tempo de execução.
 {:shortdesc}
 
-1.  Liste todos os processos em execução dentro do contêiner.
+1.  Obtenha o nome do pod do qual você deseja visualizar métricas.
+  
+    ```
+    kubectl get pods
+    ```
+
+2.  Veja as métricas de um pod específico e seus contêineres
 
     ```
-    bx ic top CONTAINER -aux
+    kubectl top pod POD_NAME -- contêineres
     ```
     {: pre}
 
-    A saída da CLI é semelhante à seguinte.
-
-    ```    
-    USER        PID       %CPU   %MEM    VSZ         RSS        TTY     STAT   START    TIME   COMMAND
-    contain+    3322245   3.2    0.0     11522856    216192     ?       Ssl    14:43    0:35   /opt/ibm/java/jre/bin/java -javaagent:/opt/ibm/wlp/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -jar /opt/ibm/wlp/bin/tools/ws-server.jar defaultServer 
-    ```
-    {: screen}
-
-2.  Revise o uso de heap Java na coluna **RSS**. O uso de heap Java é exibido em kilobytes. Se seu uso de heap estiver abaixo de 2.097.152 kilobytes
+3.  Para revisar o uso de heap Java, é necessário acessar a estatística de memória **RSS**. Siga as diretrizes sobre como acessar um shell de um contêiner [aqui](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) e, em seguida, revise [Métricas de tempo de execução](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) sobre como localizar e formatar informações de estatística de memória de um contêiner.
+O uso de heap Java é exibido em kilobytes. Se seu uso de heap estiver abaixo de 2.097.152 kilobytes
 (2 GB) em todas as instâncias, não será necessário comprar uma licença do WebSphere Application Server.
-3.  Ajuste o uso máximo de heap para sua instância do WebSphere Application Server. Consulte [Configurando argumentos genéricos da JVM no perfil Liberty do WebSphere Application Server V8.5](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) para obter
+
+4.  Ajuste o uso máximo de heap para sua instância do WebSphere Application Server. Consulte [Configurando argumentos genéricos da JVM no perfil Liberty do WebSphere Application Server V8.5](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) para obter
 mais informações.
 
 ## Obtendo uma licença do WebSphere Application Server 
@@ -177,7 +176,7 @@ Para criar uma imagem com seu código de aplicativo a partir da imagem
 1. Com um editor de texto, crie um arquivo chamado Dockerfile e copie as informações a seguir nele.
 
     ```
-    FROM registry.{{site.data.keyword.domainname}}/ibmliberty:<tag>
+    FROM registry.bluemix.net/ibmliberty:<tag>
     COPY <app_name>.<file_extension> /config/dropins/
     
     ```

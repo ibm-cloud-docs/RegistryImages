@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -55,7 +55,7 @@ lastupdated: "2018-05-25"
 4.  [config.json 참조](#reference_config_json)
 5.  [rules.conf 참조](#reference_rules_conf)
 
-## {{site.data.keyword.containerlong}}를 사용하여 보안 경계 내에서 Kubernetes 클러스터 프로비저닝
+## {{site.data.keyword.containerlong_notm}}를 사용하여 보안 경계 내에서 Kubernetes 클러스터 프로비저닝
 {: #provision_cluster}
 
 1.  IBM Cloud 카탈로그의 **컨테이너** 섹션에서 Kubernetes 클러스터를 프로비저닝하십시오.
@@ -137,7 +137,7 @@ lastupdated: "2018-05-25"
 2. pvc를 작성하십시오.
 
     ```
-        kubectl apply -f restore-pvc.yaml
+    kubectl apply -f restore-pvc.yaml
     ```
     {: pre}
 
@@ -155,7 +155,7 @@ lastupdated: "2018-05-25"
       spec:
         containers:
         - name: network-pod
-          image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
+          image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
           volumeMounts:
           - name: network-vol
             mountPath: /opt/secure-perimeter

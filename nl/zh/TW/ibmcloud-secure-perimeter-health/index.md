@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -79,7 +79,7 @@ sp-gateway-8a9031ab:
 6.  [環境變數參考資料](#reference_env_var)
 
 
-## 使用 {{site.data.keyword.containerlong}} 在 Secure Perimeter 內佈建 Kubernetes 叢集
+## 使用 {{site.data.keyword.containerlong_notm}} 在 Secure Perimeter 內佈建 Kubernetes 叢集
 {: #provision_cluster}
 
 1.  從 IBM Cloud 型錄中的**容器**區段中，佈建您的 Kubernetes 叢集。
@@ -103,7 +103,7 @@ sp-gateway-8a9031ab:
 1. 建立名為 _health-pod.yaml_ 的配置檔。此檔案會建立可用性高的容器 Pod 部署。
 
     ```
-    apiVersion: extensions/v1beta1
+apiVersion: extensions/v1beta1
     kind: Deployment
     metadata:
       name: health-pod
@@ -117,7 +117,7 @@ sp-gateway-8a9031ab:
         spec:
           containers:
           - name: health-pod
-            image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
+            image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
             args:
             - /usr/local/bin/python
             - /run.py
@@ -138,7 +138,7 @@ sp-gateway-8a9031ab:
 2. 建立部署。
 
     ```
-    kubectl apply -f health-pod.yaml
+kubectl apply -f health-pod.yaml
     ```
     {: pre}
 
@@ -150,7 +150,7 @@ sp-gateway-8a9031ab:
     {: pre}
 
     ```
-    NAME                                    READY     STATUS    RESTARTS   AGE
+NAME                                    READY     STATUS    RESTARTS   AGE
     health-pod-<random-id>                  1/1       Running   0          1hr
     ```
     {: screen}
@@ -167,7 +167,7 @@ sp-gateway-8a9031ab:
 1. 從您自己的工作站建立一個 Docker 儲存器，如下所示：
 
     ```
-    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
+    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
     ```
     {: pre}
 

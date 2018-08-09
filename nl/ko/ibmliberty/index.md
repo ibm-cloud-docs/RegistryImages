@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-10-30"
+  years: 2017, 2018
+lastupdated: "2018-07-25"
 
 ---
 
@@ -39,6 +39,7 @@ IBM WebSphere Application Server Liberty 컨테이너에서 Java를 기반으로
 |---|-----------|
 |모든 **ibmliberty** 이미지|모든 **ibmliberty** 이미지에는 다음 기능이 포함됩니다. <ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |**ibmliberty:latest**|이 이미지는 **ibmliberty:javaee7** 이미지를 지시합니다.|
+|**ibmliberty:microProfile**|이 이미지에는 [MicroProfile](https://microprofile.io)로 지정된 기능을 제공하는 기능이 포함됩니다.|
 |**ibmliberty:webProfile6**|이 이미지에는 Java EE6 웹 프로파일 준수에 필요한 모든 기능이 포함됩니다. [http://wasdev.net/](http://wasdev.net/)에서 런타임 JAR을 사용하여 다운로드할 수 있는 기능, 특히 OSGi 애플리케이션에 필요한 기능과 일치하게 컨텐츠를 가져오는 추가 기능도 가져옵니다.|
 |**ibmliberty:webProfile7**|이 이미지에는 Java EE7 웹 프로파일 준수에 필요한 모든 기능이 포함됩니다.|
 |**ibmliberty:javaee7**|이 이미지에는 Java EE7 전체 플랫폼 준수에 필요한 기능과 함께 **ibmliberty:webProfile7** 이미지의 모든 기능이 포함됩니다.|
@@ -69,40 +70,41 @@ Docker 허브의 [websphere-liberty 이미지](https://hub.docker.com/_/webspher
 
 **중요:** 시작하기 전에 **ibmliberty** 이미지의 [사용량 제한사항](#usage)을 검토하십시오.
 
-1.  카탈로그에서 **컨테이너**를 선택하고 컨테이너를 빌드할 **ibmliberty** 이미지를 선택하십시오. 자체 프로덕션 라이센스 이미지를 작성하고 이를 {{site.data.keyword.Bluemix_notm}}에 배치한 경우에는 카탈로그에서 이 이미지를 선택하십시오. 컨테이너 작성 페이지가 열립니다.
+1.  카탈로그의 측면 패널에서 **컨테이너** > **IBM Cloud Container Registry** > **IBM 공용 저장소**를 선택하십시오. 컨테이너를 빌드할 **ibmliberty** 이미지를 검색하십시오. 자체 프로덕션 라이센스 이미지를 작성하고 이를 {{site.data.keyword.Bluemix_notm}}에 배치한 경우에는 카탈로그에서 이 이미지를 선택하십시오. 컨테이너 작성 페이지가 열립니다.
 2.  **태그/ 버전** 드롭 다운 상자에서 사용하고자 하는 **ibmliberty** 이미지의 버전을 선택하십시오.
-3.  단일 컨테이너 또는 확장 가능한 컨테이너 그룹을 작성할 것인지를 선택하십시오. 컨테이너 작성 방법에 대한 자세한 정보는 다음 주제를 참조하십시오.
+3.  이미지에서 컨테이너 빌드, 클러스터 설정 및 클러스터에 앱 배치에 대한 자세한 정보는 다음 링크를 따르십시오.
 
-    -   [{{site.data.keyword.Bluemix_notm}} 대시보드를 사용하여 단일 컨테이너 작성](/docs/containers/container_single_ui.html#gui)
-    -   [{{site.data.keyword.Bluemix_notm}} 대시보드를 사용하여 컨테이너 그룹 작성](/docs/containers/container_ha.html#container_group_ui)
+    -   [이미지에서 컨테이너 빌드](/docs/containers/cs_images.html#images)
+    -   [IBM Cloud Kubernetes Service 시작하기](/docs/containers/container_index.html#container_index)
+    -   [클러스터에 앱 배치](docs/containers/cs_app.html#app)
     
-    **참고:** **ibmliberty** 이미지에는 9080 포트가 공개적으로 노출되어야 합니다. {{site.data.keyword.Bluemix_notm}} 대시보드에서 컨테이너를 작성할 때 기본적으로 **공용 포트** 필드에서 포트가 추가됩니다. CLI에서 컨테이너를 작성하려면 `bx ic run` 명령으로 포트를 노출하십시오.
+    **참고:** **ibmliberty** 이미지에는 9080 포트가 공개적으로 노출되어야 합니다. {{site.data.keyword.Bluemix_notm}} 대시보드에서 컨테이너를 작성할 때 기본적으로 **공용 포트** 필드에서 포트가 추가됩니다. CLI에서 컨테이너를 작성하려면 `--port=9080` 옵션이 포함된 `kubectl run` 명령으로 포트를 노출하십시오.
 
 
 ## CLI로 컨테이너에 대한 Java 힙 영역 사용량 모니터링 
 {: #monitor_heap}
 
 
-**ibmliberty** 이미지에서 컨테이너를 작성한 후에는 모든 실행 중인 프로세스를 나열하고 Java 힙 사용량을 검토할 수 있습니다. Java 힙 영역은 런타임 중에 Java 애플리케이션이 사용할 수 있는 메모리입니다.
+**ibmliberty** 이미지에서 컨테이너를 작성한 후에는 특정 팟(Pod)의 메트릭을 보고 Java 힙 사용량을 검토할 수 있습니다. Java 힙 영역은 런타임 중에 Java 애플리케이션이 사용할 수 있는 메모리입니다.
 {:shortdesc}
 
-1.  컨테이너 내의 모든 실행 중인 프로세스를 나열하십시오.
+1.  메트릭을 볼 팟(Pod)의 이름을 가져오십시오.
+  
+    ```
+    kubectl get pods
+    ```
+
+2.  특정 팟(Pod) 및 해당 컨테이너에 있는 메트릭을 참조하십시오.
 
     ```
-        bx ic top CONTAINER -aux
+    kubectl top pod POD_NAME --containers
     ```
     {: pre}
 
-    CLI 출력은 다음과 같이 표시됩니다.
+3.  Java 힙 사용량을 검토하려면 **RSS** 메모리 stat에 액세스해야 합니다. 컨테이너의 셀에 액세스하는 방법은 지시사항([여기](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/))을 따르고, 컨테이너에 대한 메모리 stat 정보를 찾고 형식화하는 방법은 [런타임 메트릭](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io)을 검토하십시오.
+Java 힙 사용량은 KB 단위로 표시됩니다. 힙 사용량이 모든 인스턴스에서 2097152KB(2GB) 미만이면 WebSphere Application Server 라이센스를 구매할 필요가 없습니다.
 
-    ```    
-    USER        PID       %CPU   %MEM    VSZ         RSS        TTY     STAT   START    TIME   COMMAND
-    contain+    3322245   3.2    0.0     11522856    216192     ?       Ssl    14:43    0:35   /opt/ibm/java/jre/bin/java -javaagent:/opt/ibm/wlp/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -jar /opt/ibm/wlp/bin/tools/ws-server.jar defaultServer 
-    ```
-    {: screen}
-
-2.  **RSS** 열에서 Java 힙 사용량을 검토하십시오. Java 힙 사용량은 KB 단위로 표시됩니다. 힙 사용량이 모든 인스턴스에서 2097152KB(2GB) 미만이면 WebSphere Application Server 라이센스를 구매할 필요가 없습니다.
-3.  WebSphere Application Server 인스턴스의 최대 힙 사용량을 조정하십시오. 자세한 정보는 [WebSphere Application Server V8.5 Liberty 프로파일에서 일반 JVM 인수 설정](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)의 내용을 참조하십시오.
+4.  WebSphere Application Server 인스턴스의 최대 힙 사용량을 조정하십시오. 자세한 정보는 [WebSphere Application Server V8.5 Liberty 프로파일에서 일반 JVM 인수 설정](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)의 내용을 참조하십시오.
 
 ## WebSphere Application Server 라이센스 가져오기 
 {: #license}
@@ -144,7 +146,7 @@ WebSphere Application Server 라이센스를 사용하여 {{site.data.keyword.co
 1. 문서 편집기를 사용하여 이름이 Dockerfile 인 파일을 작성하고 다음 정보를 이 파일에 복사하십시오.
 
     ```
-    FROM registry.{{site.data.keyword.domainname}}/ibmliberty:<tag>
+    FROM registry.bluemix.net/ibmliberty:<tag>
     COPY <app_name>.<file_extension> /config/dropins/
     
     ```

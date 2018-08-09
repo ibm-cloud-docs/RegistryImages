@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -63,7 +63,7 @@ A imagem **ibmcloud-secure-perimeter-health** fornece os pacotes de software a s
 
 -   Alpine Linux
 -   Tempo de execução Python
--   Cliente Python do SoftLayer 
+-   Cliente Python do SoftLayer
 -   Scanner de porta Nmap
 
 ## Iniciar
@@ -79,7 +79,7 @@ Revise as tarefas a seguir para aprender a usar **ibmcloud-secure-perimeter-heal
 6.  [Referência de variável de ambiente](#reference_env_var)
 
 
-## Provisionar um cluster do Kubernetes dentro de um perímetro seguro usando o {{site.data.keyword.containerlong}}
+## Provisionar um cluster do Kubernetes dentro de um Perímetro seguro usando o {{site.data.keyword.containerlong_notm}}
 {: #provision_cluster}
 
 1.  Provisione o cluster do Kubernetes por meio da seção **Contêineres** no catálogo do IBM Cloud.
@@ -117,22 +117,22 @@ implementação altamente disponível do pod do contêiner.
       template:
         spec:
           containers:
-          - name: health-pod
-            image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
-            args:
+          - nome: health-pod
+            imagem: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
+            argumentos:
             - /usr/local/bin/python
             - /run.py
             - --scan
-            - private
-            - --exclude-vlan-ids
-            - <Private Secure Perimeter Segment VLAN ID>
-            - --poll-interval
+            - privada
+            - --excluir-vlan-ids
+            - < Private Secure Perimeter Segment VLAN ID>
+            - -- poll-interval
             - 1800
-            env:
-            - name: SL_USER
-              value: <IBM Cloud infrastructure user name>
-            - name: SL_APIKEY
-              value: <IBM Cloud infrastructure api key>
+            ambiente:
+            - nome: SL_USER
+              valor: <IBM Cloud infrastructure user name>
+            - nome: SL_APIKEY
+              valor: <IBM Cloud infrastructure api key>
     ```
     {: codeblock}
 
@@ -168,7 +168,7 @@ Antes de começar:
 1. Crie um contêiner do Docker de sua própria estação de trabalho, da seguinte forma:
 
     ```
-    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
+    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
     ```
     {: pre}
 
@@ -213,7 +213,6 @@ O formato do relatório é o seguinte:
 A **ibmcloud-secure-perimeter-health** determinará uma sub-rede como `PASS` se nenhum host na sub-rede estiver acessível, caso contrário, retornará com `FAIL` e listará os hosts que estavam acessíveis, juntamente com as portas que estavam acessíveis.
 
 ## Referência de argumento do contêiner
-
 {: #reference_container_arg}
 
 |Chave|Descrição|Padrão
@@ -221,8 +220,7 @@ A **ibmcloud-secure-perimeter-health** determinará uma sub-rede como `PASS` se 
 |scan|O tipo de varredura de exposição ("pública" ou
 "privada") |None (varrer ambas)
 |exclude-vlan-ids|Lista de VLANs por IDs a evitar a
-varredura
-|None
+varredura|None
 |poll-interval|Configurar o número de segundos até a
 próxima varredura|0 (executar uma única vez)
 |allowed-public-ports|Lista de portas para a

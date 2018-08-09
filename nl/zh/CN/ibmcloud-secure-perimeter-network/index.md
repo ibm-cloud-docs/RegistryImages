@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -55,7 +55,7 @@ lastupdated: "2018-05-25"
 4.  [config.json 参考](#reference_config_json)
 5.  [rules.conf 参考](#reference_rules_conf)
 
-## 使用 {{site.data.keyword.containerlong}} 在 Secure Perimeter 中供应 Kubernetes 集群
+## 使用 {{site.data.keyword.containerlong_notm}} 在 Secure Perimeter 中供应 Kubernetes 集群
 {: #provision_cluster}
 
 1.  从 IBM Cloud 目录中的**容器**部分供应 Kubernetes 集群。
@@ -137,7 +137,7 @@ lastupdated: "2018-05-25"
 2. 创建 pvc。
 
     ```
-        kubectl apply -f restore-pvc.yaml
+    kubectl apply -f restore-pvc.yaml
     ```
     {: pre}
 
@@ -155,7 +155,7 @@ lastupdated: "2018-05-25"
       spec:
         containers:
         - name: network-pod
-          image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
+          image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
           volumeMounts:
           - name: network-vol
             mountPath: /opt/secure-perimeter

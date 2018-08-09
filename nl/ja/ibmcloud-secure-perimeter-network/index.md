@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -55,7 +55,7 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
 4.  [config.json リファレンス](#reference_config_json)
 5.  [rules.conf リファレンス](#reference_rules_conf)
 
-## {{site.data.keyword.containerlong}} を使用して Secure Perimeter 内で Kubernetes クラスターをプロビジョンする
+## {{site.data.keyword.containerlong_notm}} を使用して Secure Perimeter 内で Kubernetes クラスターをプロビジョンする
 {: #provision_cluster}
 
 1.  IBM Cloud カタログ内の**「コンテナー」**セクションから Kubernetes クラスターをプロビジョンします。
@@ -100,7 +100,7 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
   ```
   {: codeblock}
 
-  _config.json_ にデータを設定する方法の詳細については、[config.json リファレンス表](#reference_config_json)を参照してください。このファイルは、[Kubernetes ポッドとしての **ibmcloud-secure-perimeter-network** のセットアップ](#setup)のプロセスでも使用できます。
+  _config.json_ にデータを設定する方法の詳細については、[config.json リファレンス表](#reference_config_json)を参照してください。 このファイルは、[Kubernetes ポッドとしての **ibmcloud-secure-perimeter-network** のセットアップ](#setup)のプロセスでも使用できます。
 
 2. **ibmcloud-secure-perimeter-network** を Docker コンテナーとして実行して、初期セットアップを開始します。
 
@@ -109,12 +109,12 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
   ```
   {: pre}
 
-  これにより、作業ディレクトリー内に _state.json_ ファイルが作成されます。このファイルを [Kubernetes ポッドとしての **ibmcloud-secure-perimeter-network** のセットアップ](#setup)で使用します。
+  これにより、作業ディレクトリー内に _state.json_ ファイルが作成されます。 このファイルを [Kubernetes ポッドとしての **ibmcloud-secure-perimeter-network** のセットアップ](#setup)で使用します。
 
 ## Secure Perimeter 内の Kubernetes ポッドとしてセットアップする
 {: #setup}
 
-**ibmcloud-secure-perimeter-network** イメージが Secure Perimeter 上のサブネットを管理できるように、Kubernetes ポッドを使用して長期継続プロセスとしてこのイメージを実行できます。**ibmcloud-secure-perimeter-network** には、ポッドにコピーしたうえで Vyatta 用に構成する必要があるいくつかの構成ファイルとフォルダーがあります。
+**ibmcloud-secure-perimeter-network** イメージが Secure Perimeter 上のサブネットを管理できるように、Kubernetes ポッドを使用して長期継続プロセスとしてこのイメージを実行できます。 **ibmcloud-secure-perimeter-network** には、ポッドにコピーしたうえで Vyatta 用に構成する必要があるいくつかの構成ファイルとフォルダーがあります。
 
 1. _pvc.yaml_ という名前のファイルを作成します。 この構成ファイルは、ポッドにボリュームとしてマウントできる、永続ボリューム・クレーム (pvc) を作成します。
 
@@ -155,7 +155,7 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
       spec:
         containers:
         - name: network-pod
-          image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
+          image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
           volumeMounts:
           - name: network-vol
             mountPath: /opt/secure-perimeter
@@ -196,7 +196,7 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
   ```
   {: pre}
 
-  _keys_ ディレクトリーに、**ibmcloud-secure-perimeter-network** が Vyatta にアクセスするために必要な SSH 鍵が含まれています。SSH 鍵について詳しくは、[前提条件セクション](#prerequisites)を参照してください。
+  _keys_ ディレクトリーに、**ibmcloud-secure-perimeter-network** が Vyatta にアクセスするために必要な SSH 鍵が含まれています。 SSH 鍵について詳しくは、[前提条件セクション](#prerequisites)を参照してください。
 
 ## config.json リファレンス
 {: #reference_config_json}
@@ -229,4 +229,4 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
 {: #prerequisites}
 
 -   IBM Cloud インフラストラクチャー・ポータルから Vyatta および VLAN を注文済みで、VLAN が Vyatta に関連付けられていること。
--   自動化された Secure Perimeter デプロイメントによって、**ibmcloud-secure-perimeter-network** がゲートウェイにアクセスするために使用する SSH 鍵を使用して Vyatta がプリロードされること。SSH 鍵は手動でロードされるか、Secure Perimeter インストール・プロセスを介してロードされる必要があります。詳しくは、[Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) の記事を参照してください。
+-   自動化された Secure Perimeter デプロイメントによって、**ibmcloud-secure-perimeter-network** がゲートウェイにアクセスするために使用する SSH 鍵を使用して Vyatta がプリロードされること。 SSH 鍵は手動でロードされるか、Secure Perimeter インストール・プロセスを介してロードされる必要があります。 詳しくは、[Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) の記事を参照してください。

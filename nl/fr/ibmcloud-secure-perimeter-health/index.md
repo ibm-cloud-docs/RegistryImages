@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -79,7 +79,7 @@ Passez en revue les tâches suivantes pour apprendre à utiliser **ibmcloud-secu
 6.  [Référence de variable d'environnement](#reference_env_var)
 
 
-## Mettre à disposition un cluster Kubernetes dans un périmètre sécurisé via {{site.data.keyword.containerlong}}
+## Mettre à disposition un cluster Kubernetes dans un périmètre sécurisé via {{site.data.keyword.containerlong_notm}}
 {: #provision_cluster}
 
 1.  Mettez votre cluster Kubernetes à disposition depuis la section **Conteneurs** du catalogue IBM Cloud.
@@ -117,7 +117,7 @@ Avant de commencer :
         spec:
           containers:
           - name: health-pod
-            image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
+            image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
             args:
             - /usr/local/bin/python
             - /run.py
@@ -167,7 +167,7 @@ Avant de commencer :
 1. Créez un conteneur Docker à partir de votre propre poste de travail à l'aide de la commande suivante :
 
     ```
-    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
+    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
     ```
     {: pre}
 

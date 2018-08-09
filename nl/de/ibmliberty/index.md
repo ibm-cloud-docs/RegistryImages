@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-10-30"
+  years: 2017, 2018
+lastupdated: "2018-07-25"
 
 ---
 
@@ -39,6 +39,7 @@ Welche Liberty-Features jeweils in einem Image installiert sind, hängt davon ab
 |---|-----------|
 |Alle **ibmliberty**-Images|Alle **ibmliberty**-Images enthalten die folgenden Features. <ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |**ibmliberty:latest**|Dieses Image verweist auf das Image **ibmliberty:javaee7**.|
+|**ibmliberty:microProfile**|Dieses Image enthält die Features, die die von [MicroProfile](https://microprofile.io) angegebenen Funktionen bereitstellen.|
 |**ibmliberty:webProfile6**|Dieses Image enthält alle Features, die für die Konformität mit Java EE6 Web Profile erforderlich sind. Ferner enthält dieses Image zusätzliche Features, um den Inhalt an die Features anzupassen, die mit der Laufzeit-JAR von [http://wasdev.net/](http://wasdev.net/) heruntergeladen werden können, insbesondere die für OSGi-Anwendungen erforderlichen Features.|
 |**ibmliberty:webProfile7**|Dieses Image enthält alle Features, die für die Konformität mit Java EE7 Web Profile erforderlich sind.|
 |**ibmliberty:javaee7**|Dieses Image enthält alle Features von **ibmliberty:webProfile7** sowie die Features, die für die Konformität mit Java EE7 Full Platform erforderlich sind.|
@@ -69,40 +70,41 @@ Verwenden Sie eines der kostenlosen **ibmliberty**-Images aus dem {{site.data.ke
 
 **Wichtig:** Bevor Sie beginnen, lesen Sie die [Nutzungsbeschränkungen](#usage) für die **ibmliberty**-Images.
 
-1.  Wählen Sie im Katalog **Container** aus und dann das Image **ibmliberty**, aus dem Sie den Container erstellen wollen. Wenn Sie ein eigenes Image mit Produktionslizenz erstellt und in {{site.data.keyword.Bluemix_notm}} bereitgestellt haben, wählen Sie dieses Image im Katalog aus. Die Seite zum Erstellen von Containern wird geöffnet.
+1.  Wählen Sie im Katalog in der seitlichen Anzeige die Option **Container** > **IBM Cloud Container-Registry** > **Öffentliche IBM Repositorys** aus. Suchen Sie nach dem Image **ibmliberty**, aus dem Sie den Container erstellen möchten. Wenn Sie ein eigenes Image mit Produktionslizenz erstellt und in {{site.data.keyword.Bluemix_notm}} bereitgestellt haben, wählen Sie dieses Image im Katalog aus. Die Seite zum Erstellen von Containern wird geöffnet.
 2.  Wählen Sie die Version des Images **ibmliberty**, das Sie verwenden möchten, im Dropdown-Feld für **TAG/ VERSION** aus.
-3.  Entscheiden Sie, ob ein einzelner Container oder eine skalierbare Containergruppe erstellt werden soll. Weitere Informationen zum Erstellen von Containern finden Sie in den folgenden Abschnitten.
+3.  Weitere Informationen zum Erstellen von Containern aus Images, zum Einrichten von Clustern und zum Bereitstellen von Apps in Clustern finden Sie unter den nachfolgenden Links.
 
-    -   [Einzelnen Container über das {{site.data.keyword.Bluemix_notm}}-Dashboard erstellen](/docs/containers/container_single_ui.html#gui)
-    -   [Containergruppe über das {{site.data.keyword.Bluemix_notm}}-Dashboard erstellen](/docs/containers/container_ha.html#container_group_ui)
+    -   [Container auf Grundlage von Images erstellen](/docs/containers/cs_images.html#images)
+    -   [Einführung in IBM Cloud Kubernetes Service](/docs/containers/container_index.html#container_index)
+    -   [Apps in Clustern bereitstellen](docs/containers/cs_app.html#app)
     
-    **Anmerkung:** Für das Image **ibmliberty** muss Port 9080 öffentlich zugänglich gemacht werden. Wenn Sie einen Container aus dem {{site.data.keyword.Bluemix_notm}}-Dashboard erstellen, wird der Port standardmäßig im Feld **Öffentlicher Port** hinzugefügt. Beim Erstellen eines Containers über die Befehlszeilenschnittstelle wird der Port über den Befehl `bx ic run` bereitgestellt.
+    **Anmerkung:** Für das Image **ibmliberty** muss Port 9080 öffentlich zugänglich gemacht werden. Wenn Sie einen Container aus dem {{site.data.keyword.Bluemix_notm}}-Dashboard erstellen, wird der Port standardmäßig im Feld **Öffentlicher Port** hinzugefügt. Wenn Sie einen Container über die CLI erstellen, legen Sie den Port in Ihrem Befehl `kubectl run` mit der Option `--port=9080` frei.
 
 
 ## Java-Heapspeicherbelegung für einen Container über die Befehlszeilenschnittstelle überwachen 
 {: #monitor_heap}
 
 
-Nach dem Erstellen eines Containers aus dem Image **ibmliberty** können Sie alle aktiven Prozesse auflisten und die Java-Heapspeicherbelegung prüfen. Der Java-Heapspeicher ist der Speicher, der der Java-Anwendung während der Laufzeit zur Verfügung steht.
+Nachdem Sie einen Container aus dem Image **ibmliberty** erstellt haben, können Sie die Metriken für einen bestimmten Pod und seine Container anzeigen und die Java-Heapspeicherbelegung überprüfen. Der Java-Heapspeicher ist der Speicher, der der Java-Anwendung während der Laufzeit zur Verfügung steht.
 {:shortdesc}
 
-1.  Listen Sie alle aktiven Prozesse innerhalb des Containers auf.
+1.  Rufen Sie den Namen des Pods ab, für den Sie Metriken anzeigen möchten.
+  
+    ```
+    kubectl get pods
+    ```
+
+2.  Zeigen Sie Metriken für einen bestimmten Pod und seine Container an.
 
     ```
-    bx ic top CONTAINER -aux
+    kubectl top pod POD_NAME --containers
     ```
     {: pre}
 
-    Ihre Ausgabe auf der Befehlszeilenschnittstelle sieht wie folgt aus.
+3.  Um die Java-Heapspeicherbelegung zu überprüfen, müssen Sie auf die **RSS**-Speicherstatistik zugreifen. Befolgen Sie die [hier](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) aufgeführten Anweisungen für den Zugriff auf eine Shell eines Containers und überprüfen Sie anschließend [Laufzeitmetriken](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io), um zu erfahren, wie Sie nach Speicherstatistikinformationen für einen Container suchen und diese formatieren können.
+Die Java-Heapspeicherbelegung wird in Kilobyte angezeigt. Wenn die Heapspeicherbelegung für alle Instanzen kleiner als 2097152 Kilobyte (2GB) ist, müssen Sie keine WebSphere Application Server-Lizenz erwerben.
 
-    ```    
-    USER        PID       %CPU   %MEM    VSZ         RSS        TTY     STAT   START    TIME   COMMAND
-    contain+    3322245   3.2    0.0     11522856    216192     ?       Ssl    14:43    0:35   /opt/ibm/java/jre/bin/java -javaagent:/opt/ibm/wlp/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -jar /opt/ibm/wlp/bin/tools/ws-server.jar defaultServer 
-    ```
-    {: screen}
-
-2.  Prüfen Sie die Java-Heapspeicherbelegung in der Spalte **RSS**. Die Java-Heapspeicherbelegung wird in Kilobyte angezeigt. Wenn die Heapspeicherbelegung für alle Instanzen kleiner als 2097152 Kilobyte (2GB) ist, müssen Sie keine WebSphere Application Server-Lizenz erwerben.
-3.  Passen Sie die maximale Heapspeicherbelegung für Ihre WebSphere Application Server-Instanz an. Weitere Informationen finden Sie unter [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile](http://www-01.ibm.com/support/docview.wss?uid=swg21596474).
+4.  Passen Sie die maximale Heapspeicherbelegung für Ihre WebSphere Application Server-Instanz an. Weitere Informationen finden Sie unter [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile](http://www-01.ibm.com/support/docview.wss?uid=swg21596474).
 
 ## WebSphere Application Server-Lizenz abrufen 
 {: #license}
@@ -144,7 +146,7 @@ Gehen Sie wie folgt vor, um ein Image mit Ihrem App-Code aus dem Image **ibmlibe
 1. Erstellen Sie mit einem Texteditor eine Datei mit dem Namen "Dockerfile" und kopieren Sie die folgenden Informationen in diese Datei.
 
     ```
-    FROM registry.{{site.data.keyword.domainname}}/ibmliberty:<tag>
+    FROM registry.bluemix.net/ibmliberty:<tag>
     COPY <app-name>.<dateierweiterung> /config/dropins/
     
     ```

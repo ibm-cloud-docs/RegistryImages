@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -23,7 +23,7 @@ lastupdated: "2018-05-25"
 ## 機能
 {: #how-it-works}
 
-Secure Perimeter が適切に機能していることを確認するために、**ibmcloud-secure-perimeter-health** で、ご使用の IBM Cloud インフラストラクチャー・アカウントのパブリック・ネットワークまたはプライベート・ネットワークをスキャンし、脆弱性のレポートを作成できます。**ibmcloud-secure-perimeter-health** イメージは、以下の 2 つの方法で使用できます。
+Secure Perimeter が適切に機能していることを確認するために、**ibmcloud-secure-perimeter-health** で、ご使用の IBM Cloud インフラストラクチャー・アカウントのパブリック・ネットワークまたはプライベート・ネットワークをスキャンし、脆弱性のレポートを作成できます。 **ibmcloud-secure-perimeter-health** イメージは、以下の 2 つの方法で使用できます。
 
 -   **ibmcloud-secure-perimeter-health** を Secure Perimeter 内の Kubernetes クラスター上のポッドとして使用して、プライベート・ネットワークの露出をスキャンする。
 -   **ibmcloud-secure-perimeter-health** をワークステーション上のスタンドアロン Docker コンテナーとして使用して、パブリック・ネットワークの露出をスキャンする。
@@ -32,7 +32,7 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
   * [Set up a Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
   * [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)
 
-スキャンが終了すると、**ibmcloud-secure-perimeter-health** イメージによって、Secure Perimeter Segment 内から到達可能であったネットワークに関するレポートが生成されます。各レポートには、ネットワーク・ゲートウェイの名前、VLAN、そのサブネット、および問題のあるホストがある場合はそのようなホストが詳細に示されます。プライベート・ネットワークの脆弱性をスキャンしたユーザーのレポートの例を以下に示します。
+スキャンが終了すると、**ibmcloud-secure-perimeter-health** イメージによって、Secure Perimeter Segment 内から到達可能であったネットワークに関するレポートが生成されます。 各レポートには、ネットワーク・ゲートウェイの名前、VLAN、そのサブネット、および問題のあるホストがある場合はそのようなホストが詳細に示されます。 プライベート・ネットワークの脆弱性をスキャンしたユーザーのレポートの例を以下に示します。
 ```
 #-------- Running Secure Perimeter exposure scan 2018-05-24 12:00:00 --------#
 
@@ -79,7 +79,7 @@ sp-gateway-8a9031ab:
 6.  [環境変数リファレンス](#reference_env_var)
 
 
-## {{site.data.keyword.containerlong}} を使用して Secure Perimeter 内で Kubernetes クラスターをプロビジョンする
+## {{site.data.keyword.containerlong_notm}} を使用して Secure Perimeter 内で Kubernetes クラスターをプロビジョンする
 {: #provision_cluster}
 
 1.  IBM Cloud カタログ内の**「コンテナー」**セクションから Kubernetes クラスターをプロビジョンします。
@@ -117,7 +117,7 @@ sp-gateway-8a9031ab:
         spec:
           containers:
           - name: health-pod
-            image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
+            image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
             args:
             - /usr/local/bin/python
             - /run.py
@@ -167,7 +167,7 @@ sp-gateway-8a9031ab:
 1. 以下のように、自身のワークステーションから Docker コンテナーを作成します。
 
     ```
-    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
+    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
     ```
     {: pre}
 

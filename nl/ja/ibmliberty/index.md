@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-10-30"
+  years: 2017, 2018
+lastupdated: "2018-07-25"
 
 ---
 
@@ -39,6 +39,7 @@ IBM® WebSphere® Application Server Liberty (**ibmliberty**) イメージは {{
 |---|-----------|
 |すべての **ibmliberty** イメージ|すべての **ibmliberty** イメージに次のフィーチャーが含まれています。 <ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |**ibmliberty:latest**|このイメージは **ibmliberty:javaee7** イメージをポイントします。|
+|**ibmliberty:microProfile**|このイメージには、[MicroProfile](https://microprofile.io) で指定された機能を提供するフィーチャーが含まれています。|
 |**ibmliberty:webProfile6**|このイメージには、Java EE6 Web Profile 準拠に必要なすべてのフィーチャーが含まれています。 ランタイム JAR を使用して [http://wasdev.net/](http://wasdev.net/) からダウンロード可能なフィーチャーとコンテンツを調和させるために、追加のフィーチャーも取り込まれます (特に、OSGi アプリケーションに必要なフィーチャー)。|
 |**ibmliberty:webProfile7**|このイメージには、Java EE7 Web Profile 準拠に必要なすべてのフィーチャーが含まれています。|
 |**ibmliberty:javaee7**|このイメージには、**ibmliberty:webProfile7** イメージのすべてのフィーチャーに加えて、Java EE7 Full Platform 準拠に必要なフィーチャーが含まれています。|
@@ -69,40 +70,41 @@ Docker Hub の [websphere-liberty イメージ](https://hub.docker.com/_/websphe
 
 **重要:** 始める前に、**ibmliberty** イメージの[使用上の制約事項](#usage)を確認してください。
 
-1.  カタログから、**「コンテナー」**を選択し、コンテナーをビルドする元になる **ibmliberty** イメージを選択します。 実動ライセンス交付を受けた独自のイメージを作成して {{site.data.keyword.Bluemix_notm}} にデプロイした場合は、そのイメージをカタログから選択してください。 コンテナー作成ページが開きます。
+1.  カタログから、サイド・パネルで**「コンテナー」**>**「IBM Cloud Container Registry」**>**「IBM パブリック・リポジトリー (IBM Public Repositories)」**を選択します。コンテナーをビルドする元になる **ibmliberty** イメージを検索します。実動ライセンス交付を受けた独自のイメージを作成して {{site.data.keyword.Bluemix_notm}} にデプロイした場合は、そのイメージをカタログから選択してください。 コンテナー作成ページが開きます。
 2.  **「タグ/バージョン」**ドロップダウン・ボックスから、使用する **ibmliberty** イメージのバージョンを選択します。
-3.  単一コンテナーを作成するか、スケーラブル・コンテナー・グループを作成するかを選択します。 コンテナーの作成方法について詳しくは、以下のトピックを参照してください。
+3.  イメージからのコンテナーのビルド、クラスターのセットアップ、クラスターでのアプリケーションのデプロイについて詳しくは、以下のリンク先を参照してください。
 
-    -   [{{site.data.keyword.Bluemix_notm}} ダッシュボードを使用した単一コンテナーの作成](/docs/containers/container_single_ui.html#gui)
-    -   [{{site.data.keyword.Bluemix_notm}} ダッシュボードを使用したコンテナー・グループの作成](/docs/containers/container_ha.html#container_group_ui)
+    -   [イメージからのコンテナーのビルド](/docs/containers/cs_images.html#images)
+    -   [IBM Cloud Kubernetes Service 概説](/docs/containers/container_index.html#container_index)
+    -   [アプリをクラスターにデプロイする](docs/containers/cs_app.html#app)
     
-    **注:** **ibmliberty** イメージを使用するには、ポート 9080 がパブリックに公開される必要があります。 {{site.data.keyword.Bluemix_notm}} ダッシュボードからコンテナーを作成する場合、このポートが**「パブリック・ポート」**フィールドにデフォルトで追加されます。 CLI からコンテナーを作成する場合は、`bx ic run` コマンドでこのポートを公開してください。
+    **注:** **ibmliberty** イメージを使用するには、ポート 9080 がパブリックに公開される必要があります。 {{site.data.keyword.Bluemix_notm}} ダッシュボードからコンテナーを作成する場合、このポートが**「パブリック・ポート」**フィールドにデフォルトで追加されます。 CLI からコンテナーを作成する場合は、`kubectl run` コマンドに `--port=9080` オプションを指定して実行し、ポートを公開してください。
 
 
 ## CLI を使用した、コンテナーの Java ヒープ・スペース使用量のモニター 
 {: #monitor_heap}
 
 
-**ibmliberty** イメージからコンテナーを作成した後、実行中のプロセスをすべてリストして、Java ヒープ使用量を確認できます。 Java ヒープ・スペースは、Java アプリケーションが実行時に使用できるメモリーです。
+**ibmliberty** イメージからコンテナーを作成した後、特定ポッドとそのコンテナーのメトリックを表示して、Java ヒープ使用量を確認できます。Java ヒープ・スペースは、Java アプリケーションが実行時に使用できるメモリーです。
 {:shortdesc}
 
-1.  コンテナー内の実行中のプロセスをすべてリストします。
+1.  メトリックを表示するポッドの名前を取得します。
+  
+    ```
+    kubectl get pods
+    ```
+
+2.  特定ポッドとそのコンテナーのメトリックを表示します。
 
     ```
-    bx ic top CONTAINER -aux
+    kubectl top pod POD_NAME --containers
     ```
     {: pre}
 
-    CLI 出力は、以下のようになります。
+3.  Java ヒープ使用量を確認するには、**RSS** のメモリー統計にアクセスする必要があります。[ここ](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)にあるコンテナーのシェルへのアクセス方法に関するガイドラインに従ってください。その後、[ランタイム・メトリック](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io)で、コンテナーのメモリー統計情報の検索とフォーマットの方法について確認してください。
+Java ヒープ使用量はキロバイト単位で表示されます。 すべてのインスタンスを合わせてヒープ使用量が 2097152 キロバイト (2 GB) 未満であれば、WebSphere Application Server ライセンスを購入する必要はありません。
 
-    ```    
-    USER        PID       %CPU   %MEM    VSZ         RSS        TTY     STAT   START    TIME   COMMAND
-    contain+    3322245   3.2    0.0     11522856    216192     ?       Ssl    14:43    0:35   /opt/ibm/java/jre/bin/java -javaagent:/opt/ibm/wlp/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -jar /opt/ibm/wlp/bin/tools/ws-server.jar defaultServer 
-    ```
-    {: screen}
-
-2.  **RSS** 列で Java ヒープ使用量を確認します。 Java ヒープ使用量はキロバイト単位で表示されます。 すべてのインスタンスを合わせてヒープ使用量が 2097152 キロバイト (2 GB) 未満であれば、WebSphere Application Server ライセンスを購入する必要はありません。
-3.  WebSphere Application Server インスタンスの最大ヒープ使用量を調整します。 詳しくは、[Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) を参照してください。
+4.  WebSphere Application Server インスタンスの最大ヒープ使用量を調整します。 詳しくは、[Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) を参照してください。
 
 ## WebSphere Application Server ライセンスの取得 
 {: #license}
@@ -144,7 +146,7 @@ WebSphere Application Server ライセンスを使用して、{{site.data.keywor
 1. テキスト・エディターで、Dockerfile という名前のファイルを作成し、その中に以下の情報をコピーします。
 
     ```
-    FROM registry.{{site.data.keyword.domainname}}/ibmliberty:<tag>
+    FROM registry.bluemix.net/ibmliberty:<tag>
     COPY <app_name>.<file_extension> /config/dropins/
     
     ```

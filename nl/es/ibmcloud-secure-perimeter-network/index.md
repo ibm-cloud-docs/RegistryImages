@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -55,7 +55,7 @@ Revise las siguientes tareas para aprender a utilizar **ibmcloud-secure-perimete
 4.  [Referencia de config.json](#reference_config_json)
 5.  [Referencia de rules.conf](#reference_rules_conf)
 
-## Suministre un clúster de Kubernetes dentro de un Secure Perimeter utilizando {{site.data.keyword.containerlong}}
+## Suministro de un clúster de Kubernetes dentro de un perímetro seguro mediante {{site.data.keyword.containerlong_notm}}
 {: #provision_cluster}
 
 1.  Suministre el clúster de Kubernetes desde la sección **Contenedores** del catálogo de IBM Cloud.
@@ -137,7 +137,7 @@ Para que la imagen **ibmcloud-secure-perimeter-network** gestione subredes en el
 2. Cree la pvc.
 
     ```
-    kubectl apply -f restore-pvc.yaml 
+    kubectl apply -f restore-pvc.yaml
     ```
     {: pre}
 
@@ -155,7 +155,7 @@ Para que la imagen **ibmcloud-secure-perimeter-network** gestione subredes en el
       spec:
         containers:
         - name: network-pod
-          image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
+          image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
           volumeMounts:
           - name: network-vol
             mountPath: /opt/secure-perimeter
@@ -201,7 +201,8 @@ Para que la imagen **ibmcloud-secure-perimeter-network** gestione subredes en el
 ## Referencia de config.json
 {: #reference_config_json}
 
-|Clave|Descripción |---|-------------|---|
+|Clave|Descripción
+|---|-------------|---|
 |slid|El nombre de usuario de la infraestructura de IBM Cloud
 |apikey|La clave de API de la infraestructura de IBM Cloud
 |region|La región de IBM Cloud donde se despliega Vyatta
@@ -217,7 +218,8 @@ Para que la imagen **ibmcloud-secure-perimeter-network** gestione subredes en el
 ## Referencia de rules.conf
 {: #reference_rules_conf}
 
-|Clave|Descripción |---|-------------|---|
+|Clave|Descripción
+|---|-------------|---|
 |external_subnets|Lista de subredes en Internet pública a las que exponer Secure Perimeter
 |external_ports|Lista de puertos a los que exponer Secure Perimeter
 |userips|Lista de IP de usuarios a incluir en una lista blanca a Secure Perimeter

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-10-30"
+  years: 2017, 2018
+lastupdated: "2018-07-25"
 
 ---
 
@@ -39,6 +39,7 @@ lastupdated: "2017-10-30"
 |---|-----------|
 |所有 **ibmliberty** 映像|所有 **ibmliberty** 映像都包含以下功能部件。<ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |**ibmliberty:latest**|此映像指向 **ibmliberty:javaee7** 映像。|
+|**ibmliberty:microProfile**|此映像包含的功能提供 [MicroProfile](https://microprofile.io) 指定的功能。|
 |**ibmliberty:webProfile6**|此映像包含 Java EE6 Web Profile 合规性所要求的所有功能部件。此映像还可通过运行时 JAR 从 [http://wasdev.net/](http://wasdev.net/) 拉入其他功能部件，使其内容与可供下载的功能部件保持一致，其中最主要是 OSGi 应用程序所需的功能部件。|
 |**ibmliberty:webProfile7**|此映像包含 Java EE7 Web Profile 合规性所要求的所有功能部件。|
 |**ibmliberty:javaee7**|此映像包含 **ibmliberty:webProfile7** 映像中的所有功能部件，以及 Java EE7 Full Platform 合规性所要求的功能部件。|
@@ -69,41 +70,41 @@ lastupdated: "2017-10-30"
 
 **重要事项**：开始之前，请查看 **ibmliberty** 映像的[使用限制](#usage)。
 
-1.  在目录中，选择**容器**，然后选择 **ibmliberty** 映像以基于此映像构建容器。如果您已创建自己的生产许可映像并已将其部署至 {{site.data.keyword.Bluemix_notm}}，请从目录选择此映像。这将打开“容器创建”页面。
+1.  在目录中，选择侧面板上的**容器** > **IBM Cloud Container Registry** > **IBM 公共存储库**。搜索 **ibmliberty** 映像以基于该映像构建容器。如果您已创建自己的生产许可映像并已将其部署至 {{site.data.keyword.Bluemix_notm}}，请从目录选择此映像。这将打开“容器创建”页面。
 2.  从**标记/版本**下拉框中，选择要使用的 **ibmliberty** 映像的版本。
-3.  选择是创建单个容器还是创建可扩展容器组。有关如何创建容器的更多信息，请参阅以下主题。
+3.  有关基于映像构建容器、设置集群以及在集群中部署应用程序的更多信息，请单击以下链接。
 
-    -   [使用 {{site.data.keyword.Bluemix_notm}} 仪表板创建单个容器](/docs/containers/container_single_ui.html#gui)
-    -   [使用 {{site.data.keyword.Bluemix_notm}} 仪表板创建容器组](/docs/containers/container_ha.html#container_group_ui)
+    -   [基于映像构建容器](/docs/containers/cs_images.html#images)
+    -   [IBM Cloud Kubernetes 服务入门](/docs/containers/container_index.html#container_index)
+    -   [在集群中部署应用程序](docs/containers/cs_app.html#app)
     
-    **注：****ibmliberty** 映像要求以公共方式公开端口 9080。在 {{site.data.keyword.Bluemix_notm}}“仪表板”中创建容器时，缺省情况下会在**公共端口**字段中添加此端口。在 CLI 中创建容器时，请在 `bx ic run` 命令中公开此端口。
+    **注：****ibmliberty** 映像要求以公共方式公开端口 9080。在 {{site.data.keyword.Bluemix_notm}}“仪表板”中创建容器时，缺省情况下会在**公共端口**字段中添加此端口。如果在 CLI 中创建容器，请在带 `--port=9080` 选项的 `kubectl ic run` 命令中公开此端口。
 
 
 ## 使用 CLI 监视容器的 Java 堆空间使用 
 {: #monitor_heap}
 
 
-通过 **ibmliberty** 映像创建容器之后，您可以列出所有正在运行的流程，并复查 Java 堆使用量。
-Java 堆空间是在运行时可用于 Java 应用程序的内存。
+基于 **ibmliberty** 映像创建容器之后，您可以查看特定 pod 及其容器的度量值，并复查 Java 堆使用量。Java 堆空间是在运行时可用于 Java 应用程序的内存。
 {:shortdesc}
 
-1.  列出容器中的所有正在运行的流程。
+1.  获取要查看其度量值的 pod 的名称。
+  
+    ```
+    kubectl get pods
+    ```
+
+2.  查看特定 pod 及其容器的度量值。
 
     ```
-        bx ic top CONTAINER -aux
+    kubectl top pod POD_NAME --containers
     ```
     {: pre}
 
-    CLI 输出将类似于以下内容。
+3.  要复查 Java 堆使用量，您需要访问 **RSS** 内存统计信息。遵循[此处](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)有关如何访问容器 shell 的准则，然后复查[运行时度量值](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io)，以了解如何查找容器的内存统计信息并设置其格式。
+Java 堆使用量以 KB 显示。如果跨所有实例堆使用量低于 2097152 KB (2GB)，那么您无需购买 WebSphere Application Server 许可。
 
-    ```    
-    USER        PID       %CPU   %MEM    VSZ         RSS        TTY     STAT   START    TIME   COMMAND
-    contain+    3322245   3.2    0.0     11522856    216192     ?       Ssl    14:43    0:35   /opt/ibm/java/jre/bin/java -javaagent:/opt/ibm/wlp/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -jar /opt/ibm/wlp/bin/tools/ws-server.jar defaultServer
-    ```
-    {: screen}
-
-2.  在 **RSS** 列中复查 Java 堆使用量。Java 堆使用量以 KB 显示。如果跨所有实例堆使用量低于 2097152 KB (2GB)，那么您无需购买 WebSphere Application Server 许可。
-3.  针对 WebSphere Application Server 实例，调整最大堆使用量。有关更多信息，请参阅[在 WebSphere Application Server V8.5 Liberty 概要文件中设置通用 JVM 参数](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)。
+4.  针对 WebSphere Application Server 实例，调整最大堆使用量。有关更多信息，请参阅[在 WebSphere Application Server V8.5 Liberty 概要文件中设置通用 JVM 参数](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)。
 
 ## 获取 WebSphere Application Server 许可 
 {: #license}
@@ -149,10 +150,8 @@ Application Server V8.5 或更新版本的许可，那么可以使用现有授�
 1. 使用文本编辑器，创建一个名为 Dockerfile 的文件，并将以下信息复制到该文件中。
 
     ```
-    FROM registry.{{site.data.keyword.domainname}}/ibmliberty:<tag>
+    FROM registry.bluemix.net/ibmliberty:<tag>
     COPY <app_name>.<file_extension> /config/dropins/
-    
-    
     
     ```
     {: screen}

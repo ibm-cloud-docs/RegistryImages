@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -79,7 +79,7 @@ sp-gateway-8a9031ab:
 6.  [环境变量参考](#reference_env_var)
 
 
-## 使用 {{site.data.keyword.containerlong}} 在 Secure Perimeter 中供应 Kubernetes 集群
+## 使用 {{site.data.keyword.containerlong_notm}} 在 Secure Perimeter 中供应 Kubernetes 集群
 {: #provision_cluster}
 
 1.  从 IBM Cloud 目录中的**容器**部分供应 Kubernetes 集群。
@@ -103,7 +103,7 @@ sp-gateway-8a9031ab:
 1. 创建名为 _health-pod.yaml_ 的配置文件。此文件创建容器 pod 的高可用性部署。
 
     ```
-    apiVersion: extensions/v1beta1
+apiVersion: extensions/v1beta1
     kind: Deployment
     metadata:
       name: health-pod
@@ -117,7 +117,7 @@ sp-gateway-8a9031ab:
         spec:
           containers:
           - name: health-pod
-            image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
+            image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
             args:
             - /usr/local/bin/python
             - /run.py
@@ -138,19 +138,19 @@ sp-gateway-8a9031ab:
 2. 创建部署。
 
     ```
-    kubectl apply -f health-pod.yaml
+kubectl apply -f health-pod.yaml
     ```
     {: pre}
 
 3. 确认 pod 正在运行。
 
     ```
-        kubectl get pods
+    kubectl get pods
     ```
     {: pre}
 
     ```
-    NAME                                    READY     STATUS    RESTARTS   AGE
+NAME                                    READY     STATUS    RESTARTS   AGE
     health-pod-<random-id>                  1/1       Running   0          1hr
     ```
     {: screen}
@@ -167,7 +167,7 @@ sp-gateway-8a9031ab:
 1. 从自己的工作站创建 Docker 容器，如下所示：
 
     ```
-    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
+    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
     ```
     {: pre}
 

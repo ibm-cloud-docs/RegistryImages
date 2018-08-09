@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-07-25"
 
 ---
 
@@ -17,7 +17,7 @@ lastupdated: "2018-05-25"
 # Introduzione all'immagine ibmcloud-secure-perimeter-health
 {: #ibmcloud-secure-perimeter-health}
 
-L'immagine **ibmcloud-secure-perimeter-health** contiene uno strumento per eseguire la scansione delle vulnerabilità in un Secure Perimeter in IBM Cloud.
+L'immagine **ibmcloud-secure-perimeter-health** contiene uno strumento per eseguire la scansione delle vulnerabilità in un perimetro sicuro in IBM Cloud.
 {:shortdesc}
 
 ## Come funziona
@@ -28,7 +28,7 @@ Per assicurare che il tuo Secure Perimeter stia funzionando correttamente, **ibm
 -   Usa **ibmcloud-secure-perimeter-health** come un pod su un cluster Kubernetes nel tuo Secure Perimeter per eseguire la scansione per rilevare eventuali esposizioni delle reti private.
 -   Usa **ibmcloud-secure-perimeter-health** come un contenitore Docker autonomo sulla tua workstation per eseguire la scansione per rilevare eventuali esposizioni delle reti pubbliche.
 
-Ulteriori informazioni sul Secure Perimeter sono disponibili in questi articoli di blog:
+Ulteriori informazioni sul perimetro sicuro sono disponibili in questi articoli di blog:
   * [Set up a Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
   * [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
 
@@ -79,7 +79,7 @@ Rivedi le seguenti attività per informazioni sulla modalità di utilizzo di **i
 6.  [Riferimenti alla variabile di ambiente](#reference_env_var)
 
 
-## Esegui il provisioning di un cluster Kubernetes in un Secure Perimeter utilizzando {{site.data.keyword.containerlong}}
+## Esegui il provisioning di un cluster Kubernetes in un Secure Perimeter utilizzando {{site.data.keyword.containerlong_notm}}
 {: #provision_cluster}
 
 1.  Esegui il provisioning del tuo cluster Kubernetes dalla sezione **Contenitori** nel catalogo IBM Cloud.
@@ -117,7 +117,7 @@ Prima di iniziare:
         spec:
           containers:
           - name: health-pod
-            image: registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
+            image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0
             args:
             - /usr/local/bin/python
             - /run.py
@@ -167,7 +167,7 @@ Prima di iniziare:
 1. Crea un contenitore Docker dalla tua workstation nel seguente modo:
 
     ```
-    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.<region>.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
+    docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
     ```
     {: pre}
 

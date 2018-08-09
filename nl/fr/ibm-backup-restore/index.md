@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-09"
+  years: 2017, 2018
+lastupdated: "2018-07-24"
 
 ---
 
@@ -23,132 +23,170 @@ L'image **ibm-backup-restore** contient les packages préinstallés nécessaires
 ## Fonctionnement 
 {: #how_it_works}
 
-L'image **ibm-backup-restore** vous permet de créer une sauvegarde ponctuelle ou planifiée de n'importe quelle réclamation de volume persistant. La sauvegarde est stockée dans une instance {{site.data.keyword.objectstoragefull}}. Vous pouvez transmettre les données d'identification {{site.data.keyword.objectstorageshort}} à votre conteneur **ibm-backup-restore** sous forme de variables d'environnement ou en éditant le fichier `config.conf` dans le conteneur en cours d'exécution. Vous pouvez également restaurer vos données sauvegardées à partir de l'instance {{site.data.keyword.objectstorageshort}} sur un volume. Etant donné que l'image contient des scripts permettant d'exécuter des sauvegardes et des restaurations, l'utilisateur doit exécuter une commande pour démarrer le script approprié.
+L'image **ibm-backup-restore** vous permet de créer une sauvegarde ponctuelle ou planifiée des données d'application qui sont stockées dans un volume persistant de votre cluster ou de restaurer des données d'applications dans un volume persistant. Pour sauvegarder et restaurer les données, vous déployez un pod depuis l'image **ibm-backup-restore**. Vous montez ensuite la réservation de volume persistant qui lie le volume persistant que vous voulez utiliser pour la restauration de vos données dans votre pod. 
+
+**Où vont mes données ? Comment puis-je y accéder? ** </br>
+Les données que vous sauvegardez sont stockées dans une instance de service {{site.data.keyword.cos_full_notm}}. Pour accéder au service, utilisez vos données d'identification du service {{site.data.keyword.cos_full_notm}} en tant que variables d'environnements dans le pod **ibm-backup-restore**, ou éditez le fichier `config.conf` dans le pod en cours d'exécution.
+
+**Puis-je restaurer les données sauvegardées dans une application ou un volume persistant différent ?** </br>
+Oui, vous pouvez restaurer vos données sauvegardées depuis l'instance de service {{site.data.keyword.cos_full_notm}} dans un volume persistant de votre cluster. Pour restaurer les données, vous devez créer un pod de restauration depuis l'image **ibm-backup-restore**. Vous montez ensuite la réservation de volume persistant qui lie le volume persistant que vous voulez utiliser dans votre pod.  
 
 ## Eléments inclus 
 {: #whats_included}
 
 Chaque image **ibm-backup-restore** contient les progiciels suivants :
 
--   Ubuntu 14.04
+-   Alpine 3.7
 -   Duplicity 0.7.10
--   Packages python, gnupg et wget
+-   Packages python et gpgme
 
-## Initiation 
-{: #how_to_get_started}
 
-Passez en revue les tâches suivantes pour sauvegarder et restaurer des données :
-1.  [Création d'une instance de service {{site.data.keyword.objectstorageshort}}](#object_storage)
-2.  [Exécution d'une sauvegarde planifiée](#scheduled_backup)
-3.  [Exécution du script de restauration](#restore_script_cli)
-4.  [Chiffrage de vos sauvegardes](#encrypting_backups)
-5.  [Référence de variable d'environnement](#reference_backup_restore)
-
-## Création d'une instance de service {{site.data.keyword.objectstorageshort}} 
+## Configuration d'une instance de service {{site.data.keyword.cos_full_notm}} 
 {: #object_storage}
 
-Créez une instance {{site.data.keyword.objectstorageshort}} qui servira de référentiel pour votre sauvegarde de volume.
+Créez et configurez une instance de service {{site.data.keyword.cos_full_notm}} qui servira de référentiel pour les données que vous voulez sauvegarder.
+{: shortdesc}
 
-1.  Mettez à disposition votre instance {{site.data.keyword.objectstorageshort}} à partir de la section **Storage** du catalogue {{site.data.keyword.Bluemix_notm}}.
-2.  Cliquez sur {{site.data.keyword.objectstorageshort}}.
-3.  Sélectionnez {{site.data.keyword.objectstorageshort}} OpenStack Swift pour {{site.data.keyword.Bluemix_notm}}. Ensuite, cliquez sur Créer.
-3.  Cliquez sur l'onglet **Données d'identification pour le service**.
-4.  Cliquez sur **Nouvelles données d'identification**.
-5.  Renseignez la zone de nom, mais laissez les autres zones non renseignées. Cliquez sur **Ajouter**.
-6.  Vos nouvelles données d'identification sont désormais répertoriées dans le tableau **Données d'identification pour le service**. Cliquez sur **Afficher les données d'identification**.
-7.  Notez le contenu des zones **projectid**, **region**,
-**userId** et **password**. Ces données d'identification permettent à votre conteneur **ibm-backup-restore** d'accéder à cette instance {{site.data.keyword.objectstorageshort}}.
+1. Déployez une instance de service {{site.data.keyword.cos_full_notm}}.
+   1.  Ouvrez le catalogue [{{site.data.keyword.Bluemix_notm}}](https://console.bluemix.net/catalog/services/cloud-object-storage).
+   2.  Entrez un nom pour votre instance de service, tel que `cos-backup` et sélectionnez **default** comme groupe de ressources. 
+   3.  Consultez les plans de tarification dans [Tarification d'IBM Cloud Object Storage ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](https://www.ibm.com/cloud-computing/bluemix/fr/pricing-object-storage#s3api) pour prendre connaissance des informations de tarification. 
+   4.  Cliquez sur **Créer**.
+2. Extrayez les données d'identification d'instance de service {{site.data.keyword.cos_full_notm}}.
+   1.  Dans la navigation de la page des détails du service, cliquez sur **Données d'identification pour le service**.
+   2.  Cliquez sur **Nouvelles données d'identification**. Une boîte de dialogue s'affiche. 
+   3.  Entrez un nom pour vos données d'identification.
+   4.  Dans **Ajouter des paramètres de configuration en ligne (facultatif)**, entrez `{"HMAC":true}` pour créer des données d'identification HMAC supplémentaires que le pod **ibm-backup-restore** utilise pour l'authentification HMAC avec le service {{site.data.keyword.cos_full_notm}}. 
+   5.  Cliquez sur **Ajouter**. Vos nouvelles données d'identification sont répertoriées dans le tableau **Données d'identification pour le service**.
+   6.  Cliquez sur **Afficher les données d'identification**. 
+   7.  Notez les informations relatives aux sections **access_key_id** et **secret_access_key** que vous pouvez trouver dans la section **cos_hmac_keys**. 
+3. Créez votre premier compartiment {{site.data.keyword.cos_full_notm}}.
+   1. Dans la navigation de la page des détails du service, cliquez sur **Buckets**. 
+   2. Cliquez sur **Create bucket**. Une boîte de dialogue s'affiche.
+   3. Entrez un nom unique pour votre compartiment. Le nom doit être unique dans {{site.data.keyword.cos_full_notm}} sur toutes les régions et sur tous les comptes {{site.data.keyword.Bluemix_notm}}. 
+   4. Dans la liste déroulante **Resiliency**, sélectionnez le niveau de disponibilité que vous voulez pour vos données. Pour plus d'informations, voir la rubrique relative aux [ régions et noeuds finaux {{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage/basics/endpoints.html#select-regions-and-endpoints). 
+   5. Changez la valeur de l'option **Emplacement** pour qu'elle corresponde à la région dans laquelle vous voulez stocker vos données. Gardez à l'esprit qu'il est possible que vous ne soyez pas autorisé à stocker vos données dans toutes les régions, pour des raisons juridiques.  
+   6. Cliquez sur **Créer**. 
+4. Extrayez le nom d'hôte {{site.data.keyword.cos_full_notm}} pour votre compartiment. 
+   1. Cliquez sur le nom du compartiment que vous avez créé à l'étape précédente. 
+   2. Dans la navigation de la page des détails du service, cliquez sur **Buckets** > **Configuration**. 
+   3. Prenez note de l'URL publique que vous pouvez utiliser pour accéder aux données de votre compartiment. 
 
-Examinez la documentation [{{site.data.keyword.objectstorageshort}}](../../ObjectStorage/index.html) pour plus d'informations sur la configuration de votre instance et passez en revue les [options de planification](../../ObjectStorage/objectstorage_faq.html#account-payment) pour plus d'informations concernant la tarification du service {{site.data.keyword.objectstorageshort}}.
 
-## Exécution d'une sauvegarde planifiée 
+Consultez la documentation [{{site.data.keyword.cos_full_notm}}](/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) pour plus d'informations sur la configuration de votre instance de service.
+
+## Sauvegarde des données depuis un volume persistant
 {: #scheduled_backup}
 
-Créez un pod de conteneur à partir de l'image **ibm-backup-restore** et lancez une sauvegarde planifiée pour une exécution régulière.
+Vous pouvez créer une sauvegarde ponctuelle ou planifiée de tout volume persistant qui est monté dans votre pod d'application via une réservation de volume persistant.  
+{: shortdesc}
+
+L'exemple suivant vous montre comment déployer un pod de sauvegarde depuis l'image **ibm-backup-restore**, monter un volume persistant dans le pod de sauvegarde en utilisant une réclamation de volume persistant et sauvegarder les données depuis le volume persistant dans votre instance de service {{site.data.keyword.cos_full_notm}}.  
 
 Avant de commencer :
 
--   Installez les [interfaces de ligne de commande](../../../containers/cs_cli_install.html#cs_cli_install) requises.
--   [Ciblez votre interface de ligne de commande](../../../containers/cs_cli_install.html#cs_cli_configure) vers votre cluster.
+-   [Configurez une instance de service {{site.data.keyword.cos_full_notm}}](#object_storage). 
+-   Installez les [interfaces de ligne de commande](/docs/containers/cs_cli_install.html#cs_cli_install) requises pour créer et utiliser votre cluster.
+-   [Créez un cluster standard](/docs/containers/cs_clusters.html#clusters_cli) ou utilisez un cluster existant.
+-   [Ciblez votre interface de ligne de commande vers votre cluster](/docs/containers/cs_cli_install.html#cs_cli_configure).
+-   [Créez une réservation de volume persistant et montez-la sur votre déploiement d'application](/docs/containers/cs_storage.html#create).
 
+Pour sauvegarder un volume persistant :  
 
-1. Créez un fichier de configuration nommé _backup-pvc.yaml_. Ce fichier de configuration crée une réclamation de volume persistant que vous pouvez monter sur votre pod de sauvegarde en tant que volume.
+1. Obtenez le nom de la réservation de volume persistant qui lie le volume persistant que vous voulez sauvegarder. 
+   ```
+   kubectl get pvc
+   ```
+   {: pre}
 
-    ```
-    apiVersion: v1
-    kind: PersistentVolumeClaim
-    metadata:
-      name: backuppvc
-      annotations:
-        volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze"
-    spec:
-      accessModes:
-        - ReadWriteMany
-      resources:
-        requests:
-          storage: 20Gi
-    ```
-    {: codeblock}
+2. Créez un pod de sauvegarde depuis l'image **ibm-backup-restore**. Pour accéder aux données du volume persistant, vous devez monter la réclamation de volume persistant qui lie le volume persistant à votre pod de sauvegarde. L'exemple ci-après crée une pod de sauvegarde qui exécute une sauvegarde incrémentielle quotidienne. Pour créer une sauvegarde avec des paramètres différents, examinez la liste complète des [options de variable d'environnement](#reference_backup_restore).</br>
+   **Important :** L'image **ibm-backup-restore**, qui doit être déployée dans un pod unique, ne peut être utilisée dans le cadre d'un déploiement Kubernetes.
+   
+   Pour afficher l'image, ciblez le registre global en exécutant la commande `ibmcloud cr region-set global`. Exécutez ensuite `ibmcloud cr images --include-ibm` pour répertorier les images publiques IBM.
+   {: tip}
+  
+   ```
+   apiVersion: v1
+   kind: Pod
+   metadata:
+     name: backuppod
+   spec:
+     containers:
+     - image: registry.bluemix.net/ibm-backup-restore
+       name: backupcontainer
+       env:
+       - name: OBJECTSTORAGE
+         value: S3
+       - name: ACCESS_KEY_ID 
+         value: '<access_key_id>'
+       - name: SECRET_ACCESS_KEY 
+         value: '<secret_access_key>'
+       - name: ENDPOINT 
+         value: '<regional_endpoint>'
+       - name: BUCKET_NAME 
+         value: '<bucket_name>'
+       - name: BACKUP_DIRECTORY  
+         value: /myvol
+       - name: BACKUP_NAME
+         value: <backup_name> 
+       - name: SCHEDULE_TYPE
+         value: periodic
+       - name: SCHEDULE_INFO
+         value: daily
+       - name: BACKUP_TYPE
+         value: incremental
+       command: ["/bin/bash", "./vbackup"]
+       volumeMounts:
+       - mountPath: /myvol 
+         name: backup-volume 
+     volumes:
+     - name: backup-volume 
+       persistentVolumeClaim:
+         claimName: <pvc_name>  
+   ```
+   {: codeblock}
+   
+   <table>
+   <caption>Composants du fichier YAML</caption>
+   <thead>
+   <th colspan=2><img src="../images/idea.png" alt="Icône d'idée"/> Présentation des composants du fichier yaml</th>
+   </thead>
+    <tbody>
+     <tr>
+     <td><code>&lt;access_key_ID&gt;</code></td>
+     <td>ID de clé d'accès que vous avez extrait en tant qu'élément de vos données d'identification d'instance de service {{site.data.keyword.cos_full_notm}}.</td>
+     </tr>
+     <tr>
+     <td><code>&lt;secret_access_key&gt;</code></td>
+     <td>Clé d'accès secrète que vous avez extraite en tant qu'élément de vos données d'identification d'instance de service {{site.data.keyword.cos_full_notm}}.</td>
+     </tr>
+     <tr>
+     <td><code>&lt;regional_endpoint&gt;</code></td>
+     <td>URL d'accès au noeud final d'API de région que vous utilisez pour accéder à {{site.data.keyword.cos_full_notm}} dans une région spécifique. </td>
+     </tr>
+     <tr>
+     <td><code>&lt;bucket_name&gt;</code></td>
+     <td>Nom du compartiment que vous voulez utiliser pour stocker vos sauvegardes dans {{site.data.keyword.cos_full_notm}}. </td>
+     </tr>
+     <tr>
+     <td><code>&lt;backup_name&gt;</code></td>
+     <td>Nom unique pour l'objet contenant votre sauvegarde dans le compartiment</td>
+     </tr>
+     <tr>
+     <td><code>&lt;pvc_name&gt;</code></td>
+     <td>Nom de la réservation de volume persistant qui lie le volume persistant que vous voulez sauvegarder. </td>
+     </tr>
+     </tbody>
+     </table>
     
-2. Créez la réclamation de volume persistant.
+3.  Créez le pod de sauvegarde et lancez une sauvegarde de vos données de volume persistant. 
 
     ```
-    kubectl apply -f backup-pvc.yaml 
+    kubectl apply -f backuppod.yaml
     ```
     {: pre}
 
-3.  Créez un fichier de configuration nommé _backup.yaml_. Pour les variables d'environnement vides, entrez les valeurs des données d'identification
-d'{{site.data.keyword.objectstorageshort}} que vous aviez notées plus tôt. Ajoutez les apostrophes utilisées dans les données d'identification. Remplacez <em>&lt;nom_pode&gt;</em>, <em>&lt;nom_conteneur&gt;</em> et la <em>&lt;région&gt;</em> du registre d'images par des valeurs appropriées.
-
-    ```
-    apiVersion: v1
-    kind: Pod
-    metadata:
-      name: <pod_name>
-    spec:
-      containers:
-        - name: <container_name>
-          image: registry.<region>.bluemix.net/ibm-backup-restore
-          env:
-          - name: USERID
-            value: 
-          - name: PASSWORD
-            value: 
-          - name: PROJECTID
-            value:
-          - name: REGION
-            value:
-          - name: SCHEDULE_TYPE
-            value: periodic
-          - name: SCHEDULE_INFO
-            value: daily
-          - name: BACKUP_TYPE
-            value: incremental
-          - name: BACKUP_DIRECTORY
-            value: /backup
-          - name: BACKUP_NAME
-            value: mybackup
-          command: ["/bin/bash", "./vbackup"]
-          volumeMounts:
-          - mountPath: /backup
-            name: backup-volume
-      volumes:
-      - name: backup-volume 
-        persistentVolumeClaim:
-          claimName: backuppvc
-    ```
-    {: codeblock}
-    
-    Ces paramètres créent une sauvegarde incrémentielle quotidienne portant le nom par défaut _mybackup_. Pour créer une sauvegarde avec des paramètres différents, examinez la liste complète des [options de variable d'environnement](#reference_backup_restore).
-
-4.  Créez un pod qui exécute le script de sauvegarde.
-
-    ```
-    kubectl apply -f backup.yaml
-    ```
-    {: pre}
-
-5.  Assurez-vous que le pod est en cours d'exécution.
+4.  Vérifiez que le pod s'exécute.
 
     ```
     kubectl get pods 
@@ -156,99 +194,119 @@ d'{{site.data.keyword.objectstorageshort}} que vous aviez notées plus tôt. Ajo
     {: pre}
     
     ```
-    NAME                                    READY     STATUS    RESTARTS   AGE
-    <pod_name>                              1/1       Running   0          1hr
+    NAME               READY     STATUS    RESTARTS   AGE
+    backuppod          1/1       Running   0          1hr
     ```
     {: screen}
+    
+5.  Vérifiez que la sauvegarde s'exécute.
+    ```
+    kubectl logs backuppod
+    ```
+    {: pre}
 
-4.  Examinez la sauvegarde dans le service {{site.data.keyword.objectstorageshort}} dans l'interface graphique de {{site.data.keyword.Bluemix_notm}}.
-    1.  Cliquez sur l'instance {{site.data.keyword.objectstorageshort}} que vous avez créée pour la sauvegarde.
-    2.  Sur l'onglet **Gérer** de la table **Conteneurs**, cliquez sur le conteneur {{site.data.keyword.objectstorageshort}}.
-    3.  Passez en revue les fichiers compressés.![Le conteneur Object Storage dans l'interface graphique {{site.data.keyword.Bluemix_notm}} présente les fichiers qui ont été sauvegardés.](images/volume_backup_screenshot.png)Vous pouvez télécharger le fichier vol1.difftar.gz, extraire le fichier, puis vérifier les données sauvegardées. **Important** : si vous supprimez ou modifiez des fichiers dans {{site.data.keyword.objectstorageshort}}, ces fichiers ne peuvent pas être récupérés.
+6.  Examinez la sauvegarde dans le service {{site.data.keyword.cos_full_notm}} dans l'interface graphique de {{site.data.keyword.Bluemix_notm}}.
+    1.  Depuis le tableau de bord {{site.data.keyword.Bluemix_notm}}, trouvez l'instance de service {{site.data.keyword.cos_full_notm}}. 
+    2.  Depuis la navigation, sélectionnez **Buckets** et cliquez sur le compartiment que vous avez utilisé dans votre configuration de sauvegarde. La sauvegarde s'affiche en tant qu'objet dans votre compartiment. 
+    3.  Examinez les fichiers compressés. Vous pouvez télécharger le fichier `vol1.difftar.gz`, extraire le fichier et vérifier les données  sauvegardées. </br> **Important** : si vous supprimez ou modifiez des fichiers dans {{site.data.keyword.cos_full_notm}}, ces fichiers ne peuvent pas être récupérés.
 
 Votre sauvegarde est disponible. Si vous avez configuré votre sauvegarde pour créer une sauvegarde intégrale ponctuelle, vous devez exécuter le script de sauvegarde chaque fois que vous souhaitez créer une nouvelle sauvegarde. Si vous avez configuré le conteneur pour qu'il exécute périodiquement une sauvegarde incrémentielle, celle-ci s'exécute de manière planifiée.
 
-## Exécution du script de restauration 
+## Restauration des données depuis {{site.data.keyword.cos_full_notm}} vers votre cluster
 {: #restore_script_cli}
 
-Restaurez votre sauvegarde depuis {{site.data.keyword.objectstorageshort}} vers un volume existant ou nouveau.
+Vous pouvez restaurer vos données depuis votre instance de service {{site.data.keyword.cos_full_notm}} dans un volume persistant de votre cluster. 
 
 Avant de commencer :
 
--   Installez les [interfaces de ligne de commande](../../../containers/cs_cli_install.html#cs_cli_install) requises.
--   [Ciblez votre interface de ligne de commande](../../../containers/cs_cli_install.html#cs_cli_configure) vers votre cluster.
+-   [Ciblez votre interface de ligne de commande vers votre cluster](/docs/containers/cs_cli_install.html#cs_cli_configure).
+-   [Créez une sauvegarde pour un volume persistant dans votre cluster](#scheduled_backup).
 
+Pour restaurer des données depuis {{site.data.keyword.cos_full_notm}} dans un volume persistant : 
 
-1. Créez un fichier de configuration nommé _restore-pvc.yaml_. Ce fichier de configuration crée une réclamation de volume persistant que vous pouvez monter sur votre pod de restauration en tant que volume.
+1. Obtenez le nom de la réservation de volume persistant qui lie le volume persistant dans lequel vous voulez restaurer vos données. 
+   ```
+   kubectl get pvc
+   ```
+   {: pre}
 
+2. Créez un pod de restauration depuis l'image **ibm-backup-restore**. Pour restaurer des données dans un volume persistant, vous devez monter la réclamation de volume persistant qui lie le volume persistant à votre pod de restauration. 
+   
+   ```
+   apiVersion: v1
+   kind: Pod
+   metadata:
+     name: restorepod
+   spec:
+     containers:
+     - image: registry.bluemix.net/ibm-backup-restore 
+       name: restorecontainer
+       env:
+       - name: OBJECTSTORAGE
+         value: S3
+       - name: ACCESS_KEY_ID
+         value: '<access_key_ID>'
+       - name: SECRET_ACCESS_KEY
+         value: '<secret_access_key>'
+       - name: ENDPOINT 
+         value: '<regional_endpoint>'
+       - name: BUCKET_NAME 
+         value: '<bucket_name>'
+       - name: RESTORE_DIRECTORY 
+         value: /myvol 
+       - name: BACKUP_NAME 
+         value: <backup_name>
+       command: ["/bin/sh", "./vrestore"]
+       volumeMounts:
+       - mountPath: /myvol  
+         name: restore-volume
+     volumes:
+     - name: restore-volume  
+       persistentVolumeClaim:
+         claimName: <pvc_name> 
+   ```
+   {: codeblock}
+   
+   <table>
+   <caption>Composants du fichier YAML</caption>
+   <thead>
+   <th colspan=2><img src="../images/idea.png" alt="Icône d'idée"/> Présentation des composants du fichier yaml</th>
+   </thead>
+    <tbody>
+     <tr>
+     <td><code>&lt;access_key_ID&gt;</code></td>
+     <td>ID de clé d'accès que vous avez extrait en tant qu'élément de vos données d'identification d'instance de service {{site.data.keyword.cos_full_notm}}.</td>
+     </tr>
+     <tr>
+     <td><code>&lt;secret_access_key&gt;</code></td>
+     <td>Clé d'accès secrète que vous avez extraite en tant qu'élément de vos données d'identification d'instance de service {{site.data.keyword.cos_full_notm}}.</td>
+     </tr>
+     <tr>
+     <td><code>&lt;regional_endpoint&gt;</code></td>
+     <td>URL d'accès au noeud final d'API de région que vous utilisez pour accéder à {{site.data.keyword.cos_full_notm}} dans une région spécifique. </td>
+     </tr>
+     <tr>
+     <td><code>&lt;bucket_name&gt;</code></td>
+     <td>Nom du compartiment que vous avez utilisé pour stocker vos sauvegardes dans {{site.data.keyword.cos_full_notm}}. </td>
+     </tr>
+     <tr>
+     <td><code>&lt;backup_name&gt;</code></td>
+     <td>Nom unique pour l'objet contenant votre sauvegarde dans le compartiment. Vous devez vous servir du nom que vous avez utilisé dans le pod de sauvegarde pour stocker vos données dans {{site.data.keyword.cos_full_notm}}. </td>
+     </tr>
+     <tr>
+     <td><code>&lt;pvc_name&gt;</code></td>
+     <td>Nom de la réservation de volume persistant qui lie le volume persistant dans lequel vous voulez restaurer vos données. </td>
+     </tr>
+     </tbody>
+     </table>
+
+3.  Créez le pod de restauration et commencez à restaurer vos données.
     ```
-    apiVersion: v1
-    kind: PersistentVolumeClaim
-    metadata:
-      name: restorepvc
-      annotations:
-        volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze"
-    spec:
-      accessModes:
-        - ReadWriteMany
-      resources:
-        requests:
-          storage: 20Gi
-    ```
-    {: codeblock}
-    
-2. Créez la réclamation de volume persistant.
-
-    ```
-    kubectl apply -f restore-pvc.yaml 
+    kubectl apply -f restorepod.yaml
     ```
     {: pre}
-
-3.  Créez un fichier de configuration nommé _restore.yaml_. Pour les variables d'environnement vides, entrez les valeurs des données d'identification
-d'{{site.data.keyword.objectstorageshort}} que vous aviez notées plus tôt. Ajoutez les apostrophes utilisées dans les données d'identification. La valeur de BACKUP_NAME doit correspondre au nom de la sauvegarde dans {{site.data.keyword.objectstorageshort}} que vous
-restaurez.
-
-    ```
-    apiVersion: v1
-    kind: Pod
-    metadata:
-      name: <pod_name>
-    spec:
-      containers:
-        - name: <container_name>
-          image: registry.<region>.bluemix.net/ibm-backup-restore
-          env:
-          - name: USERID
-            value: 
-          - name: PASSWORD
-            value: 
-          - name: PROJECTID
-            value:
-          - name: REGION
-            value:
-          - name: RESTORE_DIRECTORY
-            value: /restore
-          - name: BACKUP_NAME
-            value: mybackup
-          command: ["/bin/bash", "./vrestore"]
-          volumeMounts:
-          - mountPath: /restore
-            name: restore-volume
-      volumes:
-      - name: restore-volume 
-        persistentVolumeClaim:
-          claimName: restorepvc
-    ```
-    {: codeblock}
-
-4.  Créez un pod qui exécute le script de restauration.
     
-    ```
-    kubectl apply -f restore.yaml
-    ```
-    {: pre}
-    
-5.  Assurez-vous que le pod est en cours d'exécution.
+4.  Vérifiez que le pod s'exécute.
 
     ```
     kubectl get pods 
@@ -257,30 +315,36 @@ restaurez.
     
     ```
     NAME              READY     STATUS             RESTARTS   AGE
-    <pod_name>        0/1       CrashLoopBackOff   1          1m
+    restorepod        0/1       CrashLoopBackOff   1          1m
     ```
     {: screen}
 
     Le pod exécute la commande de restauration et s'arrête. Le message _CrashLoopBackOff_ signifie que Kubernetes est en train d'essayer de redémarrer le pod.
 
-6.  Retirez le pod pour l'empêcher de consommer davantage de ressources.
+5.  Retirez le pod pour l'empêcher de consommer davantage de ressources.
 
     ```
-    kubectl delete -f restore.yaml
+    kubectl delete -f restorepod.yaml
     ```
     {: pre}
 
-Vous avez correctement restauré votre sauvegarde. Vous pouvez désormais monter n'importe quel nouveau pod sur la réclamation de volume persistant pour permettre à ce conteneur d'accéder aux fichiers restaurés. Si les données de conteneur qui ont été sauvegardées incluaient un utilisateur non root, vous devez ajouter des droits non root à votre nouveau conteneur. Pour plus d'informations, voir [Ajout d'un accès utilisateur non root aux volumes](../../../containers/container_volumes_ov.html#container_volumes_write).
+6.  Vérifiez que vos données ont été correctement restaurées.
+    ```
+    kubectl logs restorepod
+    ```
+    {: pre}
+
+Vous avez correctement restauré votre sauvegarde. Vous pouvez maintenant monter la réservation de volume persistant qui lie le volume persistant à un autre pod de votre cluster pour accéder aux fichiers restaurés. Si les données de conteneur qui ont été sauvegardées incluaient un utilisateur non root, vous devez ajouter des droits non root à votre nouveau conteneur. Pour plus d'informations, voir [Ajout d'un accès utilisateur non root aux volumes](../../../containers/container_volumes_ov.html#container_volumes_write).
 
 ## Chiffrage de vos sauvegardes 
 {: #encrypting_backups}
 
-Chiffrez les données de votre instance {{site.data.keyword.objectstorageshort}}.
+Chiffrez les données de votre instance {{site.data.keyword.cos_full_notm}}.
 
 1.  Téléchargez <a href="https://www.gnupg.org/download/index.html" target="_blank">GnuPG <img src="../../../icons/launch-glyph.svg" alt="Icône de lien externe"></a> pour créer une clé de chiffrement.
 2.  Créez une clé de chiffrement sur votre unité locale. Vous pouvez accepter les valeurs par défaut en appuyant sur la touche Entrée.
 
-    **Attention :** Notez la phrase passe que vous créez. Si vous perdez votre phrase passe, les informations chiffrées avec votre clé ne peuvent pas être déchiffrées.
+    **Important :** Notez la phrase passe que vous créez. Si vous perdez votre phrase passe, les informations chiffrées avec votre clé ne peuvent pas être déchiffrées.
 
     ```
     gpg --gen-key
@@ -306,15 +370,14 @@ Chiffrez les données de votre instance {{site.data.keyword.objectstorageshort}}
     ```
     {: screen}
 
-4.  Exportez la clé de chiffrement avec la valeur de la clé `sub`. Nommez le fichier encryption.asc.
+4.  Exportez la clé de chiffrement avec la valeur de la clé `sub`. Nommez le fichier `encryption.asc`.
 
     ```
     gpg --export-secret-keys -a <SUB_KEY> > encryption.asc
     ```
     {: pre}
 
-    Dans cet exemple, la clé
-sub a la valeur *YYYYYYYY*
+    Dans cet exemple, la clé sub a la valeur `YYYYYYYY`.
 
     ```
     gpg --export-secret-keys -a YYYYYYYY > encryption.asc
@@ -327,88 +390,101 @@ sub a la valeur *YYYYYYYY*
     touch <encryption_env-file_name>
     ```
     {: pre}
-    
-6. Créez un fichier de configuration nommé _backup-pvc.yaml_. Ce fichier de configuration crée une réclamation de volume persistant que vous pouvez monter sur votre pod de sauvegarde en tant que volume.
 
-    ```
-    apiVersion: v1
-    kind: PersistentVolumeClaim
-    metadata:
-      name: backuppvc
-      annotations:
-        volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze"
-    spec:
-      accessModes:
-        - ReadWriteMany
-      resources:
-        requests:
-          storage: 20Gi
-    ```
-    {: codeblock}
-
-7. Créez la réclamation de volume persistant.
-
-    ```
-    kubectl apply -f backup-pvc.yaml 
-    ```
-    {: pre}
-
-8.  Editez le fichier de configuration de déploiement en lui ajoutant les zones ci-après. Pour les variables d'environnement vides, entrez les valeurs des données d'identification
-d'{{site.data.keyword.objectstorageshort}} que vous aviez notées plus tôt. Ajoutez les apostrophes utilisées dans les données d'identification. Pour
-*ENCRYPTION_PASSPHRASE*, incluez une phrase passe afin de protéger par mot de passe la sauvegarde. Cette phrase passe est différente de la phrase que vous avez créée lors de la création de la clé de chiffrement. Vous devez inclure cette phrase passe lorsque vous sauvegardez et restaurez des données.
+6.  Editez le fichier de configuration de pod en lui ajoutant les zones ci-après. Pour les variables d'environnement vides, entrez les valeurs des données d'identification
+d'{{site.data.keyword.cos_full_notm}} que vous aviez notées plus tôt. Ajoutez les apostrophes utilisées dans les données d'identification. Pour **ENCRYPTION_PASSPHRASE**, incluez une phrase passe afin de protéger par mot de passe la sauvegarde. Cette phrase passe est différente de la phrase que vous avez créée lors de la création de la clé de chiffrement. Vous devez inclure cette phrase passe lorsque vous sauvegardez et restaurez des données.
 
     ```
     apiVersion: v1
     kind: Pod
     metadata:
-      name: <pod_name>
+      name: backuppod
     spec:
-      containers:
-        - name: <container_name>
-          image: registry.<region>.bluemix.net/ibm-backup-restore
-          env:
-          - name: USERID
-            value: 
-          - name: PASSWORD
-            value: 
-          - name: PROJECTID
-            value:
-          - name: REGION
-            value:
-          - name: SCHEDULE_TYPE
-            value: periodic
-          - name: SCHEDULE_INFO
-            value: daily
-          - name: BACKUP_TYPE
-            value: incremental
-          - name: BACKUP_DIRECTORY
-            value: /backup
-          - name: BACKUP_NAME
-            value: mybackup
-          - name: ENCRYPTION_REQUIRED
-            value: yes
-          - name: ENCRYPTION_PASSPHRASE
-           # Include this passphrase when your are backing up and restoring encrypted data.
-            value: 
-          volumeMounts:
-          - mountPath: /backup
-            name: backup-volume
-      volumes:
-      - name: backup-volume 
-        persistentVolumeClaim:
-          claimName: backuppvc
-   ```
+      containers:
+      - image: registry.bluemix.net/ibm-backup-restore
+        name: backupcontainer
+        env:
+        - name: OBJECTSTORAGE
+          value: S3
+        - name: ACCESS_KEY_ID 
+          value: '<access_key_id>'
+        - name: SECRET_ACCESS_KEY 
+          value: '<secret_access_key>'
+        - name: ENDPOINT 
+          value: '<regional_endpoint>'
+        - name: BUCKET_NAME 
+          value: '<bucket_name>'
+        - name: BACKUP_DIRECTORY  
+          value: /myvol
+        - name: BACKUP_NAME
+          value: <backup_name> 
+        - name: SCHEDULE_TYPE
+          value: periodic
+        - name: SCHEDULE_INFO
+          value: daily
+        - name: BACKUP_TYPE
+          value: incremental
+        - name: ENCRYPTION_REQUIRED
+          value: yes
+        - name: ENCRYPTION_PASSPHRASE 
+          value: <passphrase>
+        volumeMounts:
+        - mountPath: /myvol 
+          name: backup-volume 
+      volumes:
+      - name: backup-volume 
+        persistentVolumeClaim:
+          claimName: <pvc_name>  
+    ```
+    {: codeblock}
    
-   Ces paramètres créent une sauvegarde incrémentielle quotidienne chiffrée portant le nom <em>&lt;volume_name&gt;</em>. Pour créer une sauvegarde avec des paramètres différents, examinez la liste complète des [options de variable d'environnement](#reference_backup_restore).
+    <table>
+    <caption>Composants du fichier YAML</caption>
+    <thead>
+    <th colspan=2><img src="../images/idea.png" alt="Icône d'idée"/> Présentation des composants du fichier yaml</th>
+    </thead>
+     <tbody>
+     <tr>
+     <td><code>&lt;access_key_ID&gt;</code></td>
+     <td>ID de clé d'accès que vous avez extrait en tant qu'élément de vos données d'identification d'instance de service {{site.data.keyword.cos_full_notm}}.</td>
+     </tr>
+     <tr>
+     <td><code>&lt;secret_access_key&gt;</em></code></td>
+     <td>Clé d'accès secrète que vous avez extraite en tant qu'élément de vos données d'identification d'instance de service {{site.data.keyword.cos_full_notm}}.</td>
+     </tr>
+     <tr>
+     <td><code>&lt;regional_endpoint&gt;</code></td>
+     <td>URL d'accès au noeud final d'API de région que vous utilisez pour accéder à {{site.data.keyword.cos_full_notm}} dans une région spécifique. </td>
+     </tr>
+     <tr>
+     <td><code>&lt;bucket_name&gt;</code></td>
+     <td>Nom du compartiment que vous voulez utiliser pour stocker vos sauvegardes dans {{site.data.keyword.cos_full_notm}}. </td>
+     </tr>
+     <tr>
+     <td><code>&lt;backup_name&gt;</code></td>
+     <td>Nom unique pour l'objet contenant votre sauvegarde dans le compartiment.</td>
+     </tr>
+     <tr>
+     <td><code>&lt;passphrase&gt;</code></td>
+     <td>Toute chaîne que vous voulez utiliser pour votre sauvegarde. Vous devez inclure cette phrase passe quand vous restaurez vos données. </td>
+     </tr>
+     <tr>
+     <td><code>&lt;pvc_name&gt;</code></td>
+     <td>Nom de la réservation de volume persistant qui lie le volume persistant que vous voulez sauvegarder. </td>
+     </tr>
+     </tbody>
+     </table>
+   
+    Ces paramètres créent une sauvegarde incrémentielle quotidienne qui est chiffrée. Pour créer une sauvegarde avec des paramètres différents, examinez la liste complète des [options de variable d'environnement](#reference_backup_restore).
     
-9.  Créez un pod qui exécute le script de sauvegarde.
+7.  Créez le pod de sauvegarde. 
 
     ```
-    kubectl apply -f backup.yaml 
+    kubectl apply -f backuppod.yaml 
     ```
     {: pre}
 
-9.  Assurez-vous que le pod est en cours d'exécution.
+8.  Vérifiez que le pod s'exécute.
 
     ```
     kubectl get pods
@@ -416,12 +492,12 @@ d'{{site.data.keyword.objectstorageshort}} que vous aviez notées plus tôt. Ajo
     {: pre}
     
     ```
-    NAME                                    READY     STATUS    RESTARTS   AGE
-    <pod_name>                              1/1       Running   0          1hr
+    NAME               READY     STATUS    RESTARTS   AGE
+    backuppod          1/1       Running   0          1hr
     ```
     {: screen}
 
-10.  Copiez la clé de chiffrement dans le répertoire /backup_restore du conteneur qui est généré à partir de l'image **ibm-backup-restore**.
+9.  Copiez la clé de chiffrement dans le répertoire `/backup_restore` du conteneur qui est généré à partir de l'image **ibm-backup-restore**.
 
     ```
     kubectl cp ./encryption.asc <container_name>:/backup_restore
@@ -430,14 +506,14 @@ d'{{site.data.keyword.objectstorageshort}} que vous aviez notées plus tôt. Ajo
 
     Conservez une copie de la clé de chiffrement en local afin de déchiffrer vos données.
 
-11. Connectez-vous au conteneur.
+10. Connectez-vous au pod et naviguez jusqu'au dossier `backup_restore`. 
 
     ```
-    kubecl exec -it <container_name> bash
+    kubecl exec -it <pod_name> bash
     ```
     {: pre}
 
-12. Vérifiez que *encryption.asc* est copié dans le dossier backup_restore.
+11. Vérifiez que le fichier `encryption.asc` est copié dans le dossier `backup_restore`.
 
     ```
     root@instance:/backup_restore# ls                                                                                                                                                         
@@ -445,235 +521,52 @@ d'{{site.data.keyword.objectstorageshort}} que vous aviez notées plus tôt. Ajo
     ```
     {: screen}
 
-13. Exécutez le script de sauvegarde à partir du dossier backup_restore.
+12. Exécutez le script de sauvegarde à partir du dossier backup_restore.
 
     ```
     ./vbackup &
     ```
     {: codeblock}
 
-13. Pour vérifier que votre sauvegarde est chiffrée, examinez les fichiers de votre instance {{site.data.keyword.objectstorageshort}}. '.gpg' a été ajouté à la fin du nom de fichier.![L'interface utilisateur d'Object Storage affiche tous les fichiers sauvegardés, accompagnés d'une extension .gpg indiquant qu'ils sont chiffrés.](images/volume_backup_encrypt_screenshot.png)
+13. Pour vérifier que votre sauvegarde est chiffrée, examinez les fichiers de votre instance de service {{site.data.keyword.cos_full_notm}}. `.gpg` a été ajouté à la fin du nom de fichier.
 
-Votre sauvegarde est chiffrée. Pour restaurer les fichiers, suivez les étapes décrites dans [Exécution du script de restauration](#restore_script_cli) et ajoutez le fichier encryption.asc dans le répertoire backup_restore du conteneur qui exécute le processus de restauration. Si la sauvegarde est chiffrée, vous devez fournir ENCRYPTION_REQUIRED et ENCRYPTION_PASSPHRASE à partir du fichier yaml de sauvegarde sous forme de variables d'environnement lorsque vous créez le conteneur de restauration.
+Votre sauvegarde est chiffrée. Pour restaurer les fichiers, suivez les étapes décrites dans [Restauration des données depuis {{site.data.keyword.cos_full_notm}} vers votre cluster](#restore_script_cli) et incluez le fichier `encryption.asc` dans le répertoire `backup_restore` du pod  qui exécute le processus de restauration. Si la sauvegarde est chiffrée, vous devez fournir les variables d'environnement **ENCRYPTION_REQUIRED** et **ENCRYPTION_PASSPHRASE** quand vous créez le pod de restauration.
 
-## Environment variable reference
+## Référence de variable d'environnement 
 {: #reference_backup_restore}
 
-Vérifiez la liste complète des zones qui peuvent être transmises en tant que variables d'environnement ou éditées dans le fichier 'config.conf' dans un conteneur en cours d'exécution. Toute valeur transmise en tant que variable d'environnement remplace celle qui est contenue dans le fichier 'config.conf'. Pour passer en revue les variables d'environnement pour un conteneur, connectez-vous à celui-ci en utilisant 'exec' et exécutez 'env'.
+Vérifiez la liste complète des zones qui peuvent être transmises en tant que variables d'environnement ou éditées dans le fichier `config.conf` d'un pod en cours d'exécution. Toute valeur transmise en tant que variable d'environnement remplace celle qui est contenue dans le fichier `config.conf`. Pour passer en revue les variables d'environnement pour un pod, connectez-vous à celui-ci en utilisant la commande `kubectl exec` et exécutez `env`.
 
 |Clé|Options de valeur|
 |---|-------------|
-|PROJECTID|ID projet issu d'{{site.data.keyword.objectstorageshort}}|
-|REGION|Région issue d'{{site.data.keyword.objectstorageshort}}|
-|USERID|ID utilisateur issu d'{{site.data.keyword.objectstorageshort}}|
-|PASSWORD|Mot de passe issu d'{{site.data.keyword.objectstorageshort}}|
-{: caption="Tableau 1. Variables {{site.data.keyword.objectstorageshort}} " caption-side="top"}
-
-Récupérez ces variables à partir des données d'identification {{site.data.keyword.objectstorageshort}}. Ajoutez ces variables d'environnement à chaque conteneur qui exécute une opération de sauvegarde ou de restauration.
+|ACCESS_KEY_ID|ID **access_key_id** qui fait partie des données d'identification HMAC dans {{site.data.keyword.cos_full_notm}}.|
+|SECRET_ACCESS_KEY|Clé **secret_access_key** qui fait partie des données d'identification HMAC dans {{site.data.keyword.cos_full_notm}}.|
+|ENDPOINT|Nom d'hôte pour accéder aux données de compartiment {{site.data.keyword.cos_full_notm}}.|
+|BUCKET|Nom du compartiment {{site.data.keyword.cos_full_notm}} où vos données sauvegardées sont stockées.|
+{: caption="Tableau 1. Variables {{site.data.keyword.cos_full_notm}}" caption-side="top"}
 
 |Clé|Options de valeur|
 |---|-------------|
 |BACKUP_DIRECTORY|*/backup* : valeur par défaut. Chemin de fichier absolu du répertoire dans lequel le volume est monté. Les données sont sauvegardées à partir de ce répertoire. Ne sélectionnez pas le répertoire backup_restore, car ce répertoire contient des fichiers pour les processus de sauvegarde et de restauration.|
 |BACKUP_NAME|*volume_backup* : valeur par défaut. Choisissez un nom de sauvegarde.|
-|BACKUP_TYPE|*full* : valeur par défaut. Tous les fichiers sont systématiquement sauvegardés.<br/> *incremental* : seuls les fichiers nouveaux ou modifiés sont sauvegardés. Si vous choisissez *incremental*, vous devez choisir des valeurs pour SCHEDULING_INFO et SCHEDULING_TYPE.|
-|SCHEDULE_TYPE|*none* : valeur par défaut. Créez une sauvegarde ponctuelle.<br/> **Remarque :** Si vous choisissez de créer une sauvegarde ponctuelle, votre pod est retiré du cluster une fois la sauvegarde terminée. <br/>*periodic* : remplacez la valeur par periodic pour créer des sauvegardes planifiées.|
-|SCHEDULE_INFO|*hourly* : créez une sauvegarde sur une base horaire.<br/>*daily* : valeur par défaut. Créez une sauvegarde quotidienne.<br/>*weekly* : créez une sauvegarde hebdomadaire. Vous devez inclure cette variable si vous planifiez une mise à jour de type periodic.|
+|BACKUP_TYPE|*full* : valeur par défaut. Tous les fichiers sont systématiquement sauvegardés.<br/> *incremental* : seuls les fichiers nouveaux ou modifiés sont sauvegardés. Si vous choisissez *incremental*, vous devez choisir des valeurs pour **SCHEDULING_INFO** et **SCHEDULING_TYPE**.|
+|SCHEDULE_TYPE|*none* : valeur par défaut. Créez une sauvegarde ponctuelle.<br/> **Remarque :** Si vous choisissez de créer une sauvegarde ponctuelle, votre pod est retiré du cluster une fois la sauvegarde terminée. <br/> *periodic* : remplacez la valeur par periodic pour créer des sauvegardes planifiées.|
+|SCHEDULE_INFO|*hourly*: créez une sauvegarde sur une base horaire.<br/>*daily* : valeur par défaut. Créez une sauvegarde quotidienne.<br/>*weekly* : créez une sauvegarde hebdomadaire. Vous devez inclure cette variable si vous planifiez une mise à jour de type periodic.|
 |EXCLUDE_DIRECTORIES|*none* : valeur par défaut. Incluez le chemin de fichier absolu des répertoires que vous désirez exclure de la sauvegarde. Séparez les répertoires par une virgule.|
 {: caption="Tableau 2. Variables de sauvegarde" caption-side="top"}
 
 |Clé|Options de valeur|
 |---|-------------|
-|BACKUP_NAME|*volume_backup* : valeur par défaut. Incluez le nom de la sauvegarde qui est restaurée depuis {{site.data.keyword.objectstorageshort}}.|
-|RESTORE_DIRECTORY|*/backup* : valeur par défaut. Répertoire absolu dans lequel le volume est monté. Les données sont restaurées dans ce répertoire. Ne sélectionnez pas le répertoire backup_restore, car ce répertoire contient des fichiers pour les processus de sauvegarde et de restauration.|
+|BACKUP_NAME|*volume_backup* : valeur par défaut. Incluez le nom de la sauvegarde qui est restaurée depuis {{site.data.keyword.cos_full_notm}}.|
+|RESTORE_DIRECTORY|*/backup* : valeur par défaut. Répertoire absolu dans lequel le volume est monté. Les données sont restaurées dans ce répertoire. Ne sélectionnez pas le répertoire `backup_restore`, car ce répertoire contient des fichiers pour les processus de sauvegarde et de restauration.|
 {: caption="Tableau 3. Variables de restauration" caption-side="top"}
 
 |Clé|Options de valeur|
 |---|-------------|
-|ENCRYPTION_KEY_FILE|.*/encryption.asc* : valeur par défaut. Ajoutez cette variable d'environnement si vous modifiez le nom de fichier de la clé de chiffrement ou si la clé se trouve dans un autre répertoire que backup_restore.|
-|ENCRYPTION_REQUIRED|*no* : valeur par défaut.<br/> *yes* : si vous ne chiffrez pas votre sauvegarde, n'incluez pas de variables d'environnement de chiffrement. Si vous chiffrez votre sauvegarde, incluez cette clé avec la valeur yes.|
-|ENCRYPTION_PASSPHRASE|Ajoutez une phrase passe pour sécuriser une sauvegarde. Cette phrase passe est différente de la phrase que vous avez créée lors de la création de la clé de chiffrement. Vous devez inclure cette phrase passe lorsque vous sauvegardez et restaurez des données.|
-|IS_KEY_GENERATED_ON_SYSTEM|*no* : valeur par défaut.<br/> *yes* : incluez cette variable d'environnement avec la valeur yes si vous avez généré la clé de chiffrement sur le conteneur. La plupart des utilisateurs génèrent la clé sur leur ordinateur local, copient la clé dans le conteneur et peuvent conserver la valeur par défaut no.|
+|ENCRYPTION_KEY_FILE|.*/encryption.asc* : valeur par défaut. Ajoutez cette variable d'environnement si vous modifiez le nom de fichier de la clé de chiffrement ou si la clé se trouve dans un autre répertoire que `backup_restore`.|
+|ENCRYPTION_REQUIRED|*no* : valeur par défaut. <br/> *yes* : si vous ne chiffrez pas votre sauvegarde, n'incluez pas de variables d'environnement de chiffrement. Si vous chiffrez votre sauvegarde, incluez cette clé avec la valeur `yes`.|
+|ENCRYPTION_PASSPHRASE|Incluez une phrase passe pour sécuriser une sauvegarde. Cette phrase passe est différente de la phrase que vous avez créée lors de la création de la clé de chiffrement. Vous devez inclure cette phrase passe quand vous sauvegardez et restaurez des données.|
+|IS_KEY_GENERATED_ON_SYSTEM|*no* : valeur par défaut.<br/> *yes* : incluez cette variable d'environnement avec la valeur `yes` si vous avez généré directement la clé de chiffrement sur le
+conteneur. La plupart des utilisateurs génèrent la clé sur leur ordinateur local, copient la clé dans le pod et peuvent conserver la valeur par défaut `no`.|
 {: caption="Tableau 4. Variables de chiffrement" caption-side="top"}
 
-## Migration de vos données de volume depuis des conteneurs uniques et évolutifs vers Kubernetes
-{: #migrate_data}
-
-Créez une sauvegarde ponctuelle pour n'importe quel volume de conteneur. La sauvegarde est stockée dans une instance {{site.data.keyword.objectstoragefull}}. Vous pouvez ensuite faire migrer les données vers une réclamation de volume persistant dans Kubernetes.
-{:shortdesc}
-
-### Mise en route
-{: #how_to_get_started_migrating}
-
-Avant de commencer :
-
-- [Passez en revue le chemin de migration complet pour déplacer des applications vers Kubernetes](../../../containers/cs_classic.html)
-- [Installez l'interface de ligne de commande de conteneurs unique et évolutive (bx ic)](../../../containers/container_cli_cfic_install.html)
-- [Installez l'interface de ligne de commande {{site.data.keyword.containershort}} (bx cs and kubectl)](../../../containers/cs_cli_install.html#cs_cli_install)
-- [Créez un cluster Kubernetes standard vers lequel migrer vos données](../../../containers/cs_clusters.html#clusters_cli)
-
-Pour effectuer des opérations de sauvegarde et de restauration, exécutez les tâches suivantes :
-1.  [Création d'une instance de service {{site.data.keyword.objectstorageshort}}](#object_storage) (comme indiqué précédemment)
-2.  [Exécution d'une sauvegarde ponctuelle](#migrate_backup)
-3.  [Exécution du script de restauration dans Kubernetes](#migrate_restore)
-
-### Exécution d'une sauvegarde ponctuelle
-{: #migrate_backup}
-
-Créez un conteneur unique à partir de l'image **ibm-backup-restore** et démarrez une sauvegarde.
-
-1.  Connectez-vous à l'interface de ligne de commande {{site.data.keyword.containershort}}.
-
-    ```
-    bx login
-    ```
-    {: pre}
-
-    ```
-    bx ic init
-    ```
-    {: pre}
-
-2.  Créez un fichier de variables d'environnement dans un répertoire local.
-
-    ```
-    touch <backup_env-file_name>
-    ```
-    {: pre}
-
-3.  Modifiez le fichier de variables d'environnement en lui ajoutant les zones suivantes. Pour les variables d'environnement vides, entrez les valeurs des données d'identification
-d'{{site.data.keyword.objectstorageshort}} que vous aviez notées plus tôt. N'incluez **pas** les apostrophes utilisées dans les données d'identification.
-
-    ```
-    BACKUP_NAME=volume_backup
-    BACKUP_DIRECTORY=/backup
-    PROJECTID=
-    REGION=
-    USERID=
-    PASSWORD=
-    ```
-    {: codeblock}
-
-    Ces paramètres créent une sauvegarde ponctuelle portant le nom par défaut _volume_backup_.
-
-4.  Exécutez un conteneur depuis l'image **ibm-backup-restore** avec un volume monté à sauvegarde. Incluez la commande de lancement du script de sauvegarde.
-
-    -   Vérifiez que vous êtes dans le même répertoire local que le fichier <em>&lt;backup_env-file&gt;</em>.
-    -   Le répertoire sur lequel est monté le volume doit correspondre à la valeur de BACKUP_DIRECTORY dans le fichier de variables d'environnement.
-    -   Remplacez <em>&lt;volume_name&gt;</em> par le nom du volume qui est sauvegardé.
-    
-    ```
-    bx ic run --name <container_name> --volume <volume_name>:/backup --env-file ./<backup_env-file_name> registry.ng.bluemix.net/ibm-backup-restore /bin/bash -c "/backup_restore/vbackup"
-    ```
-    {: pre}
-
-    Au terme de la procédure de sauvegarde, le conteneur s'arrête. Si l'exécution du conteneur ne
-débute pas, exécutez la commande 'bx ic logs <container_name>' pour rechercher des messages d'erreur dans les journaux.
-
-5.  Examinez la sauvegarde dans le service {{site.data.keyword.objectstorageshort}} dans l'interface graphique de {{site.data.keyword.Bluemix_notm}}.
-    1.  Cliquez sur l'instance {{site.data.keyword.objectstorageshort}} que vous avez créée pour la sauvegarde.
-    2.  Cliquez sur le conteneur {{site.data.keyword.objectstorageshort}}. Dans cet exemple, le nom du conteneur est volume_backup.
-    3.  Examinez les fichiers compressés.![Le conteneur Object Storage de l'interface graphique {{site.data.keyword.Bluemix_notm}} présente les fichiers qui ont été sauvegardés.](images/volume_backup_screenshot.png)Vous pouvez télécharger le fichier difftar.gz, extraire le fichier et vérifier les données sauvegardées. **Important** : si vous supprimez ou modifiez des fichiers dans {{site.data.keyword.objectstorageshort}}, ces fichiers ne peuvent pas être récupérés.
-
-### Restauration de vos données vers un cluster Kubernetes
-{: #migrate_restore}
-
-Restaurez votre sauvegarde depuis {{site.data.keyword.objectstorageshort}} vers une réclamation de volume persistant dans un cluster Kubernetes.
-
-Avant de commencer :
-
-- [Ciblez votre interface de ligne de commande](../../../containers/cs_cli_install.html#cs_cli_configure) vers votre cluster.
-
-
-1. Créez un fichier de configuration nommé _restore-pvc.yaml_. Ce fichier de configuration crée une réclamation de volume persistant que vous pouvez monter sur votre pod de sauvegarde en tant que volume.
-
-    ```
-    apiVersion: v1
-    kind: PersistentVolumeClaim
-    metadata:
-      name: restorepvc
-      annotations:
-        volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze"
-    spec:
-      accessModes:
-        - ReadWriteMany
-      resources:
-        requests:
-          storage: 20Gi
-    ```
-    {: codeblock}
-
-2. Créez la réclamation de volume persistant.
-
-    ```
-    kubectl apply -f restore-pvc.yaml 
-    ```
-    {: pre}
-
-3.  Créez un fichier de configuration nommé _restore.yaml_. Pour les variables d'environnement vides, entrez les valeurs des données d'identification
-d'{{site.data.keyword.objectstorageshort}} que vous aviez notées plus tôt. Ajoutez les apostrophes utilisées dans les données d'identification. La valeur de BACKUP_NAME doit correspondre au nom de la sauvegarde dans {{site.data.keyword.objectstorageshort}} que vous restaurez.
-
-    ```
-    apiVersion: v1
-    kind: Pod
-    metadata:
-      name: <pod_name>
-    spec:
-      containers:
-        - name: <container_name>
-          image: registry.<region>.bluemix.net/ibm-backup-restore
-          env:
-          - name: USERID
-            value: 
-          - name: PASSWORD
-            value: 
-          - name: PROJECTID
-            value:
-          - name: REGION
-            value:
-          - name: RESTORE_DIRECTORY
-            value: /restore
-          - name: BACKUP_NAME
-            value: volume_backup
-          command: ["/bin/bash", "./vrestore"]
-          volumeMounts:
-          - mountPath: /restore
-            name: restore-volume
-      volumes:
-      - name: restore-volume 
-        persistentVolumeClaim:
-          claimName: restorepvc
-    ```
-    {: codeblock}
-
-4.  Créez un pod qui exécute le script de restauration.
-
-    ```
-    kubectl apply -f restore.yaml
-    ```
-    {: pre}
-    
-5.  Assurez-vous que le pod s'exécute.
-
-    ```
-    kubectl get pods 
-    ```
-    {: pre}
-    
-    ```
-    NAME              READY     STATUS             RESTARTS   AGE
-    <pod_name>        0/1       CrashLoopBackOff   1          1m
-    ```
-    {: screen}
-    
-    Le pod exécute la commande de restauration et s'arrête. Le message _CrashLoopBackOff_ signifie que Kubernetes est en train d'essayer de redémarrer le pod.
-
-6.  Retirez le pod pour l'empêcher de consommer davantage de ressources.
-
-    ```
-    kubectl delete -f restore.yaml
-    ```
-    {: pre}
-
-Vous avez fait migrer vos données vers votre cluster Kubernetes. Vous pouvez désormais monter n'importe quel nouveau pod sur la réclamation de volume persistant pour permettre à ce pod d'accéder aux fichiers restaurés.
-
-**Remarque** : si les données de conteneur qui ont été sauvegardées incluaient un utilisateur non root, vous devez ajouter des droits non root à votre nouveau conteneur. Pour plus d'informations, voir [Ajout d'un accès utilisateur non root aux volumes](../../../containers/container_volumes_ov.html#container_volumes_write).
