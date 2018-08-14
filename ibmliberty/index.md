@@ -76,7 +76,7 @@ Use one of the free **ibmliberty** images from the {{site.data.keyword.Bluemix_n
 
     -   [Building containers from images](/docs/containers/cs_images.html#images)
     -   [Getting started with IBM Cloud Kubernetes Service](/docs/containers/container_index.html#container_index)
-    -   [Deploying apps in clusters](docs/containers/cs_app.html#app)
+    -   [Deploying apps in clusters](/docs/containers/cs_app.html#app)
     
     **Note:** The **ibmliberty** image requires port 9080 to be exposed publicly. When you create a container from the {{site.data.keyword.Bluemix_notm}} Dashboard, the port is added in the **Public Port** field by default. If you create a container from the CLI, expose the port in your `kubectl run` command with `--port=9080` option.
 
