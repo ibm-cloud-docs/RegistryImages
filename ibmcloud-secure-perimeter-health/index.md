@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -88,7 +88,7 @@ Review the following tasks to learn how to use **ibmcloud-secure-perimeter-healt
 4.  Fill out all other details as you deem fit.
 5.  Click Create Cluster.
 
-Review [{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) documentation on how to get access to your cluster once it has been deployed.
+Review [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) documentation on how to get access to your cluster once it has been deployed.
 
 ## Scan private networks within a Secure Perimeter
 {: #private_networks}
@@ -97,8 +97,8 @@ Create a container pod from the **ibmcloud-secure-perimeter-health** image, and 
 
 Before you begin:
 
--   Install the required [CLIs](../../../containers/cs_cli_install.html#cs_cli_install).
--   [Target your CLI](../../../containers/cs_cli_install.html#cs_cli_configure) to your cluster.
+-   Install the required [CLIs](/docs/containers/cs_cli_install.html#cs_cli_install).
+-   [Target your CLI](/docs/containers/cs_cli_install.html#cs_cli_configure) to your cluster.
 
 1. Create a configuration file that is named _health-pod.yaml_. This file creates a highly-available deployment of the container pod.
 
