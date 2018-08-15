@@ -101,7 +101,7 @@ After you create a container from the **ibmliberty** image, you can view metrics
     ```
     {: pre}
 
-3.  To review the Java heap usage, you need to access the **RSS** memory stat. Follow the guidelines on how to access a shell of a container [here](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) and then review [Runtime metrics](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) on how to find and format memory stat information for a container.
+3.  To review the Java heap usage, you need to access the **RSS** memory stat. Follow the guidelines on how to access a shell of a container [here](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) and then review [Runtime metrics](/containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) on how to find and format memory stat information for a container.
 The Java heap usage is displayed in kilobytes. If your heap usage is under 2097152 kilobytes (2GB) across all instances, then you do not have to purchase a WebSphere Application Server license.
 
 4.  Adjust the maximum heap usage for your WebSphere Application Server instance. See [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) for more information.
