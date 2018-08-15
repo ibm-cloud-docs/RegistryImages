@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -64,7 +64,7 @@ Review the following tasks to learn how to use **ibmcloud-secure-perimeter-netwo
 4.  Fill out all other details as you deem fit.
 5.  Click Create Cluster.
 
-Review [{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) documentation on how to get access to your cluster once it has been deployed.
+Review [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) documentation on how to get access to your cluster once it has been deployed.
 
 ## Run initial config of your Secure Perimeter Vyatta
 {: #initial_setup}
