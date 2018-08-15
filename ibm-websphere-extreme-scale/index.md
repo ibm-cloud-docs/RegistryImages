@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-02"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -15,4 +15,4 @@ lastupdated: "2018-08-02"
 
 The `ibm-websphere-extreme-scale` image is no longer available.
 
-Review other [IBM public images](../index.html).
+Review other [IBM public images](/docs/services/RegistryImages/index.html#ibm_images).
