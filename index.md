@@ -4,7 +4,7 @@ copyright:
 
   years: 2014, 2018
 
-lastupdated: "2018-08-01"
+lastupdated: "2018-08-16"
 
 ---
 
@@ -26,7 +26,7 @@ You can use the following public images to create containers in {{site.data.keyw
 </li>
   
 <li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="You can use the ibmcloud-secure-perimeter-health image to scan and report on exposed pathways within IBM Cloud infrastructure networks."></p>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="You can use the ibmcloud-secure-perimeter-health image to scan and report on vulnerable pathways within IBM Cloud infrastructure networks."></p>
 <p class="runtimeTitle">ibmcloud-secure-<br />perimeter-health</p>
 <p class="runtimeLink"><a format="html"
 href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-health/index.html" scope="peer"
