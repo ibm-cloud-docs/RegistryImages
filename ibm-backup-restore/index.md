@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-26"
+lastupdated: "2018-08-16"
 
 ---
 
@@ -14,27 +14,27 @@ lastupdated: "2018-07-26"
 {:tip: .tip} 
 {:table: .aria-labeledby="caption"}
 
-# Getting started with the ibm-backup-restore image
+# Getting started with the `ibm-backup-restore` image
 {: #ibmbackup_restore_starter}
 
-The **ibm-backup-restore** image contains the preinstalled packages that are needed to back up and restore persistent storage in {{site.data.keyword.containerlong}}.
+The `ibm-backup-restore` image contains the preinstalled packages that are needed to back up and restore persistent storage in {{site.data.keyword.containerlong}}.
 {:shortdesc}
 
 ## How it works 
 {: #how_it_works}
 
-With the **ibm-backup-restore** image, you can create a one-time or scheduled backup for app data that is stored in a persistent volume (PV) in your cluster or restore app data to a PV. To back up and restore data, you deploy a pod from the **ibm-backup-restore** image. Then, you mount the PVC that binds the PV that you want to backup or the PV that you want to use for restoring your data to your pod. 
+With the `ibm-backup-restore` image, you can create a one-time or scheduled backup for app data that is stored in a persistent volume (PV) in your cluster or restore app data to a PV. To back up and restore data, you deploy a pod from the `ibm-backup-restore` image. Then, you mount the PVC that binds the PV that you want to backup or the PV that you want to use for restoring your data to your pod. 
 
 **Where does my data go? How do I access it?** </br>
-Data that you back up is stored within an {{site.data.keyword.cos_full_notm}} service instance. To access the service, use your {{site.data.keyword.cos_full_notm}} service credentials as environment variables in the **ibm-backup-restore** pod, or edit the `config.conf` file in the running pod.
+Data that you back up is stored within an {{site.data.keyword.cos_full_notm}} service instance. To access the service, use your {{site.data.keyword.cos_full_notm}} service credentials as environment variables in the `ibm-backup-restore` pod, or edit the `config.conf` file in the running pod.
 
 **Can I restore backed up data to a different app or a different PV?** </br>
-Yes, you can restore your saved data from the {{site.data.keyword.cos_full_notm}} service instance to a PV in your cluster. To restore data, you must create a restore pod from the **ibm-backup-restore** image. Then, you mount the PVC that binds the PV that you want to use to your pod.  
+Yes, you can restore your saved data from the {{site.data.keyword.cos_full_notm}} service instance to a PV in your cluster. To restore data, you must create a restore pod from the `ibm-backup-restore` image. Then, you mount the PVC that binds the PV that you want to use to your pod.  
 
 ## What is included 
 {: #whats_included}
 
-Every **ibm-backup-restore** image contains the following software packages:
+Every `ibm-backup-restore` image contains the following software packages:
 
 -   Alpine 3.7
 -   Duplicity 0.7.10
@@ -56,7 +56,7 @@ Create and configure an {{site.data.keyword.cos_full_notm}} service instance to 
    1.  In the navigation on the service details page, click **Service Credentials**.
    2.  Click **New credential**. A dialog box displays. 
    3.  Enter a name for your credentials.
-   4.  In **Add Inline Configuration Parameters (Optional)**, enter `{"HMAC":true}` to create additional HMAC credentials that the **ibm-backup-restore** pod uses for HMAC authentication with the {{site.data.keyword.cos_full_notm}} service. 
+   4.  In **Add Inline Configuration Parameters (Optional)**, enter `{"HMAC":true}` to create additional HMAC credentials that the `ibm-backup-restore` pod uses for HMAC authentication with the {{site.data.keyword.cos_full_notm}} service. 
    5.  Click **Add**. Your new credentials are listed in the **Service Credentials** table.
    6.  Click **View credentials**. 
    7.  Make note of the **access_key_id** and the **secret_access_key** that you can find in the **cos_hmac_keys** section. 
@@ -80,7 +80,7 @@ Review the [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-sto
 You can create a one-time or scheduled backup for any persistent volume (PV) that is mounted to your app pod through a persistent volume claim (PVC).  
 {: shortdesc}
 
-The following example walks you through how to deploy a backup pod from the **ibm-backup-restore** image, mount an existing PV to the backup pod by using a PVC, and back up the data from the PV to your {{site.data.keyword.cos_full_notm}} service instance.  
+The following example walks you through how to deploy a backup pod from the `ibm-backup-restore` image, mount an existing PV to the backup pod by using a PVC, and back up the data from the PV to your {{site.data.keyword.cos_full_notm}} service instance.  
 
 Before you begin:
 
@@ -98,8 +98,8 @@ To back up an existing PV:
    ```
    {: pre}
 
-2. Create a backup pod from the **ibm-backup-restore** image. To access the data in the PV, you must mount the PVC that binds the PV to your backup pod. The following example creates a backup pod that runs a daily incremental backup. To create a backup with different settings, review a full list of [environment variable options](#reference_backup_restore).</br>
-   **Important:** The **ibm-backup-restore** image must be deployed in a single pod and cannot be used as part of a Kubernetes deployment.
+2. Create a backup pod from the `ibm-backup-restore` image. To access the data in the PV, you must mount the PVC that binds the PV to your backup pod. The following example creates a backup pod that runs a daily incremental backup. To create a backup with different settings, review a full list of [environment variable options](#reference_backup_restore).</br>
+   **Important:** The `ibm-backup-restore` image must be deployed in a single pod and cannot be used as part of a Kubernetes deployment.
    
    To view the image, target the global registry by running the `ibmcloud cr region-set global` command. Then, run `ibmcloud cr images --include-ibm` to list IBM public images. 
    {: tip}
@@ -229,7 +229,7 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV:
    ```
    {: pre}
 
-2. Create a restore pod from the **ibm-backup-restore** image. To restore data to a PV, you must mount the PVC that binds the PV to your restore pod. 
+2. Create a restore pod from the `ibm-backup-restore` image. To restore data to a PV, you must mount the PVC that binds the PV to your restore pod. 
    
    ```
    apiVersion: v1
@@ -495,7 +495,7 @@ Encrypt the data in your {{site.data.keyword.cos_full_notm}} instance.
     ```
     {: screen}
 
-9.  Copy the encryption key into the `/backup_restore` directory of the container that is built from the **ibm-backup-restore** image.
+9.  Copy the encryption key into the `/backup_restore` directory of the container that is built from the `ibm-backup-restore` image.
 
     ```
     kubectl cp ./encryption.asc <container_name>:/backup_restore
