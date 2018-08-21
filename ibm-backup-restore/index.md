@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-16"
+lastupdated: "2018-08-21"
 
 ---
 
@@ -25,10 +25,12 @@ The `ibm-backup-restore` image contains the preinstalled packages that are neede
 
 With the `ibm-backup-restore` image, you can create a one-time or scheduled backup for app data that is stored in a persistent volume (PV) in your cluster or restore app data to a PV. To back up and restore data, you deploy a pod from the `ibm-backup-restore` image. Then, you mount the PVC that binds the PV that you want to backup or the PV that you want to use for restoring your data to your pod. 
 
-**Where does my data go? How do I access it?** </br>
+**Where does my data go? How do I access it?** 
+
 Data that you back up is stored within an {{site.data.keyword.cos_full_notm}} service instance. To access the service, use your {{site.data.keyword.cos_full_notm}} service credentials as environment variables in the `ibm-backup-restore` pod, or edit the `config.conf` file in the running pod.
 
-**Can I restore backed up data to a different app or a different PV?** </br>
+**Can I restore backed up data to a different app or a different PV?** 
+
 Yes, you can restore your saved data from the {{site.data.keyword.cos_full_notm}} service instance to a PV in your cluster. To restore data, you must create a restore pod from the `ibm-backup-restore` image. Then, you mount the PVC that binds the PV that you want to use to your pod.  
 
 ## What is included 
@@ -72,7 +74,9 @@ Create and configure an {{site.data.keyword.cos_full_notm}} service instance to 
    2. In the navigation on the service details page, click **Buckets** > **Configuration**. 
    3. Make note of the public URL that you can use to access the data in your bucket. 
 
+
 Review the [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) documentation for more information on configuring your service instance.
+
 
 ## Backing up data from a persistent volume
 {: #scheduled_backup}
@@ -82,24 +86,26 @@ You can create a one-time or scheduled backup for any persistent volume (PV) tha
 
 The following example walks you through how to deploy a backup pod from the `ibm-backup-restore` image, mount an existing PV to the backup pod by using a PVC, and back up the data from the PV to your {{site.data.keyword.cos_full_notm}} service instance.  
 
-Before you begin:
+**Before you begin**
 
 -   [Set up an {{site.data.keyword.cos_full_notm}} service instance](#object_storage). 
 -   Install the required [CLIs](/docs/containers/cs_cli_install.html#cs_cli_install) to create and work with your cluster.
 -   [Create a standard cluster](/docs/containers/cs_clusters.html#clusters_cli) or use an existing one.
 -   [Target your CLI to your cluster](/docs/containers/cs_cli_install.html#cs_cli_configure).
--   Create a persistent volume claim (PVC) for you [file storage](/docs/containers/cs_storage_file.html#add_file) or [block storage](/docs/containers/cs_storage_block.html#add_block) and mount it to your app deployment.
+-   Create a persistent volume claim (PVC) for your [file storage](/docs/containers/cs_storage_file.html#add_file) or [block storage](/docs/containers/cs_storage_block.html#add_block) and mount it to your app deployment.
 
-To back up an existing PV: 
+To back up an existing PV, complete the following steps: 
 
-1. Get the name of the PVC that binds the PV that you want to back up. 
+1. Get the name of the PVC that binds the PV that you want to back up.
+
    ```
    kubectl get pvc
    ```
    {: pre}
 
-2. Create a backup pod from the `ibm-backup-restore` image. To access the data in the PV, you must mount the PVC that binds the PV to your backup pod. The following example creates a backup pod that runs a daily incremental backup. To create a backup with different settings, review a full list of [environment variable options](#reference_backup_restore).</br>
-   **Important:** The `ibm-backup-restore` image must be deployed in a single pod and cannot be used as part of a Kubernetes deployment.
+2. Create a backup pod from the `ibm-backup-restore` image. To access the data in the PV, you must mount the PVC that binds the PV to your backup pod. The following example creates a backup pod that runs a daily incremental backup. To create a backup with different settings, review a full list of [environment variable options](#reference_backup_restore).
+
+   **Important**: The `ibm-backup-restore` image must be deployed in a single pod and cannot be used as part of a Kubernetes deployment.
    
    To view the image, target the global registry by running the `ibmcloud cr region-set global` command. Then, run `ibmcloud cr images --include-ibm` to list IBM public images. 
    {: tip}
@@ -199,6 +205,7 @@ To back up an existing PV:
     {: screen}
     
 5.  Verify that the backup ran successfully. 
+
     ```
     kubectl logs backuppod
     ```
@@ -207,7 +214,9 @@ To back up an existing PV:
 6.  Review the backup in {{site.data.keyword.cos_full_notm}} in the {{site.data.keyword.Bluemix_notm}} GUI.
     1.  From the {{site.data.keyword.Bluemix_notm}} dashboard, find the {{site.data.keyword.cos_full_notm}} service instance. 
     2.  From the navigation, select **Buckets** and click on the bucket that you used in your backup configuration. Your backup is displayed as an object in your bucket. 
-    3.  Review the compressed files. You can download the `vol1.difftar.gz` file, extract the file, and verify the backed-up data. </br> **Important**: If you delete or modify any files from {{site.data.keyword.cos_full_notm}}, those files cannot be recovered.
+    3.  Review the compressed files. You can download the `vol1.difftar.gz` file, extract the file, and verify the backed-up data. 
+        
+        **Important**: If you delete or modify any files from {{site.data.keyword.cos_full_notm}}, those files cannot be recovered.
 
 Your backup is available. If you configured your backup to create a one-time full backup, you must run the backup script each time that you want to create a new backup. If you configured the container to run an incremental backup periodically, then your backup runs as scheduled.
 
@@ -216,14 +225,15 @@ Your backup is available. If you configured your backup to create a one-time ful
 
 You can restore data from your {{site.data.keyword.cos_full_notm}} service instance to a PV in your cluster. 
 
-Before you begin:
+**Before you begin**
 
 -   [Target your CLI to your cluster](/docs/containers/cs_cli_install.html#cs_cli_configure).
 -   [Create a backup for a PV in your cluster](#scheduled_backup).
 
-To restore data from {{site.data.keyword.cos_full_notm}} to a PV: 
+To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the following steps: 
 
 1. Get the name of the PVC that binds the PV where you want to restore your data. 
+
    ```
    kubectl get pvc
    ```
@@ -299,7 +309,8 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV:
      </tbody>
      </table>
 
-3.  Create the restore pod and start restoring your data. 
+3.  Create the restore pod and start restoring your data.
+
     ```
     kubectl apply -f restorepod.yaml
     ```
@@ -327,13 +338,15 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV:
     ```
     {: pre}
 
-6.  Verify that your data is successfully restored. 
+6.  Verify that your data is successfully restored.
+
     ```
     kubectl logs restorepod
     ```
     {: pre}
 
 You successfully restored your backup. You can now mount the PVC that binds the PV to any other pod in your cluster to access the restored files. If the container data that was backed up included a non-root user, you must add non-root permissions to your new container. For more information, see [Adding non-root user access to volumes](/docs/containers/cs_troubleshoot_storage.html#cs_storage_nonroot).
+
 
 ## Encrypting your backups 
 {: #encrypting_backups}
@@ -530,6 +543,7 @@ Encrypt the data in your {{site.data.keyword.cos_full_notm}} instance.
 
 Your backup is encrypted. To restore the files, follow the steps in [Restoring data from {{site.data.keyword.cos_full_notm}} to a PVC in your cluster](#restore_script_cli) and include the `encryption.asc` file in the `backup_restore` directory of the pod that runs the restore process. If the backup is encrypted, you must provide the **ENCRYPTION_REQUIRED** and **ENCRYPTION_PASSPHRASE** environment variables when you create the restore pod.
 
+
 ## Environment variable reference 
 {: #reference_backup_restore}
 
@@ -540,7 +554,7 @@ Review the full list of fields that can be passed as environment variables or ed
 |ACCESS_KEY_ID|The **access_key_id** that is part of the HMAC credentials in {{site.data.keyword.cos_full_notm}}.|
 |SECRET_ACCESS_KEY|The **secret_access_key** is part of the HMAC credentials in {{site.data.keyword.cos_full_notm}}.|
 |ENDPOINT|The host name to access {{site.data.keyword.cos_full_notm}} bucket data.|
-|BUCKET|The name of the bucket in {{site.data.keyword.cos_full_notm}} where your backed-up data is stored. |
+|BUCKET|The name of the bucket in {{site.data.keyword.cos_full_notm}} where your backed-up data is stored.|
 {: caption="Table 1. {{site.data.keyword.cos_full_notm}} variables" caption-side="top"}
 
 |Key|Value options|
