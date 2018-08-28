@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-24"
+lastupdated: "2018-08-16"
 
 ---
 
@@ -14,27 +14,27 @@ lastupdated: "2018-07-24"
 {:tip: .tip} 
 {:table: .aria-labeledby="caption"}
 
-# Initiation à l'image ibm-backup-restore
+# Initiation à l'image `ibm-backup-restore`
 {: #ibmbackup_restore_starter}
 
-L'image **ibm-backup-restore** contient les packages préinstallés nécessaires pour sauvegarder et restaurer le stockage de persistance dans {{site.data.keyword.containerlong}}.
+L'image `ibm-backup-restore` contient les packages préinstallés nécessaires pour sauvegarder et restaurer le stockage de persistance dans {{site.data.keyword.containerlong}}.
 {:shortdesc}
 
 ## Fonctionnement 
 {: #how_it_works}
 
-L'image **ibm-backup-restore** vous permet de créer une sauvegarde ponctuelle ou planifiée des données d'application qui sont stockées dans un volume persistant de votre cluster ou de restaurer des données d'applications dans un volume persistant. Pour sauvegarder et restaurer les données, vous déployez un pod depuis l'image **ibm-backup-restore**. Vous montez ensuite la réservation de volume persistant qui lie le volume persistant que vous voulez utiliser pour la restauration de vos données dans votre pod. 
+L'image `ibm-backup-restore` vous permet de créer une sauvegarde ponctuelle ou planifiée des données d'application qui sont stockées dans un volume persistant de votre cluster ou de restaurer des données d'applications dans un volume persistant. Pour sauvegarder et restaurer les données, vous déployez un pod depuis l'image `ibm-backup-restore`. Vous montez ensuite la réservation de volume persistant qui lie le volume persistant que vous voulez utiliser pour la restauration de vos données dans votre pod. 
 
 **Où vont mes données ? Comment puis-je y accéder? ** </br>
-Les données que vous sauvegardez sont stockées dans une instance de service {{site.data.keyword.cos_full_notm}}. Pour accéder au service, utilisez vos données d'identification du service {{site.data.keyword.cos_full_notm}} en tant que variables d'environnements dans le pod **ibm-backup-restore**, ou éditez le fichier `config.conf` dans le pod en cours d'exécution.
+Les données que vous sauvegardez sont stockées dans une instance de service {{site.data.keyword.cos_full_notm}}. Pour accéder au service, utilisez vos données d'identification du service {{site.data.keyword.cos_full_notm}} en tant que variables d'environnements dans le pod `ibm-backup-restore`, ou éditez le fichier `config.conf` dans le pod en cours d'exécution.
 
 **Puis-je restaurer les données sauvegardées dans une application ou un volume persistant différent ?** </br>
-Oui, vous pouvez restaurer vos données sauvegardées depuis l'instance de service {{site.data.keyword.cos_full_notm}} dans un volume persistant de votre cluster. Pour restaurer les données, vous devez créer un pod de restauration depuis l'image **ibm-backup-restore**. Vous montez ensuite la réservation de volume persistant qui lie le volume persistant que vous voulez utiliser dans votre pod.  
+Oui, vous pouvez restaurer vos données sauvegardées depuis l'instance de service {{site.data.keyword.cos_full_notm}} dans un volume persistant de votre cluster. Pour restaurer les données, vous devez créer un pod de restauration depuis l'image `ibm-backup-restore`. Vous montez ensuite la réservation de volume persistant qui lie le volume persistant que vous voulez utiliser dans votre pod.  
 
 ## Eléments inclus 
 {: #whats_included}
 
-Chaque image **ibm-backup-restore** contient les progiciels suivants :
+Chaque image `ibm-backup-restore` contient les progiciels suivants :
 
 -   Alpine 3.7
 -   Duplicity 0.7.10
@@ -56,7 +56,7 @@ Créez et configurez une instance de service {{site.data.keyword.cos_full_notm}}
    1.  Dans la navigation de la page des détails du service, cliquez sur **Données d'identification pour le service**.
    2.  Cliquez sur **Nouvelles données d'identification**. Une boîte de dialogue s'affiche. 
    3.  Entrez un nom pour vos données d'identification.
-   4.  Dans **Ajouter des paramètres de configuration en ligne (facultatif)**, entrez `{"HMAC":true}` pour créer des données d'identification HMAC supplémentaires que le pod **ibm-backup-restore** utilise pour l'authentification HMAC avec le service {{site.data.keyword.cos_full_notm}}. 
+   4.  Dans **Ajouter des paramètres de configuration en ligne (facultatif)**, entrez `{"HMAC":true}` pour créer des données d'identification HMAC supplémentaires que le pod `ibm-backup-restore` utilise pour l'authentification HMAC avec le service {{site.data.keyword.cos_full_notm}}. 
    5.  Cliquez sur **Ajouter**. Vos nouvelles données d'identification sont répertoriées dans le tableau **Données d'identification pour le service**.
    6.  Cliquez sur **Afficher les données d'identification**. 
    7.  Notez les informations relatives aux sections **access_key_id** et **secret_access_key** que vous pouvez trouver dans la section **cos_hmac_keys**. 
@@ -72,8 +72,7 @@ Créez et configurez une instance de service {{site.data.keyword.cos_full_notm}}
    2. Dans la navigation de la page des détails du service, cliquez sur **Buckets** > **Configuration**. 
    3. Prenez note de l'URL publique que vous pouvez utiliser pour accéder aux données de votre compartiment. 
 
-
-Consultez la documentation [{{site.data.keyword.cos_full_notm}}](/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) pour plus d'informations sur la configuration de votre instance de service.
+Consultez la documentation [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) pour plus d'informations sur la configuration de votre instance de service.
 
 ## Sauvegarde des données depuis un volume persistant
 {: #scheduled_backup}
@@ -81,7 +80,7 @@ Consultez la documentation [{{site.data.keyword.cos_full_notm}}](/services/cloud
 Vous pouvez créer une sauvegarde ponctuelle ou planifiée de tout volume persistant qui est monté dans votre pod d'application via une réservation de volume persistant.  
 {: shortdesc}
 
-L'exemple suivant vous montre comment déployer un pod de sauvegarde depuis l'image **ibm-backup-restore**, monter un volume persistant dans le pod de sauvegarde en utilisant une réclamation de volume persistant et sauvegarder les données depuis le volume persistant dans votre instance de service {{site.data.keyword.cos_full_notm}}.  
+L'exemple suivant vous montre comment déployer un pod de sauvegarde depuis l'image `ibm-backup-restore`, monter un volume persistant dans le pod de sauvegarde en utilisant une réclamation de volume persistant et sauvegarder les données depuis le volume persistant dans votre instance de service {{site.data.keyword.cos_full_notm}}.  
 
 Avant de commencer :
 
@@ -89,9 +88,9 @@ Avant de commencer :
 -   Installez les [interfaces de ligne de commande](/docs/containers/cs_cli_install.html#cs_cli_install) requises pour créer et utiliser votre cluster.
 -   [Créez un cluster standard](/docs/containers/cs_clusters.html#clusters_cli) ou utilisez un cluster existant.
 -   [Ciblez votre interface de ligne de commande vers votre cluster](/docs/containers/cs_cli_install.html#cs_cli_configure).
--   [Créez une réservation de volume persistant et montez-la sur votre déploiement d'application](/docs/containers/cs_storage.html#create).
+-   Créez une réservation de volume persistant pour votre [stockage de fichiers](/docs/containers/cs_storage_file.html#add_file) ou [stockage par blocs](/docs/containers/cs_storage_block.html#add_block) et montez-la sur votre déploiement d'application.
 
-Pour sauvegarder un volume persistant :  
+Pour sauvegarder un volume persistant : 
 
 1. Obtenez le nom de la réservation de volume persistant qui lie le volume persistant que vous voulez sauvegarder. 
    ```
@@ -99,10 +98,10 @@ Pour sauvegarder un volume persistant :
    ```
    {: pre}
 
-2. Créez un pod de sauvegarde depuis l'image **ibm-backup-restore**. Pour accéder aux données du volume persistant, vous devez monter la réclamation de volume persistant qui lie le volume persistant à votre pod de sauvegarde. L'exemple ci-après crée une pod de sauvegarde qui exécute une sauvegarde incrémentielle quotidienne. Pour créer une sauvegarde avec des paramètres différents, examinez la liste complète des [options de variable d'environnement](#reference_backup_restore).</br>
-   **Important :** L'image **ibm-backup-restore**, qui doit être déployée dans un pod unique, ne peut être utilisée dans le cadre d'un déploiement Kubernetes.
+2. Créez un pod de sauvegarde depuis l'image `ibm-backup-restore`. Pour accéder aux données du volume persistant, vous devez monter la réclamation de volume persistant qui lie le volume persistant à votre pod de sauvegarde. L'exemple ci-après crée une pod de sauvegarde qui exécute une sauvegarde incrémentielle quotidienne. Pour créer une sauvegarde avec des paramètres différents, examinez la liste complète des [options de variable d'environnement](#reference_backup_restore).</br>
+   **Important :** L'image `ibm-backup-restore`, qui doit être déployée dans un pod unique, ne peut être utilisée dans le cadre d'un déploiement Kubernetes.
    
-   Pour afficher l'image, ciblez le registre global en exécutant la commande `ibmcloud cr region-set global`. Exécutez ensuite `ibmcloud cr images --include-ibm` pour répertorier les images publiques IBM.
+   Pour afficher l'image, ciblez le registre global en exécutant la commande `ibmcloud cr region-set global`. Exécutez ensuite `ibmcloud cr images --include-ibm` pour répertorier les images publiques IBM. 
    {: tip}
   
    ```
@@ -170,7 +169,7 @@ Pour sauvegarder un volume persistant :
      </tr>
      <tr>
      <td><code>&lt;backup_name&gt;</code></td>
-     <td>Nom unique pour l'objet contenant votre sauvegarde dans le compartiment</td>
+     <td>Nom unique pour l'objet contenant votre sauvegarde dans le compartiment </td>
      </tr>
      <tr>
      <td><code>&lt;pvc_name&gt;</code></td>
@@ -199,7 +198,7 @@ Pour sauvegarder un volume persistant :
     ```
     {: screen}
     
-5.  Vérifiez que la sauvegarde s'exécute.
+5.  Vérifiez que la sauvegarde s'exécute. 
     ```
     kubectl logs backuppod
     ```
@@ -230,7 +229,7 @@ Pour restaurer des données depuis {{site.data.keyword.cos_full_notm}} dans un v
    ```
    {: pre}
 
-2. Créez un pod de restauration depuis l'image **ibm-backup-restore**. Pour restaurer des données dans un volume persistant, vous devez monter la réclamation de volume persistant qui lie le volume persistant à votre pod de restauration. 
+2. Créez un pod de restauration depuis l'image `ibm-backup-restore`. Pour restaurer des données dans un volume persistant, vous devez monter la réclamation de volume persistant qui lie le volume persistant à votre pod de restauration. 
    
    ```
    apiVersion: v1
@@ -300,7 +299,7 @@ Pour restaurer des données depuis {{site.data.keyword.cos_full_notm}} dans un v
      </tbody>
      </table>
 
-3.  Créez le pod de restauration et commencez à restaurer vos données.
+3.  Créez le pod de restauration et commencez à restaurer vos données. 
     ```
     kubectl apply -f restorepod.yaml
     ```
@@ -328,13 +327,13 @@ Pour restaurer des données depuis {{site.data.keyword.cos_full_notm}} dans un v
     ```
     {: pre}
 
-6.  Vérifiez que vos données ont été correctement restaurées.
+6.  Vérifiez que vos données ont été correctement restaurées. 
     ```
     kubectl logs restorepod
     ```
     {: pre}
 
-Vous avez correctement restauré votre sauvegarde. Vous pouvez maintenant monter la réservation de volume persistant qui lie le volume persistant à un autre pod de votre cluster pour accéder aux fichiers restaurés. Si les données de conteneur qui ont été sauvegardées incluaient un utilisateur non root, vous devez ajouter des droits non root à votre nouveau conteneur. Pour plus d'informations, voir [Ajout d'un accès utilisateur non root aux volumes](../../../containers/container_volumes_ov.html#container_volumes_write).
+Vous avez correctement restauré votre sauvegarde. Vous pouvez maintenant monter la réservation de volume persistant qui lie le volume persistant à un autre pod de votre cluster pour accéder aux fichiers restaurés. Si les données de conteneur qui ont été sauvegardées incluaient un utilisateur non root, vous devez ajouter des droits non root à votre nouveau conteneur. Pour plus d'informations, voir [Ajout d'un accès utilisateur non root aux volumes](/docs/containers/cs_troubleshoot_storage.html#cs_storage_nonroot).
 
 ## Chiffrage de vos sauvegardes 
 {: #encrypting_backups}
@@ -497,7 +496,7 @@ d'{{site.data.keyword.cos_full_notm}} que vous aviez notées plus tôt. Ajoutez 
     ```
     {: screen}
 
-9.  Copiez la clé de chiffrement dans le répertoire `/backup_restore` du conteneur qui est généré à partir de l'image **ibm-backup-restore**.
+9.  Copiez la clé de chiffrement dans le répertoire `/backup_restore` du conteneur qui est généré à partir de l'image `ibm-backup-restore`.
 
     ```
     kubectl cp ./encryption.asc <container_name>:/backup_restore
@@ -542,7 +541,7 @@ Vérifiez la liste complète des zones qui peuvent être transmises en tant que 
 |ACCESS_KEY_ID|ID **access_key_id** qui fait partie des données d'identification HMAC dans {{site.data.keyword.cos_full_notm}}.|
 |SECRET_ACCESS_KEY|Clé **secret_access_key** qui fait partie des données d'identification HMAC dans {{site.data.keyword.cos_full_notm}}.|
 |ENDPOINT|Nom d'hôte pour accéder aux données de compartiment {{site.data.keyword.cos_full_notm}}.|
-|BUCKET|Nom du compartiment {{site.data.keyword.cos_full_notm}} où vos données sauvegardées sont stockées.|
+|BUCKET|Nom du compartiment {{site.data.keyword.cos_full_notm}} où vos données sauvegardées sont stockées. |
 {: caption="Tableau 1. Variables {{site.data.keyword.cos_full_notm}}" caption-side="top"}
 
 |Clé|Options de valeur|
@@ -564,7 +563,7 @@ Vérifiez la liste complète des zones qui peuvent être transmises en tant que 
 |Clé|Options de valeur|
 |---|-------------|
 |ENCRYPTION_KEY_FILE|.*/encryption.asc* : valeur par défaut. Ajoutez cette variable d'environnement si vous modifiez le nom de fichier de la clé de chiffrement ou si la clé se trouve dans un autre répertoire que `backup_restore`.|
-|ENCRYPTION_REQUIRED|*no* : valeur par défaut. <br/> *yes* : si vous ne chiffrez pas votre sauvegarde, n'incluez pas de variables d'environnement de chiffrement. Si vous chiffrez votre sauvegarde, incluez cette clé avec la valeur `yes`.|
+|ENCRYPTION_REQUIRED|*no* : valeur par défaut.<br/> *yes* : si vous ne chiffrez pas votre sauvegarde, n'incluez pas de variables d'environnement de chiffrement. Si vous chiffrez votre sauvegarde, incluez cette clé avec la valeur `yes`.|
 |ENCRYPTION_PASSPHRASE|Incluez une phrase passe pour sécuriser une sauvegarde. Cette phrase passe est différente de la phrase que vous avez créée lors de la création de la clé de chiffrement. Vous devez inclure cette phrase passe quand vous sauvegardez et restaurez des données.|
 |IS_KEY_GENERATED_ON_SYSTEM|*no* : valeur par défaut.<br/> *yes* : incluez cette variable d'environnement avec la valeur `yes` si vous avez généré directement la clé de chiffrement sur le
 conteneur. La plupart des utilisateurs génèrent la clé sur leur ordinateur local, copient la clé dans le pod et peuvent conserver la valeur par défaut `no`.|

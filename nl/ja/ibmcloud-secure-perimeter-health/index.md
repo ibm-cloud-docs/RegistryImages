@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -88,7 +88,7 @@ sp-gateway-8a9031ab:
 4.  その他すべての詳細を適宜入力します。
 5.  「クラスターの作成」をクリックします。
 
-クラスターがデプロイされた後、クラスターにアクセスする方法については、[{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) 資料を参照してください。
+クラスターがデプロイされた後、クラスターにアクセスする方法については、[{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) 資料を参照してください。
 
 ## Secure Perimeter 内のプライベート・ネットワークをスキャンする
 {: #private_networks}
@@ -97,8 +97,8 @@ sp-gateway-8a9031ab:
 
 始める前に、以下を実行してください。
 
--   必要な [CLI](../../../containers/cs_cli_install.html#cs_cli_install) をインストールします。
--   [CLI のターゲット](../../../containers/cs_cli_install.html#cs_cli_configure)を自分のクラスターに設定します。
+-   必要な [CLI](/docs/containers/cs_cli_install.html#cs_cli_install) をインストールします。
+-   [CLI のターゲット](/docs/containers/cs_cli_install.html#cs_cli_configure)を自分のクラスターに設定します。
 
 1. _health-pod.yaml_ という名前の構成ファイルを作成します。 このファイルにより、高可用性のコンテナー・ポッドのデプロイメントが作成されます。
 

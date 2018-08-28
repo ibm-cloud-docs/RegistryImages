@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -64,7 +64,7 @@ Rivedi le seguenti attività per informazioni sulla modalità di utilizzo di **i
 4.  Compila tutti gli altri dettagli come ritieni opportuno.
 5.  Fai clic su Crea cluster.
 
-Rivedi la [documentazione di {{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) su come ottenere l'accesso al tuo cluster dopo che è stato distribuito.
+Controlla la [documentazione di {{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) su come ottenere l'accesso al tuo cluster dopo che è stato distribuito.
 
 ## Esegui la configurazione iniziale del Vyatta del tuo Secure Perimeter
 {: #initial_setup}

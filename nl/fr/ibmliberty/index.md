@@ -86,7 +86,7 @@ avec licence pour environnement de production afin de créer un conteneur unique
 
     -   [Génération de conteneurs à partir d'images](/docs/containers/cs_images.html#images)
     -   [Initiation à IBM Cloud Kubernetes Service](/docs/containers/container_index.html#container_index)
-    -   [Déploiement d'applications dans des clusters](docs/containers/cs_app.html#app)
+    -   [Déploiement d'applications dans des clusters](/docs/containers/cs_app.html#app)
     
     **Remarque :** L'image **ibmliberty** exige que le port 9080 soit exposé comme port public. Lorsque vous créez un conteneur depuis le tableau de bord {{site.data.keyword.Bluemix_notm}}, le port est ajouté par défaut dans la zone **Port public**. Si vous créez un conteneur depuis l'interface de ligne de commande, exposez le port dans votre commande `kubectl run` avec l'option `--port=9080`.
 
@@ -113,7 +113,7 @@ Java en phase d'exécution.
     ```
     {: pre}
 
-3.  Pour examiner l'utilisation du segment de mémoire Java, vous devez accéder aux statistiques de mémoire **RSS**. Suivez les instructions sur la façon d'accéder à un shell de conteneur, proposées [ici](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/), puis prenez connaissance des [métriques d'exécution](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) pour trouver et mettre en forme les informations statistiques relatives à la mémoire pour un conteneur.
+3.  Pour examiner l'utilisation du segment de mémoire Java, vous devez accéder aux statistiques de mémoire **RSS**. Suivez les instructions sur la façon d'accéder à un shell de conteneur, proposées [ici](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/), puis prenez connaissance des [métriques d'exécution](/containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) pour trouver et mettre en forme les informations statistiques relatives à la mémoire pour un conteneur.
 L'utilisation du segment de mémoire Java est affichée en kilooctets. Si son utilisation est en-dessous de 2097152 kilooctets
 (2 Go) entre toutes les instances, vous n'avez pas besoin d'acquérir une licence de WebSphere Application Server.
 

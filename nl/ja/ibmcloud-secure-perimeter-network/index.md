@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -64,7 +64,7 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
 4.  その他すべての詳細を適宜入力します。
 5.  「クラスターの作成」をクリックします。
 
-クラスターがデプロイされた後、クラスターにアクセスする方法については、[{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) 資料を参照してください。
+クラスターがデプロイされた後、クラスターにアクセスする方法については、[{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) 資料を参照してください。
 
 ## Secure Perimeter Vyatta の初期構成を実行する
 {: #initial_setup}

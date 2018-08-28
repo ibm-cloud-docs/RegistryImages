@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -64,7 +64,7 @@ lastupdated: "2018-07-25"
 4.  填写您认为适合的所有其他详细信息。
 5.  单击“创建集群”。
 
-查看 [{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) 文档以了解如何在部署后立即获取集群的访问权。
+查看 [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) 文档以了解如何在部署后立即获取集群的访问权。
 
 ## 运行 Secure Perimeter Vyatta 的初始配置
 {: #initial_setup}

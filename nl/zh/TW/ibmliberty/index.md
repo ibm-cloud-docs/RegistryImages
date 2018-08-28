@@ -76,7 +76,7 @@ IBM® WebSphere® Application Server Liberty (**ibmliberty**) 映像檔是提供
 
     -   [從映像檔建置容器](/docs/containers/cs_images.html#images)
     -   [開始使用 IBM Cloud Kubernetes Service](/docs/containers/container_index.html#container_index)
-    -   [在叢集中部署應用程式](docs/containers/cs_app.html#app)
+    -   [在叢集中部署應用程式](/docs/containers/cs_app.html#app)
     
     **附註：****ibmliberty** 映像檔需要公開埠 9080。從「{{site.data.keyword.Bluemix_notm}} 儀表板」中建立容器時，預設會在**公用埠**欄位中新增埠。如果從 CLI 建立容器，請在 `kubectl run` 指令中以 `--port=9080` 選項公開埠。
 
@@ -101,7 +101,7 @@ IBM® WebSphere® Application Server Liberty (**ibmliberty**) 映像檔是提供
     ```
     {: pre}
 
-3.  若要檢閱 Java 資料堆使用情形，您需要存取 **RSS** 記憶體統計資料。請遵循[這裡](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)的容器 Shell 存取準則，然後檢閱[運行環境度量值](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io)，以瞭解如何尋找和格式化容器的記憶體統計資訊。Java 資料堆用量會以 KB 為單位來顯示。如果所有實例的資料堆用量低於 2097152 KB (2GB)，則不需要購買 WebSphere Application Server 授權。
+3.  若要檢閱 Java 資料堆使用情形，您需要存取 **RSS** 記憶體統計資料。請遵循[這裡](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)的容器 Shell 存取準則，然後檢閱[運行環境度量值](/containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io)，以瞭解如何尋找和格式化容器的記憶體統計資訊。Java 資料堆用量會以 KB 為單位來顯示。如果所有實例的資料堆用量低於 2097152 KB (2GB)，則不需要購買 WebSphere Application Server 授權。
 
 4.  調整 WebSphere Application Server 實例的資料堆用量上限。如需相關資訊，請參閱[在 WebSphere Application Server 8.5 版 Liberty 設定檔中設定通用 JVM 引數](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)。
 

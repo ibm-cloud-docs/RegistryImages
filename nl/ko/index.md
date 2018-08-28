@@ -4,7 +4,7 @@ copyright:
 
   years: 2014, 2018
 
-lastupdated: "2018-07-26"
+lastupdated: "2018-08-16"
 
 ---
 
@@ -26,7 +26,7 @@ lastupdated: "2018-07-26"
 </li>
   
 <li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="ibmcloud-secure-perimeter-health 이미지를 사용하여 IBM Cloud 인프라 네트워크 내에 노출된 경로를 스캔하고 보고할 수 있습니다."></p>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="ibmcloud-secure-perimeter-health 이미지를 사용하여 IBM Cloud 인프라 네트워크에서 취약한 경로를 스캔하고 보고할 수 있습니다."></p>
 <p class="runtimeTitle">ibmcloud-secure-<br />perimeter-health</p>
 <p class="runtimeLink"><a format="html"
 href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-health/index.html" scope="peer"
@@ -42,33 +42,9 @@ href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-network/index.html
 </li>
 
 <li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="iccs-cluster-autoscaler 이미지를 사용하여 구성하는 정책을 기반으로 {{site.data.keyword.Bluemix_notm}}에  Kubernetes 클러스터를 자동으로 스케일링할 수 있습니다."></p>
-<p class="runtimeTitle">iccs-cluster-autoscaler<br /> <br /></p>
-<p class="runtimeLink"><a format="html"
-href="/docs/services/RegistryImages/ibm-cluster-autoscaler/index.html" scope="peer"
- title="iccs-cluster-autoscaler 이미지를 사용하여 구성하는 정책을 기반으로 {{site.data.keyword.Bluemix_notm}}에 Kubernetes 클러스터를 자동으로 스케일링할 수 있습니다.">문서 보기</a></p>
-</li>
-
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="통합 솔루션을 작성하고 나면 ibm-integration-bus 이미지를 사용하여 {{site.data.keyword.Bluemix_notm}}에 단일 컨테이너를 프로비저닝할 수 있습니다. 웹 UI 또는 터미널을 사용하여 통합 솔루션을 이 컨테이너에 배치할 수 있습니다."></p>
-<p class="runtimeTitle">ibm-integration-bus<br /> <br /></p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-integration-bus/index.html" scope="peer" title="통합 솔루션을 작성한 다음 ibm-integration-bus 이미지를 사용하여 {{site.data.keyword.Bluemix_notm}}에 단일 컨테이너를 프로비저닝할 수 있습니다. 웹 UI 또는 터미널을 사용하여 통합 솔루션을 이 컨테이너에 배치할 수 있습니다.">문서 보기</a></p>
-</li>
-
-<li>
 <p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="IBM WebSphere Application Server Liberty 컨테이너에서 Java를 기반으로 고유 이미지를 작성하고 고유 WAR, EAR 또는 OSGi 앱을 배치하기 위해 ibmliberty 이미지를 상위로 사용할 수 있습니다."></p>
 <p class="runtimeTitle">ibmliberty<br /> <br /></p>
 <p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibmliberty/index.html" scope="peer" title="IBM WebSphere Application Server Liberty 컨테이너에서 Java를 기반으로 고유 이미지를 작성하고 고유 WAR, EAR 또는 OSGi 앱을 배치하기 위해 ibmliberty 이미지를 상위로 사용할 수 있습니다.">문서 보기</a></p>
 </li>
 
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="ibm-mq 이미지에 대한 자세한 정보는 문서를 확인하십시오."></p>
-<p class="runtimeTitle">ibm-mq<br /> <br /></p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-mq/index.html" scope="peer" title="ibm-mq 이미지에 대한 자세한 정보는 문서를 참조하십시오.">문서 보기</a></p>
-</li>
-
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Liberty {{site.data.keyword.cloud_notm}} 클라이언트 애플리케이션에서 캐싱 서버에 연결하여 단순, 세션 및 dynacache와 같은 분산 캐싱 유스 케이스를 실행하기 위해 eXtremeScale 분산 캐싱 서버를 구축하려면 ibm-websphere-extreme-scale 이미지를 사용할 수 있습니다."></p>
-<p class="runtimeTitle">ibm-websphere-<br />extreme-scale</p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-websphere-extreme-scale/index.html" scope="peer" title="{{site.data.keyword.Bluemix_notm}} 클라이언트 애플리케이션에서 캐싱 서버에 연결하여 단순, 세션 및 dynacache와 같은 분산 캐싱 유스 케이스를 실행하기 위해 eXtremeScale 분산 캐싱 서버를 구축하려면 ibm-websphere-extreme-scale 이미지를 사용할 수 있습니다.">문서 보기</a></p>
-</li></ul>
+</ul>

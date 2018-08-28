@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-24"
+lastupdated: "2018-08-16"
 
 ---
 
@@ -14,27 +14,27 @@ lastupdated: "2018-07-24"
 {:tip: .tip} 
 {:table: .aria-labeledby="caption"}
 
-# Introdução à imagem ibm-backup-restore
+# Introdução à imagem `ibm-backup-restore`
 {: #ibmbackup_restore_starter}
 
-A imagem **ibm-backup-restore** contém os pacotes pré-instalados que são necessários para fazer backup e restaurar armazenamento persistente no {{site.data.keyword.containerlong}}.
+A imagem `ibm-backup-restore` contém os pacotes pré-instalados que são necessários para fazer backup e restaurar armazenamento persistente no {{site.data.keyword.containerlong}}.
 {:shortdesc}
 
 ## Como ele Funciona 
 {: #how_it_works}
 
-Com a imagem **ibm-backup-restore**, é possível criar um backup único ou planejado para dados do app que são armazenados em um volume persistente (PV) em seu cluster ou restaurar dados do app para um PV. Para fazer backup e restaurar dados, implemente um pod por meio da imagem **ibm-backup-restore**. Em seguida, monte o PVC que liga o PV do qual você deseja fazer backup ou o PV que deseja usar para restaurar os dados para seu pod. 
+Com a imagem `ibm-backup-restore`, é possível criar um backup único ou planejado para dados do app que são armazenados em um volume persistente (PV) em seu cluster ou restaurar dados do app para um PV. Para fazer backup e restaurar dados, implemente um pod por meio da imagem `ibm-backup-restore`. Em seguida, monte o PVC que liga o PV do qual você deseja fazer backup ou o PV que deseja usar para restaurar os dados para seu pod. 
 
 ** Onde meus dados vão? Como posso acessá-los?** </br>
-Os dados dos quais você faz backup são armazenados em uma instância de serviço do {{site.data.keyword.cos_full_notm}}. Para acessar o serviço, use as credenciais de serviço do {{site.data.keyword.cos_full_notm}} como variáveis de ambiente no pod **ibm-backup-restore** ou edite o arquivo `config.conf` no pod em execução.
+Os dados dos quais você faz backup são armazenados em uma instância de serviço do {{site.data.keyword.cos_full_notm}}. Para acessar o serviço, use as credenciais de serviço do {{site.data.keyword.cos_full_notm}} como variáveis de ambiente no pod `ibm-backup-restore` ou edite o arquivo `config.conf` no pod em execução.
 
 **Posso restaurar dados submetidos a backup para um app ou um PV diferente?** </br>
-Sim, é possível restaurar os dados salvos da instância de serviço do {{site.data.keyword.cos_full_notm}} para um PV em seu cluster. Para restaurar dados, deve-se criar um pod de restauração por meio da imagem **ibm-backup-restore**. Em seguida, você monta o PVC que liga o PV que deseja usar para o pod.  
+Sim, é possível restaurar os dados salvos da instância de serviço do {{site.data.keyword.cos_full_notm}} para um PV em seu cluster. Para restaurar dados, deve-se criar um pod de restauração por meio da imagem `ibm-backup-restore`. Em seguida, você monta o PVC que liga o PV que deseja usar para o pod.  
 
 ## O que está incluído 
 {: #whats_included}
 
-Cada imagem **ibm-backup-restore** contém os seguintes pacotes de software:
+Cada imagem `ibm-backup-restore` contém os seguintes pacotes de software:
 
 -   Alpino 3.7
 -   Duplicity 0.7.10
@@ -56,7 +56,7 @@ Crie e configure uma instância de serviço do {{site.data.keyword.cos_full_notm
    1.  Na navegação na página de detalhes do serviço, clique em **Credenciais de serviço**.
    2.  Clique em  ** Nova credencial **. Uma caixa de diálogo é exibida. 
    3.  Insira um nome para suas credenciais.
-   4.  Em **Incluir parâmetros de configuração sequencial (Opcional)**, insira `{"HMAC":true}` para criar credenciais HMAC adicionais que o pod **ibm-backup-restore** usará para autenticação do HMAC com o serviço {{site.data.keyword.cos_full_notm}}. 
+   4.  Em **Incluir parâmetros de configuração sequencial (Opcional)**, insira `{"HMAC":true}` para criar credenciais HMAC adicionais que o pod `ibm-backup-restore` usará para autenticação do HMAC com o serviço {{site.data.keyword.cos_full_notm}}. 
    5.  Clique em **Incluir**. Suas novas credenciais são listadas na tabela **Credenciais de serviço**.
    6.  Clique em  ** Visualizar credenciais **. 
    7.  Anote o **access_key_id** e a **secret_access_key** que podem ser localizados na seção **cos_hmac_keys**. 
@@ -72,8 +72,7 @@ Crie e configure uma instância de serviço do {{site.data.keyword.cos_full_notm
    2. Na navegação na página de detalhes do serviço, clique em **Depósitos** > **Configuração**. 
    3. Anote a URL pública que pode ser usada para acessar os dados no depósito. 
 
-
-Revise a documentação do [{{site.data.keyword.cos_full_notm}}](/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) para obter mais informações sobre como configurar sua instância de serviço.
+Revise a documentação do [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) para obter mais informações sobre como configurar sua instância de serviço.
 
 ## Fazendo backup de dados de um volume persistente
 {: #scheduled_backup}
@@ -81,7 +80,7 @@ Revise a documentação do [{{site.data.keyword.cos_full_notm}}](/services/cloud
 É possível criar um backup único ou planejado para qualquer volume persistente (PV) montado no pod de seu app por meio de uma solicitação de volume persistente (PVC).  
 {: shortdesc}
 
-O exemplo a seguir fornece orientação sobre como implementar um pod de backup por meio da imagem **ibm-backup-restore**, montar um PV existente no pod de backup usando um PVC e fazer backup dos dados do PV na instância de serviço do {{site.data.keyword.cos_full_notm}}.  
+O exemplo a seguir fornece orientação sobre como implementar um pod de backup por meio da imagem `ibm-backup-restore`, montar um PV existente no pod de backup usando um PVC e fazer backup dos dados do PV na instância de serviço do {{site.data.keyword.cos_full_notm}}.  
 
 Antes de começar:
 
@@ -89,7 +88,7 @@ Antes de começar:
 -   Instale as [CLIs](/docs/containers/cs_cli_install.html#cs_cli_install) necessárias para criar e trabalhar com seu cluster.
 -   [Crie um cluster padrão](/docs/containers/cs_clusters.html#clusters_cli) ou use um existente.
 -   [Destine sua CLI para seu cluster](/docs/containers/cs_cli_install.html#cs_cli_configure).
--   [Crie uma solicitação de volume persistente (PVC) e monte-a na implementação de seu app](/docs/containers/cs_storage.html#create).
+-   Crie uma solicitação de volume persistente (PVC) para o [armazenamento de arquivo](/docs/containers/cs_storage_file.html#add_file) ou o [armazenamento de bloco](/docs/containers/cs_storage_block.html#add_block) e monte-a em sua implementação de app.
 
 Para fazer backup de um PV existente: 
 
@@ -99,10 +98,10 @@ Para fazer backup de um PV existente:
    ```
    {: pre}
 
-2. Crie um pod de backup por meio da imagem **ibm-backup-restore**. Para acessar os dados no PV, deve-se montar o PVC que liga o PV ao pod de backup. O exemplo a seguir cria um pod de backup que executa um backup incremental diário. Para criar um backup com configurações diferentes, revise uma lista completa de [opções de variável de ambiente](#reference_backup_restore).</br>
-   **Importante:** A imagem **ibm-backup-restore** deve ser implementada em um único pod e não pode ser usada como parte de uma implementação do Kubernetes.
+2. Crie um pod de backup por meio da imagem `ibm-backup-restore`. Para acessar os dados no PV, deve-se montar o PVC que liga o PV ao pod de backup. O exemplo a seguir cria um pod de backup que executa um backup incremental diário. Para criar um backup com configurações diferentes, revise uma lista completa de [opções de variável de ambiente](#reference_backup_restore).</br>
+   **Importante:** A imagem `ibm-backup-restore` deve ser implementada em um único pod e não pode ser usada como parte de uma implementação do Kubernetes.
    
-   Para visualizar a imagem, direcione o registro global executando o comando `ibmcloud cr region-set global`. Em seguida, execute `ibmcloud cr images --include-ibm` para listar as imagens públicas da IBM.
+   Para visualizar a imagem, direcione o registro global executando o comando `ibmcloud cr region-set global`. Em seguida, execute `ibmcloud cr images --include-ibm` para listar as imagens públicas da IBM. 
    {: tip}
   
    ```
@@ -199,7 +198,7 @@ Para fazer backup de um PV existente:
     ```
     {: screen}
     
-5.  Verifique se o backup foi executado com sucesso.
+5.  Verifique se o backup foi executado com sucesso. 
     ```
     logs kubectl logs backuppod
     ```
@@ -230,7 +229,7 @@ Para restaurar dados do {{site.data.keyword.cos_full_notm}} para um PV:
    ```
    {: pre}
 
-2. Crie um pod de restauração por meio da imagem **ibm-backup-restore**. Para restaurar dados para um PV, deve-se montar o PVC que liga o PV ao pod de restauração. 
+2. Crie um pod de restauração por meio da imagem `ibm-backup-restore`. Para restaurar dados para um PV, deve-se montar o PVC que liga o PV ao pod de restauração. 
    
    ```
    apiVersion: v1
@@ -300,7 +299,7 @@ Para restaurar dados do {{site.data.keyword.cos_full_notm}} para um PV:
      </tbody>
      </table>
 
-3.  Crie o pod de restauração e inicie a restauração dos dados.
+3.  Crie o pod de restauração e inicie a restauração dos dados. 
     ```
     kubectl aplicar -f restorepod.yaml
     ```
@@ -328,13 +327,13 @@ Para restaurar dados do {{site.data.keyword.cos_full_notm}} para um PV:
     ```
     {: pre}
 
-6.  Verifique se seus dados foram restaurados com sucesso.
+6.  Verifique se seus dados foram restaurados com sucesso. 
     ```
     logs kubectl logs restorepod
     ```
     {: pre}
 
-Você restaurou com êxito o backup. Agora é possível montar o PVC que liga o PV a qualquer outro pod no cluster para acessar os arquivos restaurados. Se os dados do contêiner cujo backup foi feito incluíam um usuário não raiz, deve-se incluir permissões não raiz no novo contêiner. Para obter mais informações, veja [Incluindo acesso de usuário não raiz para os volumes](../../../containers/container_volumes_ov.html#container_volumes_write).
+Você restaurou com êxito o backup. Agora é possível montar o PVC que liga o PV a qualquer outro pod no cluster para acessar os arquivos restaurados. Se os dados do contêiner cujo backup foi feito incluíam um usuário não raiz, deve-se incluir permissões não raiz no novo contêiner. Para obter mais informações, veja [Incluindo acesso de usuário não raiz para os volumes](/docs/containers/cs_troubleshoot_storage.html#cs_storage_nonroot).
 
 ## Criptografando seus backups 
 {: #encrypting_backups}
@@ -498,7 +497,7 @@ o arquivo `encryption.asc`.
     {: screen}
 
 9.  Copie a chave de criptografia no diretório `/backup_restore` do
-contêiner que é construído a partir da imagem **ibm-backup-restore**.
+contêiner que é construído a partir da imagem `ibm-backup-restore`.
 
     ```
     kubectl cp ./encryption.asc <container_name>:/backup_restore

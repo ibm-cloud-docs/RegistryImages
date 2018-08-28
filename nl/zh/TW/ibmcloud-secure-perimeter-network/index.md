@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -64,7 +64,7 @@ lastupdated: "2018-07-25"
 4.  填寫您認為適當的所有其他詳細資料。
 5.  按一下「建立叢集」。
 
-檢閱 [{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) 文件，瞭解如何在部署完叢集之後取得該叢集的存取權。
+檢閱 [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) 文件，瞭解如何在部署完叢集之後取得該叢集的存取權。
 
 ## 執行 Secure Perimeter Vyatta 的起始配置
 {: #initial_setup}

@@ -76,7 +76,7 @@ lastupdated: "2018-07-25"
 
     -   [基于映像构建容器](/docs/containers/cs_images.html#images)
     -   [IBM Cloud Kubernetes 服务入门](/docs/containers/container_index.html#container_index)
-    -   [在集群中部署应用程序](docs/containers/cs_app.html#app)
+    -   [在集群中部署应用程序](/docs/containers/cs_app.html#app)
     
     **注：****ibmliberty** 映像要求以公共方式公开端口 9080。在 {{site.data.keyword.Bluemix_notm}}“仪表板”中创建容器时，缺省情况下会在**公共端口**字段中添加此端口。如果在 CLI 中创建容器，请在带 `--port=9080` 选项的 `kubectl ic run` 命令中公开此端口。
 
@@ -101,7 +101,7 @@ lastupdated: "2018-07-25"
     ```
     {: pre}
 
-3.  要复查 Java 堆使用量，您需要访问 **RSS** 内存统计信息。遵循[此处](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)有关如何访问容器 shell 的准则，然后复查[运行时度量值](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io)，以了解如何查找容器的内存统计信息并设置其格式。
+3.  要复查 Java 堆使用量，您需要访问 **RSS** 内存统计信息。遵循[此处](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)有关如何访问容器 shell 的准则，然后复查[运行时度量值](/containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io)，以了解如何查找容器的内存统计信息并设置其格式。
 Java 堆使用量以 KB 显示。如果跨所有实例堆使用量低于 2097152 KB (2GB)，那么您无需购买 WebSphere Application Server 许可。
 
 4.  针对 WebSphere Application Server 实例，调整最大堆使用量。有关更多信息，请参阅[在 WebSphere Application Server V8.5 Liberty 概要文件中设置通用 JVM 参数](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)。

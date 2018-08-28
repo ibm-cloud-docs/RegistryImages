@@ -25,9 +25,5 @@ de registro da CLI](../Registry/registry_cli.html)
     ibm-backup-restore/index.md
     ibmcloud-secure-perimeter-health/index.md
     ibmcloud-secure-perimeter-network/index.md
-    ibm-cluster-autoscaler/index.md
-    ibm-integration-bus/index.md
     ibmliberty/index.md
-    ibm-mq/index.md
-    ibm-websphere-extreme-scale/index.md
     {: .navgroup-end}

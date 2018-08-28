@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-24"
+lastupdated: "2018-08-16"
 
 ---
 
@@ -14,34 +14,34 @@ lastupdated: "2018-07-24"
 {:tip: .tip} 
 {:table: .aria-labeledby="caption"}
 
-# Introduzione all'immagine ibm-backup-restore
+# Introduzione all'immagine `ibm-backup-restore`
 {: #ibmbackup_restore_starter}
 
-L'immagine **ibm-backup-restore** contiene i pacchetti pre-installati necessari per il backup e il ripristino della memoria persistente in {{site.data.keyword.containerlong}}.
+L'immagine `ibm-backup-restore` contiene i pacchetti pre-installati necessari per il backup e il ripristino della memoria persistente in {{site.data.keyword.containerlong}}.
 {:shortdesc}
 
 ## Come funziona 
 {: #how_it_works}
 
-Con l'immagine **ibm-backup-restore**, puoi creare un backup monouso o pianificato per i dati dell'applicazione che vengono archiviati in un volume persistente (PV) nel tuo cluster o ripristinarli da un PV. Per eseguire il backup e il ripristino dei dati, distribuisci un pod dall'immagine **ibm-backup-restore**. In seguito, monta il PVC che associa il PV di cui vuoi eseguire il backup o che vuoi utilizzare per ripristinare i tuoi dati nel tuo pod. 
+Con l'immagine `ibm-backup-restore`, puoi creare un backup monouso o pianificato per i dati dell'applicazione che vengono archiviati in un volume persistente (PV) nel tuo cluster o ripristinarli da un PV. Per eseguire il backup e il ripristino dei dati, distribuisci un pod dall'immagine `ibm-backup-restore`. In seguito, monta il PVC che associa il PV di cui vuoi eseguire il backup o che vuoi utilizzare per ripristinare i tuoi dati nel tuo pod. 
 
 **Dove vanno i miei dati? Come posso accedervi?** </br>
-I dati di cui esegui il backup vengono archiviati in un'istanza del servizio {{site.data.keyword.cos_full_notm}}. Per accedere al servizio, utilizza le tue credenziali del servizio {{site.data.keyword.cos_full_notm}} come variabili di ambiente nel pod **ibm-backup-restore** o modifica il file `config.conf` nel pod in esecuzione.
+I dati di cui esegui il backup vengono archiviati in un'istanza del servizio {{site.data.keyword.cos_full_notm}}. Per accedere al servizio, utilizza le tue credenziali del servizio {{site.data.keyword.cos_full_notm}} come variabili di ambiente nel pod `ibm-backup-restore` o modifica il file `config.conf` nel pod in esecuzione.
 
 **Posso ripristinare i dati di backup in un'applicazione o un PV differente?** </br>
-Sì, puoi ripristinare i tuoi dati salvati dall'istanza del servizio {{site.data.keyword.cos_full_notm}} in un PV nel tuo cluster. Per ripristinare i dati, devi creare un pod di ripristino dall'immagine **ibm-backup-restore**. In seguito, monta il PVC che associa il PV che vuoi utilizzare nel tuo pod.   
+Sì, puoi ripristinare i tuoi dati salvati dall'istanza del servizio {{site.data.keyword.cos_full_notm}} in un PV nel tuo cluster. Per ripristinare i dati, devi creare un pod di ripristino dall'immagine `ibm-backup-restore`. In seguito, monta il PVC che associa il PV che vuoi utilizzare nel tuo pod.  
 
 ## Elementi inclusi 
 {: #whats_included}
 
-Ogni immagine **ibm-backup-restore** contiene i seguenti pacchetti software:
+Ogni immagine `ibm-backup-restore` contiene i seguenti pacchetti software:
 
 -   Alpine 3.7
 -   Duplicity 0.7.10
 -   Pacchetti python e gpgme
 
 
-## Configurazione di un'istanza del servizio {{site.data.keyword.cos_full_notm}}  
+## Configurazione di un'istanza del servizio {{site.data.keyword.cos_full_notm}} 
 {: #object_storage}
 
 Crea e configura un'istanza del servizio {{site.data.keyword.cos_full_notm}} da utilizzare come repository per i dati di cui vuoi eseguire il backup.
@@ -56,8 +56,8 @@ Crea e configura un'istanza del servizio {{site.data.keyword.cos_full_notm}} da 
    1.  Nella navigazione nella pagina dei dettagli del servizio, fai clic su **Credenziali del servizio**.
    2.  Fai clic su **Nuova credenziale**. Viene visualizzata una casella di dialogo. 
    3.  Immetti un nome per le tue credenziali.
-   4.  In **Aggiungi parametri di configurazione inline (facoltativo)**, immetti `{"HMAC":true}` per creare ulteriori credenziali HMAC che il pod **ibm-backup-restore** utilizza per l'autenticazione con il servizio {{site.data.keyword.cos_full_notm}}. 
-   5.  Fai clic su **Aggiungi**. Le tue nuove credenziali sono elencate nella tabella **Credenziali del servizio**. 
+   4.  In **Aggiungi parametri di configurazione inline (facoltativo)**, immetti `{"HMAC":true}` per creare ulteriori credenziali HMAC che il pod `ibm-backup-restore` utilizza per l'autenticazione con il servizio {{site.data.keyword.cos_full_notm}}. 
+   5.  Fai clic su **Aggiungi**. Le tue nuove credenziali sono elencate nella tabella **Credenziali del servizio**.
    6.  Fai clic su **Visualizza credenziali**. 
    7.  Prendi nota di **access_key_id** e **secret_access_key** che puoi trovare nella sezione **cos_hmac_keys**. 
 3. Crea il tuo primo bucket {{site.data.keyword.cos_full_notm}}.
@@ -72,8 +72,7 @@ Crea e configura un'istanza del servizio {{site.data.keyword.cos_full_notm}} da 
    2. Nella navigazione nella pagina dei dettagli del servizio, fai clic su **Bucket** > **Configurazione**. 
    3. Prendi nota dell'URL pubblico che puoi utilizzare per accedere ai dati nel tuo bucket. 
 
-
-Controlla la [documentazione {{site.data.keyword.cos_full_notm}}](/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) per ulteriori informazioni sulla configurazione della tua istanza del servizio.
+Controlla la [documentazione {{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) per ulteriori informazioni sulla configurazione della tua istanza del servizio.
 
 ## Backup dei dati da un volume persistente
 {: #scheduled_backup}
@@ -81,7 +80,7 @@ Controlla la [documentazione {{site.data.keyword.cos_full_notm}}](/services/clou
 Puoi creare un backup pianificato o monouso per ogni volume persistente (PV) che viene montato nel tuo pod dell'applicazione tramite un'attestazione del volume persistente (PVC).  
 {: shortdesc}
 
-Il seguente esempio ti illustra come distribuire un pod di backup dall'immagine **ibm-backup-restore**, montare un PV esistente nel pod di backup utilizzando una PVC e come eseguire il backup dei dati dal PV nella tua istanza del servizio {{site.data.keyword.cos_full_notm}}.  
+Il seguente esempio ti illustra come distribuire un pod di backup dall'immagine `ibm-backup-restore`, montare un PV esistente nel pod di backup utilizzando una PVC e come eseguire il backup dei dati dal PV nella tua istanza del servizio {{site.data.keyword.cos_full_notm}}.  
 
 Prima di iniziare:
 
@@ -89,7 +88,7 @@ Prima di iniziare:
 -   Installa le [CLI](/docs/containers/cs_cli_install.html#cs_cli_install) richieste per creare e utilizzare il tuo cluster.
 -   [Crea un cluster standard](/docs/containers/cs_clusters.html#clusters_cli) o utilizzane uno esistente.
 -   [Indirizza la tua CLI al tuo cluster](/docs/containers/cs_cli_install.html#cs_cli_configure).
--   [Crea un'attestazione del volume persistente (PVC) e montala nella tua distribuzione dell'applicazione](/docs/containers/cs_storage.html#create).
+-   Crea un'attestazione del volume persistente (o PVC; persistent volume claim) per la tua [archiviazione file](/docs/containers/cs_storage_file.html#add_file) o [archiviazione blocchi](/docs/containers/cs_storage_block.html#add_block) e montala nella tua distribuzione dell'applicazione.
 
 Per eseguire il backup di un PV esistente: 
 
@@ -99,10 +98,10 @@ Per eseguire il backup di un PV esistente:
    ```
    {: pre}
 
-2. Crea un pod di backup dall'immagine **ibm-backup-restore**. Per accedere ai dati nel PV, devi montare la PVC che associa il PV al tuo pod di backup. Il seguente esempio crea un pod di backup che esegue un backup incrementale giornaliero. Per creare un backup con impostazioni differenti, rivedi l'elenco completo di [opzioni di variabili di ambiente](#reference_backup_restore).</br>
-   **Importante:** l'immagine **ibm-backup-restore** deve essere distribuita in un solo pod e non può essere utilizzata come parte di una distribuzione Kubernetes.
+2. Crea un pod di backup dall'immagine `ibm-backup-restore`. Per accedere ai dati nel PV, devi montare la PVC che associa il PV al tuo pod di backup. Il seguente esempio crea un pod di backup che esegue un backup incrementale giornaliero. Per creare un backup con impostazioni differenti, rivedi l'elenco completo di [opzioni di variabili di ambiente](#reference_backup_restore).</br>
+   **Importante:** l'immagine `ibm-backup-restore` deve essere distribuita in un solo pod e non può essere utilizzata come parte di una distribuzione Kubernetes.
    
-   Per visualizzare l'immagine, specifica il registro globale eseguendo il comando `ibmcloud cr region-set global`. Quindi, esegui `ibmcloud cr images --include-ibm` per elencare le immagini pubbliche di IBM.
+   Per visualizzare l'immagine, specifica il registro globale eseguendo il comando `ibmcloud cr region-set global`. Quindi, esegui `ibmcloud cr images --include-ibm` per elencare le immagini pubbliche di IBM. 
    {: tip}
   
    ```
@@ -174,7 +173,7 @@ Per eseguire il backup di un PV esistente:
      </tr>
      <tr>
      <td><code>&lt;pvc_name&gt;</code></td>
-     <td>Il nome della PVC che associa il PV di cui vuoi eseguire il backup.</td>
+     <td>Il nome della PVC che associa il PV di cui vuoi eseguire il backup. </td>
      </tr>
      </tbody>
      </table>
@@ -199,7 +198,7 @@ Per eseguire il backup di un PV esistente:
     ```
     {: screen}
     
-5.  Verifica che il backup sia stato eseguito correttamente.
+5.  Verifica che il backup sia stato eseguito correttamente. 
     ```
     kubectl logs backuppod
     ```
@@ -230,7 +229,7 @@ Per ripristinare i dati da {{site.data.keyword.cos_full_notm}} a un PV:
    ```
    {: pre}
 
-2. Crea un pod di ripristino dall'immagine **ibm-backup-restore**. Per ripristinare i dati in un PV, devi montare la PVC che associa il PV al tuo pod di ripristino.  
+2. Crea un pod di ripristino dall'immagine `ibm-backup-restore`. Per ripristinare i dati in un PV, devi montare la PVC che associa il PV al tuo pod di ripristino. 
    
    ```
    apiVersion: v1
@@ -295,12 +294,12 @@ Per ripristinare i dati da {{site.data.keyword.cos_full_notm}} a un PV:
      </tr>
      <tr>
      <td><code>&lt;pvc_name&gt;</code></td>
-     <td>Il nome della PVC che associa il PV in cui vuoi ripristinare i tuoi dati.</td>
+     <td>Il nome della PVC che associa il PV in cui vuoi ripristinare i tuoi dati. </td>
      </tr>
      </tbody>
      </table>
 
-3.  Crea il pod di ripristino e avvia il ripristino dei tuoi dati.
+3.  Crea il pod di ripristino e avvia il ripristino dei tuoi dati. 
     ```
     kubectl apply -f restorepod.yaml
     ```
@@ -328,13 +327,13 @@ Per ripristinare i dati da {{site.data.keyword.cos_full_notm}} a un PV:
     ```
     {: pre}
 
-6.  Verifica che i tuoi dati siano stati ripristinati correttamente.
+6.  Verifica che i tuoi dati siano stati ripristinati correttamente. 
     ```
     kubectl logs restorepod
     ```
     {: pre}
 
-Il backup è stato ripristinato correttamente. Puoi ora montare la PVC che associa il PV in tutti gli altri pod nel tuo cluster per accedere ai file ripristinati. Se i dati del contenitore di cui è stato eseguito il backup includevano un utente non root, devi aggiungere le autorizzazioni non root al tuo nuovo contenitore. Per ulteriori informazioni, consulta [Aggiunta di accesso utente non root ai volumi](../../../containers/container_volumes_ov.html#container_volumes_write).
+Il backup è stato ripristinato correttamente. Puoi ora montare la PVC che associa il PV in tutti gli altri pod nel tuo cluster per accedere ai file ripristinati. Se i dati del contenitore di cui è stato eseguito il backup includevano un utente non root, devi aggiungere le autorizzazioni non root al tuo nuovo contenitore. Per ulteriori informazioni, consulta [Aggiunta di accesso utente non root ai volumi](/docs/containers/cs_troubleshoot_storage.html#cs_storage_nonroot).
 
 ## Crittografia dei tuoi backup 
 {: #encrypting_backups}
@@ -461,7 +460,7 @@ Codifica i dati nella tua istanza {{site.data.keyword.cos_full_notm}}.
      </tr>
      <tr>
      <td><code>&lt;backup_name&gt;</code></td>
-     <td>Un nome univoco per l'oggetto che contiene il tuo backup nel bucket. </td>
+     <td>Un nome univoco per l'oggetto che contiene il tuo backup nel bucket.</td>
      </tr>
      <tr>
      <td><code>&lt;passphrase&gt;</code></td>
@@ -469,7 +468,7 @@ Codifica i dati nella tua istanza {{site.data.keyword.cos_full_notm}}.
      </tr>
      <tr>
      <td><code>&lt;pvc_name&gt;</code></td>
-     <td>Il nome della PVC che associa il PV di cui vuoi eseguire il backup.</td>
+     <td>Il nome della PVC che associa il PV di cui vuoi eseguire il backup. </td>
      </tr>
      </tbody>
      </table>
@@ -496,7 +495,7 @@ Codifica i dati nella tua istanza {{site.data.keyword.cos_full_notm}}.
     ```
     {: screen}
 
-9.  Copia la chiave di crittografia nella directory `/backup_restore` del contenitore creato dall'immagine **ibm-backup-restore**.
+9.  Copia la chiave di crittografia nella directory `/backup_restore` del contenitore creato dall'immagine `ibm-backup-restore`.
 
     ```
     kubectl cp ./encryption.asc <container_name>:/backup_restore
@@ -549,7 +548,7 @@ Rivedi l'elenco completo dei campi che possono essere trasmessi come variabili d
 |BACKUP_DIRECTORY|*/backup*: predefinito. Il percorso file assoluto della directory su cui è montato il volume. Viene eseguito il backup dei dati da questa directory. Non selezionare la directory backup_restore poiché tale directory contiene i file per i processi di backup e ripristino.|
 |BACKUP_NAME|*volume_backup*: predefinito. Scegli un nome di backup.|
 |BACKUP_TYPE|*full*: predefinito. Viene eseguito ogni volta il backup di tutti i file.<br/> *incremental*: viene eseguito il backup solo dei file nuovi o modificati. Se scegli *incremental*, devi scegliere i valori per **SCHEDULING_INFO** e **SCHEDULING_TYPE**.|
-|SCHEDULE_TYPE|*none*: predefinito. Crea un backup monouso.<br/> **Nota:** se scegli di creare un backup una tantum, il tuo pod viene rimosso dal cluster dopo che il backup è terminato. <br/> *periodic*: modifica il valore con periodic per creare backup pianificati. |
+|SCHEDULE_TYPE|*none*: predefinito. Crea un backup monouso.<br/> **Nota:** se scegli di creare un backup una tantum, il tuo pod viene rimosso dal cluster dopo che il backup è terminato. <br/> *periodic*: modifica il valore con periodic per creare backup pianificati.|
 |SCHEDULE_INFO|*hourly*: crea un backup orario.<br/>*daily*: predefinito. Crea un backup giornaliero.<br/>*weekly*: Crea un backup settimanale. Devi includere questa variabile se stai pianificando un aggiornamento periodico.|
 |EXCLUDE_DIRECTORIES|*none*: predefinito. Includi il percorso file assoluto delle directory che desideri escludere dal backup. Separa le directory con una virgola.|
 {: caption="Tabella 2. Variabili di backup" caption-side="top"}
@@ -557,7 +556,7 @@ Rivedi l'elenco completo dei campi che possono essere trasmessi come variabili d
 |Chiave|Opzioni valore|
 |---|-------------|
 |BACKUP_NAME|*volume_backup*: predefinito. Includi il nome del backup che verrà ripristinato da {{site.data.keyword.cos_full_notm}}.|
-|RESTORE_DIRECTORY|*/backup*: predefinito. La directory assoluta su cui è montato il volume. I dati vengono ripristinati in questa directory. Non selezionare la directory `backup_restore` come la directory che contiene i file per i processi di ripristino e backup. |
+|RESTORE_DIRECTORY|*/backup*: predefinito. La directory assoluta su cui è montato il volume. I dati vengono ripristinati in questa directory. Non selezionare la directory `backup_restore` come la directory che contiene i file per i processi di ripristino e backup.|
 {: caption="Tabella 3. Variabili di ripristino" caption-side="top"}
 
 |Chiave|Opzioni valore|

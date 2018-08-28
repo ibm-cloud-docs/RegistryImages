@@ -93,7 +93,7 @@ caixa suspensa **TAG/VERSÃO**.
 
     -   [Construindo contêineres de imagens](/docs/containers/cs_images.html#images)
     -   [Introdução ao IBM Cloud Kubernetes Service](/docs/containers/container_index.html#container_index)
-    -   [Implementando apps em clusters](docs/containers/cs_app.html#app)
+    -   [Implementando apps em clusters](/docs/containers/cs_app.html#app)
     
     **Nota:** a imagem **ibmliberty** requer que a porta 9080 seja exposta publicamente. Ao criar um contêiner por meio do Painel do {{site.data.keyword.Bluemix_notm}}, a porta é incluída no campo **Porta pública** por padrão. Se você criar um contêiner por meio da CLI, exponha a porta em seu comando `kubectl run` com a opção `--port=9080`.
 
@@ -119,7 +119,7 @@ disponível para o aplicativo Java durante o tempo de execução.
     ```
     {: pre}
 
-3.  Para revisar o uso de heap Java, é necessário acessar a estatística de memória **RSS**. Siga as diretrizes sobre como acessar um shell de um contêiner [aqui](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) e, em seguida, revise [Métricas de tempo de execução](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) sobre como localizar e formatar informações de estatística de memória de um contêiner.
+3.  Para revisar o uso de heap Java, é necessário acessar a estatística de memória **RSS**. Siga as diretrizes sobre como acessar um shell de um contêiner [aqui](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) e, em seguida, revise [Métricas de tempo de execução](/containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) sobre como localizar e formatar informações de estatística de memória de um contêiner.
 O uso de heap Java é exibido em kilobytes. Se seu uso de heap estiver abaixo de 2.097.152 kilobytes
 (2 GB) em todas as instâncias, não será necessário comprar uma licença do WebSphere Application Server.
 

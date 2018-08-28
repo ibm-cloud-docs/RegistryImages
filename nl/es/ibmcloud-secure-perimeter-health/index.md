@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -88,7 +88,7 @@ Revise las siguientes tareas para aprender a utilizar **ibmcloud-secure-perimete
 4.  Rellene el resto de los detalles como considere.
 5.  Pulse Crear clúster.
 
-Revise la documentación de [{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) sobre cómo obtener acceso al clúster una vez que se haya desplegado.
+Revise la documentación de [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) sobre cómo obtener acceso al clúster una vez que se haya desplegado.
 
 ## Escanee las redes privadas dentro de un Secure Perimeter
 {: #private_networks}
@@ -97,8 +97,8 @@ Cree un pod del contenedor a partir de la imagen **ibmcloud-secure-perimeter-hea
 
 Antes de empezar:
 
--   Instale las [CLI](../../../containers/cs_cli_install.html#cs_cli_install) necesarias.
--   [Defina su CLI](../../../containers/cs_cli_install.html#cs_cli_configure) como destino de su clúster.
+-   Instale las [CLI](/docs/containers/cs_cli_install.html#cs_cli_install) necesarias.
+-   Defina su clúster [como destino de la CLI](/docs/containers/cs_cli_install.html#cs_cli_configure).
 
 1. Cree un archivo de configuración con el nombre _health-pod.yaml_. Este archivo crea un despliegue altamente disponible del pod de contenedor.
 
@@ -214,7 +214,7 @@ El formato del informe es el siguiente:
 ## Referencia de argumentos del contenedor
 {: #reference_container_arg}
 
-|Clave|Descripción|Valor pred.
+|Clave|Descripción|Valor predeterminado
 |---|-------------|---|
 |scan|El tipo de escaneo de exposición ("public" o "private") |Ninguno (escanear ambos)
 |exclude-vlan-ids|Lista de VLAN por ID para evitar el escaneado|Ninguno

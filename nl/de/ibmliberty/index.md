@@ -76,7 +76,7 @@ Verwenden Sie eines der kostenlosen **ibmliberty**-Images aus dem {{site.data.ke
 
     -   [Container auf Grundlage von Images erstellen](/docs/containers/cs_images.html#images)
     -   [Einführung in IBM Cloud Kubernetes Service](/docs/containers/container_index.html#container_index)
-    -   [Apps in Clustern bereitstellen](docs/containers/cs_app.html#app)
+    -   [Apps in Clustern bereitstellen](/docs/containers/cs_app.html#app)
     
     **Anmerkung:** Für das Image **ibmliberty** muss Port 9080 öffentlich zugänglich gemacht werden. Wenn Sie einen Container aus dem {{site.data.keyword.Bluemix_notm}}-Dashboard erstellen, wird der Port standardmäßig im Feld **Öffentlicher Port** hinzugefügt. Wenn Sie einen Container über die CLI erstellen, legen Sie den Port in Ihrem Befehl `kubectl run` mit der Option `--port=9080` frei.
 
@@ -101,7 +101,7 @@ Nachdem Sie einen Container aus dem Image **ibmliberty** erstellt haben, können
     ```
     {: pre}
 
-3.  Um die Java-Heapspeicherbelegung zu überprüfen, müssen Sie auf die **RSS**-Speicherstatistik zugreifen. Befolgen Sie die [hier](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) aufgeführten Anweisungen für den Zugriff auf eine Shell eines Containers und überprüfen Sie anschließend [Laufzeitmetriken](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io), um zu erfahren, wie Sie nach Speicherstatistikinformationen für einen Container suchen und diese formatieren können.
+3.  Um die Java-Heapspeicherbelegung zu überprüfen, müssen Sie auf die **RSS**-Speicherstatistik zugreifen. Befolgen Sie die [hier](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) aufgeführten Anweisungen für den Zugriff auf eine Shell eines Containers und überprüfen Sie anschließend [Laufzeitmetriken](/containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io), um zu erfahren, wie Sie nach Speicherstatistikinformationen für einen Container suchen und diese formatieren können.
 Die Java-Heapspeicherbelegung wird in Kilobyte angezeigt. Wenn die Heapspeicherbelegung für alle Instanzen kleiner als 2097152 Kilobyte (2GB) ist, müssen Sie keine WebSphere Application Server-Lizenz erwerben.
 
 4.  Passen Sie die maximale Heapspeicherbelegung für Ihre WebSphere Application Server-Instanz an. Weitere Informationen finden Sie unter [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile](http://www-01.ibm.com/support/docview.wss?uid=swg21596474).

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-24"
+lastupdated: "2018-08-16"
 
 ---
 
@@ -14,27 +14,27 @@ lastupdated: "2018-07-24"
 {:tip: .tip} 
 {:table: .aria-labeledby="caption"}
 
-# Einführung in das Image 'ibm-backup-restore'
+# Image `ibm-backup-restore` - Einführung
 {: #ibmbackup_restore_starter}
 
-Das Image **ibm-backup-restore** enthält die vorinstallierten Pakete, die zum Sichern und Wiederherstellen von persistentem Speicher in {{site.data.keyword.containerlong}} erforderlich sind.
+Das Image `ibm-backup-restore` enthält die vorinstallierten Pakete, die zum Sichern und Wiederherstellen von persistentem Speicher in {{site.data.keyword.containerlong}} erforderlich sind.
 {:shortdesc}
 
 ## Funktionsweise 
 {: #how_it_works}
 
-Mit dem Image **ibm-backup-restore** können Sie eine einmalige oder geplante Sicherung für App-Daten erstellen, die in einem persistenten Datenträger (PV) in Ihrem Cluster gespeichert sind, oder App-Daten auf einen physischen Datenträger zurückschreiben. Wenn Sie Daten sichern und wiederherstellen möchten, stellen Sie einen Pod aus dem Image **ibm-backup-restore** bereit. Anschließend hängen Sie den Persistent Volume Claim (PVC) an, der den physischen Datenträger bindet, den Sie sichern möchten, oder den physischen Datenträger, den Sie für die Wiederherstellung Ihrer Daten in Ihrem Pod verwenden möchten. 
+Mit dem Image `ibm-backup-restore` können Sie eine einmalige oder geplante Sicherung für App-Daten erstellen, die in einem persistenten Datenträger (PV) in Ihrem Cluster gespeichert sind, oder App-Daten auf einen physischen Datenträger zurückschreiben. Wenn Sie Daten sichern und wiederherstellen möchten, stellen Sie einen Pod aus dem Image `ibm-backup-restore` bereit. Anschließend hängen Sie den Persistent Volume Claim (PVC) an, der den physischen Datenträger bindet, den Sie sichern möchten, oder den physischen Datenträger, den Sie für die Wiederherstellung Ihrer Daten in Ihrem Pod verwenden möchten. 
 
 **Wohin gehen meine Daten? Wie kann ich auf sie zugreifen?** </br>
-Die Daten, die Sie sichern, werden in einer {{site.data.keyword.cos_full_notm}}-Serviceinstanz gespeichert. Um auf den Service zuzugreifen, verwenden Sie Ihre {{site.data.keyword.cos_full_notm}}-Serviceberechtigungsnachweise als Umgebungsvariablen im Pod **ibm-backup-restore** oder bearbeiten Sie die Datei `config.conf` in dem aktiven Pod.
+Die Daten, die Sie sichern, werden in einer {{site.data.keyword.cos_full_notm}}-Serviceinstanz gespeichert. Um auf den Service zuzugreifen, verwenden Sie Ihre {{site.data.keyword.cos_full_notm}}-Serviceberechtigungsnachweise als Umgebungsvariablen im Pod `ibm-backup-restore` oder bearbeiten Sie die Datei `config.conf` in dem aktiven Pod.
 
 **Kann ich gesicherte Daten in einer anderen App oder in einem anderen physischen Datenträger wiederherstellen?** </br>
-Ja, Sie können Ihre gespeicherten Daten aus der {{site.data.keyword.cos_full_notm}}-Serviceinstanz in einem physischen Datenträger in Ihrem Cluster wiederherstellen. Zum Wiederherstellen von Daten müssen Sie einen Wiederherstellungs-Pod aus dem Image **ibm-backup-restore** erstellen. Anschließend hängen Sie den Persistent Volume Claim (PVC) an, der den physischen Datenträger bindet, den Sie für Ihren Pod verwenden möchten.  
+Ja, Sie können Ihre gespeicherten Daten aus der {{site.data.keyword.cos_full_notm}}-Serviceinstanz in einem physischen Datenträger in Ihrem Cluster wiederherstellen. Zum Wiederherstellen von Daten müssen Sie einen Wiederherstellungs-Pod aus dem Image `ibm-backup-restore` erstellen. Anschließend hängen Sie den Persistent Volume Claim (PVC) an, der den physischen Datenträger bindet, den Sie für Ihren Pod verwenden möchten.  
 
 ## Enthaltene Elemente 
 {: #whats_included}
 
-Jedes Image **ibm-backup-restore** enthält die folgenden Softwarepakete:
+Jedes Image `ibm-backup-restore` enthält die folgenden Softwarepakete:
 
 -   Alpine 3.7
 -   Duplicity 0.7.10
@@ -56,7 +56,7 @@ Erstellen und konfigurieren Sie eine {{site.data.keyword.cos_full_notm}}-Service
    1.  Klicken Sie in der Navigation auf der Seite mit den Servicedetails auf **Serviceberechtigungsnachweise**.
    2.  Klicken Sie auf **Neuer Berechtigungsnachweis**. Ein Dialogfenster wird angezeigt. 
    3.  Geben Sie einen Namen für Ihre Berechtigungsnachweise ein.
-   4.  Geben Sie unter **Lineare Konfigurationsparameter hinzufügen (optional)** den Eintrag `{"HMAC":true}` ein, um zusätzliche HMAC-Berechtigungsnachweise zu erstellen, die der Pod **ibm-backup-restore** für die HMAC-Authentifizierung mit dem {{site.data.keyword.cos_full_notm}}-Service verwendet. 
+   4.  Geben Sie unter **Lineare Konfigurationsparameter hinzufügen (optional)** den Eintrag `{"HMAC":true}` ein, um zusätzliche HMAC-Berechtigungsnachweise zu erstellen, die der Pod `ibm-backup-restore` für die HMAC-Authentifizierung mit dem {{site.data.keyword.cos_full_notm}}-Service verwendet. 
    5.  Klicken Sie auf **Hinzufügen**. Ihre neuen Berechtigungsnachweise werden in der Tabelle **Serviceberechtigungsnachweise** aufgelistet.
    6.  Klicken Sie auf **Berechtigungsnachweise anzeigen**. 
    7.  Notieren Sie sich die Werte für **access_key_id** und **secret_access_key** im Abschnitt **cos_hmac_keys**. 
@@ -72,8 +72,7 @@ Erstellen und konfigurieren Sie eine {{site.data.keyword.cos_full_notm}}-Service
    2. Klicken Sie in der Navigation auf der Seite mit den Servicedetails auf **Buckets** > **Konfiguration**. 
    3. Notieren Sie sich die öffentliche URL, die Sie für den Zugriff auf die Daten in Ihrem Bucket verwenden können. 
 
-
-In der Dokumentation zu [{{site.data.keyword.cos_full_notm}}](/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) finden Sie weitere Informationen zur Konfiguration Ihrer Serviceinstanz.
+In der Dokumentation zu [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) finden Sie weitere Informationen zur Konfiguration Ihrer Serviceinstanz.
 
 ## Daten aus einem persistenten Datenträger sichern
 {: #scheduled_backup}
@@ -81,7 +80,7 @@ In der Dokumentation zu [{{site.data.keyword.cos_full_notm}}](/services/cloud-ob
 Sie können eine einmalige oder geplante Sicherung für einen beliebigen persistenten Datenträger (PV) erstellen, der über einen Persistent Volume Claim (PVC) an Ihren App-Pod angehängt wird.  
 {: shortdesc}
 
-Im folgenden Beispiel wird erläutert, wie Sie einen Sicherungs-Pod aus dem Image **ibm-backup-restore** bereitstellen, einen vorhandenen physischen Datenträger mit einem PVC an den Sicherungs-Pod anhängen und die Daten aus dem physischen Datenträger in Ihrer {{site.data.keyword.cos_full_notm}}-Serviceinstanz sichern.  
+Im folgenden Beispiel wird erläutert, wie Sie einen Sicherungs-Pod aus dem Image `ibm-backup-restore` bereitstellen, einen vorhandenen physischen Datenträger mit einem PVC an den Sicherungs-Pod anhängen und die Daten aus dem physischen Datenträger in Ihrer {{site.data.keyword.cos_full_notm}}-Serviceinstanz sichern.  
 
 Führen Sie zunächst die folgenden Schritte aus:
 
@@ -89,7 +88,7 @@ Führen Sie zunächst die folgenden Schritte aus:
 -   Installieren Sie die erforderlichen [CLIs](/docs/containers/cs_cli_install.html#cs_cli_install), um den Cluster zu erstellen und mit ihm zu arbeiten.
 -   [Erstellen Sie einen Standardcluster](/docs/containers/cs_clusters.html#clusters_cli) oder verwenden Sie einen vorhandenen Cluster.
 -   [Richten Sie die CLI auf Ihren Cluster aus](/docs/containers/cs_cli_install.html#cs_cli_configure).
--   [Erstellen Sie einen Persistent Volume Claim (PVC) und hängen Sie ihn an die App-Bereitstellung an](/docs/containers/cs_storage.html#create).
+-   Erstellen Sie einen Persistent Volume Claim (PVC) für den [Dateispeicher](/docs/containers/cs_storage_file.html#add_file) oder den [Blockspeicher](/docs/containers/cs_storage_block.html#add_block) und hängen Sie ihn an die App-Bereitstellung an.
 
 Gehen Sie wie folgt vor, um einen vorhandenen physischen Datenträger zu sichern: 
 
@@ -99,10 +98,10 @@ Gehen Sie wie folgt vor, um einen vorhandenen physischen Datenträger zu sichern
    ```
    {: pre}
 
-2. Erstellen Sie einen Sicherungs-Pod aus dem Image **ibm-backup-restore**. Um auf die Daten im physischen Datenträger zugreifen zu können, müssen Sie den PVC, der den physischen Datenträger bindet, an Ihren Sicherungs-Pod anhängen. Im folgenden Beispiel wird ein Sicherungs-Pod erstellt, der eine tägliche inkrementelle Sicherung ausführt. Wenn Sie eine Sicherung mit anderen Einstellungen erstellen möchten, finden Sie weitere Informationen dazu in der vollständigen Liste von [Umgebungsvariablenoptionen](#reference_backup_restore).</br>
-   ** Wichtig:** Das Image **ibm-backup-restore** muss in einem einzigen Pod implementiert werden und kann nicht als Teil einer Kubernetes-Bereitstellung verwendet werden.
+2. Erstellen Sie einen Sicherungs-Pod aus dem Image `ibm-backup-restore`. Um auf die Daten im physischen Datenträger zugreifen zu können, müssen Sie den PVC, der den physischen Datenträger bindet, an Ihren Sicherungs-Pod anhängen. Im folgenden Beispiel wird ein Sicherungs-Pod erstellt, der eine tägliche inkrementelle Sicherung ausführt. Wenn Sie eine Sicherung mit anderen Einstellungen erstellen möchten, finden Sie weitere Informationen dazu in der vollständigen Liste von [Umgebungsvariablenoptionen](#reference_backup_restore).</br>
+   ** Wichtig:** Das Image `ibm-backup-restore` muss in einem einzigen Pod implementiert werden und kann nicht als Teil einer Kubernetes-Bereitstellung verwendet werden.
    
-   Um das Image anzuzeigen, geben Sie die globale Registry als Ziel an, indem Sie den Befehl `ibmcloud cr region-set global` ausführen. Führen Sie anschließend `ibmcloud cr images --include-ibm` aus, um öffentliche IBM Images aufzuführen.
+   Um das Image anzuzeigen, geben Sie die globale Registry als Ziel an, indem Sie den Befehl `ibmcloud cr region-set global` ausführen. Führen Sie anschließend `ibmcloud cr images --include-ibm` aus, um öffentliche IBM Images aufzuführen. 
    {: tip}
   
    ```
@@ -174,7 +173,7 @@ Gehen Sie wie folgt vor, um einen vorhandenen physischen Datenträger zu sichern
      </tr>
      <tr>
      <td><code>&lt;PVC-Name&gt;</code></td>
-     <td>Der Name des PVC, der den zu sichernden physischen Datenträger bindet.</td>
+     <td>Der Name des PVC, der den zu sichernden physischen Datenträger bindet. </td>
      </tr>
      </tbody>
      </table>
@@ -199,7 +198,7 @@ Gehen Sie wie folgt vor, um einen vorhandenen physischen Datenträger zu sichern
     ```
     {: screen}
     
-5.  Stellen Sie sicher, dass die Sicherung erfolgreich durchgeführt wurde.
+5.  Stellen Sie sicher, dass die Sicherung erfolgreich durchgeführt wurde. 
     ```
     kubectl logs backuppod
     ```
@@ -230,7 +229,7 @@ Gehen Sie wie folgt vor, um Daten von {{site.data.keyword.cos_full_notm}} auf ei
    ```
    {: pre}
 
-2. Erstellen Sie einen Wiederherstellungs-Pod aus dem Image **ibm-backup-restore**. Um Daten auf einem physischen Datenträger wiederherstellen zu können, müssen Sie den PVC, der den physischen Datenträger bindet, an den Wiederherstellungs-Pod anhängen. 
+2. Erstellen Sie einen Wiederherstellungs-Pod aus dem Image `ibm-backup-restore`. Um Daten auf einem physischen Datenträger wiederherstellen zu können, müssen Sie den PVC, der den physischen Datenträger bindet, an den Wiederherstellungs-Pod anhängen. 
    
    ```
    apiVersion: v1
@@ -295,12 +294,12 @@ Gehen Sie wie folgt vor, um Daten von {{site.data.keyword.cos_full_notm}} auf ei
      </tr>
      <tr>
      <td><code>&lt;PVC-Name&gt;</code></td>
-     <td>Der Namen des PVC, der den physischen Datenträger bindet, auf dem Sie die Daten wiederherstellen möchten.</td>
+     <td>Der Namen des PVC, der den physischen Datenträger bindet, auf dem Sie die Daten wiederherstellen möchten. </td>
      </tr>
      </tbody>
      </table>
 
-3.  Erstellen Sie den Wiederherstellungs-Pod und beginnen Sie mit der Wiederherstellung Ihrer Daten.
+3.  Erstellen Sie den Wiederherstellungs-Pod und beginnen Sie mit der Wiederherstellung Ihrer Daten. 
     ```
     kubectl apply -f restorepod.yaml
     ```
@@ -328,13 +327,13 @@ Gehen Sie wie folgt vor, um Daten von {{site.data.keyword.cos_full_notm}} auf ei
     ```
     {: pre}
 
-6.  Stellen Sie sicher, dass Ihre Daten erfolgreich wiederhergestellt wurden.
+6.  Stellen Sie sicher, dass Ihre Daten erfolgreich wiederhergestellt wurden. 
     ```
     kubectl logs restorepod
     ```
     {: pre}
 
-Ihre Sicherung wurde erfolgreich wiederhergestellt. Sie können jetzt den PVC, der den physischen Datenträger bindet, an einen anderen Pod in Ihrem Cluster anhängen, um auf die wiederhergestellten Dateien zugreifen zu können. Befinden sich unter den gesicherten Containerdaten Daten, für die die Berechtigungen eines Benutzers ohne Rootberechtigung erforderlich sind, müssen Sie die Berechtigungen von Benutzern ohne Rootberechtigung zu dem neuen Container hinzufügen. Weitere Informationen hierzu finden Sie unter [Zugriff für Benutzer ohne Rootberechtigung zu Datenträgern hinzufügen](../../../containers/container_volumes_ov.html#container_volumes_write).
+Ihre Sicherung wurde erfolgreich wiederhergestellt. Sie können jetzt den PVC, der den physischen Datenträger bindet, an einen anderen Pod in Ihrem Cluster anhängen, um auf die wiederhergestellten Dateien zugreifen zu können. Befinden sich unter den gesicherten Containerdaten Daten, für die die Berechtigungen eines Benutzers ohne Rootberechtigung erforderlich sind, müssen Sie die Berechtigungen von Benutzern ohne Rootberechtigung zu dem neuen Container hinzufügen. Weitere Informationen hierzu finden Sie unter [Zugriff für Benutzer ohne Rootberechtigung zu Datenträgern hinzufügen](/docs/containers/cs_troubleshoot_storage.html#cs_storage_nonroot).
 
 ## Sicherungen verschlüsseln 
 {: #encrypting_backups}
@@ -496,7 +495,7 @@ Verschlüsseln Sie die Daten in Ihrer {{site.data.keyword.cos_full_notm}}-Instan
     ```
     {: screen}
 
-9.  Kopieren Sie den Verschlüsselungsschlüssel in das Verzeichnis `/backup_restore` des Containers, das aus dem Image **ibm-backup-restore** erstellt wurde.
+9.  Kopieren Sie den Verschlüsselungsschlüssel in das Verzeichnis `/backup_restore` des Containers, das aus dem Image `ibm-backup-restore` erstellt wurde.
 
     ```
     kubectl cp ./encryption.asc <containername>:/backup_restore
@@ -549,7 +548,7 @@ Sehen Sie sich die vollständige Liste der Felder an, die als Umgebungsvariablen
 |BACKUP_DIRECTORY|*/backup*: Standardwert. Absoluter Dateipfad des Verzeichnisses, an das der Datenträger angehängt ist. Die Daten werden aus diesem Verzeichnis gesichert. Verwenden Sie nicht das Verzeichnis backup_restore, da dieses Verzeichnis Dateien für die Sicherungs- und Wiederherstellungsprozesse enthält.|
 |BACKUP_NAME|*volume_backup*: Standardwert. Wählen Sie einen Namen für die Sicherung aus.|
 |BACKUP_TYPE|*full*: Standardwert. Es werden jedes Mal alle Dateien gesichert.<br/> *incremental*: Es werden nur neue oder geänderte Dateien gesichert. Wenn Sie *incremental* auswählen, müssen Sie Werte für **SCHEDULING_INFO** und **SCHEDULING_TYPE** auswählen.|
-|SCHEDULE_TYPE|*none*: Standardwert. Es wird eine einmalige Sicherung erstellt.<br/> **Anmerkung:** Wenn Sie eine einmalige Sicherung erstellen möchten, wird Ihr Pod nach Abschluss der Sicherung aus dem Cluster entfernt.<br/> *periodic*: Ändern Sie den Wert in 'periodic', wenn Sicherungen zu geplanten Zeitpunkten erstellt werden sollen.|
+|SCHEDULE_TYPE|*none*: Standardwert. Es wird eine einmalige Sicherung erstellt.<br/> **Anmerkung:** Wenn Sie eine einmalige Sicherung erstellen möchten, wird Ihr Pod nach Abschluss der Sicherung aus dem Cluster entfernt. <br/> *periodic*: Ändern Sie den Wert in 'periodic', wenn Sicherungen zu geplanten Zeitpunkten erstellt werden sollen.|
 |SCHEDULE_INFO|*hourly*: Es wird jede Stunde eine Sicherung erstellt.<br/>*daily*: Standardwert. Es wird jeden Tag eine Sicherung erstellt.<br/>*weekly*: Es wird jede Woche eine Sicherung erstellt. Sie müssen diese Variable einschließen, wenn Sie eine regelmäßige Aktualisierung planen.|
 |EXCLUDE_DIRECTORIES|*none*: Standardwert. Geben Sie den absoluten Dateipfad der Verzeichnisse an, die bei der Sicherung ausgeschlossen werden sollen. Trennen Sie die Verzeichnisse durch ein Komma.|
 {: caption="Tabelle 2. Sicherungsvariablen" caption-side="top"}
@@ -557,18 +556,14 @@ Sehen Sie sich die vollständige Liste der Felder an, die als Umgebungsvariablen
 |Schlüssel|Wertoptionen|
 |---|-------------|
 |BACKUP_NAME|*volume_backup*: Standardwert. Geben Sie den Namen der Sicherung an, die über {{site.data.keyword.cos_full_notm}} wiederhergestellt werden soll.|
-|RESTORE_DIRECTORY|*/backup*: Standardwert. Absoluter Dateipfad des Verzeichnisses, an das der Datenträger angehängt ist. Die Daten werden in dieses Verzeichnis wiederhergestellt. Verwenden Sie nicht das Verzeichnis `backup_restore`, da dieses Verzeichnis Dateien für die Sicherungs- und Wiederherstellungsprozesse enthält.|
-|
+|RESTORE_DIRECTORY|*/backup*: Standardwert. Absoluter Dateipfad des Verzeichnisses, an das der Datenträger angehängt ist. Die Daten werden in dieses Verzeichnis wiederhergestellt. Verwenden Sie nicht das Verzeichnis `backup_restore`, da dieses Verzeichnis Dateien für die Sicherungs- und Wiederherstellungsprozesse enthält.||
 {: caption="Tabelle 3. Wiederherstellungsvariablen" caption-side="top"}
 
 |Schlüssel|Wertoptionen|
 |---|-------------|
-|ENCRYPTION_KEY_FILE|.*/encryption.asc*: Standardwert. Fügen Sie diese Umgebungsvariable ein, wenn Sie den Dateinamen des Verschlüsselungsschlüssels ändern oder wenn sich der Schlüssel in einem anderem Verzeichnis als dem Verzeichnis `backup_restore` befindet.|
-|
-|ENCRYPTION_REQUIRED|*no*: Standardwert.<br/> *yes*: Fügen Sie keine Umgebungsvariablen für die Verschlüsselung ein, wenn Ihre Sicherung nicht verschlüsselt werden soll. Nehmen Sie diesen Schlüssel mit dem Wert `yes` auf, wenn Ihre Sicherung verschlüsselt werden soll.|
-|
+|ENCRYPTION_KEY_FILE|.*/encryption.asc*: Standardwert. Fügen Sie diese Umgebungsvariable ein, wenn Sie den Dateinamen des Verschlüsselungsschlüssels ändern oder wenn sich der Schlüssel in einem anderem Verzeichnis als dem Verzeichnis `backup_restore` befindet.||
+|ENCRYPTION_REQUIRED|*no*: Standardwert.<br/> *yes*: Fügen Sie keine Umgebungsvariablen für die Verschlüsselung ein, wenn Ihre Sicherung nicht verschlüsselt werden soll. Nehmen Sie diesen Schlüssel mit dem Wert `yes` auf, wenn Ihre Sicherung verschlüsselt werden soll.||
 |ENCRYPTION_PASSPHRASE|Schließen Sie eine Kennphrase ein, um eine Sicherung zu schützen. Bei dieser Kennphrase handelt es sich um eine andere Kennphrase als die, die Sie beim Erstellen des Verschlüsselungsschlüssel erstellt haben. Sie müssen diese Kennphrase einschließen, wenn Sie Daten sichern und Daten wiederherstellen.|
-|IS_KEY_GENERATED_ON_SYSTEM|*no*: Standardwert.<br/> *yes*: Fügen Sie diese Umgebungsvariable mit dem Wert `yes` ein, wenn Sie den Verschlüsselungsschlüssel direkt im Container generiert haben. Die Mehrzahl der Benutzer generiert den Schlüssel auf dem lokalen Computer und kopiert ihn in den Pod. In diesem Fall kann der Standardwert `no` beibehalten werden.|
-|
+|IS_KEY_GENERATED_ON_SYSTEM|*no*: Standardwert.<br/> *yes*: Fügen Sie diese Umgebungsvariable mit dem Wert `yes` ein, wenn Sie den Verschlüsselungsschlüssel direkt im Container generiert haben. Die Mehrzahl der Benutzer generiert den Schlüssel auf dem lokalen Computer und kopiert ihn in den Pod. In diesem Fall kann der Standardwert `no` beibehalten werden.||
 {: caption="Tabelle 4. Verschlüsselungsvariablen" caption-side="top"}
 

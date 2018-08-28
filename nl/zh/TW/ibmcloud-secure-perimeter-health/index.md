@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -88,7 +88,7 @@ sp-gateway-8a9031ab:
 4.  填寫您認為適當的所有其他詳細資料。
 5.  按一下「建立叢集」。
 
-檢閱 [{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) 文件，瞭解如何在部署完叢集之後取得該叢集的存取權。
+檢閱 [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) 文件，瞭解如何在部署完叢集之後取得該叢集的存取權。
 
 ## 掃描 Secure Perimeter 內的專用網路
 {: #private_networks}
@@ -97,8 +97,8 @@ sp-gateway-8a9031ab:
 
 開始之前：
 
--   安裝必要的 [CLI](../../../containers/cs_cli_install.html#cs_cli_install)。
--   [將 CLI 的目標設為](../../../containers/cs_cli_install.html#cs_cli_configure)您的叢集。
+-   安裝必要的 [CLI](/docs/containers/cs_cli_install.html#cs_cli_install)。
+-   [將 CLI 的目標設為](/docs/containers/cs_cli_install.html#cs_cli_configure)您的叢集。
 
 1. 建立名為 _health-pod.yaml_ 的配置檔。此檔案會建立可用性高的容器 Pod 部署。
 

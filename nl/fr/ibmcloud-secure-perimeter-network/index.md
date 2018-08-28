@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -64,7 +64,7 @@ Passez en revue les tâches suivantes pour apprendre à utiliser **ibmcloud-secu
 4.  Renseignez les autres détails en fonction de vos besoins.
 5.  Cliquez sur Créer un cluster.
 
-Consultez la documentation [{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) pour savoir comment accéder à votre cluster une fois celui-ci déployé.
+Consultez la documentation [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) pour savoir comment accéder à votre cluster une fois celui-ci déployé.
 
 ## Exécuter la configuration initiale de votre périmètre sécurisé Vyatta
 {: #initial_setup}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -66,10 +66,7 @@ segmento de perímetro seguro dos menus suspensos da VLAN.
 4.  Preencha todos os outros detalhes que achar necessários.
 5.  Clique em Criar cluster.
 
-Revise a documentação do
-[{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index)
-sobre como obter acesso ao cluster depois que ele for
-implementado.
+Revise a documentação do [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) sobre como obter acesso ao cluster depois que ele for implementado.
 
 ## Executar a configuração inicial do seu Vyatta de perímetro seguro
 {: #initial_setup}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -88,7 +88,7 @@ sp-gateway-8a9031ab:
 4.  填写您认为适合的所有其他详细信息。
 5.  单击“创建集群”。
 
-查看 [{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) 文档以了解如何在部署后立即获取集群的访问权。
+查看 [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) 文档以了解如何在部署后立即获取集群的访问权。
 
 ## 扫描 Secure Perimeter 中的专用网络
 {: #private_networks}
@@ -97,8 +97,8 @@ sp-gateway-8a9031ab:
 
 开始之前：
 
--   安装必需的 [CLI](../../../containers/cs_cli_install.html#cs_cli_install)。
--   [设定 CLI 的目标](../../../containers/cs_cli_install.html#cs_cli_configure)为集群。
+-   安装必需的 [CLI](/docs/containers/cs_cli_install.html#cs_cli_install)。
+-   [设定 CLI 的目标](/docs/containers/cs_cli_install.html#cs_cli_configure)为集群。
 
 1. 创建名为 _health-pod.yaml_ 的配置文件。此文件创建容器 pod 的高可用性部署。
 

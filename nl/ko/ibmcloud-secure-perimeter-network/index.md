@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -40,7 +40,7 @@ lastupdated: "2018-07-25"
 {:shortdesc}
 
 -   Alpine Linux
--   Python 런타임
+-   Python runtime
 -   SoftLayer Python Client
 -   Ansible
 
@@ -64,7 +64,7 @@ lastupdated: "2018-07-25"
 4.  적합하다고 여기는 다른 모든 세부사항을 입력하십시오.
 5.  클러스터 작성을 클릭하십시오.
 
-배치된 클러스터의 액세스를 확보하는 방법에 대한 [{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) 문서를 검토하십시오.
+배치된 클러스터의 액세스를 확보하는 방법에 대한 [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) 문서를 검토하십시오.
 
 ## 보안 경계 Vyatta의 초기 구성 실행
 {: #initial_setup}
@@ -116,7 +116,7 @@ lastupdated: "2018-07-25"
 
 **ibmcloud-secure-perimeter-network** 이미지에서 보안 경계의 서브넷을 관리하려면 Kubernetes 팟(Pod)을 사용하여 장기 프로세스로 실행할 수 있습니다. **ibmcloud-secure-perimeter-network**에는 Vyatta에 맞게 구성하기 위해 팟(Pod)에 복사해야 하는 여러 구성 파일 및 폴더가 있습니다.
 
-1. _pvc.yaml_ 파일을 작성하십시오. 이 구성 파일은 팟(Pod)에 볼륨으로 마운트할 수 있는 지속적 볼륨 클레임(pvc)을 작성합니다.
+1. _pvc.yaml_ 파일을 작성하십시오. 이 구성 파일은 팟(Pod)에 볼륨으로 마운트할 수 있는 pvc(persistent volume claim)를 작성합니다.
 
   ```
   apiVersion: v1
@@ -141,7 +141,7 @@ lastupdated: "2018-07-25"
     ```
     {: pre}
 
-3. _network-pod.yaml_ 파일을 작성하십시오. 이 구성 파일은 Kubernetes 클러스터에 **ibmcloud-secure-perimeter-network** 이미지를 팟(Pod)으로 배치하고 지속적 볼륨 클레임을 볼륨으로 마운트합니다.
+3. _network-pod.yaml_ 파일을 작성하십시오. 이 구성 파일은 Kubernetes 클러스터에 **ibmcloud-secure-perimeter-network** 이미지를 팟(Pod)으로 배치하고 pvc(persistent volume claim)를 볼륨으로 마운트합니다.
 
   ```
   apiVersion: v1

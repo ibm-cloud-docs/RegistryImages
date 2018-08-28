@@ -68,7 +68,7 @@ Rivedi i termini di utilizzo per le immagini certificate da IBM nella sezione Li
 Utilizza una delle immagini gratuite **ibmliberty** dal catalogo {{site.data.keyword.Bluemix_notm}} o seleziona la tua propria immagine con licenza di produzione per creare un singolo contenitore o un gruppo di contenitori.
 {:shortdesc}
 
-**Importante:** prima di iniziare, esamina le [restrizioni di utilizzo](#usage) per le immagini **ibmliberty**.
+**Importante:** prima di iniziare, controlla le [restrizioni di utilizzo](#usage) per le immagini **ibmliberty**.
 
 1.  Dal catalogo, seleziona **Contenitori** > **Registro IBM Cloud Container** > **Repository pubblici IBM** nel pannello laterale. Ricerca l'immagine **ibmliberty** da cui creare il tuo contenitore. Se hai creato la tua propria immagine con licenza di produzione e l'hai distribuita a {{site.data.keyword.Bluemix_notm}}, selezionala dal catalogo. Viene visualizzata la pagina di creazione del contenitore.
 2.  Seleziona la versione dell'immagine **ibmliberty** che desideri utilizzare dalla casella a discesa **TAG/VERSIONE**.
@@ -76,7 +76,7 @@ Utilizza una delle immagini gratuite **ibmliberty** dal catalogo {{site.data.key
 
     -   [Creazione dei contenitori dalle immagini](/docs/containers/cs_images.html#images)
     -   [Introduzione al servizio IBM Cloud Kubernetes](/docs/containers/container_index.html#container_index)
-    -   [Distribuzione di applicazioni nei cluster](docs/containers/cs_app.html#app)
+    -   [Distribuzione di applicazioni nei cluster](/docs/containers/cs_app.html#app)
     
     **Nota:** l'immagine **ibmliberty** richiede che la porta 9080 sia esposta pubblicamente. Quando crei un contenitore dal dashboard {{site.data.keyword.Bluemix_notm}}, la porta viene aggiunta nel campo **Porta pubblica** per impostazione predefinita. Se crei un contenitore dalla CLI, esponi la porta nel tuo comando `kubectl run` con l'opzione `--port=9080`.
 
@@ -101,7 +101,7 @@ Dopo aver creato un contenitore dall'immagine **ibmliberty**, puoi visualizzare 
     ```
     {: pre}
 
-3.  Per controllare l'utilizzo heap Java, devi accedere alla statistica di memoria **RSS**. Attieniti alle seguenti linee guida per accedere a una shell di un contenitore [qui](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) e controlla le [Metriche di runtime](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) su come trovare e creare le informazioni della statistica di memoria di un contenitore.
+3.  Per controllare l'utilizzo heap Java, devi accedere alla statistica di memoria **RSS**. Attieniti alle seguenti linee guida per accedere a una shell di un contenitore [qui](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) e controlla le [Metriche di runtime](/containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) su come trovare e creare le informazioni della statistica di memoria di un contenitore.
 L'utilizzo heap Java viene visualizzato in kilobyte. Se il tuo utilizzo heap è inferiore a 2097152 kilobyte (2GB) tra tutte le istanze, non dovrai acquistare una licenza WebSphere Application Server.
 
 4.  Regola l'utilizzo heap massimo per la tua istanza WebSphere Application Server. Per ulteriori informazioni, vedi [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile](http://www-01.ibm.com/support/docview.wss?uid=swg21596474).

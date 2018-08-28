@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -88,7 +88,7 @@ Passez en revue les tâches suivantes pour apprendre à utiliser **ibmcloud-secu
 4.  Renseignez les autres détails en fonction de vos besoins.
 5.  Cliquez sur Créer un cluster.
 
-Consultez la documentation [{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) pour savoir comment accéder à votre cluster une fois celui-ci déployé.
+Consultez la documentation [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) pour savoir comment accéder à votre cluster une fois celui-ci déployé.
 
 ## Analyser les réseaux privés au sein d'un périmètre sécurisé
 {: #private_networks}
@@ -97,8 +97,8 @@ Créez un pod de conteneur à partir de l'image **ibmcloud-secure-perimeter-heal
 
 Avant de commencer :
 
--   Installez les [interfaces de ligne de commande](../../../containers/cs_cli_install.html#cs_cli_install) requises.
--   [Ciblez votre interface de ligne de commande](../../../containers/cs_cli_install.html#cs_cli_configure) vers votre cluster.
+-   Installez les [interfaces de ligne de commande](/docs/containers/cs_cli_install.html#cs_cli_install) requises.
+-   [Ciblez votre interface de ligne de commande](/docs/containers/cs_cli_install.html#cs_cli_configure) vers votre cluster.
 
 1. Créez un fichier de configuration nommé _health-pod.yaml_. Ce fichier crée un déploiement hautement disponible du pod de conteneur.
 

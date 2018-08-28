@@ -70,13 +70,13 @@ Docker Hub の [websphere-liberty イメージ](https://hub.docker.com/_/websphe
 
 **重要:** 始める前に、**ibmliberty** イメージの[使用上の制約事項](#usage)を確認してください。
 
-1.  カタログから、サイド・パネルで**「コンテナー」**>**「IBM Cloud Container Registry」**>**「IBM パブリック・リポジトリー (IBM Public Repositories)」**を選択します。コンテナーをビルドする元になる **ibmliberty** イメージを検索します。実動ライセンス交付を受けた独自のイメージを作成して {{site.data.keyword.Bluemix_notm}} にデプロイした場合は、そのイメージをカタログから選択してください。 コンテナー作成ページが開きます。
+1.  カタログから、サイド・パネルで**「コンテナー」**>**「IBM Cloud Container Registry」**>**「IBM パブリック・リポジトリー (IBM Public Repositories)」**を選択します。 コンテナーをビルドする元になる **ibmliberty** イメージを検索します。 実動ライセンス交付を受けた独自のイメージを作成して {{site.data.keyword.Bluemix_notm}} にデプロイした場合は、そのイメージをカタログから選択してください。 コンテナー作成ページが開きます。
 2.  **「タグ/バージョン」**ドロップダウン・ボックスから、使用する **ibmliberty** イメージのバージョンを選択します。
 3.  イメージからのコンテナーのビルド、クラスターのセットアップ、クラスターでのアプリケーションのデプロイについて詳しくは、以下のリンク先を参照してください。
 
     -   [イメージからのコンテナーのビルド](/docs/containers/cs_images.html#images)
     -   [IBM Cloud Kubernetes Service 概説](/docs/containers/container_index.html#container_index)
-    -   [アプリをクラスターにデプロイする](docs/containers/cs_app.html#app)
+    -   [アプリをクラスターにデプロイする](/docs/containers/cs_app.html#app)
     
     **注:** **ibmliberty** イメージを使用するには、ポート 9080 がパブリックに公開される必要があります。 {{site.data.keyword.Bluemix_notm}} ダッシュボードからコンテナーを作成する場合、このポートが**「パブリック・ポート」**フィールドにデフォルトで追加されます。 CLI からコンテナーを作成する場合は、`kubectl run` コマンドに `--port=9080` オプションを指定して実行し、ポートを公開してください。
 
@@ -85,7 +85,7 @@ Docker Hub の [websphere-liberty イメージ](https://hub.docker.com/_/websphe
 {: #monitor_heap}
 
 
-**ibmliberty** イメージからコンテナーを作成した後、特定ポッドとそのコンテナーのメトリックを表示して、Java ヒープ使用量を確認できます。Java ヒープ・スペースは、Java アプリケーションが実行時に使用できるメモリーです。
+**ibmliberty** イメージからコンテナーを作成した後、特定ポッドとそのコンテナーのメトリックを表示して、Java ヒープ使用量を確認できます。 Java ヒープ・スペースは、Java アプリケーションが実行時に使用できるメモリーです。
 {:shortdesc}
 
 1.  メトリックを表示するポッドの名前を取得します。
@@ -101,7 +101,7 @@ Docker Hub の [websphere-liberty イメージ](https://hub.docker.com/_/websphe
     ```
     {: pre}
 
-3.  Java ヒープ使用量を確認するには、**RSS** のメモリー統計にアクセスする必要があります。[ここ](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)にあるコンテナーのシェルへのアクセス方法に関するガイドラインに従ってください。その後、[ランタイム・メトリック](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io)で、コンテナーのメモリー統計情報の検索とフォーマットの方法について確認してください。
+3.  Java ヒープ使用量を確認するには、**RSS** のメモリー統計にアクセスする必要があります。 [ここ](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)にあるコンテナーのシェルへのアクセス方法に関するガイドラインに従ってください。その後、[ランタイム・メトリック](/containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io)で、コンテナーのメモリー統計情報の検索とフォーマットの方法について確認してください。
 Java ヒープ使用量はキロバイト単位で表示されます。 すべてのインスタンスを合わせてヒープ使用量が 2097152 キロバイト (2 GB) 未満であれば、WebSphere Application Server ライセンスを購入する必要はありません。
 
 4.  WebSphere Application Server インスタンスの最大ヒープ使用量を調整します。 詳しくは、[Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) を参照してください。

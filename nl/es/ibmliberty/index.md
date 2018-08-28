@@ -77,7 +77,7 @@ para las imágenes **ibmliberty**.
 
     -   [Creación de contenedores a partir de imágenes](/docs/containers/cs_images.html#images)
     -   [Iniciación al servicio IBM Cloud Kubernetes](/docs/containers/container_index.html#container_index)
-    -   [Despliegue de apps en clústeres](docs/containers/cs_app.html#app)
+    -   [Despliegue de apps en clústeres](/docs/containers/cs_app.html#app)
     
     **Nota:** La imagen **ibmliberty** requiere que el puerto 9080 esté expuesto públicamente. Cuando crea un contenedor desde el Panel de control de {{site.data.keyword.Bluemix_notm}}, de forma predeterminada el puerto se añade en el campo **Puerto público**. Si crea un contenedor desde la CLI, exponga el puerto en el mandato `kubectl run` con la opción `--port=9080`.
 
@@ -102,7 +102,7 @@ Después de crear un contenedor a partir de la imagen **ibmliberty**, puede ver 
     ```
     {: pre}
 
-3.  Para revisar el uso del almacenamiento dinámico de Java, tiene que acceder a las estadísticas de memoria de **RSS**. Siga las directrices sobre cómo acceder a un shell de un contenedor [aquí](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) y luego revise las [Métricas de tiempo de ejecución](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) para ver cómo encontrar y formatear información de estadísticas de memoria para un contenedor.
+3.  Para revisar el uso del almacenamiento dinámico de Java, tiene que acceder a las estadísticas de memoria de **RSS**. Siga las directrices sobre cómo acceder a un shell de un contenedor [aquí](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) y luego revise las [Métricas de tiempo de ejecución](/containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) para ver cómo encontrar y formatear información de estadísticas de memoria para un contenedor.
 El uso del almacenamiento dinámico de Java se visualiza en kilobytes. Si el uso del almacenamiento dinámico está por debajo de 2097152 kilobytes (2GB) en todas las instancias, no tiene que adquirir una licencia de WebSphere Application Server.
 
 4.  Ajuste el máximo uso del almacenamiento dinámico para la instancia de WebSphere Application Server. Consulte [Establecer argumentos JVM genéricos en el perfil de WebSphere Application Server V8.5 Liberty](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) para obtener más información.

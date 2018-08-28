@@ -76,7 +76,7 @@ Docker 허브의 [websphere-liberty 이미지](https://hub.docker.com/_/webspher
 
     -   [이미지에서 컨테이너 빌드](/docs/containers/cs_images.html#images)
     -   [IBM Cloud Kubernetes Service 시작하기](/docs/containers/container_index.html#container_index)
-    -   [클러스터에 앱 배치](docs/containers/cs_app.html#app)
+    -   [클러스터에 앱 배치](/docs/containers/cs_app.html#app)
     
     **참고:** **ibmliberty** 이미지에는 9080 포트가 공개적으로 노출되어야 합니다. {{site.data.keyword.Bluemix_notm}} 대시보드에서 컨테이너를 작성할 때 기본적으로 **공용 포트** 필드에서 포트가 추가됩니다. CLI에서 컨테이너를 작성하려면 `--port=9080` 옵션이 포함된 `kubectl run` 명령으로 포트를 노출하십시오.
 
@@ -101,7 +101,7 @@ Docker 허브의 [websphere-liberty 이미지](https://hub.docker.com/_/webspher
     ```
     {: pre}
 
-3.  Java 힙 사용량을 검토하려면 **RSS** 메모리 stat에 액세스해야 합니다. 컨테이너의 셀에 액세스하는 방법은 지시사항([여기](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/))을 따르고, 컨테이너에 대한 메모리 stat 정보를 찾고 형식화하는 방법은 [런타임 메트릭](containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io)을 검토하십시오.
+3.  Java 힙 사용량을 검토하려면 **RSS** 메모리 stat에 액세스해야 합니다. 컨테이너의 셀에 액세스하는 방법은 지시사항([여기](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/))을 따르고, 컨테이너에 대한 메모리 stat 정보를 찾고 형식화하는 방법은 [런타임 메트릭](/containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io)을 검토하십시오.
 Java 힙 사용량은 KB 단위로 표시됩니다. 힙 사용량이 모든 인스턴스에서 2097152KB(2GB) 미만이면 WebSphere Application Server 라이센스를 구매할 필요가 없습니다.
 
 4.  WebSphere Application Server 인스턴스의 최대 힙 사용량을 조정하십시오. 자세한 정보는 [WebSphere Application Server V8.5 Liberty 프로파일에서 일반 JVM 인수 설정](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)의 내용을 참조하십시오.

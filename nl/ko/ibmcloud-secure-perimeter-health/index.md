@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -62,9 +62,9 @@ sp-gateway-8a9031ab:
 {:shortdesc}
 
 -   Alpine Linux
--   Python 런타임
+-   Python runtime
 -   SoftLayer Python Client
--   Nmap 포트 스캐너
+-   Nmap port scanner
 
 ## 시작하기
 {: #how_to_get_started}
@@ -88,7 +88,7 @@ sp-gateway-8a9031ab:
 4.  적합하다고 여기는 다른 모든 세부사항을 입력하십시오.
 5.  클러스터 작성을 클릭하십시오.
 
-배치된 클러스터의 액세스를 확보하는 방법에 대한 [{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index) 문서를 검토하십시오.
+배치된 클러스터의 액세스를 확보하는 방법에 대한 [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) 문서를 검토하십시오.
 
 ## 보안 경계 내에서 사설 네트워크 스캔
 {: #private_networks}
@@ -97,8 +97,8 @@ sp-gateway-8a9031ab:
 
 시작하기 전에 다음을 수행하십시오.
 
--   필수 [CLI](../../../containers/cs_cli_install.html#cs_cli_install)를 설치하십시오.
--   클러스터를 [CLI의 대상으로 지정](../../../containers/cs_cli_install.html#cs_cli_configure)하십시오.
+-   필수 [CLI](/docs/containers/cs_cli_install.html#cs_cli_install)를 설치하십시오.
+-   클러스터를 [CLI의 대상으로 지정](/docs/containers/cs_cli_install.html#cs_cli_configure)하십시오.
 
 1. 구성 파일 _health-pod.yaml_을 작성하십시오. 이 파일은 컨테이너 팟(Pod)의 고가용성 배치를 작성합니다.
 

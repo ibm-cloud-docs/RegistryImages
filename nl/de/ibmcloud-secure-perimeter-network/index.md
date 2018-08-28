@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -64,7 +64,7 @@ Die folgenden Aufgaben beschreiben die Verwendung von **ibmcloud-secure-perimete
 4.  Geben Sie alle übrigen Details nach Bedarf an.
 5.  Klicken Sie auf 'Cluster erstellen'.
 
-Lesen Sie die [{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index)-Dokumentation für das Einrichten des Zugriffs auf Ihren Cluster nach dessen Bereitstellung.
+Lesen Sie die [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index)-Dokumentation für das Einrichten des Zugriffs auf Ihren Cluster nach dessen Bereitstellung.
 
 ## Ausführen der Erstkonfiguration von Vyatta für Secure Perimeter
 {: #initial_setup}

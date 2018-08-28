@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-25"
+lastupdated: "2018-08-15"
 
 ---
 
@@ -88,7 +88,7 @@ Die folgenden Aufgaben beschreiben die Verwendung von **ibmcloud-secure-perimete
 4.  Geben Sie alle übrigen Details nach Bedarf an.
 5.  Klicken Sie auf 'Cluster erstellen'.
 
-Lesen Sie die [{{site.data.keyword.containerlong}}](../../../containers/container_index.html#container_index)-Dokumentation für das Einrichten des Zugriffs auf Ihren Cluster nach dessen Bereitstellung.
+Lesen Sie die [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index)-Dokumentation für das Einrichten des Zugriffs auf Ihren Cluster nach dessen Bereitstellung.
 
 ## Scannen von privaten Netzen in einem Secure Perimeter
 {: #private_networks}
@@ -97,8 +97,8 @@ Erstellen Sie einen Container-Pod, der auf dem Image **ibmcloud-secure-perimeter
 
 Führen Sie zunächst die folgenden Schritte aus:
 
--   Installieren Sie die erforderlichen [Befehlszeilenschnittstellen (CLIs)](../../../containers/cs_cli_install.html#cs_cli_install).
--   [Richten Sie Ihre Befehlszeilenschnittstelle](../../../containers/cs_cli_install.html#cs_cli_configure) auf Ihren Cluster aus.
+-   Installieren Sie die erforderlichen [Befehlszeilenschnittstellen (CLIs)](/docs/containers/cs_cli_install.html#cs_cli_install).
+-   [Richten Sie Ihre Befehlszeilenschnittstelle](/docs/containers/cs_cli_install.html#cs_cli_configure) auf Ihren Cluster aus.
 
 1. Erstellen Sie eine Konfigurationsdatei mit dem Namen _health-pod.yaml_. Mit dieser Datei wird eine Hochverfügbarkeitsbereitstellung des Container-Pods erstellt.
 

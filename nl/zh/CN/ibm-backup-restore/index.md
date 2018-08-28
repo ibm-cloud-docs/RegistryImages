@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-24"
+lastupdated: "2018-08-16"
 
 ---
 
@@ -14,27 +14,27 @@ lastupdated: "2018-07-24"
 {:tip: .tip} 
 {:table: .aria-labeledby="caption"}
 
-# 开始使用 ibm-backup-restore 映像
+# 开始使用 `ibm-backup-restore` 映像
 {: #ibmbackup_restore_starter}
 
-**ibm-backup-restore** 映像包含在 {{site.data.keyword.containerlong}} 中备份和复原持久性存储器所需的预安装软件包。
+`ibm-backup-restore` 映像包含在 {{site.data.keyword.containerlong}} 中备份和复原持久性存储器所需的预安装软件包。
 {:shortdesc}
 
 ## 工作原理 
 {: #how_it_works}
 
-通过 **ibm-backup-restore** 映像，您可以为集群中持久性卷 (PV) 中存储的应用程序数据创建一次性备份或安排的备份，或者将应用程序数据复原到 PV。要备份和复原数据，请基于 **ibm-backup-restore** 映像部署 pod。然后，安装特定 PVC，该 PVC 绑定了要备份的 PV，或绑定了要用于将数据复原到 pod 的 PV。 
+通过 `ibm-backup-restore` 映像，您可以为集群中持久性卷 (PV) 中存储的应用程序数据创建一次性备份或安排的备份，或者将应用程序数据复原到 PV。要备份和复原数据，请基于 `ibm-backup-restore` 映像部署 pod。然后，安装特定 PVC，该 PVC 绑定了要备份的 PV，或绑定了要用于将数据复原到 pod 的 PV。 
 
 **我的数据在哪里？如何访问我的数据？**</br>
-备份的数据存储在 {{site.data.keyword.cos_full_notm}} 服务实例内。要访问该服务，请将 {{site.data.keyword.cos_full_notm}} 服务凭证用作 **ibm-backup-restore** pod 中的环境变量，或者编辑正在运行的 pod 中的 `config.conf` 文件。
+备份的数据存储在 {{site.data.keyword.cos_full_notm}} 服务实例内。要访问该服务，请将 {{site.data.keyword.cos_full_notm}} 服务凭证用作 `ibm-backup-restore` pod 中的环境变量，或者编辑正在运行的 pod 中的 `config.conf` 文件。
 
 **可以将备份数据复原到其他应用程序或其他 PV 吗？**</br>
-可以，您可以将已保存的数据从 {{site.data.keyword.cos_full_notm}} 服务实例复原到集群中的 PV。要复原数据，请基于 **ibm-backup-restore** 映像创建复原 pod。然后，安装绑定了要用于 pod 的 PV 的 PVC。  
+可以，您可以将已保存的数据从 {{site.data.keyword.cos_full_notm}} 服务实例复原到集群中的 PV。要复原数据，请基于 `ibm-backup-restore` 映像创建复原 pod。然后，安装绑定了要用于 pod 的 PV 的 PVC。  
 
 ## 所含内容 
 {: #whats_included}
 
-每个 **ibm-backup-restore** 映像都包含以下软件包：
+每个 `ibm-backup-restore` 映像都包含以下软件包：
 
 -   Alpine 3.7
 -   Duplicity 0.7.10
@@ -56,7 +56,7 @@ lastupdated: "2018-07-24"
    1.  在“服务详细信息”页面的导航中，单击**服务凭证**。
    2.  单击**新建凭证**。这将显示一个对话框。 
    3.  输入凭证的名称。
-   4.  在**添加内联配置参数（可选）**中，输入 `{"HMAC":true}` 以创建其他 HMAC 凭证，供 **ibm-backup-restore** pod 用于向 {{site.data.keyword.cos_full_notm}} 服务进行 HMAC 认证。 
+   4.  在**添加内联配置参数（可选）**中，输入 `{"HMAC":true}` 以创建其他 HMAC 凭证，供 `ibm-backup-restore` pod 用于向 {{site.data.keyword.cos_full_notm}} 服务进行 HMAC 认证。 
    5.  单击**添加**。新凭证会在**服务凭证**表中列出。
    6.  单击**查看凭证**。 
    7.  记下可以在 **cos_hmac_keys** 部分中找到的 **access_key_id** 和 **secret_access_key**。 
@@ -72,8 +72,7 @@ lastupdated: "2018-07-24"
    2. 在“服务详细信息”页面的导航中，单击**存储区** > **配置**。 
    3. 记下可用于访问存储区中数据的公共 URL。 
 
-
-查看 [{{site.data.keyword.cos_full_notm}}](/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) 文档，以获取有关配置服务实例的更多信息。
+查看 [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) 文档，以获取有关配置服务实例的更多信息。
 
 ## 备份持久性卷中的数据
 {: #scheduled_backup}
@@ -81,7 +80,7 @@ lastupdated: "2018-07-24"
 您可以为通过持久性卷申领 (PVC) 安装到应用程序 pod 的任何持久性卷 (PV) 创建一次性备份或安排的备份。  
 {: shortdesc}
 
-以下示例将指导您如何基于 **ibm-backup-restore** 映像部署备份 pod，使用 PVC 将现有 PV 安装到备份 pod，以及将 PV 中的数据备份到 {{site.data.keyword.cos_full_notm}} 服务实例。  
+以下示例将指导您如何基于 `ibm-backup-restore` 映像部署备份 pod，使用 PVC 将现有 PV 安装到备份 pod，以及将 PV 中的数据备份到 {{site.data.keyword.cos_full_notm}} 服务实例。  
 
 开始之前：
 
@@ -89,7 +88,7 @@ lastupdated: "2018-07-24"
 -   安装必需的 [CLI](/docs/containers/cs_cli_install.html#cs_cli_install)，以创建并使用集群。
 -   [创建标准集群](/docs/containers/cs_clusters.html#clusters_cli)或使用现有标准集群。
 -   [设定 CLI 的目标为集群](/docs/containers/cs_cli_install.html#cs_cli_configure)。
--   [创建持久性卷申领 (PVC) 并将其安装到应用程序部署](/docs/containers/cs_storage.html#create)。
+-   针对[文件存储器](/docs/containers/cs_storage_file.html#add_file)或[块存储器](/docs/containers/cs_storage_block.html#add_block)创建持久性卷申领 (PVC) 并将其安装到应用程序部署。
 
 要备份现有 PV，请执行以下操作： 
 
@@ -99,8 +98,8 @@ lastupdated: "2018-07-24"
    ```
    {: pre}
 
-2. 基于 **ibm-backup-restore** 映像创建备份 pod。要访问 PV 中的数据，必须将绑定了该 PV 的 PVC 安装到备份 pod。以下示例创建的是运行每日增量备份的备份 pod。要使用不同的设置创建备份，请复查[环境变量选项](#reference_backup_restore)的完整列表。</br>
-   **重要信息：****ibm-backup-restore** 映像必须部署在单个 pod 中，不能用作 Kubernetes 部署的一部分。
+2. 基于 `ibm-backup-restore` 映像创建备份 pod。要访问 PV 中的数据，必须将绑定了该 PV 的 PVC 安装到备份 pod。以下示例创建的是运行每日增量备份的备份 pod。要使用不同的设置创建备份，请复查[环境变量选项](#reference_backup_restore)的完整列表。</br>
+   **重要信息：**`ibm-backup-restore` 映像必须部署在单个 pod 中，不能用作 Kubernetes 部署的一部分。
    
    要查看映像，请通过运行 `ibmcloud cr region-set global` 命令将全局注册表设定为目标。然后，运行 `ibmcloud cr images --include-ibm` 以列出 IBM 公共映像。
    {: tip}
@@ -230,7 +229,7 @@ lastupdated: "2018-07-24"
    ```
    {: pre}
 
-2. 基于 **ibm-backup-restore** 映像创建复原 pod。要将数据复原到 PV，必须将绑定了该 PV 的 PVC 安装到复原 pod。 
+2. 基于 `ibm-backup-restore` 映像创建复原 pod。要将数据复原到 PV，必须将绑定了该 PV 的 PVC 安装到复原 pod。 
    
    ```
    apiVersion: v1
@@ -334,7 +333,7 @@ lastupdated: "2018-07-24"
     ```
     {: pre}
 
-您已成功复原备份。现在，可以将绑定了 PV 的 PVC 安装到集群中的其他任何 pod，以访问已复原的文件。如果备份的容器数据包含非 root 用户，那么您必须向新容器添加非 root 许可权。有关更多信息，请参阅[添加卷的非 root 用户访问权](../../../containers/container_volumes_ov.html#container_volumes_write)。
+您已成功复原备份。现在，可以将绑定了 PV 的 PVC 安装到集群中的其他任何 pod，以访问已复原的文件。如果备份的容器数据包含非 root 用户，那么您必须向新容器添加非 root 许可权。有关更多信息，请参阅[添加卷的非 root 用户访问权](/docs/containers/cs_troubleshoot_storage.html#cs_storage_nonroot)。
 
 ## 加密备份 
 {: #encrypting_backups}
@@ -497,7 +496,7 @@ $ gpg --list-keys
     ```
     {: screen}
 
-9.  将加密密钥复制到容器的 `/backup_restore` 目录，该容器是基于 **ibm-backup-restore** 映像构建的。
+9.  将加密密钥复制到容器的 `/backup_restore` 目录，该容器是基于 `ibm-backup-restore` 映像构建的。
 
     ```
     kubectl cp ./encryption.asc <container_name>:/backup_restore
