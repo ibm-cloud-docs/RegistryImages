@@ -4,7 +4,7 @@ copyright:
 
   years: 2014, 2018
 
-lastupdated: "2018-08-16"
+lastupdated: "2018-09-14"
 
 ---
 
@@ -19,6 +19,31 @@ You can use the following public images to create containers in {{site.data.keyw
 
 
 <ul class="runtimeIconList">
+  
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="For more information about the datashield-barbican image, check out the documentation."></p>
+<p class="runtimeTitle">datashield-barbican<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-barbican/index.html" scope="peer" title="For more information about the datashield-barbican image, check out the documentation.">VIEW DOCS</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="For more information about the datashield-mysql image, check out the documentation."></p>
+<p class="runtimeTitle">datashield-mysql<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-mysql/index.html" scope="peer" title="For more information about the datashield-mysql image, check out the documentation.">VIEW DOCS</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="For more information about the datashield-nginx image, check out the documentation."></p>
+<p class="runtimeTitle">datashield-nginx<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-nginx/index.html" scope="peer" title="For more information about the datashield-nginx image, check out the documentation.">VIEW DOCS</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="For more information about the datashield-vault image, check out the documentation."></p>
+<p class="runtimeTitle">datashield-vault<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-vault/index.html" scope="peer" title="For more information about the datashield-vault image, check out the documentation.">VIEW DOCS</a></p>
+</li>
+
 <li>
 <p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="For more information about the ibm-backup-restore image, check out the documentation."></p>
 <p class="runtimeTitle">ibm-backup-restore<br /> <br /></p>
