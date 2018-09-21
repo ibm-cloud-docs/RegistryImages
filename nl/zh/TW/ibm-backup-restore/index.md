@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-16"
+lastupdated: "2018-08-21"
 
 ---
 
@@ -25,11 +25,9 @@ lastupdated: "2018-08-16"
 
 使用 `ibm-backup-restore` 映像檔，您可以為儲存在叢集中之持續性磁區 (PV) 的應用程式資料建立一次性或排定的備份，或是將應用程式資料還原到 PV。若要備份及還原資料，請從 `ibm-backup-restore` 映像檔部署 Pod。然後，裝載負責連結您要備份之 PV 或您要用於將資料還原至 Pod 之 PV 的 PVC。 
 
-**我的資料去哪裡？如何存取它？** </br>
-您備份的資料儲存在 {{site.data.keyword.cos_full_notm}} 服務實例內。若要存取服務，請使用 {{site.data.keyword.cos_full_notm}} 服務認證作為 `ibm-backup-restore` Pod 中的環境變數，或編輯執行中 Pod 的 `config.conf` 檔。
+**我的資料去哪裡？如何存取它？** 您備份的資料儲存在 {{site.data.keyword.cos_full_notm}} 服務實例內。若要存取服務，請使用 {{site.data.keyword.cos_full_notm}} 服務認證作為 `ibm-backup-restore` Pod 中的環境變數，或編輯執行中 Pod 的 `config.conf` 檔。
 
-**我可以將備份的資料還原到不同應用程式或不同 PV 嗎？** </br>
-是的，您可以將儲存的資料從 {{site.data.keyword.cos_full_notm}} 服務實例還原至叢集裡的 PV。若要還原資料，您必須從 `ibm-backup-restore` 映像檔建立一個還原 Pod。然後，裝載負責連結您要用於 Pod 之 PV 的 PVC。  
+**我可以將備份的資料還原到不同應用程式或不同 PV 嗎？** 是的，您可以將儲存的資料從 {{site.data.keyword.cos_full_notm}} 服務實例還原至叢集裡的 PV。若要還原資料，您必須從 `ibm-backup-restore` 映像檔建立一個還原 Pod。然後，裝載負責連結您要用於 Pod 之 PV 的 PVC。  
 
 ## 包含的內容 
 {: #whats_included}
@@ -72,7 +70,9 @@ lastupdated: "2018-08-16"
    2. 在服務詳細資料頁面上的導覽，按一下**儲存區** > **配置**。 
    3. 記下公用 URL，您可以用來存取儲存區中的資料。 
 
+
 檢閱 [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) 文件，以取得配置服務實例的相關資訊。
+
 
 ## 從持續性磁區備份資料
 {: #scheduled_backup}
@@ -82,7 +82,7 @@ lastupdated: "2018-08-16"
 
 下列範例會引導您完成如何從 `ibm-backup-restore` 映像檔部署備份 Pod、使用 PVC 將現有 PV 裝載至備份 Pod，然後將資料從 PV 備份到 {{site.data.keyword.cos_full_notm}} 服務實例。  
 
-開始之前：
+**開始之前**
 
 -   [設定 {{site.data.keyword.cos_full_notm}} 服務實例](#object_storage)。 
 -   安裝必要的 [CLI](/docs/containers/cs_cli_install.html#cs_cli_install) 以建立及使用叢集。
@@ -90,15 +90,17 @@ lastupdated: "2018-08-16"
 -   [將 CLI 的目標設為叢集](/docs/containers/cs_cli_install.html#cs_cli_configure)。
 -   為您的[檔案儲存空間](/docs/containers/cs_storage_file.html#add_file)或[區塊儲存空間](/docs/containers/cs_storage_block.html#add_block)建立持續性磁區要求 (PVC)，並將其裝載至您的應用程式部署。
 
-若要備份現有 PV，請執行下列動作： 
+若要備份現有 PV，請完成下列步驟： 
 
-1. 取得連結您要備份之 PV 的 PVC 名稱。 
+1. 取得連結您要備份之 PV 的 PVC 名稱。
+
    ```
    kubectl get pvc
    ```
    {: pre}
 
-2. 從 `ibm-backup-restore` 映像檔建立備份 Pod。若要存取 PV 中的資料，您必須裝載將 PV 連結至備份 Pod 的 PVC。下列範例會建立備份 Pod，以執行每日增量備份。若要使用不同的設定來建立備份，請檢閱完整[環境變數選項](#reference_backup_restore)清單。</br>
+2. 從 `ibm-backup-restore` 映像檔建立備份 Pod。若要存取 PV 中的資料，您必須裝載將 PV 連結至備份 Pod 的 PVC。下列範例會建立備份 Pod，以執行每日增量備份。若要使用不同的設定來建立備份，請檢閱完整[環境變數選項](#reference_backup_restore)清單。
+
    **重要事項**：`ibm-backup-restore` 映像檔必須部署在單一 Pod，而不能用來作為 Kubernetes 部署的一部分。
    
    若要檢視映像檔，請執行 `ibmcloud cr region-set global` 指令設定全球登錄的目標。然後，執行 `ibmcloud cr images --include-ibm` 以列出 IBM 公用映像檔。
@@ -199,6 +201,8 @@ lastupdated: "2018-08-16"
     {: screen}
     
 5.  驗證備份已順利執行。
+     
+
     ```
     kubectl logs backuppod
     ```
@@ -207,7 +211,9 @@ lastupdated: "2018-08-16"
 6.  在 {{site.data.keyword.Bluemix_notm}} GUI 中，檢閱 {{site.data.keyword.cos_full_notm}} 中的備份。
     1.  從 {{site.data.keyword.Bluemix_notm}} 儀表板，尋找 {{site.data.keyword.cos_full_notm}} 服務實例。 
     2.  從導覽選取**儲存區**，然後按一下您在備份配置中使用的儲存區。您的備份會顯示為儲存區中的物件。 
-    3.  檢閱壓縮檔。您可以下載 `vol1.difftar.gz` 檔案、解壓縮該檔案，然後驗證已備份的資料。</br> **重要事項**：如果您從 {{site.data.keyword.cos_full_notm}} 中刪除或修改任何檔案，將無法回復這些檔案。
+    3.  檢閱壓縮檔。您可以下載 `vol1.difftar.gz` 檔案、解壓縮該檔案，然後驗證已備份的資料。 
+        
+        **重要事項**：如果您從 {{site.data.keyword.cos_full_notm}} 中刪除或修改任何檔案，將無法回復這些檔案。
 
 您的備份可供使用。如果您已配置您的備份來建立一次性完整備份，則必須在每次要建立新的備份時執行備份 Script。如果您已配置容器定期執行增量備份，則會依排程執行備份。
 
@@ -216,14 +222,15 @@ lastupdated: "2018-08-16"
 
 您可以將資料從 {{site.data.keyword.cos_full_notm}} 服務實例還原至叢集裡的 PV。 
 
-開始之前：
+**開始之前**
 
 -   [將 CLI 的目標設為叢集](/docs/containers/cs_cli_install.html#cs_cli_configure)。
 -   [在叢集中建立 PV 的備份](#scheduled_backup)。
 
-若要將資料從 {{site.data.keyword.cos_full_notm}} 還原至 PV，請執行下列動作： 
+若要將資料從 {{site.data.keyword.cos_full_notm}} 還原至 PV，請完成下列步驟： 
 
 1. 取得連結您要還原資料之 PV 的 PVC 名稱。 
+
    ```
    kubectl get pvc
    ```
@@ -300,6 +307,8 @@ lastupdated: "2018-08-16"
      </table>
 
 3.  建立還原 Pod 並開始還原資料。
+    
+
     ```
     kubectl apply -f restorepod.yaml
     ```
@@ -328,12 +337,15 @@ lastupdated: "2018-08-16"
     {: pre}
 
 6.  驗證您的資料已順利還原。
+    
+
     ```
     kubectl logs restorepod
     ```
     {: pre}
 
 您已順利還原備份。您現在可以裝載負責將 PV 連結至叢集內任何其他 Pod 的 PVC，以便存取還原檔案。如果所備份的容器資料包含非 root 使用者，您必須將非 root 許可權新增至新的容器。如需相關資訊，請參閱[新增非 root 使用者對磁區的存取權](/docs/containers/cs_troubleshoot_storage.html#cs_storage_nonroot)。
+
 
 ## 加密備份 
 {: #encrypting_backups}
@@ -529,6 +541,7 @@ $ gpg --list-keys
 13. 若要確認您的備份已加密，請檢閱 {{site.data.keyword.cos_full_notm}} 服務實例中的檔案。檔案現在已在檔名尾端附加 `.gpg`。
 
 您的備份已加密。若要還原檔案，請遵循[將資料從 {{site.data.keyword.cos_full_notm}} 還原至叢集裡的 PVC](#restore_script_cli) 中的步驟，並在執行還原處理程序的 Pod 上，在 `backup_restore` 目錄中包含 `encryption.asc` 檔。如果備份已加密，您必須在建立還原 Pod 時提供 **ENCRYPTION_REQUIRED** 及 **ENCRYPTION_PASSPHRASE** 環境變數。
+
 
 ## 環境變數參考資料 
 {: #reference_backup_restore}

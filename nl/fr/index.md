@@ -26,7 +26,7 @@ Vous pouvez utiliser les images publiques suivantes pour créer des conteneurs d
 </li>
   
 <li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Vous pouvez utiliser l'image ibmcloud-secure-perimeter-health pour analyser et faire un rapport sur les chemins vulnérables au sein des réseaux d'infrastructure IBM Cloud."></p>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Vous vpouvez utiliser l'image ibmcloud-secure-perimeter-health pour analyser et générer un rapport sur les chemins vulnérables au sein des réseaux d'infrastructure IBM Cloud."></p>
 <p class="runtimeTitle">ibmcloud-secure-<br />perimeter-health</p>
 <p class="runtimeLink"><a format="html"
 href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-health/index.html" scope="peer"

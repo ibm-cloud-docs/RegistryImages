@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-15"
+lastupdated: "2018-08-21"
 
 ---
 
@@ -14,25 +14,26 @@ lastupdated: "2018-08-15"
 {:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
-# ibmcloud-secure-perimeter-health イメージ概説
+# `ibmcloud-secure-perimeter-health` イメージの概説
 {: #ibmcloud-secure-perimeter-health}
 
-**ibmcloud-secure-perimeter-health** イメージには、IBM Cloud 内の Secure Perimeter の脆弱性をスキャンするためのツールが含まれています。
+`ibmcloud-secure-perimeter-health` イメージには、IBM Cloud 内の Secure Perimeter の脆弱性をスキャンするためのツールが含まれています。
 {:shortdesc}
 
 ## 機能
 {: #how-it-works}
 
-Secure Perimeter が適切に機能していることを確認するために、**ibmcloud-secure-perimeter-health** で、ご使用の IBM Cloud インフラストラクチャー・アカウントのパブリック・ネットワークまたはプライベート・ネットワークをスキャンし、脆弱性のレポートを作成できます。 **ibmcloud-secure-perimeter-health** イメージは、以下の 2 つの方法で使用できます。
+Secure Perimeter が適切に機能していることを確認するために、`ibmcloud-secure-perimeter-health` で、ご使用の IBM Cloud インフラストラクチャー・アカウントのパブリック・ネットワークまたはプライベート・ネットワークをスキャンし、脆弱性のレポートを作成できます。 **ibmcloud-secure-perimeter-health** イメージは、以下の 2 つの方法で使用できます。
 
--   **ibmcloud-secure-perimeter-health** を Secure Perimeter 内の Kubernetes クラスター上のポッドとして使用して、プライベート・ネットワークの露出をスキャンする。
--   **ibmcloud-secure-perimeter-health** をワークステーション上のスタンドアロン Docker コンテナーとして使用して、パブリック・ネットワークの露出をスキャンする。
+-   `ibmcloud-secure-perimeter-health` を Secure Perimeter 内の Kubernetes クラスター上のポッドとして使用して、プライベート・ネットワークの露出をスキャンする。
+-   `ibmcloud-secure-perimeter-health` をワークステーション上のスタンドアロン Docker コンテナーとして使用して、パブリック・ネットワークの露出をスキャンする。
 
 Secure Perimeter について詳しくは、以下のブログ記事を参照してください。
   * [Set up a Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
   * [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)
 
-スキャンが終了すると、**ibmcloud-secure-perimeter-health** イメージによって、Secure Perimeter Segment 内から到達可能であったネットワークに関するレポートが生成されます。 各レポートには、ネットワーク・ゲートウェイの名前、VLAN、そのサブネット、および問題のあるホストがある場合はそのようなホストが詳細に示されます。 プライベート・ネットワークの脆弱性をスキャンしたユーザーのレポートの例を以下に示します。
+スキャンが終了すると、`ibmcloud-secure-perimeter-health` イメージによって、Secure Perimeter Segment 内から到達可能であったネットワークに関するレポートが生成されます。 各レポートには、ネットワーク・ゲートウェイの名前、VLAN、そのサブネット、および問題のあるホストがある場合はそのようなホストが詳細に示されます。 プライベート・ネットワークの脆弱性をスキャンしたユーザーのレポートの例を以下に示します。
+
 ```
 #-------- Running Secure Perimeter exposure scan 2018-05-24 12:00:00 --------#
 
@@ -58,7 +59,7 @@ sp-gateway-8a9031ab:
 ## 含まれている内容
 {: #whats_included}
 
-**ibmcloud-secure-perimeter-health** イメージに、以下のソフトウェア・パッケージが用意されています。
+`ibmcloud-secure-perimeter-health` イメージに、以下のソフトウェア・パッケージが用意されています。
 {:shortdesc}
 
 -   Alpine Linux
@@ -69,7 +70,7 @@ sp-gateway-8a9031ab:
 ## 概説
 {: #how_to_get_started}
 
-**ibmcloud-secure-perimeter-health** の使用法について、以下のタスクで確認してください。
+`ibmcloud-secure-perimeter-health` の使用法について、以下のタスクで確認してください。
 
 1.  [{{site.data.keyword.containerlong}} を使用して Secure Perimeter 内で Kubernetes クラスターをプロビジョンする](#provision_cluster)
 2.  [Secure Perimeter 内のプライベート・ネットワークをスキャンする](#private_networks)
@@ -83,22 +84,23 @@ sp-gateway-8a9031ab:
 {: #provision_cluster}
 
 1.  IBM Cloud カタログ内の**「コンテナー」**セクションから Kubernetes クラスターをプロビジョンします。
-2.  「作成」をクリックします。
+2.  **「作成」**をクリックします。
 3.  VLAN ドロップダウン・メニューから Secure Perimeter Segment パブリックおよびプライベート VLAN を選択します。
-4.  その他すべての詳細を適宜入力します。
-5.  「クラスターの作成」をクリックします。
+4.  必要に応じて他のすべての詳細を入力します。
+5.  **「クラスターの作成」**をクリックします。
 
 クラスターがデプロイされた後、クラスターにアクセスする方法については、[{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) 資料を参照してください。
 
 ## Secure Perimeter 内のプライベート・ネットワークをスキャンする
 {: #private_networks}
 
-**ibmcloud-secure-perimeter-health** イメージからコンテナー・ポッドを作成し、ルーチン・スキャンをセットアップします。
+`ibmcloud-secure-perimeter-health` イメージからコンテナー・ポッドを作成し、ルーチン・スキャンをセットアップします。
 
-始める前に、以下を実行してください。
+**開始する前に**
 
 -   必要な [CLI](/docs/containers/cs_cli_install.html#cs_cli_install) をインストールします。
 -   [CLI のターゲット](/docs/containers/cs_cli_install.html#cs_cli_configure)を自分のクラスターに設定します。
+
 
 1. _health-pod.yaml_ という名前の構成ファイルを作成します。 このファイルにより、高可用性のコンテナー・ポッドのデプロイメントが作成されます。
 
@@ -158,11 +160,11 @@ sp-gateway-8a9031ab:
 ## Secure Perimeter 外部のパブリック・ネットワークをスキャンする
 {: #public_networks}
 
-**ibmcloud-secure-perimeter-health** イメージから Docker コンテナーを作成し、パブリック・ネットワークをスキャンします。
+`ibmcloud-secure-perimeter-health` イメージから Docker コンテナーを作成し、パブリック・ネットワークをスキャンします。
 
-始める前に、以下を実行してください。
+**開始する前に**
 
--  Docker のインストール
+-  Docker をインストールします。
 
 1. 以下のように、自身のワークステーションから Docker コンテナーを作成します。
 
@@ -176,7 +178,8 @@ sp-gateway-8a9031ab:
 ## スキャン結果の分析
 {: #scan_results}
 
-**ibmcloud-secure-perimeter-health** は、以下のように、Secure Perimeter の機能の正常性に関する定形式レポートを生成します。
+`ibmcloud-secure-perimeter-health` は、以下のように、Secure Perimeter の機能の正常性に関する定形式レポートを生成します。
+
 ```
 #-------- Running Secure Perimeter exposure scan 2018-05-24 12:00:00 --------#
 
@@ -200,6 +203,7 @@ sp-gateway-8a9031ab:
 {: screen}
 
 レポートのフォーマットは、以下のとおりです。
+
 ```
 <gateway name>:
   <vlan name>:
@@ -209,7 +213,7 @@ sp-gateway-8a9031ab:
 ```
 {: screen}
 
-**ibmcloud-secure-perimeter-health** は、サブネット内に到達可能なホストがなかった場合にはサブネットを `PASS` と判定し、そうでなければ `FAIL` を返し、到達可能であったホストとアクセス可能であったポートをリストします。
+`ibmcloud-secure-perimeter-health` は、サブネット内に到達可能なホストがなかった場合にはサブネットを `PASS` と判定し、そうでなければ `FAIL` を返し、到達可能であったホストとアクセス可能であったポートをリストします。
 
 ## コンテナー引数リファレンス
 {: #reference_container_arg}

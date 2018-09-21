@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-16"
+lastupdated: "2018-08-21"
 
 ---
 
@@ -25,10 +25,12 @@ lastupdated: "2018-08-16"
 
 `ibm-backup-restore` 이미지를 사용하여 클러스터의 PV(Persistent Volume)에 저장된 앱 데이터에 대한 일회성 백업 또는 스케줄된 백업을 작성할 수 있거나 앱 데이터를 PV에 복원할 수 있습니다. 데이터를 백업하고 복원하려면 `ibm-backup-restore` 이미지에서 팟(Pod)을 배치하십시오. 그런 다음 백업할 PV 또는 데이터를 팟(Pod)에 복원하기 위해 사용할 PV를 바인드하는 PVC를 마운트하십시오. 
 
-**내 데이터의 이동 위치와 액세스 방법은 무엇입니까?** </br>
+**내 데이터의 이동 위치와 액세스 방법은 무엇입니까?** 
+
 백업한 데이터는 {{site.data.keyword.cos_full_notm}} 서비스 인스턴스 내에 저장됩니다. 서비스에 액세스하려면 `ibm-backup-restore` 팟(Pod)에서 환경 변수로 {{site.data.keyword.cos_full_notm}} 서비스 신임 정보를 사용하거나 실행 중인 팟(Pod)에서 `config.conf` 파일을 편집하십시오.
 
-**백업된 데이터를 다른 앱 또는 다른 PV에 복원할 수 있습니까?** </br>
+**백업된 데이터를 다른 앱 또는 다른 PV에 복원할 수 있습니까?** 
+
 예, {{site.data.keyword.cos_full_notm}} 서비스 인스턴스에서 클러스터의 PV로 저장된 데이터를 복원할 수 있습니다. 데이터를 복원하려면 `ibm-backup-restore` 이미지에서 복원 팟(Pod)을 작성해야 합니다. 그런 다음 팟(Pod)에 사용할 PV를 바인드하는 PVC를 마운트하십시오.  
 
 ## 포함된 항목 
@@ -50,7 +52,7 @@ lastupdated: "2018-08-16"
 1. {{site.data.keyword.cos_full_notm}} 서비스 인스턴스를 배치하십시오.
    1.  [{{site.data.keyword.Bluemix_notm}} 카탈로그](https://console.bluemix.net/catalog/services/cloud-object-storage)를 여십시오.
    2.  `cos-backup`과 같이 서비스 인스턴스의 이름을 입력하고 리소스 그룹으로 **기본값**을 선택하십시오. 
-   3.  가격 책정 정보를 보려면 [플랜 옵션 ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage#s3api)을 검토하고 플랜을 선택하십시오. 
+   3.  가격 정보를 보려면 [plan options![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage#s3api)를 검토하고 플랜을 선택하십시오. 
    4.  **작성**을 클릭하십시오.
 2. {{site.data.keyword.cos_full_notm}} 서비스 인스턴스 신임 정보를 검색하십시오.
    1.  서비스 세부사항 페이지의 탐색에서 **서비스 신임 정보**를 클릭하십시오.
@@ -72,7 +74,9 @@ lastupdated: "2018-08-16"
    2. 서비스 세부사항 페이지의 탐색에서 **버킷** > **구성**을 클릭하십시오. 
    3. 버킷의 데이터에 액세스하는 데 사용할 수 있는 공용 URL을 기록해 두십시오. 
 
+
 서비스 인스턴스 구성에 대한 자세한 정보는 [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) 문서를 검토하십시오.
+
 
 ## pv(persistent volume)에서 데이터 백업
 {: #scheduled_backup}
@@ -82,24 +86,26 @@ pvc(persistent volume claim)를 통해 앱 팟(Pod)에 마운트되는 pv(persis
 
 다음 예제에서는 `ibm-backup-restore` 이미지에서 백업 팟(Pod)을 배치하고, PVC를 사용하여 기존 PV를 백업 팟(Pod)에 마운트하고, PV에서 {{site.data.keyword.cos_full_notm}} 서비스 인스턴스로 데이터를 백업하는 방법에 대해 설명합니다.  
 
-시작하기 전에 다음을 수행하십시오.
+**시작하기 전에**
 
 -   [{{site.data.keyword.cos_full_notm}} 서비스 인스턴스를 설정](#object_storage)하십시오. 
 -   필요한 [CLI](/docs/containers/cs_cli_install.html#cs_cli_install)를 설치하여 클러스터를 작성하고 클러스터 관련 작업을 수행하십시오.
 -   [표준 클러스터를 작성](/docs/containers/cs_clusters.html#clusters_cli)하거나 기존 클러스터를 사용하십시오.
 -   [클러스터를 CLI의 대상으로 지정](/docs/containers/cs_cli_install.html#cs_cli_configure)하십시오.
--   [File Storage](/docs/containers/cs_storage_file.html#add_file) 또는 [Block Storage](/docs/containers/cs_storage_block.html#add_block)의 pvc(persistent volume claim)를 작성하고 앱 배치에 마운트하십시오.
+-   [File Storage](/docs/containers/cs_storage_file.html#add_file) 또는 [Block Storage](/docs/containers/cs_storage_block.html#add_block)의 PVC(Persistent Volume Claim)를 작성하고 앱 배치에 마운트하십시오.
 
-기존 PV를 백업하려면 다음을 수행하십시오. 
+기존 PV를 백업하려면 다음 단계를 완료하십시오. 
 
-1. 백업할 PV를 바인드하는 PVC의 이름을 가져오십시오. 
+1. 백업할 PV를 바인드하는 PVC의 이름을 가져오십시오.
+
    ```
    kubectl get pvc
    ```
    {: pre}
 
-2. `ibm-backup-restore` 이미지에서 백업 팟(Pod)을 작성하십시오. PV에서 데이터에 액세스하려면 PV를 백업 팟(Pod)에 바인드하는 PVC를 마운트해야 합니다. 다음 예제는 증분 백업을 실행하는 백업 팟(Pod)을 매일 작성합니다. 다른 설정으로 백업을 작성하려면 [환경 변수 옵션](#reference_backup_restore)의 전체 목록을 검토하십시오.</br>
-   **중요:** `ibm-backup-restore` 이미지를 단일 팟(Pod)에 배치해야 하고 Kubernetes 배치의 일부로 사용할 수 없습니다.
+2. `ibm-backup-restore` 이미지에서 백업 팟(Pod)을 작성하십시오. PV에서 데이터에 액세스하려면 PV를 백업 팟(Pod)에 바인드하는 PVC를 마운트해야 합니다. 다음 예제는 증분 백업을 실행하는 백업 팟(Pod)을 매일 작성합니다. 다른 설정으로 백업을 작성하려면 [환경 변수 옵션](#reference_backup_restore)의 전체 목록을 검토하십시오.
+
+   **중요:** `ibm-backup-restore` 이미지를 단일 팟(Pod)에 배치해야 하고 Kubernetes 배치의 일부로 사용할 수 없습니다. 
    
    이미지를 보려면 `ibmcloud cr region-set global` 명령을 실행하여 글로벌 레지스트리를 대상으로 지정하십시오. 그런 다음 `ibmcloud cr images --include-ibm`을 실행하여 IBM 공용 이미지를 나열하십시오. 
    {: tip}
@@ -199,6 +205,7 @@ pvc(persistent volume claim)를 통해 앱 팟(Pod)에 마운트되는 pv(persis
     {: screen}
     
 5.  백업이 실행 완료되었는지 확인하십시오. 
+
     ```
     kubectl logs backuppod
     ```
@@ -207,7 +214,9 @@ pvc(persistent volume claim)를 통해 앱 팟(Pod)에 마운트되는 pv(persis
 6.  {{site.data.keyword.Bluemix_notm}} GUI의 {{site.data.keyword.cos_full_notm}}에서 백업을 검토하십시오.
     1.  {{site.data.keyword.Bluemix_notm}} 대시보드에서 {{site.data.keyword.cos_full_notm}} 서비스 인스턴스를 찾으십시오. 
     2.  탐색에서 **버킷**을 선택하고 백업 구성에 사용한 버킷을 클릭하십시오. 백업은 버킷의 오브젝트로 표시됩니다. 
-    3.  압축된 파일을 검토하십시오. `vol1.difftar.gz` 파일을 다운로드하고, 파일을 추출하고, 백업된 데이터를 확인할 수 있습니다. </br> **중요**: {{site.data.keyword.cos_full_notm}}에서 파일을 삭제하거나 수정하는 경우 해당 파일을 복구할 수 없습니다.
+    3.  압축된 파일을 검토하십시오. `vol1.difftar.gz` 파일을 다운로드하고, 파일을 추출하고, 백업된 데이터를 확인할 수 있습니다. 
+        
+        **중요**: {{site.data.keyword.cos_full_notm}}에서 파일을 삭제하거나 수정하는 경우 해당 파일을 복구할 수 없습니다.
 
 백업을 사용할 수 있습니다. 일회성 전체 백업을 작성하도록 백업을 구성한 경우 새 백업을 작성할 때마다 백업 스크립트를 실행해야 합니다. 증분식 백업을 정기적으로 실행하도록 컨테이너를 구성한 경우 백업이 예정대로 실행됩니다.
 
@@ -216,14 +225,15 @@ pvc(persistent volume claim)를 통해 앱 팟(Pod)에 마운트되는 pv(persis
 
 {{site.data.keyword.cos_full_notm}} 서비스 인스턴스에서 클러스터의 PV로 데이터를 복원할 수 있습니다. 
 
-시작하기 전에 다음을 수행하십시오.
+**시작하기 전에**
 
 -   [클러스터를 CLI의 대상으로 지정](/docs/containers/cs_cli_install.html#cs_cli_configure)하십시오.
 -   [클러스터의 PV에 대한 백업을 작성](#scheduled_backup)하십시오.
 
-{{site.data.keyword.cos_full_notm}}에서 PV로 데이터를 복원하려면 다음을 수행하십시오. 
+{{site.data.keyword.cos_full_notm}}에서 PV로 데이터를 복원하려면 다음 단계를 완료하십시오. 
 
 1. 데이터를 복원할 PV를 바인드하는 PVC의 이름을 가져오십시오. 
+
    ```
    kubectl get pvc
    ```
@@ -299,7 +309,8 @@ pvc(persistent volume claim)를 통해 앱 팟(Pod)에 마운트되는 pv(persis
      </tbody>
      </table>
 
-3.  복원을 작성하고 데이터 복원을 시작하십시오. 
+3.  복원을 작성하고 데이터 복원을 시작하십시오.
+
     ```
     kubectl apply -f restorepod.yaml
     ```
@@ -327,13 +338,15 @@ pvc(persistent volume claim)를 통해 앱 팟(Pod)에 마운트되는 pv(persis
     ```
     {: pre}
 
-6.  데이터 복원이 완료되었는지 확인하십시오. 
+6.  데이터 복원이 완료되었는지 확인하십시오.
+
     ```
     kubectl logs restorepod
     ```
     {: pre}
 
 성공적으로 백업을 복원했습니다. 이제 클러스터의 다른 팟(Pod)에 PV를 바인드하는 PVC를 마운트하여 복원된 파일에 액세스할 수 있습니다. 백업된 컨테이너 데이터에 비루트 사용자가 포함된 경우 새 컨테이너에 비루트 권한을 추가해야 합니다. 자세한 정보는 [볼륨에 대한 비루트 사용자 액세스 권한 추가](/docs/containers/cs_troubleshoot_storage.html#cs_storage_nonroot)를 참조하십시오.
+
 
 ## 백업 암호화 
 {: #encrypting_backups}
@@ -530,6 +543,7 @@ $ gpg --list-keys
 
 백업이 암호화되었습니다. 파일을 복원하려면 [{{site.data.keyword.cos_full_notm}}에서 클러스터의 PVC로 데이터 복원](#restore_script_cli)의 단계를 따르고, 복원 프로세스를 실행하는 팟(Pod)의 `backup_restore` 디렉토리에 `encryption.asc` 파일을 포함하십시오. 백업이 암호화된 경우 복원 팟(Pod)을 작성할 때 **ENCRYPTION_REQUIRED** 및 **ENCRYPTION_PASSPHRASE** 환경 변수를 제공해야 합니다.
 
+
 ## 환경 변수 참조 
 {: #reference_backup_restore}
 
@@ -540,7 +554,7 @@ $ gpg --list-keys
 |ACCESS_KEY_ID|{{site.data.keyword.cos_full_notm}}에서 HMAC 신임 정보의 일부인 **access_key_id**입니다.|
 |SECRET_ACCESS_KEY|{{site.data.keyword.cos_full_notm}}에서 HMAC 신임 정보의 일부인 **secret_access_key**입니다.|
 |ENDPOINT|{{site.data.keyword.cos_full_notm}} 버킷 데이터에 액세스하는 호스트 이름입니다.|
-|BUCKET|백업된 데이터가 저장되는 {{site.data.keyword.cos_full_notm}}의 버킷 이름입니다. |
+|BUCKET|백업된 데이터가 저장되는 {{site.data.keyword.cos_full_notm}}의 버킷 이름입니다.|
 {: caption="표 1. {{site.data.keyword.cos_full_notm}} 변수" caption-side="top"}
 
 |키|값 옵션|

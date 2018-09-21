@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-15"
+lastupdated: "2018-08-21"
 
 ---
 
@@ -14,25 +14,26 @@ lastupdated: "2018-08-15"
 {:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
-# 開始使用 ibmcloud-secure-perimeter-health 映像檔
+# 開始使用 `ibmcloud-secure-perimeter-health` 映像檔
 {: #ibmcloud-secure-perimeter-health}
 
-**ibmcloud-secure-perimeter-health** 映像檔包含一個工具，可用來在 IBM Cloud 中掃描 Secure Perimeter 中的漏洞。
+`ibmcloud-secure-perimeter-health` 映像檔包含一個工具，可用來在 IBM Cloud 中掃描 Secure Perimeter 中的漏洞。
 {:shortdesc}
 
 ## 如何運作
 {: #how-it-works}
 
-為了確保您的 Secure Perimeter 正常運作，**ibmcloud-secure-perimeter-health** 可掃描 IBM Cloud 基礎架構帳戶中的公用或專用網路，並報告漏洞。您可以利用兩種方式來使用 **ibmcloud-secure-perimeter-health** 映像檔：
+為了確保您的 Secure Perimeter 正常運作，`ibmcloud-secure-perimeter-health` 可掃描 IBM Cloud 基礎架構帳戶中的公用或專用網路，並報告漏洞。您可以利用兩種方式來使用 **ibmcloud-secure-perimeter-health** 映像檔：
 
--   使用 **ibmcloud-secure-perimeter-health** 作為 Secure Perimeter 內 Kubernetes 叢集上的 Pod，以掃描專用網路曝光。
--   使用 **ibmcloud-secure-perimeter-health** 作為您工作站上的獨立式 Docker 儲存器，以掃描公用網路曝光。
+-   使用 `ibmcloud-secure-perimeter-health` 作為 Secure Perimeter 內 Kubernetes 叢集上的 Pod，以掃描專用網路曝光。
+-   使用 `ibmcloud-secure-perimeter-health` 作為您工作站上的獨立式 Docker 儲存器，以掃描公用網路曝光。
 
 在下列部落格文章中可以找到 Secure Perimeter 的相關資訊：
   * [在 IBM Cloud 中設定 Secure Perimeter](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
   * [在 IBM Cloud 中設定自動化 Secure Perimeter](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)。
 
-掃描之後，**ibmcloud-secure-perimeter-health** 映像檔會產生一個報告，說明可以從 Secure Perimeter Segment 內聯繫到的網路。每個報告都會詳述網路閘道的名稱、VLAN、其子網路及任何不當的主機。掃描專用網路漏洞的使用者報告範例：
+掃描之後，`ibmcloud-secure-perimeter-health` 映像檔會產生一個報告，說明可以從 Secure Perimeter Segment 內聯繫到的網路。每個報告都會詳述網路閘道的名稱、VLAN、其子網路及任何不當的主機。掃描專用網路漏洞的使用者報告範例：
+
 ```
 #-------- Running Secure Perimeter exposure scan 2018-05-24 12:00:00 --------#
 
@@ -58,7 +59,7 @@ sp-gateway-8a9031ab:
 ## 包含的內容
 {: #whats_included}
 
-**ibmcloud-secure-perimeter-health** 映像檔會提供下列套裝軟體。
+`ibmcloud-secure-perimeter-health` 映像檔會提供下列套裝軟體。
 {:shortdesc}
 
 -   Alpine Linux
@@ -69,7 +70,7 @@ sp-gateway-8a9031ab:
 ## 開始使用
 {: #how_to_get_started}
 
-檢閱下列作業以學習如何使用 **ibmcloud-secure-perimeter-health**：
+檢閱下列作業以學習如何使用 `ibmcloud-secure-perimeter-health`：
 
 1.  [使用 {{site.data.keyword.containerlong}} 在 Secure Perimeter 內佈建 Kubernetes 叢集](#provision_cluster)
 2.  [掃描 Secure Perimeter 內的專用網路](#private_networks)
@@ -83,19 +84,19 @@ sp-gateway-8a9031ab:
 {: #provision_cluster}
 
 1.  從 IBM Cloud 型錄中的**容器**區段中，佈建您的 Kubernetes 叢集。
-2.  按一下「建立」。
+2.  按一下**建立**。
 3.  從 VLAN 下拉功能表中，選取 Secure Perimeter Segment 公用和專用 VLAN。
-4.  填寫您認為適當的所有其他詳細資料。
-5.  按一下「建立叢集」。
+4.  視需要輸入所有其他詳細資料。
+5.  按一下**建立叢集**。
 
 檢閱 [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) 文件，瞭解如何在部署完叢集之後取得該叢集的存取權。
 
 ## 掃描 Secure Perimeter 內的專用網路
 {: #private_networks}
 
-從 **ibmcloud-secure-perimeter-health** 映像檔中建立容器 Pod，並設定日常掃描。
+從 `ibmcloud-secure-perimeter-health` 映像檔中建立容器 Pod，並設定日常掃描。
 
-開始之前：
+**開始之前**
 
 -   安裝必要的 [CLI](/docs/containers/cs_cli_install.html#cs_cli_install)。
 -   [將 CLI 的目標設為](/docs/containers/cs_cli_install.html#cs_cli_configure)您的叢集。
@@ -103,7 +104,7 @@ sp-gateway-8a9031ab:
 1. 建立名為 _health-pod.yaml_ 的配置檔。此檔案會建立可用性高的容器 Pod 部署。
 
     ```
-apiVersion: extensions/v1beta1
+    apiVersion: extensions/v1beta1
     kind: Deployment
     metadata:
       name: health-pod
@@ -138,7 +139,7 @@ apiVersion: extensions/v1beta1
 2. 建立部署。
 
     ```
-kubectl apply -f health-pod.yaml
+    kubectl apply -f health-pod.yaml
     ```
     {: pre}
 
@@ -150,7 +151,7 @@ kubectl apply -f health-pod.yaml
     {: pre}
 
     ```
-NAME                                    READY     STATUS    RESTARTS   AGE
+    NAME                                    READY     STATUS    RESTARTS   AGE
     health-pod-<random-id>                  1/1       Running   0          1hr
     ```
     {: screen}
@@ -158,11 +159,11 @@ NAME                                    READY     STATUS    RESTARTS   AGE
 ## 掃描 Secure Perimeter 外的公用網路
 {: #public_networks}
 
-從 **ibmcloud-secure-perimeter-health** 映像檔建立一個 Docker 儲存器，並掃描公用網路。
+從 `ibmcloud-secure-perimeter-health` 映像檔建立一個 Docker 儲存器，並掃描公用網路。
 
-開始之前：
+**開始之前**
 
--  安裝 Docker
+-  安裝 Docker。
 
 1. 從您自己的工作站建立一個 Docker 儲存器，如下所示：
 
@@ -176,7 +177,8 @@ NAME                                    READY     STATUS    RESTARTS   AGE
 ## 分析掃描結果
 {: #scan_results}
 
-**ibmcloud-secure-perimeter-health** 會產生格式化的報告，說明 Secure Perimeter 的運作性能：
+`ibmcloud-secure-perimeter-health` 會產生格式化的報告，說明 Secure Perimeter 的運作性能：
+
 ```
 #-------- Running Secure Perimeter exposure scan 2018-05-24 12:00:00 --------#
 
@@ -200,6 +202,7 @@ sp-gateway-8a9031ab:
 {: screen}
 
 報告的格式如下所示：
+
 ```
 <gateway name>:
   <vlan name>:
@@ -209,7 +212,7 @@ sp-gateway-8a9031ab:
 ```
 {: screen}
 
-如果無法聯繫子網路中的任何主機，則 **ibmcloud-secure-perimeter-health** 會判斷子網路為 `PASS`，否則會傳回 `FAIL`，並列出可以聯繫的主機以及可存取的埠。
+如果無法聯繫子網路中的任何主機，則 `ibmcloud-secure-perimeter-health` 會判斷子網路為 `PASS`，否則會傳回 `FAIL`，並列出可以聯繫的主機以及可存取的埠。
 
 ## 容器引數參考資料
 {: #reference_container_arg}

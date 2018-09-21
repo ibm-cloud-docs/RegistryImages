@@ -15,4 +15,4 @@ lastupdated: "2018-08-15"
 
 L'image `ibm-integration-bus` n'est plus disponible.
 
-Examinez d'autres [images IBM publiques](/docs/services/RegistryImages/index.html#ibm_images).
+Passez en revue d'autres [images publiques IBM](/docs/services/RegistryImages/index.html#ibm_images).

@@ -1,8 +1,8 @@
----
+﻿---
 
 copyright:
   years: 2018
-lastupdated: "2018-08-15"
+lastupdated: "2018-08-21"
 
 ---
 
@@ -14,25 +14,26 @@ lastupdated: "2018-08-15"
 {:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
-# Initiation à l'image ibmcloud-secure-perimeter-health
+# Initiation à l'image `ibmcloud-secure-perimeter-health`
 {: #ibmcloud-secure-perimeter-health}
 
-L'image **ibmcloud-secure-perimeter-health** contient un outil d'analyse des vulnérabilités dans un périmètre sécurisé (Secure Perimeter) d'IBM Cloud.
+L'image `ibmcloud-secure-perimeter-health` contient un outil d'analyse des vulnérabilités dans un périmètre sécurisé (Secure Perimeter) d'IBM Cloud.
 {:shortdesc}
 
 ## Fonctionnement
 {: #how-it-works}
 
-Pour garantir le bon fonctionnement de votre périmètre sécurisé, **ibmcloud-secure-perimeter-health** peut analyser le réseau public ou privé de votre compte d'infrastructure IBM Cloud et signaler les vulnérabilités. Vous pouvez utiliser l'image **ibmcloud-secure-perimeter-health** de deux façons :
+Pour garantir le bon fonctionnement de votre périmètre sécurisé, `ibmcloud-secure-perimeter-health` peut analyser le réseau public ou privé de votre compte d'infrastructure IBM Cloud et signaler les vulnérabilités. Vous pouvez utiliser l'image **ibmcloud-secure-perimeter-health** de deux façons :
 
--   Utiliser **ibmcloud-secure-perimeter-health** en tant que pod sur un cluster Kubernetes au sein de votre périmètre sécurisé pour rechercher les expositions de réseau privé.
--   Utiliser **ibmcloud-secure-perimeter-health** en tant que conteneur Docker autonome sur votre poste de travail pour rechercher les expositions de réseau public.
+-   Utiliser `ibmcloud-secure-perimeter-health` en tant que pod sur un cluster Kubernetes au sein de votre périmètre sécurisé pour rechercher les expositions de réseau privé.
+-   Utiliser `ibmcloud-secure-perimeter-health` en tant que conteneur Docker autonome sur votre poste de travail pour rechercher les expositions de réseau public.
 
 Vous trouverez des informations supplémentaires sur le périmètre sécurisé dans les articles de blogue suivants :
   * [Set up a Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
   * [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
 
-Après l'analyse, l'image **ibmcloud-secure-perimeter-health** génère un rapport sur les réseaux accessibles depuis le segment de périmètre sécurisé (Secure Perimeter Segment). Chaque rapport indique le nom de la passerelle réseau, le réseau local virtuel (VLAN), ses sous-réseaux ainsi que les éventuels hôtes incriminés. Exemple de rapport d'un utilisateur ayant recherché des vulnérabilité du réseau privé :
+Après l'analyse, l'image `ibmcloud-secure-perimeter-health` génère un rapport sur les réseaux accessibles depuis le segment de périmètre sécurisé (Secure Perimeter Segment). Chaque rapport indique le nom de la passerelle réseau, le réseau local virtuel (VLAN), ses sous-réseaux ainsi que les éventuels hôtes incriminés. Exemple de rapport d'un utilisateur ayant recherché des vulnérabilité du réseau privé :
+
 ```
 #-------- Running Secure Perimeter exposure scan 2018-05-24 12:00:00 --------#
 
@@ -58,7 +59,7 @@ sp-gateway-8a9031ab:
 ## Eléments inclus
 {: #whats_included}
 
-L'image **ibmcloud-secure-perimeter-health** fournit les progiciels suivants.
+L'image `ibmcloud-secure-perimeter-health` fournit les progiciels suivants.
 {:shortdesc}
 
 -   Alpine Linux
@@ -69,7 +70,7 @@ L'image **ibmcloud-secure-perimeter-health** fournit les progiciels suivants.
 ## Initiation
 {: #how_to_get_started}
 
-Passez en revue les tâches suivantes pour apprendre à utiliser **ibmcloud-secure-perimeter-health** :
+Passez en revue les tâches suivantes pour apprendre à utiliser `ibmcloud-secure-perimeter-health` :
 
 1.  [Mettre à disposition un cluster Kubernetes dans un périmètre sécurisé via {{site.data.keyword.containerlong}}](#provision_cluster)
 2.  [Analyser les réseaux privés au sein d'un périmètre sécurisé](#private_networks)
@@ -83,22 +84,24 @@ Passez en revue les tâches suivantes pour apprendre à utiliser **ibmcloud-secu
 {: #provision_cluster}
 
 1.  Mettez votre cluster Kubernetes à disposition depuis la section **Conteneurs** du catalogue IBM Cloud.
-2.  Cliquez sur Créer.
+2.  Cliquez sur **Créer**.
 3.  Sélectionnez les réseaux locaux virtuels public et privé du segment de paramètre sécurisé (Secure Perimeter Segment) à partir des menus déroulants VLAN.
-4.  Renseignez les autres détails en fonction de vos besoins.
-5.  Cliquez sur Créer un cluster.
+4.  Rntrez toutes les autres informations requises.
+5.  Cliquez sur **Créer un cluster**.
 
-Consultez la documentation [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) pour savoir comment accéder à votre cluster une fois celui-ci déployé.
+Consultez la documentation [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) savoir comment accéder à votre cluster une fois celui-ci déployé.
 
 ## Analyser les réseaux privés au sein d'un périmètre sécurisé
 {: #private_networks}
 
-Créez un pod de conteneur à partir de l'image **ibmcloud-secure-perimeter-health**, puis configurez une analyse de routine.
+Créez un pod de conteneur à partir de l'image `ibmcloud-secure-perimeter-health`, puis configurez une analyse de routine.
 
-Avant de commencer :
+**Avant de commencer**
 
 -   Installez les [interfaces de ligne de commande](/docs/containers/cs_cli_install.html#cs_cli_install) requises.
--   [Ciblez votre interface de ligne de commande](/docs/containers/cs_cli_install.html#cs_cli_configure) vers votre cluster.
+-   [Ciblez votre interface de ligne de commande](/docs/containers/cs_cli_install.html#cs_cli_configure
+) vers votre cluster.
+
 
 1. Créez un fichier de configuration nommé _health-pod.yaml_. Ce fichier crée un déploiement hautement disponible du pod de conteneur.
 
@@ -158,11 +161,11 @@ Avant de commencer :
 ## Analyser les réseaux publics hors d'un périmètre sécurisé
 {: #public_networks}
 
-Créez un conteneur Docker à partir de l'image **ibmcloud-secure-perimeter-health** et analysez des réseaux publics.
+Créez un conteneur Docker à partir de l'image `ibmcloud-secure-perimeter-health` et analysez des réseaux publics.
 
-Avant de commencer :
+**Avant de commencer**
 
--  Installez Docker
+-  Installez Docker.
 
 1. Créez un conteneur Docker à partir de votre propre poste de travail à l'aide de la commande suivante :
 
@@ -176,7 +179,8 @@ Avant de commencer :
 ## Comprendre les résultats d'analyse
 {: #scan_results}
 
-**ibmcloud-secure-perimeter-health** produit un rapport mis en forme sur la santé du fonctionnement d'un périmètre sécurisé :
+`ibmcloud-secure-perimeter-health` produit un rapport mis en forme sur la santé du fonctionnement d'un périmètre sécurisé :
+
 ```
 #-------- Running Secure Perimeter exposure scan 2018-05-24 12:00:00 --------#
 
@@ -200,6 +204,7 @@ sp-gateway-8a9031ab:
 {: screen}
 
 Le format du rapport est le suivant :
+
 ```
 <nom de la passerelle> :
   <nom du VLAN> :
@@ -209,7 +214,7 @@ Le format du rapport est le suivant :
 ```
 {: screen}
 
-**ibmcloud-secure-perimeter-health** détermine un sous-réseau comme `PASS` si aucun hôte du sous-réseau n'est accessible, ou bien renvoie `FAIL` et répertorie les hôtes accessibles ainsi que les ports accessibles.
+`ibmcloud-secure-perimeter-health` détermine un sous-réseau comme `PASS` si aucun hôte du sous-réseau n'est accessible, ou bien renvoie `FAIL` et répertorie les hôtes accessibles ainsi que les ports accessibles.
 
 ## Référence d'argument de conteneur
 {: #reference_container_arg}

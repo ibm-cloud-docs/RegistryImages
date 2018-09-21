@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-16"
+lastupdated: "2018-08-21"
 
 ---
 
@@ -23,12 +23,14 @@ La imagen `ibm-backup-restore` contiene los paquetes preinstalados necesarios pa
 ## Modo de funcionamiento 
 {: #how_it_works}
 
-Con la imagen `ibm-backup-restore`, puede crear una copia de seguridad puntual o planificada para datos de app almacenados en un volumen permanente (PV) del clúster o para restaurar datos de app en un PV. Para realizar copia de seguridad y restaurar datos, despliegue un pod desde la imagen `ibm-backup-restore`. A continuación, monte el PVC que enlace con el pod el PV del que desea hacer copia de seguridad o el PV que desea utilizar para restaurar los datos. 
+Con la imagen `ibm-backup-restore`, puede crear una copia de seguridad puntual o planificada para datos de app almacenados en un volumen persistente (PV) del clúster o para restaurar datos de app en un PV. Para realizar copia de seguridad y restaurar datos, despliegue un pod desde la imagen `ibm-backup-restore`. A continuación, monte el PVC que enlace con el pod el PV del que desea hacer copia de seguridad o el PV que desea utilizar para restaurar los datos. 
 
-**¿A dónde van mis datos? ¿Cómo puedo acceder a los mismos? ** </br>
+**¿A dónde van mis datos? ¿Cómo puedo acceder a los mismos? ** 
+
 Los datos de los que se hace copia de seguridad se almacenan en una instancia de servicio de {{site.data.keyword.cos_full_notm}}. Para acceder al servicio, utilice sus credenciales de servicio de {{site.data.keyword.cos_full_notm}} como variables de entorno en el pod `ibm-backup-restore` o edite el archivo `config.conf` en el pod en ejecución.
 
-**¿Puedo restaurar datos copiados en otra app o en otro PV?** </br>
+**¿Puedo restaurar datos copiados en otra app o en otro PV?** 
+
 Sí, también puede restaurar los datos guardados de la instancia de servicio de {{site.data.keyword.cos_full_notm}} en un PV del clúster. Para restaurar datos, debe crear un pod de restauración desde la imagen `ibm-backup-restore`. A continuación, monte el PVC que enlaza PV que desea utilizar al pod.  
 
 ## Qué incluye 
@@ -73,34 +75,38 @@ como grupo de recursos.
    2. En el área de navegación de la página de detalles de servicio, pulse **Grupos** > **Configuración**. 
    3. Anote el URL público que puede utilizar para acceder a los datos de su grupo. 
 
+
 Consulte la documentación de [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) para obtener más información sobre cómo configurar la instancia de servicio.
 
-## Copia de seguridad de los datos de un volumen permanente
+
+## Copia de seguridad de los datos de un volumen persistente
 {: #scheduled_backup}
 
-Puede crear una copia de seguridad puntual o planificada para cualquier volumen permanente (PV) montado en el pod de la app mediante una reclamación de volumen permanente (PVC).  
+Puede crear una copia de seguridad puntual o planificada para cualquier volumen persistente (PV) montado en el pod de la app mediante una reclamación de volumen persistente (PVC).  
 {: shortdesc}
 
 El siguiente ejemplo le guía por los pasos a seguir para desplegar un pod de copia de seguridad de la imagen `ibm-backup-restore`, montar un PV existente en el pod de copia de seguridad mediante un PVC y hacer copia de seguridad de los datos del PV en la instancia de servicio de {{site.data.keyword.cos_full_notm}}.  
 
-Antes de empezar:
+**Antes de empezar**
 
 -   [Configure una instancia de servicio de {{site.data.keyword.cos_full_notm}}](#object_storage). 
 -   Instale las [CLI](/docs/containers/cs_cli_install.html#cs_cli_install) necesarias para crear un clúster y trabajar con el mismo.
 -   [Cree un clúster estándar](/docs/containers/cs_clusters.html#clusters_cli) o utilice uno existente.
 -   [Defina su clúster como destino de la CLI](/docs/containers/cs_cli_install.html#cs_cli_configure).
--   Cree una reclamación de volumen permanente (PVC) para su [almacenamiento de archivos](/docs/containers/cs_storage_file.html#add_file) o [almacenamiento en bloque](/docs/containers/cs_storage_block.html#add_block) y móntela en el despliegue de la app.
+-   Cree una reclamación de volumen persistente (PVC) para su [almacenamiento de archivos](/docs/containers/cs_storage_file.html#add_file) o [almacenamiento en bloque](/docs/containers/cs_storage_block.html#add_block) y móntela en el despliegue de la app.
 
-Para hacer copia de seguridad de un PV existente: 
+Para hacer una copia de seguridad de un PV existente, complete los pasos siguientes: 
 
-1. Obtenga el nombre del PVC que enlaza el PV del que desea realizar una copia de seguridad. 
+1. Obtenga el nombre del PVC que enlaza el PV del que desea realizar una copia de seguridad.
+
    ```
    kubectl get pvc
    ```
    {: pre}
 
-2. Cree un pod de copia de seguridad desde la imagen `ibm-backup-restore`. Para acceder a los datos del PV, debe montar el PVC que enlaza el PV al pod de copia de seguridad. En el ejemplo siguiente se crea un pod de copia de seguridad que ejecuta una copia de seguridad incremental diaria. Para crear una copia de seguridad con valores diferentes, revise una lista completa de [opciones de variables de entorno](#reference_backup_restore).</br>
-   **Importante:** la imagen `ibm-backup-restore` se debe desplegar en un solo pod y no se puede utilizar como parte de un despliegue de Kubernetes.
+2. Cree un pod de copia de seguridad desde la imagen `ibm-backup-restore`. Para acceder a los datos del PV, debe montar el PVC que enlaza el PV al pod de copia de seguridad. En el ejemplo siguiente se crea un pod de copia de seguridad que ejecuta una copia de seguridad incremental diaria. Para crear una copia de seguridad con valores diferentes, revise una lista completa de [opciones de variables de entorno](#reference_backup_restore).
+
+   **Importante**: la imagen `ibm-backup-restore` se debe desplegar en un solo pod y no se puede utilizar como parte de un despliegue de Kubernetes.
    
    Para ver la imagen, seleccione un destino para el registro global con el mandato `ibmcloud cr region-set global`. Luego ejecute `ibmcloud cr images --include-ibm` para ver una lista de imágenes públicas de IBM. 
    {: tip}
@@ -200,6 +206,7 @@ Para hacer copia de seguridad de un PV existente:
     {: screen}
     
 5.  Compruebe que la copia de seguridad se ha ejecutado correctamente. 
+
     ```
     kubectl logs backuppod
     ```
@@ -208,7 +215,9 @@ Para hacer copia de seguridad de un PV existente:
 6.  Revise la copia de seguridad en {{site.data.keyword.cos_full_notm}} en la GUI de {{site.data.keyword.Bluemix_notm}}.
     1.  En el panel de control de {{site.data.keyword.Bluemix_notm}}, busque la instancia de servicio de {{site.data.keyword.cos_full_notm}}. 
     2.  En el área de navegación, seleccione **Grupos** y pulse en el grupo que ha utilizado en la configuración de la copia de seguridad. La copia de seguridad se visualiza como un objeto en el grupo. 
-    3.  Revise los archivos comprimidos. Puede descargar el archivo `vol1.difftar.gz`, extraer el archivo y verificar los datos que se han copiado. </br> **Importante**: si suprime o modifica algún archivo de {{site.data.keyword.cos_full_notm}}, estos archivos no se podrán recuperar.
+    3.  Revise los archivos comprimidos. Puede descargar el archivo `vol1.difftar.gz`, extraer el archivo y verificar los datos que se han copiado. 
+        
+        **Importante**: si suprime o modifica algún archivo de {{site.data.keyword.cos_full_notm}}, estos archivos no se podrán recuperar.
 
 Su copia de seguridad está disponible. Si ha configurado las copias de seguridad para crear una copia de seguridad completa puntual, deberá ejecutar el script de copia de seguridad cada vez que desee crear una nueva copia de seguridad. Si ha configurado el contenedor para ejecutar una copia de seguridad incremental periódicamente, la copia de seguridad se ejecutará según lo previsto.
 
@@ -217,14 +226,15 @@ Su copia de seguridad está disponible. Si ha configurado las copias de segurida
 
 Puede restaurar datos de la instancia de servicio de {{site.data.keyword.cos_full_notm}} en un PV del clúster. 
 
-Antes de empezar:
+**Antes de empezar**
 
 -   [Defina su clúster como destino de la CLI](/docs/containers/cs_cli_install.html#cs_cli_configure).
 -   [Cree una copia de seguridad para un PV en el clúster](#scheduled_backup).
 
-Para restaurar datos de {{site.data.keyword.cos_full_notm}} en un PV: 
+Para restaurar datos de {{site.data.keyword.cos_full_notm}} en un PV, complete los pasos siguientes: 
 
 1. Obtenga el nombre del PVC que enlaza el PV en el que desea restaurar los datos. 
+
    ```
    kubectl get pvc
    ```
@@ -300,7 +310,8 @@ Para restaurar datos de {{site.data.keyword.cos_full_notm}} en un PV:
      </tbody>
      </table>
 
-3.  Cree el pod de restauración y empiece a restaurar sus datos. 
+3.  Cree el pod de restauración y empiece a restaurar sus datos.
+
     ```
     kubectl apply -f restorepod.yaml
     ```
@@ -328,13 +339,15 @@ Para restaurar datos de {{site.data.keyword.cos_full_notm}} en un PV:
     ```
     {: pre}
 
-6.  Compruebe que los datos se han restaurado correctamente. 
+6.  Compruebe que los datos se han restaurado correctamente.
+
     ```
     kubectl logs restorepod
     ```
     {: pre}
 
 Ha restaurado satisfactoriamente la copia de seguridad. Ahora puede montar el PVC que enlaza el PV con cualquier otro pod del clúster para acceder a los archivos restaurados. Si los datos del contenedor a los que se ha realizado copia de seguridad incluían un usuario no root, deberá añadir permisos no root al nuevo contenedor. Para obtener más información, consulte [Adición de usuario no root a volúmenes](/docs/containers/cs_troubleshoot_storage.html#cs_storage_nonroot).
+
 
 ## Cifrado de las copias de seguridad 
 {: #encrypting_backups}
@@ -532,6 +545,7 @@ credenciales. Para **ENCRYPTION_PASSPHRASE**, incluya una frase de contraseña p
 
 Su copia de seguridad está cifrada. Para restaurar los archivos, siga los pasos del apartado [Restauración de datos de {{site.data.keyword.cos_full_notm}} en un PVC del clúster ](#restore_script_cli) e incluya el archivo `encryption.asc` en el directorio `backup_restore` del pod que ejecuta el proceso de restauración. Si la copia de seguridad está cifrada, debe proporcionar las variables de entorno **ENCRYPTION_REQUIRED** y **ENCRYPTION_PASSPHRASE** cuando cree el pod de restauración.
 
+
 ## Referencia de variables de entorno 
 {: #reference_backup_restore}
 
@@ -542,7 +556,7 @@ Revise la lista completa de campos que se pueden pasar como variables de entorno
 |ACCESS_KEY_ID|El valor **access_key_id** que forma parte de las credenciales de HMAC en {{site.data.keyword.cos_full_notm}}.|
 |SECRET_ACCESS_KEY|El valor **secret_access_key** que forma parte de las credenciales de HMAC en {{site.data.keyword.cos_full_notm}}.|
 |ENDPOINT|El nombre de host para acceder a los datos de grupo de {{site.data.keyword.cos_full_notm}}.|
-|BUCKET|El nombre del grupo de {{site.data.keyword.cos_full_notm}} en el que están almacenados los datos de los que se ha hecho copia de seguridad. |
+|BUCKET|El nombre del grupo de {{site.data.keyword.cos_full_notm}} en el que están almacenados los datos de los que se ha hecho copia de seguridad.|
 {: caption="Tabla 1. Variables de {{site.data.keyword.cos_full_notm}}" caption-side="top"}
 
 |Clave|Opciones del valor|

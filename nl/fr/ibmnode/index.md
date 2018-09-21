@@ -14,6 +14,6 @@ lastupdated: "2018-08-15"
 
 # Cette image n'est plus disponible
 
-Si vous recherchez l'image `ibmnode`, [vous pouvez la trouver sur Docker Hub](https://hub.docker.com/r/ibmcom/ibmnode/). 
+Si vous recherchez l'image `ibmnode`, [cherchez dans Docker Hub](https://hub.docker.com/r/ibmcom/ibmnode/). 
 
-Examinez d'autres [images IBM publiques](/docs/services/RegistryImages/index.html#ibm_images).
+Passez en revue d'autres [images publiques IBM](/docs/services/RegistryImages/index.html#ibm_images).
