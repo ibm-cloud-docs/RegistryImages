@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -21,6 +21,9 @@ lastupdated: "2018-08-21"
 The IBM® WebSphere® Application Server Liberty \(`ibmliberty`\) images are supplied for {{site.data.keyword.containerlong_notm}}.
 {:shortdesc}
 
+You can access the images that are provided by {{site.data.keyword.IBM_notm}} by using the command line, see [IBM public images](/docs/services/Registry/registry_public_images.html#public_images).
+{: tip}
+
 ## How it works 
 {: #how_it_works}
 
@@ -36,14 +39,14 @@ Every Liberty image provides the following software packages.
 -   IBM WebSphere Application Server for Developers Liberty
 -   IBM Java Runtime Environment 8.0
 
-The specific Liberty features that are installed in the image depend on the tag that you select. The following table shows, what features are included in each of the `ibmliberty` images. For more information about each feature, see the [Liberty features overview in IBM Knowledge Center ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html).
+The specific Liberty features that are installed in the image depend on the tag that you select. The following table shows, what features are included in each of the `ibmliberty` images. For more information about each feature, see the [Liberty features overview in IBM Knowledge Center ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html).
 
 |Tag|Description|
 |---|-----------|
 |All `ibmliberty` images|All `ibmliberty` images include the following features. <ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |`ibmliberty:latest`|This image points to the `ibmliberty:javaee7` image.|
-|`ibmliberty:microProfile`|This image contains the features that provide the capabilities specified by [MicroProfile ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://microprofile.io).|
-|`ibmliberty:webProfile6`|This image includes all features that are required for Java EE6 Web Profile compliance. It also pulls in additional features to bring the contents in to line with the features available for download by using the runtime JAR from [http://wasdev.net/ ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://wasdev.net/), most notably the features that are required for OSGi applications.|
+|`ibmliberty:microProfile`|This image contains the features that provide the capabilities specified by [MicroProfile ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://microprofile.io).|
+|`ibmliberty:webProfile6`|This image includes all features that are required for Java EE6 Web Profile compliance. It also pulls in additional features to bring the contents in to line with the features available for download by using the runtime JAR from [http://wasdev.net/ ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://wasdev.net/), most notably the features that are required for OSGi applications.|
 |`ibmliberty:webProfile7`|This image includes all features required for Java EE7 Web Profile compliance.|
 |`ibmliberty:javaee7`|This image includes all features from the `ibmliberty:webProfile7` image, plus features that are required for Java EE7 Full Platform compliance.|
 
@@ -64,7 +67,7 @@ The pricing for the `ibmliberty` image is independent of the pricing for the con
 To monitor the Java heap usage of your container instances, see [Monitoring the Java heap space usage for a container with the CLI](#monitor_heap).
 
 
-Review the terms of use for IBM certified images in the License section of the [websphere-liberty image ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://hub.docker.com/_/websphere-liberty/) on Docker Hub.
+Review the terms of use for IBM certified images in the License section of the [websphere-liberty image ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://hub.docker.com/_/websphere-liberty/) on Docker Hub.
 
 ## Getting started 
 {: #get_started}
@@ -107,10 +110,10 @@ After you create a container from the `ibmliberty` image, you can view metrics o
     ```
     {: pre}
 
-3.  To review the Java heap usage, you need to access the **RSS** memory stat. Follow the guidelines on how to access a shell of a container [here ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) and then review [Runtime metrics](/docs/containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) on how to find and format memory stat information for a container.
+3.  To review the Java heap usage, you need to access the **RSS** memory stat. Follow the guidelines on how to access a shell of a container, see [Get a Shell to a Running Container ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/).
 The Java heap usage is displayed in kilobytes. If your heap usage is under 2097152 kilobytes (2GB) across all instances, then you do not have to purchase a WebSphere Application Server license.
 
-4.  Adjust the maximum heap usage for your WebSphere Application Server instance. See [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) for more information.
+4.  Adjust the maximum heap usage for your WebSphere Application Server instance. See [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) for more information.
 
 ## Getting a WebSphere Application Server license 
 {: #license}
@@ -120,9 +123,9 @@ WebSphere Application Server licenses are based on the number of Processor Value
 
 Every container size in {{site.data.keyword.Bluemix_notm}} requires a specific number of PVU entitlements that must be available in the WebSphere Application Server license. Therefore, you must plan your `ibmliberty` containers prior to purchasing the license.
 
-To purchase a WebSphere Application Server License, contact [IBM Service ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us). If you already have a license for WebSphere Application Server v8.5 or newer, then you can use any unused PVUs from your existing entitlement for the deployment of your container.
+To purchase a WebSphere Application Server License, contact [IBM Service ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us). If you already have a license for WebSphere Application Server v8.5 or newer, then you can use any unused PVUs from your existing entitlement for the deployment of your container.
 
-If you find that you require more PVUs after you purchased the license, you can increase the amount by contacting [IBM Service ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us).
+If you find that you require more PVUs after you purchased the license, you can increase the amount by contacting [IBM Service ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us).
 
 ## Creating a production-licensed `ibmliberty` image to be used with {{site.data.keyword.containershort_notm}} 
 {: #prod_image}
@@ -130,8 +133,8 @@ If you find that you require more PVUs after you purchased the license, you can 
 Use your WebSphere Application Server license to create a production-licensed `ibmliberty` image that you can use with {{site.data.keyword.containershort_notm}}. Choose between one of the following tasks.
 {:shortdesc}
 
--   [Upgrade the image from Docker Hub to a production image ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
--   [Build your own production-licensed image ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install).
+-   [Upgrade the image from Docker Hub to a production image ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
+-   [Build your own production-licensed image ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install).
 
 After you create a production-licensed image, [push the image to your private registry](/docs/services/Registry/index.html) to use it with {{site.data.keyword.containershort_notm}}.
 
