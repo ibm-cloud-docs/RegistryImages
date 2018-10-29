@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-26"
 
 ---
 
@@ -19,6 +19,9 @@ lastupdated: "2018-08-21"
 
 The `ibmcloud-secure-perimeter-network` image contains tools for automating the configuration of Vyatta virtual router appliances within a Secure Perimeter.
 {:shortdesc}
+
+You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry/registry_public_images.html#public_images).
+{: tip}
 
 ## How it works
 {: #how-it-works}
@@ -64,7 +67,7 @@ Review the following tasks to learn how to use `ibmcloud-secure-perimeter-networ
 4.  Enter all other details as required.
 5.  Click **Create Cluster**.
 
-Review [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) documentation about how to get access to your cluster after it has been deployed.
+Review [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) documentation about how to get access to your cluster after it has been deployed.
 
 ## Run initial config of your Secure Perimeter Vyatta
 {: #initial_setup}
@@ -229,4 +232,4 @@ In order for `ibmcloud-secure-perimeter-network` image to manage subnets on your
 {: #prerequisites}
 
 -   Vyatta and VLANs that have been ordered from IBM Cloud infrastructure portal and VLANs have been associated to the Vyatta.
--   The automated Secure Perimeter deployment pre-loads the Vyatta with SSH keys that `ibmcloud-secure-perimeter-network` uses to access the gateway. SSH keys must be loaded either manually or through the Secure Perimeter installation process. Review the article [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) for more information.
+-   The automated Secure Perimeter deployment pre-loads the Vyatta with SSH keys that `ibmcloud-secure-perimeter-network` uses to access the gateway. SSH keys must be loaded either manually or through the Secure Perimeter installation process. Review the article [Set up an automated Secure Perimeter in IBM Cloud ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) for more information.
