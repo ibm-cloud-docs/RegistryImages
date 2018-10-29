@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-15"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -15,4 +15,5 @@ lastupdated: "2018-08-15"
 
 The `ibm-mq` image is no longer available.
 
-Review other [IBM public images](/docs/services/RegistryImages/index.html#ibm_images).
+You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry/registry_public_images.html#public_images).
+{: tip}
