@@ -8,8 +8,11 @@ lastupdated: "2018-10-29"
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
+{:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
+{:tip: .tip} 
+{:table: .aria-labeledby="caption"}
 
 # This image is no longer available
 
