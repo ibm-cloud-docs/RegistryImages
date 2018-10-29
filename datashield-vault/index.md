@@ -17,6 +17,7 @@ lastupdated: "2018-10-26"
 # Getting started with the `datashield-vault` image
 {: #datashield-vault_starter}
 
+
 This container image runs Vault in the Data Shield environment, providing protection for data in use.
 {:shortdesc}
 
