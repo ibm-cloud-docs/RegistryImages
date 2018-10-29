@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -19,6 +19,9 @@ lastupdated: "2018-08-21"
 
 The `ibm-backup-restore` image contains the preinstalled packages that are needed to back up and restore persistent storage in {{site.data.keyword.containerlong}}.
 {:shortdesc}
+
+You can access the images that are provided by {{site.data.keyword.IBM_notm}} by using the command line, see [IBM public images](/docs/services/Registry/registry_public_images.html#public_images).
+{: tip}
 
 ## How it works 
 {: #how_it_works}
@@ -50,7 +53,7 @@ Create and configure an {{site.data.keyword.cos_full_notm}} service instance to 
 {: shortdesc}
 
 1. Deploy an {{site.data.keyword.cos_full_notm}} service instance.
-   1.  Open the [{{site.data.keyword.Bluemix_notm}} catalog](https://console.bluemix.net/catalog/services/cloud-object-storage).
+   1.  Open the [{{site.data.keyword.Bluemix_notm}} catalog ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/catalog/services/cloud-object-storage).
    2.  Enter a name for your service instance, such as `cos-backup`, and select **default** as your resource group. 
    3.  Review the [plan options ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage#s3api) for pricing information and select a plan. 
    4.  Click **Create**.
