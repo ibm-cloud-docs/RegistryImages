@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-09-14"
+lastupdated: "2018-10-26"
 
 ---
 
@@ -19,6 +19,9 @@ lastupdated: "2018-09-14"
 
 This container image runs MariaDB in the Data Shield environment, providing protection for data in use.
 {:shortdesc}
+
+You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry/registry_public_images.html#public_images).
+{: tip}
 
 You can use the following Kubernetes pod spec to deploy the image:
 
