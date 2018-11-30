@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -21,6 +21,9 @@ lastupdated: "2018-08-21"
 为 {{site.data.keyword.containerlong_notm}} 提供了 IBM® WebSphere® Application Server Liberty \(`ibmliberty`\) 映像。
 {:shortdesc}
 
+您可以使用命令行来访问 {{site.data.keyword.IBM_notm}} 提供的映像，请参阅 [IBM 公共映像](/docs/services/Registry/registry_public_images.html#public_images)。
+{: tip}
+
 ## 工作原理 
 {: #how_it_works}
 
@@ -36,14 +39,14 @@ lastupdated: "2018-08-21"
 -   IBM WebSphere Application Server for Developers Liberty
 -   IBM Java Runtime Environment 8.0
 
-映像中具体安装了哪些 Liberty 功能部件取决于您所选择的标记。下表显示了每个 `ibmliberty` 映像中包含的功能部件。有关每个功能部件的更多信息，请参阅 [IBM Knowledge Center 上的 Liberty 功能部件概述 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html)。
+映像中具体安装了哪些 Liberty 功能部件取决于您所选择的标记。下表显示了每个 `ibmliberty` 映像中包含的功能部件。有关每个功能部件的更多信息，请参阅 [IBM Knowledge Center 上的 Liberty 功能部件概述 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html)。
 
 |标记|描述|
 |---|-----------|
 |所有 `ibmliberty` 映像|所有 `ibmliberty` 映像都包含以下功能部件。<ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |`ibmliberty:latest`|此映像指向 `ibmliberty:javaee7` 映像。|
-|`ibmliberty:microProfile`|此映像包含的功能部件提供 [MicroProfile ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://microprofile.io) 指定的功能。|
-|`ibmliberty:webProfile6`|此映像包含 Java EE6 Web Profile 合规性所要求的所有功能部件。此映像还可通过运行时 JAR 从 [http://wasdev.net/ ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](http://wasdev.net/) 拉入其他功能部件，使其内容与可供下载功能部件保持一致，其中最主要是 OSGi 应用程序所需的功能部件。|
+|`ibmliberty:microProfile`|此映像包含的功能部件提供 [MicroProfile ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://microprofile.io) 指定的功能。|
+|`ibmliberty:webProfile6`|此映像包含 Java EE6 Web Profile 合规性所要求的所有功能部件。此映像还可通过运行时 JAR 从 [http://wasdev.net/ ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](http://wasdev.net/) 拉入其他功能部件，使其内容与可供下载功能部件保持一致，其中最主要是 OSGi 应用程序所需的功能部件。|
 |`ibmliberty:webProfile7`|此映像包含 Java EE7 Web Profile 合规性所要求的所有功能部件。|
 |`ibmliberty:javaee7`|此映像包含 `ibmliberty:webProfile7` 映像中的所有功能部件，以及 Java EE7 Full Platform 合规性所要求的功能部件。|
 
@@ -64,7 +67,7 @@ lastupdated: "2018-08-21"
 要监视容器实例的 Java 堆使用量，请参阅[使用 CLI 监视容器的 Java 堆空间使用量](#monitor_heap)。
 
 
-在 Docker Hub 上 [websphere-liberty 映像 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://hub.docker.com/_/websphere-liberty/) 的“许可”部分中复查 IBM 认证映像的使用条款。
+在 Docker Hub 上 [websphere-liberty 映像 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://hub.docker.com/_/websphere-liberty/) 的“许可”部分中复查 IBM 认证映像的使用条款。
 
 ## 入门 
 {: #get_started}
@@ -107,9 +110,9 @@ lastupdated: "2018-08-21"
     ```
     {: pre}
 
-3.  要复查 Java 堆使用量，您需要访问 **RSS** 内存统计信息。遵循[此处 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) 有关如何访问容器 shell 的准则，然后复查[运行时度量值](/docs/containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io)，以了解如何查找容器的内存统计信息并设置其格式。Java 堆使用量以 KB 显示。如果跨所有实例堆使用量低于 2097152 KB (2GB)，那么您无需购买 WebSphere Application Server 许可。
+3.  要复查 Java 堆使用量，您需要访问 **RSS** 内存统计信息。请按照有关如何访问容器 shell 的准则来执行操作。相关信息，请参阅 [Get a Shell to a Running Container ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)。Java 堆使用量以 KB 显示。如果跨所有实例堆使用量低于 2097152 KB (2GB)，那么您无需购买 WebSphere Application Server 许可。
 
-4.  针对 WebSphere Application Server 实例，调整最大堆使用量。有关更多信息，请参阅[在 WebSphere Application Server V8.5 Liberty 概要文件中设置通用 JVM 参数 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)。
+4.  针对 WebSphere Application Server 实例，调整最大堆使用量。有关更多信息，请参阅[在 WebSphere Application Server V8.5 Liberty 概要文件中设置通用 JVM 参数 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)。
 
 ## 获取 WebSphere Application Server 许可 
 {: #license}
@@ -121,11 +124,11 @@ WebSphere Application Server 许可基于您所需的处理器价值单元 \(PVU
 Application Server 许可中提供。因此，在购买许可之前，必须计划 `ibmliberty` 容器。
 
 
-要购买 WebSphere Application Server 许可，请联系 [IBM 服务中心 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us)。如果您已拥有 WebSphere
+要购买 WebSphere Application Server 许可，请联系 [IBM 服务中心 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us)。如果您已拥有 WebSphere
 Application Server V8.5 或更新版本的许可，那么可以使用现有授权中未使用的任何 PVU 来部署容器。
 
 
-如果您在购买许可之后发现还需要更多的 PVU，那么可以联系 [IBM 服务中心 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us) 以增加数量。
+如果您在购买许可之后发现还需要更多的 PVU，那么可以联系 [IBM 服务中心 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us) 以增加数量。
 
 ## 创建与 {{site.data.keyword.containershort_notm}} 一起使用的生产许可 `ibmliberty` 映像 
 {: #prod_image}
@@ -133,8 +136,8 @@ Application Server V8.5 或更新版本的许可，那么可以使用现有授�
 使用 WebSphere Application Server 许可，可以创建能够与 {{site.data.keyword.containershort_notm}} 一起使用的生产许可 `ibmliberty` 映像。选择以下其中一个任务。
 {:shortdesc}
 
--   [将 Docker Hub 中的映像升级到生产映像 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade)。
--   [构建自己的生产许可映像 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install)。
+-   [将 Docker Hub 中的映像升级到生产映像 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade)。
+-   [构建自己的生产许可映像 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install)。
 
 创建生产许可映像之后，[将映像推送至专用注册表](/docs/services/Registry/index.html)，以与 {{site.data.keyword.containershort_notm}} 一起使用。
 

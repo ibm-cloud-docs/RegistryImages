@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -19,6 +19,9 @@ lastupdated: "2018-08-21"
 
 La imagen `ibm-backup-restore` contiene los paquetes preinstalados necesarios para realizar copia de seguridad y restaurar el almacén persistente de {{site.data.keyword.containerlong}}.
 {:shortdesc}
+
+Puede acceder a las imágenes que suministra {{site.data.keyword.IBM_notm}} desde la línea de mandatos; consulte las [imágenes públicas de IBM](/docs/services/Registry/registry_public_images.html#public_images).
+{: tip}
 
 ## Modo de funcionamiento 
 {: #how_it_works}
@@ -50,7 +53,7 @@ Cree y configure una instancia de servicio de {{site.data.keyword.cos_full_notm}
 {: shortdesc}
 
 1. Despliegue una instancia de servicio de {{site.data.keyword.cos_full_notm}}.
-   1.  Abra el catálogo de [{{site.data.keyword.Bluemix_notm}}](https://console.bluemix.net/catalog/services/cloud-object-storage).
+   1.  Abra el [catálogo de {{site.data.keyword.Bluemix_notm}} ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/cloud-object-storage).
    2.  Especifique un nombre para la instancia de servicio, como por ejemplo `cos-backup`, y seleccione **default**
 como grupo de recursos. 
    3.  Revise las [opciones del plan ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage#s3api) para ver la información sobre precios y seleccione un plan. 

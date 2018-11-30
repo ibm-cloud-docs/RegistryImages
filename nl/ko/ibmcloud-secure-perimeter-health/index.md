@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-26"
 
 ---
 
@@ -17,20 +17,23 @@ lastupdated: "2018-08-21"
 # `ibmcloud-secure-perimeter-health` 이미지 시작하기
 {: #ibmcloud-secure-perimeter-health}
 
-`ibmcloud-secure-perimeter-health` 이미지에 IBM Cloud의 보안 경계에서 취약성을 스캔하기 위한 도구가 있습니다.
+`ibmcloud-secure-perimeter-health` 이미지에 {{site.data.keyword.cloud}}의 보안 경계에서 취약성을 스캔하기 위한 도구가 포함되어 있습니다.
 {:shortdesc}
+
+명령행을 사용하여 {{site.data.keyword.IBM_notm}}에서 제공한 이미지에 액세스할 수 있습니다. [IBM 공용 이미지](/docs/services/Registry/registry_public_images.html#public_images)를 참조하십시오.
+{: tip}
 
 ## 작동 방식
 {: #how-it-works}
 
-보안 경계가 올바르게 작동하는지 확인하려면 `ibmcloud-secure-perimeter-health`가 IBM Cloud 인프라 계정에서 공용 또는 사설 네트워크를 스캔하고 취약성을 보고할 수 있습니다. 다음 두 가지 방법으로 **ibmcloud-secure-perimeter-health** 이미지를 사용할 수 있습니다.
+보안 경계가 올바르게 작동하는지 확인하기 위해, `ibmcloud-secure-perimeter-health`에서 {{site.data.keyword.cloud_notm}} 인프라 계정의 공용 또는 사설 네트워크를 스캔하고 취약성을 보고할 수 있습니다. 다음 두 가지 방법으로 **ibmcloud-secure-perimeter-health** 이미지를 사용할 수 있습니다.
 
 -   보안 경계 내 Kubernetes 클러스터에서 `ibmcloud-secure-perimeter-health`를 팟(Pod)으로 사용하여 사설 네트워크 노출을 스캔하십시오.
 -   워크스테이션에서 `ibmcloud-secure-perimeter-health`를 독립형 Docker 컨테이너로 사용하여 사설 네트워크 노출을 스캔하십시오.
 
 보안 경계에 대한 자세한 정보는 다음 블로그 기사에 있습니다.
-  * [Set up a Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
-  * [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
+  * [Set up a Secure Perimeter in {{site.data.keyword.cloud_notm}} ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/).
+  * [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}} ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
 
 스캔 후 `ibmcloud-secure-perimeter-health` 이미지는 보안 경계 세그먼트에서 도달할 수 있는 네트워크에 대한 보고서를 생성합니다. 각 보고서에서는 네트워크 게이트웨이의 이름, VLAN, 해당 서브넷 및 문제 호스트에 대해 자세히 설명합니다. 사설 네트워크 취약성을 스캔한 사용자의 보고서 예는 다음과 같습니다.
 
@@ -72,7 +75,7 @@ sp-gateway-8a9031ab:
 
 다음 태스크를 검토하여 `ibmcloud-secure-perimeter-health` 사용 방법을 학습하십시오.
 
-1.  [{{site.data.keyword.containerlong}}를 사용하여 보안 경계 내에서 Kubernetes 클러스터 프로비저닝](#provision_cluster)
+1.  [{{site.data.keyword.containerlong_notm}}를 사용하여 보안 경계 내에서 Kubernetes 클러스터 프로비저닝](#provision_cluster)
 2.  [보안 경계 내에서 사설 네트워크 스캔](#private_networks)
 3.  [보안 경계 외부에서 공용 네트워크 스캔](#public_networks)
 4.  [스캔 결과 이해](#scan_results)
@@ -83,13 +86,13 @@ sp-gateway-8a9031ab:
 ## {{site.data.keyword.containerlong_notm}}를 사용하여 보안 경계 내에서 Kubernetes 클러스터 프로비저닝
 {: #provision_cluster}
 
-1.  IBM Cloud 카탈로그의 **컨테이너** 섹션에서 Kubernetes 클러스터를 프로비저닝하십시오.
+1.  {{site.data.keyword.cloud_notm}} 카탈로그의 **컨테이너** 섹션에서 Kubernetes 클러스터를 프로비저닝하십시오. 
 2.  **작성**을 클릭하십시오.
 3.  VLAN 드롭 다운 메뉴에서 보안 경계 세그먼트의 공용 및 사설 VLAN을 선택하십시오.
 4.  필요에 따라 다른 모든 세부사항을 입력하십시오.
 5.  **클러스터 작성**을 클릭하십시오.
 
-클러스터가 배치된 후 클러스터에 대한 액세스를 확보하는 방법에 대한 [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) 문서를 검토하십시오.
+클러스터가 배치된 후 클러스터에 대한 액세스를 확보하는 방법에 대한 [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) 문서를 검토하십시오.
 
 ## 보안 경계 내에서 사설 네트워크 스캔
 {: #private_networks}
@@ -100,7 +103,6 @@ sp-gateway-8a9031ab:
 
 -   필수 [CLI](/docs/containers/cs_cli_install.html#cs_cli_install)를 설치하십시오.
 -   클러스터를 [CLI의 대상으로 지정](/docs/containers/cs_cli_install.html#cs_cli_configure)하십시오.
-
 
 1. 구성 파일 _health-pod.yaml_을 작성하십시오. 이 파일은 컨테이너 팟(Pod)의 고가용성 배치를 작성합니다.
 

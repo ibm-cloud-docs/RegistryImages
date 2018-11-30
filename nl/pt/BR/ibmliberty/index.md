@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -20,6 +20,9 @@ lastupdated: "2018-08-21"
 
 As imagens do IBM® WebSphere® Application Server Liberty \(`ibmliberty`\) são fornecidas para o {{site.data.keyword.containerlong_notm}}.
 {:shortdesc}
+
+É possível acessar as imagens que são fornecidas pela {{site.data.keyword.IBM_notm}} usando a linha de comandos. Consulte [Imagens públicas da IBM](/docs/services/Registry/registry_public_images.html#public_images).
+{: tip}
 
 ## Como ele Funciona 
 {: #how_it_works}
@@ -40,16 +43,16 @@ imagem do Liberty fornece os pacotes de software a seguir.
 Os
 recursos específicos do Liberty que são instalados na imagem dependem da tag que você
 seleciona. A tabela a seguir mostra quais recursos estão incluídos em cada uma das
-imagens `ibmliberty`. Para obter mais informações sobre cada recurso, consulte a [Visão geral dos recursos do Liberty no IBM Knowledge Center ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html).
+imagens `ibmliberty`. Para obter mais informações sobre cada recurso, consulte a [Visão geral dos recursos do Liberty no IBM Knowledge Center ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html).
 
 |Marcação|Descrição|
 |---|-----------|
 |Todas as imagens `ibmliberty`|Todas as imagens `ibmliberty` incluem os recursos a
 seguir. <ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |`ibmliberty:latest`|Esta imagem aponta para a imagem `ibmliberty:javaee7`.|
-|` ibmliberty:microProfile `|Essa imagem contém os recursos que fornecem as capacidades especificadas pelo [MicroProfile ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://microprofile.io).|
+|` ibmliberty:microProfile `|Essa imagem contém os recursos que fornecem as capacidades especificadas pelo [MicroProfile ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://microprofile.io).|
 |`ibmliberty:webProfile6`|Esta imagem inclui todos os recursos que são necessários para conformidade com o
-perfil da web do Java EE6. Ela também extrai recursos adicionais para alinhar o conteúdo aos recursos disponíveis para download usando o JAR de tempo de execução de [http://wasdev.net/ ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](http://wasdev.net/), mais notavelmente os recursos que são necessários para aplicativos OSGi.|
+perfil da web do Java EE6. Ela também extrai recursos adicionais para alinhar o conteúdo aos recursos disponíveis para download usando o JAR de tempo de execução de [http://wasdev.net/ ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](http://wasdev.net/), mais notavelmente os recursos que são necessários para aplicativos OSGi.|
 |`ibmliberty:webProfile7`|Esta imagem inclui todos os recursos necessários para conformidade com o
 perfil da web do Java EE7.|
 |`ibmliberty:javaee7`|Esta imagem inclui todos os recursos da imagem
@@ -78,7 +81,7 @@ exemplo, é possível ter instâncias de heap do Liberty 2 x 1 GB ou 4 x 512 MB 
 Para monitorar o uso de heap Java de suas instâncias do contêiner, consulte [Monitorando o uso de espaço de heap Java para um contêiner com a CLI](#monitor_heap).
 
 
-Revise os termos de uso para imagens certificadas pela IBM na seção Licença da [imagem websphere-liberty ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://hub.docker.com/_/websphere-liberty/) no Docker Hub.
+Revise os termos de uso para imagens certificadas pela IBM na seção Licença da [imagem websphere-liberty ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://hub.docker.com/_/websphere-liberty/) no Docker Hub.
 
 ## Iniciar 
 {: #get_started}
@@ -124,11 +127,11 @@ disponível para o aplicativo Java durante o tempo de execução.
     ```
     {: pre}
 
-3.  Para revisar o uso de heap Java, é necessário acessar a estatística de memória **RSS**. Siga as diretrizes sobre como acessar um shell de um contêiner [aqui ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) e, em seguida, revise [Métricas de tempo de execução](/docs/containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) para saber como localizar e formatar informações de estatísticas de memória para um contêiner.
+3.  Para revisar o uso de heap Java, é necessário acessar a estatística de memória **RSS**. Siga as diretrizes sobre como acessar um shell de um contêiner. Consulte [Obter um shell para um contêiner em execução ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo") ](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/).
 O uso de heap Java é exibido em kilobytes. Se seu uso de heap estiver abaixo de 2.097.152 kilobytes
 (2 GB) em todas as instâncias, não será necessário comprar uma licença do WebSphere Application Server.
 
-4.  Ajuste o uso máximo de heap para sua instância do WebSphere Application Server. Consulte [Configurando argumentos genéricos da JVM no perfil Liberty do WebSphere Application Server V8.5 ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) para obter mais informações.
+4.  Ajuste o uso máximo de heap para sua instância do WebSphere Application Server. Consulte [Configurando argumentos genéricos da JVM no perfil Liberty do WebSphere Application Server V8.5 ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) para obter mais informações.
 
 ## Obtendo uma licença do WebSphere Application Server 
 {: #license}
@@ -140,11 +143,11 @@ Cada tamanho de contêiner no {{site.data.keyword.Bluemix_notm}} requer um núme
 do WebSphere Application Server. Portanto, deve-se planejar seus contêineres do `ibmliberty`
 antes de comprar a licença.
 
-Para comprar uma licença do WebSphere Application Server, entre em contato com o [Serviço IBM ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us). Se você já tiver uma licença para o WebSphere
+Para comprar uma licença do WebSphere Application Server, entre em contato com o [Serviço IBM ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us). Se você já tiver uma licença para o WebSphere
 Application Server v8.5 ou mais recente, será possível usar qualquer PVU não usada de sua autorização existente
 para a implementação de seu contêiner.
 
-Se você descobrir que precisa de mais PVUs depois de comprar a licença, será possível aumentar a quantia entrando em contato com o [Serviço IBM ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us).
+Se você descobrir que precisa de mais PVUs depois de comprar a licença, será possível aumentar a quantia entrando em contato com o [Serviço IBM ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us).
 
 ## Criando uma imagem `ibmliberty` licenciada para produção para ser usada com o
 {{site.data.keyword.containershort_notm}} 
@@ -155,8 +158,8 @@ Use a licença do WebSphere Application Server para criar uma imagem
 a seguir.
 {:shortdesc}
 
--   [Faça upgrade da imagem do Docker Hub para uma imagem de produção ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
--   [Crie sua própria imagem licenciada para produção ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install).
+-   [Faça upgrade da imagem do Docker Hub para uma imagem de produção ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
+-   [Construa a sua própria imagem licenciada de produção ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install).
 
 Depois de criar uma imagem licenciada para produção, [envie por push imagem para seu registro privado](/docs/services/Registry/index.html) para usá-la com o {{site.data.keyword.containershort_notm}}.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-26"
 
 ---
 
@@ -19,6 +19,9 @@ lastupdated: "2018-08-21"
 
 `ibmcloud-secure-perimeter-network` 映像檔包含一些工具，可用來在 Secure Perimeter 內自動化 Vyatta Virtual Router Appliance 的配置。
 {:shortdesc}
+
+您可以使用指令行存取 {{site.data.keyword.IBM}} 所提供的映像檔，請參閱 [IBM 公用映像檔](/docs/services/Registry/registry_public_images.html#public_images)。
+{: tip}
 
 ## 如何運作
 {: #how-it-works}
@@ -64,7 +67,7 @@ lastupdated: "2018-08-21"
 4.  視需要輸入所有其他詳細資料。
 5.  按一下**建立叢集**。
 
-檢閱 [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) 文件，瞭解如何在部署完叢集之後取得該叢集的存取權。
+檢閱 [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) 文件，瞭解如何在部署完叢集之後取得該叢集的存取權。
 
 ## 執行 Secure Perimeter Vyatta 的起始配置
 {: #initial_setup}
@@ -229,4 +232,4 @@ kubectl apply -f restore-pvc.yaml
 {: #prerequisites}
 
 -   已從 IBM Cloud 基礎架構入口網站購買 Vyatta 與 VLAN，且 VLAN 已與 Vyatta 相關聯。
--   自動化 Secure Perimeter 部署已預先載入 Vyatta 以及 `ibmcloud-secure-perimeter-network` 用來存取閘道的 SSH 金鑰。SSH 金鑰必須以手動方式載入，或者透過 Secure Perimeter 安裝處理程序來載入。如需相關資訊，請檢閱[在 IBM Cloud 中設定自動化 Secure Perimeter](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) 文章。
+-   自動化 Secure Perimeter 部署已預先載入 Vyatta 以及 `ibmcloud-secure-perimeter-network` 用來存取閘道的 SSH 金鑰。SSH 金鑰必須以手動方式載入，或者透過 Secure Perimeter 安裝處理程序來載入。如需相關資訊，請檢閱文章 [Set up an automated Secure Perimeter in IBM Cloud ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)。

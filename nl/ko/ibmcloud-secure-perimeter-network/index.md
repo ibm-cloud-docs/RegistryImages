@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-26"
 
 ---
 
@@ -19,6 +19,9 @@ lastupdated: "2018-08-21"
 
 `ibmcloud-secure-perimeter-network` 이미지는 보안 경계 내 Vyatta 가상 라우터 어플라이언스의 구성을 자동화하기 위한 도구를 포함합니다.
 {:shortdesc}
+
+명령행을 사용하여 {{site.data.keyword.IBM}}에서 제공한 이미지에 액세스할 수 있습니다. [IBM 공용 이미지](/docs/services/Registry/registry_public_images.html#public_images)를 참조하십시오.
+{: tip}
 
 ## 작동 방식
 {: #how-it-works}
@@ -64,7 +67,7 @@ lastupdated: "2018-08-21"
 4.  필요에 따라 다른 모든 세부사항을 입력하십시오.
 5.  **클러스터 작성**을 클릭하십시오.
 
-클러스터가 배치된 후 클러스터에 대한 액세스를 확보하는 방법에 대한 [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) 문서를 검토하십시오.
+클러스터가 배치된 후 클러스터에 대한 액세스를 확보하는 방법에 대한 [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) 문서를 검토하십시오.
 
 ## 보안 경계 Vyatta의 초기 구성 실행
 {: #initial_setup}
@@ -225,8 +228,8 @@ lastupdated: "2018-08-21"
 |userips|보안 경계에 화이트리스트로 지정할 사용자 IP의 목록
 {: caption="표 2. rules.conf" caption-side="top"}
 
-## 전제조건
+## 선행 조건
 {: #prerequisites}
 
 -   Vyatta 및 VLAN은 IBM Cloud 인프라 포털을 통해 주문되었으며 VLAN은 Vyatta에 연관되어 있습니다.
--   자동화된 보안 경계 배치는 `ibmcloud-secure-perimeter-network`가 게이트웨이에 액세스하는 데 사용하는 SSH 키로 Vyatta를 미리 로드합니다. SSH 키는 보안 경계 설치 프로세스를 통해 또는 수동으로 로드되어야 합니다. 자세한 정보는 [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) 기사를 검토하십시오.
+-   자동화된 보안 경계 배치는 `ibmcloud-secure-perimeter-network`가 게이트웨이에 액세스하는 데 사용하는 SSH 키로 Vyatta를 미리 로드합니다. SSH 키는 보안 경계 설치 프로세스를 통해 또는 수동으로 로드되어야 합니다. 자세한 정보는 [Set up an automated Secure Perimeter in IBM Cloud ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) 기사를 검토하십시오. 

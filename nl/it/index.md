@@ -4,7 +4,7 @@ copyright:
 
   years: 2014, 2018
 
-lastupdated: "2018-08-16"
+lastupdated: "2018-09-14"
 
 ---
 
@@ -19,6 +19,31 @@ Puoi utilizzare le seguenti immagini pubbliche per creare contenitori in {{site.
 
 
 <ul class="runtimeIconList">
+  
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Per ulteriori informazioni sull'immagine datashield-barbican, controlla la documentazione."></p>
+<p class="runtimeTitle">datashield-barbican<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-barbican/index.html" scope="peer" title="Per ulteriori informazioni sull'immagine datashield-barbican, controlla la documentazione.">VISUALIZZA DOCUMENTI</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Per ulteriori informazioni sull'immagine datashield-mysql, controlla la documentazione."></p>
+<p class="runtimeTitle">datashield-mysql<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-mysql/index.html" scope="peer" title="Per ulteriori informazioni sull'immagine datashield-mysql, controlla la documentazione.">VISUALIZZA DOCUMENTI</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Per ulteriori informazioni sull'immagine datashield-nginx, controlla la documentazione."></p>
+<p class="runtimeTitle">datashield-nginx<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-nginx/index.html" scope="peer" title="Per ulteriori informazioni sull'immagine datashield-nginx, controlla la documentazione.">VISUALIZZA DOCUMENTI</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Per ulteriori informazioni sull'immagine datashield-vault, controlla la documentazione."></p>
+<p class="runtimeTitle">datashield-vault<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-vault/index.html" scope="peer" title="Per ulteriori informazioni sull'immagine datashield-vault, controlla la documentazione.">VISUALIZZA DOCUMENTI</a></p>
+</li>
+
 <li>
 <p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Per ulteriori informazioni sull'immagine ibm-backup-restore, consulta la documentazione."></p>
 <p class="runtimeTitle">ibm-backup-restore<br /> <br /></p>

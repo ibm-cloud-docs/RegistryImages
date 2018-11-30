@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -21,6 +21,9 @@ lastupdated: "2018-08-21"
 IBM® WebSphere® Application Server Liberty (`ibmliberty`) 映像檔是提供給 {{site.data.keyword.containerlong_notm}}。
 {:shortdesc}
 
+您可以使用指令行存取 {{site.data.keyword.IBM_notm}} 所提供的映像檔，請參閱 [IBM 公用映像檔](/docs/services/Registry/registry_public_images.html#public_images)。
+{: tip}
+
 ## 如何運作 
 {: #how_it_works}
 
@@ -36,14 +39,14 @@ IBM® WebSphere® Application Server Liberty (`ibmliberty`) 映像檔是提供�
 -   IBM WebSphere Application Server for Developers Liberty
 -   IBM Java Runtime Environment 8.0
 
-映像檔中安裝的特定 Liberty 特性取決於您選取的標籤。下表顯示每一個 `ibmliberty` 映像檔中包含哪些特性。如需每一個特性的相關資訊，請參閱 [IBM Knowledge Center 中的 Liberty 特性概觀 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html)。
+映像檔中安裝的特定 Liberty 特性取決於您選取的標籤。下表顯示每一個 `ibmliberty` 映像檔中包含哪些特性。如需每一個特性的相關資訊，請參閱 [IBM Knowledge Center 中的 Liberty 特性概觀 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html)。
 
 |標籤|說明|
 |---|-----------|
 |所有 `ibmliberty` 映像檔|所有 `ibmliberty` 映像檔包含下列特性。<ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |`ibmliberty:latest`|此映像檔指向 `ibmliberty:javaee7` 映像檔。|
-|`ibmliberty:microProfile`|此映像檔包含提供 [MicroProfile ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://microprofile.io) 指定功能的特性。|
-|`ibmliberty:webProfile6`|此映像檔包含「Java EE6 Web 設定檔」相符性所需的一切特性。它也會取回其他特性，使內容與可以使用運行環境 JAR 從 [http://wasdev.net/ ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](http://wasdev.net/) 下載之特性保持一致，最值得注意的是 OSGi 應用程式所需的特性。|
+|`ibmliberty:microProfile`|此映像檔包含提供 [MicroProfile ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://microprofile.io) 指定功能的特性。|
+|`ibmliberty:webProfile6`|此映像檔包含「Java EE6 Web 設定檔」相符性所需的一切特性。它也會取回其他特性，使內容與可以使用運行環境 JAR 從 [http://wasdev.net/ ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](http://wasdev.net/) 下載之特性保持一致，最值得注意的是 OSGi 應用程式所需的特性。|
 |`ibmliberty:webProfile7`|此映像檔包含「Java EE7 Web 設定檔」相符性所需的一切特性。|
 |`ibmliberty:javaee7`|此映像檔包含來自 `ibmliberty:webProfile7` 映像檔的所有特性，加上「Java EE7 完整平台」相符性所需的特性。|
 
@@ -64,7 +67,7 @@ IBM® WebSphere® Application Server Liberty (`ibmliberty`) 映像檔是提供�
 若要監視容器實例的 Java 資料堆用量，請參閱[使用 CLI 監視容器的 Java 資料堆空間用量](#monitor_heap)。
 
 
-請在 Docker Hub 上 [websphere-liberty 映像檔 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://hub.docker.com/_/websphere-liberty/) 的 License 一節中，檢閱 IBM 認證映像檔的使用條款。
+請在 Docker Hub 上 [websphere-liberty 映像檔 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://hub.docker.com/_/websphere-liberty/) 的 License 一節中，檢閱 IBM 認證映像檔的使用條款。
 
 ## 開始使用 
 {: #get_started}
@@ -82,7 +85,8 @@ IBM® WebSphere® Application Server Liberty (`ibmliberty`) 映像檔是提供�
     -   [開始使用 IBM Cloud Kubernetes Service](/docs/containers/container_index.html#container_index)
     -   [在叢集中部署應用程式](/docs/containers/cs_app.html#app)
     
-    `ibmliberty` 映像檔需要公開埠 9080。從「{{site.data.keyword.Bluemix_notm}} 儀表板」中建立容器時，預設會在**公用埠**欄位中新增埠。如果從 CLI 建立容器，請在 `kubectl run` 指令中以 `--port=9080` 選項公開埠。{:tip}
+    `ibmliberty` 映像檔需要公開埠 9080。從「{{site.data.keyword.Bluemix_notm}} 儀表板」中建立容器時，預設會在**公用埠**欄位中新增埠。如果從 CLI 建立容器，請在 `kubectl run` 指令中以 `--port=9080` 選項公開埠。
+    {:tip}
 
 
 ## 使用 CLI 監視容器的 Java 資料堆空間用量 
@@ -106,9 +110,10 @@ IBM® WebSphere® Application Server Liberty (`ibmliberty`) 映像檔是提供�
     ```
     {: pre}
 
-3.  若要檢閱 Java 資料堆使用情形，您需要存取 **RSS** 記憶體統計資料。請遵循[這裡 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) 的容器 Shell 存取準則，然後檢閱[運行環境度量值](/docs/containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io)，以瞭解如何尋找和格式化容器的記憶體統計資訊。Java 資料堆用量會以 KB 為單位來顯示。如果所有實例的資料堆用量低於 2097152 KB (2GB)，則不需要購買 WebSphere Application Server 授權。
+3.  若要檢閱 Java 資料堆使用情形，您需要存取 **RSS** 記憶體統計資料。請遵循容器 Shell 存取準則，並參閱 [Get a Shell to a Running Container ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)。
+Java 資料堆用量會以 KB 為單位來顯示。如果所有實例的資料堆用量低於 2097152 KB (2GB)，則不需要購買 WebSphere Application Server 授權。
 
-4.  調整 WebSphere Application Server 實例的資料堆用量上限。如需相關資訊，請參閱 [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)。
+4.  調整 WebSphere Application Server 實例的資料堆用量上限。如需相關資訊，請參閱 [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)。
 
 ## 取得 WebSphere Application Server 授權 
 {: #license}
@@ -118,9 +123,9 @@ WebSphere Application Server 授權是根據所需的「處理器價值單位 (P
 
 {{site.data.keyword.Bluemix_notm}} 中的每個容器大小都需要在 WebSphere Application Server 授權中必須具有特定數目的 PVU 授權。因此，您必須先計劃 `ibmliberty` 容器，再購買授權。
 
-若要購買 WebSphere Application Server 授權，請與 [IBM 服務中心 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us) 聯絡。如果您已有 WebSphere Application Server 8.5 版或更新版本的授權，則可以使用現有授權中的任何未用 PVU 來部署容器。
+若要購買 WebSphere Application Server 授權，請與 [IBM 服務中心 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us) 聯絡。如果您已有 WebSphere Application Server 8.5 版或更新版本的授權，則可以使用現有授權中的任何未用 PVU 來部署容器。
 
-如果您在購買授權之後發現需要更多的 PVU，則可以與 [IBM 服務中心 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us) 聯絡來增加數量。
+如果您在購買授權之後發現需要更多的 PVU，則可以與 [IBM 服務中心 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us) 聯絡來增加數量。
 
 ## 建立要與 {{site.data.keyword.containershort_notm}} 搭配使用的正式作業授權 `ibmliberty` 映像檔 
 {: #prod_image}
@@ -128,8 +133,8 @@ WebSphere Application Server 授權是根據所需的「處理器價值單位 (P
 使用 WebSphere Application Server 授權，來建立可與 {{site.data.keyword.containershort_notm}} 搭配使用的正式作業授權 `ibmliberty` 映像檔。請選擇下列其中一個作業。
 {:shortdesc}
 
--   [將映像檔從 Docker Hub 升級至正式作業映像檔 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade)。
--   [自行建置正式作業授權映像檔 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install)。
+-   [將映像檔從 Docker Hub 升級至正式作業映像檔 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade)。
+-   [自行建置正式作業授權映像檔 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install)。
 
 在建立正式作業授權映像檔之後，請[將映像檔推送至專用登錄](/docs/services/Registry/index.html)，以與 {{site.data.keyword.containershort_notm}} 搭配使用。
 
@@ -168,7 +173,8 @@ WebSphere Application Server 授權是根據所需的「處理器價值單位 (P
 
 6. 建置映像檔並將它推送至專用映像檔登錄。如需相關資訊，請參閱[開始使用 {{site.data.keyword.registrylong_notm}}](/docs/services/Registry/index.html)。
 
-所有 `ibmliberty` 映像檔都會配置為將 Liberty 日誌檔寫入至容器內的目錄 `/logs`。所有其他由 Liberty 伺服器寫入的檔案都建立在目錄 `/opt/ibm/wlp/output/defaultServer` 中。您可以使用捷徑 `/output` 來存取這些檔案。{:tip}
+所有 `ibmliberty` 映像檔都會配置為將 Liberty 日誌檔寫入至容器內的目錄 `/logs`。所有其他由 Liberty 伺服器寫入的檔案都建立在目錄 `/opt/ibm/wlp/output/defaultServer` 中。您可以使用捷徑 `/output` 來存取這些檔案。
+{:tip}
 
 ## `ibmliberty` Dockerfile 參考資料 
 {: #reference_dockerfile}

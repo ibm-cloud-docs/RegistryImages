@@ -4,7 +4,7 @@ copyright:
 
   years: 2014, 2018
 
-lastupdated: "2018-08-16"
+lastupdated: "2018-09-14"
 
 ---
 
@@ -19,6 +19,31 @@ lastupdated: "2018-08-16"
 
 
 <ul class="runtimeIconList">
+  
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="如需 datashield-barbican 映像檔的相關資訊，請參閱文件。"></p>
+<p class="runtimeTitle">datashield-barbican<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-barbican/index.html" scope="peer" title="如需 datashield-barbican 映像檔的相關資訊，請參閱文件。">檢視文件</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="如需 datashield-mysql 映像檔的相關資訊，請參閱文件。"></p>
+<p class="runtimeTitle">datashield-mysql<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-mysql/index.html" scope="peer" title="如需 datashield-mysql 映像檔的相關資訊，請參閱文件。">檢視文件</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="如需 datashield-nginx 映像檔的相關資訊，請參閱文件。"></p>
+<p class="runtimeTitle">datashield-nginx<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-nginx/index.html" scope="peer" title="如需 datashield-nginx 映像檔的相關資訊，請參閱文件。">檢視文件</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="如需 datashield-vault 映像檔的相關資訊，請參閱文件。"></p>
+<p class="runtimeTitle">datashield-vault<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-vault/index.html" scope="peer" title="如需 datashield-vault 映像檔的相關資訊，請參閱文件。">檢視文件</a></p>
+</li>
+
 <li>
 <p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="如需 ibm-backup-restore 映像檔的相關資訊，請參閱文件。"></p>
 <p class="runtimeTitle">ibm-backup-restore<br /> <br /></p>

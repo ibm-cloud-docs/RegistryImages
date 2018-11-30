@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-26"
 
 ---
 
@@ -19,6 +19,9 @@ lastupdated: "2018-08-21"
 
 `ibmcloud-secure-perimeter-network` イメージには、Secure Perimeter 内の Vyatta 仮想ルーター・アプライアンスの構成を自動化するためのツールが含まれています。
 {:shortdesc}
+
+{{site.data.keyword.IBM}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry/registry_public_images.html#public_images)を参照してください。
+{: tip}
 
 ## 機能
 {: #how-it-works}
@@ -64,7 +67,7 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
 4.  必要に応じて他のすべての詳細を入力します。
 5.  **「クラスターの作成」**をクリックします。
 
-クラスターがデプロイされた後、クラスターにアクセスする方法については、[{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) 資料を参照してください。
+クラスターがデプロイされた後、クラスターにアクセスする方法については、[{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) 資料を参照してください。
 
 ## Secure Perimeter Vyatta の初期構成を実行する
 {: #initial_setup}
@@ -100,7 +103,7 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
   ```
   {: codeblock}
 
-  _config.json_ にデータを設定する方法の詳細については、[config.json リファレンス表](#reference_config_json)を参照してください。このファイルは、[Kubernetes ポッドとしての `ibmcloud-secure-perimeter-network` のセットアップ](#setup)のプロセスでも使用できます。
+  _config.json_ にデータを設定する方法の詳細については、[config.json リファレンス表](#reference_config_json)を参照してください。 このファイルは、[Kubernetes ポッドとしての `ibmcloud-secure-perimeter-network` のセットアップ](#setup)のプロセスでも使用できます。
 
 2. `ibmcloud-secure-perimeter-network` を Docker コンテナーとして実行して、初期セットアップを開始します。
 
@@ -109,7 +112,7 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
   ```
   {: pre}
 
-  この操作により、作業ディレクトリー内に _state.json_ ファイルが作成されます。このファイルを [Kubernetes ポッドとしての `ibmcloud-secure-perimeter-network` のセットアップ](#setup)で使用します。
+  この操作により、作業ディレクトリー内に _state.json_ ファイルが作成されます。 このファイルを [Kubernetes ポッドとしての `ibmcloud-secure-perimeter-network` のセットアップ](#setup)で使用します。
 
 ## Secure Perimeter 内の Kubernetes ポッドとしてセットアップする
 {: #setup}
@@ -229,4 +232,4 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
 {: #prerequisites}
 
 -   IBM Cloud インフラストラクチャー・ポータルから Vyatta および VLAN を注文済みで、VLAN が Vyatta に関連付けられていること。
--   自動化された Secure Perimeter デプロイメントによって、`ibmcloud-secure-perimeter-network` がゲートウェイにアクセスするために使用する SSH 鍵を使用して Vyatta がプリロードされること。 SSH 鍵は手動でロードされるか、Secure Perimeter インストール・プロセスを介してロードされる必要があります。詳しくは、[Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) の記事を参照してください。
+-   自動化された Secure Perimeter デプロイメントによって、`ibmcloud-secure-perimeter-network` がゲートウェイにアクセスするために使用する SSH 鍵を使用して Vyatta がプリロードされること。 SSH 鍵は手動でロードされるか、Secure Perimeter インストール・プロセスを介してロードされる必要があります。 詳しくは、[Set up an automated Secure Perimeter in IBM Cloud ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) の記事を参照してください。

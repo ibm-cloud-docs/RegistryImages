@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -21,6 +21,9 @@ lastupdated: "2018-08-21"
 IBM® WebSphere® Application Server Liberty \(`ibmliberty`\) 이미지는 {{site.data.keyword.containerlong_notm}}용으로 제공됩니다.
 {:shortdesc}
 
+명령행을 사용하여 {{site.data.keyword.IBM_notm}}에서 제공한 이미지에 액세스할 수 있습니다. [IBM 공용 이미지](/docs/services/Registry/registry_public_images.html#public_images)를 참조하십시오.
+{: tip}
+
 ## 작동 방식 
 {: #how_it_works}
 
@@ -36,14 +39,14 @@ IBM WebSphere Application Server Liberty 컨테이너에서 Java를 기반으로
 -   IBM WebSphere Application Server for Developers Liberty
 -   IBM Java Runtime Environment 8.0
 
-이미지에 설치된 특정 Liberty 기능은 사용자가 선택하는 태그에 따라 다릅니다. 다음 표는 각각의 `ibmliberty` 이미지에 포함되는 기능을 보여줍니다. 각 기능에 대한 자세한 정보는 [Liberty features overview in IBM Knowledge Center![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html)를 참조하십시오.
+이미지에 설치된 특정 Liberty 기능은 사용자가 선택하는 태그에 따라 다릅니다. 다음 표는 각각의 `ibmliberty` 이미지에 포함되는 기능을 보여줍니다. 각 기능에 대한 자세한 정보는 [Liberty features overview in IBM Knowledge Center![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html)를 참조하십시오.
 
 |태그|설명|
 |---|-----------|
 |모든 `ibmliberty` 이미지|모든 `ibmliberty` 이미지에는 다음 기능이 포함됩니다. <ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |`ibmliberty:latest`|이 이미지는 `ibmliberty:javaee7` 이미지를 지시합니다.|
-|`ibmliberty:microProfile`|이 이미지에는 [MicroProfile ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://microprofile.io)로 지정된 기능을 제공하는 기능이 포함됩니다.|
-|`ibmliberty:webProfile6`|이 이미지에는 Java EE6 웹 프로파일 준수에 필요한 모든 기능이 포함됩니다. [http://wasdev.net/ ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](http://wasdev.net/)에서 런타임 JAR을 사용하여 다운로드할 수 있는 기능, 특히 OSGi 애플리케이션에 필요한 기능과 일치하게 컨텐츠를 가져오는 추가 기능도 가져옵니다.|
+|`ibmliberty:microProfile`|이 이미지에는 [MicroProfile ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://microprofile.io)로 지정된 기능을 제공하는 기능이 포함됩니다.|
+|`ibmliberty:webProfile6`|이 이미지에는 Java EE6 웹 프로파일 준수에 필요한 모든 기능이 포함됩니다. [http://wasdev.net/ ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](http://wasdev.net/)에서 런타임 JAR을 사용하여 다운로드할 수 있는 기능, 특히 OSGi 애플리케이션에 필요한 기능과 일치하게 컨텐츠를 가져오는 추가 기능도 가져옵니다.|
 |`ibmliberty:webProfile7`|이 이미지에는 Java EE7 웹 프로파일 준수에 필요한 모든 기능이 포함됩니다.|
 |`ibmliberty:javaee7`|이 이미지에는 Java EE7 전체 플랫폼 준수에 필요한 기능과 함께 `ibmliberty:webProfile7` 이미지의 모든 기능이 포함됩니다.|
 
@@ -64,7 +67,7 @@ IBM WebSphere Application Server Liberty 컨테이너에서 Java를 기반으로
 컨테이너 인스턴스의 Java 힙 사용량을 모니터하려면 [CLI로 컨테이너의 Java 힙 영역 사용량 모니터링](#monitor_heap)을 참조하십시오.
 
 
-Docker 허브의 [websphere-liberty image ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://hub.docker.com/_/websphere-liberty/)에 있는 라이센스 섹션에서 IBM 인증 이미지의 이용 약관을 검토하십시오.
+Docker 허브의 [websphere-liberty image ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://hub.docker.com/_/websphere-liberty/)에 있는 라이센스 섹션에서 IBM 인증 이미지의 이용 약관을 검토하십시오.
 
 ## 시작하기 
 {: #get_started}
@@ -107,9 +110,10 @@ Docker 허브의 [websphere-liberty image ![외부 링크 아이콘](../../icons
     ```
     {: pre}
 
-3.  Java 힙 사용량을 검토하려면 **RSS** 메모리 stat에 액세스해야 합니다. [여기 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)에서 컨테이너의 셀에 액세스하는 방법에 대한 가이드라인을 따른 후 컨테이너에 대한 메모리 stat 정보를 찾고 형식화하는 방법은 [런타임 메트릭](/docs/containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io)을 검토하십시오. Java 힙 사용량은 KB 단위로 표시됩니다. 힙 사용량이 모든 인스턴스에서 2097152KB(2GB) 미만이면 WebSphere Application Server 라이센스를 구매할 필요가 없습니다.
+3.  Java 힙 사용량을 검토하려면 **RSS** 메모리 stat에 액세스해야 합니다. 컨테이너의 쉘에 액세스하는 방법에 대한 가이드라인을 따르십시오. [Get a Shell to a Running Container ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)를 참조하십시오.
+Java 힙 사용량은 KB 단위로 표시됩니다. 힙 사용량이 모든 인스턴스에서 2097152KB(2GB) 미만이면 WebSphere Application Server 라이센스를 구매할 필요가 없습니다.
 
-4.  WebSphere Application Server 인스턴스의 최대 힙 사용량을 조정하십시오. 자세한 정보는 [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)을 참조하십시오.
+4.  WebSphere Application Server 인스턴스의 최대 힙 사용량을 조정하십시오. 자세한 정보는 [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)을 참조하십시오.
 
 ## WebSphere Application Server 라이센스 가져오기 
 {: #license}
@@ -119,9 +123,9 @@ WebSphere Application Server 라이센스는 필요한 PVU\(Processor Value Unit
 
 {{site.data.keyword.Bluemix_notm}}의 모든 컨테이너 크기에는 WebSphere Application Server 라이센스에서 사용 가능해야 하는 특정 수의 PVU 인타이틀먼트가 있어야 합니다. 따라서 라이센스를 구매하기 전에 `ibmliberty` 컨테이너를 계획해야 합니다.
 
-WebSphere Application Server 라이센스를 구매하려면 [IBM Service ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us)에 문의하십시오. WebSphere Application Server v8.5 이상에 대한 라이센스가 이미 있으면, 컨테이너의 배치를 위해 기존 인타이틀먼트의 미사용 PVU를 사용할 수 있습니다.
+WebSphere Application Server 라이센스를 구매하려면 [IBM Service ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us)에 문의하십시오. WebSphere Application Server v8.5 이상에 대한 라이센스가 이미 있으면, 컨테이너의 배치를 위해 기존 인타이틀먼트의 미사용 PVU를 사용할 수 있습니다.
 
-라이센스를 구매한 후 추가 PVU가 필요하면 [IBM Service ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us)에 문의하여 양을 늘릴 수 있습니다.
+라이센스를 구매한 후 추가 PVU가 필요하면 [IBM Service ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us)에 문의하여 양을 늘릴 수 있습니다.
 
 ## {{site.data.keyword.containershort_notm}}에서 사용될 프로덕션 라이센스 `ibmliberty` 이미지 작성 
 {: #prod_image}
@@ -129,8 +133,8 @@ WebSphere Application Server 라이센스를 구매하려면 [IBM Service ![외�
 WebSphere Application Server 라이센스를 사용하여 {{site.data.keyword.containershort_notm}}에서 사용할 수 있는 프로덕션 라이센스 `ibmliberty` 이미지를 작성합니다. 다음 태스크 중 하나를 선택하십시오.
 {:shortdesc}
 
--   [Upgrade the image from Docker Hub to a production image ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
--   [Build your own production-licensed image ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install)
+-   [Upgrade the image from Docker Hub to a production image ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
+-   [Build your own production-licensed image ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install)
 
 프로덕션 라이센스가 부여된 이미지를 작성한 후 {{site.data.keyword.containershort_notm}}와 함께 사용하도록 [이미지를 사설 레지스트리에 푸시](/docs/services/Registry/index.html)하십시오.
 

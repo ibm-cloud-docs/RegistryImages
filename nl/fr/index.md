@@ -4,7 +4,7 @@ copyright:
 
   years: 2014, 2018
 
-lastupdated: "2018-08-16"
+lastupdated: "2018-09-14"
 
 ---
 
@@ -19,14 +19,39 @@ Vous pouvez utiliser les images publiques suivantes pour créer des conteneurs d
 
 
 <ul class="runtimeIconList">
+  
 <li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Pour plus d'informations sur l'image ibm-backup-restore, consultez la documentation."></p>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Pour en savoir plus sur l'image datashield-barbican, consultez la documentation."></p>
+<p class="runtimeTitle">datashield-barbican<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-barbican/index.html" scope="peer" title="Pour en savoir plus sur l'image datashield-barbican, consultez la documentation.">AFFICHER LA DOCUMENTATION</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Pour en savoir plus sur l'image datashield-mysql, consultez la documentation."></p>
+<p class="runtimeTitle">datashield-mysql<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-mysql/index.html" scope="peer" title="Pour en savoir plus sur l'image datashield-mysql, consultez la documentation.">AFFICHER LA DOCUMENTATION</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Pour en savoir plus sur l'image datashield-nginx, consultez la documentation."></p>
+<p class="runtimeTitle">datashield-nginx<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-nginx/index.html" scope="peer" title="Pour en savoir plus sur l'image datashield-nginx, consultez la documentation.">AFFICHER LA DOCUMENTATION</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Pour en savoir plus sur l'image datashield-vault, consultez la documentation."></p>
+<p class="runtimeTitle">datashield-vault<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-vault/index.html" scope="peer" title="Pour en savoir plus sur l'image datashield-vault, consultez la documentation.">AFFICHER LA DOCUMENTATION</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Pour en savoir plus sur l'image ibm-backup-restore, consultez la documentation."></p>
 <p class="runtimeTitle">ibm-backup-restore<br /> <br /></p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-backup-restore/index.html" scope="peer" title="Pour plus d'informations sur l'image ibm-backup-restore, consultez la documentation.">AFFICHER LA DOCUMENTATION</a></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-backup-restore/index.html" scope="peer" title="Pour en savoir plus sur l'image ibm-backup-restore, consultez la documentation.">AFFICHER LA DOCUMENTATION</a></p>
 </li>
   
 <li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Vous vpouvez utiliser l'image ibmcloud-secure-perimeter-health pour analyser et générer un rapport sur les chemins vulnérables au sein des réseaux d'infrastructure IBM Cloud."></p>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Vous pouvez utiliser l'image ibmcloud-secure-perimeter-health pour analyser et générer un rapport sur les chemins vulnérables au sein des réseaux d'infrastructure IBM Cloud."></p>
 <p class="runtimeTitle">ibmcloud-secure-<br />perimeter-health</p>
 <p class="runtimeLink"><a format="html"
 href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-health/index.html" scope="peer"

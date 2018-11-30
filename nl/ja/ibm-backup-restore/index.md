@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -19,6 +19,9 @@ lastupdated: "2018-08-21"
 
 `ibm-backup-restore` イメージには、{{site.data.keyword.containerlong}} での永続ストレージのバックアップとリストアに必要なプリインストール・パッケージが入っています。
 {:shortdesc}
+
+{{site.data.keyword.IBM_notm}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry/registry_public_images.html#public_images)を参照してください。
+{: tip}
 
 ## 機能 
 {: #how_it_works}
@@ -50,7 +53,7 @@ lastupdated: "2018-08-21"
 {: shortdesc}
 
 1. {{site.data.keyword.cos_full_notm}} サービス・インスタンスをデプロイします。
-   1.  [{{site.data.keyword.Bluemix_notm}} カタログ](https://console.bluemix.net/catalog/services/cloud-object-storage)を開きます。
+   1.  [{{site.data.keyword.Bluemix_notm}} カタログ ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://console.bluemix.net/catalog/services/cloud-object-storage) を開きます。
    2.  サービス・インスタンスの名前 (`cos-backup` など) を入力し、リソース・グループとして**「デフォルト」**を選択します。 
    3.  [プランのオプション ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage#s3api) で料金情報を確認し、プランを選択します。 
    4.  **「作成」**をクリックします。

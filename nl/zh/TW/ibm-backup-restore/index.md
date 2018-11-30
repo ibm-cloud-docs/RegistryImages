@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -19,6 +19,9 @@ lastupdated: "2018-08-21"
 
 `ibm-backup-restore` 映像檔包含在 {{site.data.keyword.containerlong}} 中備份及還原持續性儲存空間所需的預先安裝套件。
 {:shortdesc}
+
+您可以使用指令行存取 {{site.data.keyword.IBM_notm}} 所提供的映像檔，請參閱 [IBM 公用映像檔](/docs/services/Registry/registry_public_images.html#public_images)。
+{: tip}
 
 ## 如何運作 
 {: #how_it_works}
@@ -46,7 +49,7 @@ lastupdated: "2018-08-21"
 {: shortdesc}
 
 1. 部署 {{site.data.keyword.cos_full_notm}} 服務實例。
-   1.  開啟 [{{site.data.keyword.Bluemix_notm}} 型錄](https://console.bluemix.net/catalog/services/cloud-object-storage)。
+   1.  開啟 [{{site.data.keyword.Bluemix_notm}} 型錄 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/cloud-object-storage)。
    2.  輸入服務實例的名稱，例如 `cos-backup`，然後選取 **default** 作為您的資源群組。 
    3.  檢閱[方案選項 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage#s3api) 以取得定價資訊，並選取方案。 
    4.  按一下**建立**。
@@ -245,7 +248,7 @@ lastupdated: "2018-08-21"
      name: restorepod
    spec:
      containers:
-     - image: registry.bluemix.net/ibm-backup-restore 
+     - image: registry.bluemix.net/ibm-backup-restore
        name: restorecontainer
        env:
        - name: OBJECTSTORAGE
@@ -254,22 +257,22 @@ lastupdated: "2018-08-21"
          value: '<access_key_ID>'
        - name: SECRET_ACCESS_KEY
          value: '<secret_access_key>'
-       - name: ENDPOINT 
+       - name: ENDPOINT
          value: '<regional_endpoint>'
-       - name: BUCKET_NAME 
+       - name: BUCKET_NAME
          value: '<bucket_name>'
-       - name: RESTORE_DIRECTORY 
-         value: /myvol 
-       - name: BACKUP_NAME 
+       - name: RESTORE_DIRECTORY
+         value: /myvol
+       - name: BACKUP_NAME
          value: <backup_name>
        command: ["/bin/sh", "./vrestore"]
        volumeMounts:
-       - mountPath: /myvol  
+       - mountPath: /myvol
          name: restore-volume
      volumes:
-     - name: restore-volume  
+     - name: restore-volume
        persistentVolumeClaim:
-         claimName: <pvc_name> 
+         claimName: <pvc_name>
    ```
    {: codeblock}
    

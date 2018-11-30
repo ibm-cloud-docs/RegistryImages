@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -19,6 +19,9 @@ lastupdated: "2018-08-21"
 
 L'image `ibm-backup-restore` contient les packages préinstallés nécessaires pour sauvegarder et restaurer le stockage de persistance dans {{site.data.keyword.containerlong}}.
 {:shortdesc}
+
+Vous pouvez accéder aux images fournies par {{site.data.keyword.IBM_notm}} à l'aide de la ligne de commande. Voir [Images IBM publiques](/docs/services/Registry/registry_public_images.html#public_images).
+{: tip}
 
 ## Fonctionnement 
 {: #how_it_works}
@@ -50,7 +53,7 @@ Créez et configurez une instance de service {{site.data.keyword.cos_full_notm}}
 {: shortdesc}
 
 1. Déployez une instance de service {{site.data.keyword.cos_full_notm}}.
-   1.  Ouvrez le catalogue [{{site.data.keyword.Bluemix_notm}}](https://console.bluemix.net/catalog/services/cloud-object-storage).
+   1.  Ouvrez le catalogue [{{site.data.keyword.Bluemix_notm}} ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/cloud-object-storage).
    2.  Entrez un nom pour votre instance de service, tel que `cos-backup` et sélectionnez **default** comme groupe de ressources. 
    3.  Consultez les plans de tarification dans [Tarification d'IBM Cloud Object Storage ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](https://www.ibm.com/cloud-computing/bluemix/fr/pricing-object-storage#s3api) pour prendre connaissance des informations de tarification. 
    4.  Cliquez sur **Créer**.

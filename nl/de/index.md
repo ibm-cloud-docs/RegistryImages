@@ -4,7 +4,7 @@ copyright:
 
   years: 2014, 2018
 
-lastupdated: "2018-08-16"
+lastupdated: "2018-09-14"
 
 ---
 
@@ -19,6 +19,31 @@ Sie können die folgenden öffentlichen Images verwenden, um Container in {{site
 
 
 <ul class="runtimeIconList">
+  
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Weitere Informationen zum Image 'datashield-barbican' finden Sie in der Dokumentation."></p>
+<p class="runtimeTitle">datashield-barbican<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-barbican/index.html" scope="peer" title="Weitere Informationen zum Image 'datashield-barbican' finden Sie in der Dokumentation.">Dokumente anzeigen</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Weitere Informationen zum Image 'datashield-mysql' finden Sie in der Dokumentation."></p>
+<p class="runtimeTitle">datashield-mysql<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-mysql/index.html" scope="peer" title="Weitere Informationen zum Image 'datashield-mysql' finden Sie in der Dokumentation.">Dokumente anzeigen</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Weitere Informationen zum Image 'datashield-nginx' finden Sie in der Dokumentation."></p>
+<p class="runtimeTitle">datashield-nginx<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-nginx/index.html" scope="peer" title="Weitere Informationen zum Image 'datashield-nginx' finden Sie in der Dokumentation.">Dokumente anzeigen</a></p>
+</li>
+
+<li>
+<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Weitere Informationen zum Image 'datashield-vault' finden Sie in der Dokumentation."></p>
+<p class="runtimeTitle">datashield-vault<br /> <br /></p>
+<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-vault/index.html" scope="peer" title="Weitere Informationen zum Image 'datashield-vault' finden Sie in der Dokumentation.">Dokumente anzeigen</a></p>
+</li>
+
 <li>
 <p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="Weitere Informationen zum Image 'ibm-backup-restore' finden Sie in der Dokumentation."></p>
 <p class="runtimeTitle">ibm-backup-restore<br /> <br /></p>

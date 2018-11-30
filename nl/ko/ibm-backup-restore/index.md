@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -19,6 +19,9 @@ lastupdated: "2018-08-21"
 
 `ibm-backup-restore` 이미지에는 {{site.data.keyword.containerlong}}에서 지속적 스토리지를 백업하고 복원하는 데 필요한 사전 설치된 패키지가 포함됩니다.
 {:shortdesc}
+
+명령행을 사용하여 {{site.data.keyword.IBM_notm}}에서 제공한 이미지에 액세스할 수 있습니다. [IBM 공용 이미지](/docs/services/Registry/registry_public_images.html#public_images)를 참조하십시오.
+{: tip}
 
 ## 작동 방식 
 {: #how_it_works}
@@ -50,7 +53,7 @@ lastupdated: "2018-08-21"
 {: shortdesc}
 
 1. {{site.data.keyword.cos_full_notm}} 서비스 인스턴스를 배치하십시오.
-   1.  [{{site.data.keyword.Bluemix_notm}} 카탈로그](https://console.bluemix.net/catalog/services/cloud-object-storage)를 여십시오.
+   1.  [{{site.data.keyword.Bluemix_notm}} 카탈로그 ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/cloud-object-storage)를 여십시오.
    2.  `cos-backup`과 같이 서비스 인스턴스의 이름을 입력하고 리소스 그룹으로 **기본값**을 선택하십시오. 
    3.  가격 정보를 보려면 [plan options![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage#s3api)를 검토하고 플랜을 선택하십시오. 
    4.  **작성**을 클릭하십시오.
@@ -105,7 +108,7 @@ pvc(persistent volume claim)를 통해 앱 팟(Pod)에 마운트되는 pv(persis
 
 2. `ibm-backup-restore` 이미지에서 백업 팟(Pod)을 작성하십시오. PV에서 데이터에 액세스하려면 PV를 백업 팟(Pod)에 바인드하는 PVC를 마운트해야 합니다. 다음 예제는 증분 백업을 실행하는 백업 팟(Pod)을 매일 작성합니다. 다른 설정으로 백업을 작성하려면 [환경 변수 옵션](#reference_backup_restore)의 전체 목록을 검토하십시오.
 
-   **중요:** `ibm-backup-restore` 이미지를 단일 팟(Pod)에 배치해야 하고 Kubernetes 배치의 일부로 사용할 수 없습니다. 
+   **중요:** `ibm-backup-restore` 이미지를 단일 팟(Pod)에 배치해야 하고 Kubernetes 배치의 일부로 사용할 수 없습니다.
    
    이미지를 보려면 `ibmcloud cr region-set global` 명령을 실행하여 글로벌 레지스트리를 대상으로 지정하십시오. 그런 다음 `ibmcloud cr images --include-ibm`을 실행하여 IBM 공용 이미지를 나열하십시오. 
    {: tip}

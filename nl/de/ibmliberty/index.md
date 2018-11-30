@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -15,11 +15,14 @@ lastupdated: "2018-08-21"
 {:tip: .tip}
 {:download: .download}
 
-# Einführung in das Image `ibmliberty`
+# Einführung zum Image `ibmliberty`
 {: #ibmliberty}
 
 Die Images von IBM® WebSphere® Application Server Liberty \(`ibmliberty`\) werden für {{site.data.keyword.containerlong_notm}} zur Verfügung gestellt.
 {:shortdesc}
+
+Sie können auf die von {{site.data.keyword.IBM_notm}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry/registry_public_images.html#public_images).
+{: tip}
 
 ## Funktionsweise 
 {: #how_it_works}
@@ -36,14 +39,14 @@ Jedes Liberty-Image bietet die folgenden Softwarepakete.
 -   IBM WebSphere Application Server for Developers Liberty
 -   IBM Java Runtime Environment 8.0
 
-Welche Liberty-Features jeweils in einem Image installiert sind, hängt davon ab, welchen Tag Sie auswählen. Die folgende Tabelle gibt an, welche Features jedes einzelne `ibmliberty`-Image enthält. Weitere Informationen zu den einzelnen Features finden Sie in der [Übersicht über die Liberty-Features im IBM Knowledge Center ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html). 
+Welche Liberty-Features jeweils in einem Image installiert sind, hängt davon ab, welchen Tag Sie auswählen. Die folgende Tabelle gibt an, welche Features jedes einzelne `ibmliberty`-Image enthält. Weitere Informationen zu den einzelnen Features finden Sie in der [Übersicht über die Liberty-Features im IBM Knowledge Center ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html).
 
 |Tag|Beschreibung|
 |---|-----------|
 |Alle `ibmliberty`-Images|Alle `ibmliberty`-Images enthalten die folgenden Features. <ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |`ibmliberty:latest`|Dieses Image verweist auf das Image `ibmliberty:javaee7`.|
-|`ibmliberty:microProfile`|Dieses Image enthält die Features, die die von [MicroProfile ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://microprofile.io) angegebenen Funktionen bereitstellen. |
-|`ibmliberty:webProfile6`|Dieses Image enthält alle Features, die für die Konformität mit Java EE6 Web Profile erforderlich sind. Ferner enthält dieses Image zusätzliche Features, um den Inhalt an die Features anzupassen, die mit der Laufzeit-JAR von [http://wasdev.net/ ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](http://wasdev.net/) heruntergeladen werden können, insbesondere die für OSGi-Anwendungen erforderlichen Features. |
+|`ibmliberty:microProfile`|Dieses Image enthält die Features, die die von [MicroProfile ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://microprofile.io) angegebenen Funktionen bereitstellen.|
+|`ibmliberty:webProfile6`|Dieses Image enthält alle Features, die für die Konformität mit Java EE6 Web Profile erforderlich sind. Ferner enthält dieses Image zusätzliche Features, um den Inhalt an die Features anzupassen, die mit der Laufzeit-JAR von [http://wasdev.net/ ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](http://wasdev.net/) heruntergeladen werden können, insbesondere die für OSGi-Anwendungen erforderlichen Features.|
 |`ibmliberty:webProfile7`|Dieses Image enthält alle Features, die für die Konformität mit Java EE7 Web Profile erforderlich sind.|
 |`ibmliberty:javaee7`|Dieses Image enthält alle Features von `ibmliberty:webProfile7` sowie die Features, die für die Konformität mit Java EE7 Full Platform erforderlich sind.|
 
@@ -64,7 +67,7 @@ Die Preisstruktur für das Image `ibmliberty` ist unabhängig von der Preisstruk
 Weitere Informationen zum Überwachen der Java-Heapspeicherbelegung Ihrer Containerinstanzen finden Sie unter [Java-Heapspeicherbelegung für einen Container über die Befehlszeilenschnittstelle überwachen](#monitor_heap).
 
 
-Lesen Sie zunächst die Nutzungsbedingungen für die von IBM zertifizierten Images im Abschnitt zum [Image 'websphere-liberty' ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://hub.docker.com/_/websphere-liberty/) in Docker Hub. 
+Lesen Sie zunächst die Nutzungsbedingungen für die von IBM zertifizierten Images im Abschnitt zum [Image 'websphere-liberty' ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://hub.docker.com/_/websphere-liberty/) in Docker Hub.
 
 ## Einführung 
 {: #get_started}
@@ -76,7 +79,7 @@ Verwenden Sie eines der kostenlosen `ibmliberty`-Images aus dem {{site.data.keyw
 
 1.  Wählen Sie im Katalog in der seitlichen Anzeige die Option **Container** > **IBM Cloud Container-Registry** > **Öffentliche IBM Repositorys** aus. Suchen Sie nach dem Image `ibmliberty`, aus dem Sie den Container erstellen möchten. Wenn Sie ein eigenes Image mit Produktionslizenz erstellt und in {{site.data.keyword.Bluemix_notm}} bereitgestellt haben, wählen Sie dieses Image im Katalog aus. Die Seite zum Erstellen von Containern wird geöffnet.
 2.  Wählen Sie die Version des Images `ibmliberty`, das Sie verwenden möchten, im Dropdown-Feld für **TAG/ VERSION** aus.
-3.  Weitere Informationen zum Erstellen von Containern aus Images, zum Einrichten von Clustern und zum Bereitstellen von Apps in Clustern finden Sie unter den folgenden Links: 
+3.  Weitere Informationen zum Erstellen von Containern aus Images, zum Einrichten von Clustern und zum Bereitstellen von Apps in Clustern finden Sie unter den folgenden Links:
 
     -   [Container auf Grundlage von Images erstellen](/docs/containers/cs_images.html#images)
     -   [Einführung in IBM Cloud Kubernetes Service](/docs/containers/container_index.html#container_index)
@@ -107,10 +110,9 @@ Nachdem Sie einen Container aus dem Image `ibmliberty` erstellt haben, können S
     ```
     {: pre}
 
-3.  Um die Java-Heapspeicherbelegung zu überprüfen, müssen Sie auf die **RSS**-Speicherstatistik zugreifen. Befolgen Sie die [hier ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) aufgeführten Anweisungen für den Zugriff auf eine Shell eines Containers und überprüfen Sie anschließend [Laufzeitmetriken](/docs/containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io), um zu erfahren, wie Sie nach Speicherstatistikinformationen für einen Container suchen und diese formatieren können.
-Die Java-Heapspeicherbelegung wird in Kilobyte angezeigt. Wenn die Heapspeicherbelegung für alle Instanzen kleiner als 2097152 Kilobyte (2GB) ist, müssen Sie keine WebSphere Application Server-Lizenz erwerben.
+3.  Um die Java-Heapspeicherbelegung zu überprüfen, müssen Sie auf die **RSS**-Speicherstatistik zugreifen. Gehen Sie den Anweisungen für den Zugriff auf die Shell eines Containers entsprechend vor. Informationen hierzu finden Sie in [Shell für einen aktiven Container abrufen ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/). Die Java-Heapspeicherbelegung wird in Kilobyte angezeigt. Wenn die Heapspeicherbelegung für alle Instanzen kleiner als 2097152 Kilobyte (2GB) ist, müssen Sie keine WebSphere Application Server-Lizenz erwerben.
 
-4.  Passen Sie die maximale Heapspeicherbelegung für Ihre WebSphere Application Server-Instanz an. Weitere Informationen finden Sie unter [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474). 
+4.  Passen Sie die maximale Heapspeicherbelegung für Ihre WebSphere Application Server-Instanz an. Weitere Informationen finden Sie unter [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474).
 
 ## WebSphere Application Server-Lizenz abrufen 
 {: #license}
@@ -120,9 +122,9 @@ WebSphere Application Server basieren auf der Anzahl der benötigten Processor-V
 
 Für jede Containergröße in {{site.data.keyword.Bluemix_notm}} ist eine bestimmte Anzahl von PVU-Berechtigungen erforderlich, die in der WebSphere Application Server-Lizenz verfügbar sein müssen. Sie müssen daher Ihre `ibmliberty`-Container planen, bevor Sie die Lizenz erwerben.
 
-Wenden Sie sich für den Kauf einer WebSphere Application Server-Lizenz an den [IBM Service ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us). Wenn Sie bereits über eine Lizenz für WebSphere Application Server Version 8.5 oder höher verfügen, können Sie alle nicht genutzten PVUs der bestehenden Berechtigung für die Bereitstellung Ihres Containers verwenden.
+Wenden Sie sich für den Kauf einer WebSphere Application Server-Lizenz an den [IBM Service ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us). Wenn Sie bereits über eine Lizenz für WebSphere Application Server Version 8.5 oder höher verfügen, können Sie alle nicht genutzten PVUs der bestehenden Berechtigung für die Bereitstellung Ihres Containers verwenden.
 
-Wenn Sie nach dem Erwerb der Lizenz feststellen, dass Sie weitere PVUs benötigen, können Sie die Anzahl der PVUs nach Rücksprache mit dem [IBM Service ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us) erhöhen. 
+Wenn Sie nach dem Erwerb der Lizenz feststellen, dass Sie weitere PVUs benötigen, können Sie die Anzahl der PVUs nach Rücksprache mit dem [IBM Service ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us) erhöhen.
 
 ## Image `ibmliberty` mit Produktionslizenz für die Verwendung mit {{site.data.keyword.containershort_notm}} erstellen 
 {: #prod_image}
@@ -130,8 +132,8 @@ Wenn Sie nach dem Erwerb der Lizenz feststellen, dass Sie weitere PVUs benötige
 Verwenden Sie Ihre Lizenz für WebSphere Application Server zum Erstellen eines Images `ibmliberty` mit Produktionslizenz, das Sie mit {{site.data.keyword.containershort_notm}} verwenden können. Wählen Sie eine der folgenden Tasks aus.
 {:shortdesc}
 
--   [Durchführen eines Upgrades des Images von Docker Hub auf ein Produktionsimage ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade). 
--   [Erstellen eines eigenen Images mit Produktionslizenz ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install). 
+-   [Durchführen eines Upgrades des Images von Docker Hub auf ein Produktionsimage ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
+-   [Erstellen eines eigenen Images mit Produktionslizenz ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install).
 
 Nachdem Sie ein Image mit Produktionslizenz erstellt haben, [übertragen Sie das Image in Ihre private Registry](/docs/services/Registry/index.html), um es mit {{site.data.keyword.containershort_notm}} zu verwenden.
 
@@ -149,7 +151,7 @@ Führen Sie zunächst die folgenden Schritte aus.
 
 Führen Sie die folgenden Schritte aus, um ein Image mit Ihrem App-Code aus dem Image `ibmliberty` zu erstellen:
 
-1. Erstellen Sie mit einem Texteditor eine Datei mit dem Namen `Dockerfile` und kopieren Sie die folgenden Informationen in diese Datei. 
+1. Erstellen Sie mit einem Texteditor eine Datei mit dem Namen `Dockerfile` und kopieren Sie die folgenden Informationen in diese Datei.
 
     ```
     FROM registry.bluemix.net/ibmliberty:<tag>
@@ -158,13 +160,13 @@ Führen Sie die folgenden Schritte aus, um ein Image mit Ihrem App-Code aus dem 
     ```
     {: screen}
 
-    **Anmerkung:** Das Verzeichnis `/config` ist ein Direktaufruf für `/opt/ibm/wlp/usr/servers/defaultServer`. 
+    **Anmerkung:** Das Verzeichnis `/config` ist ein Direktaufruf für `/opt/ibm/wlp/usr/servers/defaultServer`.
     
 2. Ersetzen Sie <tag\> durch die Version des Images `ibmliberty`, das die von der App benötigten Features enthält.
 
 3. Ersetzen Sie <app-name\> durch den Namen der App-Datei.
 
-4. Ersetzen Sie <dateierweiterung\> durch `.war`, `.ear` oder `.eba`. 
+4. Ersetzen Sie <dateierweiterung\> durch `.war`, `.ear` oder `.eba`.
 
 5. Fügen Sie sonstige Abhängigkeiten für Ihre App zur Dockerfile hinzu.
 

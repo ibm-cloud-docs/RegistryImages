@@ -17,6 +17,10 @@ IBM 公共容器映像
     {: .navgroup-end}
     
     {: .navgroup id="howto"}
+    datashield-barbican/index.md
+    datashield-mysql/index.md
+    datashield-nginx/index.md
+    datashield-vault/index.md
     ibm-backup-restore/index.md
     ibmcloud-secure-perimeter-health/index.md
     ibmcloud-secure-perimeter-network/index.md

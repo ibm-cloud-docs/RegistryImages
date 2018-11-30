@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -21,6 +21,9 @@ lastupdated: "2018-08-21"
 Le immagini di IBM® WebSphere® Application Server Liberty \(`ibmliberty`\) vengono fornite per {{site.data.keyword.containerlong_notm}}.
 {:shortdesc}
 
+Puoi accedere alle immagini fornite da {{site.data.keyword.IBM_notm}} utilizzando la riga di comando, consulta [Immagini pubbliche IBM](/docs/services/Registry/registry_public_images.html#public_images).
+{: tip}
+
 ## Come funziona 
 {: #how_it_works}
 
@@ -36,14 +39,14 @@ Ogni immagine Liberty fornisce i seguenti pacchetti software.
 -   IBM WebSphere Application Server for Developers Liberty
 -   IBM Java Runtime Environment 8.0
 
-Le specifiche funzioni di Liberty che vengono installate nell'immagine dipendono dalla tag che hai selezionato. La seguente tabella mostra quali funzioni sono incluse in ciascuna delle immagini `ibmliberty`. Per ulteriori informazioni su ogni funzione, vedi la [panoramica delle funzioni Liberty in IBM Knowledge Center ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html).
+Le specifiche funzioni di Liberty che vengono installate nell'immagine dipendono dalla tag che hai selezionato. La seguente tabella mostra quali funzioni sono incluse in ciascuna delle immagini `ibmliberty`. Per ulteriori informazioni su ogni funzione, vedi la [panoramica delle funzioni Liberty in IBM Knowledge Center ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html).
 
 |Tag|Descrizione|
 |---|-----------|
 |Tutte le immagini `ibmliberty`|Tutte le immagini `ibmliberty` includono le seguenti funzioni. <ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |`ibmliberty:latest`|Questa immagine punta all'immagine `ibmliberty:javaee7`.|
-|`ibmliberty:microProfile`|Questa immagine contiene le funzioni che forniscono le capacità specificate da [MicroProfile ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://microprofile.io).|
-|`ibmliberty:webProfile6`|Questa immagine include tutte le funzioni richieste per la conformità a Java EE6 Web Profile. Include inoltre funzioni aggiuntive per allineare i contenuti con le funzioni disponibili per il download utilizzando il JAR di runtime da [http://wasdev.net/ ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](http://wasdev.net/), in particolare le funzioni richieste per le applicazioni OSGi.|
+|`ibmliberty:microProfile`|Questa immagine contiene le funzioni che forniscono le capacità specificate da [MicroProfile ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](https://microprofile.io).|
+|`ibmliberty:webProfile6`|Questa immagine include tutte le funzioni richieste per la conformità a Java EE6 Web Profile. Include inoltre funzioni aggiuntive per allineare i contenuti con le funzioni disponibili per il download utilizzando il JAR di runtime da [http://wasdev.net/ ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](http://wasdev.net/), in particolare le funzioni richieste per le applicazioni OSGi.|
 |`ibmliberty:webProfile7`|Questa immagine include tutte le funzioni richieste per la conformità a Java EE7 Web Profile.|
 |`ibmliberty:javaee7`|Questa immagine include tutte le funzioni dall'immagine `ibmliberty:webProfile7`, più le funzioni richieste per la conformità a Java EE7 Full Platform.|
 
@@ -64,7 +67,7 @@ Il prezzo dell'immagine `ibmliberty` è indipendente dal prezzo dei contenitori 
 Per monitorare l'utilizzo heap Java delle tue istanze del contenitore, vedi [Monitoraggio dell'utilizzo dello spazio heap Java per un contenitore con la CLI](#monitor_heap).
 
 
-Rivedi i termini di utilizzo per le immagini certificate da IBM nella sezione Licenze dell'[immagine websphere-liberty ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://hub.docker.com/_/websphere-liberty/) su Docker Hub.
+Rivedi i termini di utilizzo per le immagini certificate da IBM nella sezione Licenze dell'[immagine websphere-liberty ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](https://hub.docker.com/_/websphere-liberty/) su Docker Hub.
 
 ## Introduzione 
 {: #get_started}
@@ -107,10 +110,10 @@ Dopo aver creato un contenitore dall'immagine `ibmliberty`, puoi visualizzare le
     ```
     {: pre}
 
-3.  Per controllare l'utilizzo heap Java, devi accedere alla statistica di memoria **RSS**. Attieniti alle seguenti linee guida per accedere a una shell di un contenitore [qui ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) e controlla le [Metriche di runtime](/docs/containers/runmetrics/#metrics-from-cgroups-memory-cpu-block-io) su come trovare e creare le informazioni della statistica di memoria di un contenitore.
+3.  Per controllare l'utilizzo heap Java, devi accedere alla statistica di memoria **RSS**. Segui le linee guida su come accedere a una shell di un contenitore, consulta [Get a Shell to a Running Container ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/).
 L'utilizzo heap Java viene visualizzato in kilobyte. Se il tuo utilizzo heap è inferiore a 2097152 kilobyte (2GB) tra tutte le istanze, non dovrai acquistare una licenza WebSphere Application Server.
 
-4.  Regola l'utilizzo heap massimo per la tua istanza WebSphere Application Server. Per ulteriori informazioni, vedi [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474).
+4.  Regola l'utilizzo heap massimo per la tua istanza WebSphere Application Server. Per ulteriori informazioni, vedi [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474).
 
 ## Come ottenere una licenza WebSphere Application Server 
 {: #license}
@@ -120,9 +123,9 @@ Le licenze WebSphere Application Server si basano sul numero di Processor Value 
 
 Ogni dimensione del contenitore in {{site.data.keyword.Bluemix_notm}} richiede un numero specifico di titolarità PVU che devono essere disponibili nella licenza WebSphere Application Server. Pertanto, devi pianificare i tuoi contenitori `ibmliberty` prima di acquistare la licenza.
 
-Per acquistare una licenza WebSphere Application Server, contatta il [servizio IBM ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us). Se già disponi di una licenza per WebSphere Application Server v8.5 o successiva, puoi utilizzare qualsiasi PVU non utilizzato dalla tua titolarità esistente per la distribuzione del tuo contenitore.
+Per acquistare una licenza WebSphere Application Server, contatta il [servizio IBM ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us). Se già disponi di una licenza per WebSphere Application Server v8.5 o successiva, puoi utilizzare qualsiasi PVU non utilizzato dalla tua titolarità esistente per la distribuzione del tuo contenitore.
 
-Se scopri di aver bisogno di altri PVU dopo aver acquistato la licenza, puoi incrementarne la quantità contattando il [servizio IBM ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us).
+Se scopri di aver bisogno di altri PVU dopo aver acquistato la licenza, puoi incrementarne la quantità contattando il [servizio IBM ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us).
 
 ## Creazione di un'immagine `ibmliberty` con licenza di produzione da utilizzare con {{site.data.keyword.containershort_notm}} 
 {: #prod_image}
@@ -130,8 +133,8 @@ Se scopri di aver bisogno di altri PVU dopo aver acquistato la licenza, puoi inc
 Utilizza la tua licenza WebSphere Application Server per creare un'immagine `ibmliberty` con licenza di produzione che puoi utilizzare con {{site.data.keyword.containershort_notm}}. Scegli una delle seguenti attività.
 {:shortdesc}
 
--   [Upgrade the image from Docker Hub to a production image ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
--   [Build your own production-licensed image ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install).
+-   [Upgrade the image from Docker Hub to a production image ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
+-   [Build your own production-licensed image ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install).
 
 Dopo aver creato un'immagine con licenza di produzione, [inserisci l'immagine nel tuo registro privato](/docs/services/Registry/index.html) per utilizzarla con {{site.data.keyword.containershort_notm}}.
 
@@ -170,7 +173,8 @@ Per creare un'immagine con il tuo codice applicazione dall'immagine `ibmliberty`
 
 6. Crea e inserisci l'immagine nel tuo registro delle immagini privato. Per ulteriori informazioni, vedi [Introduzione a {{site.data.keyword.registrylong_notm}}](/docs/services/Registry/index.html).
 
-Tutte le immagini `ibmliberty` sono configurate per scrivere i file di log Liberty nella directory `/logs` all'interno del contenitore. Tutti gli altri file scritti dal server Liberty, vengono creati nella directory `/opt/ibm/wlp/output/defaultServer`. Puoi accedere a questi file utilizzando il percorso rapido `/output`.{:tip}
+Tutte le immagini `ibmliberty` sono configurate per scrivere i file di log Liberty nella directory `/logs` all'interno del contenitore. Tutti gli altri file scritti dal server Liberty, vengono creati nella directory `/opt/ibm/wlp/output/defaultServer`. Puoi accedere a questi file utilizzando il percorso rapido `/output`.
+{:tip}
 
 ## Guida di riferimento al Dockerfile `ibmliberty` 
 {: #reference_dockerfile}

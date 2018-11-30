@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -14,11 +14,14 @@ lastupdated: "2018-08-21"
 {:tip: .tip} 
 {:table: .aria-labeledby="caption"}
 
-# Einführung in das Image `ibm-backup-restore`
+# Einführung zum Image `ibm-backup-restore`
 {: #ibmbackup_restore_starter}
 
 Das Image `ibm-backup-restore` enthält die vorinstallierten Pakete, die zum Sichern und Wiederherstellen von persistentem Speicher in {{site.data.keyword.containerlong}} erforderlich sind.
 {:shortdesc}
+
+Sie können auf die von {{site.data.keyword.IBM_notm}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry/registry_public_images.html#public_images).
+{: tip}
 
 ## Funktionsweise 
 {: #how_it_works}
@@ -50,7 +53,7 @@ Erstellen und konfigurieren Sie eine {{site.data.keyword.cos_full_notm}}-Service
 {: shortdesc}
 
 1. Stellen Sie eine {{site.data.keyword.cos_full_notm}}-Serviceinstanz bereit.
-   1.  Öffnen Sie den [{{site.data.keyword.Bluemix_notm}}-Katalog](https://console.bluemix.net/catalog/services/cloud-object-storage).
+   1.  Öffnen Sie den [{{site.data.keyword.Bluemix_notm}}-Katalog ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/cloud-object-storage).
    2.  Geben Sie einen Namen für Ihre Serviceinstanz ein, z. B. `cos-backup`, und wählen Sie **default** als Ihre Ressourcengruppe aus. 
    3.  Überprüfen Sie die [Planoptionen ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage#s3api) auf Preisinformationen und wählen Sie einen Plan aus. 
    4.  Klicken Sie auf **Erstellen**.
@@ -230,7 +233,7 @@ Sie können Daten aus Ihrer {{site.data.keyword.cos_full_notm}}-Serviceinstanz a
 -   [Richten Sie die CLI auf Ihren Cluster aus](/docs/containers/cs_cli_install.html#cs_cli_configure).
 -   [Erstellen Sie eine Sicherung für einen physischen Datenträger in Ihrem Cluster](#scheduled_backup).
 
-Führen Sie die folgenden Schritte aus, um Daten von {{site.data.keyword.cos_full_notm}} auf einem physischen Datenträger wiederherzustellen:  
+Führen Sie die folgenden Schritte aus, um Daten von {{site.data.keyword.cos_full_notm}} auf einem physischen Datenträger wiederherzustellen: 
 
 1. Rufen Sie den Namen des PVC ab, der den physischen Datenträger bindet, auf dem Sie die Daten wiederherstellen möchten. 
 

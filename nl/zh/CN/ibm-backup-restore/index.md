@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -19,6 +19,9 @@ lastupdated: "2018-08-21"
 
 `ibm-backup-restore` 映像包含在 {{site.data.keyword.containerlong}} 中备份和复原持久性存储器所需的预安装软件包。
 {:shortdesc}
+
+您可以使用命令行来访问 {{site.data.keyword.IBM_notm}} 提供的映像，请参阅 [IBM 公共映像](/docs/services/Registry/registry_public_images.html#public_images)。
+{: tip}
 
 ## 工作原理 
 {: #how_it_works}
@@ -46,7 +49,7 @@ lastupdated: "2018-08-21"
 {: shortdesc}
 
 1. 部署 {{site.data.keyword.cos_full_notm}} 服务实例。
-   1.  打开 [{{site.data.keyword.Bluemix_notm}} 目录](https://console.bluemix.net/catalog/services/cloud-object-storage)。
+   1.  打开 [{{site.data.keyword.Bluemix_notm}}“目录”![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://console.bluemix.net/catalog/services/cloud-object-storage)。
    2.  输入服务实例的名称，例如 `cos-backup`，然后选择 **default** 作为资源组。 
    3.  查看[套餐选项 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage#s3api) 以获取定价信息，然后选择套餐。 
    4.  单击**创建**。

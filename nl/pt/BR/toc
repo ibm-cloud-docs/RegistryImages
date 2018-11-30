@@ -22,6 +22,10 @@ de registro da CLI](../Registry/registry_cli.html)
     {: .navgroup-end}
     
     {: .navgroup id="howto"}
+    datashield-barbican/index.md
+    datashield-mysql/index.md
+    datashield-nginx/index.md
+    datashield-vault/index.md
     ibm-backup-restore/index.md
     ibmcloud-secure-perimeter-health/index.md
     ibmcloud-secure-perimeter-network/index.md

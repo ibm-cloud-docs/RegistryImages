@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-26"
 
 ---
 
@@ -17,20 +17,23 @@ lastupdated: "2018-08-21"
 # 開始使用 `ibmcloud-secure-perimeter-health` 映像檔
 {: #ibmcloud-secure-perimeter-health}
 
-`ibmcloud-secure-perimeter-health` 映像檔包含一個工具，可用來在 IBM Cloud 中掃描 Secure Perimeter 中的漏洞。
+`ibmcloud-secure-perimeter-health` 映像檔包含一個工具，可用來在 {{site.data.keyword.cloud}} 中掃描 Secure Perimeter 中的漏洞。
 {:shortdesc}
+
+您可以使用指令行存取 {{site.data.keyword.IBM_notm}} 所提供的映像檔，請參閱 [IBM 公用映像檔](/docs/services/Registry/registry_public_images.html#public_images)。
+{: tip}
 
 ## 如何運作
 {: #how-it-works}
 
-為了確保您的 Secure Perimeter 正常運作，`ibmcloud-secure-perimeter-health` 可掃描 IBM Cloud 基礎架構帳戶中的公用或專用網路，並報告漏洞。您可以利用兩種方式來使用 **ibmcloud-secure-perimeter-health** 映像檔：
+為了確保您的 Secure Perimeter 正常運作，`ibmcloud-secure-perimeter-health` 可掃描 {{site.data.keyword.cloud_notm}} 基礎架構帳戶中的公用或專用網路，並報告漏洞。您可以利用兩種方式來使用 **ibmcloud-secure-perimeter-health** 映像檔：
 
 -   使用 `ibmcloud-secure-perimeter-health` 作為 Secure Perimeter 內 Kubernetes 叢集上的 Pod，以掃描專用網路曝光。
 -   使用 `ibmcloud-secure-perimeter-health` 作為您工作站上的獨立式 Docker 儲存器，以掃描公用網路曝光。
 
 在下列部落格文章中可以找到 Secure Perimeter 的相關資訊：
-  * [在 IBM Cloud 中設定 Secure Perimeter](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
-  * [在 IBM Cloud 中設定自動化 Secure Perimeter](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)。
+  * [Set up a Secure Perimeter in {{site.data.keyword.cloud_notm}} ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
+  * [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}} ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)
 
 掃描之後，`ibmcloud-secure-perimeter-health` 映像檔會產生一個報告，說明可以從 Secure Perimeter Segment 內聯繫到的網路。每個報告都會詳述網路閘道的名稱、VLAN、其子網路及任何不當的主機。掃描專用網路漏洞的使用者報告範例：
 
@@ -72,7 +75,7 @@ sp-gateway-8a9031ab:
 
 檢閱下列作業以學習如何使用 `ibmcloud-secure-perimeter-health`：
 
-1.  [使用 {{site.data.keyword.containerlong}} 在 Secure Perimeter 內佈建 Kubernetes 叢集](#provision_cluster)
+1.  [使用 {{site.data.keyword.containerlong_notm}} 在 Secure Perimeter 內佈建 Kubernetes 叢集](#provision_cluster)
 2.  [掃描 Secure Perimeter 內的專用網路](#private_networks)
 3.  [掃描 Secure Perimeter 外的公用網路](#public_networks)
 4.  [瞭解掃描結果](#scan_results)
@@ -83,13 +86,13 @@ sp-gateway-8a9031ab:
 ## 使用 {{site.data.keyword.containerlong_notm}} 在 Secure Perimeter 內佈建 Kubernetes 叢集
 {: #provision_cluster}
 
-1.  從 IBM Cloud 型錄中的**容器**區段中，佈建您的 Kubernetes 叢集。
+1.  從 {{site.data.keyword.cloud_notm}} 型錄中的**容器**區段中，佈建您的 Kubernetes 叢集。
 2.  按一下**建立**。
 3.  從 VLAN 下拉功能表中，選取 Secure Perimeter Segment 公用和專用 VLAN。
 4.  視需要輸入所有其他詳細資料。
 5.  按一下**建立叢集**。
 
-檢閱 [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) 文件，瞭解如何在部署完叢集之後取得該叢集的存取權。
+檢閱 [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) 文件，瞭解如何在部署完叢集之後取得該叢集的存取權。
 
 ## 掃描 Secure Perimeter 內的專用網路
 {: #private_networks}
@@ -146,12 +149,12 @@ sp-gateway-8a9031ab:
 3. 確認 Pod 在執行中。
 
     ```
-    kubectl get pods
+kubectl get pods
     ```
     {: pre}
 
     ```
-    NAME                                    READY     STATUS    RESTARTS   AGE
+NAME                                    READY     STATUS    RESTARTS   AGE
     health-pod-<random-id>                  1/1       Running   0          1hr
     ```
     {: screen}

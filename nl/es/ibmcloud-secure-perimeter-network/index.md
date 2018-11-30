@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-26"
 
 ---
 
@@ -19,6 +19,9 @@ lastupdated: "2018-08-21"
 
 La imagen `ibmcloud-secure-perimeter-network` contiene herramientas para automatizar la configuración de los dispositivos de direccionador virtual Vyatta dentro de un Secure Perimeter.
 {:shortdesc}
+
+Puede acceder a las imágenes que suministra {{site.data.keyword.IBM}} desde la línea de mandatos; consulte las [imágenes públicas de IBM](/docs/services/Registry/registry_public_images.html#public_images).
+{: tip}
 
 ## Modo de funcionamiento
 {: #how-it-works}
@@ -64,7 +67,7 @@ Revise las siguientes tareas para aprender a utilizar `ibmcloud-secure-perimeter
 4.  Especifique los demás detalles según sea necesario.
 5.  Pulse **Crear clúster**.
 
-Revise la documentación de [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) sobre cómo obtener acceso al clúster una vez que se haya desplegado.
+Revise la documentación de [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) sobre cómo obtener acceso al clúster una vez que se haya desplegado.
 
 ## Ejecute la configuración inicial de su Secure Perimeter Vyatta
 {: #initial_setup}
@@ -229,4 +232,4 @@ Para que la imagen `ibmcloud-secure-perimeter-network` gestione subredes en el S
 {: #prerequisites}
 
 -   Vyatta y VLAN que se han ordenado desde el portal de infraestructura de IBM Cloud y VLAN que se han asociado a Vyatta.
--   El despliegue automatizado de Secure Perimeter precarga Vyatta con claves SSH que `ibmcloud-secure-perimeter-network` utiliza para acceder a la pasarela. Las claves SSH se deben cargar ya sea manualmente o mediante el proceso de instalación de Secure Perimeter. Consulte el artículo [Configuración de un Secure Perimeter automatizado en IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) para obtener más información.
+-   El despliegue automatizado de Secure Perimeter precarga Vyatta con claves SSH que `ibmcloud-secure-perimeter-network` utiliza para acceder a la pasarela. Las claves SSH se deben cargar ya sea manualmente o mediante el proceso de instalación de Secure Perimeter. Consulte el artículo sobre cómo [configurar un perímetro seguro automático en IBM Cloud ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) para obtener más información.

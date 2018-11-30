@@ -1,8 +1,8 @@
-﻿---
+---
 
 copyright:
   years: 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-26"
 
 ---
 
@@ -17,20 +17,23 @@ lastupdated: "2018-08-21"
 # Introdução à imagem `ibmcloud-secure-perimeter-health`
 {: #ibmcloud-secure-perimeter-health}
 
-A imagem `ibmcloud-secure-perimeter-health` contém uma ferramenta para varrer vulnerabilidades em um perímetro seguro no IBM Cloud.
+A imagem `ibmcloud-secure-perimeter-health` contém uma ferramenta para varrer as vulnerabilidades em um perímetro seguro no {{site.data.keyword.cloud}}.
 {:shortdesc}
+
+É possível acessar as imagens que são fornecidas pela {{site.data.keyword.IBM_notm}} usando a linha de comandos. Consulte [Imagens públicas da IBM](/docs/services/Registry/registry_public_images.html#public_images).
+{: tip}
 
 ## Como ele Funciona
 {: #how-it-works}
 
-Para assegurar que seu perímetro seguro esteja funcionando corretamente, a `ibmcloud-secure-perimeter-health` pode varrer redes públicas ou privadas em sua conta de infraestrutura no IBM Cloud e relatar vulnerabilidades. É possível usar a imagem **ibmcloud-secure-perimeter-health** de duas maneiras:
+Para assegurar que o perímetro seguro esteja funcionando adequadamente, o `ibmcloud-secure-perimeter-health` pode varrer as redes públicas ou privadas em sua conta de infraestrutura do {{site.data.keyword.cloud_notm}} e relatar as vulnerabilidades. É possível usar a imagem **ibmcloud-secure-perimeter-health** de duas maneiras:
 
 -   Use `ibmcloud-secure-perimeter-health` como um pod em um cluster do Kubernetes em seu perímetro seguro para varrer exposições de rede privada.
 -   Use `ibmcloud-secure-perimeter-health` como um contêiner do Docker independente em sua estação de trabalho para varrer exposições de rede pública.
 
 Mais informações sobre o perímetro seguro podem ser encontradas nestes artigos do blog:
-  * [Configure um perímetro seguro no IBM Cloud](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
-  * [Configure um perímetro seguro automatizado no IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
+  * [Configure um perímetro seguro no {{site.data.keyword.cloud_notm}} ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/).
+  * [Configure um perímetro seguro automatizado no {{site.data.keyword.cloud_notm}} ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
 
 Após a varredura, a imagem `ibmcloud-secure-perimeter-health` produz um relatório sobre quais redes estavam acessíveis de dentro do segmento de perímetro seguro. Cada relatório detalha o nome do gateway de rede, da VLAN, de suas sub-redes e de quaisquer hosts ofensivos. Um relatório de exemplo de um usuário que varreu em busca de vulnerabilidades da rede privada:
 
@@ -72,7 +75,7 @@ A imagem `ibmcloud-secure-perimeter-health` fornece os pacotes de software a seg
 
 Revise as tarefas a seguir para aprender a usar `ibmcloud-secure-perimeter-health`:
 
-1.  [Provisionar um cluster do Kubernetes dentro de um perímetro seguro usando o {{site.data.keyword.containerlong}}](#provision_cluster)
+1.  [Provisionar um cluster do Kubernetes dentro de um perímetro seguro usando o {{site.data.keyword.containerlong_notm}}](#provision_cluster)
 2.  [Varrer as redes privadas dentro de um perímetro seguro](#private_networks)
 3.  [Varrer as redes públicas fora de um perímetro seguro](#public_networks)
 4.  [Entendendo os resultados da varredura](#scan_results)
@@ -83,13 +86,13 @@ Revise as tarefas a seguir para aprender a usar `ibmcloud-secure-perimeter-healt
 ## Provisionar um cluster do Kubernetes dentro de um Perímetro seguro usando o {{site.data.keyword.containerlong_notm}}
 {: #provision_cluster}
 
-1.  Provisione o cluster do Kubernetes por meio da seção **Contêineres** no catálogo do IBM Cloud.
+1.  Forneça o cluster do Kubernetes por meio da seção **Contêineres** no catálogo do {{site.data.keyword.cloud_notm}}.
 2.  Clique em **Criar**.
 3.  Selecione as VLANs públicas e privadas do segmento de perímetro seguro dos menus suspensos da VLAN.
 4.  Insira todos os outros detalhes, conforme necessário.
 5.  Clique em  ** Criar Cluster **.
 
-Revise a documentação do [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) sobre como obter acesso ao seu cluster após ele ser implementado.
+Revise a documentação do [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) sobre como obter acesso ao seu cluster após ele ser implementado.
 
 ## Varrer as redes privadas em um perímetro seguro
 {: #private_networks}
@@ -99,8 +102,7 @@ Crie um pod de contêiner por meio da imagem `ibmcloud-secure-perimeter-health` 
 **Antes de começar**
 
 -   Instale as [CLIs](/docs/containers/cs_cli_install.html#cs_cli_install) necessárias.
--   [Destine sua CLI](/docs/containers/cs_cli_install.html#cs_cli_configure
-) para seu cluster.
+-   [Destine sua CLI](/docs/containers/cs_cli_install.html#cs_cli_configure) para seu cluster.
 
 1. Crie um arquivo de configuração denominado _health-pod.yaml_. Esse arquivo cria uma implementação altamente disponível do pod do contêiner.
 

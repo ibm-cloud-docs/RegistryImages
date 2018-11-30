@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-26"
 
 ---
 
@@ -20,14 +20,17 @@ lastupdated: "2018-08-21"
 `ibmcloud-secure-perimeter-network` 映像包含用于自动配置 Secure Perimeter 中 Vyatta 虚拟路由器设备的工具。
 {:shortdesc}
 
+您可以使用命令行来访问 {{site.data.keyword.IBM}} 提供的映像，请参阅 [IBM 公共映像](/docs/services/Registry/registry_public_images.html#public_images)。
+{: tip}
+
 ## 工作原理
 {: #how-it-works}
 
 利用 `ibmcloud-secure-perimeter-network`，您可以自动配置 Secure Perimeter 的 Vyatta 虚拟路由器设备。
 
 有关 Secure Perimeter 的更多信息，请参阅以下博客文章：
-  * [在 IBM Cloud 中设置 Secure Perimeter](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
-  * [在 IBM Cloud 中设置自动化的 Secure Perimeter](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)。
+  * [Set up a Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
+  * [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)。
 
 您可以通过以下两种方式使用 `ibmcloud-secure-perimeter-network` 映像：
 -  使用 `ibmcloud-secure-perimeter-network` 作为 Docker 容器以初始化 Secure Perimeter 防火墙规则配置。
@@ -64,7 +67,7 @@ lastupdated: "2018-08-21"
 4.  根据需要输入其他所有详细信息。
 5.  单击**创建集群**。
 
-查看 [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index) 文档以了解如何在部署后获取集群的访问权。
+查看 [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) 文档以了解如何在部署后获取集群的访问权。
 
 ## 运行 Secure Perimeter Vyatta 的初始配置
 {: #initial_setup}
@@ -229,4 +232,4 @@ lastupdated: "2018-08-21"
 {: #prerequisites}
 
 -   从 IBM Cloud 基础架构门户网站订购的 Vyatta 和 VLAN，并且 VLAN 已关联到 Vyatta。
--   自动化的 Secure Perimeter 部署通过 `ibmcloud-secure-perimeter-network` 用于访问网关的 SSH 密钥预装入 Vyatta。必须手动或者通过 Secure Perimeter 安装过程装入 SSH 密钥。请查看文章[在 IBM Cloud 中设置自动化的 Secure Perimeter](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) 以获取更多信息。
+-   自动化的 Secure Perimeter 部署通过 `ibmcloud-secure-perimeter-network` 用于访问网关的 SSH 密钥预装入 Vyatta。必须手动或者通过 Secure Perimeter 安装过程装入 SSH 密钥。有关更多信息，请查看文章 [Set up an automated Secure Perimeter in IBM Cloud ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)。

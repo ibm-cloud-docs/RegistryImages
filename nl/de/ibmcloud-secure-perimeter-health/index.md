@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-10-26"
 
 ---
 
@@ -14,23 +14,26 @@ lastupdated: "2018-08-21"
 {:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
-# Einführung in das Image `ibmcloud-secure-perimeter-health`
+# Einführung zum Image `ibmcloud-secure-perimeter-health`
 {: #ibmcloud-secure-perimeter-health}
 
-Das Image `ibmcloud-secure-perimeter-health` enthält ein Tool für das Scannen nach Sicherheitslücken in einem Secure Perimeter in IBM Cloud.
+Das Image `ibmcloud-secure-perimeter-health` enthält ein Tool für das Scannen nach Sicherheitslücken in einem Secure Perimeter in {{site.data.keyword.cloud}}.
 {:shortdesc}
+
+Sie können auf die von {{site.data.keyword.IBM_notm}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry/registry_public_images.html#public_images).
+{: tip}
 
 ## Funktionsweise
 {: #how-it-works}
 
-Damit sichergestellt wird, dass Secure Perimeter korrekt funktioniert, kann `ibmcloud-secure-perimeter-health` öffentliche oder private Netze in Ihrem IBM Cloud Infrastructure-Konto scannen und potenzielle Sicherheitslücken melden. Für die Verwendung des Images **ibmcloud-secure-perimeter-health** stehen zwei Möglichkeiten zur Verfügung:
+Damit sichergestellt wird, dass Secure Perimeter korrekt funktioniert, kann `ibmcloud-secure-perimeter-health` öffentliche oder private Netze in Ihrem {{site.data.keyword.cloud_notm}}-Infrastrukturkonto scannen und potenzielle Sicherheitslücken melden. Für die Verwendung des Images **ibmcloud-secure-perimeter-health** stehen zwei Möglichkeiten zur Verfügung:
 
 -   Verwendung von `ibmcloud-secure-perimeter-health` als Pod in einem Kubernetes-Cluster in Secure Perimeter zum Scannen nach Sicherheitslücken in privaten Netzen.
 -   Verwendung von `ibmcloud-secure-perimeter-health` als eigenständiger Docker-Container auf Ihrer Workstation zum Scannen nach Sicherheitslücken in öffentlichen Netzen.
 
 Weitere Informationen zu Secure Perimeter finden Sie in den folgenden Blog-Artikeln:
-  * [Secure Perimeter in IBM Cloud einrichten](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
-  * [Automatisierten Secure Perimeter in IBM Cloud einrichten](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)
+  * [Secure Perimeter in {{site.data.keyword.cloud_notm}} einrichten ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/).
+  * [Automatisierten Secure Perimeter in {{site.data.keyword.cloud_notm}} einrichten ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
 
 Nach dem Scannen generiert das Image `ibmcloud-secure-perimeter-health` einen Bericht, der Informationen dazu enthält, welche Netze vom Secure Perimeter Segment aus erreichbar waren. Jeder Bericht enthält Details zum Namen des Netzgateways, zum VLAN, den zugehörigen Teilnetzen sowie gegebenenfalls zu Hosts, die Sicherheitsverstöße verursachen. Im Folgenden ist ein Beispielbericht eines Benutzers dargestellt, der nach Sicherheitslücken in einem privaten Netz gescannt hat:
 
@@ -72,7 +75,7 @@ Das `ibmcloud-secure-perimeter-health`-Image bietet die folgenden Softwarepakete
 
 Die folgenden Aufgaben beschreiben die Verwendung von `ibmcloud-secure-perimeter-health`:
 
-1.  [Bereitstellen eines Kubernetes-Clusters in einem Secure Perimeter mit {{site.data.keyword.containerlong}}](#provision_cluster)
+1.  [Bereitstellen eines Kubernetes-Clusters in einem Secure Perimeter mit {{site.data.keyword.containerlong_notm}}](#provision_cluster)
 2.  [Scannen von privaten Netzen in einem Secure Perimeter](#private_networks)
 3.  [Scannen von öffentlichen Netzen außerhalb eines Secure Perimeter](#public_networks)
 4.  [Interpretieren von Scanergebnissen](#scan_results)
@@ -83,13 +86,13 @@ Die folgenden Aufgaben beschreiben die Verwendung von `ibmcloud-secure-perimeter
 ## Bereitstellen eines Kubernetes-Clusters in einem Secure Perimeter mit {{site.data.keyword.containerlong_notm}}
 {: #provision_cluster}
 
-1.  Stellen Sie den Kubernetes-Custer im Abschnitt **Container** im IBM Cloud-Katalog bereit.
+1.  Stellen Sie den Kubernetes-Cluster im Abschnitt **Container** im {{site.data.keyword.cloud_notm}}-Katalog bereit.
 2.  Klicken Sie auf **Erstellen**.
 3.  Wählen Sie die öffentlichen und privaten Secure Perimeter Segment-VLANs in den VLAN-Dropdown-Menüs aus.
-4.  Geben Sie alle weiteren erforderlichen Details ein. 
-5.  Klicken Sie auf **Cluster erstellen**. 
+4.  Geben Sie alle weiteren erforderlichen Details ein.
+5.  Klicken Sie auf **Cluster erstellen**.
 
-Informationen zum Einrichten des Zugriffs auf den Cluster nach seiner Bereitstellung finden Sie in der [{{site.data.keyword.containerlong}}](/docs/containers/container_index.html#container_index)-Dokumentation. 
+Informationen zum Einrichten des Zugriffs auf den Cluster nach seiner Bereitstellung finden Sie in der [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index)-Dokumentation.
 
 ## Scannen von privaten Netzen in einem Secure Perimeter
 {: #private_networks}
@@ -99,8 +102,7 @@ Erstellen Sie einen Container-Pod, der auf dem Image `ibmcloud-secure-perimeter-
 **Vorbereitende Schritte**
 
 -   Installieren Sie die erforderlichen [Befehlszeilenschnittstellen (CLIs)](/docs/containers/cs_cli_install.html#cs_cli_install).
--   [Richten Sie Ihre Befehlszeilenschnittstelle](/docs/containers/cs_cli_install.html#cs_cli_configure
-) auf Ihren Cluster aus.
+-   [Geben Sie Ihren Cluster als Ziel in der Befehlszeilenschnittstelle an.](/docs/containers/cs_cli_install.html#cs_cli_configure)
 
 1. Erstellen Sie eine Konfigurationsdatei mit dem Namen _health-pod.yaml_. Mit dieser Datei wird eine Hochverfügbarkeitsbereitstellung des Container-Pods erstellt.
 
@@ -231,6 +233,6 @@ Das Image `ibmcloud-secure-perimeter-health` gibt für ein Teilnetz den Status `
 
 |Schlüssel|Beschreibung|
 |---|-------------|
-|SL_USER|Ihr Benutzername für IBM Cloud Infrastructure|
-|SL_APIKEY|Ihr API-Schlüssel für IBM Cloud Infrastructure|
+|SL_USER|Ihr Benutzername für die IBM Cloud-Infrastruktur|
+|SL_APIKEY|Ihr API-Schlüssel für die IBM Cloud-Infrastruktur|
 {: caption="Tabelle 2. Umgebungsvariablen" caption-side="top"}
