@@ -1,22 +1,10 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="RegistryImages" audience="compute" href="/docs/services/RegistryImages/index.html"}
-IBM パブリック・コンテナー・イメージ
+{: .toc subcollection="RegistryImages" audience="compute" href="/docs/services/RegistryImages/index.html" path="services/RegistryImages"}
+IBM public container images
 
     {: .navgroup id="learn"}
-    index.md
-    {: .navgroup-end}
-    
-    {: .navgroup id="reference"}
-    {: .topicgroup}
-    関連リンク
-        [Dockerfile リファレンス](http://docs.docker.com/engine/reference/builder/)
-        [Docker での Supervisor の使用](https://docs.docker.com/engine/admin/using_supervisord/)
-        [Registry CLI リファレンス](../Registry/registry_cli.html)
-    {: .navgroup-end}
-    
-    {: .navgroup id="howto"}
     datashield-barbican/index.md
     datashield-mysql/index.md
     datashield-nginx/index.md
@@ -25,4 +13,5 @@ IBM パブリック・コンテナー・イメージ
     ibmcloud-secure-perimeter-health/index.md
     ibmcloud-secure-perimeter-network/index.md
     ibmliberty/index.md
+    
     {: .navgroup-end}
