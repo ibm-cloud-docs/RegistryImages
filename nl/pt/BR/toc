@@ -1,27 +1,10 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="RegistryImages" audience="compute" href="/docs/services/RegistryImages/index.html"}
-Imagens de contêiner público IBM
+{: .toc subcollection="RegistryImages" audience="compute" href="/docs/services/RegistryImages/index.html" path="services/RegistryImages"}
+IBM public container images
 
     {: .navgroup id="learn"}
-    index.md
-    {: .navgroup-end}
-    
-    {: .navgroup id="reference"}
-    {: .topicgroup}
-    Links relacionados
-
-[Referência
-do Dockerfile](http://docs.docker.com/engine/reference/builder/)
-
-[Use
-o supervisor com o Docker](https://docs.docker.com/engine/admin/using_supervisord/)
-        [Referência
-de registro da CLI](../Registry/registry_cli.html)
-    {: .navgroup-end}
-    
-    {: .navgroup id="howto"}
     datashield-barbican/index.md
     datashield-mysql/index.md
     datashield-nginx/index.md
@@ -30,4 +13,5 @@ de registro da CLI](../Registry/registry_cli.html)
     ibmcloud-secure-perimeter-health/index.md
     ibmcloud-secure-perimeter-network/index.md
     ibmliberty/index.md
+    
     {: .navgroup-end}
