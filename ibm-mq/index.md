@@ -16,7 +16,7 @@ lastupdated: "2018-12-13"
 
 # IBM MQ public image
 
-The {{site.data.keyword.IBM}} MQ public image is now available at the following location: [IBM MQ Advanced for Developers](https://hub.docker.com/r/ibmcom/mq/).
+The {{site.data.keyword.IBM}} MQ public image is now available at the following location: [IBM MQ Advanced for Developers ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://hub.docker.com/r/ibmcom/mq/)
 
 You can access the images that are provided by {{site.data.keyword.IBM}} in {{site.data.keyword.registrylong_notm}} by using the command line, see [IBM public images](/docs/services/Registry/registry_public_images.html#public_images).
 {: tip}
