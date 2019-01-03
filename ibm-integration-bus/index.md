@@ -14,7 +14,7 @@ lastupdated: "2019-01-03"
 {:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
-# `ibm-integration-bus` publlic image
+# `ibm-integration-bus` public image
 {: #iib}
 
 The `ibm-integration-bus` image is no longer available.
