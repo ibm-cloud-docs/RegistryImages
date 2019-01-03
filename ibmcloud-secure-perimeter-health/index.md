@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -28,12 +28,13 @@ You can access the images that are provided by {{site.data.keyword.IBM_notm}} by
 
 To ensure your Secure Perimeter is functioning properly, `ibmcloud-secure-perimeter-health` can scan public or private networks in your {{site.data.keyword.cloud_notm}} infrastructure account and report vulnerabilities. You can use **ibmcloud-secure-perimeter-health** image in two ways:
 
--   Use `ibmcloud-secure-perimeter-health` as a pod on a Kubernetes cluster within your Secure Perimeter to scan for private network exposures.
--   Use `ibmcloud-secure-perimeter-health` as a stand-alone Docker container on your workstation to scan for public network exposures.
+- Use `ibmcloud-secure-perimeter-health` as a pod on a Kubernetes cluster within your Secure Perimeter to scan for private network exposures.
+- Use `ibmcloud-secure-perimeter-health` as a stand-alone Docker container on your workstation to scan for public network exposures.
 
 More information on Secure Perimeter can be found in these blog articles:
-  * [Set up a Secure Perimeter in {{site.data.keyword.cloud_notm}} ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/).
-  * [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}} ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
+
+- [Set up a Secure Perimeter in {{site.data.keyword.cloud_notm}} ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/).
+- [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}} ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
 
 After scanning, the `ibmcloud-secure-perimeter-health` image produces a report on which networks were reachable from within the Secure Perimeter Segment. Each report details the name of the network gateway, VLAN, its subnets, and any offending hosts. An example report of a user that scanned for private network vulnerabilities:
 
@@ -65,32 +66,31 @@ sp-gateway-8a9031ab:
 The `ibmcloud-secure-perimeter-health` image provides the following software packages.
 {:shortdesc}
 
--   Alpine Linux
--   Python runtime
--   SoftLayer Python Client
--   Nmap port scanner
+- Alpine Linux
+- Python runtime
+- SoftLayer Python Client
+- Nmap port scanner
 
 ## Getting started
 {: #how_to_get_started}
 
 Review the following tasks to learn how to use `ibmcloud-secure-perimeter-health`:
 
-1.  [Provision a Kubernetes cluster within a Secure Perimeter using {{site.data.keyword.containerlong_notm}}](#provision_cluster)
-2.  [Scan private networks within a Secure Perimeter](#private_networks)
-3.  [Scan public networks outside a Secure Perimeter](#public_networks)
-4.  [Understanding scan results](#scan_results)
-5.  [Container argument reference](#reference_container_arg)
-6.  [Environment variable reference](#reference_env_var)
-
+1. [Provision a Kubernetes cluster within a Secure Perimeter using {{site.data.keyword.containerlong_notm}}](#provision_cluster)
+2. [Scan private networks within a Secure Perimeter](#private_networks)
+3. [Scan public networks outside a Secure Perimeter](#public_networks)
+4. [Understanding scan results](#scan_results)
+5. [Container argument reference](#reference_container_arg)
+6. [Environment variable reference](#reference_env_var)
 
 ## Provision a Kubernetes cluster within a Secure Perimeter by using {{site.data.keyword.containerlong_notm}}
 {: #provision_cluster}
 
-1.  Provision your Kubernetes cluster from the **Containers** section in the {{site.data.keyword.cloud_notm}} catalog.
-2.  Click **Create**.
-3.  Select the Secure Perimeter Segment public and private VLANs from the VLAN dropdown menus.
-4.  Enter all other details as you require.
-5.  Click **Create Cluster**.
+1. Provision your Kubernetes cluster from the **Containers** section in the {{site.data.keyword.cloud_notm}} catalog.
+2. Click **Create**.
+3. Select the Secure Perimeter Segment public and private VLANs from the VLAN dropdown menus.
+4. Enter all other details as you require.
+5. Click **Create Cluster**.
 
 Review [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) documentation about how to get access to your cluster after it has been deployed.
 
@@ -101,8 +101,8 @@ Create a container pod from the `ibmcloud-secure-perimeter-health` image, and se
 
 **Before you begin**
 
--   Install the required [CLIs](/docs/containers/cs_cli_install.html#cs_cli_install).
--   [Target your CLI](/docs/containers/cs_cli_install.html#cs_cli_configure) to your cluster.
+- Install the required [CLIs](/docs/containers/cs_cli_install.html#cs_cli_install).
+- [Target your CLI](/docs/containers/cs_cli_install.html#cs_cli_configure) to your cluster.
 
 1. Create a configuration file that is named _health-pod.yaml_. This file creates a highly-available deployment of the container pod.
 
@@ -166,7 +166,7 @@ Create a Docker container from the `ibmcloud-secure-perimeter-health` image and 
 
 **Before you begin**
 
--  Install Docker.
+- Install Docker.
 
 1. Create a Docker container from your own workstation as follows:
 
