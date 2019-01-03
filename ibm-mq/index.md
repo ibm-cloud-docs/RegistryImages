@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-12-13"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,12 +11,13 @@ lastupdated: "2018-12-13"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
-# IBM MQ public image
+# `ibm-mq` public image
+{: #mq}
 
-The {{site.data.keyword.IBM}} MQ public image is now available at the following location: [IBM MQ Advanced for Developers ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://hub.docker.com/r/ibmcom/mq/)
+The `ibm-mq` public image is available at the following location: [IBM MQ Advanced for Developers ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://hub.docker.com/r/ibmcom/mq/)
 
 You can access the images that are provided by {{site.data.keyword.IBM}} in {{site.data.keyword.registrylong_notm}} by using the command line, see [IBM public images](/docs/services/Registry/registry_public_images.html#public_images).
 {: tip}
