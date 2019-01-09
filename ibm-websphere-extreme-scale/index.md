@@ -14,7 +14,7 @@ lastupdated: "2019-01-03"
 {:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
-# `ibm-websphere-extreme-scale`public image
+# `ibm-websphere-extreme-scale` public image
 {: #extreme-scale}
 
 The `ibm-websphere-extreme-scale` image is no longer available.
