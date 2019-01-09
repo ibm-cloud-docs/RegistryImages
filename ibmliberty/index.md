@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-01-09"
 
 ---
 
@@ -131,7 +131,7 @@ Use your WebSphere Application Server license to create a production-licensed `i
 {:shortdesc}
 
 - [Upgrade the image from Docker Hub to a production image ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
-- [Build your own production-licensed image ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install).
+- [Build your own production-licensed image ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://github.com/WASdev/ci.docker/tree/master/ga).
 
 After you create a production-licensed image, [push the image to your private registry](/docs/services/Registry/index.html) to use it with {{site.data.keyword.containershort_notm}}.
 
