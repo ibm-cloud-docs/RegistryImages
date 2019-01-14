@@ -62,4 +62,4 @@ Mithilfe der folgenden Kubernetes-Podspezifikationen können Sie das Image berei
 ```
 {: codeblock}    
     
-Wenn Sie eigene Inhalte für die Bereitstellung durch NGINX angeben möchten, legen Sie sie unter `/usr/local/nginx/html` im Container ab. 
+Wenn Sie eigene Inhalte für die Bereitstellung durch NGINX angeben möchten, legen Sie sie unter `/usr/local/nginx/html` im Container ab.

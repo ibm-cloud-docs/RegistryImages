@@ -68,4 +68,4 @@ Sie können eine Verbindung zur MariaDB-Instanz herstellen, indem Sie den folgen
 ```
 {: pre}
 
-Für das Data Shield-MariaDB-Image ist es erforderlich, dass die Clientverbindungen TLS verwenden. Abhängig von der verwendeten Clientversion müssen Sie möglicherweise `--ssl` oder `--ssl-mode require` zur Clientbefehlszeile hinzufügen. 
+Für das Data Shield-MariaDB-Image ist es erforderlich, dass die Clientverbindungen TLS verwenden. Abhängig von der verwendeten Clientversion müssen Sie möglicherweise `--ssl` oder `--ssl-mode require` zur Clientbefehlszeile hinzufügen.
