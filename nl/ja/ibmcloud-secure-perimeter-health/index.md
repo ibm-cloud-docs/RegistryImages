@@ -26,7 +26,7 @@ lastupdated: "2018-10-26"
 ## 機能
 {: #how-it-works}
 
-Secure Perimeter が適切に機能していることを確認するために、`ibmcloud-secure-perimeter-health` で、ご使用の {{site.data.keyword.cloud_notm}} インフラストラクチャー・アカウントのパブリック・ネットワークまたはプライベート・ネットワークをスキャンし、脆弱性のレポートを作成できます。**ibmcloud-secure-perimeter-health** イメージは、以下の 2 つの方法で使用できます。
+Secure Perimeter が適切に機能していることを確認するために、`ibmcloud-secure-perimeter-health` で、ご使用の {{site.data.keyword.cloud_notm}} インフラストラクチャー・アカウントのパブリック・ネットワークまたはプライベート・ネットワークをスキャンし、脆弱性のレポートを作成できます。 **ibmcloud-secure-perimeter-health** イメージは、以下の 2 つの方法で使用できます。
 
 -   `ibmcloud-secure-perimeter-health` を Secure Perimeter 内の Kubernetes クラスター上のポッドとして使用して、プライベート・ネットワークの露出をスキャンする。
 -   `ibmcloud-secure-perimeter-health` をワークステーション上のスタンドアロン Docker コンテナーとして使用して、パブリック・ネットワークの露出をスキャンする。

@@ -2,7 +2,7 @@
 {:topicgroup: .topicgroup}
 
 {: .toc subcollection="RegistryImages" audience="compute" href="/docs/services/RegistryImages/index.html" path="services/RegistryImages"}
-IBM public container images
+IBM パブリック・コンテナー・イメージ
 
     {: .navgroup id="learn"}
     datashield-barbican/index.md
