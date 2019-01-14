@@ -14,7 +14,7 @@ lastupdated: "2018-10-26"
 {:tip: .tip} 
 {:table: .aria-labeledby="caption"}
 
-# Initiation à l'image `datashield-barbican` 
+# Initiation à l'image `datashield-barbican`
 {: #datashield-barbican_starter}
 
 Cette image de conteneur exécute Barbican dans l'environnement Data Shield et offre une protection pour les données utilisées.

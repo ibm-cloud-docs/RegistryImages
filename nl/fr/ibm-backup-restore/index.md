@@ -217,7 +217,7 @@ Pour sauvegarder un volume persistant, procédez comme suit :
 6.  Examinez la sauvegarde dans le service {{site.data.keyword.cos_full_notm}} dans l'interface graphique de {{site.data.keyword.Bluemix_notm}}.
     1.  Depuis le tableau de bord {{site.data.keyword.Bluemix_notm}}, trouvez l'instance de service {{site.data.keyword.cos_full_notm}}. 
     2.  Depuis la navigation, sélectionnez **Buckets** et cliquez sur le compartiment que vous avez utilisé dans votre configuration de sauvegarde. La sauvegarde s'affiche en tant qu'objet dans votre compartiment. 
-    3.  Examinez les fichiers compressés. Vous pouvez télécharger le fichier `vol1.difftar.gz`, extraire le fichier et vérifier les données  sauvegardées. 
+    3.  Examinez les fichiers compressés. Vous pouvez télécharger le fichier `vol1.difftar.gz`, extraire le fichier et vérifier les données sauvegardées. 
         
         **Important** : si vous supprimez ou modifiez des fichiers dans {{site.data.keyword.cos_full_notm}}, ces fichiers ne peuvent pas être récupérés.
 
@@ -545,7 +545,7 @@ d'{{site.data.keyword.cos_full_notm}} que vous aviez notées plus tôt. Ajoutez 
 
 13. Pour vérifier que votre sauvegarde est chiffrée, examinez les fichiers de votre instance de service {{site.data.keyword.cos_full_notm}}. `.gpg` a été ajouté à la fin du nom de fichier.
 
-Votre sauvegarde est chiffrée. Pour restaurer les fichiers, suivez les étapes décrites dans [Restauration des données depuis {{site.data.keyword.cos_full_notm}} vers votre cluster](#restore_script_cli) et incluez le fichier `encryption.asc` dans le répertoire `backup_restore` du pod  qui exécute le processus de restauration. Si la sauvegarde est chiffrée, vous devez fournir les variables d'environnement **ENCRYPTION_REQUIRED** et **ENCRYPTION_PASSPHRASE** quand vous créez le pod de restauration.
+Votre sauvegarde est chiffrée. Pour restaurer les fichiers, suivez les étapes décrites dans [Restauration des données depuis {{site.data.keyword.cos_full_notm}} vers votre cluster](#restore_script_cli) et incluez le fichier `encryption.asc` dans le répertoire `backup_restore` du pod qui exécute le processus de restauration. Si la sauvegarde est chiffrée, vous devez fournir les variables d'environnement **ENCRYPTION_REQUIRED** et **ENCRYPTION_PASSPHRASE** quand vous créez le pod de restauration.
 
 
 ## Référence de variable d'environnement 

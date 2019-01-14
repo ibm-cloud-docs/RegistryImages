@@ -14,7 +14,7 @@ lastupdated: "2018-10-26"
 {:tip: .tip} 
 {:table: .aria-labeledby="caption"}
 
-# Initiation à l'image `datashield-nginx` 
+# Initiation à l'image `datashield-nginx`
 {: #datashield-nginx_starter}
 
 Cette image de conteneur exécute NGINX dans l'environnement Data Shield et offre une protection pour les données utilisées.
