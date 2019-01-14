@@ -63,7 +63,8 @@ Revise as tarefas a seguir para aprender a usar `ibmcloud-secure-perimeter-netwo
 
 1.  Provisione o cluster do Kubernetes por meio da seção **Contêineres** no catálogo do IBM Cloud.
 2.  Clique em **Criar**.
-3.  Selecione as VLANs públicas e privadas do segmento de perímetro seguro dos menus suspensos da VLAN.
+3.  Selecione as VLANs públicas e privadas do
+segmento de perímetro seguro dos menus suspensos da VLAN.
 4.  Insira todos os outros detalhes, conforme necessário.
 5.  Clique em  ** Criar Cluster **.
 
