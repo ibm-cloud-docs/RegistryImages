@@ -62,4 +62,4 @@ lastupdated: "2018-10-26"
 ```
 {: codeblock}    
     
-기여할 NGINX에 대한 고유 컨텐츠를 제공하려면, 컨테이너에서 `/usr/local/nginx/html` 아래 배치하십시오. 
+기여할 NGINX에 대한 고유 컨텐츠를 제공하려면, 컨테이너에서 `/usr/local/nginx/html` 아래 배치하십시오.

@@ -86,7 +86,7 @@ sp-gateway-8a9031ab:
 ## {{site.data.keyword.containerlong_notm}}를 사용하여 보안 경계 내에서 Kubernetes 클러스터 프로비저닝
 {: #provision_cluster}
 
-1.  {{site.data.keyword.cloud_notm}} 카탈로그의 **컨테이너** 섹션에서 Kubernetes 클러스터를 프로비저닝하십시오. 
+1.  {{site.data.keyword.cloud_notm}} 카탈로그의 **컨테이너** 섹션에서 Kubernetes 클러스터를 프로비저닝하십시오.
 2.  **작성**을 클릭하십시오.
 3.  VLAN 드롭 다운 메뉴에서 보안 경계 세그먼트의 공용 및 사설 VLAN을 선택하십시오.
 4.  필요에 따라 다른 모든 세부사항을 입력하십시오.

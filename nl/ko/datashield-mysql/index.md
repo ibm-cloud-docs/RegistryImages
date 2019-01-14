@@ -61,11 +61,11 @@ lastupdated: "2018-10-26"
 ```
 {: codeblock}
     
-다음 명령을 실행하여 MariaDB 인스턴스를 연결할 수 있습니다. 
+다음 명령을 실행하여 MariaDB 인스턴스를 연결할 수 있습니다.
 
 ```
     mysql -h <node> --protocol tcp -uroot
 ```
 {: pre}
 
-Data Shield MariaDB 이미지는 클라이언트 연결에서 TLS를 사용해야 합니다. 클라이언트 버전에 따라 `--ssl` 또는 `--ssl-mode require`을 클라이언트 명령행에 추가해야 할 수 있습니다. 
+Data Shield MariaDB 이미지는 클라이언트 연결에서 TLS를 사용해야 합니다. 클라이언트 버전에 따라 `--ssl` 또는 `--ssl-mode require`을 클라이언트 명령행에 추가해야 할 수 있습니다.

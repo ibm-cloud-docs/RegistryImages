@@ -232,4 +232,4 @@ lastupdated: "2018-10-26"
 {: #prerequisites}
 
 -   Vyatta 및 VLAN은 IBM Cloud 인프라 포털을 통해 주문되었으며 VLAN은 Vyatta에 연관되어 있습니다.
--   자동화된 보안 경계 배치는 `ibmcloud-secure-perimeter-network`가 게이트웨이에 액세스하는 데 사용하는 SSH 키로 Vyatta를 미리 로드합니다. SSH 키는 보안 경계 설치 프로세스를 통해 또는 수동으로 로드되어야 합니다. 자세한 정보는 [Set up an automated Secure Perimeter in IBM Cloud ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) 기사를 검토하십시오. 
+-   자동화된 보안 경계 배치는 `ibmcloud-secure-perimeter-network`가 게이트웨이에 액세스하는 데 사용하는 SSH 키로 Vyatta를 미리 로드합니다. SSH 키는 보안 경계 설치 프로세스를 통해 또는 수동으로 로드되어야 합니다. 자세한 정보는 [Set up an automated Secure Perimeter in IBM Cloud ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) 기사를 검토하십시오.
