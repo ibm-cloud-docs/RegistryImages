@@ -2,7 +2,7 @@
 {:topicgroup: .topicgroup}
 
 {: .toc subcollection="RegistryImages" audience="compute" href="/docs/services/RegistryImages/index.html" path="services/RegistryImages"}
-IBM public container images
+IBM 公用容器映像檔
 
     {: .navgroup id="learn"}
     datashield-barbican/index.md
@@ -13,5 +13,6 @@ IBM public container images
     ibmcloud-secure-perimeter-health/index.md
     ibmcloud-secure-perimeter-network/index.md
     ibmliberty/index.md
+    
     
     {: .navgroup-end}
