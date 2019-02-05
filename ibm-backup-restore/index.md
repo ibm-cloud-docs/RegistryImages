@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-06"
 
 ---
 
@@ -53,7 +53,7 @@ Create and configure an {{site.data.keyword.cos_full_notm}} service instance to 
 {: shortdesc}
 
 1. Deploy an {{site.data.keyword.cos_full_notm}} service instance.
-   1.  Open the [{{site.data.keyword.Bluemix_notm}} catalog ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/catalog/services/cloud-object-storage).
+   1. Open the [{{site.data.keyword.Bluemix_notm}} catalog ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/services/cloud-object-storage).
    2.  Enter a name for your service instance, such as `cos-backup`, and select **default** as your resource group. 
    3.  Review the [plan options ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage#s3api) for pricing information and select a plan. 
    4.  Click **Create**.
