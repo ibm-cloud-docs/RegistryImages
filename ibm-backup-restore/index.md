@@ -20,7 +20,7 @@ lastupdated: "2019-02-06"
 The `ibm-backup-restore` image contains the preinstalled packages that are needed to back up and restore persistent storage in {{site.data.keyword.containerlong}}.
 {:shortdesc}
 
-You can access the images that are provided by {{site.data.keyword.IBM_notm}} by using the command line, see [IBM public images](/docs/services/Registry/registry_public_images.html#public_images).
+You can access the images that are provided by {{site.data.keyword.IBM_notm}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
 ## How it works 
@@ -69,7 +69,7 @@ Create and configure an {{site.data.keyword.cos_full_notm}} service instance to 
    1. In the navigation on the service details page, click **Buckets**. 
    2. Click **Create bucket**. A dialog box displays.
    3. Enter a unique name for your bucket. The name must be unique within {{site.data.keyword.cos_full_notm}} across all regions and across all {{site.data.keyword.Bluemix_notm}} accounts. 
-   4. From the **Resiliency** drop down, select the level of availability that you want for your data. For more information, see [{{site.data.keyword.cos_full_notm}} regions and endpoints](/docs/services/cloud-object-storage/basics/endpoints.html#select-regions-and-endpoints). 
+   4. From the **Resiliency** drop down, select the level of availability that you want for your data. For more information, see [{{site.data.keyword.cos_full_notm}} regions and endpoints](/docs/services/cloud-object-storage/basics?topic=cloud-object-storage-select-regions-and-endpoints#select-regions-and-endpoints). 
    5. Change the **Location** to the region where you want to store your data. Keep in mind that your data might not be allowed to be stored in every region due to legal reasons.  
    6. Click **Create**. 
 4. Retrieve the {{site.data.keyword.cos_full_notm}} host name for your bucket. 
@@ -78,7 +78,7 @@ Create and configure an {{site.data.keyword.cos_full_notm}} service instance to 
    3. Make note of the public URL that you can use to access the data in your bucket. 
 
 
-Review the [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) documentation for more information on configuring your service instance.
+Review the [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about-ibm-cloud-object-storage#about-ibm-cloud-object-storage) documentation for more information on configuring your service instance.
 
 
 ## Backing up data from a persistent volume
@@ -92,10 +92,10 @@ The following example walks you through how to deploy a backup pod from the `ibm
 **Before you begin**
 
 -   [Set up an {{site.data.keyword.cos_full_notm}} service instance](#object_storage). 
--   Install the required [CLIs](/docs/containers/cs_cli_install.html#cs_cli_install) to create and work with your cluster.
--   [Create a standard cluster](/docs/containers/cs_clusters.html#clusters_cli) or use an existing one.
--   [Target your CLI to your cluster](/docs/containers/cs_cli_install.html#cs_cli_configure).
--   Create a persistent volume claim (PVC) for your [file storage](/docs/containers/cs_storage_file.html#add_file) or [block storage](/docs/containers/cs_storage_block.html#add_block) and mount it to your app deployment.
+-   Install the required [CLIs](/docs/containers?topic=containers-cs_cli_install#cs_cli_install) to create and work with your cluster.
+-   [Create a standard cluster](/docs/containers?topic=containers-clusters#clusters_cli) or use an existing one.
+-   [Target your CLI to your cluster](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure).
+-   Create a persistent volume claim (PVC) for your [file storage](/docs/containers?topic=containers-file_storage#add_file) or [block storage](/docs/containers?topic=containers-block_storage#add_block) and mount it to your app deployment.
 
 To back up an existing PV, complete the following steps: 
 
@@ -230,7 +230,7 @@ You can restore data from your {{site.data.keyword.cos_full_notm}} service insta
 
 **Before you begin**
 
--   [Target your CLI to your cluster](/docs/containers/cs_cli_install.html#cs_cli_configure).
+-   [Target your CLI to your cluster](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure).
 -   [Create a backup for a PV in your cluster](#scheduled_backup).
 
 To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the following steps: 
@@ -348,7 +348,7 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the f
     ```
     {: pre}
 
-You successfully restored your backup. You can now mount the PVC that binds the PV to any other pod in your cluster to access the restored files. If the container data that was backed up included a non-root user, you must add non-root permissions to your new container. For more information, see [Adding non-root user access to volumes](/docs/containers/cs_troubleshoot_storage.html#cs_storage_nonroot).
+You successfully restored your backup. You can now mount the PVC that binds the PV to any other pod in your cluster to access the restored files. If the container data that was backed up included a non-root user, you must add non-root permissions to your new container. For more information, see [Adding non-root user access to volumes](/docs/containers?topic=containers-cs_troubleshoot_storage#cs_storage_nonroot).
 
 
 ## Encrypting your backups 

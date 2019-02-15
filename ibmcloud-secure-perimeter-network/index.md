@@ -20,7 +20,7 @@ lastupdated: "2019-01-03"
 The `ibmcloud-secure-perimeter-network` image contains tools for automating the configuration of Vyatta virtual router appliances within a Secure Perimeter.
 {:shortdesc}
 
-You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry/registry_public_images.html#public_images).
+You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
 ## How it works
@@ -69,7 +69,7 @@ Review the following tasks to learn how to use `ibmcloud-secure-perimeter-networ
 4. Enter all other details as required.
 5. Click **Create Cluster**.
 
-Review [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) documentation about how to get access to your cluster after it has been deployed.
+Review [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) documentation about how to get access to your cluster after it has been deployed.
 
 ## Run initial config of your Secure Perimeter Vyatta
 {: #initial_setup}

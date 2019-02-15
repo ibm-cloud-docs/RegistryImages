@@ -21,7 +21,7 @@ lastupdated: "2019-01-09"
 The IBM® WebSphere® Application Server Liberty \(`ibmliberty`\) images are supplied for {{site.data.keyword.containerlong_notm}}.
 {:shortdesc}
 
-You can access the images that are provided by {{site.data.keyword.IBM_notm}} by using the command line, see [IBM public images](/docs/services/Registry/registry_public_images.html#public_images).
+You can access the images that are provided by {{site.data.keyword.IBM_notm}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
 ## How it works
@@ -81,9 +81,9 @@ Use one of the free `ibmliberty` images from the {{site.data.keyword.Bluemix_not
 2. Select the version of the `ibmliberty` image that you want to use from the **TAG/ VERSION** drop down box.
 3. For more information about building containers from images, setting up clusters, and deploying apps in clusters, use the following links:
 
-    - [Building containers from images](/docs/containers/cs_images.html#images)
-    - [Getting started with IBM Cloud Kubernetes Service](/docs/containers/container_index.html#container_index)
-    - [Deploying apps in clusters](/docs/containers/cs_app.html#app)
+    - [Building containers from images](/docs/containers?topic=containers-images#images)
+    - [Getting started with IBM Cloud Kubernetes Service](/docs/containers?topic=containers-container_index#container_index)
+    - [Deploying apps in clusters](/docs/containers?topic=containers-app#app)
 
     The `ibmliberty` image requires port 9080 to be exposed publicly. When you create a container from the {{site.data.keyword.Bluemix_notm}} Dashboard, the port is added in the **Public Port** field by default. If you create a container from the CLI, expose the port in your `kubectl run` command with `--port=9080` option.
     {:tip}
@@ -133,7 +133,7 @@ Use your WebSphere Application Server license to create a production-licensed `i
 - [Upgrade the image from Docker Hub to a production image ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
 - [Build your own production-licensed image ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://github.com/WASdev/ci.docker/tree/master/ga).
 
-After you create a production-licensed image, [push the image to your private registry](/docs/services/Registry/index.html) to use it with {{site.data.keyword.containershort_notm}}.
+After you create a production-licensed image, [push the image to your private registry](/docs/services/Registry?topic=registry-index) to use it with {{site.data.keyword.containershort_notm}}.
 
 ## Creating an image from the provided images
 {: #creating_image}
@@ -166,7 +166,7 @@ To create an image with your app code from the `ibmliberty` image, complete the 
 
 5. Add any other dependencies for your app to the Dockerfile.
 
-6. Build and push the image to your private images registry. For more information, see [Getting started with {{site.data.keyword.registrylong_notm}}](/docs/services/Registry/index.html).
+6. Build and push the image to your private images registry. For more information, see [Getting started with {{site.data.keyword.registrylong_notm}}](/docs/services/Registry?topic=registry-index).
 
 All `ibmliberty` images are configured to write Liberty log files to the directory `/logs` inside the container. All other files that are written by the Liberty server, are created in the directory `/opt/ibm/wlp/output/defaultServer`. You can access these files by using the shortcut `/output`.
 {:tip}

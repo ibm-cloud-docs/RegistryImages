@@ -19,5 +19,5 @@ lastupdated: "2019-01-03"
 
 The `ibmnode` public image is no longer available.
 
-You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry/registry_public_images.html#public_images).
+You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}

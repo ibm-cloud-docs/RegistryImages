@@ -20,7 +20,7 @@ lastupdated: "2019-01-03"
 The `ibmcloud-secure-perimeter-health` image contains a tool for scanning vulnerabilities in a Secure Perimeter in {{site.data.keyword.cloud}}.
 {:shortdesc}
 
-You can access the images that are provided by {{site.data.keyword.IBM_notm}} by using the command line, see [IBM public images](/docs/services/Registry/registry_public_images.html#public_images).
+You can access the images that are provided by {{site.data.keyword.IBM_notm}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
 ## How it works
@@ -92,7 +92,7 @@ Review the following tasks to learn how to use `ibmcloud-secure-perimeter-health
 4. Enter all other details as you require.
 5. Click **Create Cluster**.
 
-Review [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) documentation about how to get access to your cluster after it has been deployed.
+Review [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) documentation about how to get access to your cluster after it has been deployed.
 
 ## Scan private networks within a Secure Perimeter
 {: #private_networks}
@@ -101,8 +101,8 @@ Create a container pod from the `ibmcloud-secure-perimeter-health` image, and se
 
 **Before you begin**
 
-- Install the required [CLIs](/docs/containers/cs_cli_install.html#cs_cli_install).
-- [Target your CLI](/docs/containers/cs_cli_install.html#cs_cli_configure) to your cluster.
+- Install the required [CLIs](/docs/containers?topic=containers-cs_cli_install#cs_cli_install).
+- [Target your CLI](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure) to your cluster.
 
 1. Create a configuration file that is named _health-pod.yaml_. This file creates a highly-available deployment of the container pod.
 
