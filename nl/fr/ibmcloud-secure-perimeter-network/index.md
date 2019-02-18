@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -29,12 +29,14 @@ Vous pouvez accéder aux images fournies par {{site.data.keyword.IBM}} à l'aide
 `ibmcloud-secure-perimeter-network` permet d'automatiser la configuration du dispositif de routeur virtuel Vyatta de votre périmètre sécurisé.
 
 Pour plus d'informations sur le périmètre sécurisé, voir les articles de blogue suivants :
-  * [Set up a Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
-  * [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
+
+- [Set up a Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
+- [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
 
 Vous pouvez utiliser l'image `ibmcloud-secure-perimeter-network` de deux façons :
--  Utiliser `ibmcloud-secure-perimeter-network` en tant que conteneur Docker pour initialiser la configuration des règles de pare-feu du périmètre sécurisé.
--  Utiliser `ibmcloud-secure-perimeter-network` en tant que pod sur un cluster Kubernetes afin d'interroger le compte d'infrastructure IBM Cloud à propos de nouveaux sous-réseaux créés sur les réseaux locaux virtuels (VLAN) de votre segment de périmètre sécurisé (Secure Perimeter Segment) et les ajouter à la configuration de pare-feu Vyatta.
+
+- Utiliser `ibmcloud-secure-perimeter-network` en tant que conteneur Docker pour initialiser la configuration des règles de pare-feu du périmètre sécurisé.
+- Utiliser `ibmcloud-secure-perimeter-network` en tant que pod sur un cluster Kubernetes afin d'interroger le compte d'infrastructure IBM Cloud à propos de nouveaux sous-réseaux créés sur les réseaux locaux virtuels (VLAN) de votre segment de périmètre sécurisé (Secure Perimeter Segment) et les ajouter à la configuration de pare-feu Vyatta.
 
 ## Eléments inclus
 {: #whats_included}
@@ -42,30 +44,30 @@ Vous pouvez utiliser l'image `ibmcloud-secure-perimeter-network` de deux façons
 L'image `ibmcloud-secure-perimeter-network` fournit les progiciels suivants.
 {:shortdesc}
 
--   Alpine Linux
--   Exécution Python
--   Client SoftLayer Python
--   Ansible
+- Alpine Linux
+- Exécution Python
+- Client SoftLayer Python
+- Ansible
 
 ## Initiation
 {: #how_to_get_started}
 
 Passez en revue les tâches suivantes pour apprendre à utiliser `ibmcloud-secure-perimeter-network` :
 
-1.  [Mettre à disposition un cluster Kubernetes dans un périmètre sécurisé via {{site.data.keyword.containerlong}}](#provision_cluster)
-2.  [Exécuter la configuration initiale de votre périmètre sécurisé Vyatta](#initial_setup)
-3.  [Configuration en tant que pod Kubernetes au sein de votre périmètre sécurisé](#setup)
-4.  [Référence config.json](#reference_config_json)
-5.  [Référence rules.conf](#reference_rules_conf)
+1. [Mettre à disposition un cluster Kubernetes dans un périmètre sécurisé via {{site.data.keyword.containerlong}}](#provision_cluster)
+2. [Exécuter la configuration initiale de votre périmètre sécurisé Vyatta](#initial_setup)
+3. [Configuration en tant que pod Kubernetes au sein de votre périmètre sécurisé](#setup)
+4. [Référence config.json](#reference_config_json)
+5. [Référence rules.conf](#reference_rules_conf)
 
 ## Mettre à disposition un cluster Kubernetes dans un périmètre sécurisé via {{site.data.keyword.containerlong_notm}}
 {: #provision_cluster}
 
-1.  Mettez votre cluster Kubernetes à disposition depuis la section **Conteneurs** du catalogue IBM Cloud.
-2.  Cliquez sur **Créer**.
-3.  Sélectionnez les réseaux locaux virtuels public et privé du segment de paramètre sécurisé (Secure Perimeter Segment) à partir des menus déroulants VLAN.
-4.  Au besoin, entrez toutes les autres informations requises.
-5.  Cliquez sur **Créer un cluster**.
+1. Mettez votre cluster Kubernetes à disposition depuis la section **Conteneurs** du catalogue IBM Cloud.
+2. Cliquez sur **Créer**.
+3. Sélectionnez les réseaux locaux virtuels public et privé du segment de paramètre sécurisé (Secure Perimeter Segment) à partir des menus déroulants VLAN.
+4. Au besoin, entrez toutes les autres informations requises.
+5. Cliquez sur **Créer un cluster**.
 
 Consultez la documentation [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) savoir comment accéder à votre cluster une fois celui-ci déployé.
 
@@ -231,5 +233,5 @@ Pour que l'image `ibmcloud-secure-perimeter-network` puisse gérer des sous-rés
 ## Prérequis
 {: #prerequisites}
 
--   Vyatta et réseaux locaux virtuels (VLAN) classés à partir du portail d'infrastructure IBM Cloud et VLAN associés à Vyatta.
--   Le déploiement automatisé du paramètre sécurisé précharge Vyatta avec les clés SSH utilisées par `ibmcloud-secure-perimeter-network` pour accéder à la passerelle. Les clés SSH doivent être chargées manuellement ou via le processus d'installation du périmètre sécurisé. Consultez l'article [Set up an automated Secure Perimeter in IBM Cloud ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) pour plus d'informations.
+- Vyatta et réseaux locaux virtuels (VLAN) classés à partir du portail d'infrastructure IBM Cloud et VLAN associés à Vyatta.
+- Le déploiement automatisé du paramètre sécurisé précharge Vyatta avec les clés SSH utilisées par `ibmcloud-secure-perimeter-network` pour accéder à la passerelle. Les clés SSH doivent être chargées manuellement ou via le processus d'installation du périmètre sécurisé. Consultez l'article [Set up an automated Secure Perimeter in IBM Cloud ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) pour plus d'informations.

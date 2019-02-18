@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-10-29"
+  years: 2017, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -28,7 +28,7 @@ Puede acceder a las imágenes que suministra {{site.data.keyword.IBM_notm}} desd
 
 Con la imagen `ibm-backup-restore`, puede crear una copia de seguridad puntual o planificada para datos de app almacenados en un volumen persistente (PV) del clúster o para restaurar datos de app en un PV. Para realizar copia de seguridad y restaurar datos, despliegue un pod desde la imagen `ibm-backup-restore`. A continuación, monte el PVC que enlace con el pod el PV del que desea hacer copia de seguridad o el PV que desea utilizar para restaurar los datos. 
 
-**¿A dónde van mis datos? ¿Cómo puedo acceder a los mismos? ** 
+**¿A dónde van mis datos? ¿Cómo puedo acceder a ellos?** 
 
 Los datos de los que se hace copia de seguridad se almacenan en una instancia de servicio de {{site.data.keyword.cos_full_notm}}. Para acceder al servicio, utilice sus credenciales de servicio de {{site.data.keyword.cos_full_notm}} como variables de entorno en el pod `ibm-backup-restore` o edite el archivo `config.conf` en el pod en ejecución.
 
@@ -546,7 +546,7 @@ credenciales. Para **ENCRYPTION_PASSPHRASE**, incluya una frase de contraseña p
 
 13. Para confirmar que la copia de seguridad está cifrada, revise los archivos de la instancia de servicio de {{site.data.keyword.cos_full_notm}}. Ahora se ha añadido `.gpg` al final del nombre de los archivos.
 
-Su copia de seguridad está cifrada. Para restaurar los archivos, siga los pasos del apartado [Restauración de datos de {{site.data.keyword.cos_full_notm}} en un PVC del clúster ](#restore_script_cli) e incluya el archivo `encryption.asc` en el directorio `backup_restore` del pod que ejecuta el proceso de restauración. Si la copia de seguridad está cifrada, debe proporcionar las variables de entorno **ENCRYPTION_REQUIRED** y **ENCRYPTION_PASSPHRASE** cuando cree el pod de restauración.
+Su copia de seguridad está cifrada. Para restaurar los archivos, siga los pasos del apartado [Restauración de datos de {{site.data.keyword.cos_full_notm}} en un PVC del clúster](#restore_script_cli) e incluya el archivo `encryption.asc` en el directorio `backup_restore` del pod que ejecuta el proceso de restauración. Si la copia de seguridad está cifrada, debe proporcionar las variables de entorno **ENCRYPTION_REQUIRED** y **ENCRYPTION_PASSPHRASE** cuando cree el pod de restauración.
 
 
 ## Referencia de variables de entorno 

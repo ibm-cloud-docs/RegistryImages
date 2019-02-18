@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,12 +11,11 @@ lastupdated: "2018-10-26"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
 # `datashield-vault` イメージの概説
 {: #datashield-vault_starter}
-
 
 このコンテナー・イメージは、データ・シールド環境で Vault を実行し、使用中のデータを保護します。
 {:shortdesc}
@@ -60,8 +59,8 @@ Kubernetes ポッドの次の仕様を使用して、イメージをデプロイ
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: codeblock}    
-    
+{: codeblock}
+
 Vault インスタンスのノード IP アドレスを検索するには、`kubectl get pod -owide` または `kubectl describe pod` を使用します。 データ・シールドで保護された Vault インスタンスにアクセスするには、`VAULT_ADDR` 環境変数を `http://<IP>:8200` に設定します。
 
 `vault init`、`vault unseal`、`vault auth`、`vault write`、`vault read` のような Vault CLI コマンドを使用して、秘密を認証してアクセスできます。 Vault CLI の使用方法について詳しくは、[Vault Commands (CLI) ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://www.vaultproject.io/docs/commands/index.html) を参照してください。

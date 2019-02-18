@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -29,12 +29,14 @@ lastupdated: "2018-10-26"
 `ibmcloud-secure-perimeter-network`를 사용하면 보안 경계의 Vyatta 가상 라우터 어플라이언스의 구성을 자동화할 수 있습니다.
 
 보안 경계에 대한 자세한 정보는 다음 블로그 기사를 참조하십시오.
-  * [Set up a Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
-  * [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
+
+- [Set up a Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
+- [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
 
 다음 두 가지 방법으로 `ibmcloud-secure-perimeter-network` 이미지를 사용할 수 있습니다.
--  `ibmcloud-secure-perimeter-network`를 Docker 컨테이너로 사용하여 보안 경계 방화벽 규칙 구성을 초기화하십시오.
--  `ibmcloud-secure-perimeter-network`를 Kubernetes 클러스터의 팟(Pod)으로 사용하여 보안 경계 세그먼트 VLAN에 작성된 새 서브넷의 IBM Cloud 인프라 계정을 폴링하고 Vyatta 방화벽 구성에 추가하십시오.
+
+- `ibmcloud-secure-perimeter-network`를 Docker 컨테이너로 사용하여 보안 경계 방화벽 규칙 구성을 초기화하십시오.
+- `ibmcloud-secure-perimeter-network`를 Kubernetes 클러스터의 팟(Pod)으로 사용하여 보안 경계 세그먼트 VLAN에 작성된 새 서브넷의 IBM Cloud 인프라 계정을 폴링하고 Vyatta 방화벽 구성에 추가하십시오.
 
 ## 포함된 항목
 {: #whats_included}
@@ -42,30 +44,30 @@ lastupdated: "2018-10-26"
 `ibmcloud-secure-perimeter-network` 이미지는 다음 소프트웨어 패키지를 제공합니다.
 {:shortdesc}
 
--   Alpine Linux
--   Python runtime
--   SoftLayer Python Client
--   Ansible
+- Alpine Linux
+- Python runtime
+- SoftLayer Python Client
+- Ansible
 
 ## 시작하기
 {: #how_to_get_started}
 
 다음 태스크를 검토하여 `ibmcloud-secure-perimeter-network` 사용 방법을 학습하십시오.
 
-1.  [{{site.data.keyword.containerlong}}를 사용하여 보안 경계 내에서 Kubernetes 클러스터 프로비저닝](#provision_cluster)
-2.  [보안 경계 Vyatta의 초기 구성 실행](#initial_setup)
-3.  [보안 경계 내에서 Kubernetes 팟(Pod)으로 설정](#setup)
-4.  [config.json 참조](#reference_config_json)
-5.  [rules.conf 참조](#reference_rules_conf)
+1. [{{site.data.keyword.containerlong}}를 사용하여 보안 경계 내에서 Kubernetes 클러스터 프로비저닝](#provision_cluster)
+2. [보안 경계 Vyatta의 초기 구성 실행](#initial_setup)
+3. [보안 경계 내에서 Kubernetes 팟(Pod)으로 설정](#setup)
+4. [config.json 참조](#reference_config_json)
+5. [rules.conf 참조](#reference_rules_conf)
 
 ## {{site.data.keyword.containerlong_notm}}를 사용하여 보안 경계 내에서 Kubernetes 클러스터 프로비저닝
 {: #provision_cluster}
 
-1.  IBM Cloud 카탈로그의 **컨테이너** 섹션에서 Kubernetes 클러스터를 프로비저닝하십시오.
-2.  **작성**을 클릭하십시오.
-3.  VLAN 드롭 다운 메뉴에서 보안 경계 세그먼트의 공용 및 사설 VLAN을 선택하십시오.
-4.  필요에 따라 다른 모든 세부사항을 입력하십시오.
-5.  **클러스터 작성**을 클릭하십시오.
+1. IBM Cloud 카탈로그의 **컨테이너** 섹션에서 Kubernetes 클러스터를 프로비저닝하십시오.
+2. **작성**을 클릭하십시오.
+3. VLAN 드롭 다운 메뉴에서 보안 경계 세그먼트의 공용 및 사설 VLAN을 선택하십시오.
+4. 필요에 따라 다른 모든 세부사항을 입력하십시오.
+5. **클러스터 작성**을 클릭하십시오.
 
 클러스터가 배치된 후 클러스터에 대한 액세스를 확보하는 방법에 대한 [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) 문서를 검토하십시오.
 
@@ -231,5 +233,5 @@ lastupdated: "2018-10-26"
 ## 선행 조건
 {: #prerequisites}
 
--   Vyatta 및 VLAN은 IBM Cloud 인프라 포털을 통해 주문되었으며 VLAN은 Vyatta에 연관되어 있습니다.
--   자동화된 보안 경계 배치는 `ibmcloud-secure-perimeter-network`가 게이트웨이에 액세스하는 데 사용하는 SSH 키로 Vyatta를 미리 로드합니다. SSH 키는 보안 경계 설치 프로세스를 통해 또는 수동으로 로드되어야 합니다. 자세한 정보는 [Set up an automated Secure Perimeter in IBM Cloud ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) 기사를 검토하십시오.
+- Vyatta 및 VLAN은 IBM Cloud 인프라 포털을 통해 주문되었으며 VLAN은 Vyatta에 연관되어 있습니다.
+- 자동화된 보안 경계 배치는 `ibmcloud-secure-perimeter-network`가 게이트웨이에 액세스하는 데 사용하는 SSH 키로 Vyatta를 미리 로드합니다. SSH 키는 보안 경계 설치 프로세스를 통해 또는 수동으로 로드되어야 합니다. 자세한 정보는 [Set up an automated Secure Perimeter in IBM Cloud ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) 기사를 검토하십시오.

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-10-29"
+  years: 2017, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,12 +11,13 @@ lastupdated: "2018-10-29"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
-# Dieses Image ist nicht mehr verfügbar.
+# Öffentliches Image `ibmnode`
+{: #ibmnode}
 
-Das Image `ibmnode` finden Sie jetzt [in Docker Hub](https://hub.docker.com/r/ibmcom/ibmnode/). 
+Das öffentliche Image `ibmnode` ist nicht mehr verfügbar. 
 
 Sie können auf die von {{site.data.keyword.IBM}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry/registry_public_images.html#public_images).
 {: tip}

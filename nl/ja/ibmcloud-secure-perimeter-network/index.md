@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -29,12 +29,14 @@ lastupdated: "2018-10-26"
 `ibmcloud-secure-perimeter-network` を使用すると、Secure Perimeter の Vyatta 仮想ルーター・アプライアンスの構成を自動化できます。
 
 Secure Perimeter について詳しくは、以下のブログ記事を参照してください。
-  * [Set up a Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
-  * [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)
+
+- [Set up a Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
+- [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)
 
 `ibmcloud-secure-perimeter-network` イメージは、以下の 2 つの方法で使用できます。
--  `ibmcloud-secure-perimeter-network` を Docker コンテナーとして使用して、Secure Perimeter ファイアウォール・ルール構成を初期化する。
--  `ibmcloud-secure-perimeter-network` を Kubernetes クラスター上のポッドとして使用して、Secure Perimeter Segment VLAN 上に作成された新規サブネットについて IBM Cloud インフラストラクチャー・アカウントをポーリングし、それらを Vyatta ファイアウォール構成に追加する。
+
+- `ibmcloud-secure-perimeter-network` を Docker コンテナーとして使用して、Secure Perimeter ファイアウォール・ルール構成を初期化する。
+- `ibmcloud-secure-perimeter-network` を Kubernetes クラスター上のポッドとして使用して、Secure Perimeter Segment VLAN 上に作成された新規サブネットについて IBM Cloud インフラストラクチャー・アカウントをポーリングし、それらを Vyatta ファイアウォール構成に追加する。
 
 ## 含まれている内容
 {: #whats_included}
@@ -42,30 +44,30 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
 `ibmcloud-secure-perimeter-network` イメージに、以下のソフトウェア・パッケージが用意されています。
 {:shortdesc}
 
--   Alpine Linux
--   Python ランタイム
--   SoftLayer Python クライアント
--   Ansible
+- Alpine Linux
+- Python ランタイム
+- SoftLayer Python クライアント
+- Ansible
 
 ## 概説
 {: #how_to_get_started}
 
 `ibmcloud-secure-perimeter-network` の使用法について、以下のタスクで確認してください。
 
-1.  [{{site.data.keyword.containerlong}} を使用して Secure Perimeter 内で Kubernetes クラスターをプロビジョンする](#provision_cluster)
-2.  [Secure Perimeter Vyatta の初期構成を実行する](#initial_setup)
-3.  [Secure Perimeter 内の Kubernetes ポッドとしてセットアップする](#setup)
-4.  [config.json リファレンス](#reference_config_json)
-5.  [rules.conf リファレンス](#reference_rules_conf)
+1. [{{site.data.keyword.containerlong}} を使用して Secure Perimeter 内で Kubernetes クラスターをプロビジョンする](#provision_cluster)
+2. [Secure Perimeter Vyatta の初期構成を実行する](#initial_setup)
+3. [Secure Perimeter 内の Kubernetes ポッドとしてセットアップする](#setup)
+4. [config.json リファレンス](#reference_config_json)
+5. [rules.conf リファレンス](#reference_rules_conf)
 
 ## {{site.data.keyword.containerlong_notm}} を使用して Secure Perimeter 内で Kubernetes クラスターをプロビジョンする
 {: #provision_cluster}
 
-1.  IBM Cloud カタログ内の**「コンテナー」**セクションから Kubernetes クラスターをプロビジョンします。
-2.  **「作成」**をクリックします。
-3.  VLAN ドロップダウン・メニューから Secure Perimeter Segment パブリックおよびプライベート VLAN を選択します。
-4.  必要に応じて他のすべての詳細を入力します。
-5.  **「クラスターの作成」**をクリックします。
+1. IBM Cloud カタログ内の**「コンテナー」**セクションから Kubernetes クラスターをプロビジョンします。
+2. **「作成」**をクリックします。
+3. VLAN ドロップダウン・メニューから Secure Perimeter Segment パブリックおよびプライベート VLAN を選択します。
+4. 必要に応じて他のすべての詳細を入力します。
+5. **「クラスターの作成」**をクリックします。
 
 クラスターがデプロイされた後、クラスターにアクセスする方法については、[{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) 資料を参照してください。
 
@@ -231,5 +233,5 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
 ## 前提条件
 {: #prerequisites}
 
--   IBM Cloud インフラストラクチャー・ポータルから Vyatta および VLAN を注文済みで、VLAN が Vyatta に関連付けられていること。
--   自動化された Secure Perimeter デプロイメントによって、`ibmcloud-secure-perimeter-network` がゲートウェイにアクセスするために使用する SSH 鍵を使用して Vyatta がプリロードされること。 SSH 鍵は手動でロードされるか、Secure Perimeter インストール・プロセスを介してロードされる必要があります。 詳しくは、[Set up an automated Secure Perimeter in IBM Cloud ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) の記事を参照してください。
+- IBM Cloud インフラストラクチャー・ポータルから Vyatta および VLAN を注文済みで、VLAN が Vyatta に関連付けられていること。
+- 自動化された Secure Perimeter デプロイメントによって、`ibmcloud-secure-perimeter-network` がゲートウェイにアクセスするために使用する SSH 鍵を使用して Vyatta がプリロードされること。 SSH 鍵は手動でロードされるか、Secure Perimeter インストール・プロセスを介してロードされる必要があります。 詳しくは、[Set up an automated Secure Perimeter in IBM Cloud ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/) の記事を参照してください。

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-26"
+  years: 2017, 2019
+lastupdated: "2019-01-09"
 
 ---
 
@@ -62,7 +62,7 @@ Il prezzo dell'immagine `ibmliberty` è indipendente dal prezzo dei contenitori 
 |Ambiente|Restrizioni di utilizzo gratuito|
 |-----------|-----------------------|
 |Sviluppo|Utilizzo gratuito **illimitato** dell'immagine `ibmliberty`.|
-|Produzione|L'utilizzo gratuito dell'immagine `ibmliberty` è limitato a un **massimo di 2 GB di spazio heap Java** in tutte le istanze del contenitore che eseguono l'immagine. Ad esempio, puoi avere 2 x 1 GB o 4 x 512 MB istanze liberty heap gratuite. |
+|Produzione|L'utilizzo gratuito dell'immagine `ibmliberty` è limitato a un **massimo di 2 GB di spazio heap Java** in tutte le istanze del contenitore che eseguono l'immagine. Ad esempio, puoi avere 2 x 1 GB o 4 x 512 MB istanze liberty heap gratuite.|
 {: caption="Tabella 2. Prezzi" caption-side="top"}
 
 Per monitorare l'utilizzo heap Java delle tue istanze del contenitore, vedi [Monitoraggio dell'utilizzo dello spazio heap Java per un contenitore con la CLI](#monitor_heap).
@@ -131,7 +131,7 @@ Utilizza la tua licenza WebSphere Application Server per creare un'immagine `ibm
 {:shortdesc}
 
 - [Upgrade the image from Docker Hub to a production image ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
-- [Build your own production-licensed image ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install).
+- [Build your own production-licensed image ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](https://github.com/WASdev/ci.docker/tree/master/ga).
 
 Dopo aver creato un'immagine con licenza di produzione, [inserisci l'immagine nel tuo registro privato](/docs/services/Registry/index.html) per utilizzarla con {{site.data.keyword.containershort_notm}}.
 

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,12 +11,11 @@ lastupdated: "2018-10-26"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
 # `datashield-vault` 이미지 시작하기
 {: #datashield-vault_starter}
-
 
 이 컨테이너 이미지는 Data Shield 환경에서 볼트를 실행하며 사용 중인 데이터에 대한 보호를 제공합니다.
 {:shortdesc}
@@ -60,8 +59,8 @@ lastupdated: "2018-10-26"
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: codeblock}    
-    
+{: codeblock}
+
 `kubectl get pod -owide` 또는 `kubectl describe pod`을 사용하여 볼트 인스턴스에 대한 노드 IP 주소를 검색하십시오. Data Shield 보호 볼트 인스턴스에 액세스하려면 `볼트_ADDR` 환경 변수를 `http://<IP>:8200`으로 설정하십시오.
 
 `vault init`, `vault unseal`, `vault auth`, `vault write` 및 `vault read`와 같은 vault CLI 명령을 사용하여 시크릿을 인증하고 액세스할 수 있습니다. Vault CLI 사용 방법에 대한 자세한 정보는 [Vault Commands (CLI) ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.vaultproject.io/docs/commands/index.html)를 참조하십시오.

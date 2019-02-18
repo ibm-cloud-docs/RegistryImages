@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,7 +11,7 @@ lastupdated: "2018-10-26"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
 # Introdução à imagem `datashield-mysql`
@@ -60,7 +60,7 @@ Essa imagem de contêiner executa o MariaDB no ambiente Data Shield, fornecendo 
           path: /var/run/aesmd/aesm.socket
 ```
 {: codeblock}
-    
+
 É possível conectar-se à instância do MariaDB executando o comando a seguir:
 
 ```

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -28,12 +28,13 @@ lastupdated: "2018-10-26"
 
 Secure Perimeter が適切に機能していることを確認するために、`ibmcloud-secure-perimeter-health` で、ご使用の {{site.data.keyword.cloud_notm}} インフラストラクチャー・アカウントのパブリック・ネットワークまたはプライベート・ネットワークをスキャンし、脆弱性のレポートを作成できます。 **ibmcloud-secure-perimeter-health** イメージは、以下の 2 つの方法で使用できます。
 
--   `ibmcloud-secure-perimeter-health` を Secure Perimeter 内の Kubernetes クラスター上のポッドとして使用して、プライベート・ネットワークの露出をスキャンする。
--   `ibmcloud-secure-perimeter-health` をワークステーション上のスタンドアロン Docker コンテナーとして使用して、パブリック・ネットワークの露出をスキャンする。
+- `ibmcloud-secure-perimeter-health` を Secure Perimeter 内の Kubernetes クラスター上のポッドとして使用して、プライベート・ネットワークの露出をスキャンする。
+- `ibmcloud-secure-perimeter-health` をワークステーション上のスタンドアロン Docker コンテナーとして使用して、パブリック・ネットワークの露出をスキャンする。
 
 Secure Perimeter について詳しくは、以下のブログ記事を参照してください。
-  * [Set up a Secure Perimeter in {{site.data.keyword.cloud_notm}} ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/).
-  * [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}} ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
+
+- [Set up a Secure Perimeter in {{site.data.keyword.cloud_notm}} ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/).
+- [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}} ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
 
 スキャンが終了すると、`ibmcloud-secure-perimeter-health` イメージによって、Secure Perimeter Segment 内から到達可能であったネットワークに関するレポートが生成されます。 各レポートには、ネットワーク・ゲートウェイの名前、VLAN、そのサブネット、および問題のあるホストがある場合はそのようなホストが詳細に示されます。 プライベート・ネットワークの脆弱性をスキャンしたユーザーのレポートの例を以下に示します。
 
@@ -65,32 +66,31 @@ sp-gateway-8a9031ab:
 `ibmcloud-secure-perimeter-health` イメージに、以下のソフトウェア・パッケージが用意されています。
 {:shortdesc}
 
--   Alpine Linux
--   Python ランタイム
--   SoftLayer Python クライアント
--   Nmap ポート・スキャナー
+- Alpine Linux
+- Python ランタイム
+- SoftLayer Python クライアント
+- Nmap ポート・スキャナー
 
 ## 概説
 {: #how_to_get_started}
 
 `ibmcloud-secure-perimeter-health` の使用法について、以下のタスクで確認してください。
 
-1.  [{{site.data.keyword.containerlong_notm}} を使用して Secure Perimeter 内で Kubernetes クラスターをプロビジョンする](#provision_cluster)
-2.  [Secure Perimeter 内のプライベート・ネットワークをスキャンする](#private_networks)
-3.  [Secure Perimeter 外部のパブリック・ネットワークをスキャンする](#public_networks)
-4.  [スキャン結果の理解](#scan_results)
-5.  [コンテナー引数リファレンス](#reference_container_arg)
-6.  [環境変数リファレンス](#reference_env_var)
-
+1. [{{site.data.keyword.containerlong_notm}} を使用して Secure Perimeter 内で Kubernetes クラスターをプロビジョンする](#provision_cluster)
+2. [Secure Perimeter 内のプライベート・ネットワークをスキャンする](#private_networks)
+3. [Secure Perimeter 外部のパブリック・ネットワークをスキャンする](#public_networks)
+4. [スキャン結果の理解](#scan_results)
+5. [コンテナー引数リファレンス](#reference_container_arg)
+6. [環境変数リファレンス](#reference_env_var)
 
 ## {{site.data.keyword.containerlong_notm}} を使用して Secure Perimeter 内で Kubernetes クラスターをプロビジョンする
 {: #provision_cluster}
 
-1.  {{site.data.keyword.cloud_notm}} カタログ内の**「コンテナー」**セクションから Kubernetes クラスターをプロビジョンします。
-2.  **「作成」**をクリックします。
-3.  VLAN ドロップダウン・メニューから Secure Perimeter Segment パブリックおよびプライベート VLAN を選択します。
-4.  必要に応じて他のすべての詳細を入力します。
-5.  **「クラスターの作成」**をクリックします。
+1. {{site.data.keyword.cloud_notm}} カタログ内の**「コンテナー」**セクションから Kubernetes クラスターをプロビジョンします。
+2. **「作成」**をクリックします。
+3. VLAN ドロップダウン・メニューから Secure Perimeter Segment パブリックおよびプライベート VLAN を選択します。
+4. 必要に応じて他のすべての詳細を入力します。
+5. **「クラスターの作成」**をクリックします。
 
 クラスターがデプロイされた後、クラスターにアクセスする方法については、[{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) 資料を参照してください。
 
@@ -101,8 +101,8 @@ sp-gateway-8a9031ab:
 
 **開始する前に**
 
--   必要な [CLI](/docs/containers/cs_cli_install.html#cs_cli_install) をインストールします。
--   [CLI のターゲット](/docs/containers/cs_cli_install.html#cs_cli_configure)を自分のクラスターに設定します。
+- 必要な [CLI](/docs/containers/cs_cli_install.html#cs_cli_install) をインストールします。
+- [CLI のターゲット](/docs/containers/cs_cli_install.html#cs_cli_configure)を自分のクラスターに設定します。
 
 1. _health-pod.yaml_ という名前の構成ファイルを作成します。 このファイルにより、高可用性のコンテナー・ポッドのデプロイメントが作成されます。
 
@@ -166,7 +166,7 @@ sp-gateway-8a9031ab:
 
 **開始する前に**
 
--  Docker をインストールします。
+- Docker をインストールします。
 
 1. 以下のように、自身のワークステーションから Docker コンテナーを作成します。
 

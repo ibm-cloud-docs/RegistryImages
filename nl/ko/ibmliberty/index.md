@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-26"
+  years: 2017, 2019
+lastupdated: "2019-01-09"
 
 ---
 
@@ -131,7 +131,7 @@ WebSphere Application Server 라이센스를 사용하여 {{site.data.keyword.co
 {:shortdesc}
 
 - [Upgrade the image from Docker Hub to a production image ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
-- [Build your own production-licensed image ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install)
+- [Build your own production-licensed image ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://github.com/WASdev/ci.docker/tree/master/ga)
 
 프로덕션 라이센스가 부여된 이미지를 작성한 후 {{site.data.keyword.containershort_notm}}와 함께 사용하도록 [이미지를 사설 레지스트리에 푸시](/docs/services/Registry/index.html)하십시오.
 

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-29"
+  years: 2018, 2019
+lastupdated: "2019-01-09"
 
 ---
 
@@ -11,10 +11,11 @@ lastupdated: "2018-10-29"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
-# Questa immagine non è più disponibile
+# Immagine pubblica `ibm-websphere-extreme-scale` 
+{: #extreme-scale}
 
 L'immagine `ibm-websphere-extreme-scale` non è più disponibile.
 

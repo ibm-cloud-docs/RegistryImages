@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,7 +11,7 @@ lastupdated: "2018-10-26"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
 # `datashield-nginx` 이미지 시작하기
@@ -22,7 +22,6 @@ lastupdated: "2018-10-26"
 
 명령행을 사용하여 {{site.data.keyword.IBM}}에서 제공한 이미지에 액세스할 수 있습니다. [IBM 공용 이미지](/docs/services/Registry/registry_public_images.html#public_images)를 참조하십시오.
 {: tip}
-
 
 다음 Kubernetes 팟(Pod) 스펙을 사용하여 이미지를 배치할 수 있습니다.
 
@@ -60,6 +59,6 @@ lastupdated: "2018-10-26"
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: codeblock}    
-    
+{: codeblock}
+
 기여할 NGINX에 대한 고유 컨텐츠를 제공하려면, 컨테이너에서 `/usr/local/nginx/html` 아래 배치하십시오.

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,7 +11,7 @@ lastupdated: "2018-10-26"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
 # `datashield-mysql` イメージの概説
@@ -60,7 +60,7 @@ Kubernetes ポッドの次の仕様を使用して、イメージをデプロイ
           path: /var/run/aesmd/aesm.socket
 ```
 {: codeblock}
-    
+
 次のコマンドを実行して、MariaDB インスタンスに接続することができます。
 
 ```

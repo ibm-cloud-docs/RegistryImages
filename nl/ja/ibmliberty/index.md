@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-26"
+  years: 2017, 2019
+lastupdated: "2019-01-09"
 
 ---
 
@@ -39,7 +39,7 @@ IBM® WebSphere® Application Server Liberty (`ibmliberty`) イメージは {{si
 - IBM WebSphere Application Server for Developers Liberty
 - IBM Java Runtime Environment 8.0
 
-イメージにインストールされている具体的な Liberty フィーチャーは、選択したタグによって異なります。 次の表に、各 `ibmliberty` イメージに含まれているフィーチャーを示します。各フィーチャーについて詳しくは、[IBM Knowledge Center にある Liberty フィーチャーの概要 ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html)を参照してください。
+イメージにインストールされている具体的な Liberty フィーチャーは、選択したタグによって異なります。 次の表に、各 `ibmliberty` イメージに含まれているフィーチャーを示します。 各フィーチャーについて詳しくは、[IBM Knowledge Center にある Liberty フィーチャーの概要 ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html)を参照してください。
 
 |タグ|説明|
 |---|-----------|
@@ -108,8 +108,7 @@ Docker Hub の [websphere-liberty イメージ ![外部リンク・アイコン]
    ```
    {: pre}
 
-3. Java ヒープ使用量を確認するには、**RSS** のメモリー統計にアクセスする必要があります。 コンテナーのシェルへのアクセス方法に関するガイドラインに従って、[Get a Shell to a Running Container ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) を参照してください。
-Java ヒープ使用量はキロバイト単位で表示されます。 すべてのインスタンスを合わせてヒープ使用量が 2097152 キロバイト (2 GB) 未満であれば、WebSphere Application Server ライセンスを購入する必要はありません。
+3. Java ヒープ使用量を確認するには、**RSS** のメモリー統計にアクセスする必要があります。 コンテナーのシェルへのアクセス方法に関するガイドラインに従って、[Get a Shell to a Running Container ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) を参照してください。 Java ヒープ使用量はキロバイト単位で表示されます。 すべてのインスタンスを合わせてヒープ使用量が 2097152 キロバイト (2 GB) 未満であれば、WebSphere Application Server ライセンスを購入する必要はありません。
 
 4. WebSphere Application Server インスタンスの最大ヒープ使用量を調整します。 詳しくは、[Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)を参照してください。
 
@@ -132,7 +131,7 @@ WebSphere Application Server ライセンスを使用して、{{site.data.keywor
 {:shortdesc}
 
 - [Docker Hub からのイメージを実動イメージにアップグレードする ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade)。
-- [実動ライセンス交付を受けた独自のイメージを作成する ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install)。
+- [実動ライセンス交付を受けた独自のイメージを作成する ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://github.com/WASdev/ci.docker/tree/master/ga)。
 
 実動ライセンス交付を受けたイメージを作成した後、{{site.data.keyword.containershort_notm}} で使用するために、[イメージをプライベート・レジストリーにプッシュ](/docs/services/Registry/index.html)します。
 

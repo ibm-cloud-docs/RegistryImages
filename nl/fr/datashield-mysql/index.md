@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,7 +11,7 @@ lastupdated: "2018-10-26"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
 # Initiation à l'image `datashield-mysql`
@@ -60,7 +60,7 @@ Vous pouvez utiliser les spécifications suivantes sur les pods Kubernetes pour 
           path: /var/run/aesmd/aesm.socket
 ```
 {: codeblock}
-    
+
 Vous pouvez vous connecter à l'instance MariaDB en exécutant la commande suivante :
 
 ```

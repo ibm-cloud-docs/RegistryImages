@@ -11,7 +11,7 @@ lastupdated: "2018-09-14"
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
 
-# Öffentliche IBM Images
+# Öffentliche Images von IBM
 {: #ibm_images}
 
 Sie können die folgenden öffentlichen Images verwenden, um Container in {{site.data.keyword.containerlong}} zu erstellen. Informationen zum Erstellen einer eigenen privaten Image-Registry in {{site.data.keyword.Bluemix_notm}} finden Sie in der [Einführung](/docs/services/Registry/index.html).

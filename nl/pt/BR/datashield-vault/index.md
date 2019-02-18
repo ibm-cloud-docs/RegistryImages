@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,12 +11,11 @@ lastupdated: "2018-10-26"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
 # Introdução à imagem `datashield-vault`
 {: #datashield-vault_starter}
-
 
 Essa imagem de contêiner executa uma área segura no ambiente Data Shield, fornecendo proteção aos dados em uso.
 {:shortdesc}
@@ -60,8 +59,8 @@ Essa imagem de contêiner executa uma área segura no ambiente Data Shield, forn
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: codeblock}    
-    
+{: codeblock}
+
 Use `kubectl get pod -owide` ou `kubectl describe pod` para consultar o endereço IP do nó para a instância da área segura. Configure a variável de ambiente `VAULT_ADDR` para `http://<IP>:8200` para acessar a instância da área segura protegida pelo Data Shield.
 
 É possível usar os comandos da CLI da área segura como `vault init`, `vault unseal`, `vault auth`, `vault write` e `vault read` para autenticar e acessar os segredos. Para obter mais informações sobre como usar a CLI da área segura, consulte [Comando da área segura (CLI) ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://www.vaultproject.io/docs/commands/index.html).

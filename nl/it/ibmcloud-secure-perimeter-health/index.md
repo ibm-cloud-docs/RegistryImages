@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -28,12 +28,13 @@ Puoi accedere alle immagini fornite da {{site.data.keyword.IBM_notm}} utilizzand
 
 Per assicurare che il tuo Secure Perimeter stia funzionando correttamente, `ibmcloud-secure-perimeter-health` può eseguire la scansione di reti pubbliche o private nel tuo account dell'infrastruttura {{site.data.keyword.cloud_notm}} e notificare le vulnerabilità. Puoi usare l'immagine **ibmcloud-secure-perimeter-health** in due modi:
 
--   Usa `ibmcloud-secure-perimeter-health` come un pod su un cluster Kubernetes nel tuo Secure Perimeter per eseguire la scansione per rilevare eventuali esposizioni delle reti private.
--   Usa `ibmcloud-secure-perimeter-health` come un contenitore Docker autonomo sulla tua workstation per eseguire la scansione per rilevare eventuali esposizioni delle reti pubbliche.
+- Usa `ibmcloud-secure-perimeter-health` come un pod su un cluster Kubernetes nel tuo Secure Perimeter per eseguire la scansione per rilevare eventuali esposizioni delle reti private.
+- Usa `ibmcloud-secure-perimeter-health` come un contenitore Docker autonomo sulla tua workstation per eseguire la scansione per rilevare eventuali esposizioni delle reti pubbliche.
 
 Ulteriori informazioni sul Secure Perimeter sono disponibili in questi articoli di blog:
-  * [Set up a Secure Perimeter in {{site.data.keyword.cloud_notm}} ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/).
-  * [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}} ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
+
+- [Set up a Secure Perimeter in {{site.data.keyword.cloud_notm}} ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/).
+- [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}} ![Icona link esterno](../../../icons/launch-glyph.svg "Icona link esterno")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
 
 Dopo la scansione, l'immagine `ibmcloud-secure-perimeter-health` produce un report relativo a quali reti erano raggiungibili dall'interno del Secure Perimeter Segment. Ogni report fornisce i dettagli del nome del gateway di rete, della VLAN, delle relative sottoreti e degli eventuali host che stanno causando la violazione. Un report di esempio di un utente che ha eseguito la scansione per rilevare le vulnerabilità delle reti private:
 
@@ -65,32 +66,31 @@ sp-gateway-8a9031ab:
 L'immagine `ibmcloud-secure-perimeter-health` fornisce i seguenti pacchetti software.
 {:shortdesc}
 
--   Alpine Linux
--   Runtime Python
--   SoftLayer Python Client
--   Scanner di porte Nmap
+- Alpine Linux
+- Runtime Python
+- SoftLayer Python Client
+- Scanner di porte Nmap
 
 ## Introduzione
 {: #how_to_get_started}
 
 Rivedi le seguenti attività per informazioni sulla modalità di utilizzo di `ibmcloud-secure-perimeter-health`:
 
-1.  [Esegui il provisioning di un cluster Kubernetes in un Secure Perimeter utilizzando {{site.data.keyword.containerlong_notm}}](#provision_cluster)
-2.  [Esegui una scansione di reti private in un Secure Perimeter](#private_networks)
-3.  [Esegui la scansione di reti pubbliche esternamente a un Secure Perimeter](#public_networks)
-4.  [Informazioni sui risultati della scansione](#scan_results)
-5.  [Guida di riferimento agli argomenti del contenitore](#reference_container_arg)
-6.  [Riferimenti alla variabile di ambiente](#reference_env_var)
-
+1. [Esegui il provisioning di un cluster Kubernetes in un Secure Perimeter utilizzando {{site.data.keyword.containerlong_notm}}](#provision_cluster)
+2. [Esegui una scansione di reti private in un Secure Perimeter](#private_networks)
+3. [Esegui la scansione di reti pubbliche esternamente a un Secure Perimeter](#public_networks)
+4. [Informazioni sui risultati della scansione](#scan_results)
+5. [Guida di riferimento agli argomenti del contenitore](#reference_container_arg)
+6. [Riferimenti alla variabile di ambiente](#reference_env_var)
 
 ## Esegui il provisioning di un cluster Kubernetes in un Secure Perimeter utilizzando {{site.data.keyword.containerlong_notm}}
 {: #provision_cluster}
 
-1.  Esegui il provisioning del tuo cluster Kubernetes dalla sezione **Contenitori** nel catalogo {{site.data.keyword.cloud_notm}}.
-2.  Fai clic su **Crea**.
-3.  Seleziona le VLAN private e pubbliche del Secure Perimeter Segment dai menu a discesa delle VLAN.
-4.  Immetti tutti gli altri dettagli necessari.
-5.  Fai clic su **Crea cluster**.
+1. Esegui il provisioning del tuo cluster Kubernetes dalla sezione **Contenitori** nel catalogo {{site.data.keyword.cloud_notm}}.
+2. Fai clic su **Crea**.
+3. Seleziona le VLAN private e pubbliche del Secure Perimeter Segment dai menu a discesa delle VLAN.
+4. Immetti tutti gli altri dettagli necessari.
+5. Fai clic su **Crea cluster**.
 
 Controlla la [documentazione di {{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) su come ottenere l'accesso al tuo cluster dopo che è stato distribuito.
 
@@ -101,8 +101,8 @@ Crea un pod del contenitore dall'immagine `ibmcloud-secure-perimeter-health` e c
 
 **Prima di iniziare**
 
--   Installa le [CLI](/docs/containers/cs_cli_install.html#cs_cli_install) obbligatorie.
--   [Indirizza la tua CLI](/docs/containers/cs_cli_install.html#cs_cli_configure) al tuo cluster.
+- Installa le [CLI](/docs/containers/cs_cli_install.html#cs_cli_install) obbligatorie.
+- [Indirizza la tua CLI](/docs/containers/cs_cli_install.html#cs_cli_configure) al tuo cluster.
 
 1. Crea un file di configurazione denominato _health-pod.yaml_. Questo file crea una distribuzione altamente disponibile del pod del contenitore.
 
@@ -166,7 +166,7 @@ Crea un contenitore Docker dall'immagine `ibmcloud-secure-perimeter-health` ed e
 
 **Prima di iniziare**
 
--  Installa Docker.
+- Installa Docker.
 
 1. Crea un contenitore Docker dalla tua workstation nel seguente modo:
 

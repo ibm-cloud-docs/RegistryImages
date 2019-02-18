@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-26"
+  years: 2017, 2019
+lastupdated: "2019-01-09"
 
 ---
 
@@ -75,7 +75,7 @@ Lesen Sie zunächst die Nutzungsbedingungen für die von IBM zertifizierten Imag
 Verwenden Sie eines der kostenlosen `ibmliberty`-Images aus dem {{site.data.keyword.Bluemix_notm}}-Katalog oder wählen Sie Ihr eigenes Image mit Produktionslizenz aus, um einen einzelnen Container oder eine Containergruppe zu erstellen.
 {:shortdesc}
 
-**Wichtig:** Bevor Sie beginnen, lesen Sie die [Nutzungsbeschränkungen](#usage) für die `ibmliberty`-Images. 
+**Wichtig:** Bevor Sie beginnen, lesen Sie die [Nutzungsbeschränkungen](#usage) für die `ibmliberty`-Images.
 
 1. Wählen Sie im Katalog in der seitlichen Anzeige die Option **Container** > **IBM Cloud Container-Registry** > **Öffentliche IBM Repositorys** aus. Suchen Sie nach dem Image `ibmliberty`, aus dem Sie den Container erstellen möchten. Wenn Sie ein eigenes Image mit Produktionslizenz erstellt und in {{site.data.keyword.Bluemix_notm}} bereitgestellt haben, wählen Sie dieses Image im Katalog aus. Die Seite zum Erstellen von Containern wird geöffnet.
 2. Wählen Sie die Version des Images `ibmliberty`, das Sie verwenden möchten, im Dropdown-Feld für **TAG/ VERSION** aus.
@@ -131,7 +131,7 @@ Verwenden Sie Ihre Lizenz für WebSphere Application Server zum Erstellen eines 
 {:shortdesc}
 
 - [Durchführen eines Upgrades des Images von Docker Hub auf ein Produktionsimage ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
-- [Erstellen eines eigenen Images mit Produktionslizenz ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install).
+- [Erstellen eines eigenen Images mit Produktionslizenz ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://github.com/WASdev/ci.docker/tree/master/ga).
 
 Nachdem Sie ein Image mit Produktionslizenz erstellt haben, [übertragen Sie das Image in Ihre private Registry](/docs/services/Registry/index.html), um es mit {{site.data.keyword.containershort_notm}} zu verwenden.
 

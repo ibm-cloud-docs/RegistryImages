@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,7 +11,7 @@ lastupdated: "2018-10-26"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
 # Introdução à imagem `datashield-nginx`
@@ -22,7 +22,6 @@ Essa imagem de contêiner executa o NGINX no ambiente Data Shield, fornecendo pr
 
 É possível acessar as imagens que são fornecidas pela {{site.data.keyword.IBM}} usando a linha de comandos. Consulte [Imagens públicas da IBM](/docs/services/Registry/registry_public_images.html#public_images).
 {: tip}
-
 
 É possível usar a seguinte especificação de pod do Kubernetes para implementar a imagem:
 
@@ -60,6 +59,6 @@ Essa imagem de contêiner executa o NGINX no ambiente Data Shield, fornecendo pr
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: codeblock}    
-    
+{: codeblock}
+
 Para fornecer seu próprio conteúdo para o NGINX entregar, coloque-o sob `/usr/local/nginx/html` no contêiner.

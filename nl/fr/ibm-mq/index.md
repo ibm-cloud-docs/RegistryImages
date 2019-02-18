@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-29"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,12 +11,13 @@ lastupdated: "2018-10-29"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
-# Cette image n'est plus disponible
+# `ibm-mq` public image
+{: #mq}
 
-L'image `ibm-mq` n'est plus disponible.
+L'image publique `ibm-mq` est disponible à l'emplacement suivant : [IBM MQ Advanced for Developers ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](https://hub.docker.com/r/ibmcom/mq/)
 
-Vous pouvez accéder aux images fournies par {{site.data.keyword.IBM}} à l'aide de la ligne de commande. Voir [Images IBM publiques](/docs/services/Registry/registry_public_images.html#public_images).
+Vous pouvez accéder aux images fournies par {{site.data.keyword.IBM}} dans {{site.data.keyword.registrylong_notm}} à l'aide de la ligne de commande. Voir [Images IBM publiques](/docs/services/Registry/registry_public_images.html#public_images).
 {: tip}

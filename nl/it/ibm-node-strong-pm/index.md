@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-10-26"
+  years: 2015, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,12 +11,13 @@ lastupdated: "2018-10-26"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
-# Questa immagine non è più disponibile
+# Immagine pubblica `ibm-node-strong-pm` 
+{: #node-strong}
 
-Invece dell'immagine `ibm-node-strong-pm`, [inizia a lavorare con il servizio {{site.data.keyword.apiconnect_short}}](/docs/services/apiconnect/index.html#index).
+L'immagine pubblica `ibm-node-strong-pm` non è più disponibile. Puoi invece iniziare ad utilizzare il [Servizio {{site.data.keyword.apiconnect_short}}](/docs/services/apiconnect/index.html#index).
 
 Puoi accedere alle immagini fornite da {{site.data.keyword.IBM}} utilizzando la riga di comando, consulta [Immagini pubbliche IBM](/docs/services/Registry/registry_public_images.html#public_images).
 {: tip}

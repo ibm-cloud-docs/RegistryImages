@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,12 +11,11 @@ lastupdated: "2018-10-26"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
 # Iniciación a la imagen `datashield-vault`
 {: #datashield-vault_starter}
-
 
 Esta imagen del contenedor ejecuta Vault en el entorno Data Shield, lo que protege los datos utilizados.
 {:shortdesc}
@@ -60,8 +59,8 @@ Puede utilizar la siguiente especificación de pod de Kubernetes para desplegar 
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: codeblock}    
-    
+{: codeblock}
+
 Utilice `kubectl get pod -owide` o `kubectl describe pod` para buscar la dirección IP del nodo correspondiente a su instancia de Vault. Establezca la variable de entorno `VAULT_ADDR` en `http://<IP>:8200` para acceder a la instancia de Vault protegida por Data Shield.
 
 Puede utilizar mandatos de CLI de Vault, como `vault init`, `vault unseal`, `vault auth`, `vault write` y `vault read`, para autenticar y acceder a secretos. Para obtener más información sobre cómo utilizar la CLI de Vault, consulte [Mandatos de Vault (CLI) ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](https://www.vaultproject.io/docs/commands/index.html).

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-26"
+  years: 2017, 2019
+lastupdated: "2019-01-09"
 
 ---
 
@@ -153,7 +153,7 @@ a seguir.
 {:shortdesc}
 
 - [Faça upgrade da imagem do Docker Hub para uma imagem de produção ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
-- [Construa a sua própria imagem licenciada de produção ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install).
+- [Construa a sua própria imagem licenciada de produção ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://github.com/WASdev/ci.docker/tree/master/ga).
 
 Depois de criar uma imagem licenciada para produção, [envie por push imagem para seu registro privado](/docs/services/Registry/index.html) para usá-la com o {{site.data.keyword.containershort_notm}}.
 

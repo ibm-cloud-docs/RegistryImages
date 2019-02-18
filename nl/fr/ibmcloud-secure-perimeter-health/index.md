@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -28,12 +28,13 @@ Vous pouvez accéder aux images fournies par {{site.data.keyword.IBM_notm}} à l
 
 Pour garantir le bon fonctionnement de votre périmètre sécurisé, `ibmcloud-secure-perimeter-health` peut analyser le réseau public ou le réseau privé dans votre compte d'infrastructure {{site.data.keyword.cloud_notm}} et signaler les vulnérabilités. Vous pouvez utiliser l'image **ibmcloud-secure-perimeter-health** de deux façons :
 
--   Utiliser `ibmcloud-secure-perimeter-health` en tant que pod sur un cluster Kubernetes au sein de votre périmètre sécurisé pour rechercher les expositions de réseau privé.
--   Utiliser `ibmcloud-secure-perimeter-health` en tant que conteneur Docker autonome sur votre poste de travail pour rechercher les expositions de réseau public.
+- Utiliser `ibmcloud-secure-perimeter-health` en tant que pod sur un cluster Kubernetes au sein de votre périmètre sécurisé pour rechercher les expositions de réseau privé.
+- Utiliser `ibmcloud-secure-perimeter-health` en tant que conteneur Docker autonome sur votre poste de travail pour rechercher les expositions de réseau public.
 
 Vous trouverez des informations supplémentaires sur le périmètre sécurisé dans les articles de blogue suivants :
-  * [Set up a Secure Perimeter in {{site.data.keyword.cloud_notm}} ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/).
-  * [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}} ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
+
+- [Set up a Secure Perimeter in {{site.data.keyword.cloud_notm}} ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/).
+- [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}} ![Icône de lien externe](../../../icons/launch-glyph.svg "Icône de lien externe")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
 
 Après l'analyse, l'image `ibmcloud-secure-perimeter-health` génère un rapport sur les réseaux accessibles depuis le segment de périmètre sécurisé (Secure Perimeter Segment). Chaque rapport indique le nom de la passerelle réseau, le réseau local virtuel (VLAN), ses sous-réseaux ainsi que les éventuels hôtes incriminés. Exemple de rapport d'un utilisateur ayant recherché des vulnérabilité du réseau privé :
 
@@ -65,32 +66,31 @@ sp-gateway-8a9031ab:
 L'image `ibmcloud-secure-perimeter-health` fournit les progiciels suivants.
 {:shortdesc}
 
--   Alpine Linux
--   Exécution Python
--   Client SoftLayer Python
--   Analyseur de port Nmap
+- Alpine Linux
+- Exécution Python
+- Client SoftLayer Python
+- Analyseur de port Nmap
 
 ## Initiation
 {: #how_to_get_started}
 
 Passez en revue les tâches suivantes pour apprendre à utiliser `ibmcloud-secure-perimeter-health` :
 
-1.  [Mettre à disposition un cluster Kubernetes dans un périmètre sécurisé via {{site.data.keyword.containerlong_notm}}](#provision_cluster)
-2.  [Analyser les réseaux privés au sein d'un périmètre sécurisé](#private_networks)
-3.  [Analyser les réseaux publics hors d'un périmètre sécurisé](#public_networks)
-4.  [Comprendre les résultats d'analyse](#scan_results)
-5.  [Référence d'argument de conteneur](#reference_container_arg)
-6.  [Référence de variable d'environnement](#reference_env_var)
-
+1. [Mettre à disposition un cluster Kubernetes dans un périmètre sécurisé via {{site.data.keyword.containerlong_notm}}](#provision_cluster)
+2. [Analyser les réseaux privés au sein d'un périmètre sécurisé](#private_networks)
+3. [Analyser les réseaux publics hors d'un périmètre sécurisé](#public_networks)
+4. [Comprendre les résultats d'analyse](#scan_results)
+5. [Référence d'argument de conteneur](#reference_container_arg)
+6. [Référence de variable d'environnement](#reference_env_var)
 
 ## Mettre à disposition un cluster Kubernetes dans un périmètre sécurisé via {{site.data.keyword.containerlong_notm}}
 {: #provision_cluster}
 
-1.  Mettez à disposition votre cluster Kubernetes à partir de la section **Conteneurs** du catalogue {{site.data.keyword.cloud_notm}}.
-2.  Cliquez sur **Créer**.
-3.  Sélectionnez les réseaux locaux virtuels public et privé du segment de paramètre sécurisé (Secure Perimeter Segment) à partir des menus déroulants VLAN.
-4.  Entrez toutes les autres informations requises.
-5.  Cliquez sur **Créer un cluster**.
+1. Mettez à disposition votre cluster Kubernetes à partir de la section **Conteneurs** du catalogue {{site.data.keyword.cloud_notm}}.
+2. Cliquez sur **Créer**.
+3. Sélectionnez les réseaux locaux virtuels public et privé du segment de paramètre sécurisé (Secure Perimeter Segment) à partir des menus déroulants VLAN.
+4. Entrez toutes les autres informations requises.
+5. Cliquez sur **Créer un cluster**.
 
 Consultez la documentation [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) savoir comment accéder à votre cluster une fois celui-ci déployé.
 
@@ -101,8 +101,8 @@ Créez un pod de conteneur à partir de l'image `ibmcloud-secure-perimeter-healt
 
 **Avant de commencer**
 
--   Installez les [interfaces de ligne de commande](/docs/containers/cs_cli_install.html#cs_cli_install) requises.
--   [Ciblez votre interface de ligne de commande](/docs/containers/cs_cli_install.html#cs_cli_configure) vers votre cluster.
+- Installez les [interfaces de ligne de commande](/docs/containers/cs_cli_install.html#cs_cli_install) requises.
+- [Ciblez votre interface de ligne de commande](/docs/containers/cs_cli_install.html#cs_cli_configure) vers votre cluster.
 
 1. Créez un fichier de configuration nommé _health-pod.yaml_. Ce fichier crée un déploiement hautement disponible du pod de conteneur.
 
@@ -166,7 +166,7 @@ Créez un conteneur Docker à partir de l'image `ibmcloud-secure-perimeter-healt
 
 **Avant de commencer**
 
--  Installez Docker.
+- Installez Docker.
 
 1. Créez un conteneur Docker à partir de votre propre poste de travail à l'aide de la commande suivante :
 

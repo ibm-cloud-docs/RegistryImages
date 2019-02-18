@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,7 +11,7 @@ lastupdated: "2018-10-26"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
 # `datashield-nginx` イメージの概説
@@ -22,7 +22,6 @@ lastupdated: "2018-10-26"
 
 {{site.data.keyword.IBM}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry/registry_public_images.html#public_images)を参照してください。
 {: tip}
-
 
 Kubernetes ポッドの次の仕様を使用して、イメージをデプロイできます。
 
@@ -60,6 +59,6 @@ Kubernetes ポッドの次の仕様を使用して、イメージをデプロイ
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: codeblock}    
-    
+{: codeblock}
+
 処理対象の NGINX の独自のコンテンツを提供するには、コンテナーの `/usr/local/nginx/html` の下に置きます。

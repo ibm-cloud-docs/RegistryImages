@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-26"
+  years: 2017, 2019
+lastupdated: "2019-01-09"
 
 ---
 
@@ -133,7 +133,7 @@ Utilice la licencia de WebSphere Application Server para crear una imagen `ibmli
 {:shortdesc}
 
 - [Actualice la imagen desde Docker Hub a una imagen de producción ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
-- [Cree su propia imagen con licencia de producción ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install).
+- [Cree su propia imagen con licencia de producción ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](https://github.com/WASdev/ci.docker/tree/master/ga).
 
 Después de crear una imagen con licencia de producción, [envíe por push la imagen a su registro privado](/docs/services/Registry/index.html) para utilizarlo con {{site.data.keyword.containershort_notm}}.
 

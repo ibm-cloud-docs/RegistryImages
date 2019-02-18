@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,7 +11,7 @@ lastupdated: "2018-10-26"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
 # `datashield-mysql` 이미지 시작하기
@@ -60,7 +60,7 @@ lastupdated: "2018-10-26"
           path: /var/run/aesmd/aesm.socket
 ```
 {: codeblock}
-    
+
 다음 명령을 실행하여 MariaDB 인스턴스를 연결할 수 있습니다.
 
 ```
