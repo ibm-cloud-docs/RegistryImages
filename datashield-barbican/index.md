@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: datashield-barbican image, container image, barbican, Data Shield environment, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,18 +16,21 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # Getting started with the `datashield-barbican` image
 {: #datashield-barbican_starter}
 
-This container image runs Barbican in the Data Shield environment, providing protection for data in use.
+This container image runs Barbican in the Data Shield environment, providing protection for data that is in use.
 {:shortdesc}
 
 You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
-You can use the following Kubernetes pod spec to deploy the image:
+You can use the following Kubernetes pod specification to deploy the image:
 
 ```
     apiVersion: v1
@@ -61,10 +68,10 @@ You can use the following Kubernetes pod spec to deploy the image:
 ```
 {: codeblock}
 
-It might take a few minutes for the container to deploy and start. The demo Barbican instance is configured without Keystone authentication. Requests must include the header `X-Project-Id: 12345`
+It might take a few minutes for the container to deploy and start. The demonstration Barbican instance is configured without Keystone authentication. Requests must include the header `X-Project-Id: 12345`
 {: tip}
 
-You can create a secret in the Barbican demo instance by running the following command:
+You can create a secret in the Barbican demonstration instance by running the following command:
 
 ```
     curl -sS -X POST -H 'content-type:application/json' -H 'X-Project-Id: 12345' -d \
