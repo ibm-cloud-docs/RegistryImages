@@ -230,26 +230,26 @@ To back up an existing PV, complete the following steps:
 Your backup is available. If you configured your backup to create a one-time full backup, you must run the backup script each time that you want to create a new backup. If you configured the container to run an incremental backup periodically, then your backup runs as scheduled.
 
 ## Restoring data from {{site.data.keyword.cos_full_notm}} to your cluster
-{: #restore_script_cli}
+{: #backup_restore_restore_script_cli}
 
-You can restore data from your {{site.data.keyword.cos_full_notm}} service instance to a PV in your cluster. 
+You can restore data from your {{site.data.keyword.cos_full_notm}} service instance to a PV in your cluster.
 
 **Before you begin**
 
--   [Target your CLI to your cluster](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure).
--   [Create a backup for a PV in your cluster](#scheduled_backup).
+- [Target your CLI to your cluster](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure).
+- [Create a backup for a PV in your cluster](#backup_restore_scheduled_backup).
 
-To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the following steps: 
+To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the following steps:
 
-1. Get the name of the PVC that binds the PV where you want to restore your data. 
+1. Get the name of the PVC that binds the PV where you want to restore your data.
 
    ```
    kubectl get pvc
    ```
    {: pre}
 
-2. Create a restore pod from the `ibm-backup-restore` image. To restore data to a PV, you must mount the PVC that binds the PV to your restore pod. 
-   
+2. Create a restore pod from the `ibm-backup-restore` image. To restore data to a PV, you must mount the PVC that binds the PV to your restore pod.
+
    ```
    apiVersion: v1
    kind: Pod
@@ -257,7 +257,7 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the f
      name: restorepod
    spec:
      containers:
-     - image: registry.bluemix.net/ibm-backup-restore 
+     - image: registry.bluemix.net/ibm-backup-restore
        name: restorecontainer
        env:
        - name: OBJECTSTORAGE
@@ -266,13 +266,13 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the f
          value: '<access_key_ID>'
        - name: SECRET_ACCESS_KEY
          value: '<secret_access_key>'
-       - name: ENDPOINT 
+       - name: ENDPOINT
          value: '<regional_endpoint>'
-       - name: BUCKET_NAME 
+       - name: BUCKET_NAME
          value: '<bucket_name>'
-       - name: RESTORE_DIRECTORY 
-         value: /myvol 
-       - name: BACKUP_NAME 
+       - name: RESTORE_DIRECTORY
+         value: /myvol
+       - name: BACKUP_NAME
          value: <backup_name>
        command: ["/bin/sh", "./vrestore"]
        volumeMounts:
@@ -281,12 +281,12 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the f
      volumes:
      - name: restore-volume  
        persistentVolumeClaim:
-         claimName: <pvc_name> 
+         claimName: <pvc_name>
    ```
    {: codeblock}
-   
+
    <table>
-   <caption>YAML file components</caption>
+   <caption>Table 2. YAML file components</caption>
    <thead>
    <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> Understanding the yaml file components</th>
    </thead>
@@ -318,20 +318,20 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the f
      </tbody>
      </table>
 
-3.  Create the restore pod and start restoring your data.
+3. Create the restore pod and start restoring your data.
 
     ```
     kubectl apply -f restorepod.yaml
     ```
     {: pre}
-    
-4.  Verify that the pod is running.
+
+4. Verify that the pod is running.
 
     ```
-    kubectl get pods 
+    kubectl get pods
     ```
     {: pre}
-    
+
     ```
     NAME              READY     STATUS             RESTARTS   AGE
     restorepod        0/1       CrashLoopBackOff   1          1m
@@ -340,14 +340,14 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the f
 
     The pod runs the restore command and stops. The _CrashLoopBackOff_ message means Kubernetes is attempting to restart the pod.
 
-5.  Remove the pod to prevent the pod from consuming more resources.
+5. Remove the pod to prevent the pod from consuming more resources.
 
     ```
     kubectl delete -f restorepod.yaml
     ```
     {: pre}
-
-6.  Verify that your data is successfully restored.
+    
+6. Verify that your data is successfully restored.
 
     ```
     kubectl logs restorepod
@@ -355,7 +355,6 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the f
     {: pre}
 
 You successfully restored your backup. You can now mount the PVC that binds the PV to any other pod in your cluster to access the restored files. If the container data that was backed up included a non-root user, you must add non-root permissions to your new container. For more information, see [Adding non-root user access to volumes](/docs/containers?topic=containers-cs_troubleshoot_storage#cs_storage_nonroot).
-
 
 ## Encrypting your backups 
 {: #encrypting_backups}
