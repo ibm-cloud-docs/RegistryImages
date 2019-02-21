@@ -356,15 +356,16 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the f
 
 You successfully restored your backup. You can now mount the PVC that binds the PV to any other pod in your cluster to access the restored files. If the container data that was backed up included a non-root user, you must add non-root permissions to your new container. For more information, see [Adding non-root user access to volumes](/docs/containers?topic=containers-cs_troubleshoot_storage#cs_storage_nonroot).
 
-## Encrypting your backups 
-{: #encrypting_backups}
+## Encrypting your backups
+{: #backup_restore_encrypting_backups}
 
 Encrypt the data in your {{site.data.keyword.cos_full_notm}} instance.
 
-1.  Download <a href="https://www.gnupg.org/download/index.html" target="_blank">GnuPG <img src="../../../icons/launch-glyph.svg" alt="External link icon"></a> to create an encryption key.
-2.  Create an encryption key on your local drive. You can accept the default values by pressing ENTER.
+1. Download <a href="https://www.gnupg.org/download/index.html" target="_blank">GnuPG <img src="../../../icons/launch-glyph.svg" alt="External link icon"></a> to create an encryption key.
+2. Create an encryption key on your local drive. You can accept the default values by pressing ENTER.
 
-    **Important:** Make note of the passphrase that you create. If you lose your passphrase, any information encrypted with your key cannot be decrypted.
+    Make note of the passphrase that you create. If you lose your passphrase, any information encrypted with your key cannot be decrypted.
+    {: important}
 
     ```
     gpg --gen-key
@@ -373,7 +374,7 @@ Encrypt the data in your {{site.data.keyword.cos_full_notm}} instance.
 
     Depending on the version of <a href="https://www.gnupg.org/download/index.html" target="_blank">GnuPG <img src="../../../icons/launch-glyph.svg" alt="External link icon"></a>, you might need to use `gpg2` instead of `gpg` in your commands.
 
-3.  Verify the key.
+3. Verify the key.
 
     ```
     gpg --list-keys
@@ -390,7 +391,7 @@ Encrypt the data in your {{site.data.keyword.cos_full_notm}} instance.
     ```
     {: screen}
 
-4.  Export the encryption key with the value from the `sub` key. Name the file `encryption.asc`.
+4. Export the encryption key with the value from the `sub` key. Name the file `encryption.asc`.
 
     ```
     gpg --export-secret-keys -a <SUB_KEY> > encryption.asc
@@ -458,7 +459,7 @@ Encrypt the data in your {{site.data.keyword.cos_full_notm}} instance.
     {: codeblock}
    
     <table>
-    <caption>YAML file components</caption>
+    <caption>Table 3. YAML file components</caption>
     <thead>
     <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> Understanding the yaml file components</th>
     </thead>
@@ -552,8 +553,8 @@ Encrypt the data in your {{site.data.keyword.cos_full_notm}} instance.
 Your backup is encrypted. To restore the files, follow the steps in [Restoring data from {{site.data.keyword.cos_full_notm}} to a PVC in your cluster](#restore_script_cli) and include the `encryption.asc` file in the `backup_restore` directory of the pod that runs the restore process. If the backup is encrypted, you must provide the **ENCRYPTION_REQUIRED** and **ENCRYPTION_PASSPHRASE** environment variables when you create the restore pod.
 
 
-## Environment variable reference 
-{: #reference_backup_restore}
+## Environment variable reference
+{: #backup_restore_env_reference}
 
 Review the full list of fields that can be passed as environment variables or edited in the `config.conf` file in a running pod. Any value that is passed as an environment variable supersedes the value in the `config.conf` file. To review the environment variables for a pod, log in to the pod by using the `kubectl exec` command and run `env`.
 
@@ -563,7 +564,7 @@ Review the full list of fields that can be passed as environment variables or ed
 |SECRET_ACCESS_KEY|The **secret_access_key** is part of the HMAC credentials in {{site.data.keyword.cos_full_notm}}.|
 |ENDPOINT|The host name to access {{site.data.keyword.cos_full_notm}} bucket data.|
 |BUCKET|The name of the bucket in {{site.data.keyword.cos_full_notm}} where your backed-up data is stored.|
-{: caption="Table 1. {{site.data.keyword.cos_full_notm}} variables" caption-side="top"}
+{: caption="Table 4. {{site.data.keyword.cos_full_notm}} variables" caption-side="top"}
 
 |Key|Value options|
 |---|-------------|
@@ -573,13 +574,13 @@ Review the full list of fields that can be passed as environment variables or ed
 |SCHEDULE_TYPE|*none*: Default. Create a one-time backup.<br/> **Note:** If you choose to create a one-time backup, your pod is removed from the cluster after the backup is finished. <br/> *periodic*: Change the value to periodic to create scheduled backups.|
 |SCHEDULE_INFO|*hourly*: Create an hourly backup.<br/>*daily*: Default. Create a daily backup.<br/>*weekly*: Create a weekly backup. You must include this variable if you schedule a periodic update.|
 |EXCLUDE_DIRECTORIES|*none*: Default. Include the absolute file path of directories that you want excluded from the backup. Separate directories with a comma.|
-{: caption="Table 2. Backup variables" caption-side="top"}
+{: caption="Table 5. Backup variables" caption-side="top"}
 
 |Key|Value Options|
 |---|-------------|
 |BACKUP_NAME|*volume_backup*: Default. Include the name of the backup that is being restored from {{site.data.keyword.cos_full_notm}}.|
 |RESTORE_DIRECTORY|*/backup*: Default. Absolute directory that the volume is mounted to. Data is restored to this directory. Do not select the directory `backup_restore` as that directory contains files for the backup and restore processes.|
-{: caption="Table 3. Restore variables" caption-side="top"}
+{: caption="Table 6. Restore variables" caption-side="top"}
 
 |Key|Value options|
 |---|-------------|
@@ -587,5 +588,4 @@ Review the full list of fields that can be passed as environment variables or ed
 |ENCRYPTION_REQUIRED|*no*: Default.<br/> *yes*: If you do not encrypt your backup, do not include any encryption environment variables. If you encrypt your backup, include this key with the value `yes`.|
 |ENCRYPTION_PASSPHRASE|Include a passphrase to secure a backup. This passphrase is a different passphrase from the phrase that you made when you created the encryption key. You must include this passphrase when you back up data and restore data.|
 |IS_KEY_GENERATED_ON_SYSTEM|*no*: Default.<br/> *yes*: Include this environment variable with `yes` if you generated the encryption key directly on the container. Most users generate the key on their local computer and copy the key to the pod and can leave the default as `no`.|
-{: caption="Table 4. Encryption variables" caption-side="top"}
-
+{: caption="Table 7. Encryption variables" caption-side="top"}
