@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # Getting started with the `ibmcloud-secure-perimeter-health` image
@@ -24,7 +31,7 @@ You can access the images that are provided by {{site.data.keyword.IBM_notm}} by
 {: tip}
 
 ## How it works
-{: #how-it-works}
+{: #sph_how-it-works}
 
 To ensure your Secure Perimeter is functioning properly, `ibmcloud-secure-perimeter-health` can scan public or private networks in your {{site.data.keyword.cloud_notm}} infrastructure account and report vulnerabilities. You can use **ibmcloud-secure-perimeter-health** image in two ways:
 
@@ -61,7 +68,7 @@ sp-gateway-8a9031ab:
 {: screen}
 
 ## What is included
-{: #whats_included}
+{: #sph_whats_included}
 
 The `ibmcloud-secure-perimeter-health` image provides the following software packages.
 {:shortdesc}
@@ -71,20 +78,8 @@ The `ibmcloud-secure-perimeter-health` image provides the following software pac
 - SoftLayer Python Client
 - Nmap port scanner
 
-## Getting started
-{: #how_to_get_started}
-
-Review the following tasks to learn how to use `ibmcloud-secure-perimeter-health`:
-
-1. [Provision a Kubernetes cluster within a Secure Perimeter using {{site.data.keyword.containerlong_notm}}](#provision_cluster)
-2. [Scan private networks within a Secure Perimeter](#private_networks)
-3. [Scan public networks outside a Secure Perimeter](#public_networks)
-4. [Understanding scan results](#scan_results)
-5. [Container argument reference](#reference_container_arg)
-6. [Environment variable reference](#reference_env_var)
-
 ## Provision a Kubernetes cluster within a Secure Perimeter by using {{site.data.keyword.containerlong_notm}}
-{: #provision_cluster}
+{: #sph_provision_cluster}
 
 1. Provision your Kubernetes cluster from the **Containers** section in the {{site.data.keyword.cloud_notm}} catalog.
 2. Click **Create**.
@@ -95,7 +90,7 @@ Review the following tasks to learn how to use `ibmcloud-secure-perimeter-health
 Review [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) documentation about how to get access to your cluster after it has been deployed.
 
 ## Scan private networks within a Secure Perimeter
-{: #private_networks}
+{: #sph_private_networks}
 
 Create a container pod from the `ibmcloud-secure-perimeter-health` image, and set up a routine scan.
 
@@ -138,7 +133,7 @@ Create a container pod from the `ibmcloud-secure-perimeter-health` image, and se
               value: <IBM Cloud infrastructure api key>
     ```
     {: codeblock}
-
+    
 2. Create the deployment.
 
     ```
@@ -160,7 +155,7 @@ Create a container pod from the `ibmcloud-secure-perimeter-health` image, and se
     {: screen}
 
 ## Scan public networks outside a Secure Perimeter
-{: #public_networks}
+{: #sph_public_networks}
 
 Create a Docker container from the `ibmcloud-secure-perimeter-health` image and scan public networks.
 
@@ -175,10 +170,10 @@ Create a Docker container from the `ibmcloud-secure-perimeter-health` image and 
     ```
     {: pre}
 
-2. After the container produces a report, review the [Analysing scan results](#scan_results) section to understand the results.
+2. After the container produces a report, review the [Analysing scan results](#sph_scan_results) section to understand the results.
 
 ## Analysing scan results
-{: #scan_results}
+{: #sph_scan_results}
 
 The `ibmcloud-secure-perimeter-health` produces a formatted report on functioning health of a Secure Perimeter:
 
@@ -218,7 +213,7 @@ The format of the report is as follows:
 The `ibmcloud-secure-perimeter-health` determines a subnet as `PASS` if no hosts in the subnet were reachable, otherwise it returns with `FAIL` and lists the hosts that were reachable, along with the ports that were accessible.
 
 ## Container argument reference
-{: #reference_container_arg}
+{: #sph_reference_container_arg}
 
 |Key|Description|Default
 |---|-------------|---|
@@ -229,7 +224,7 @@ The `ibmcloud-secure-perimeter-health` determines a subnet as `PASS` if no hosts
 {: caption="Table 1. container arguments" caption-side="top"}
 
 ## Environment variable reference
-{: #reference_env_var}
+{: #sph_reference_env_var}
 
 |Key|Description|
 |---|-------------|
