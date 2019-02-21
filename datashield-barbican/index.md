@@ -20,7 +20,7 @@ lastupdated: "2019-01-03"
 This container image runs Barbican in the Data Shield environment, providing protection for data in use.
 {:shortdesc}
 
-You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry/registry_public_images.html#public_images).
+You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
 You can use the following Kubernetes pod spec to deploy the image:
