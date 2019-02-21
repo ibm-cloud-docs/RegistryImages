@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-06"
+lastupdated: "2019-02-21"
+
+keywords: ibm-backup-restore, IBM Cloud Kubernetes Service, container image, back up data, restore data
+
+subcollection: RegistryImages
 
 ---
 
@@ -11,7 +15,10 @@ lastupdated: "2019-02-06"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # Getting started with the `ibm-backup-restore` image
@@ -23,66 +30,63 @@ The `ibm-backup-restore` image contains the preinstalled packages that are neede
 You can access the images that are provided by {{site.data.keyword.IBM_notm}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
-## How it works 
-{: #how_it_works}
+## How it works
+{: #backup_restore_how_it_works}
 
-With the `ibm-backup-restore` image, you can create a one-time or scheduled backup for app data that is stored in a persistent volume (PV) in your cluster or restore app data to a PV. To back up and restore data, you deploy a pod from the `ibm-backup-restore` image. Then, you mount the PVC that binds the PV that you want to backup or the PV that you want to use for restoring your data to your pod. 
+With the `ibm-backup-restore` image, you can create a one-time or scheduled backup for app data that is stored in a persistent volume (PV) in your cluster or restore app data to a PV. To back up and restore data, you deploy a pod from the `ibm-backup-restore` image. Then, you mount the PVC that binds the PV that you want to backup or the PV that you want to use for restoring your data to your pod.
 
-**Where does my data go? How do I access it?** 
+**Where does my data go? How do I access it?**
 
 Data that you back up is stored within an {{site.data.keyword.cos_full_notm}} service instance. To access the service, use your {{site.data.keyword.cos_full_notm}} service credentials as environment variables in the `ibm-backup-restore` pod, or edit the `config.conf` file in the running pod.
 
-**Can I restore backed up data to a different app or a different PV?** 
+**Can I restore backed up data to a different app or a different PV?**
 
 Yes, you can restore your saved data from the {{site.data.keyword.cos_full_notm}} service instance to a PV in your cluster. To restore data, you must create a restore pod from the `ibm-backup-restore` image. Then, you mount the PVC that binds the PV that you want to use to your pod.  
 
-## What is included 
-{: #whats_included}
+## What is included
+{: #backup_restore_whats_included}
 
 Every `ibm-backup-restore` image contains the following software packages:
 
--   Alpine 3.7
--   Duplicity 0.7.10
--   python, and gpgme packages
+- Alpine 3.7
+- Duplicity 0.7.10
+- python, and gpgme packages
 
-
-## Setting up an {{site.data.keyword.cos_full_notm}} service instance 
-{: #object_storage}
+## Setting up an {{site.data.keyword.cos_full_notm}} service instance
+{: #backup_restore_setup_object_storage}
 
 Create and configure an {{site.data.keyword.cos_full_notm}} service instance to serve as the repository for the data that you want to back up.
 {: shortdesc}
 
 1. Deploy an {{site.data.keyword.cos_full_notm}} service instance.
    1. Open the [{{site.data.keyword.Bluemix_notm}} catalog ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/services/cloud-object-storage).
-   2.  Enter a name for your service instance, such as `cos-backup`, and select **default** as your resource group. 
-   3.  Review the [plan options ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage#s3api) for pricing information and select a plan. 
-   4.  Click **Create**.
+   2. Enter a name for your service instance, such as `cos-backup`, and select **default** as your resource group.
+   3. Review the [plan options ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage#s3api) for pricing information and select a plan.
+   4. Click **Create**.
 2. Retrieve the {{site.data.keyword.cos_full_notm}} service instance credentials.
-   1.  In the navigation on the service details page, click **Service Credentials**.
-   2.  Click **New credential**. A dialog box displays. 
-   3.  Enter a name for your credentials.
-   4.  In **Add Inline Configuration Parameters (Optional)**, enter `{"HMAC":true}` to create additional HMAC credentials that the `ibm-backup-restore` pod uses for HMAC authentication with the {{site.data.keyword.cos_full_notm}} service. 
-   5.  Click **Add**. Your new credentials are listed in the **Service Credentials** table.
-   6.  Click **View credentials**. 
-   7.  Make note of the **access_key_id** and the **secret_access_key** that you can find in the **cos_hmac_keys** section. 
+   1. In the navigation on the service details page, click **Service Credentials**.
+   2. Click **New credential**. A dialog box displays.
+   3. Enter a name for your credentials.
+   4. In **Add Inline Configuration Parameters (Optional)**, enter `{"HMAC":true}` to create additional HMAC credentials that the `ibm-backup-restore` pod uses for HMAC authentication with the {{site.data.keyword.cos_full_notm}} service.
+   5. Click **Add**. Your new credentials are listed in the **Service Credentials** table.
+   6. Click **View credentials**.
+   7. Make note of the **access_key_id** and the **secret_access_key** that you can find in the **cos_hmac_keys** section.
 3. Create your first {{site.data.keyword.cos_full_notm}} bucket.
-   1. In the navigation on the service details page, click **Buckets**. 
+   1. In the navigation on the service details page, click **Buckets**.
    2. Click **Create bucket**. A dialog box displays.
-   3. Enter a unique name for your bucket. The name must be unique within {{site.data.keyword.cos_full_notm}} across all regions and across all {{site.data.keyword.Bluemix_notm}} accounts. 
-   4. From the **Resiliency** drop down, select the level of availability that you want for your data. For more information, see [{{site.data.keyword.cos_full_notm}} regions and endpoints](/docs/services/cloud-object-storage/basics?topic=cloud-object-storage-select-regions-and-endpoints#select-regions-and-endpoints). 
+   3. Enter a unique name for your bucket. The name must be unique within {{site.data.keyword.cos_full_notm}} across all regions and across all {{site.data.keyword.Bluemix_notm}} accounts.
+   4. From the **Resiliency** drop down, select the level of availability that you want for your data. For more information, see [{{site.data.keyword.cos_full_notm}} regions and endpoints](/docs/services/cloud-object-storage/basics?topic=cloud-object-storage-endpoints#endpoints).
    5. Change the **Location** to the region where you want to store your data. Keep in mind that your data might not be allowed to be stored in every region due to legal reasons.  
-   6. Click **Create**. 
-4. Retrieve the {{site.data.keyword.cos_full_notm}} host name for your bucket. 
-   1. Click on your bucket name that you created in the previous step. 
-   2. In the navigation on the service details page, click **Buckets** > **Configuration**. 
-   3. Make note of the public URL that you can use to access the data in your bucket. 
-
+   6. Click **Create**.
+4. Retrieve the {{site.data.keyword.cos_full_notm}} host name for your bucket.
+   1. Click on your bucket name that you created in the previous step.
+   2. In the navigation on the service details page, click **Buckets** > **Configuration**.
+   3. Make note of the public URL that you can use to access the data in your bucket.
 
 Review the [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about-ibm-cloud-object-storage#about-ibm-cloud-object-storage) documentation for more information on configuring your service instance.
 
-
 ## Backing up data from a persistent volume
-{: #scheduled_backup}
+{: #backup_restore_scheduled_backup}
 
 You can create a one-time or scheduled backup for any persistent volume (PV) that is mounted to your app pod through a persistent volume claim (PVC).  
 {: shortdesc}
@@ -91,13 +95,13 @@ The following example walks you through how to deploy a backup pod from the `ibm
 
 **Before you begin**
 
--   [Set up an {{site.data.keyword.cos_full_notm}} service instance](#object_storage). 
--   Install the required [CLIs](/docs/containers?topic=containers-cs_cli_install#cs_cli_install) to create and work with your cluster.
--   [Create a standard cluster](/docs/containers?topic=containers-clusters#clusters_cli) or use an existing one.
--   [Target your CLI to your cluster](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure).
--   Create a persistent volume claim (PVC) for your [file storage](/docs/containers?topic=containers-file_storage#add_file) or [block storage](/docs/containers?topic=containers-block_storage#add_block) and mount it to your app deployment.
+- [Set up an {{site.data.keyword.cos_full_notm}} service instance](#backup_restore_setup_object_storage).
+- Install the required [CLIs](/docs/containers?topic=containers-cs_cli_install#cs_cli_install) to create and work with your cluster.
+- [Create a standard cluster](/docs/containers?topic=containers-clusters#clusters_cli) or use an existing one.
+- [Target your CLI to your cluster](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure).
+- Create a persistent volume claim (PVC) for your [file storage](/docs/containers?topic=containers-file_storage#add_file) or [block storage](/docs/containers?topic=containers-block_storage#add_block) and mount it to your app deployment.
 
-To back up an existing PV, complete the following steps: 
+To back up an existing PV, complete the following steps:
 
 1. Get the name of the PVC that binds the PV that you want to back up.
 
@@ -106,11 +110,12 @@ To back up an existing PV, complete the following steps:
    ```
    {: pre}
 
-2. Create a backup pod from the `ibm-backup-restore` image. To access the data in the PV, you must mount the PVC that binds the PV to your backup pod. The following example creates a backup pod that runs a daily incremental backup. To create a backup with different settings, review a full list of [environment variable options](#reference_backup_restore).
+2. Create a backup pod from the `ibm-backup-restore` image. To access the data in the PV, you must mount the PVC that binds the PV to your backup pod. The following example creates a backup pod that runs a daily incremental backup. To create a backup with different settings, review a full list of [environment variable options](#backup_restore_env_reference).
 
-   **Important**: The `ibm-backup-restore` image must be deployed in a single pod and cannot be used as part of a Kubernetes deployment.
-   
-   To view the image, target the global registry by running the `ibmcloud cr region-set global` command. Then, run `ibmcloud cr images --include-ibm` to list IBM public images. 
+   The `ibm-backup-restore` image must be deployed in a single pod and cannot be used as part of a Kubernetes deployment.
+   {: important}
+
+   To view the image, target the global registry by running the `ibmcloud cr region-set global` command. Then, run `ibmcloud cr images --include-ibm` to list IBM public images.
    {: tip}
   
    ```
@@ -125,18 +130,18 @@ To back up an existing PV, complete the following steps:
        env:
        - name: OBJECTSTORAGE
          value: S3
-       - name: ACCESS_KEY_ID 
+       - name: ACCESS_KEY_ID
          value: '<access_key_id>'
-       - name: SECRET_ACCESS_KEY 
+       - name: SECRET_ACCESS_KEY
          value: '<secret_access_key>'
-       - name: ENDPOINT 
+       - name: ENDPOINT
          value: '<regional_endpoint>'
-       - name: BUCKET_NAME 
+       - name: BUCKET_NAME
          value: '<bucket_name>'
        - name: BACKUP_DIRECTORY  
          value: /myvol
        - name: BACKUP_NAME
-         value: <backup_name> 
+         value: <backup_name>
        - name: SCHEDULE_TYPE
          value: periodic
        - name: SCHEDULE_INFO
@@ -145,17 +150,17 @@ To back up an existing PV, complete the following steps:
          value: incremental
        command: ["/bin/bash", "./vbackup"]
        volumeMounts:
-       - mountPath: /myvol 
-         name: backup-volume 
+       - mountPath: /myvol
+         name: backup-volume
      volumes:
-     - name: backup-volume 
+     - name: backup-volume
        persistentVolumeClaim:
          claimName: <pvc_name>  
    ```
    {: codeblock}
    
    <table>
-   <caption>YAML file components</caption>
+   <caption>Table 1. YAML file components</caption>
    <thead>
    <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> Understanding the yaml file components</th>
    </thead>
@@ -187,39 +192,40 @@ To back up an existing PV, complete the following steps:
      </tbody>
      </table>
     
-3.  Create the backup pod and initiate a backup of your PV data. 
+3. Create the backup pod and initiate a backup of your PV data.
 
     ```
     kubectl apply -f backuppod.yaml
     ```
     {: pre}
 
-4.  Verify that the pod is running.
+4. Verify that the pod is running.
 
     ```
-    kubectl get pods 
+    kubectl get pods
     ```
     {: pre}
-    
+
     ```
     NAME               READY     STATUS    RESTARTS   AGE
     backuppod          1/1       Running   0          1hr
     ```
     {: screen}
-    
-5.  Verify that the backup ran successfully. 
+
+5. Verify that the backup ran successfully.
 
     ```
     kubectl logs backuppod
     ```
     {: pre}
 
-6.  Review the backup in {{site.data.keyword.cos_full_notm}} in the {{site.data.keyword.Bluemix_notm}} GUI.
-    1.  From the {{site.data.keyword.Bluemix_notm}} dashboard, find the {{site.data.keyword.cos_full_notm}} service instance. 
-    2.  From the navigation, select **Buckets** and click on the bucket that you used in your backup configuration. Your backup is displayed as an object in your bucket. 
-    3.  Review the compressed files. You can download the `vol1.difftar.gz` file, extract the file, and verify the backed-up data. 
-        
-        **Important**: If you delete or modify any files from {{site.data.keyword.cos_full_notm}}, those files cannot be recovered.
+6. Review the backup in {{site.data.keyword.cos_full_notm}} in the {{site.data.keyword.Bluemix_notm}} GUI.
+    1. From the {{site.data.keyword.Bluemix_notm}} dashboard, find the {{site.data.keyword.cos_full_notm}} service instance.
+    2. From the navigation, select **Buckets** and click on the bucket that you used in your backup configuration. Your backup is displayed as an object in your bucket.
+    3. Review the compressed files. You can download the `vol1.difftar.gz` file, extract the file, and verify the backed-up data.
+
+       If you delete or modify any files from {{site.data.keyword.cos_full_notm}}, those files cannot be recovered.
+       {: important}
 
 Your backup is available. If you configured your backup to create a one-time full backup, you must run the backup script each time that you want to create a new backup. If you configured the container to run an incremental backup periodically, then your backup runs as scheduled.
 
