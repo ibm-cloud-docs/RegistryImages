@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: mysql image, Data Shield environment, container image, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # Getting started with the `datashield-mysql` image
@@ -69,3 +76,4 @@ You can connect to the MariaDB instance by running the following command:
 {: pre}
 
 The Data Shield MariaDB image requires that client connections use TLS. Depending on your client version, you might need to add `--ssl` or `--ssl-mode require` to the client command line.
+
