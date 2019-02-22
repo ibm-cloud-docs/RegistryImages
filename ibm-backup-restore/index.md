@@ -495,7 +495,7 @@ Encrypt the data in your {{site.data.keyword.cos_full_notm}} instance.
      </tbody>
      </table>
    
-    These settings create a daily incremental backup that is encrypted. To create a backup with different settings, review a full list of [environment variable options](#reference_backup_restore).
+    These settings create a daily incremental backup that is encrypted. To create a backup with different settings, review a full list of [environment variable options](#backup_restore_env_reference).
     
 7.  Create the backup pod. 
 
@@ -550,8 +550,7 @@ Encrypt the data in your {{site.data.keyword.cos_full_notm}} instance.
 
 13. To confirm that your backup is encrypted, review the files in your {{site.data.keyword.cos_full_notm}} service instance. The files now have `.gpg` appended to the end of the file name.
 
-Your backup is encrypted. To restore the files, follow the steps in [Restoring data from {{site.data.keyword.cos_full_notm}} to a PVC in your cluster](#restore_script_cli) and include the `encryption.asc` file in the `backup_restore` directory of the pod that runs the restore process. If the backup is encrypted, you must provide the **ENCRYPTION_REQUIRED** and **ENCRYPTION_PASSPHRASE** environment variables when you create the restore pod.
-
+Your backup is encrypted. To restore the files, follow the steps in [Restoring data from {{site.data.keyword.cos_full_notm}} to a PVC in your cluster](#backup_restore_restore_script_cli) and include the `encryption.asc` file in the `backup_restore` directory of the pod that runs the restore process. If the backup is encrypted, you must provide the **ENCRYPTION_REQUIRED** and **ENCRYPTION_PASSPHRASE** environment variables when you create the restore pod.
 
 ## Environment variable reference
 {: #backup_restore_env_reference}
