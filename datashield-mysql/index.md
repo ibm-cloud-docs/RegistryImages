@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-02-26"
 
 keywords: mysql image, Data Shield environment, container image, public image
 
@@ -114,7 +114,7 @@ Check out the following table to see the environment variables that the MariaDB 
     <td>Enables replication. Options include <code>master</code> or <code>slave</code>.</td>
   </tr>
   <tr>
-    <td><code>YSQL_REPLICATION_USER</code> (master or slave)</td>
+    <td><code>MYSQL_REPLICATION_USER</code> (master or slave)</td>
     <td>Sets the name of the replication user. This user is created on the master and is used by the slave to connect.</td>
   </tr>
   <tr>
