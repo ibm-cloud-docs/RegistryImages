@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,12 +11,11 @@ lastupdated: "2018-10-26"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
 # 開始使用 `datashield-vault` 映像檔
 {: #datashield-vault_starter}
-
 
 此容器映像檔會在 Data Shield 環境中執行 Vault，並為使用中的資料提供保護。
 {:shortdesc}
@@ -60,8 +59,8 @@ lastupdated: "2018-10-26"
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: codeblock}    
-    
+{: codeblock}
+
 請使用 `kubectl get pod -owide` 或 `kubectl describe pod` 來查閱 Vault 實例的節點 IP 位址。請將 `VAULT_ADDR` 環境變數設為 `http://<IP>:8200` 以存取 Data Shield 保護的 Vault 實例。
 
 您可以使用 Vault CLI 指令，例如 `vault init`、`vault unseal`、`vault auth`、`vault write` 及 `vault read` 以鑑別和存取密碼。如需如何使用 Vault CLI 的相關資訊，請參閱 [Vault Commands (CLI) ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.vaultproject.io/docs/commands/index.html)。

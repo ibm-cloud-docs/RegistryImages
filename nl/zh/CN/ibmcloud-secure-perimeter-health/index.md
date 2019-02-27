@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -28,12 +28,13 @@ lastupdated: "2018-10-26"
 
 要确保 Secure Perimeter 运行正常，可以使用 `ibmcloud-secure-perimeter-health` 来扫描 {{site.data.keyword.cloud_notm}} 基础架构帐户中的公用或专用网络，然后查看漏洞报告。您可以通过以下两种方式使用 **ibmcloud-secure-perimeter-health** 映像：
 
--   将 `ibmcloud-secure-perimeter-health` 用作 Secure Perimeter 中 Kubernetes 集群上的 pod 以扫描专用网络暴露。
--   将 `ibmcloud-secure-perimeter-health` 用作工作站上的独立 Docker 容器以扫描公用网络暴露。
+- 将 `ibmcloud-secure-perimeter-health` 用作 Secure Perimeter 中 Kubernetes 集群上的 pod 以扫描专用网络暴露。
+- 将 `ibmcloud-secure-perimeter-health` 用作工作站上的独立 Docker 容器以扫描公用网络暴露。
 
 可在以下博客文章中找到有关 Secure Perimeter 的更多信息：
-  * [Set up a Secure Perimeter in {{site.data.keyword.cloud_notm}} ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)。
-  * [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}} ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)。
+
+- [Set up a Secure Perimeter in {{site.data.keyword.cloud_notm}} ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)。
+- [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}} ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)。
 
 扫描后，`ibmcloud-secure-perimeter-health` 映像生成有关可从 Secure Perimeter Segment 访问的网络的报告。每个报告详述网络网关、VLAN、其子网和任何违规主机的名称。以下是扫描了专用网络漏洞的用户示例报告：
 
@@ -65,32 +66,31 @@ sp-gateway-8a9031ab:
 `ibmcloud-secure-perimeter-health` 映像提供以下软件包。
 {:shortdesc}
 
--   Alpine Linux
--   Python 运行时
--   SoftLayer Python 客户机
--   Nmap 端口扫描程序
+- Alpine Linux
+- Python 运行时
+- SoftLayer Python 客户机
+- Nmap 端口扫描程序
 
 ## 入门
 {: #how_to_get_started}
 
 查看以下任务以了解如何使用 `ibmcloud-secure-perimeter-health`：
 
-1.  [使用 {{site.data.keyword.containerlong_notm}} 在 Secure Perimeter 中供应 Kubernetes 集群](#provision_cluster)
-2.  [扫描 Secure Perimeter 中的专用网络](#private_networks)
-3.  [扫描 Secure Perimeter 外部的公用网络](#public_networks)
-4.  [了解扫描结果](#scan_results)
-5.  [容器自变量参考](#reference_container_arg)
-6.  [环境变量参考](#reference_env_var)
-
+1. [使用 {{site.data.keyword.containerlong_notm}} 在 Secure Perimeter 中供应 Kubernetes 集群](#provision_cluster)
+2. [扫描 Secure Perimeter 中的专用网络](#private_networks)
+3. [扫描 Secure Perimeter 外部的公用网络](#public_networks)
+4. [了解扫描结果](#scan_results)
+5. [容器自变量参考](#reference_container_arg)
+6. [环境变量参考](#reference_env_var)
 
 ## 使用 {{site.data.keyword.containerlong_notm}} 在 Secure Perimeter 中供应 Kubernetes 集群
 {: #provision_cluster}
 
-1.  从 {{site.data.keyword.cloud_notm}}“目录”中的**容器**部分供应 Kubernetes 集群。
-2.  单击**创建**。
-3.  从 VLAN 下拉菜单中选择 Secure Perimeter Segment 公用和专用 VLAN。
-4.  根据需要输入其他所有详细信息。
-5.  单击**创建集群**。
+1. 从 {{site.data.keyword.cloud_notm}}“目录”中的**容器**部分供应 Kubernetes 集群。
+2. 单击**创建**。
+3. 从 VLAN 下拉菜单中选择 Secure Perimeter Segment 公用和专用 VLAN。
+4. 根据需要输入其他所有详细信息。
+5. 单击**创建集群**。
 
 查看 [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) 文档以了解如何在部署后获取集群的访问权。
 
@@ -101,8 +101,8 @@ sp-gateway-8a9031ab:
 
 **开始之前**
 
--   安装必需的 [CLI](/docs/containers/cs_cli_install.html#cs_cli_install)。
--   [设定 CLI 的目标](/docs/containers/cs_cli_install.html#cs_cli_configure)为集群。
+- 安装必需的 [CLI](/docs/containers/cs_cli_install.html#cs_cli_install)。
+- [设定 CLI 的目标](/docs/containers/cs_cli_install.html#cs_cli_configure)为集群。
 
 1. 创建名为 _health-pod.yaml_ 的配置文件。此文件创建容器 pod 的高可用性部署。
 
@@ -166,7 +166,7 @@ NAME                                    READY     STATUS    RESTARTS   AGE
 
 **开始之前**
 
--  安装 Docker。
+- 安装 Docker。
 
 1. 从自己的工作站创建 Docker 容器，如下所示：
 

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-26"
+  years: 2017, 2019
+lastupdated: "2019-01-09"
 
 ---
 
@@ -132,7 +132,7 @@ WebSphere Application Server 授權是根據所需的「處理器價值單位 (P
 {:shortdesc}
 
 - [將映像檔從 Docker Hub 升級至正式作業映像檔 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade)。
-- [自行建置正式作業授權映像檔 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install)。
+- [自行建置正式作業授權映像檔 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://github.com/WASdev/ci.docker/tree/master/ga)。
 
 在建立正式作業授權映像檔之後，請[將映像檔推送至專用登錄](/docs/services/Registry/index.html)，以與 {{site.data.keyword.containershort_notm}} 搭配使用。
 

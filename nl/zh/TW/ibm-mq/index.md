@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-29"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,12 +11,13 @@ lastupdated: "2018-10-29"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
-# 此映像檔已不再可用。
+# `ibm-mq` 公用映像檔
+{: #mq}
 
-`ibm-mq` 映像檔已不再可用。
+`ibm-mq` 公用映像檔提供於下列位置：[IBM MQ Advanced for Developers ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://hub.docker.com/r/ibmcom/mq/)
 
-您可以使用指令行存取 {{site.data.keyword.IBM}} 所提供的映像檔，請參閱 [IBM 公用映像檔](/docs/services/Registry/registry_public_images.html#public_images)。
+您可以在 {{site.data.keyword.registrylong_notm}} 中使用指令行存取 {{site.data.keyword.IBM}} 所提供的映像檔，請參閱 [IBM 公用映像檔](/docs/services/Registry/registry_public_images.html#public_images)。
 {: tip}

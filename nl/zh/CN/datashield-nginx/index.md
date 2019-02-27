@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-10-26"
+  years: 2018, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -11,7 +11,7 @@ lastupdated: "2018-10-26"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
 {:table: .aria-labeledby="caption"}
 
 # 开始使用 `datashield-nginx` 映像
@@ -22,7 +22,6 @@ lastupdated: "2018-10-26"
 
 您可以使用命令行来访问 {{site.data.keyword.IBM}} 提供的映像，请参阅 [IBM 公共映像](/docs/services/Registry/registry_public_images.html#public_images)。
 {: tip}
-
 
 您可以使用以下 Kubernetes pod 规范来部署映像：
 
@@ -60,6 +59,6 @@ lastupdated: "2018-10-26"
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: codeblock}    
-    
+{: codeblock}
+
 要提供您自己的内容供 NGINX 来处理，请将其放置在容器中的 `/usr/local/nginx/html` 之下。

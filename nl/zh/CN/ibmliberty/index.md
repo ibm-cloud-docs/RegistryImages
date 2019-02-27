@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-26"
+  years: 2017, 2019
+lastupdated: "2019-01-09"
 
 ---
 
@@ -135,7 +135,7 @@ Application Server V8.5 或更新版本的许可，那么可以使用现有授�
 {:shortdesc}
 
 - [将 Docker Hub 中的映像升级到生产映像 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade)。
-- [构建自己的生产许可映像 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://github.com/WASdev/ci.docker/tree/master/ga/production-install)。
+- [构建自己的生产许可映像 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://github.com/WASdev/ci.docker/tree/master/ga)。
 
 创建生产许可映像之后，[将映像推送至专用注册表](/docs/services/Registry/index.html)，以与 {{site.data.keyword.containershort_notm}} 一起使用。
 
