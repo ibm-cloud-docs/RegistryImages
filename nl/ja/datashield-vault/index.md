@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: ibm-node-strong image, container image, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # `datashield-vault` イメージの概説
@@ -20,7 +27,7 @@ lastupdated: "2019-01-03"
 このコンテナー・イメージは、データ・シールド環境で Vault を実行し、使用中のデータを保護します。
 {:shortdesc}
 
-{{site.data.keyword.IBM}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry/registry_public_images.html#public_images)を参照してください。
+{{site.data.keyword.IBM}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry?topic=registry-public_images#public_images)を参照してください。
 {: tip}
 
 Kubernetes ポッドの次の仕様を使用して、イメージをデプロイできます。

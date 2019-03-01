@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # 开始使用 `ibmcloud-secure-perimeter-network` 映像
@@ -20,18 +27,18 @@ lastupdated: "2019-01-03"
 `ibmcloud-secure-perimeter-network` 映像包含用于自动配置 Secure Perimeter 中 Vyatta 虚拟路由器设备的工具。
 {:shortdesc}
 
-您可以使用命令行来访问 {{site.data.keyword.IBM}} 提供的映像，请参阅 [IBM 公共映像](/docs/services/Registry/registry_public_images.html#public_images)。
+您可以使用命令行来访问 {{site.data.keyword.IBM}} 提供的映像，请参阅 [IBM 公共映像](/docs/services/Registry?topic=registry-public_images#public_images)。
 {: tip}
 
 ## 工作原理
-{: #how-it-works}
+{: #spn_how-it-works}
 
 利用 `ibmcloud-secure-perimeter-network`，您可以自动配置 Secure Perimeter 的 Vyatta 虚拟路由器设备。
 
 有关 Secure Perimeter 的更多信息，请参阅以下博客文章：
 
-- [Set up a Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)
-- [Set up an automated Secure Perimeter in IBM Cloud](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)。
+- [Set up a Secure Perimeter in IBM Cloud ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/)。
+- [Set up an automated Secure Perimeter in IBM Cloud ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)。
 
 您可以通过以下两种方式使用 `ibmcloud-secure-perimeter-network` 映像：
 
@@ -39,7 +46,7 @@ lastupdated: "2019-01-03"
 - 使用 `ibmcloud-secure-perimeter-network` 作为 Kubernetes 集群上的 pod 以轮询在 Secure Perimeter Segment VLAN 上创建的新子网的 IBM Cloud 基础架构帐户并将它们添加到 Vyatta 防火墙配置。
 
 ## 所含内容
-{: #whats_included}
+{: #spn_whats_included}
 
 `ibmcloud-secure-perimeter-network` 映像提供以下软件包。
 {:shortdesc}
@@ -49,19 +56,14 @@ lastupdated: "2019-01-03"
 - SoftLayer Python 客户机
 - Ansible
 
-## 入门
-{: #how_to_get_started}
+## 先决条件
+{: #spn_prerequisites}
 
-查看以下任务以了解如何使用 `ibmcloud-secure-perimeter-network`：
-
-1. [使用 {{site.data.keyword.containerlong}} 在 Secure Perimeter 中供应 Kubernetes 集群](#provision_cluster)
-2. [运行 Secure Perimeter Vyatta 的初始配置](#initial_setup)
-3. [设置为 Secure Perimeter 中的 Kubernetes pod](#setup)
-4. [config.json 参考](#reference_config_json)
-5. [rules.conf 参考](#reference_rules_conf)
+- 从 IBM Cloud 基础架构门户网站订购的 Vyatta 和 VLAN，并且 VLAN 已关联到 Vyatta。
+- 自动化的 Secure Perimeter 部署通过 `ibmcloud-secure-perimeter-network` 用于访问网关的 SSH 密钥预装入 Vyatta。必须手动或者通过 Secure Perimeter 安装过程装入 SSH 密钥。有关更多信息，请查看文章 [Set up an automated Secure Perimeter in IBM Cloud ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)。
 
 ## 使用 {{site.data.keyword.containerlong_notm}} 在 Secure Perimeter 中供应 Kubernetes 集群
-{: #provision_cluster}
+{: #spn_provision_cluster}
 
 1. 从 IBM Cloud 目录中的**容器**部分供应 Kubernetes 集群。
 2. 单击**创建**。
@@ -69,10 +71,10 @@ lastupdated: "2019-01-03"
 4. 根据需要输入其他所有详细信息。
 5. 单击**创建集群**。
 
-查看 [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) 文档以了解如何在部署后获取集群的访问权。
+查看 [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) 文档以了解如何在部署后获取集群的访问权。
 
 ## 运行 Secure Perimeter Vyatta 的初始配置
-{: #initial_setup}
+{: #spn_initial_setup}
 
 1. 创建名为 _config.json_ 的文件。此文件包含 `ibmcloud-secure-perimeter-network` 访问 Vyatta 所需的基本参数。
 
@@ -105,7 +107,7 @@ lastupdated: "2019-01-03"
   ```
   {: codeblock}
 
-  请参阅 [config.json 参考表](#reference_config_json)以获取有关如何填充 _config.json_ 的详细信息。此文件也可用于[将 `ibmcloud-secure-perimeter-network` 设置为 Kubernetes pod](#setup) 的过程。
+  请参阅 [config.json 参考表](#spn_reference_config_json)以获取有关如何填充 _config.json_ 的详细信息。此文件也可用于[将 `ibmcloud-secure-perimeter-network` 设置为 Kubernetes pod](#spn_setup) 的过程。
 
 2. 作为 Docker 容器运行 `ibmcloud-secure-perimeter-network` 以开始初始设置。
 
@@ -114,10 +116,10 @@ lastupdated: "2019-01-03"
   ```
   {: pre}
 
-  此操作将在工作目录中创建文件 _state.json_。此文件用于[将 `ibmcloud-secure-perimeter-network` 设置为 Kubernetes pod](#setup)。
+  此操作将在工作目录中创建文件 _state.json_。此文件用于[将 `ibmcloud-secure-perimeter-network` 设置为 Kubernetes pod](#spn_setup)。
 
 ## 设置为 Secure Perimeter 中的 Kubernetes pod
-{: #setup}
+{: #spn_setup}
 
 为使 `ibmcloud-secure-perimeter-network` 映像管理 Secure Perimeter 上的子网，可使用 Kubernetes pod 将其作为长期存在的进程运行。`ibmcloud-secure-perimeter-network` 具有多个配置文件和文件夹，必须将它们复制到 pod 以针对 Vyatta 进行配置：
 
@@ -201,10 +203,10 @@ lastupdated: "2019-01-03"
   ```
   {: pre}
 
-  目录 _keys_ 包含 `ibmcloud-secure-perimeter-network` 访问 Vyatta 所需的 SSH 密钥。请参阅[先决条件部分](#prerequisites)以获取有关 SSH 密钥的更多信息。
+  目录 _keys_ 包含 `ibmcloud-secure-perimeter-network` 访问 Vyatta 所需的 SSH 密钥。请参阅[先决条件部分](#spn_prerequisites)以获取有关 SSH 密钥的更多信息。
 
 ## config.json 参考
-{: #reference_config_json}
+{: #spn_reference_config_json}
 
 |键|描述
 |---|-------------|---|
@@ -221,7 +223,7 @@ lastupdated: "2019-01-03"
 {: caption="表 1. config.json" caption-side="top"}
 
 ## rules.conf 参考
-{: #reference_rules_conf}
+{: #spn_reference_rules_conf}
 
 |键|描述
 |---|-------------|---|
@@ -229,9 +231,3 @@ lastupdated: "2019-01-03"
 |external_ports|向其公开 Secure Perimeter 的端口的列表
 |userips|要列入 Secure Perimeter 白名单的用户 IP 的列表
 {: caption="表 2. rules.conf" caption-side="top"}
-
-## 先决条件
-{: #prerequisites}
-
-- 从 IBM Cloud 基础架构门户网站订购的 Vyatta 和 VLAN，并且 VLAN 已关联到 Vyatta。
-- 自动化的 Secure Perimeter 部署通过 `ibmcloud-secure-perimeter-network` 用于访问网关的 SSH 密钥预装入 Vyatta。必须手动或者通过 Secure Perimeter 安装过程装入 SSH 密钥。有关更多信息，请查看文章 [Set up an automated Secure Perimeter in IBM Cloud ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/)。

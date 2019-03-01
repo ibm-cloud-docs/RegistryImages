@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: ibmnode image, container image, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,12 +16,16 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # `ibmnode` パブリック・イメージ
 {: #ibmnode}
 
 `ibmnode` パブリック・イメージは使用不可になりました。
+{: deprecated}
 
-{{site.data.keyword.IBM}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry/registry_public_images.html#public_images)を参照してください。
+{{site.data.keyword.IBM}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry?topic=registry-public_images#public_images)を参照してください。
 {: tip}

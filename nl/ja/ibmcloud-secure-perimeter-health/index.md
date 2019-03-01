@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # `ibmcloud-secure-perimeter-health` イメージの概説
@@ -20,11 +27,11 @@ lastupdated: "2019-01-03"
 `ibmcloud-secure-perimeter-health` イメージには、{{site.data.keyword.cloud}} 内の Secure Perimeter の脆弱性をスキャンするためのツールが含まれています。
 {:shortdesc}
 
-{{site.data.keyword.IBM_notm}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry/registry_public_images.html#public_images)を参照してください。
+{{site.data.keyword.IBM_notm}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry?topic=registry-public_images#public_images)を参照してください。
 {: tip}
 
 ## 機能
-{: #how-it-works}
+{: #sph_how-it-works}
 
 Secure Perimeter が適切に機能していることを確認するために、`ibmcloud-secure-perimeter-health` で、ご使用の {{site.data.keyword.cloud_notm}} インフラストラクチャー・アカウントのパブリック・ネットワークまたはプライベート・ネットワークをスキャンし、脆弱性のレポートを作成できます。 **ibmcloud-secure-perimeter-health** イメージは、以下の 2 つの方法で使用できます。
 
@@ -61,7 +68,7 @@ sp-gateway-8a9031ab:
 {: screen}
 
 ## 含まれている内容
-{: #whats_included}
+{: #sph_whats_included}
 
 `ibmcloud-secure-perimeter-health` イメージに、以下のソフトウェア・パッケージが用意されています。
 {:shortdesc}
@@ -71,20 +78,8 @@ sp-gateway-8a9031ab:
 - SoftLayer Python クライアント
 - Nmap ポート・スキャナー
 
-## 概説
-{: #how_to_get_started}
-
-`ibmcloud-secure-perimeter-health` の使用法について、以下のタスクで確認してください。
-
-1. [{{site.data.keyword.containerlong_notm}} を使用して Secure Perimeter 内で Kubernetes クラスターをプロビジョンする](#provision_cluster)
-2. [Secure Perimeter 内のプライベート・ネットワークをスキャンする](#private_networks)
-3. [Secure Perimeter 外部のパブリック・ネットワークをスキャンする](#public_networks)
-4. [スキャン結果の理解](#scan_results)
-5. [コンテナー引数リファレンス](#reference_container_arg)
-6. [環境変数リファレンス](#reference_env_var)
-
 ## {{site.data.keyword.containerlong_notm}} を使用して Secure Perimeter 内で Kubernetes クラスターをプロビジョンする
-{: #provision_cluster}
+{: #sph_provision_cluster}
 
 1. {{site.data.keyword.cloud_notm}} カタログ内の**「コンテナー」**セクションから Kubernetes クラスターをプロビジョンします。
 2. **「作成」**をクリックします。
@@ -92,17 +87,17 @@ sp-gateway-8a9031ab:
 4. 必要に応じて他のすべての詳細を入力します。
 5. **「クラスターの作成」**をクリックします。
 
-クラスターがデプロイされた後、クラスターにアクセスする方法については、[{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) 資料を参照してください。
+クラスターがデプロイされた後、クラスターにアクセスする方法については、[{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) 資料を参照してください。
 
 ## Secure Perimeter 内のプライベート・ネットワークをスキャンする
-{: #private_networks}
+{: #sph_private_networks}
 
 `ibmcloud-secure-perimeter-health` イメージからコンテナー・ポッドを作成し、ルーチン・スキャンをセットアップします。
 
 **開始する前に**
 
-- 必要な [CLI](/docs/containers/cs_cli_install.html#cs_cli_install) をインストールします。
-- [CLI のターゲット](/docs/containers/cs_cli_install.html#cs_cli_configure)を自分のクラスターに設定します。
+- 必要な [CLI](/docs/containers?topic=containers-cs_cli_install#cs_cli_install) をインストールします。
+- [CLI のターゲット](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure)を自分のクラスターに設定します。
 
 1. _health-pod.yaml_ という名前の構成ファイルを作成します。 このファイルにより、高可用性のコンテナー・ポッドのデプロイメントが作成されます。
 
@@ -138,7 +133,7 @@ sp-gateway-8a9031ab:
               value: <IBM Cloud infrastructure api key>
     ```
     {: codeblock}
-
+    
 2. デプロイメントを作成します。
 
     ```
@@ -160,7 +155,7 @@ sp-gateway-8a9031ab:
     {: screen}
 
 ## Secure Perimeter 外部のパブリック・ネットワークをスキャンする
-{: #public_networks}
+{: #sph_public_networks}
 
 `ibmcloud-secure-perimeter-health` イメージから Docker コンテナーを作成し、パブリック・ネットワークをスキャンします。
 
@@ -175,10 +170,10 @@ sp-gateway-8a9031ab:
     ```
     {: pre}
 
-2. コンテナーによってレポートが生成されたら、[スキャン結果の分析](#scan_results)セクションを参照して、結果を理解します。
+2. コンテナーによってレポートが生成されたら、[スキャン結果の分析](#sph_scan_results)セクションを参照して、結果を理解します。
 
 ## スキャン結果の分析
-{: #scan_results}
+{: #sph_scan_results}
 
 `ibmcloud-secure-perimeter-health` は、以下のように、Secure Perimeter の機能の正常性に関する定形式レポートを生成します。
 
@@ -218,7 +213,7 @@ sp-gateway-8a9031ab:
 `ibmcloud-secure-perimeter-health` は、サブネット内に到達可能なホストがなかった場合にはサブネットを `PASS` と判定し、そうでなければ `FAIL` を返し、到達可能であったホストとアクセス可能であったポートをリストします。
 
 ## コンテナー引数リファレンス
-{: #reference_container_arg}
+{: #sph_reference_container_arg}
 
 |キー|説明|デフォルト
 |---|-------------|---|
@@ -229,7 +224,7 @@ sp-gateway-8a9031ab:
 {: caption="表 1. コンテナー引数" caption-side="top"}
 
 ## 環境変数リファレンス
-{: #reference_env_var}
+{: #sph_reference_env_var}
 
 |キー|説明|
 |---|-------------|

@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: datashield-barbican image, container image, barbican, Data Shield environment, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # `datashield-barbican` イメージの概説
@@ -20,7 +27,7 @@ lastupdated: "2019-01-03"
 このコンテナー・イメージは、データ・シールド環境で Barbican を実行し、使用中のデータを保護します。
 {:shortdesc}
 
-{{site.data.keyword.IBM}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry/registry_public_images.html#public_images)を参照してください。
+{{site.data.keyword.IBM}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry?topic=registry-public_images#public_images)を参照してください。
 {: tip}
 
 Kubernetes ポッドの次の仕様を使用して、イメージをデプロイできます。
@@ -61,10 +68,10 @@ Kubernetes ポッドの次の仕様を使用して、イメージをデプロイ
 ```
 {: codeblock}
 
-コンテナーのデプロイと開始には数分かかる場合があります。 Barbican デモ・インスタンスは、Keystone 認証なしで構成されます。 要求には、ヘッダー `X-Project-Id: 12345` を含める必要があります。
+コンテナーのデプロイと開始には数分かかる場合があります。 Barbican デモンストレーション・インスタンスは、Keystone 認証なしで構成されます。要求には、ヘッダー `X-Project-Id: 12345` を含める必要があります。
 {: tip}
 
-次のコマンドを実行して、Barbican デモ・インスタンスで秘密を作成することができます。
+次のコマンドを実行して、Barbican デモンストレーション・インスタンスで秘密を作成することができます。
 
 ```
     curl -sS -X POST -H 'content-type:application/json' -H 'X-Project-Id: 12345' -d \

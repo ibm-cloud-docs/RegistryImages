@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: ibm-backup-restore, IBM Cloud Kubernetes Service, container image, back up data, restore data
+
+subcollection: RegistryImages
 
 ---
 
@@ -11,7 +15,10 @@ lastupdated: "2019-01-03"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-{:tip: .tip} 
+{:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # `ibm-backup-restore` イメージの概説
@@ -20,69 +27,66 @@ lastupdated: "2019-01-03"
 `ibm-backup-restore` イメージには、{{site.data.keyword.containerlong}} での永続ストレージのバックアップとリストアに必要なプリインストール・パッケージが入っています。
 {:shortdesc}
 
-{{site.data.keyword.IBM_notm}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry/registry_public_images.html#public_images)を参照してください。
+{{site.data.keyword.IBM_notm}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry?topic=registry-public_images#public_images)を参照してください。
 {: tip}
 
-## 機能 
-{: #how_it_works}
+## 機能
+{: #backup_restore_how_it_works}
 
-`ibm-backup-restore` イメージを使用して、クラスター内の永続ボリューム (PV) に保管されたアプリケーション・データの一回限りのバックアップまたはスケジュールされたバックアップを作成することや、アプリケーション・データを PV にリストアすることができます。 データのバックアップとリストアを行うには、`ibm-backup-restore` イメージからポッドをデプロイします。 その後、バックアップする PV、またはデータのリストアに使用する PV をバインドする PVC をポッドにマウントします。 
+`ibm-backup-restore` イメージを使用して、クラスター内の永続ボリューム (PV) に保管されたアプリケーション・データの一回限りのバックアップまたはスケジュールされたバックアップを作成することや、アプリケーション・データを PV にリストアすることができます。 データのバックアップとリストアを行うには、`ibm-backup-restore` イメージからポッドをデプロイします。 その後、バックアップする PV、またはデータのリストアに使用する PV をバインドする PVC をポッドにマウントします。
 
-**自分のデータはどこに行くのですか? どのようにしてアクセスしますか?** 
+**自分のデータはどこに行くのですか? どのようにしてアクセスしますか?**
 
 バックアップしたデータは、{{site.data.keyword.cos_full_notm}} サービス・インスタンス内に保管されます。 サービスにアクセスするには、`ibm-backup-restore` ポッドの環境変数として {{site.data.keyword.cos_full_notm}} サービス資格情報を使用するか、実行中のポッドの `config.conf` ファイルを編集します。
 
-**バックアップしたデータを別のアプリケーションまたは別の PV にリストアできますか?** 
+**バックアップしたデータを別のアプリケーションまたは別の PV にリストアできますか?**
 
 はい。保存したデータを {{site.data.keyword.cos_full_notm}} サービス・インスタンスからクラスター内の PV にリストアすることが可能です。 データをリストアするには、`ibm-backup-restore` イメージからリストア・ポッドを作成します。 その後、使用する PV をバインドする PVC をポッドにマウントします。  
 
-## 含まれている内容 
-{: #whats_included}
+## 含まれている内容
+{: #backup_restore_whats_included}
 
 各 `ibm-backup-restore` イメージには、以下のソフトウェア・パッケージが含まれています。
 
--   Alpine 3.7
--   Duplicity 0.7.10
--   python および gpgme のパッケージ
+- Alpine 3.7
+- Duplicity 0.7.10
+- python および gpgme のパッケージ
 
-
-## {{site.data.keyword.cos_full_notm}} サービス・インスタンスのセットアップ 
-{: #object_storage}
+## {{site.data.keyword.cos_full_notm}} サービス・インスタンスのセットアップ
+{: #backup_restore_setup_object_storage}
 
 バックアップするデータのリポジトリーとなる {{site.data.keyword.cos_full_notm}} サービス・インスタンスを作成して構成します。
 {: shortdesc}
 
 1. {{site.data.keyword.cos_full_notm}} サービス・インスタンスをデプロイします。
-   1.  [{{site.data.keyword.Bluemix_notm}} カタログ ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://console.bluemix.net/catalog/services/cloud-object-storage) を開きます。
-   2.  サービス・インスタンスの名前 (`cos-backup` など) を入力し、リソース・グループとして**「デフォルト」**を選択します。 
-   3.  [プランのオプション ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage#s3api) で料金情報を確認し、プランを選択します。 
-   4.  **「作成」**をクリックします。
+   1. [{{site.data.keyword.Bluemix_notm}} カタログ ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://cloud.ibm.com/catalog/services/cloud-object-storage) を開きます。
+   2. サービス・インスタンスの名前 (`cos-backup` など) を入力し、リソース・グループとして**「デフォルト」**を選択します。
+   3. [プランのオプション ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage#s3api) で料金情報を確認し、プランを選択します。
+   4. **「作成」**をクリックします。
 2. {{site.data.keyword.cos_full_notm}} サービス・インスタンスの資格情報を取得します。
-   1.  サービス詳細ページのナビゲーションで、**「サービス資格情報」**をクリックします。
-   2.  **「新規資格情報」**をクリックします。 ダイアログ・ボックスが表示されます。 
-   3.  資格情報に対する名前を入力します。
-   4.  **「インラインの構成パラメーターの追加 (オプション)」**に、`{"HMAC":true}` と入力します。これにより、`ibm-backup-restore` ポッドが {{site.data.keyword.cos_full_notm}} サービスでの HMAC 認証に使用する、追加の HMAC 資格情報を作成します。 
-   5.  **「追加」**をクリックします。 新しい資格情報が**「サービス資格情報」**の表にリストされます。
-   6.  **「資格情報の表示」**をクリックします。 
-   7.  **cos_hmac_keys** セクションの **access_key_id** と **secret_access_key** をメモします。 
+   1. サービス詳細ページのナビゲーションで、**「サービス資格情報」**をクリックします。
+   2. **「新規資格情報」**をクリックします。 ダイアログ・ボックスが表示されます。
+   3. 資格情報に対する名前を入力します。
+   4. **「インラインの構成パラメーターの追加 (オプション)」**に、`{"HMAC":true}` と入力します。これにより、`ibm-backup-restore` ポッドが {{site.data.keyword.cos_full_notm}} サービスでの HMAC 認証に使用する、追加の HMAC 資格情報を作成します。
+   5. **「追加」**をクリックします。 新しい資格情報が**「サービス資格情報」**の表にリストされます。
+   6. **「資格情報の表示」**をクリックします。
+   7. **cos_hmac_keys** セクションの **access_key_id** と **secret_access_key** をメモします。
 3. 最初の {{site.data.keyword.cos_full_notm}} バケットを作成します。
-   1. サービス詳細ページのナビゲーションで、**「バケット」**をクリックします。 
+   1. サービス詳細ページのナビゲーションで、**「バケット」**をクリックします。
    2. **「バケットの作成」**をクリックします。 ダイアログ・ボックスが表示されます。
-   3. バケットに対する固有の名前を入力します。 この名前は、{{site.data.keyword.cos_full_notm}} 内で、すべての地域およびすべての {{site.data.keyword.Bluemix_notm}} アカウントにわたって固有でなければなりません。 
-   4. **「回復力」**ドロップダウンから、データに必要な可用性のレベルを選択します。 詳しくは、[{{site.data.keyword.cos_full_notm}} の地域とエンドポイント](/docs/services/cloud-object-storage/basics/endpoints.html#select-regions-and-endpoints)を参照してください。 
+   3. バケットに対する固有の名前を入力します。 この名前は、{{site.data.keyword.cos_full_notm}} 内で、すべての地域およびすべての {{site.data.keyword.Bluemix_notm}} アカウントにわたって固有でなければなりません。
+   4. **「回復力」**ドロップダウンから、データに必要な可用性のレベルを選択します。 詳しくは、[{{site.data.keyword.cos_full_notm}} の地域とエンドポイント](/docs/services/cloud-object-storage/basics?topic=cloud-object-storage-endpoints#endpoints)を参照してください。
    5. **「ロケーション」**を変更して、データを保管する地域に設定します。 法律上の理由により、データをすべての地域で保管できるとは限らないことに注意してください。  
-   6. **「作成」**をクリックします。 
-4. バケットの {{site.data.keyword.cos_full_notm}} ホスト名を取得します。 
-   1. 前のステップで作成したバケット名をクリックします。 
-   2. サービス詳細ページのナビゲーションで、**「バケット」**>**「構成」**をクリックします。 
-   3. バケットのデータにアクセスするためのパブリック URL をメモします。 
+   6. **「作成」**をクリックします。
+4. バケットの {{site.data.keyword.cos_full_notm}} ホスト名を取得します。
+   1. 前のステップで作成したバケット名をクリックします。
+   2. サービス詳細ページのナビゲーションで、**「バケット」**>**「構成」**をクリックします。
+   3. バケットのデータにアクセスするためのパブリック URL をメモします。
 
-
-サービス・インスタンスの構成について詳しくは、[{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage/about-cos.html#about-ibm-cloud-object-storage) の資料を参照してください。
-
+サービス・インスタンスの構成について詳しくは、[{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about-ibm-cloud-object-storage#about-ibm-cloud-object-storage) の資料を参照してください。
 
 ## 永続ボリュームからのデータのバックアップ
-{: #scheduled_backup}
+{: #backup_restore_scheduled_backup}
 
 永続ボリューム・クレーム (PVC) を通じてアプリケーション・ポッドにマウントされた永続ボリューム (PV) の一回限りのバックアップまたはスケジュールされたバックアップを作成することができます。  
 {: shortdesc}
@@ -91,13 +95,13 @@ lastupdated: "2019-01-03"
 
 **開始する前に**
 
--   [{{site.data.keyword.cos_full_notm}} サービス・インスタンスをセットアップします](#object_storage)。 
--   クラスターの作成と作業に必要な [CLI](/docs/containers/cs_cli_install.html#cs_cli_install) をインストールします。
--   [標準クラスターを作成する](/docs/containers/cs_clusters.html#clusters_cli)か、既存のものを使用します。
--   [CLI のターゲットを自分のクラスターに設定します](/docs/containers/cs_cli_install.html#cs_cli_configure)。
--   [ファイル・ストレージ](/docs/containers/cs_storage_file.html#add_file)または[ブロック・ストレージ](/docs/containers/cs_storage_block.html#add_block)用の永続ボリューム・クレーム (PVC) を作成して、アプリケーション・デプロイメントにマウントします。
+- [{{site.data.keyword.cos_full_notm}} サービス・インスタンスをセットアップします](#backup_restore_setup_object_storage)。
+- クラスターの作成と作業に必要な [CLI](/docs/containers?topic=containers-cs_cli_install#cs_cli_install) をインストールします。
+- [標準クラスターを作成する](/docs/containers?topic=containers-clusters#clusters_cli)か、既存のものを使用します。
+- [CLI のターゲットを自分のクラスターに設定します](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure)。
+- [ファイル・ストレージ](/docs/containers?topic=containers-file_storage#add_file)または[ブロック・ストレージ](/docs/containers?topic=containers-block_storage#add_block)用の永続ボリューム・クレーム (PVC) を作成して、アプリケーション・デプロイメントにマウントします。
 
-既存の PV をバックアップするには、以下のステップを実行します。 
+既存の PV をバックアップするには、以下のステップを実行します。
 
 1. バックアップする PV をバインドする PVC の名前を取得します。
 
@@ -106,11 +110,12 @@ lastupdated: "2019-01-03"
    ```
    {: pre}
 
-2. `ibm-backup-restore` イメージからバックアップ・ポッドを作成します。 PV のデータにアクセスするには、PV をバインドする PVC をバックアップ・ポッドにマウントする必要があります。 以下の例では、日次増分バックアップを実行するバックアップ・ポッドを作成します。 別の設定のバックアップを作成するには、すべての[環境変数オプション](#reference_backup_restore)のリストを参照してください。
+2. `ibm-backup-restore` イメージからバックアップ・ポッドを作成します。 PV のデータにアクセスするには、PV をバインドする PVC をバックアップ・ポッドにマウントする必要があります。 以下の例では、日次増分バックアップを実行するバックアップ・ポッドを作成します。 別の設定のバックアップを作成するには、すべての[環境変数オプション](#backup_restore_env_reference)のリストを参照してください。
 
-   **重要:** `ibm-backup-restore` イメージは、単一ポッドにデプロイされる必要があり、Kubernetes デプロイメントの一部として使用することはできません。
-   
-   イメージを表示するには、`ibmcloud cr region-set global` コマンドを実行してグローバル・レジストリーをターゲットにします。 その後、`ibmcloud cr images --include-ibm` を実行して、IBM パブリック・イメージをリストします。 
+   `ibm-backup-restore` イメージは、単一ポッドにデプロイされる必要があり、Kubernetes デプロイメントの一部として使用することはできません。
+   {: important}
+
+   イメージを表示するには、`ibmcloud cr region-set global` コマンドを実行してグローバル・レジストリーをターゲットにします。 その後、`ibmcloud cr images --include-ibm` を実行して、IBM パブリック・イメージをリストします。
    {: tip}
   
    ```
@@ -150,12 +155,12 @@ lastupdated: "2019-01-03"
      volumes:
      - name: backup-volume
        persistentVolumeClaim:
-         claimName: <pvc_name>  
+         claimName: <pvc_name>
    ```
    {: codeblock}
    
    <table>
-   <caption>YAML ファイルの構成要素</caption>
+   <caption>表 1. YAML ファイルの構成要素</caption>
    <thead>
    <th colspan=2><img src="../images/idea.png" alt="アイデア・アイコン"/> yaml ファイル構成要素の説明</th>
    </thead>
@@ -187,63 +192,64 @@ lastupdated: "2019-01-03"
      </tbody>
      </table>
     
-3.  バックアップ・ポッドを作成し、PV データのバックアップを開始します。 
+3. バックアップ・ポッドを作成し、PV データのバックアップを開始します。
 
     ```
     kubectl apply -f backuppod.yaml
     ```
     {: pre}
 
-4.  ポッドが実行中であることを確認します。
+4. ポッドが実行中であることを確認します。
 
     ```
-    kubectl get pods 
+    kubectl get pods
     ```
     {: pre}
-    
+
     ```
     NAME               READY     STATUS    RESTARTS   AGE
     backuppod          1/1       Running   0          1hr
     ```
     {: screen}
-    
-5.  バックアップが正常に実行されたことを確認します。 
+
+5. バックアップが正常に実行されたことを確認します。
 
     ```
     kubectl logs backuppod
     ```
     {: pre}
 
-6.  {{site.data.keyword.Bluemix_notm}} GUI で {{site.data.keyword.cos_full_notm}} 内のバックアップを確認します。
-    1.  {{site.data.keyword.Bluemix_notm}} ダッシュボードで {{site.data.keyword.cos_full_notm}} サービス・インスタンスを見つけます。 
-    2.  ナビゲーションで**「バケット」**を選択し、バックアップ構成で使用したバケットをクリックします。 バックアップが、バケット内のオブジェクトとして表示されます。 
-    3.  圧縮ファイルを確認します。 `vol1.difftar.gz` ファイルをダウンロードし、ファイルを解凍して、バックアップ・データを検証できます。 
-        
-        **重要**: {{site.data.keyword.cos_full_notm}} のファイルを削除または変更すると、それらのファイルはリカバリーできません。
+6. {{site.data.keyword.Bluemix_notm}} GUI で {{site.data.keyword.cos_full_notm}} 内のバックアップを確認します。
+    1. {{site.data.keyword.Bluemix_notm}} ダッシュボードで {{site.data.keyword.cos_full_notm}} サービス・インスタンスを見つけます。
+    2. ナビゲーションで**「バケット」**を選択し、バックアップ構成で使用したバケットをクリックします。 バックアップが、バケット内のオブジェクトとして表示されます。
+    3. 圧縮ファイルを確認します。 `vol1.difftar.gz` ファイルをダウンロードし、ファイルを解凍して、バックアップ・データを検証できます。
+
+       {{site.data.keyword.cos_full_notm}} からのファイルを削除または変更すると、それらのファイルはリカバリーできません。
+       {: important}
 
 バックアップが有効になりました。 一回限りのフルバックアップを作成するようにバックアップを構成した場合、新規バックアップの作成が必要になるたびに、バックアップ・スクリプトを実行する必要があります。 定期的に増分バックアップを実行するようにコンテナーを構成した場合は、スケジュールに従ってバックアップが実行されます。
 
 ## {{site.data.keyword.cos_full_notm}} からクラスターへのデータのリストア
-{: #restore_script_cli}
+{: #backup_restore_restore_script_cli}
 
-{{site.data.keyword.cos_full_notm}} サービス・インスタンスからクラスター内の PV にデータをリストアすることができます。 
+{{site.data.keyword.cos_full_notm}} サービス・インスタンスからクラスター内の PV にデータをリストアすることができます。
 
 **開始する前に**
 
--   [CLI のターゲットを自分のクラスターに設定します](/docs/containers/cs_cli_install.html#cs_cli_configure)。
--   [クラスター内の PV のバックアップを作成します](#scheduled_backup)。
+- [CLI のターゲットを自分のクラスターに設定します](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure)。
+- [クラスター内の PV のバックアップを作成します](#backup_restore_scheduled_backup)。
 
-{{site.data.keyword.cos_full_notm}} から PV にデータをリストアするには、以下のステップを実行します。 
+{{site.data.keyword.cos_full_notm}} から PV にデータをリストアするには、以下のステップを実行します。
 
-1. データをリストアする PV をバインドする PVC の名前を取得します。 
+1. データをリストアする PV をバインドする PVC の名前を取得します。
 
    ```
    kubectl get pvc
    ```
    {: pre}
 
-2. `ibm-backup-restore` イメージからリストア・ポッドを作成します。 PV にデータをリストアするには、PV をバインドする PVC をリストア・ポッドにマウントする必要があります。 
-   
+2. `ibm-backup-restore` イメージからリストア・ポッドを作成します。 PV にデータをリストアするには、PV をバインドする PVC をリストア・ポッドにマウントする必要があります。
+
    ```
    apiVersion: v1
    kind: Pod
@@ -275,12 +281,12 @@ lastupdated: "2019-01-03"
      volumes:
      - name: restore-volume
        persistentVolumeClaim:
-         claimName: <pvc_name> 
+         claimName: <pvc_name>
    ```
    {: codeblock}
-   
+
    <table>
-   <caption>YAML ファイルの構成要素</caption>
+   <caption>表 2. YAML ファイルの構成要素</caption>
    <thead>
    <th colspan=2><img src="../images/idea.png" alt="アイデア・アイコン"/> yaml ファイル構成要素の説明</th>
    </thead>
@@ -312,20 +318,20 @@ lastupdated: "2019-01-03"
      </tbody>
      </table>
 
-3.  リストア・ポッドを作成し、データのリストアを開始します。
+3. リストア・ポッドを作成し、データのリストアを開始します。
 
     ```
     kubectl apply -f restorepod.yaml
     ```
     {: pre}
-    
-4.  ポッドが実行中であることを確認します。
+
+4. ポッドが実行中であることを確認します。
 
     ```
-    kubectl get pods 
+    kubectl get pods
     ```
     {: pre}
-    
+
     ```
     NAME              READY     STATUS             RESTARTS   AGE
     restorepod        0/1       CrashLoopBackOff   1          1m
@@ -334,32 +340,32 @@ lastupdated: "2019-01-03"
 
     ポッドは、リストア・コマンドを実行して、停止します。 _CrashLoopBackOff_ メッセージは、Kubernetes がポッドの再始動しようとしていることを示しています。
 
-5.  ポッドがさらにリソースを消費しないように、ポッドを削除します。
+5. ポッドがさらにリソースを消費しないように、ポッドを削除します。
 
     ```
     kubectl delete -f restorepod.yaml
     ```
     {: pre}
-
-6.  データが正常にリストアされたことを確認します。
+    
+6. データが正常にリストアされたことを確認します。
 
     ```
     kubectl logs restorepod
     ```
     {: pre}
 
-バックアップが正常にリストアされました。 これで、PV をバインドする PVC をクラスター内の他の任意のポッドにマウントして、リストアされたファイルにアクセスすることができます。 バックアップされていたコンテナー・データに非 root ユーザーが含まれていた場合は、新規コンテナーに非 root の権限を追加する必要があります。 詳しくは、[非 root ユーザーのボリューム・アクセス権限の追加](/docs/containers/cs_troubleshoot_storage.html#cs_storage_nonroot)を参照してください。
+バックアップが正常にリストアされました。 これで、PV をバインドする PVC をクラスター内の他の任意のポッドにマウントして、リストアされたファイルにアクセスすることができます。 バックアップされていたコンテナー・データに非 root ユーザーが含まれていた場合は、新規コンテナーに非 root の権限を追加する必要があります。 詳しくは、[非 root ユーザーのボリューム・アクセス権限の追加](/docs/containers?topic=containers-cs_troubleshoot_storage#cs_storage_nonroot)を参照してください。
 
-
-## バックアップを暗号化する 
-{: #encrypting_backups}
+## バックアップを暗号化する
+{: #backup_restore_encrypting_backups}
 
 {{site.data.keyword.cos_full_notm}} インスタンス内のデータを暗号化します。
 
-1.  <a href="https://www.gnupg.org/download/index.html" target="_blank">GnuPG <img src="../../../icons/launch-glyph.svg" alt="外部リンク・アイコン"></a> をダウンロードして暗号鍵を作成します。
-2.  ローカル・ドライブで暗号鍵を作成します。 ENTER を押して、デフォルト値を受け入れることができます。
+1. <a href="https://www.gnupg.org/download/index.html" target="_blank">GnuPG <img src="../../../icons/launch-glyph.svg" alt="外部リンク・アイコン"></a> をダウンロードして暗号鍵を作成します。
+2. ローカル・ドライブで暗号鍵を作成します。 ENTER を押して、デフォルト値を受け入れることができます。
 
-    **重要:** 作成したパスフレーズをメモします。 パスフレーズを紛失すると、鍵を使用して暗号化した情報を暗号化解除できなくなります。
+    作成したパスフレーズをメモします。パスフレーズを紛失すると、鍵を使用して暗号化した情報を復号できなくなります。
+    {: important}
 
     ```
     gpg --gen-key
@@ -368,7 +374,7 @@ lastupdated: "2019-01-03"
 
     <a href="https://www.gnupg.org/download/index.html" target="_blank">GnuPG <img src="../../../icons/launch-glyph.svg" alt="外部リンク・アイコン"></a> のバージョンにより、コマンドで `gpg` ではなく `gpg2` を使用する必要がある場合があります。
 
-3.  鍵を確認します。
+3. 鍵を確認します。
 
     ```
     gpg --list-keys
@@ -385,7 +391,7 @@ lastupdated: "2019-01-03"
     ```
     {: screen}
 
-4.  `sub` 鍵の値を使用して暗号鍵をエクスポートします。 ファイルに `encryption.asc` という名前を付けます。
+4. `sub` 鍵の値を使用して暗号鍵をエクスポートします。 ファイルに `encryption.asc` という名前を付けます。
 
     ```
     gpg --export-secret-keys -a <SUB_KEY> > encryption.asc
@@ -453,7 +459,7 @@ lastupdated: "2019-01-03"
     {: codeblock}
    
     <table>
-    <caption>YAML ファイルの構成要素</caption>
+    <caption>表 3. YAML ファイルの構成要素</caption>
     <thead>
     <th colspan=2><img src="../images/idea.png" alt="アイデア・アイコン"/> yaml ファイル構成要素の説明</th>
     </thead>
@@ -489,7 +495,7 @@ lastupdated: "2019-01-03"
      </tbody>
      </table>
    
-    これらの設定では、暗号化された日次増分バックアップが作成されます。 別の設定のバックアップを作成するには、すべての[環境変数オプション](#reference_backup_restore)のリストを参照してください。
+    これらの設定では、暗号化された日次増分バックアップが作成されます。 別の設定のバックアップを作成するには、すべての[環境変数オプション](#backup_restore_env_reference)のリストを参照してください。
     
 7.  バックアップ・ポッドを作成します。 
 
@@ -544,11 +550,10 @@ lastupdated: "2019-01-03"
 
 13. バックアップが暗号化されたことを確認するために、{{site.data.keyword.cos_full_notm}} サービス・インスタンス内のファイルを確認します。 ファイル名の最後に、`.gpg` が付加されています。
 
-バックアップが暗号化されました。 ファイルをリストアするには、[{{site.data.keyword.cos_full_notm}} からクラスターの PVC にデータをリストアする](#restore_script_cli)手順に従って、リストア処理を実行するポッドの `backup_restore` ディレクトリーに `encryption.asc` ファイルを含めます。 バックアップが暗号化されている場合は、リストア・ポッドの作成時に、**ENCRYPTION_REQUIRED** と **ENCRYPTION_PASSPHRASE** の環境変数を指定する必要があります。
+バックアップが暗号化されました。 ファイルをリストアするには、[{{site.data.keyword.cos_full_notm}} からクラスター内の PVC へのデータのリストア](#backup_restore_restore_script_cli)の手順に従って、リストア処理を実行するポッドの `backup_restore` ディレクトリーに `encryption.asc` ファイルを含めます。バックアップが暗号化されている場合は、リストア・ポッドの作成時に、**ENCRYPTION_REQUIRED** と **ENCRYPTION_PASSPHRASE** の環境変数を指定する必要があります。
 
-
-## 環境変数リファレンス 
-{: #reference_backup_restore}
+## 環境変数リファレンス
+{: #backup_restore_env_reference}
 
 フィールドの全リストを確認してください。フィールドの値は、環境変数として渡すことも、実行中のポッドの `config.conf` ファイルで編集することもできます。 環境変数として渡された値は、`config.conf` ファイルの値より優先されます。 ポッドの環境変数を確認するには、`kubectl exec` コマンドを使用してポッドにログインし、`env` を実行します。
 
@@ -558,7 +563,7 @@ lastupdated: "2019-01-03"
 |SECRET_ACCESS_KEY|{{site.data.keyword.cos_full_notm}} の HMAC 資格情報の一部である **secret_access_key**。|
 |ENDPOINT|{{site.data.keyword.cos_full_notm}} バケット・データにアクセスするためのホスト名。|
 |BUCKET|{{site.data.keyword.cos_full_notm}} 内でバックアップ・データが保管されるバケットの名前。|
-{: caption="表 1. {{site.data.keyword.cos_full_notm}} の変数" caption-side="top"}
+{: caption="表 4. {{site.data.keyword.cos_full_notm}} の変数" caption-side="top"}
 
 |キー|値のオプション|
 |---|-------------|
@@ -568,13 +573,13 @@ lastupdated: "2019-01-03"
 |SCHEDULE_TYPE|*none*: デフォルト。 1 回限りのバックアップを作成します。<br/> **注:** 一回限りのバックアップを作成するよう選択した場合、ポッドは、バックアップ終了後にクラスターから削除されます。 <br/> *periodic*: スケジュール・バックアップを作成するには、値を periodic に変更します。|
 |SCHEDULE_INFO|*hourly*: 毎時バックアップを作成します。<br/>*daily*: デフォルト。 日次バックアップを作成します。<br/>*weekly*: 週次バックアップを作成します。 定期的更新をスケジュールする場合は、この変数を含める必要があります。|
 |EXCLUDE_DIRECTORIES|*none*: デフォルト。 バックアップから除外するディレクトリーの絶対ファイル・パスを含めます。 複数のディレクトリーはコンマで区切ります。|
-{: caption="表 2. バックアップの変数" caption-side="top"}
+{: caption="表 5. バックアップの変数" caption-side="top"}
 
 |キー|値のオプション|
 |---|-------------|
 |BACKUP_NAME|*volume_backup*: デフォルト。 {{site.data.keyword.cos_full_notm}} からリストアするバックアップの名前を入れます。|
 |RESTORE_DIRECTORY|*/backup*: デフォルト。 ボリュームのマウント先の絶対ディレクトリー。 データはこのディレクトリーにリストアされます。 `backup_restore` ディレクトリーは選択しないでください。このディレクトリーには、バックアップとリストアの処理のためのファイルが入っています。|
-{: caption="表 3. リストアの変数" caption-side="top"}
+{: caption="表 6. リストアの変数" caption-side="top"}
 
 |キー|値のオプション|
 |---|-------------|
@@ -582,5 +587,4 @@ lastupdated: "2019-01-03"
 |ENCRYPTION_REQUIRED|*no*: デフォルト。<br/> *yes*: バックアップを暗号化しない場合は、暗号化の環境変数を含めないでください。 バックアップを暗号化する場合は、値を `yes` に設定してこのキーを含めてください。|
 |ENCRYPTION_PASSPHRASE|バックアップを保護するためのパスフレーズを含めます。 このパスフレーズは、暗号鍵を作成したときに作成したフレーズとは別のパスフレーズです。 データのバックアップ時とリストア時に、このパスフレーズを含める必要があります。|
 |IS_KEY_GENERATED_ON_SYSTEM|*no*: デフォルト。<br/> *yes*: 暗号鍵をコンテナーに直接生成した場合は、`yes` に設定してこの環境変数を含めます。 ほとんどのユーザーはローカル・コンピューターで鍵を生成してポッドにコピーするため、デフォルトの `no` のままでかまいません。|
-{: caption="表 4. 暗号化の変数" caption-side="top"}
-
+{: caption="表 7. 暗号化の変数" caption-side="top"}

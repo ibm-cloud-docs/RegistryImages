@@ -2,7 +2,11 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: ibm-node-strong image, container image, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,12 +16,18 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # `ibm-node-strong-pm` public image
 {: #node-strong}
 
-L'image `ibm-node-strong-pm` n'est plus disponible. Vous pouvez utiliser le [service {{site.data.keyword.apiconnect_short}}](/docs/services/apiconnect/index.html#index) à la place.
+L'image `ibm-node-strong-pm` n'est plus disponible.
+{: deprecated}
 
-Vous pouvez accéder aux images fournies par {{site.data.keyword.IBM}} à l'aide de la ligne de commande. Voir [Images IBM publiques](/docs/services/Registry/registry_public_images.html#public_images).
+Vous pouvez utiliser le [service {{site.data.keyword.apiconnect_short}}](/docs/services/apiconnect?topic=apiconnect-index#index) à la place.
+
+Vous pouvez accéder aux images fournies par {{site.data.keyword.IBM}} à l'aide de la ligne de commande. Voir [Images IBM publiques](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}

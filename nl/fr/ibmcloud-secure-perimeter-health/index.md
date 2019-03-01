@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # Initiation à l'image `ibmcloud-secure-perimeter-health`
@@ -20,11 +27,11 @@ lastupdated: "2019-01-03"
 L'image `ibmcloud-secure-perimeter-health` contient un outil qui permet d'analyser les vulnérabilités dans un périmètre sécurisé dans {{site.data.keyword.cloud}}.
 {:shortdesc}
 
-Vous pouvez accéder aux images fournies par {{site.data.keyword.IBM_notm}} à l'aide de la ligne de commande. Voir [Images IBM publiques](/docs/services/Registry/registry_public_images.html#public_images).
+Vous pouvez accéder aux images fournies par {{site.data.keyword.IBM_notm}} à l'aide de la ligne de commande. Voir [Images IBM publiques](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
 ## Fonctionnement
-{: #how-it-works}
+{: #sph_how-it-works}
 
 Pour garantir le bon fonctionnement de votre périmètre sécurisé, `ibmcloud-secure-perimeter-health` peut analyser le réseau public ou le réseau privé dans votre compte d'infrastructure {{site.data.keyword.cloud_notm}} et signaler les vulnérabilités. Vous pouvez utiliser l'image **ibmcloud-secure-perimeter-health** de deux façons :
 
@@ -61,7 +68,7 @@ sp-gateway-8a9031ab:
 {: screen}
 
 ## Eléments inclus
-{: #whats_included}
+{: #sph_whats_included}
 
 L'image `ibmcloud-secure-perimeter-health` fournit les progiciels suivants.
 {:shortdesc}
@@ -71,20 +78,8 @@ L'image `ibmcloud-secure-perimeter-health` fournit les progiciels suivants.
 - Client SoftLayer Python
 - Analyseur de port Nmap
 
-## Initiation
-{: #how_to_get_started}
-
-Passez en revue les tâches suivantes pour apprendre à utiliser `ibmcloud-secure-perimeter-health` :
-
-1. [Mettre à disposition un cluster Kubernetes dans un périmètre sécurisé via {{site.data.keyword.containerlong_notm}}](#provision_cluster)
-2. [Analyser les réseaux privés au sein d'un périmètre sécurisé](#private_networks)
-3. [Analyser les réseaux publics hors d'un périmètre sécurisé](#public_networks)
-4. [Comprendre les résultats d'analyse](#scan_results)
-5. [Référence d'argument de conteneur](#reference_container_arg)
-6. [Référence de variable d'environnement](#reference_env_var)
-
 ## Mettre à disposition un cluster Kubernetes dans un périmètre sécurisé via {{site.data.keyword.containerlong_notm}}
-{: #provision_cluster}
+{: #sph_provision_cluster}
 
 1. Mettez à disposition votre cluster Kubernetes à partir de la section **Conteneurs** du catalogue {{site.data.keyword.cloud_notm}}.
 2. Cliquez sur **Créer**.
@@ -92,17 +87,17 @@ Passez en revue les tâches suivantes pour apprendre à utiliser `ibmcloud-secur
 4. Entrez toutes les autres informations requises.
 5. Cliquez sur **Créer un cluster**.
 
-Consultez la documentation [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) savoir comment accéder à votre cluster une fois celui-ci déployé.
+Consultez la documentation [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) savoir comment accéder à votre cluster une fois celui-ci déployé.
 
 ## Analyser les réseaux privés au sein d'un périmètre sécurisé
-{: #private_networks}
+{: #sph_private_networks}
 
 Créez un pod de conteneur à partir de l'image `ibmcloud-secure-perimeter-health`, puis configurez une analyse de routine.
 
 **Avant de commencer**
 
-- Installez les [interfaces de ligne de commande](/docs/containers/cs_cli_install.html#cs_cli_install) requises.
-- [Ciblez votre interface de ligne de commande](/docs/containers/cs_cli_install.html#cs_cli_configure) vers votre cluster.
+- Installez les [interfaces de ligne de commande](/docs/containers?topic=containers-cs_cli_install#cs_cli_install) requises.
+- [Ciblez votre interface de ligne de commande](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure) vers votre cluster.
 
 1. Créez un fichier de configuration nommé _health-pod.yaml_. Ce fichier crée un déploiement hautement disponible du pod de conteneur.
 
@@ -138,7 +133,7 @@ Créez un pod de conteneur à partir de l'image `ibmcloud-secure-perimeter-healt
               value: <IBM Cloud infrastructure api key>
     ```
     {: codeblock}
-
+    
 2. Créez le déploiement.
 
     ```
@@ -160,7 +155,7 @@ Créez un pod de conteneur à partir de l'image `ibmcloud-secure-perimeter-healt
     {: screen}
 
 ## Analyser les réseaux publics hors d'un périmètre sécurisé
-{: #public_networks}
+{: #sph_public_networks}
 
 Créez un conteneur Docker à partir de l'image `ibmcloud-secure-perimeter-health` et analysez des réseaux publics.
 
@@ -175,10 +170,10 @@ Créez un conteneur Docker à partir de l'image `ibmcloud-secure-perimeter-healt
     ```
     {: pre}
 
-2. Une fois que le conteneur a produit un rapport, passez à la section [Comprendre les résultats d'analyse](#scan_results).
+2. Une fois que le conteneur a produit un rapport, passez à la section [Comprendre les résultats d'analyse](#sph_scan_results).
 
 ## Comprendre les résultats d'analyse
-{: #scan_results}
+{: #sph_scan_results}
 
 `ibmcloud-secure-perimeter-health` produit un rapport mis en forme sur la santé du fonctionnement d'un périmètre sécurisé :
 
@@ -218,7 +213,7 @@ Le format du rapport est le suivant :
 `ibmcloud-secure-perimeter-health` détermine un sous-réseau comme `PASS` si aucun hôte du sous-réseau n'est accessible, ou bien renvoie `FAIL` et répertorie les hôtes accessibles ainsi que les ports accessibles.
 
 ## Référence d'argument de conteneur
-{: #reference_container_arg}
+{: #sph_reference_container_arg}
 
 |Clé|Description|Valeur par défaut
 |---|-------------|---|
@@ -229,7 +224,7 @@ Le format du rapport est le suivant :
 {: caption="Tableau 1. Arguments de conteneur" caption-side="top"}
 
 ## Référence de variable d'environnement
-{: #reference_env_var}
+{: #sph_reference_env_var}
 
 |Clé|Description|
 |---|-------------|

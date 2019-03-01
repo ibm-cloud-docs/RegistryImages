@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: datashield-barbican image, container image, barbican, Data Shield environment, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # Introduzione all'immagine `datashield-barbican`
@@ -20,10 +27,10 @@ lastupdated: "2019-01-03"
 Questa immagine contenitore esegue Barbican nell'ambiente Data Shield, fornendo la protezione dei dati in utilizzo.
 {:shortdesc}
 
-Puoi accedere alle immagini fornite da {{site.data.keyword.IBM}} utilizzando la riga di comando, consulta [Immagini pubbliche IBM](/docs/services/Registry/registry_public_images.html#public_images).
+Puoi accedere alle immagini fornite da {{site.data.keyword.IBM}} utilizzando la riga di comando, consulta [Immagini pubbliche IBM](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
-Puoi utilizzare le seguenti specifiche del pod Kubernetes per distribuire l'immagine:
+Puoi utilizzare la seguente specifica del pod Kubernetes per distribuire l'immagine:
 
 ```
     apiVersion: v1
@@ -61,10 +68,10 @@ Puoi utilizzare le seguenti specifiche del pod Kubernetes per distribuire l'imma
 ```
 {: codeblock}
 
-L'avvio e la distribuzione del contenitore potrebbero richiedere alcuni minuti. L'istanza demo Barbican è configurata senza l'autenticazione Keystone. Le richieste devono includere l'intestazione `X-Project-Id: 12345`
+L'avvio e la distribuzione del contenitore potrebbero richiedere alcuni minuti. L'istanza Barbican di dimostrazione è configurata senza l'autenticazione Keystone. Le richieste devono includere l'intestazione `X-Project-Id: 12345`
 {: tip}
 
-Puoi creare un segreto nell'istanza demo Barbican immettendo il seguente comando:
+Puoi creare un segreto nell'istanza Barbican di dimostrazione immettendo il seguente comando:
 
 ```
     curl -sS -X POST -H 'content-type:application/json' -H 'X-Project-Id: 12345' -d \

@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # Iniciación a la imagen `ibmcloud-secure-perimeter-health`
@@ -20,11 +27,11 @@ lastupdated: "2019-01-03"
 La imagen `ibmcloud-secure-perimeter-health` contiene una herramienta para escanear vulnerabilidades en un Secure Perimeter en {{site.data.keyword.cloud}}.
 {:shortdesc}
 
-Puede acceder a las imágenes que suministra {{site.data.keyword.IBM_notm}} desde la línea de mandatos; consulte las [imágenes públicas de IBM](/docs/services/Registry/registry_public_images.html#public_images).
+Puede acceder a las imágenes que suministra {{site.data.keyword.IBM_notm}} desde la línea de mandatos; consulte las [imágenes públicas de IBM](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
 ## Modo de funcionamiento
-{: #how-it-works}
+{: #sph_how-it-works}
 
 Para asegurarse de que su Secure Perimeter esté funcionando correctamente, `ibmcloud-secure-perimeter-health` puede escanear redes públicas o privadas en su cuenta de infraestructura de {{site.data.keyword.cloud_notm}} e informar de las vulnerabilidades. Puede utilizar la imagen **ibmcloud-secure-perimeter-health** de dos formas:
 
@@ -61,7 +68,7 @@ sp-gateway-8a9031ab:
 {: screen}
 
 ## Qué incluye
-{: #whats_included}
+{: #sph_whats_included}
 
 La imagen `ibmcloud-secure-perimeter-health` proporciona los siguientes paquetes de software.
 {:shortdesc}
@@ -71,20 +78,8 @@ La imagen `ibmcloud-secure-perimeter-health` proporciona los siguientes paquetes
 - SoftLayer Python Client
 - Escáner de puerto de nmap
 
-## Iniciación
-{: #how_to_get_started}
-
-Revise las siguientes tareas para aprender a utilizar `ibmcloud-secure-perimeter-health`:
-
-1. [Suministre un clúster de Kubernetes dentro de un Secure Perimeter utilizando {{site.data.keyword.containerlong_notm}}](#provision_cluster)
-2. [Escanee las redes privadas dentro de un Secure Perimeter](#private_networks)
-3. [Escanee redes públicas fuera de un Secure Perimeter](#public_networks)
-4. [Resultados de la exploración](#scan_results)
-5. [Referencia de argumentos del contenedor](#reference_container_arg)
-6. [Referencia de variables de entorno](#reference_env_var)
-
 ## Suministro de un clúster de Kubernetes dentro de un perímetro seguro mediante {{site.data.keyword.containerlong_notm}}
-{: #provision_cluster}
+{: #sph_provision_cluster}
 
 1. Suministre el clúster de Kubernetes desde la sección **Contenedores** del catálogo de the {{site.data.keyword.cloud_notm}}.
 2. Pulse **Crear**.
@@ -92,17 +87,17 @@ Revise las siguientes tareas para aprender a utilizar `ibmcloud-secure-perimeter
 4. Especifique los demás detalles que necesite.
 5. Pulse **Crear clúster**.
 
-Revise la documentación de [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) sobre cómo obtener acceso al clúster una vez que se haya desplegado.
+Revise la documentación de [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) sobre cómo obtener acceso al clúster una vez que se haya desplegado.
 
 ## Escanee las redes privadas dentro de un Secure Perimeter
-{: #private_networks}
+{: #sph_private_networks}
 
 Cree un pod del contenedor a partir de la imagen `ibmcloud-secure-perimeter-health`, y configure un escaneo rutinario.
 
 **Antes de empezar**
 
-- Instale las [CLI](/docs/containers/cs_cli_install.html#cs_cli_install) necesarias.
-- [Defina su clúster](/docs/containers/cs_cli_install.html#cs_cli_configure) como destino de la CLI.
+- Instale las [CLI](/docs/containers?topic=containers-cs_cli_install#cs_cli_install) necesarias.
+- [Defina su clúster](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure) como destino de la CLI.
 
 1. Cree un archivo de configuración con el nombre _health-pod.yaml_. Este archivo crea un despliegue altamente disponible del pod de contenedor.
 
@@ -138,7 +133,7 @@ Cree un pod del contenedor a partir de la imagen `ibmcloud-secure-perimeter-heal
               value: <IBM Cloud infrastructure api key>
     ```
     {: codeblock}
-
+    
 2. Cree el despliegue.
 
     ```
@@ -160,7 +155,7 @@ Cree un pod del contenedor a partir de la imagen `ibmcloud-secure-perimeter-heal
     {: screen}
 
 ## Escanee redes públicas fuera de un Secure Perimeter
-{: #public_networks}
+{: #sph_public_networks}
 
 Cree un contenedor de Docker desde la imagen `ibmcloud-secure-perimeter-health` y escanee redes públicas.
 
@@ -175,10 +170,10 @@ Cree un contenedor de Docker desde la imagen `ibmcloud-secure-perimeter-health` 
     ```
     {: pre}
 
-2. Una vez que el contenedor cree un informe, revise la sección [Análisis de resultados del escaneo](#scan_results) para comprender los resultados.
+2. Una vez que el contenedor cree un informe, revise la sección [Análisis de resultados del escaneo](#sph_scan_results) para comprender los resultados.
 
 ## Análisis de los resultados del escaneo
-{: #scan_results}
+{: #sph_scan_results}
 
 `ibmcloud-secure-perimeter-health` crea un informe formateado en estado de funcionamiento de un Secure Perimeter:
 
@@ -218,7 +213,7 @@ El formato del informe es el siguiente:
 `ibmcloud-secure-perimeter-health` determina una subred como `PASS` si no se han encontrado hosts en la subred; de lo contrario, devolverá `FAIL` y listará los hosts a los que se ha llegado, junto con los puertos que estaban accesibles.
 
 ## Referencia de argumentos del contenedor
-{: #reference_container_arg}
+{: #sph_reference_container_arg}
 
 |Clave|Descripción|Valor predeterminado
 |---|-------------|---|
@@ -229,7 +224,7 @@ El formato del informe es el siguiente:
 {: caption="Tabla 1. Argumentos del contenedor" caption-side="top"}
 
 ## Referencia de variables de entorno
-{: #reference_env_var}
+{: #sph_reference_env_var}
 
 |Clave|Descripción|
 |---|-------------|

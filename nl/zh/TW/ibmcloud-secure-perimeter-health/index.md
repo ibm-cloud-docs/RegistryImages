@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # 開始使用 `ibmcloud-secure-perimeter-health` 映像檔
@@ -20,11 +27,11 @@ lastupdated: "2019-01-03"
 `ibmcloud-secure-perimeter-health` 映像檔包含一個工具，可用來在 {{site.data.keyword.cloud}} 中掃描 Secure Perimeter 中的漏洞。
 {:shortdesc}
 
-您可以使用指令行存取 {{site.data.keyword.IBM_notm}} 所提供的映像檔，請參閱 [IBM 公用映像檔](/docs/services/Registry/registry_public_images.html#public_images)。
+您可以使用指令行存取 {{site.data.keyword.IBM_notm}} 所提供的映像檔，請參閱 [IBM 公用映像檔](/docs/services/Registry?topic=registry-public_images#public_images)。
 {: tip}
 
 ## 如何運作
-{: #how-it-works}
+{: #sph_how-it-works}
 
 為了確保您的 Secure Perimeter 正常運作，`ibmcloud-secure-perimeter-health` 可掃描 {{site.data.keyword.cloud_notm}} 基礎架構帳戶中的公用或專用網路，並報告漏洞。您可以利用兩種方式來使用 **ibmcloud-secure-perimeter-health** 映像檔：
 
@@ -61,7 +68,7 @@ sp-gateway-8a9031ab:
 {: screen}
 
 ## 包含的內容
-{: #whats_included}
+{: #sph_whats_included}
 
 `ibmcloud-secure-perimeter-health` 映像檔會提供下列套裝軟體。
 {:shortdesc}
@@ -71,20 +78,8 @@ sp-gateway-8a9031ab:
 - SoftLayer Python Client
 - Nmap 埠掃描器
 
-## 開始使用
-{: #how_to_get_started}
-
-檢閱下列作業以學習如何使用 `ibmcloud-secure-perimeter-health`：
-
-1. [使用 {{site.data.keyword.containerlong_notm}} 在 Secure Perimeter 內佈建 Kubernetes 叢集](#provision_cluster)
-2. [掃描 Secure Perimeter 內的專用網路](#private_networks)
-3. [掃描 Secure Perimeter 外的公用網路](#public_networks)
-4. [瞭解掃描結果](#scan_results)
-5. [容器引數參考資料](#reference_container_arg)
-6. [環境變數參考資料](#reference_env_var)
-
 ## 使用 {{site.data.keyword.containerlong_notm}} 在 Secure Perimeter 內佈建 Kubernetes 叢集
-{: #provision_cluster}
+{: #sph_provision_cluster}
 
 1. 從 {{site.data.keyword.cloud_notm}} 型錄中的**容器**區段中，佈建您的 Kubernetes 叢集。
 2. 按一下**建立**。
@@ -92,17 +87,17 @@ sp-gateway-8a9031ab:
 4. 視需要輸入所有其他詳細資料。
 5. 按一下**建立叢集**。
 
-檢閱 [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) 文件，瞭解如何在部署完叢集之後取得該叢集的存取權。
+檢閱 [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) 文件，瞭解如何在部署完叢集之後取得該叢集的存取權。
 
 ## 掃描 Secure Perimeter 內的專用網路
-{: #private_networks}
+{: #sph_private_networks}
 
 從 `ibmcloud-secure-perimeter-health` 映像檔中建立容器 Pod，並設定日常掃描。
 
 **開始之前**
 
-- 安裝必要的 [CLI](/docs/containers/cs_cli_install.html#cs_cli_install)。
-- [將 CLI 的目標設為](/docs/containers/cs_cli_install.html#cs_cli_configure)您的叢集。
+- 安裝必要的 [CLI](/docs/containers?topic=containers-cs_cli_install#cs_cli_install)。
+- [將 CLI 的目標設為](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure)您的叢集。
 
 1. 建立名為 _health-pod.yaml_ 的配置檔。此檔案會建立可用性高的容器 Pod 部署。
 
@@ -138,7 +133,7 @@ sp-gateway-8a9031ab:
               value: <IBM Cloud infrastructure api key>
     ```
     {: codeblock}
-
+    
 2. 建立部署。
 
     ```
@@ -160,7 +155,7 @@ NAME                                    READY     STATUS    RESTARTS   AGE
     {: screen}
 
 ## 掃描 Secure Perimeter 外的公用網路
-{: #public_networks}
+{: #sph_public_networks}
 
 從 `ibmcloud-secure-perimeter-health` 映像檔建立一個 Docker 儲存器，並掃描公用網路。
 
@@ -175,10 +170,10 @@ NAME                                    READY     STATUS    RESTARTS   AGE
     ```
     {: pre}
 
-2. 容器產生報告之後，請檢閱[分析掃描結果](#scan_results)區段，以瞭解結果。
+2. 容器產生報告之後，請檢閱[分析掃描結果](#sph_scan_results)區段，以瞭解結果。
 
 ## 分析掃描結果
-{: #scan_results}
+{: #sph_scan_results}
 
 `ibmcloud-secure-perimeter-health` 會產生格式化的報告，說明 Secure Perimeter 的運作性能：
 
@@ -218,7 +213,7 @@ sp-gateway-8a9031ab:
 如果無法聯繫子網路中的任何主機，則 `ibmcloud-secure-perimeter-health` 會判斷子網路為 `PASS`，否則會傳回 `FAIL`，並列出可以聯繫的主機以及可存取的埠。
 
 ## 容器引數參考資料
-{: #reference_container_arg}
+{: #sph_reference_container_arg}
 
 |索引鍵|說明|預設值
 |---|-------------|---|
@@ -229,7 +224,7 @@ sp-gateway-8a9031ab:
 {: caption="表 1. 容器引數" caption-side="top"}
 
 ## 環境變數參考資料
-{: #reference_env_var}
+{: #sph_reference_env_var}
 
 |索引鍵|說明|
 |---|-------------|

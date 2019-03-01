@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-01-09"
+lastupdated: "2019-02-21"
+
+keywords: ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -13,6 +17,9 @@ lastupdated: "2019-01-09"
 {:table: .aria-labeledby="caption"}
 {:codeblock: .codeblock}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:download: .download}
 
 # Einführung zum Image `ibmliberty`
@@ -21,17 +28,17 @@ lastupdated: "2019-01-09"
 Die Images von IBM® WebSphere® Application Server Liberty \(`ibmliberty`\) werden für {{site.data.keyword.containerlong_notm}} zur Verfügung gestellt.
 {:shortdesc}
 
-Sie können auf die von {{site.data.keyword.IBM_notm}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry/registry_public_images.html#public_images).
+Sie können auf die von {{site.data.keyword.IBM_notm}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
 ## Funktionsweise
-{: #how_it_works}
+{: #ibmliberty_how_it_works}
 
 Sie können ein Image `ibmliberty` als übergeordnetes Element verwenden, um Ihr eigenes Image zu erstellen und Ihre eigenen WAR-, EAR- oder OSGi-Anwendungen auf der Basis von Java in einem IBM WebSphere Application Server Liberty-Container bereitzustellen.
 {:shortdesc}
 
 ## Enthaltene Elemente
-{: #whats_included}
+{: #ibmliberty_whats_included}
 
 Jedes Liberty-Image bietet die folgenden Softwarepakete.
 {:shortdesc}
@@ -51,7 +58,7 @@ Welche Liberty-Features jeweils in einem Image installiert sind, hängt davon ab
 {: caption="Tabelle 1. In den jeweiligen `ibmliberty`-Images enthaltene Features" caption-side="top"}
 
 ## Nutzungsbeschränkungen
-{: #usage}
+{: #ibmliberty_usage}
 
 In der folgenden Tabelle sind die Beschränkungen für die kostenlose Nutzung des Images `ibmliberty` in {{site.data.keyword.Bluemix_notm}} angegeben.
 {:shortdesc}
@@ -65,31 +72,32 @@ Die Preisstruktur für das Image `ibmliberty` ist unabhängig von der Preisstruk
 |Produktion|Die kostenlose Nutzung des Images `ibmliberty` ist auf einen **Java-Heapspeicher von maximal 2 GB** über alle Containerinstanzen begrenzt, auf denen das Image ausgeführt wird. Sie können z. B. 2 x 1 GB oder 4 x 512 MB Liberty-Heapinstanzen kostenlos nutzen.|
 {: caption="Tabelle 2. Preisstruktur" caption-side="top"}
 
-Weitere Informationen zum Überwachen der Java-Heapspeicherbelegung Ihrer Containerinstanzen finden Sie unter [Java-Heapspeicherbelegung für einen Container über die Befehlszeilenschnittstelle überwachen](#monitor_heap).
+Weitere Informationen zum Überwachen der Java-Heapspeicherbelegung Ihrer Containerinstanzen finden Sie unter [Java-Heapspeicherbelegung für einen Container über die Befehlszeilenschnittstelle überwachen](#ibmliberty_monitor_heap).
 
 Lesen Sie zunächst die Nutzungsbedingungen für die von IBM zertifizierten Images im Abschnitt zum [Image 'websphere-liberty' ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://hub.docker.com/_/websphere-liberty/) in Docker Hub.
 
 ## Einführung
-{: #get_started}
+{: #ibmliberty_get_started}
 
 Verwenden Sie eines der kostenlosen `ibmliberty`-Images aus dem {{site.data.keyword.Bluemix_notm}}-Katalog oder wählen Sie Ihr eigenes Image mit Produktionslizenz aus, um einen einzelnen Container oder eine Containergruppe zu erstellen.
 {:shortdesc}
 
-**Wichtig:** Bevor Sie beginnen, lesen Sie die [Nutzungsbeschränkungen](#usage) für die `ibmliberty`-Images.
+Lesen Sie die [Nutzungseinschränkungen](#ibmliberty_usage) für die `ibmliberty`-Images, bevor Sie beginnen.
+{: important}
 
 1. Wählen Sie im Katalog in der seitlichen Anzeige die Option **Container** > **IBM Cloud Container-Registry** > **Öffentliche IBM Repositorys** aus. Suchen Sie nach dem Image `ibmliberty`, aus dem Sie den Container erstellen möchten. Wenn Sie ein eigenes Image mit Produktionslizenz erstellt und in {{site.data.keyword.Bluemix_notm}} bereitgestellt haben, wählen Sie dieses Image im Katalog aus. Die Seite zum Erstellen von Containern wird geöffnet.
 2. Wählen Sie die Version des Images `ibmliberty`, das Sie verwenden möchten, im Dropdown-Feld für **TAG/ VERSION** aus.
 3. Weitere Informationen zum Erstellen von Containern aus Images, zum Einrichten von Clustern und zum Bereitstellen von Apps in Clustern finden Sie unter den folgenden Links:
 
-    - [Container auf Grundlage von Images erstellen](/docs/containers/cs_images.html#images)
-    - [Einführung in IBM Cloud Kubernetes Service](/docs/containers/container_index.html#container_index)
-    - [Apps in Clustern bereitstellen](/docs/containers/cs_app.html#app)
+    - [Container auf Grundlage von Images erstellen](/docs/containers?topic=containers-images#images)
+    - [Einführung in IBM Cloud Kubernetes Service](/docs/containers?topic=containers-container_index#container_index)
+    - [Apps in Clustern bereitstellen](/docs/containers?topic=containers-app#app)
 
     Für das Image `ibmliberty` muss Port 9080 öffentlich zugänglich gemacht werden. Wenn Sie einen Container aus dem {{site.data.keyword.Bluemix_notm}}-Dashboard erstellen, wird der Port standardmäßig im Feld **Öffentlicher Port** hinzugefügt. Wenn Sie einen Container über die CLI erstellen, legen Sie den Port in Ihrem Befehl `kubectl run` mit der Option `--port=9080` frei.
     {:tip}
 
 ## Java-Heapspeicherbelegung für einen Container über die Befehlszeilenschnittstelle überwachen
-{: #monitor_heap}
+{: #ibmliberty_monitor_heap}
 
 Nachdem Sie einen Container aus dem Image `ibmliberty` erstellt haben, können Sie die Metriken für einen bestimmten Pod und seine Container anzeigen und die Java-Heapspeicherbelegung überprüfen. Der Java-Heapspeicher ist der Speicher, der der Java-Anwendung während der Laufzeit zur Verfügung steht.
 {:shortdesc}
@@ -113,7 +121,7 @@ Nachdem Sie einen Container aus dem Image `ibmliberty` erstellt haben, können S
 4. Passen Sie die maximale Heapspeicherbelegung für Ihre WebSphere Application Server-Instanz an. Weitere Informationen finden Sie unter [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474).
 
 ## WebSphere Application Server-Lizenz abrufen
-{: #license}
+{: #ibmliberty_license}
 
 WebSphere Application Server basieren auf der Anzahl der benötigten Processor-Value-Units \(PVUs\). PVU ist eine Maßeinheit für die Lizenzierung von IBM Middleware-Software. Die Anzahl der PVUs gibt die Anzahl der Prozessoren \(Kerne\) an, die für die Software zur Verfügung stehen.
 {:shortdesc}
@@ -125,7 +133,7 @@ Wenden Sie sich für den Kauf einer WebSphere Application Server-Lizenz an den [
 Wenn Sie nach dem Erwerb der Lizenz feststellen, dass Sie weitere PVUs benötigen, können Sie die Anzahl der PVUs nach Rücksprache mit dem [IBM Service ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us) erhöhen.
 
 ## Image `ibmliberty` mit Produktionslizenz für die Verwendung mit {{site.data.keyword.containershort_notm}} erstellen
-{: #prod_image}
+{: #ibmliberty_prod_image}
 
 Verwenden Sie Ihre Lizenz für WebSphere Application Server zum Erstellen eines Images `ibmliberty` mit Produktionslizenz, das Sie mit {{site.data.keyword.containershort_notm}} verwenden können. Wählen Sie eine der folgenden Tasks aus.
 {:shortdesc}
@@ -133,10 +141,10 @@ Verwenden Sie Ihre Lizenz für WebSphere Application Server zum Erstellen eines 
 - [Durchführen eines Upgrades des Images von Docker Hub auf ein Produktionsimage ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
 - [Erstellen eines eigenen Images mit Produktionslizenz ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://github.com/WASdev/ci.docker/tree/master/ga).
 
-Nachdem Sie ein Image mit Produktionslizenz erstellt haben, [übertragen Sie das Image in Ihre private Registry](/docs/services/Registry/index.html), um es mit {{site.data.keyword.containershort_notm}} zu verwenden.
+Nachdem Sie ein Image mit Produktionslizenz erstellt haben, [übertragen Sie das Image in Ihre private Registry](/docs/services/Registry?topic=registry-index#index), um es mit {{site.data.keyword.containershort_notm}} zu verwenden.
 
 ## Image über die bereitgestellten Images erstellen
-{: #creating_image}
+{: #ibmliberty_creating_image}
 
 Mit einem `ibmliberty`-Image als übergeordnetem Image können Sie ein untergeordnetes Image erstellen, das Ihren eigenen App-Code enthält. Passen Sie die Dockerfile-Beispieldatei an und erstellen Sie Ihr Image auf Ihrem Computer. Anschließend können Sie Ihr Image im privaten Bluemix-Repository Ihrer Organisation hinzufügen und Container mit diesem Image erstellen.
 {:shortdesc}
@@ -154,9 +162,10 @@ Führen Sie die folgenden Schritte aus, um ein Image mit Ihrem App-Code aus dem 
    FROM registry.bluemix.net/ibmliberty:<tag>
    COPY <app_name>.<file_extension> /config/dropins/
    ```
-   {: screen}
+   {: pre}
 
-    **Anmerkung:** Das Verzeichnis `/config` ist ein Direktaufruf für `/opt/ibm/wlp/usr/servers/defaultServer`.
+    Das Verzeichnis `/config` ist ein Direktaufruf für `/opt/ibm/wlp/usr/servers/defaultServer`.
+    {: note}
 
 2. Ersetzen Sie `<tag>` durch die Version des Images `ibmliberty`, das die von der App benötigten Features enthält.
 
@@ -166,13 +175,13 @@ Führen Sie die folgenden Schritte aus, um ein Image mit Ihrem App-Code aus dem 
 
 5. Fügen Sie sonstige Abhängigkeiten für Ihre App zur Dockerfile hinzu.
 
-6. Erstellen Sie das Image und übertragen Sie es mit Push-Operation in Ihr privates Bluemix-Repository. Weitere Informationen finden Sie unter [Einführung in {{site.data.keyword.registrylong_notm}}](/docs/services/Registry/index.html).
+6. Erstellen Sie das Image und übertragen Sie es mit Push-Operation in Ihr privates Bluemix-Repository. Weitere Informationen finden Sie unter [Einführung in {{site.data.keyword.registrylong_notm}}](/docs/services/Registry?topic=registry-index#index).
 
 Alle `ibmliberty`-Images sind so konfiguriert, dass die Liberty-Protokolldateien in das Verzeichnis `/logs` des Containers geschrieben werden. Alle anderen vom Liberty-Server geschriebenen Dateien werden im Verzeichnis `/opt/ibm/wlp/output/defaultServer` erstellt. Der Zugriff auf diese Dateien ist über den Direktaufruf `/output` möglich.
 {:tip}
 
 ## `ibmliberty`-Dockerfile - Referenz
-{: #reference_dockerfile}
+{: #ibmliberty_reference_dockerfile}
 
 Diese Dockerfile zeigt, wie das Image `ibmliberty:webProfile7` in {{site.data.keyword.Bluemix_notm}} aus den öffentlichen websphere-liberty-Images in Docker Hub erstellt wird. Die folgenden Informationen dienen nur zu Referenzzwecken.
 {:shortdesc}

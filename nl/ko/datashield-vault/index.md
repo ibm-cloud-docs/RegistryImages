@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: ibm-node-strong image, container image, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # `datashield-vault` 이미지 시작하기
@@ -20,7 +27,7 @@ lastupdated: "2019-01-03"
 이 컨테이너 이미지는 Data Shield 환경에서 볼트를 실행하며 사용 중인 데이터에 대한 보호를 제공합니다.
 {:shortdesc}
 
-명령행을 사용하여 {{site.data.keyword.IBM}}에서 제공한 이미지에 액세스할 수 있습니다. [IBM 공용 이미지](/docs/services/Registry/registry_public_images.html#public_images)를 참조하십시오.
+명령행을 사용하여 {{site.data.keyword.IBM}}에서 제공한 이미지에 액세스할 수 있습니다. [IBM 공용 이미지](/docs/services/Registry?topic=registry-public_images#public_images)를 참조하십시오.
 {: tip}
 
 다음 Kubernetes 팟(Pod) 스펙을 사용하여 이미지를 배치할 수 있습니다.

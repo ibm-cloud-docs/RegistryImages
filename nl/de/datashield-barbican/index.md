@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: datashield-barbican image, container image, barbican, Data Shield environment, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # Einführung zum Image `datashield-barbican`
@@ -20,7 +27,7 @@ lastupdated: "2019-01-03"
 Mit diesem Container-Image wird Barbican in der Data Shield-Umgebung ausgeführt und bietet Schutz für Daten, die sich in Gebrauch befinden.
 {:shortdesc}
 
-Sie können auf die von {{site.data.keyword.IBM}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry/registry_public_images.html#public_images).
+Sie können auf die von {{site.data.keyword.IBM}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
 Mithilfe der folgenden Kubernetes-Podspezifikationen können Sie das Image bereitstellen:
@@ -61,10 +68,10 @@ Mithilfe der folgenden Kubernetes-Podspezifikationen können Sie das Image berei
 ```
 {: codeblock}
 
-Das Bereitstellen und Starten des Containers kann einige Minuten in Anspruch nehmen. Die Barbican-Demoinstanz ist ohne Keystone-Authentifizierung konfiguriert. Anforderungen müssen den Header `X-Project-Id: 12345` enthalten.
+Das Bereitstellen und Starten des Containers kann einige Minuten in Anspruch nehmen. Die Barbican-Demonstrationsinstanz ist ohne Keystone-Authentifizierung konfiguriert. Anforderungen müssen den Header `X-Project-Id: 12345` enthalten.
 {: tip}
 
-Sie können einen geheimen Schlüssel in der Barbican-Demoinstanz erstellen, indem Sie den folgenden Befehl ausführen:
+Sie können einen geheimen Schlüssel in der Barbican-Demonstrationsinstanz erstellen, indem Sie den folgenden Befehl ausführen:
 
 ```
     curl -sS -X POST -H 'content-type:application/json' -H 'X-Project-Id: 12345' -d \

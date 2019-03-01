@@ -2,74 +2,32 @@
 
 copyright:
 
-  years: 2014, 2018
+  years: 2014, 2019
 
-lastupdated: "2018-09-14"
+lastupdated: "2019-02-21"
+
+keywords: container image, public image
+
+subcollection: RegistryImages
 
 ---
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
+{:codeblock: .codeblock}
+{:screen: .screen}
+{:pre: .pre}
+{:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
+{:table: .aria-labeledby="caption"}
 
 # IBM のパブリック・イメージ
 {: #ibm_images}
 
-{{site.data.keyword.containerlong}} で以下のパブリック・イメージを使用してコンテナーを作成できます。 {{site.data.keyword.Bluemix_notm}} で独自のプライベート・イメージ・レジストリーを作成するには、[「概説 (Getting started)」](/docs/services/Registry/index.html)を参照してください。
+{{site.data.keyword.containerlong}} でパブリック・イメージを使用してコンテナーを作成できます。{{site.data.keyword.Bluemix_notm}} で独自のプライベート・イメージ・レジストリーを作成するには、[{{site.data.keyword.registrylong_notm}} の概説](/docs/services/Registry?topic=registry-index#index)を参照してください。
 {:shortdesc}
 
-
-<ul class="runtimeIconList">
-  
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="datashield-barbican イメージについて詳しくは、資料を確認してください。"></p>
-<p class="runtimeTitle">datashield-barbican<br /> <br /></p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-barbican/index.html" scope="peer" title="datashield-barbican イメージについて詳しくは、資料を確認してください。">資料の表示</a></p>
-</li>
-
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="datashield-mysql イメージについて詳しくは、資料を確認してください。"></p>
-<p class="runtimeTitle">datashield-mysql<br /> <br /></p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-mysql/index.html" scope="peer" title="datashield-mysql イメージについて詳しくは、資料を確認してください。">資料の表示</a></p>
-</li>
-
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="datashield-nginx イメージについて詳しくは、資料を確認してください。"></p>
-<p class="runtimeTitle">datashield-nginx<br /> <br /></p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-nginx/index.html" scope="peer" title="datashield-nginx イメージについて詳しくは、資料を確認してください。">資料の表示</a></p>
-</li>
-
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="datashield-vault イメージについて詳しくは、資料を確認してください。"></p>
-<p class="runtimeTitle">datashield-vault<br /> <br /></p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/datashield-vault/index.html" scope="peer" title="datashield-vault イメージについて詳しくは、資料を確認してください。">資料の表示</a></p>
-</li>
-
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="ibm-backup-restore イメージについて詳しくは、資料を確認してください。"></p>
-<p class="runtimeTitle">ibm-backup-restore<br /> <br /></p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibm-backup-restore/index.html" scope="peer" title="ibm-backup-restore イメージについて詳しくは、資料を確認してください。">資料の表示</a></p>
-</li>
-  
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="ibmcloud-secure-perimeter-health イメージを使用して、IBM Cloud インフラストラクチャー・ネットワーク内の脆弱パスのスキャンとレポート生成を行えます。"></p>
-<p class="runtimeTitle">ibmcloud-secure-<br />perimeter-health</p>
-<p class="runtimeLink"><a format="html"
-href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-health/index.html" scope="peer"
- title="ibmcloud-secure-perimeter-health イメージを使用して、IBM Cloud インフラストラクチャー・ネットワーク内のパスをスキャンし、露出しているパスについてのレポートを生成できます。">資料の表示</a></p>
-</li>
-
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="ibmcloud-secure-perimeter-network イメージを使用して、Secure Perimeter Segment 用の Vyatta 構成を適用できます。"></p>
-<p class="runtimeTitle">ibmcloud-secure-<br />perimeter-network</p>
-<p class="runtimeLink"><a format="html"
-href="/docs/services/RegistryImages/ibmcloud-secure-perimeter-network/index.html" scope="peer"
- title="ibmcloud-secure-perimeter-network イメージを使用して、Secure Perimeter Segment 用の Vyatta 構成を適用できます。">資料の表示</a></p>
-</li>
-
-<li>
-<p class="runtimeIcon"><img src="images/container-image_ibm.svg" alt="ibmliberty イメージを親として使用して独自のイメージを作成し、Java ベースの独自の WAR、EAR、または OSGi アプリを、IBM WebSphere Application Server Liberty コンテナー内にデプロイできます。"></p>
-<p class="runtimeTitle">ibmliberty<br /> <br /></p>
-<p class="runtimeLink"><a format="html" href="/docs/services/RegistryImages/ibmliberty/index.html" scope="peer" title="ibmliberty イメージを親として使用して独自のイメージを作成し、Java ベースの独自の WAR、EAR、または OSGi アプリを、IBM WebSphere Application Server Liberty コンテナー内にデプロイできます。">資料の表示</a></p>
-</li>
-
-</ul>
+{{site.data.keyword.IBM}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry?topic=registry-public_images#public_images)を参照してください。
+{: tip}

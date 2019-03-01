@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # `ibmcloud-secure-perimeter-health` 이미지 시작하기
@@ -20,11 +27,11 @@ lastupdated: "2019-01-03"
 `ibmcloud-secure-perimeter-health` 이미지에 {{site.data.keyword.cloud}}의 보안 경계에서 취약성을 스캔하기 위한 도구가 포함되어 있습니다.
 {:shortdesc}
 
-명령행을 사용하여 {{site.data.keyword.IBM_notm}}에서 제공한 이미지에 액세스할 수 있습니다. [IBM 공용 이미지](/docs/services/Registry/registry_public_images.html#public_images)를 참조하십시오.
+명령행을 사용하여 {{site.data.keyword.IBM_notm}}에서 제공한 이미지에 액세스할 수 있습니다. [IBM 공용 이미지](/docs/services/Registry?topic=registry-public_images#public_images)를 참조하십시오.
 {: tip}
 
 ## 작동 방식
-{: #how-it-works}
+{: #sph_how-it-works}
 
 보안 경계가 올바르게 작동하는지 확인하기 위해, `ibmcloud-secure-perimeter-health`에서 {{site.data.keyword.cloud_notm}} 인프라 계정의 공용 또는 사설 네트워크를 스캔하고 취약성을 보고할 수 있습니다. 다음 두 가지 방법으로 **ibmcloud-secure-perimeter-health** 이미지를 사용할 수 있습니다.
 
@@ -61,7 +68,7 @@ sp-gateway-8a9031ab:
 {: screen}
 
 ## 포함된 항목
-{: #whats_included}
+{: #sph_whats_included}
 
 `ibmcloud-secure-perimeter-health` 이미지는 다음 소프트웨어 패키지를 제공합니다.
 {:shortdesc}
@@ -71,20 +78,8 @@ sp-gateway-8a9031ab:
 - SoftLayer Python Client
 - Nmap port scanner
 
-## 시작하기
-{: #how_to_get_started}
-
-다음 태스크를 검토하여 `ibmcloud-secure-perimeter-health` 사용 방법을 학습하십시오.
-
-1. [{{site.data.keyword.containerlong_notm}}를 사용하여 보안 경계 내에서 Kubernetes 클러스터 프로비저닝](#provision_cluster)
-2. [보안 경계 내에서 사설 네트워크 스캔](#private_networks)
-3. [보안 경계 외부에서 공용 네트워크 스캔](#public_networks)
-4. [스캔 결과 이해](#scan_results)
-5. [컨테이너 인수 참조](#reference_container_arg)
-6. [환경 변수 참조](#reference_env_var)
-
 ## {{site.data.keyword.containerlong_notm}}를 사용하여 보안 경계 내에서 Kubernetes 클러스터 프로비저닝
-{: #provision_cluster}
+{: #sph_provision_cluster}
 
 1. {{site.data.keyword.cloud_notm}} 카탈로그의 **컨테이너** 섹션에서 Kubernetes 클러스터를 프로비저닝하십시오.
 2. **작성**을 클릭하십시오.
@@ -92,17 +87,17 @@ sp-gateway-8a9031ab:
 4. 필요에 따라 다른 모든 세부사항을 입력하십시오.
 5. **클러스터 작성**을 클릭하십시오.
 
-클러스터가 배치된 후 클러스터에 대한 액세스를 확보하는 방법에 대한 [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) 문서를 검토하십시오.
+클러스터가 배치된 후 클러스터에 대한 액세스를 확보하는 방법에 대한 [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) 문서를 검토하십시오.
 
 ## 보안 경계 내에서 사설 네트워크 스캔
-{: #private_networks}
+{: #sph_private_networks}
 
 `ibmcloud-secure-perimeter-health` 이미지에서 컨테이너 팟(Pod)을 작성하고 루틴 스캔을 설정하십시오.
 
 **시작하기 전에**
 
-- 필수 [CLI](/docs/containers/cs_cli_install.html#cs_cli_install)를 설치하십시오.
-- 클러스터를 [CLI의 대상으로 지정](/docs/containers/cs_cli_install.html#cs_cli_configure)하십시오.
+- 필수 [CLI](/docs/containers?topic=containers-cs_cli_install#cs_cli_install)를 설치하십시오.
+- 클러스터를 [CLI의 대상으로 지정](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure)하십시오.
 
 1. 구성 파일 _health-pod.yaml_을 작성하십시오. 이 파일은 컨테이너 팟(Pod)의 고가용성 배치를 작성합니다.
 
@@ -138,7 +133,7 @@ apiVersion: extensions/v1beta1
               value: <IBM Cloud infrastructure api key>
     ```
     {: codeblock}
-
+    
 2. 배치를 작성하십시오.
 
     ```
@@ -160,7 +155,7 @@ NAME                                    READY     STATUS    RESTARTS   AGE
     {: screen}
 
 ## 보안 경계 외부에서 공용 네트워크 스캔
-{: #public_networks}
+{: #sph_public_networks}
 
 `ibmcloud-secure-perimeter-health` 이미지에서 Docker 컨테이너를 작성하고 공용 네트워크를 스캔하십시오.
 
@@ -175,10 +170,10 @@ NAME                                    READY     STATUS    RESTARTS   AGE
     ```
     {: pre}
 
-2. 컨테이너가 보고서를 생성한 후 [스캔 결과 분석](#scan_results) 섹션을 검토하여 결과를 파악하십시오.
+2. 컨테이너가 보고서를 생성한 후 [스캔 결과 분석](#sph_scan_results) 섹션을 검토하여 결과를 파악하십시오.
 
 ## 스캔 결과 분석
-{: #scan_results}
+{: #sph_scan_results}
 
 `ibmcloud-secure-perimeter-health`는 보안 경계의 작동 상태에 대한 형식화된 보고서를 생성합니다.
 
@@ -218,7 +213,7 @@ sp-gateway-8a9031ab:
 서브넷의 호스트에 연결할 수 없는 경우 `ibmcloud-secure-perimeter-health`는 서브넷을 `PASS`로 판별하고, 그렇지 않은 경우 `FAIL`과 함께 리턴되며 액세스 가능한 포트와 함께 연결 가능한 호스트를 나열합니다.
 
 ## 컨테이너 인수 참조
-{: #reference_container_arg}
+{: #sph_reference_container_arg}
 
 |키|설명|기본값
 |---|-------------|---|
@@ -229,7 +224,7 @@ sp-gateway-8a9031ab:
 {: caption="표 1. 컨테이너 인수" caption-side="top"}
 
 ## 환경 변수 참조
-{: #reference_env_var}
+{: #sph_reference_env_var}
 
 |키|설명|
 |---|-------------|

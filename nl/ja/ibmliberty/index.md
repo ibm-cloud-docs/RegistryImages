@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-01-09"
+lastupdated: "2019-02-21"
+
+keywords: ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -13,6 +17,9 @@ lastupdated: "2019-01-09"
 {:table: .aria-labeledby="caption"}
 {:codeblock: .codeblock}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:download: .download}
 
 # `ibmliberty` イメージ概説
@@ -21,17 +28,17 @@ lastupdated: "2019-01-09"
 IBM® WebSphere® Application Server Liberty (`ibmliberty`) イメージは {{site.data.keyword.containerlong_notm}} 用に提供されています。
 {:shortdesc}
 
-{{site.data.keyword.IBM_notm}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry/registry_public_images.html#public_images)を参照してください。
+{{site.data.keyword.IBM_notm}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry?topic=registry-public_images#public_images)を参照してください。
 {: tip}
 
 ## 機能
-{: #how_it_works}
+{: #ibmliberty_how_it_works}
 
 `ibmliberty` イメージを親として使用して独自のイメージを作成し、Java ベースの独自の WAR アプリ、EAR アプリ、または OSGi アプリを IBM WebSphere Application Server Liberty コンテナーにデプロイできます。
 {:shortdesc}
 
 ## 含まれている内容
-{: #whats_included}
+{: #ibmliberty_whats_included}
 
 すべての Liberty イメージが以下のソフトウェア・パッケージを提供します。
 {:shortdesc}
@@ -51,7 +58,7 @@ IBM® WebSphere® Application Server Liberty (`ibmliberty`) イメージは {{si
 {: caption="表 1. 各 `ibmliberty` イメージに含まれているフィーチャーを示します。" caption-side="top"}
 
 ## 使用上の制約事項
-{: #usage}
+{: #ibmliberty_usage}
 
 次の表は、{{site.data.keyword.Bluemix_notm}} での `ibmliberty` イメージの無料使用に適用される制約事項を示しています。
 {:shortdesc}
@@ -65,31 +72,32 @@ IBM® WebSphere® Application Server Liberty (`ibmliberty`) イメージは {{si
 |実動|`ibmliberty` イメージの無料使用は、イメージが実行されるすべてのコンテナー・インスタンスを合わせて**最大 2 GB の Java ヒープ・スペース**に制限されています。 例えば、2 x 1 GB または 4 x 512 MB のヒープ Liberty インスタンスを無料で使用できます。|
 {: caption="表 2. 価格設定" caption-side="top"}
 
-コンテナー・インスタンスの Java ヒープ使用量をモニターするには、[CLI を使用した、コンテナーの Java ヒープ・スペース使用量のモニター](#monitor_heap)を参照してください。
+コンテナー・インスタンスの Java ヒープ使用量をモニターするには、[CLI を使用した、コンテナーの Java ヒープ・スペース使用量のモニター](#ibmliberty_monitor_heap)を参照してください。
 
 Docker Hub の [websphere-liberty イメージ ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://hub.docker.com/_/websphere-liberty/) の『License』セクションで、IBM 認定イメージのご利用条件を確認してください。
 
 ## 概説
-{: #get_started}
+{: #ibmliberty_get_started}
 
 {{site.data.keyword.Bluemix_notm}} カタログにある無料の `ibmliberty` イメージのいずれかを使用するか、実動ライセンス交付を受けた独自のイメージを選択して、単一コンテナーまたはコンテナー・グループを作成します。
 {:shortdesc}
 
-**重要:** 始める前に、`ibmliberty` イメージの[使用上の制約事項](#usage)を確認してください。
+始める前に、`ibmliberty` イメージの[使用上の制約事項](#ibmliberty_usage)を確認してください。
+{: important}
 
 1. カタログから、サイド・パネルで**「コンテナー」**>**「IBM Cloud Container Registry」**>**「IBM パブリック・リポジトリー (IBM Public Repositories)」**を選択します。 コンテナーをビルドする元になる `ibmliberty` イメージを検索します。 実動ライセンス交付を受けた独自のイメージを作成して {{site.data.keyword.Bluemix_notm}} にデプロイした場合は、そのイメージをカタログから選択してください。 コンテナー作成ページが開きます。
 2. `「タグ/バージョン」`ドロップダウン・ボックスから、使用する **ibmliberty** イメージのバージョンを選択します。
 3. イメージからのコンテナーのビルド、クラスターのセットアップ、クラスターでのアプリのデプロイについて詳しくは、以下のリンク先を参照してください。
 
-    - [イメージからのコンテナーのビルド](/docs/containers/cs_images.html#images)
-    - [IBM Cloud Kubernetes Service 概説](/docs/containers/container_index.html#container_index)
-    - [アプリをクラスターにデプロイする](/docs/containers/cs_app.html#app)
+    - [イメージからのコンテナーのビルド](/docs/containers?topic=containers-images#images)
+    - [IBM Cloud Kubernetes Service 概説](/docs/containers?topic=containers-container_index#container_index)
+    - [アプリをクラスターにデプロイする](/docs/containers?topic=containers-app#app)
 
     `ibmliberty` イメージを使用するには、ポート 9080 がパブリックに公開される必要があります。 {{site.data.keyword.Bluemix_notm}} ダッシュボードからコンテナーを作成する場合、このポートが**「パブリック・ポート」**フィールドにデフォルトで追加されます。 CLI からコンテナーを作成する場合は、`kubectl run` コマンドに `--port=9080` オプションを指定して実行し、ポートを公開してください。
     {:tip}
 
 ## CLI を使用した、コンテナーの Java ヒープ・スペース使用量のモニター
-{: #monitor_heap}
+{: #ibmliberty_monitor_heap}
 
 `ibmliberty` イメージからコンテナーを作成した後、特定ポッドとそのコンテナーのメトリックを表示して、Java ヒープ使用量を確認できます。 Java ヒープ・スペースは、Java アプリケーションが実行時に使用できるメモリーです。
 {:shortdesc}
@@ -113,7 +121,7 @@ Docker Hub の [websphere-liberty イメージ ![外部リンク・アイコン]
 4. WebSphere Application Server インスタンスの最大ヒープ使用量を調整します。 詳しくは、[Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)を参照してください。
 
 ## WebSphere Application Server ライセンスの取得
-{: #license}
+{: #ibmliberty_license}
 
 WebSphere Application Server ライセンスは、必要なプロセッサー・バリュー・ユニット (PVU) の数に基づきます。 PVU は、IBM ミドルウェア・ソフトウェアのライセンス交付のための測定単位です。 PVU の数は、ソフトウェアが使用できるプロセッサー (コア) の数を示します。
 {:shortdesc}
@@ -125,7 +133,7 @@ WebSphere Application Server ライセンスを購入するには、[IBM サー�
 ライセンス購入後にさらに PVU が必要であることが分かった場合は、[IBM サービス ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us) に連絡して量を増やすことができます。
 
 ## {{site.data.keyword.containershort_notm}} で使用する、実動ライセンス交付を受けた `ibmliberty` イメージの作成
-{: #prod_image}
+{: #ibmliberty_prod_image}
 
 WebSphere Application Server ライセンスを使用して、{{site.data.keyword.containershort_notm}} で使用できる、実動ライセンス交付を受けた `ibmliberty` イメージを作成できます。 以下のタスクのいずれかを選択してください。
 {:shortdesc}
@@ -133,10 +141,10 @@ WebSphere Application Server ライセンスを使用して、{{site.data.keywor
 - [Docker Hub からのイメージを実動イメージにアップグレードする ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade)。
 - [実動ライセンス交付を受けた独自のイメージを作成する ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://github.com/WASdev/ci.docker/tree/master/ga)。
 
-実動ライセンス交付を受けたイメージを作成した後、{{site.data.keyword.containershort_notm}} で使用するために、[イメージをプライベート・レジストリーにプッシュ](/docs/services/Registry/index.html)します。
+実動ライセンス交付を受けたイメージを作成した後、{{site.data.keyword.containershort_notm}} で使用するために、[イメージをプライベート・レジストリーにプッシュ](/docs/services/Registry?topic=registry-index#index)します。
 
 ## 提供イメージからのイメージの作成
-{: #creating_image}
+{: #ibmliberty_creating_image}
 
 `ibmliberty` イメージのいずれかを、独自のアプリ・コードを含む子イメージを作成するための親として使用できます。 サンプル Dockerfile をカスタマイズし、ご使用のコンピューターで独自のイメージをビルドします。 次に、イメージを組織のプライベート・イメージ・レジストリーに追加し、そのイメージを使用してコンテナーを作成できます。
 {:shortdesc}
@@ -154,9 +162,10 @@ WebSphere Application Server ライセンスを使用して、{{site.data.keywor
    FROM registry.bluemix.net/ibmliberty:<tag>
    COPY <app_name>.<file_extension> /config/dropins/
    ```
-   {: screen}
+   {: pre}
 
-    **注:** ディレクトリー `/config` は、`/opt/ibm/wlp/usr/servers/defaultServer` のショートカットです。
+    ディレクトリー `/config` は、`/opt/ibm/wlp/usr/servers/defaultServer` のショートカットです。
+    {: note}
 
 2. `<tag>` を、アプリに必要なフィーチャーが含まれている `ibmliberty` イメージのバージョンに置き換えます。
 
@@ -166,13 +175,13 @@ WebSphere Application Server ライセンスを使用して、{{site.data.keywor
 
 5. 独自のアプリに関する他の従属物があれば Dockerfile に追加します。
 
-6. イメージをビルドしてプライベート・イメージ・レジストリーにプッシュします。 詳しくは、[{{site.data.keyword.registrylong_notm}} 概説](/docs/services/Registry/index.html)を参照してください。
+6. イメージをビルドしてプライベート・イメージ・レジストリーにプッシュします。 詳しくは、[{{site.data.keyword.registrylong_notm}} 概説](/docs/services/Registry?topic=registry-index#index)を参照してください。
 
 すべての `ibmliberty` イメージは、コンテナー内のディレクトリー `/logs` に Liberty ログ・ファイルを書き込むように構成されています。 Liberty サーバーによって書き込まれる他のファイルはすべて、ディレクトリー `/opt/ibm/wlp/output/defaultServer` に作成されます。 これらのファイルには、ショートカット `/output` を使用してアクセスできます。
 {:tip}
 
 ## `ibmliberty` Dockerfile リファレンス
-{: #reference_dockerfile}
+{: #ibmliberty_reference_dockerfile}
 
 この Dockerfile は、Docker Hub 上のパブリック websphere-liberty イメージから {{site.data.keyword.Bluemix_notm}} の `ibmliberty:webProfile7` イメージがどのようにビルドされるかを示しています。 この情報は、あくまでも参考用です。
 {:shortdesc}

@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # 开始使用 `ibmcloud-secure-perimeter-health` 映像
@@ -20,11 +27,11 @@ lastupdated: "2019-01-03"
 `ibmcloud-secure-perimeter-health` 映像包含用于扫描 {{site.data.keyword.cloud}} 上 Secure Perimeter 中的漏洞的工具。
 {:shortdesc}
 
-您可以使用命令行来访问 {{site.data.keyword.IBM_notm}} 提供的映像，请参阅 [IBM 公共映像](/docs/services/Registry/registry_public_images.html#public_images)。
+您可以使用命令行来访问 {{site.data.keyword.IBM_notm}} 提供的映像，请参阅 [IBM 公共映像](/docs/services/Registry?topic=registry-public_images#public_images)。
 {: tip}
 
 ## 工作原理
-{: #how-it-works}
+{: #sph_how-it-works}
 
 要确保 Secure Perimeter 运行正常，可以使用 `ibmcloud-secure-perimeter-health` 来扫描 {{site.data.keyword.cloud_notm}} 基础架构帐户中的公用或专用网络，然后查看漏洞报告。您可以通过以下两种方式使用 **ibmcloud-secure-perimeter-health** 映像：
 
@@ -61,7 +68,7 @@ sp-gateway-8a9031ab:
 {: screen}
 
 ## 所含内容
-{: #whats_included}
+{: #sph_whats_included}
 
 `ibmcloud-secure-perimeter-health` 映像提供以下软件包。
 {:shortdesc}
@@ -71,20 +78,8 @@ sp-gateway-8a9031ab:
 - SoftLayer Python 客户机
 - Nmap 端口扫描程序
 
-## 入门
-{: #how_to_get_started}
-
-查看以下任务以了解如何使用 `ibmcloud-secure-perimeter-health`：
-
-1. [使用 {{site.data.keyword.containerlong_notm}} 在 Secure Perimeter 中供应 Kubernetes 集群](#provision_cluster)
-2. [扫描 Secure Perimeter 中的专用网络](#private_networks)
-3. [扫描 Secure Perimeter 外部的公用网络](#public_networks)
-4. [了解扫描结果](#scan_results)
-5. [容器自变量参考](#reference_container_arg)
-6. [环境变量参考](#reference_env_var)
-
 ## 使用 {{site.data.keyword.containerlong_notm}} 在 Secure Perimeter 中供应 Kubernetes 集群
-{: #provision_cluster}
+{: #sph_provision_cluster}
 
 1. 从 {{site.data.keyword.cloud_notm}}“目录”中的**容器**部分供应 Kubernetes 集群。
 2. 单击**创建**。
@@ -92,17 +87,17 @@ sp-gateway-8a9031ab:
 4. 根据需要输入其他所有详细信息。
 5. 单击**创建集群**。
 
-查看 [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) 文档以了解如何在部署后获取集群的访问权。
+查看 [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) 文档以了解如何在部署后获取集群的访问权。
 
 ## 扫描 Secure Perimeter 中的专用网络
-{: #private_networks}
+{: #sph_private_networks}
 
 从 `ibmcloud-secure-perimeter-health` 映像创建容器 pod，并设置例程扫描。
 
 **开始之前**
 
-- 安装必需的 [CLI](/docs/containers/cs_cli_install.html#cs_cli_install)。
-- [设定 CLI 的目标](/docs/containers/cs_cli_install.html#cs_cli_configure)为集群。
+- 安装必需的 [CLI](/docs/containers?topic=containers-cs_cli_install#cs_cli_install)。
+- [设定 CLI 的目标](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure)为集群。
 
 1. 创建名为 _health-pod.yaml_ 的配置文件。此文件创建容器 pod 的高可用性部署。
 
@@ -138,7 +133,7 @@ apiVersion: extensions/v1beta1
               value: <IBM Cloud infrastructure api key>
     ```
     {: codeblock}
-
+    
 2. 创建部署。
 
     ```
@@ -160,7 +155,7 @@ NAME                                    READY     STATUS    RESTARTS   AGE
     {: screen}
 
 ## 扫描 Secure Perimeter 外部的公用网络
-{: #public_networks}
+{: #sph_public_networks}
 
 从 `ibmcloud-secure-perimeter-health` 映像创建 Docker 容器，并扫描公用网络。
 
@@ -175,10 +170,10 @@ NAME                                    READY     STATUS    RESTARTS   AGE
     ```
     {: pre}
 
-2. 在容器生成报告后，查看[分析扫描结果](#scan_results)部分以了解结果。
+2. 在容器生成报告后，查看[分析扫描结果](#sph_scan_results)部分以了解结果。
 
 ## 分析扫描结果
-{: #scan_results}
+{: #sph_scan_results}
 
 `ibmcloud-secure-perimeter-health` 生成有关 Secure Perimeter 的运行状况的格式化报告：
 
@@ -218,7 +213,7 @@ sp-gateway-8a9031ab:
 如果子网中无可访问的主机，`ibmcloud-secure-perimeter-health`将该子网确定为 `PASS`，否则其返回 `FAIL` 并列出可访问的主机，以及可访问的端口。
 
 ## 容器自变量参考
-{: #reference_container_arg}
+{: #sph_reference_container_arg}
 
 |键|描述|缺省值
 |---|-------------|---|
@@ -229,7 +224,7 @@ sp-gateway-8a9031ab:
 {: caption="表 1. 容器自变量" caption-side="top"}
 
 ## 环境变量参考
-{: #reference_env_var}
+{: #sph_reference_env_var}
 
 |键|描述|
 |---|-------------|

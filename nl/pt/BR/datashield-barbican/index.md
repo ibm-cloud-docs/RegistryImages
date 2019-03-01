@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: datashield-barbican image, container image, barbican, Data Shield environment, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,18 +16,22 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # Introdução à imagem `datashield-barbican`
 {: #datashield-barbican_starter}
 
-Essa imagem de contêiner é executada em Barbican no ambiente Data Shield, fornecendo proteção aos dados em uso.
+Essa imagem de contêiner é executada em Barbican no ambiente Data Shield, o que fornece proteção aos dados que estão em
+uso.
 {:shortdesc}
 
-É possível acessar as imagens que são fornecidas pela {{site.data.keyword.IBM}} usando a linha de comandos. Consulte [Imagens públicas da IBM](/docs/services/Registry/registry_public_images.html#public_images).
+É possível acessar as imagens que são fornecidas pela {{site.data.keyword.IBM}} usando a linha de comandos. Consulte [Imagens públicas da IBM](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
-É possível usar a seguinte especificação de pod do Kubernetes para implementar a imagem:
+É possível usar a especificação de pod do Kubernetes a seguir para implementar a imagem:
 
 ```
     apiVersion: v1
@@ -61,10 +69,11 @@ Essa imagem de contêiner é executada em Barbican no ambiente Data Shield, forn
 ```
 {: codeblock}
 
-Pode levar alguns minutos para que o contêiner seja implementado e iniciado. A instância demo do Barbican é configurada sem a autenticação Keystone. A solicitação deve incluir o cabeçalho `X-Project-Id: 12345`
+Pode levar alguns minutos para que o contêiner seja implementado e iniciado. A instância de demonstração do Barbican é
+configurada sem a autenticação Keystone. A solicitação deve incluir o cabeçalho `X-Project-Id: 12345`
 {: tip}
 
-É possível criar um segredo na instância demo do Barbican executando o comando a seguir:
+É possível criar um segredo na instância de demonstração do Barbican executando o comando a seguir:
 
 ```
     curl -sS -X POST -H 'content-type:application/json' -H 'X-Project-Id: 12345' -d \

@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # Einführung zum Image `ibmcloud-secure-perimeter-health`
@@ -20,11 +27,11 @@ lastupdated: "2019-01-03"
 Das Image `ibmcloud-secure-perimeter-health` enthält ein Tool für das Scannen nach Sicherheitslücken in einem Secure Perimeter in {{site.data.keyword.cloud}}.
 {:shortdesc}
 
-Sie können auf die von {{site.data.keyword.IBM_notm}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry/registry_public_images.html#public_images).
+Sie können auf die von {{site.data.keyword.IBM_notm}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
 ## Funktionsweise
-{: #how-it-works}
+{: #sph_how-it-works}
 
 Damit sichergestellt wird, dass Secure Perimeter korrekt funktioniert, kann `ibmcloud-secure-perimeter-health` öffentliche oder private Netze in Ihrem {{site.data.keyword.cloud_notm}}-Infrastrukturkonto scannen und potenzielle Sicherheitslücken melden. Für die Verwendung des Images **ibmcloud-secure-perimeter-health** stehen zwei Möglichkeiten zur Verfügung:
 
@@ -61,7 +68,7 @@ sp-gateway-8a9031ab:
 {: screen}
 
 ## Enthaltene Elemente
-{: #whats_included}
+{: #sph_whats_included}
 
 Das `ibmcloud-secure-perimeter-health`-Image bietet die folgenden Softwarepakete.
 {:shortdesc}
@@ -71,20 +78,8 @@ Das `ibmcloud-secure-perimeter-health`-Image bietet die folgenden Softwarepakete
 - SoftLayer-Python-Client
 - Nmap-Portscanner
 
-## Einführung
-{: #how_to_get_started}
-
-Die folgenden Aufgaben beschreiben die Verwendung von `ibmcloud-secure-perimeter-health`:
-
-1. [Bereitstellen eines Kubernetes-Clusters in einem Secure Perimeter mit {{site.data.keyword.containerlong_notm}}](#provision_cluster)
-2. [Scannen von privaten Netzen in einem Secure Perimeter](#private_networks)
-3. [Scannen von öffentlichen Netzen außerhalb eines Secure Perimeter](#public_networks)
-4. [Interpretieren von Scanergebnissen](#scan_results)
-5. [Referenzinformationen zu Containerargumenten](#reference_container_arg)
-6. [Referenzinformationen zu Umgebungsvariablen](#reference_env_var)
-
 ## Bereitstellen eines Kubernetes-Clusters in einem Secure Perimeter mit {{site.data.keyword.containerlong_notm}}
-{: #provision_cluster}
+{: #sph_provision_cluster}
 
 1. Stellen Sie den Kubernetes-Cluster im Abschnitt **Container** im {{site.data.keyword.cloud_notm}}-Katalog bereit.
 2. Klicken Sie auf **Erstellen**.
@@ -92,17 +87,17 @@ Die folgenden Aufgaben beschreiben die Verwendung von `ibmcloud-secure-perimeter
 4. Geben Sie alle weiteren erforderlichen Details ein.
 5. Klicken Sie auf **Cluster erstellen**.
 
-Informationen zum Einrichten des Zugriffs auf den Cluster nach seiner Bereitstellung finden Sie in der [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index)-Dokumentation.
+Informationen zum Einrichten des Zugriffs auf den Cluster nach seiner Bereitstellung finden Sie in der [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index)-Dokumentation.
 
 ## Scannen von privaten Netzen in einem Secure Perimeter
-{: #private_networks}
+{: #sph_private_networks}
 
 Erstellen Sie einen Container-Pod, der auf dem Image `ibmcloud-secure-perimeter-health` basiert, und richten Sie einen Routinescan ein.
 
 **Vorbereitende Schritte**
 
-- Installieren Sie die erforderlichen [Befehlszeilenschnittstellen (CLIs)](/docs/containers/cs_cli_install.html#cs_cli_install).
-- [Geben Sie Ihren Cluster als Ziel in der Befehlszeilenschnittstelle an.](/docs/containers/cs_cli_install.html#cs_cli_configure)
+- Installieren Sie die erforderlichen [Befehlszeilenschnittstellen (CLIs)](/docs/containers?topic=containers-cs_cli_install#cs_cli_install).
+- [Geben Sie Ihren Cluster als Ziel in der Befehlszeilenschnittstelle an.](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure)
 
 1. Erstellen Sie eine Konfigurationsdatei mit dem Namen _health-pod.yaml_. Mit dieser Datei wird eine Hochverfügbarkeitsbereitstellung des Container-Pods erstellt.
 
@@ -138,7 +133,7 @@ Erstellen Sie einen Container-Pod, der auf dem Image `ibmcloud-secure-perimeter-
               value: <API-Schlüssel für die IBM Cloud-Infrastruktur>
     ```
     {: codeblock}
-
+    
 2. Erstellen Sie die Bereitstellung.
 
     ```
@@ -160,7 +155,7 @@ Erstellen Sie einen Container-Pod, der auf dem Image `ibmcloud-secure-perimeter-
     {: screen}
 
 ## Scannen von öffentlichen Netzen außerhalb eines Secure Perimeter
-{: #public_networks}
+{: #sph_public_networks}
 
 Erstellen Sie einen Docker-Container, der auf dem Image `ibmcloud-secure-perimeter-health` basiert, und scannen Sie öffentliche Netze.
 
@@ -175,10 +170,10 @@ Erstellen Sie einen Docker-Container, der auf dem Image `ibmcloud-secure-perimet
     ```
     {: pre}
 
-2. Nachdem der Container einen Bericht generiert hat, lesen Sie die Informationen im Abschnitt [Scanergebnisse analysieren](#scan_results), um die Ergebnisse zu interpretieren.
+2. Nachdem der Container einen Bericht generiert hat, lesen Sie die Informationen im Abschnitt [Scanergebnisse analysieren](#sph_scan_results), um die Ergebnisse zu interpretieren.
 
 ## Scanergebnisse analysieren
-{: #scan_results}
+{: #sph_scan_results}
 
 `ibmcloud-secure-perimeter-health` generiert einen formatierten Bericht zum Secure Perimeter-Funktionsstatus:
 
@@ -218,7 +213,7 @@ Das Format des Berichts ist im Folgenden dargestellt:
 Das Image `ibmcloud-secure-perimeter-health` gibt für ein Teilnetz den Status `PASS` ('Bestanden') zurück, wenn kein Host im Teilnetz erreichbar war; andernfalls wird der Status `FAIL` ('Nicht bestanden') zurückgegeben und eine Liste der erreichbaren Host sowie der zugänglichen Ports wird ausgegeben.
 
 ## Referenzinformationen zu Containerargumenten
-{: #reference_container_arg}
+{: #sph_reference_container_arg}
 
 |Schlüssel|Beschreibung|Standardwert
 |---|-------------|---|
@@ -229,7 +224,7 @@ Das Image `ibmcloud-secure-perimeter-health` gibt für ein Teilnetz den Status `
 {: caption="Tabelle 1. Containerargumente" caption-side="top"}
 
 ## Referenzinformationen zu Umgebungsvariablen
-{: #reference_env_var}
+{: #sph_reference_env_var}
 
 |Schlüssel|Beschreibung|
 |---|-------------|

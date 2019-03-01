@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-02-21"
+
+keywords: ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
+
+subcollection: RegistryImages
 
 ---
 
@@ -12,6 +16,9 @@ lastupdated: "2019-01-03"
 {:screen: .screen}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
 # Introdução à imagem `ibmcloud-secure-perimeter-health`
@@ -20,11 +27,11 @@ lastupdated: "2019-01-03"
 A imagem `ibmcloud-secure-perimeter-health` contém uma ferramenta para varrer as vulnerabilidades em um perímetro seguro no {{site.data.keyword.cloud}}.
 {:shortdesc}
 
-É possível acessar as imagens que são fornecidas pela {{site.data.keyword.IBM_notm}} usando a linha de comandos. Consulte [Imagens públicas da IBM](/docs/services/Registry/registry_public_images.html#public_images).
+É possível acessar as imagens que são fornecidas pela {{site.data.keyword.IBM_notm}} usando a linha de comandos. Consulte [Imagens públicas da IBM](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
 ## Como ele Funciona
-{: #how-it-works}
+{: #sph_how-it-works}
 
 Para assegurar que o perímetro seguro esteja funcionando adequadamente, o `ibmcloud-secure-perimeter-health` pode varrer as redes públicas ou privadas em sua conta de infraestrutura do {{site.data.keyword.cloud_notm}} e relatar as vulnerabilidades. É possível usar a imagem **ibmcloud-secure-perimeter-health** de duas maneiras:
 
@@ -61,7 +68,7 @@ sp-gateway-8a9031ab:
 {: screen}
 
 ## O que está incluído
-{: #whats_included}
+{: #sph_whats_included}
 
 A imagem `ibmcloud-secure-perimeter-health` fornece os pacotes de software a seguir.
 {:shortdesc}
@@ -71,20 +78,8 @@ A imagem `ibmcloud-secure-perimeter-health` fornece os pacotes de software a seg
 - Cliente Python do SoftLayer
 - Scanner de porta Nmap
 
-## Iniciar
-{: #how_to_get_started}
-
-Revise as tarefas a seguir para aprender a usar `ibmcloud-secure-perimeter-health`:
-
-1. [Provisionar um cluster do Kubernetes dentro de um perímetro seguro usando o {{site.data.keyword.containerlong_notm}}](#provision_cluster)
-2. [Varrer as redes privadas dentro de um perímetro seguro](#private_networks)
-3. [Varrer as redes públicas fora de um perímetro seguro](#public_networks)
-4. [Entendendo os resultados da varredura](#scan_results)
-5. [Referência de argumento do contêiner](#reference_container_arg)
-6. [Referência de variável de ambiente](#reference_env_var)
-
 ## Provisionar um cluster do Kubernetes dentro de um Perímetro seguro usando o {{site.data.keyword.containerlong_notm}}
-{: #provision_cluster}
+{: #sph_provision_cluster}
 
 1. Forneça o cluster do Kubernetes por meio da seção **Contêineres** no catálogo do {{site.data.keyword.cloud_notm}}.
 2. Clique em **Criar**.
@@ -92,17 +87,17 @@ Revise as tarefas a seguir para aprender a usar `ibmcloud-secure-perimeter-healt
 4. Insira todos os outros detalhes, conforme necessário.
 5. Clique em  ** Criar Cluster **.
 
-Revise a documentação do [{{site.data.keyword.containerlong_notm}}](/docs/containers/container_index.html#container_index) sobre como obter acesso ao seu cluster após ele ser implementado.
+Revise a documentação do [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) sobre como obter acesso ao seu cluster após ele ser implementado.
 
 ## Varrer as redes privadas em um perímetro seguro
-{: #private_networks}
+{: #sph_private_networks}
 
 Crie um pod de contêiner por meio da imagem `ibmcloud-secure-perimeter-health` e configure uma varredura de rotina.
 
 **Antes de começar**
 
-- Instale as [CLIs](/docs/containers/cs_cli_install.html#cs_cli_install) necessárias.
-- [Destine sua CLI](/docs/containers/cs_cli_install.html#cs_cli_configure) para seu cluster.
+- Instale as [CLIs](/docs/containers?topic=containers-cs_cli_install#cs_cli_install) necessárias.
+- [Destine sua CLI](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure) para seu cluster.
 
 1. Crie um arquivo de configuração denominado _health-pod.yaml_. Esse arquivo cria uma implementação altamente disponível do pod do contêiner.
 
@@ -138,7 +133,7 @@ Crie um pod de contêiner por meio da imagem `ibmcloud-secure-perimeter-health` 
               valor: <IBM Cloud infrastructure api key>
     ```
     {: codeblock}
-
+    
 2. Crie a implementação.
 
     ```
@@ -160,7 +155,7 @@ Crie um pod de contêiner por meio da imagem `ibmcloud-secure-perimeter-health` 
     {: screen}
 
 ## Varrer as redes públicas fora de um perímetro seguro
-{: #public_networks}
+{: #sph_public_networks}
 
 Crie um contêiner do Docker por meio da imagem `ibmcloud-secure-perimeter-healt` e varra as redes públicas.
 
@@ -175,10 +170,10 @@ Crie um contêiner do Docker por meio da imagem `ibmcloud-secure-perimeter-healt
     ```
     {: pre}
 
-2. Depois que o contêiner produzir um relatório, revise a seção [Analisando os resultados da varredura](#scan_results) para entender os resultados.
+2. Depois que o contêiner produzir um relatório, revise a seção [Analisando os resultados da varredura](#sph_scan_results) para entender os resultados.
 
 ## Analisando os resultados da varredura
-{: #scan_results}
+{: #sph_scan_results}
 
 A `ibmcloud-secure-perimeter-health` produz um relatório formatado sobre o funcionamento de um perímetro seguro:
 
@@ -218,7 +213,7 @@ O formato do relatório é o seguinte:
 A `ibmcloud-secure-perimeter-health` determinará uma sub-rede como `PASS` se nenhum host na sub-rede estiver acessível, caso contrário, retornará com `FAIL` e listará os hosts que estavam acessíveis, juntamente com as portas que estavam acessíveis.
 
 ## Referência de argumento do contêiner
-{: #reference_container_arg}
+{: #sph_reference_container_arg}
 
 |Chave|Descrição|Padrão
 |---|-------------|---|
@@ -233,7 +228,7 @@ lista de desbloqueio da varredura|80, 443, 9000-9999
 {: caption="Tabela 1. Argumentos do contêiner" caption-side="top"}
 
 ## Referência de variável de ambiente
-{: #reference_env_var}
+{: #sph_reference_env_var}
 
 |Chave|Descrição|
 |---|-------------|
