@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2019
 lastupdated: "2019-02-26"
 
-keywords: mysql image, Data Shield environment, container image, public image
+keywords: IBM Cloud Container Registry, Data Shield environment, mysql image, container image, public image
 
 subcollection: RegistryImages
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # Getting started with the `datashield-mysql` image
 {: #datashield-mysql_starter}
 
-This container image runs MariaDB in the Data Shield environment, providing protection for data in use.
+This container image runs MariaDB in the Data Shield environment, providing protection for your data.
 {:shortdesc}
 
 You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
