@@ -155,7 +155,7 @@ subcollection: RegistryImages
      volumes:
      - name: backup-volume
        persistentVolumeClaim:
-         claimName: <pvc_name>
+         claimName: <pvc_name>  
    ```
    {: codeblock}
    
@@ -364,7 +364,7 @@ subcollection: RegistryImages
 1. <a href="https://www.gnupg.org/download/index.html" target="_blank">GnuPG <img src="../../../icons/launch-glyph.svg" alt="外部リンク・アイコン"></a> をダウンロードして暗号鍵を作成します。
 2. ローカル・ドライブで暗号鍵を作成します。 ENTER を押して、デフォルト値を受け入れることができます。
 
-    作成したパスフレーズをメモします。パスフレーズを紛失すると、鍵を使用して暗号化した情報を復号できなくなります。
+    作成したパスフレーズをメモします。 パスフレーズを紛失すると、鍵を使用して暗号化した情報を復号できなくなります。
     {: important}
 
     ```
@@ -550,7 +550,7 @@ subcollection: RegistryImages
 
 13. バックアップが暗号化されたことを確認するために、{{site.data.keyword.cos_full_notm}} サービス・インスタンス内のファイルを確認します。 ファイル名の最後に、`.gpg` が付加されています。
 
-バックアップが暗号化されました。 ファイルをリストアするには、[{{site.data.keyword.cos_full_notm}} からクラスター内の PVC へのデータのリストア](#backup_restore_restore_script_cli)の手順に従って、リストア処理を実行するポッドの `backup_restore` ディレクトリーに `encryption.asc` ファイルを含めます。バックアップが暗号化されている場合は、リストア・ポッドの作成時に、**ENCRYPTION_REQUIRED** と **ENCRYPTION_PASSPHRASE** の環境変数を指定する必要があります。
+バックアップが暗号化されました。 ファイルをリストアするには、[{{site.data.keyword.cos_full_notm}} からクラスター内の PVC へのデータのリストア](#backup_restore_restore_script_cli)の手順に従って、リストア処理を実行するポッドの `backup_restore` ディレクトリーに `encryption.asc` ファイルを含めます。 バックアップが暗号化されている場合は、リストア・ポッドの作成時に、**ENCRYPTION_REQUIRED** と **ENCRYPTION_PASSPHRASE** の環境変数を指定する必要があります。
 
 ## 環境変数リファレンス
 {: #backup_restore_env_reference}

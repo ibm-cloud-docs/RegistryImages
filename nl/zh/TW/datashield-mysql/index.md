@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-02-26"
 
 keywords: mysql image, Data Shield environment, container image, public image
 
@@ -114,7 +114,7 @@ Data Shield MariaDB 映像檔需要用戶端連線使用 TLS。視您的用戶�
     <td>啟用抄寫。選項包括 <code>master</code> 或 <code>slave</code>。</td>
   </tr>
   <tr>
-    <td><code>YSQL_REPLICATION_USER</code>（主節點或從屬節點）</td>
+    <td><code>MYSQL_REPLICATION_USER</code>（主節點或從屬節點）</td>
     <td>設定抄寫使用者的名稱。這個使用者會建立在主節點上，並由從屬節點用來連接。</td>
   </tr>
   <tr>

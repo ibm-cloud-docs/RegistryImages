@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-02-26"
 
 keywords: mysql image, Data Shield environment, container image, public image
 
@@ -114,7 +114,7 @@ Verifique la siguiente tabla para ver las variables de entorno que acepta el con
     <td>Permite la réplica. Las opciones incluyen <code>master</code> o <code>slave</code>.</td>
   </tr>
   <tr>
-    <td><code>YSQL_REPLICATION_USER</code> (maestro o esclavo)</td>
+    <td><code>MYSQL_REPLICATION_USER</code> (maestro o esclavo)</td>
     <td>Establece el nombre del usuario de réplica. Este usuario se ha creado en maestro y lo utiliza el esclavo para conectarse.</td>
   </tr>
   <tr>

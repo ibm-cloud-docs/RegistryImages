@@ -26,7 +26,7 @@ subcollection: RegistryImages
 # IBM のパブリック・イメージ
 {: #ibm_images}
 
-{{site.data.keyword.containerlong}} でパブリック・イメージを使用してコンテナーを作成できます。{{site.data.keyword.Bluemix_notm}} で独自のプライベート・イメージ・レジストリーを作成するには、[{{site.data.keyword.registrylong_notm}} の概説](/docs/services/Registry?topic=registry-index#index)を参照してください。
+{{site.data.keyword.containerlong}} でパブリック・イメージを使用してコンテナーを作成できます。 {{site.data.keyword.Bluemix_notm}} で独自のプライベート・イメージ・レジストリーを作成するには、[{{site.data.keyword.registrylong_notm}} の概説](/docs/services/Registry?topic=registry-index#index)を参照してください。
 {:shortdesc}
 
 {{site.data.keyword.IBM}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry?topic=registry-public_images#public_images)を参照してください。

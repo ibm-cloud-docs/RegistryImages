@@ -364,7 +364,7 @@ Chiffrez les données de votre instance {{site.data.keyword.cos_full_notm}}.
 1. Téléchargez <a href="https://www.gnupg.org/download/index.html" target="_blank">GnuPG <img src="../../../icons/launch-glyph.svg" alt="Icône de lien externe"></a> pour créer une clé de chiffrement.
 2. Créez une clé de chiffrement sur votre unité locale. Vous pouvez accepter les valeurs par défaut en appuyant sur la touche Entrée.
 
-     Notez la phrase passe que vous créez. Si vous perdez votre phrase passe, les informations chiffrées avec votre clé ne peuvent pas être déchiffrées.
+    Notez la phrase passe que vous créez. Si vous perdez votre phrase passe, les informations chiffrées avec votre clé ne peuvent pas être déchiffrées.
     {: important}
 
     ```

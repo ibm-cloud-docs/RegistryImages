@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-02-26"
 
 keywords: mysql image, Data Shield environment, container image, public image
 
@@ -114,7 +114,7 @@ Le tableau suivant répertorie les variables d'environnement que le conteneur Ma
     <td>Active la réplication. Les options incluent <code>maître</code> ou <code>esclave</code>.</td>
   </tr>
   <tr>
-    <td><code>YSQL_REPLICATION_USER</code> (maître ou esclave)</td>
+    <td><code>MYSQL_REPLICATION_USER</code> (maître ou esclave)</td>
     <td>Définit le nom de l'utilisateur de la réplication. Cet utilisateur est créé sur le maître et est utilisé par l'esclave pour se connecter.</td>
   </tr>
   <tr>

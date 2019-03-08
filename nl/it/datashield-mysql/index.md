@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-02-26"
 
 keywords: mysql image, Data Shield environment, container image, public image
 
@@ -114,7 +114,7 @@ Consulta la seguente tabella per vedere le variabili di ambiente accettate dal c
     <td>Abilita la replica. Le opzioni includono <code>master</code> o <code>slave</code>.</td>
   </tr>
   <tr>
-    <td><code>YSQL_REPLICATION_USER</code> (master o slave)</td>
+    <td><code>MYSQL_REPLICATION_USER</code> (master o slave)</td>
     <td>Imposta il nome dell'utente della replica. Questo utente viene creato sul master e viene utilizzato dallo slave per stabilire una connessione.</td>
   </tr>
   <tr>

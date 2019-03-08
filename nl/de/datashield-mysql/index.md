@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-02-26"
 
 keywords: mysql image, Data Shield environment, container image, public image
 
@@ -21,16 +21,16 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
-# Einführung zum Image `datashield-mysql`
+# Getting started with the `datashield-mysql` image
 {: #datashield-mysql_starter}
 
-Mit diesem Container-Image wird MariaDB in der Data Shield-Umgebung ausgeführt und bietet Schutz für Daten, die sich in Gebrauch befinden.
+This container image runs MariaDB in the Data Shield environment, providing protection for data in use.
 {:shortdesc}
 
-Sie können auf die von {{site.data.keyword.IBM}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry?topic=registry-public_images#public_images).
+You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
-Mithilfe der folgenden Kubernetes-Podspezifikationen können Sie das Image bereitstellen:
+You can use the following Kubernetes pod spec to deploy the image:
 
 ```
     apiVersion: v1
@@ -42,7 +42,7 @@ Mithilfe der folgenden Kubernetes-Podspezifikationen können Sie das Image berei
     spec:
       containers:
       - name: data-shield-mariadb
-        image: <Entsprechenden Imagenamen hier einfügen>
+        image: <TODO INSERT APPROPRIATE IMAGE NAME HERE>
         volumeMounts:
         - mountPath: /dev/isgx
           name: isgx
@@ -68,61 +68,61 @@ Mithilfe der folgenden Kubernetes-Podspezifikationen können Sie das Image berei
 ```
 {: codeblock}
 
-Sie können eine Verbindung zur MariaDB-Instanz herstellen, indem Sie den folgenden Befehl ausführen:
+You can connect to the MariaDB instance by running the following command:
 
 ```
     mysql -h <node> --protocol tcp -uroot
 ```
 {: pre}
 
-Für das Data Shield-MariaDB-Image ist es erforderlich, dass die Clientverbindungen TLS verwenden. Abhängig von der verwendeten Clientversion müssen Sie möglicherweise `--ssl` oder `--ssl-mode require` zur Clientbefehlszeile hinzufügen.
+The Data Shield MariaDB image requires that client connections use TLS. Depending on your client version, you might need to add `--ssl` or `--ssl-mode require` to the client command line.
 
-Die folgende Tabelle enthält die Umgebungsvariablen, die vom MariaDB-Container akzeptiert werden:
+Check out the following table to see the environment variables that the MariaDB container accepts:
 
 <table>
-<caption>Tabelle 1. Umgebungsvariablen, die vom MariaDB-Container akzeptiert werden</caption>
+<caption>Table 1. The environment variables that the MariaDB container accepts</caption>
   <tr>
     <th>Variable</th>
-    <th>Beschreibung</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>MYSQL_ROOT_PASSWORD</code></td>
-    <td>Kennwort für den MariaDB-Rootbenutzer festlegen. </td>
+    <td>Sets the password for the MariaDB root user.</td>
   </tr>
   <tr>
     <td><code>MYSQL_ALLOW_EMPTY_PASSWORD</code></td>
-    <td>Starten der Datenbank mit einem leeren Kennwort für den Rootbenutzer ermöglichen. Nicht empfohlen. </td>
+    <td>Allows the database to start with an empty password for the root user. Not recommended.</td>
   </tr>
   <tr>
     <td><code>MYSQL_RANDOM_ROOT_PASSWORD</code></td>
-    <td>Automatisch generiertes Kennwort für den MariaDB-Rootbenutzer erstellen. </td>
+    <td>Generates a random password for the MariaDB root user.</td>
   </tr>
   <tr>
     <td><code>MYSQL_USER</code></td>
-    <td>MariaDB-Standardbenutzer mit dem angegebenen Benutzernamen erstellen. </td>
+    <td>Creates a regular MariaDB user with the specified username.</td>
   </tr>
   <tr>
     <td><code>MYSQL_PASSWORD</code></td>
-    <td>Kennwort für <code>MYSQL_USER</code>. </td>
+    <td>Password for <code>MYSQL_USER</code>.</td>
   </tr>
   <tr>
     <td><code>MYSQL_DATABASE</code></td>
-    <td>Leere Datenbank mit dem angegebenen Namen erstellen. </td>
+    <td>Creates an empty database with the specified name.</td>
   </tr>
   <tr>
     <td><code>MYSQL_REPLICATION_MODE</code></td>
-    <td>Replikation aktivieren. Optionen sind <code>master</code> oder <code>slave</code>. </td>
+    <td>Enables replication. Options include <code>master</code> or <code>slave</code>.</td>
   </tr>
   <tr>
-    <td><code>YSQL_REPLICATION_USER</code> (master oder slave)</td>
-    <td>Namen des Replikationsbenutzers festlegen. Dieser Benutzer wird auf dem Mastersystem erstellt und vom Slavesystem für die Verbindungsherstellung verwendet. </td>
+    <td><code>MYSQL_REPLICATION_USER</code> (master or slave)</td>
+    <td>Sets the name of the replication user. This user is created on the master and is used by the slave to connect.</td>
   </tr>
   <tr>
     <td><code>MYSQL_REPLICATION_PASSWORD</code> (master or slave)</td>
-    <td>Kennwort für den Replikationsbenutzer festlegen. Dieses Kennwort wird auf dem Mastersystem verwendet, um den Benutzer zu erstellen; es wird vom Slavesystem für die Anmeldung verwendet. </td>
+    <td>Sets the password for the replication user. This password is used on the master to create the user and by the slave to log in.</td>
   </tr>
   <tr>
     <td><code>MYSQL_REPLICATION_MASTER_HOST</code> (slave)</td>
-    <td>Namen des Hosts festlegen, zu dem eine Verbindung für die Replikation hergestellt wird. </td>
+    <td>Sets the hostname to connect to for replication.</td>
   </tr>
 </table>

@@ -56,7 +56,7 @@ subcollection: RegistryImages
 - SoftLayer Python Client
 - Ansible
 
-## 선행 조건
+## 전제조건
 {: #spn_prerequisites}
 
 - Vyatta 및 VLAN은 IBM Cloud 인프라 포털을 통해 주문되었으며 VLAN은 Vyatta에 연관되어 있습니다.

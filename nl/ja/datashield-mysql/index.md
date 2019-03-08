@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-02-26"
 
 keywords: mysql image, Data Shield environment, container image, public image
 
@@ -91,7 +91,7 @@ MariaDB コンテナーで受け入れる環境変数を確認するには、次
   </tr>
   <tr>
     <td><code>MYSQL_ALLOW_EMPTY_PASSWORD</code></td>
-    <td>root ユーザーのパスワードが空でもデータベースを始動することを許可します。推奨されません。</td>
+    <td>root ユーザーのパスワードが空でもデータベースを始動することを許可します。 推奨されません。</td>
   </tr>
   <tr>
     <td><code>MYSQL_RANDOM_ROOT_PASSWORD</code></td>
@@ -111,15 +111,15 @@ MariaDB コンテナーで受け入れる環境変数を確認するには、次
   </tr>
   <tr>
     <td><code>MYSQL_REPLICATION_MODE</code></td>
-    <td>レプリケーションを使用可能にします。オプションには、<code>master</code> と <code>slave</code> があります。</td>
+    <td>レプリケーションを使用可能にします。 オプションには、<code>master</code> と <code>slave</code> があります。</td>
   </tr>
   <tr>
-    <td><code>YSQL_REPLICATION_USER</code> (master または slave)</td>
-    <td>レプリケーション・ユーザーの名前を設定します。このユーザーは master で作成され、slave によって接続のために使用されます。</td>
+    <td><code>MYSQL_REPLICATION_USER</code> (master または slave)</td>
+    <td>レプリケーション・ユーザーの名前を設定します。 このユーザーは master で作成され、slave によって接続のために使用されます。</td>
   </tr>
   <tr>
     <td><code>MYSQL_REPLICATION_PASSWORD</code> (master または slave)</td>
-    <td>レプリケーション・ユーザーのパスワードを設定します。このパスワードは、ユーザーを作成するために master で使用され、slave によってログインのために使用されます。</td>
+    <td>レプリケーション・ユーザーのパスワードを設定します。 このパスワードは、ユーザーを作成するために master で使用され、slave によってログインのために使用されます。</td>
   </tr>
   <tr>
     <td><code>MYSQL_REPLICATION_MASTER_HOST</code> (slave)</td>

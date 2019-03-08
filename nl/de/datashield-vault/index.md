@@ -21,16 +21,16 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
-# Einführung zum Image `datashield-vault`
+# Getting started with the `datashield-vault` image
 {: #datashield-vault_starter}
 
-Mit diesem Container-Image wird Vault in der Data Shield-Umgebung ausgeführt und bietet Schutz für Daten, die sich in Gebrauch befinden.
+This container image runs Vault in the Data Shield environment, providing protection for data in use.
 {:shortdesc}
 
-Sie können auf die von {{site.data.keyword.IBM}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry?topic=registry-public_images#public_images).
+You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
-Mithilfe der folgenden Kubernetes-Podspezifikationen können Sie das Image bereitstellen:
+You can use the following Kubernetes pod spec to deploy the image:
 
 ```
     apiVersion: v1
@@ -42,7 +42,7 @@ Mithilfe der folgenden Kubernetes-Podspezifikationen können Sie das Image berei
     spec:
       containers:
       - name: data-shield-vault
-        image: <Entsprechenden Imagenamen hier einfügen>
+        image: <TODO INSERT APPROPRIATE IMAGE NAME HERE>
         volumeMounts:
         - mountPath: /dev/isgx
           name: isgx
@@ -68,6 +68,6 @@ Mithilfe der folgenden Kubernetes-Podspezifikationen können Sie das Image berei
 ```
 {: codeblock}
 
-Verwenden Sie `kubectl get pod -owide` oder `kubectl describe pod`, um die Knoten-IP-Adresse für Ihre Vaultinstanz abzurufen. Legen Sie für die Umgebungsvariable `VAULT_ADDR` den Wert `http://<IP>:8200` fest, um auf die durch Data Shield geschützte Vaultinstanz zuzugreifen.
+Use `kubectl get pod -owide` or `kubectl describe pod` to look up the node IP address for your vault instance. Set the `VAULT_ADDR` environment variable to `http://<IP>:8200` to access the Data Shield-protected vault instance.
 
-Sie können Befehle der Vaultbefehlszeilenschnittstelle, wie z. B. `vault init`, `vault unseal`, `vault auth`, `vault write` und `vault read`, für die Authentifizierung und den Zugriff auf geheime Schlüssel verwenden. Weitere Informationen zur Verwendung der Vaultbefehlszeilenschnittstelle finden Sie in [Vaultbefehle (Befehlszeilenschnittstelle) ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://www.vaultproject.io/docs/commands/index.html).
+You can use vault CLI commands like `vault init`, `vault unseal`, `vault auth`, `vault write`, and `vault read` to authenticate and access secrets. For more information about how to use the Vault CLI, see [Vault Commands (CLI) ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.vaultproject.io/docs/commands/index.html).

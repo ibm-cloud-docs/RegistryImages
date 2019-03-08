@@ -23,11 +23,11 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
-# Öffentliche Images von IBM
+# Public IBM images
 {: #ibm_images}
 
-Sie können die öffentlichen Images verwenden, um Container in {{site.data.keyword.containerlong}} zu erstellen. Informationen zum Erstellen einer eigenen privaten Image-Registry in {{site.data.keyword.Bluemix_notm}} finden Sie in der [Einführung zu {{site.data.keyword.registrylong_notm}}](/docs/services/Registry?topic=registry-index#index).
+You can use the public images to create containers in {{site.data.keyword.containerlong}}. To create your own private image registry in {{site.data.keyword.Bluemix_notm}}, see [Getting started with {{site.data.keyword.registrylong_notm}}](/docs/services/Registry?topic=registry-index#index).
 {:shortdesc}
 
-Sie können auf die von {{site.data.keyword.IBM}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry?topic=registry-public_images#public_images).
+You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-02-26"
 
 keywords: mysql image, Data Shield environment, container image, public image
 
@@ -114,7 +114,7 @@ Data Shield MariaDB 映像要求客户机连接必须使用 TLS。您可能需�
     <td>启用复制。选项包括 <code>master</code> 或 <code>slave</code>。</td>
   </tr>
   <tr>
-    <td><code>YSQL_REPLICATION_USER</code>（master 或 slave）</td>
+    <td><code>MYSQL_REPLICATION_USER</code> （master 或 slave）</td>
     <td>设置复制用户的名称。此用户在主服务器上创建，由从属服务器在连接时使用。</td>
   </tr>
   <tr>
