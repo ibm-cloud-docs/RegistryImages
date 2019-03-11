@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # Getting started with the `datashield-mysql` image
 {: #datashield-mysql_starter}
 
-This container image provides protection for data in use by running MariaDB in the Data Shield environment.
+This container image provides protection for data that is in use by running MariaDB in the Data Shield environment.
 {: shortdesc}
 
 You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
