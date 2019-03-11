@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-26"
+lastupdated: "2019-03-11"
 
-keywords: IBM Cloud Container Registry, Data Shield environment, mysql image, container image, public image
+keywords: IBM Cloud Container Registry, Data Shield, data in use, memory encryption, intel sgx, fortanix, mysql image, container image, public image
 
 subcollection: RegistryImages
 
@@ -42,7 +42,7 @@ You can use the following Kubernetes pod spec to deploy the image:
   spec:
     containers:
     - name: data-shield-mariadb
-      image: <TODO INSERT APPROPRIATE IMAGE NAME HERE>
+      image: <INSERT APPROPRIATE IMAGE NAME HERE>
       env:
         name: MYSQL_ROOT_PASSWORD
         value: <TODO YOUR PASSWORD HERE>
@@ -71,6 +71,22 @@ You can use the following Kubernetes pod spec to deploy the image:
   ```
   {: pre}
   
+  <table>
+  <caption>Table 1. Required input variables</caption>
+    <tr>
+      <th>Variable</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td><code>name</code></td>
+      <td>The name of the image that you want to deploy.</td>
+    </tr>
+    <tr>
+      <td><code>value</code></td>
+      <td>Your MYSQL root password.</td>
+    </tr>
+  </table>
+  
 You can connect to the MariaDB instance by running:
 
   ```
@@ -83,7 +99,7 @@ The Data Shield MariaDB image requires that client connections use TLS. Dependin
 The MariaDB container accepts the following environment variables:
 
 <table>
-<caption>Table 1. The environment variables that the MariaDB container accepts</caption>
+<caption>Table 2. The environment variables that the MariaDB container accepts</caption>
   <tr>
     <th>Variable</th>
     <th>Description</th>
