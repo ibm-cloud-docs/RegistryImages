@@ -45,7 +45,7 @@ You can use the following Kubernetes pod spec to deploy the image:
       image: <INSERT APPROPRIATE IMAGE NAME HERE>
       env:
         name: MYSQL_ROOT_PASSWORD
-        value: <TODO YOUR PASSWORD HERE>
+        value: <INSERT YOUR PASSWORD HERE>
       volumeMounts:
       - mountPath: /dev/isgx
         name: isgx
