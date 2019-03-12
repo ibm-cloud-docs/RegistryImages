@@ -87,7 +87,7 @@ You can use the following Kubernetes pod spec to deploy the image:
     </tr>
   </table>
   
-You can connect to the MariaDB instance by running:
+You can connect to the MariaDB instance by running the following command:
 
   ```
   mysql -h <node> --protocol tcp -uroot
