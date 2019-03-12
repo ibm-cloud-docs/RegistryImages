@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-12"
 
-keywords: IBM Cloud Container Registry, Data Shield environment, container image, public image, vault image
+keywords: IBM Cloud Container Registry, Data Shield environment, container image, public image, vault image, data in use, memory encryption, intel sgx, fortanix,
 
 subcollection: RegistryImages
 
@@ -24,11 +24,15 @@ subcollection: RegistryImages
 # Getting started with the `datashield-vault` image
 {: #datashield-vault_starter}
 
-This container image runs Vault in the Data Shield environment, providing protection for your data.
-{:shortdesc}
+This container image provides protection for data that is in use by running Vault in the Data Shield environment. For more information about the service and what it means to protect your data in use, you can learn [about the service](/docs/services/data-shield?topic=data-shield-about#about).
+{: shortdesc}
 
 You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
+
+
+## Deploying the image
+{: #datashield-vault-deploy}
 
 You can use the following Kubernetes pod spec to deploy the image:
 

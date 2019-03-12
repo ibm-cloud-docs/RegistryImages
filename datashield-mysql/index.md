@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-03-13"
 
 keywords: IBM Cloud Container Registry, Data Shield, data in use, memory encryption, intel sgx, fortanix, mysql image, container image, public image
 
@@ -24,11 +24,14 @@ subcollection: RegistryImages
 # Getting started with the `datashield-mysql` image
 {: #datashield-mysql_starter}
 
-This container image provides protection for data that is in use by running MariaDB in the Data Shield environment.
+This container image provides protection for data that is in use by running MariaDB in the Data Shield environment. For more information about the service and what it means to protect your data in use, you can learn [about the service](/docs/services/data-shield?topic=data-shield-about#about).
 {: shortdesc}
 
 You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
+
+## Deploying the image
+{: datashield-mysql-deploy}
 
 You can use the following Kubernetes pod spec to deploy the image:
 
@@ -86,7 +89,11 @@ You can use the following Kubernetes pod spec to deploy the image:
       <td>Your MYSQL root password.</td>
     </tr>
   </table>
-  
+
+
+## Connecting to the MariaDB instance
+{: #datashield-mysql-connect}
+
 You can connect to the MariaDB instance by running the following command:
 
   ```
@@ -94,7 +101,11 @@ You can connect to the MariaDB instance by running the following command:
   ```
   {: pre}
   
-The Data Shield MariaDB image requires that client connections use TLS. Depending on your client version, you may need to add `--ssl` or `--ssl-moderequire` to the client command line.
+  The Data Shield MariaDB image requires that client connections use TLS. Depending on your client version, you may need to add `--ssl` or `--ssl-mode require` to the client command line.
+  {: note}
+
+### Accepted environment variables
+{: #datashield-mysql-variables}
 
 The MariaDB container accepts the following environment variables:
 
