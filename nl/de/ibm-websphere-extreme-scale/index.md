@@ -21,11 +21,11 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
-# `ibm-websphere-extreme-scale` public image
+# Öffentliches Image `ibm-websphere-extreme-scale`
 {: #extreme-scale}
 
-The `ibm-websphere-extreme-scale` image is no longer available.
+Das Image `ibm-websphere-extreme-scale` ist nicht mehr verfügbar.
 {: deprecated}
 
-You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
+Sie können auf die von {{site.data.keyword.IBM}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}

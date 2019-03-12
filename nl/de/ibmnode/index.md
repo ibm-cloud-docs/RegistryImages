@@ -21,11 +21,11 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
-# `ibmnode` public image
+# Öffentliches Image `ibmnode`
 {: #ibmnode}
 
-The `ibmnode` public image is no longer available.
+Das öffentliche Image `ibmnode` ist nicht mehr verfügbar.
 {: deprecated}
 
-You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
+Sie können auf die von {{site.data.keyword.IBM}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}

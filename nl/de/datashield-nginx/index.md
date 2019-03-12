@@ -21,16 +21,16 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
-# Getting started with the `datashield-nginx` image
+# Einführung zum Image `datashield-nginx`
 {: #datashield-nginx_starter}
 
-This container image runs NGINX in the Data Shield environment, providing protection for data in use.
+Mit diesem Container-Image wird NGINX in der Data Shield-Umgebung ausgeführt und bietet Schutz für Daten, die sich in Gebrauch befinden.
 {:shortdesc}
 
-You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
+Sie können auf die von {{site.data.keyword.IBM}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
-You can use the following Kubernetes pod spec to deploy the image:
+Mithilfe der folgenden Kubernetes-Podspezifikationen können Sie das Image bereitstellen:
 
 ```
     apiVersion: v1
@@ -42,7 +42,7 @@ You can use the following Kubernetes pod spec to deploy the image:
     spec:
       containers:
       - name: data-shield-nginx
-        image: <TODO INSERT APPROPRIATE IMAGE NAME HERE>
+        image: <Entsprechenden Imagenamen hier einfügen>
         volumeMounts:
         - mountPath: /dev/isgx
           name: isgx
@@ -68,4 +68,4 @@ You can use the following Kubernetes pod spec to deploy the image:
 ```
 {: codeblock}
 
-To provide your own content for NGINX to serve, place it under `/usr/local/nginx/html` in the container.
+Wenn Sie eigene Inhalte für die Bereitstellung durch NGINX angeben möchten, legen Sie sie unter `/usr/local/nginx/html` im Container ab.

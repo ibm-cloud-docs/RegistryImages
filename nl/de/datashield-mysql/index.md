@@ -21,16 +21,16 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
-# Getting started with the `datashield-mysql` image
+# Einführung zum Image `datashield-mysql`
 {: #datashield-mysql_starter}
 
-This container image runs MariaDB in the Data Shield environment, providing protection for data in use.
+Mit diesem Container-Image wird MariaDB in der Data Shield-Umgebung ausgeführt und bietet Schutz für Daten, die sich in Gebrauch befinden.
 {:shortdesc}
 
-You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
+Sie können auf die von {{site.data.keyword.IBM}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
-You can use the following Kubernetes pod spec to deploy the image:
+Mithilfe der folgenden Kubernetes-Podspezifikationen können Sie das Image bereitstellen:
 
 ```
     apiVersion: v1
@@ -42,7 +42,7 @@ You can use the following Kubernetes pod spec to deploy the image:
     spec:
       containers:
       - name: data-shield-mariadb
-        image: <TODO INSERT APPROPRIATE IMAGE NAME HERE>
+        image: <Entsprechenden Imagenamen hier einfügen>
         volumeMounts:
         - mountPath: /dev/isgx
           name: isgx
@@ -68,61 +68,61 @@ You can use the following Kubernetes pod spec to deploy the image:
 ```
 {: codeblock}
 
-You can connect to the MariaDB instance by running the following command:
+Sie können eine Verbindung zur MariaDB-Instanz herstellen, indem Sie den folgenden Befehl ausführen:
 
 ```
     mysql -h <node> --protocol tcp -uroot
 ```
 {: pre}
 
-The Data Shield MariaDB image requires that client connections use TLS. Depending on your client version, you might need to add `--ssl` or `--ssl-mode require` to the client command line.
+Für das Data Shield-MariaDB-Image ist es erforderlich, dass die Clientverbindungen TLS verwenden. Abhängig von der verwendeten Clientversion müssen Sie möglicherweise `--ssl` oder `--ssl-mode require` zur Clientbefehlszeile hinzufügen.
 
-Check out the following table to see the environment variables that the MariaDB container accepts:
+Die folgende Tabelle enthält die Umgebungsvariablen, die vom MariaDB-Container akzeptiert werden:
 
 <table>
-<caption>Table 1. The environment variables that the MariaDB container accepts</caption>
+<caption>Tabelle 1. Umgebungsvariablen, die vom MariaDB-Container akzeptiert werden</caption>
   <tr>
     <th>Variable</th>
-    <th>Description</th>
+    <th>Beschreibung</th>
   </tr>
   <tr>
     <td><code>MYSQL_ROOT_PASSWORD</code></td>
-    <td>Sets the password for the MariaDB root user.</td>
+    <td>Kennwort für den MariaDB-Rootbenutzer festlegen.</td>
   </tr>
   <tr>
     <td><code>MYSQL_ALLOW_EMPTY_PASSWORD</code></td>
-    <td>Allows the database to start with an empty password for the root user. Not recommended.</td>
+    <td>Starten der Datenbank mit einem leeren Kennwort für den Rootbenutzer ermöglichen. Nicht empfohlen.</td>
   </tr>
   <tr>
     <td><code>MYSQL_RANDOM_ROOT_PASSWORD</code></td>
-    <td>Generates a random password for the MariaDB root user.</td>
+    <td>Automatisch generiertes Kennwort für den MariaDB-Rootbenutzer erstellen.</td>
   </tr>
   <tr>
     <td><code>MYSQL_USER</code></td>
-    <td>Creates a regular MariaDB user with the specified username.</td>
+    <td>MariaDB-Standardbenutzer mit dem angegebenen Benutzernamen erstellen.</td>
   </tr>
   <tr>
     <td><code>MYSQL_PASSWORD</code></td>
-    <td>Password for <code>MYSQL_USER</code>.</td>
+    <td>Kennwort für <code>MYSQL_USER</code>.</td>
   </tr>
   <tr>
     <td><code>MYSQL_DATABASE</code></td>
-    <td>Creates an empty database with the specified name.</td>
+    <td>Leere Datenbank mit dem angegebenen Namen erstellen.</td>
   </tr>
   <tr>
     <td><code>MYSQL_REPLICATION_MODE</code></td>
-    <td>Enables replication. Options include <code>master</code> or <code>slave</code>.</td>
+    <td>Replikation aktivieren. Optionen sind <code>master</code> oder <code>slave</code>.</td>
   </tr>
   <tr>
-    <td><code>MYSQL_REPLICATION_USER</code> (master or slave)</td>
-    <td>Sets the name of the replication user. This user is created on the master and is used by the slave to connect.</td>
+    <td><code>MYSQL_REPLICATION_USER</code> (master oder slave)</td>
+    <td>Namen des Replikationsbenutzers festlegen. Dieser Benutzer wird auf dem Mastersystem erstellt und vom Slavesystem für die Verbindungsherstellung verwendet.</td>
   </tr>
   <tr>
-    <td><code>MYSQL_REPLICATION_PASSWORD</code> (master or slave)</td>
-    <td>Sets the password for the replication user. This password is used on the master to create the user and by the slave to log in.</td>
+    <td><code>MYSQL_REPLICATION_PASSWORD</code> (master oder slave)</td>
+    <td>Kennwort für den Replikationsbenutzer festlegen. Dieses Kennwort wird auf dem Mastersystem verwendet, um den Benutzer zu erstellen; es wird vom Slavesystem für die Anmeldung verwendet.</td>
   </tr>
   <tr>
     <td><code>MYSQL_REPLICATION_MASTER_HOST</code> (slave)</td>
-    <td>Sets the hostname to connect to for replication.</td>
+    <td>Namen des Hosts festlegen, zu dem eine Verbindung für die Replikation hergestellt wird.</td>
   </tr>
 </table>

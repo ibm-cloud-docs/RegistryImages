@@ -21,16 +21,16 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
-# Getting started with the `datashield-barbican` image
+# Einführung zum Image `datashield-barbican`
 {: #datashield-barbican_starter}
 
-This container image runs Barbican in the Data Shield environment, providing protection for data that is in use.
+Mit diesem Container-Image wird Barbican in der Data Shield-Umgebung ausgeführt und bietet Schutz für Daten, die sich in Gebrauch befinden.
 {:shortdesc}
 
-You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
+Sie können auf die von {{site.data.keyword.IBM}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
-You can use the following Kubernetes pod specification to deploy the image:
+Mithilfe der folgenden Kubernetes-Podspezifikationen können Sie das Image bereitstellen:
 
 ```
     apiVersion: v1
@@ -42,7 +42,7 @@ You can use the following Kubernetes pod specification to deploy the image:
     spec:
       containers:
       - name: data-shield-barbican
-        image: <TODO INSERT APPROPRIATE IMAGE NAME HERE>
+        image: <Entsprechenden Imagenamen hier einfügen>
         volumeMounts:
         - mountPath: /dev/isgx
           name: isgx
@@ -68,10 +68,10 @@ You can use the following Kubernetes pod specification to deploy the image:
 ```
 {: codeblock}
 
-It might take a few minutes for the container to deploy and start. The demonstration Barbican instance is configured without Keystone authentication. Requests must include the header `X-Project-Id: 12345`
+Das Bereitstellen und Starten des Containers kann einige Minuten in Anspruch nehmen. Die Barbican-Demonstrationsinstanz ist ohne Keystone-Authentifizierung konfiguriert. Anforderungen müssen den Header `X-Project-Id: 12345` enthalten.
 {: tip}
 
-You can create a secret in the Barbican demonstration instance by running the following command:
+Sie können einen geheimen Schlüssel in der Barbican-Demonstrationsinstanz erstellen, indem Sie den folgenden Befehl ausführen:
 
 ```
     curl -sS -X POST -H 'content-type:application/json' -H 'X-Project-Id: 12345' -d \
@@ -80,7 +80,7 @@ You can create a secret in the Barbican demonstration instance by running the fo
 ```
 {: pre}
     
-The response contains the URL for the created secret. You can retrieve the secret by running the following command:
+Die Antwort enthält die URL für den erstellten geheimen Schlüssel. Sie können den geheimen Schlüssel abrufen, indem Sie den folgenden Befehl ausführen:
 
 ```
     curl -sS -H 'X-Project-Id: 12345' <url>

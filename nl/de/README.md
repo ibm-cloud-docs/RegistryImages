@@ -1,5 +1,5 @@
-# RegistryImages
+# Registry-Images
 
-Documentation for [IBM public images in IBM Cloud Container Registry service](https://cloud.ibm.com/docs/services/Registry?topic=registry-public_images#public_images).
+Dokumentation für [öffentliche IBM Images im IBM Cloud Container Registry-Service](https://cloud.ibm.com/docs/services/Registry?topic=registry-public_images#public_images).
 
-Find more [IBM public images on Docker Hub](https://hub.docker.com/u/ibmcom/). **Note**: The [IBM Node (`ibmnode`) image](https://hub.docker.com/r/ibmcom/ibmnode/) is now hosted in Docker Hub.
+Weitere [öffentliche IBM Images in Docker Hub](https://hub.docker.com/u/ibmcom/). **Hinweis**: Das Image [IBM Node (`ibmnode`)](https://hub.docker.com/r/ibmcom/ibmnode/) wird nun in Docker Hub bereitgestellt.

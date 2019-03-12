@@ -21,13 +21,13 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
-# `ibm-node-strong-pm` public image
+# Öffentliches Image `ibm-node-strong-pm`
 {: #node-strong}
 
-The `ibm-node-strong-pm` public image is no longer available.
+Das öffentliche Image `ibm-node-strong-pm` ist nicht mehr verfügbar.
 {: deprecated}
 
-You can get started with the [{{site.data.keyword.apiconnect_short}} service](/docs/services/apiconnect?topic=apiconnect-index#index) instead.
+Sie können stattdessen den Service [{{site.data.keyword.apiconnect_short}}](/docs/services/apiconnect?topic=apiconnect-index#index) verwenden.
 
-You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
+Sie können auf die von {{site.data.keyword.IBM}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
