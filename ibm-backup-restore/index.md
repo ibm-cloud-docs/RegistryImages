@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -50,7 +50,7 @@ Every `ibm-backup-restore` image contains the following software packages:
 
 - Alpine 3.7
 - Duplicity 0.7.10
-- python, and gpgme packages
+- Python, and  GnuPG Made Easy (GPGME) packages
 
 ## Setting up an {{site.data.keyword.cos_full_notm}} service instance
 {: #backup_restore_setup_object_storage}
@@ -162,7 +162,7 @@ To back up an existing PV, complete the following steps:
    <table>
    <caption>Table 1. YAML file components</caption>
    <thead>
-   <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> Understanding the yaml file components</th>
+   <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> Understanding the YAML file components</th>
    </thead>
     <tbody>
      <tr>
@@ -288,7 +288,7 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the f
    <table>
    <caption>Table 2. YAML file components</caption>
    <thead>
-   <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> Understanding the yaml file components</th>
+   <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> Understanding the YAML file components</th>
    </thead>
     <tbody>
      <tr>
@@ -338,7 +338,7 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the f
     ```
     {: screen}
 
-    The pod runs the restore command and stops. The _CrashLoopBackOff_ message means Kubernetes is attempting to restart the pod.
+    The pod runs the restore command and stops. The `CrashLoopBackOff` message means Kubernetes is attempting to restart the pod.
 
 5. Remove the pod to prevent the pod from consuming more resources.
 
@@ -461,7 +461,7 @@ Encrypt the data in your {{site.data.keyword.cos_full_notm}} instance.
     <table>
     <caption>Table 3. YAML file components</caption>
     <thead>
-    <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> Understanding the yaml file components</th>
+    <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> Understanding the YAML file components</th>
     </thead>
      <tbody>
      <tr>
