@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
-keywords: IBM Cloud Container Registry, Data Shield environment, nginx image, container image, public image
+keywords: IBM Cloud Container Registry, Data Shield environment, nginx image, container image, public image, data in use, memory encryption, intel sgx, fortanix,
 
 subcollection: RegistryImages
 
@@ -24,11 +24,14 @@ subcollection: RegistryImages
 # Getting started with the `datashield-nginx` image
 {: #datashield-nginx_starter}
 
-This container image runs NGINX in the Data Shield environment, providing protection for your data.
-{:shortdesc}
+This container image provides protection for data that is in use by running NGINX in the Data Shield environment. For more information about the service and what it means to protect "data in use", see the [IBM Cloud Data Shield documentation](/docs/services/data-shield?topic=data-shield-about#about).
+{: shortdesc}
 
 You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
+
+## Deploying the image
+{: datashield-nginx-deploy}
 
 You can use the following Kubernetes pod spec to deploy the image:
 
@@ -42,7 +45,7 @@ You can use the following Kubernetes pod spec to deploy the image:
     spec:
       containers:
       - name: data-shield-nginx
-        image: <TODO INSERT APPROPRIATE IMAGE NAME HERE>
+        image: <IMAGE_NAME>
         volumeMounts:
         - mountPath: /dev/isgx
           name: isgx
@@ -66,6 +69,19 @@ You can use the following Kubernetes pod spec to deploy the image:
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: codeblock}
+{: pre}
+
+<table>
+<caption>Table 1. Required input variables</caption>
+  <tr>
+    <th>Variable</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>IMAGE_NAME</code></td>
+    <td>The name of the image that you want to deploy.</td>
+  </tr>
+</table>
 
 To provide your own content for NGINX to serve, place it under `/usr/local/nginx/html` in the container.
+{: tip}
