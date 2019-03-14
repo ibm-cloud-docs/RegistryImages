@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-13"
+lastupdated: "2019-03-14"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
 
@@ -217,10 +217,10 @@ The `ibmcloud-secure-perimeter-health` determines a subnet as `PASS` if no hosts
 
 |Key|Description|Default
 |---|-------------|---|
-|scan|The type of exposure scan ("public" or "private") |None (scan both)
-|exclude-vlan-ids|List of VLANs by IDs to avoid scanning|None
-|poll-interval|Set the number of seconds until the next scan|0 (run once)
-|allowed-public-ports|List of ports to whitelist under the scan|80, 443, 9000-9999
+|`scan`|The type of exposure scan ("public" or "private") |None (scan both)
+|`exclude-vlan-ids`|List of VLANs by IDs to avoid scanning|None
+|`poll-interval`|Set the number of seconds until the next scan|0 (run once)
+|`allowed-public-ports`|List of ports to whitelist under the scan|80, 443, 9000-9999
 {: caption="Table 1. container arguments" caption-side="top"}
 
 ## Environment variable reference
@@ -228,6 +228,6 @@ The `ibmcloud-secure-perimeter-health` determines a subnet as `PASS` if no hosts
 
 |Key|Description|
 |---|-------------|
-|SL_USER|Your IBM Cloud infrastructure user name|
-|SL_APIKEY|Your IBM Cloud infrastructure API key|
+|`SL_USER`|Your IBM Cloud infrastructure user name|
+|`SL_APIKEY`|Your IBM Cloud infrastructure API key|
 {: caption="Table 2. environment variables" caption-side="top"}
