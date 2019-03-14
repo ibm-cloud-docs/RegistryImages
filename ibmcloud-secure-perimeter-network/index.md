@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-13"
+lastupdated: "2019-03-14"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public image
 
@@ -210,16 +210,16 @@ In order for `ibmcloud-secure-perimeter-network` image to manage subnets on your
 
 |Key|Description
 |---|-------------|---|
-|slid|Your IBM Cloud infrastructure user name
-|apikey|Your IBM Cloud infrastructure api key
-|region|The IBM Cloud region where the Vyatta is deployed
-|inf_name_private|The name of the Vyatta private interface
-|inf_name_public|The name of the Vyatta public interface
-|gatewayid|The Vyatta gateway ID
-|vlans|List of Secure Perimeter Segment VLANs containing the type, VLAN number, and VLAN ID
-|vyatta_gateway_vip|The VIP of the Gateway
-|vyatta_primary|Object that contains the private and public IP of the primary Vyatta member
-|vyatta_secondary|Object that contains the private and public IP of the secondary Vyatta member
+|`slid`|Your IBM Cloud infrastructure user name
+|`apikey`|Your IBM Cloud infrastructure api key
+|`region`|The IBM Cloud region where the Vyatta is deployed
+|`inf_name_private`|The name of the Vyatta private interface
+|`inf_name_public`|The name of the Vyatta public interface
+|`gatewayid`|The Vyatta gateway ID
+|`vlans`|List of Secure Perimeter Segment VLANs containing the type, VLAN number, and VLAN ID
+|`vyatta_gateway_vip`|The VIP of the Gateway
+|`vyatta_primary`|Object that contains the private and public IP of the primary Vyatta member
+|`vyatta_secondary`|Object that contains the private and public IP of the secondary Vyatta member
 {: caption="Table 1. `config.json`" caption-side="top"}
 
 ## `rules.conf` reference
@@ -227,7 +227,7 @@ In order for `ibmcloud-secure-perimeter-network` image to manage subnets on your
 
 |Key|Description
 |---|-------------|---|
-|external_subnets|List of subnets on the public internet to expose Secure Perimeter to
-|external_ports|List of ports to expose Secure Perimeter to
-|userips|List of user IPs to whitelist to Secure Perimeter
-{: caption="Table 2. rules.conf" caption-side="top"}
+|`external_subnets`|List of subnets on the public internet to expose Secure Perimeter to
+|`external_ports`|List of ports to expose Secure Perimeter to
+|`userips`|List of user IPs to whitelist to Secure Perimeter
+{: caption="Table 2. `rules.conf`" caption-side="top"}
