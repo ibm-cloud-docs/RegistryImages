@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-02-21"
 
-keywords: ibm-backup-restore, IBM Cloud Kubernetes Service, container image, back up data, restore data
+keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
 subcollection: RegistryImages
 

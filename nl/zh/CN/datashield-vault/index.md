@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2019
 lastupdated: "2019-02-21"
 
-keywords: ibm-node-strong image, container image, public image
+keywords: IBM Cloud Container Registry, Data Shield environment, container image, public image, vault image
 
 subcollection: RegistryImages
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # 开始使用 `datashield-vault` 映像
 {: #datashield-vault_starter}
 
-此容器映像会在 Data Shield 环境中运行 Vault，为使用中的数据提供保护。
+此容器映像会在 Data Shield 环境中运行 Vault，为您的数据提供保护。
 {:shortdesc}
 
 您可以使用命令行来访问 {{site.data.keyword.IBM}} 提供的映像，请参阅 [IBM 公共映像](/docs/services/Registry?topic=registry-public_images#public_images)。

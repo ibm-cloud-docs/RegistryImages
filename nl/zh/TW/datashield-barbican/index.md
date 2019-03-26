@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2019
 lastupdated: "2019-02-21"
 
-keywords: datashield-barbican image, container image, barbican, Data Shield environment, public image
+keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, public image
 
 subcollection: RegistryImages
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # 開始使用 `datashield-barbican` 映像檔
 {: #datashield-barbican_starter}
 
-此容器映像檔會在 Data Shield 環境中執行 Barbican，並為使用中的資料提供保護。
+此容器映像檔會在 Data Shield 環境中執行 Barbican，並為您的資料提供保護。
 {:shortdesc}
 
 您可以使用指令行存取 {{site.data.keyword.IBM}} 所提供的映像檔，請參閱 [IBM 公用映像檔](/docs/services/Registry?topic=registry-public_images#public_images)。

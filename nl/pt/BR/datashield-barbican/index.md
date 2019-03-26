@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2019
 lastupdated: "2019-02-21"
 
-keywords: datashield-barbican image, container image, barbican, Data Shield environment, public image
+keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, public image
 
 subcollection: RegistryImages
 
@@ -24,8 +24,7 @@ subcollection: RegistryImages
 # Introdução à imagem `datashield-barbican`
 {: #datashield-barbican_starter}
 
-Essa imagem de contêiner é executada em Barbican no ambiente Data Shield, o que fornece proteção aos dados que estão em
-uso.
+Essa imagem de contêiner executa o Barbican no ambiente Data Shield, fornecendo proteção aos seus dados.
 {:shortdesc}
 
 É possível acessar as imagens que são fornecidas pela {{site.data.keyword.IBM}} usando a linha de comandos. Consulte [Imagens públicas da IBM](/docs/services/Registry?topic=registry-public_images#public_images).

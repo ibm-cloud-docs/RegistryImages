@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2019
 lastupdated: "2019-02-21"
 
-keywords: ibm-integration-bus, container image, public image
+keywords: IBM Cloud Container Registry, IBM Integration Bus, ibm-integration-bus, container image, public image
 
 subcollection: RegistryImages
 

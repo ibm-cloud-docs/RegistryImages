@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2019
 lastupdated: "2019-02-21"
 
-keywords: nginx image, Data Shield environment, container image, public image
+keywords: IBM Cloud Container Registry, Data Shield environment, nginx image, container image, public image
 
 subcollection: RegistryImages
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # `datashield-nginx` イメージの概説
 {: #datashield-nginx_starter}
 
-このコンテナー・イメージは、データ・シールド環境で NGINX を実行し、使用中のデータを保護します。
+このコンテナー・イメージは、データ・シールド環境で NGINX を実行し、データを保護します。
 {:shortdesc}
 
 {{site.data.keyword.IBM}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry?topic=registry-public_images#public_images)を参照してください。

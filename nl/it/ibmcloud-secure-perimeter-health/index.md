@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2019
 lastupdated: "2019-02-21"
 
-keywords: ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
+keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
 
 subcollection: RegistryImages
 

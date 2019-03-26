@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-02-21"
 
-keywords: ibmnode image, container image, public image
+keywords: IBM Cloud Container Registry, ibmnode image, container image, public image
 
 subcollection: RegistryImages
 

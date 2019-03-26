@@ -4,7 +4,7 @@ copyright:
   years: 2018, 2019
 lastupdated: "2019-02-21"
 
-keywords: ibm-websphere-extreme-scale, container image, public image
+keywords: IBM Cloud Container Registry, ibm-websphere-extreme-scale, container image, public image
 
 subcollection: RegistryImages
 

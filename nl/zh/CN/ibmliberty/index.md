@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-02-21"
 
-keywords: ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
+keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
 subcollection: RegistryImages
 
