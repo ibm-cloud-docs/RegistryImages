@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-03-27"
 
 keywords: IBM Cloud Container Registry, Data Shield, data in use, memory encryption, intel sgx, fortanix, mysql image, mariaDB, container image, public image
 
@@ -31,7 +31,7 @@ You can access the images that are provided by {{site.data.keyword.IBM}} by usin
 {: tip}
 
 ## Deploying the image
-{: datashield-mariadb-deploy}
+{: #datashield-mariadb-deploy}
 
 You can use the following Kubernetes pod spec to deploy the image:
 
@@ -108,7 +108,7 @@ spec:
       name: MARIADB_ROOT_PASSWORD
       value: <ROOT_PASSWORD>
       name: MARIADB_USER
-      value: <USER_NAME>   
+      value: <USER_NAME>
 ```
 {: screen}
 
@@ -156,8 +156,6 @@ spec:
   </tr>
 </table>
 
-
-
 ## Connecting to the MariaDB instance
 {: #datashield-mariadb-connect}
 
@@ -170,4 +168,3 @@ mariadb -h <node> --protocol tcp -uroot
 
 The Data Shield MariaDB image requires that client connections use Transport Layer Security (TLS). Depending on your client version, you might need to add `--ssl` or `--ssl-mode require` to the client command line.
 {: note}
-
