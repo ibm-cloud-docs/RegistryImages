@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-13"
+lastupdated: "2019-03-27"
 
 keywords: IBM Cloud Container Registry, Data Shield environment, nginx image, container image, public image, data in use, memory encryption, intel sgx, fortanix,
 
@@ -31,7 +31,7 @@ You can access the images that are provided by {{site.data.keyword.IBM}} by usin
 {: tip}
 
 ## Deploying the image
-{: datashield-nginx-deploy}
+{: #datashield-nginx-deploy}
 
 You can use the following Kubernetes pod spec to deploy the image:
 
