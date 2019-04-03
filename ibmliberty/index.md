@@ -90,7 +90,7 @@ Before you begin, review the [usage restrictions](#ibmliberty_usage) for the `ib
 3. For more information about building containers from images, setting up clusters, and deploying apps in clusters, use the following links:
 
     - [Building containers from images](/docs/containers?topic=containers-images#images)
-    - [Getting started with IBM Cloud Kubernetes Service](/docs/containers?topic=containers-container_index#container_index)
+    - [Getting started with IBM Cloud Kubernetes Service](/docs/containers?topic=containers-getting-started#getting-started)
     - [Deploying apps in clusters](/docs/containers?topic=containers-app#app)
 
     The `ibmliberty` image requires port 9080 to be exposed publicly. When you create a container from the {{site.data.keyword.Bluemix_notm}} Dashboard, the port is added in the **Public Port** field by default. If you create a container from the CLI, expose the port in your `kubectl run` command with `--port=9080` option.
