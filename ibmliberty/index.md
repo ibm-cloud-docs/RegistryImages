@@ -46,7 +46,7 @@ Every Liberty image provides the following software packages.
 - IBM WebSphere Application Server for Developers Liberty
 - IBM Java Runtime Environment 8.0
 
-The specific Liberty features that are installed in the image depend on the tag that you select. The following table shows the features that are included in each of the `ibmliberty` images. For more information about each feature, see the [Liberty features overview in IBM Knowledge Center ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html).
+The specific Liberty features that are installed in the image depend on the tag that you select. The following table shows the features that are included in each of the `ibmliberty` images. For more information about each feature, see the [Liberty features overview in IBM Knowledge Center ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/rwlp_feat.html).
 
 |Tag|Description|
 |---|-----------|
@@ -128,9 +128,9 @@ WebSphere Application Server licenses are based on the number of Processor Value
 
 Every container size in {{site.data.keyword.Bluemix_notm}} requires a specific number of PVU entitlements that must be available in the WebSphere Application Server license. Therefore, you must plan your `ibmliberty` containers prior to purchasing the license.
 
-To purchase a WebSphere Application Server License, contact [IBM Service ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us). If you already have a license for WebSphere Application Server v8.5 or newer, then you can use any unused PVUs from your existing entitlement for the deployment of your container.
+To purchase a WebSphere Application Server License, contact [IBM Service ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase). If you already have a license for WebSphere Application Server v8.5 or newer, then you can use any unused PVUs from your existing entitlement for the deployment of your container.
 
-If you find that you require more PVUs after you purchased the license, you can increase the amount by contacting [IBM Service ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us).
+If you find that you require more PVUs after you purchased the license, you can increase the amount by contacting [IBM Service ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase).
 
 ## Creating a production-licensed `ibmliberty` image to be used with {{site.data.keyword.containershort_notm}}
 {: #ibmliberty_prod_image}
