@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-03"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -141,7 +141,7 @@ Use your WebSphere Application Server license to create a production-licensed `i
 - [Upgrade the image from Docker Hub to a production image ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
 - [Build your own production-licensed image ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://github.com/WASdev/ci.docker/tree/master/ga).
 
-After you create a production-licensed image, [push the image to your private registry](/docs/services/Registry?topic=registry-index#index) to use it with {{site.data.keyword.containershort_notm}}.
+After you create a production-licensed image, [push the image to your private registry](/docs/services/Registry?topic=registry-getting-started#getting-started) to use it with {{site.data.keyword.containershort_notm}}.
 
 ## Creating an image from the provided images
 {: #ibmliberty_creating_image}
@@ -175,7 +175,7 @@ To create an image with your app code from the `ibmliberty` image, complete the 
 
 5. Add any other dependencies for your app to the Dockerfile.
 
-6. Build and push the image to your private images registry. For more information, see [Getting started with {{site.data.keyword.registrylong_notm}}](/docs/services/Registry?topic=registry-index#index).
+6. Build and push the image to your private images registry. For more information, see [Getting started with {{site.data.keyword.registrylong_notm}}](/docs/services/Registry?topic=registry-getting-started#getting-started).
 
 All `ibmliberty` images are configured to write Liberty log files to the directory `/logs` inside the container. All other files that are written by the Liberty server, are created in the directory `/opt/ibm/wlp/output/defaultServer`. You can access these files by using the shortcut `/output`.
 {:tip}
