@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-14"
+lastupdated: "2019-04-03"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
 
@@ -87,7 +87,7 @@ The `ibmcloud-secure-perimeter-health` image provides the following software pac
 4. Enter all other details as you require.
 5. Click **Create Cluster**.
 
-Review [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) documentation about how to get access to your cluster after it has been deployed.
+Review [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started) documentation about how to get access to your cluster after it has been deployed.
 
 ## Scan private networks within a Secure Perimeter
 {: #sph_private_networks}
@@ -99,7 +99,7 @@ Create a container pod from the `ibmcloud-secure-perimeter-health` image, and se
 - Install the required [CLIs](/docs/containers?topic=containers-cs_cli_install#cs_cli_install).
 - [Target your CLI](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure) to your cluster.
 
-1. Create a configuration file that is named _health-pod.yaml_. This file creates a highly-available deployment of the container pod.
+1. Create a configuration file that is named `health-pod.yaml`. This file creates a highly-available deployment of the container pod.
 
     ```
     apiVersion: extensions/v1beta1
@@ -133,7 +133,7 @@ Create a container pod from the `ibmcloud-secure-perimeter-health` image, and se
               value: <IBM Cloud infrastructure api key>
     ```
     {: codeblock}
-    
+
 2. Create the deployment.
 
     ```
@@ -163,7 +163,7 @@ Create a Docker container from the `ibmcloud-secure-perimeter-health` image and 
 
 - Install Docker.
 
-1. Create a Docker container from your own workstation as follows:
+1. Create a Docker container from your own workstation by running the following command:
 
     ```
     docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
@@ -199,7 +199,7 @@ sp-gateway-8a9031ab:
 ```
 {: screen}
 
-The format of the report is as follows:
+The report is in the following format:
 
 ```
 <gateway name>:
