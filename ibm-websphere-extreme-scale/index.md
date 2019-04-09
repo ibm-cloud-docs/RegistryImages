@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-04"
 
 keywords: IBM Cloud Container Registry, ibm-websphere-extreme-scale, container image, public image
 
@@ -21,7 +21,7 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
-# `ibm-websphere-extreme-scale` public image
+# `ibm-websphere-extreme-scale` public image - deprecated
 {: #extreme-scale}
 
 The `ibm-websphere-extreme-scale` image is no longer available.
