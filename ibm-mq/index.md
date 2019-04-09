@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-04"
+lastupdated: "2019-04-09"
 
 keywords: IBM Cloud Container Registry, IBM MQ, ibm-mq, container image, public image
 
@@ -21,7 +21,7 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
-# `ibm-mq` public image - deprecated
+# `ibm-mq` public image
 {: #mq}
 
 The `ibm-mq` public image is available at the following location: [IBM MQ Advanced for Developers ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://hub.docker.com/r/ibmcom/mq/)
