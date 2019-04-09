@@ -21,7 +21,7 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
-# `ibm-integration-bus` public image
+# `ibm-integration-bus` public image - deprecated
 {: #iib}
 
 The `ibm-integration-bus` image is no longer available.
