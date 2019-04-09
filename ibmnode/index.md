@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-04"
 
 keywords: IBM Cloud Container Registry, ibmnode image, container image, public image
 
@@ -21,7 +21,7 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
-# `ibmnode` public image
+# `ibmnode` public image - deprecated
 {: #ibmnode}
 
 The `ibmnode` public image is no longer available.
