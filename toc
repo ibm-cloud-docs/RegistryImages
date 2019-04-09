@@ -10,6 +10,7 @@ IBM public container images
     datashield-nginx/index.md
     datashield-vault/index.md
     ibm-backup-restore/index.md
+    ibm-mq/index.md
     ibmcloud-secure-perimeter-health/index.md
     ibmcloud-secure-perimeter-network/index.md
     ibmliberty/index.md
