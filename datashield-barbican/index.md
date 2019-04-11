@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-13"
+lastupdated: "2019-04-11"
 
 keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, Registry, data in use, memory encryption, intel sgx, fortanix,
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # Getting started with the `datashield-barbican` image
 {: #datashield-barbican_starter}
 
-This container image provides protection for data that is in use by running Barbican in the Data Shield environment. For more information about the service and what it means to protect "data in use", see the [IBM Cloud Data Shield documentation](/docs/services/data-shield?topic=data-shield-about#about).
+This container image provides protection for data that is in use by running Barbican in the {{site.data.keyword.datashield_short}} environment. For more information about the service and what it means to protect "data in use", see the [{{site.data.keyword.datashield_short}} documentation](/docs/services/data-shield?topic=data-shield-about#about).
 {: shortdesc}
 
 You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
