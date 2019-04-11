@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-13"
+lastupdated: "2019-04-11"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -59,7 +59,7 @@ Create and configure an {{site.data.keyword.cos_full_notm}} service instance to 
 {: shortdesc}
 
 1. Deploy an {{site.data.keyword.cos_full_notm}} service instance.
-   1. Open the [{{site.data.keyword.Bluemix_notm}} catalog ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/services/cloud-object-storage).
+   1. Open the [{{site.data.keyword.cloud_notm}} catalog ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/services/cloud-object-storage).
    2. Enter a name for your service instance, such as `cos-backup`, and select **default** as your resource group.
    3. Review the [plan options ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage#s3api) for pricing information and select a plan.
    4. Click **Create**.
@@ -74,7 +74,7 @@ Create and configure an {{site.data.keyword.cos_full_notm}} service instance to 
 3. Create your first {{site.data.keyword.cos_full_notm}} bucket.
    1. In the navigation on the service details page, click **Buckets**.
    2. Click **Create bucket**. A dialog box displays.
-   3. Enter a unique name for your bucket. The name must be unique within {{site.data.keyword.cos_full_notm}} across all regions and across all {{site.data.keyword.Bluemix_notm}} accounts.
+   3. Enter a unique name for your bucket. The name must be unique within {{site.data.keyword.cos_full_notm}} across all regions and across all {{site.data.keyword.cloud_notm}} accounts.
    4. From the **Resiliency** drop down, select the level of availability that you want for your data. For more information, see [{{site.data.keyword.cos_full_notm}} regions and endpoints](/docs/services/cloud-object-storage/basics?topic=cloud-object-storage-endpoints#endpoints).
    5. Change the **Location** to the region where you want to store your data. Keep in mind that your data might not be allowed to be stored in every region due to legal reasons.  
    6. Click **Create**.
@@ -219,8 +219,8 @@ To back up an existing PV, complete the following steps:
     ```
     {: pre}
 
-6. Review the backup in {{site.data.keyword.cos_full_notm}} in the {{site.data.keyword.Bluemix_notm}} GUI.
-    1. From the {{site.data.keyword.Bluemix_notm}} dashboard, find the {{site.data.keyword.cos_full_notm}} service instance.
+6. Review the backup in {{site.data.keyword.cos_full_notm}} in the {{site.data.keyword.cloud_notm}} GUI.
+    1. From the {{site.data.keyword.cloud_notm}} dashboard, find the {{site.data.keyword.cos_full_notm}} service instance.
     2. From the navigation, select **Buckets** and click on the bucket that you used in your backup configuration. Your backup is displayed as an object in your bucket.
     3. Review the compressed files. You can download the `vol1.difftar.gz` file, extract the file, and verify the backed-up data.
 
