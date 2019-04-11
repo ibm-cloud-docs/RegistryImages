@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-04-11"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -60,10 +60,10 @@ The specific Liberty features that are installed in the image depend on the tag 
 ## Usage restrictions
 {: #ibmliberty_usage}
 
-The following table shows the restrictions that apply to the free usage of the `ibmliberty` image in {{site.data.keyword.Bluemix_notm}}.
+The following table shows the restrictions that apply to the free usage of the `ibmliberty` image in {{site.data.keyword.cloud_notm}}.
 {:shortdesc}
 
-The pricing for the `ibmliberty` image is independent of the pricing for the containers that you use in {{site.data.keyword.Bluemix_notm}}.
+The pricing for the `ibmliberty` image is independent of the pricing for the containers that you use in {{site.data.keyword.cloud_notm}}.
 {:tip}
 
 |Environment|Free usage restrictions|
@@ -79,13 +79,13 @@ Review the terms of use for IBM certified images in the License section of the [
 ## Getting started
 {: #ibmliberty_get_started}
 
-Use one of the free `ibmliberty` images from the {{site.data.keyword.Bluemix_notm}} catalog or select your own production-licensed image to create a single container or a container group.
+Use one of the free `ibmliberty` images from the {{site.data.keyword.cloud_notm}} catalog or select your own production-licensed image to create a single container or a container group.
 {:shortdesc}
 
 Before you begin, review the [usage restrictions](#ibmliberty_usage) for the `ibmliberty` images.
 {: important}
 
-1. From the catalog, select **Containers** > **IBM Cloud Container Registry** > **IBM Public Repositories** on the side panel. Search for the `ibmliberty` image to build your container from. If you created your own production-licensed image and deployed it to {{site.data.keyword.Bluemix_notm}}, select this image from the catalog. The container creation page opens.
+1. From the catalog, select **Containers** > **IBM Cloud Container Registry** > **IBM Public Repositories** on the side panel. Search for the `ibmliberty` image to build your container from. If you created your own production-licensed image and deployed it to {{site.data.keyword.cloud_notm}}, select this image from the catalog. The container creation page opens.
 2. Select the version of the `ibmliberty` image that you want to use from the **TAG/ VERSION** drop down box.
 3. For more information about building containers from images, setting up clusters, and deploying apps in clusters, use the following links:
 
@@ -93,7 +93,7 @@ Before you begin, review the [usage restrictions](#ibmliberty_usage) for the `ib
     - [Getting started with IBM Cloud Kubernetes Service](/docs/containers?topic=containers-getting-started#getting-started)
     - [Deploying apps in clusters](/docs/containers?topic=containers-app#app)
 
-    The `ibmliberty` image requires port 9080 to be exposed publicly. When you create a container from the {{site.data.keyword.Bluemix_notm}} Dashboard, the port is added in the **Public Port** field by default. If you create a container from the CLI, expose the port in your `kubectl run` command with `--port=9080` option.
+    The `ibmliberty` image requires port 9080 to be exposed publicly. When you create a container from the {{site.data.keyword.cloud_notm}} Dashboard, the port is added in the **Public Port** field by default. If you create a container from the CLI, expose the port in your `kubectl run` command with `--port=9080` option.
     {:tip}
 
 ## Monitoring the Java heap space usage for a container with the CLI
@@ -126,7 +126,7 @@ After you create a container from the `ibmliberty` image, you can view metrics o
 WebSphere Application Server licenses are based on the number of Processor Value Units \(PVUs\) that you need. PVU is a unit of measurement for the licensing of IBM Middleware software. The number of PVUs indicates the number of processors \(cores\) that are available to the software.
 {:shortdesc}
 
-Every container size in {{site.data.keyword.Bluemix_notm}} requires a specific number of PVU entitlements that must be available in the WebSphere Application Server license. Therefore, you must plan your `ibmliberty` containers prior to purchasing the license.
+Every container size in {{site.data.keyword.cloud_notm}} requires a specific number of PVU entitlements that must be available in the WebSphere Application Server license. Therefore, you must plan your `ibmliberty` containers prior to purchasing the license.
 
 To purchase a WebSphere Application Server License, contact [IBM Service ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase). If you already have a license for WebSphere Application Server v8.5 or newer, then you can use any unused PVUs from your existing entitlement for the deployment of your container.
 
@@ -183,7 +183,7 @@ All `ibmliberty` images are configured to write Liberty log files to the directo
 ## `ibmliberty` Dockerfile reference
 {: #ibmliberty_reference_dockerfile}
 
-This Dockerfile illustrates how the `ibmliberty:webProfile7` image in {{site.data.keyword.Bluemix_notm}} is built from the public websphere-liberty images on Docker Hub. This information is for reference only.
+This Dockerfile illustrates how the `ibmliberty:webProfile7` image in {{site.data.keyword.cloud_notm}} is built from the public websphere-liberty images on Docker Hub. This information is for reference only.
 {:shortdesc}
 
 ```
