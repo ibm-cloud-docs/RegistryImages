@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-11"
+lastupdated: "2019-04-16"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -153,12 +153,17 @@ To back up an existing PV, complete the following steps:
          value: incremental
        command: ["/bin/bash", "./vbackup"]
        volumeMounts:
-       - mountPath: /myvol
-         name: backup-volume
+       - mountPath: <mount_path1>
+         name: <pvc_name1>
+       - mountPath: <mount_path1>
+         name: <pvc_name2>
      volumes:
-     - name: backup-volume
+     - name: pvc_name1
        persistentVolumeClaim:
-         claimName: <pvc_name>  
+         claimName: <pvc_name1>  
+     - name: pvc_name2
+       persistentVolumeClaim:
+         claimName: <pvc_name2> 
    ```
    {: codeblock}
 
@@ -189,8 +194,12 @@ To back up an existing PV, complete the following steps:
      <td>A unique name for the object that holds your backup in the bucket </td>
      </tr>
      <tr>
+     <td><code>&lt;mount_path&gt;</code></td>
+     <td>The volume mount path inside the backup container that mounts the PVC that you want to back up. If you want to back up multiple PVCs, specify a separate mount path for each PVC. Make sure that the name that you use in <code>volumeMount.name</code> matches the name of the volume that you specify in the <code>volumes.name</code> section of your YAML file. </td>
+     </tr>
+     <tr>
      <td><code>&lt;pvc_name&gt;</code></td>
-     <td>The name of the PVC that binds the PV that you want to back up. </td>
+     <td>The name of the PVC that you want to back up. If you want to back up multiple PVCs, specify the volume name and the corresponding PVC for each PVC that you want to back up. Make sure that the name that you use in <code>volumes.name</code> matches the name in the <code>volumeMount.name</code> section of your YAML file.</td>
      </tr>
      </tbody>
      </table>
@@ -280,12 +289,17 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the f
          value: <backup_name>
        command: ["/bin/sh", "./vrestore"]
        volumeMounts:
-       - mountPath: /myvol  
-         name: restore-volume
+       - mountPath: <mount_path1>
+         name: <pvc_name1>
+       - mountPath: <mount_path1>
+         name: <pvc_name2>
      volumes:
-     - name: restore-volume  
+     - name: pvc_name1
        persistentVolumeClaim:
-         claimName: <pvc_name>
+         claimName: <pvc_name1>  
+     - name: pvc_name2
+       persistentVolumeClaim:
+         claimName: <pvc_name2> 
    ```
    {: codeblock}
 
@@ -315,10 +329,13 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the f
      <td><code>&lt;backup_name&gt;</code></td>
      <td>The unique name for the object that holds your backup in the bucket. You must use the name that you used in the backup pod to store your data in {{site.data.keyword.cos_full_notm}}. </td>
      </tr>
+     <td><code>&lt;mount_path&gt;</code></td>
+     <td>The volume mount path inside the restore container that mounts the PVC where you want to restore your data. If you want to restore data to multiple PVCs, specify a separate mount path for each PVC. Make sure that the name that you use in <code>volumeMount.name</code> matches the name of the volume that you specify in the <code>volumes.name</code> section of your YAML file. </td>
+     </tr>
      <tr>
      <td><code>&lt;pvc_name&gt;</code></td>
-     <td>The name of the PVC that binds the PV where you want to restore your data. </td>
-     </tr>
+     <td>The name of the PVC where you want to restore your data. To restore data to multiple PVCs, add a <code>volumes</code> entry for each PVC. Make sure that the name that you use in <code>volumes.name</code> matches the name in the <code>volumeMount.name</code> section of your YAML file.</td>
+     </tr> 
      </tbody>
      </table>
 
