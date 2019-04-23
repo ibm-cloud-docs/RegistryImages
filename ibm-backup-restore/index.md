@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-16"
+lastupdated: "2019-04-23"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -27,7 +27,7 @@ subcollection: RegistryImages
 The `ibmcloud-backup-restore` image contains the preinstalled packages that are needed to back up and restore persistent storage in {{site.data.keyword.containerlong}}.
 {:shortdesc}
 
-The `ibmcloud-backup-restore` image is available only in the `icr.io` registry domains, and is deprecated in the `registry.bluemix.net` domains. To access the image and deploy containers from it, your cluster must store an API key in an image pull secret to authorize access to {{site.data.keyword.registryshort_notm}}. For clusters that were created before 25 February 2019, you must update your cluster to have access to the `icr.io` registry domains so that you can use the `ibmcloud-backup-restore` image. For more information about what changed and how to update your cluster, see [Understanding how to authorize your cluster to pull images from a registry](/docs/containers?topic=containers-images&locale=en#cluster_registry_auth) and [Updating existing clusters to use the API key image pull secret](/docs/containers?topic=containers-images&locale=en#imagePullSecret_migrate_api_key). 
+The `ibmcloud-backup-restore` image is available only in the `icr.io` registry domains, and is deprecated in the `registry.bluemix.net` domains. To access the image and deploy containers from it, your cluster must store an API key in an image pull secret to authorize access to {{site.data.keyword.registryshort_notm}}. For clusters that were created before 25 February 2019, you must update your cluster to have access to the `icr.io` registry domains so that you can use the `ibmcloud-backup-restore` image. For more information about what changed and how to update your cluster, see [Understanding how to authorize your cluster to pull images from a registry](/docs/containers?topic=containers-images#cluster_registry_auth) and [Updating existing clusters to use the API key image pull secret](/docs/containers?topic=containers-images#imagePullSecret_migrate_api_key). 
 {: important}
 
 You can access the images that are provided by {{site.data.keyword.IBM_notm}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
@@ -86,7 +86,7 @@ Create and configure an {{site.data.keyword.cos_full_notm}} service instance to 
    2. In the navigation on the service details page, click **Buckets** > **Configuration**.
    3. Make note of the public URL that you can use to access the data in your bucket.
 
-Review the [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about-ibm-cloud-object-storage#about-ibm-cloud-object-storage) documentation for more information on configuring your service instance.
+Review the [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about#about) documentation for more information on configuring your service instance.
 
 ## Backing up data from a persistent volume
 {: #backup_restore_scheduled_backup}
