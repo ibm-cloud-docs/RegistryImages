@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-27"
 
-keywords: IBM Cloud Container Registry, Data Shield environment, nginx image, container image, public image
+keywords: IBM Cloud Container Registry, Data Shield environment, nginx image, container image, public image, data in use, memory encryption, intel sgx, fortanix,
 
 subcollection: RegistryImages
 
@@ -24,11 +24,14 @@ subcollection: RegistryImages
 # Einführung zum Image `datashield-nginx`
 {: #datashield-nginx_starter}
 
-Mit diesem Container-Image wird NGINX in der Data Shield-Umgebung ausgeführt und bietet Schutz für Ihre Daten.
-{:shortdesc}
+Dieses Container-Image bietet den verwendeten Daten durch die NGINX-Ausführung in der Data Shield-Umgebung Schutz. Weitere Informationen zu dem Service und die Bedeutung des Schutzes von "verwendeten Daten" finden Sie in der [Dokumentation zu IBM Cloud Data Shield](/docs/services/data-shield?topic=data-shield-about#about).
+{: shortdesc}
 
 Sie können auf die von {{site.data.keyword.IBM}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
+
+## Image bereitstellen
+{: #datashield-nginx-deploy}
 
 Mithilfe der folgenden Kubernetes-Podspezifikationen können Sie das Image bereitstellen:
 
@@ -42,7 +45,7 @@ Mithilfe der folgenden Kubernetes-Podspezifikationen können Sie das Image berei
     spec:
       containers:
       - name: data-shield-nginx
-        image: <Entsprechenden Imagenamen hier einfügen>
+        image: <IMAGE_NAME>
         volumeMounts:
         - mountPath: /dev/isgx
           name: isgx
@@ -66,6 +69,19 @@ Mithilfe der folgenden Kubernetes-Podspezifikationen können Sie das Image berei
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: codeblock}
+{: pre}
+
+<table>
+<caption>Tabelle 1. Erforderliche Eingabevariablen</caption>
+  <tr>
+    <th>Variable</th>
+    <th>Beschreibung</th>
+  </tr>
+  <tr>
+    <td><code>IMAGE_NAME</code></td>
+    <td>Der Name des Image, das Sie bereitstellen möchten.</td>
+  </tr>
+</table>
 
 Wenn Sie eigene Inhalte für die Bereitstellung durch NGINX angeben möchten, legen Sie sie unter `/usr/local/nginx/html` im Container ab.
+{: tip}

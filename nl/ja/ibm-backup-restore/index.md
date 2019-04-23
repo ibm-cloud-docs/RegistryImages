@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -50,7 +50,7 @@ subcollection: RegistryImages
 
 - Alpine 3.7
 - Duplicity 0.7.10
-- python および gpgme のパッケージ
+- Python および GnuPG Made Easy (GPGME) パッケージ
 
 ## {{site.data.keyword.cos_full_notm}} サービス・インスタンスのセットアップ
 {: #backup_restore_setup_object_storage}
@@ -162,7 +162,7 @@ subcollection: RegistryImages
    <table>
    <caption>表 1. YAML ファイルの構成要素</caption>
    <thead>
-   <th colspan=2><img src="../images/idea.png" alt="アイデア・アイコン"/> yaml ファイル構成要素の説明</th>
+   <th colspan=2><img src="../images/idea.png" alt="アイデア・アイコン"/> YAML ファイル構成要素の説明</th>
    </thead>
     <tbody>
      <tr>
@@ -288,7 +288,7 @@ subcollection: RegistryImages
    <table>
    <caption>表 2. YAML ファイルの構成要素</caption>
    <thead>
-   <th colspan=2><img src="../images/idea.png" alt="アイデア・アイコン"/> yaml ファイル構成要素の説明</th>
+   <th colspan=2><img src="../images/idea.png" alt="アイデア・アイコン"/> YAML ファイル構成要素の説明</th>
    </thead>
     <tbody>
      <tr>
@@ -338,7 +338,7 @@ subcollection: RegistryImages
     ```
     {: screen}
 
-    ポッドは、リストア・コマンドを実行して、停止します。 _CrashLoopBackOff_ メッセージは、Kubernetes がポッドの再始動しようとしていることを示しています。
+    ポッドは、リストア・コマンドを実行して、停止します。 `CrashLoopBackOff` メッセージは、Kubernetes がポッドの再始動しようとしていることを示しています。
 
 5. ポッドがさらにリソースを消費しないように、ポッドを削除します。
 
@@ -461,7 +461,7 @@ subcollection: RegistryImages
     <table>
     <caption>表 3. YAML ファイルの構成要素</caption>
     <thead>
-    <th colspan=2><img src="../images/idea.png" alt="アイデア・アイコン"/> yaml ファイル構成要素の説明</th>
+    <th colspan=2><img src="../images/idea.png" alt="アイデア・アイコン"/> YAML ファイル構成要素の説明</th>
     </thead>
      <tbody>
      <tr>

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-09"
 
 keywords: IBM Cloud Container Registry, IBM MQ, ibm-mq, container image, public image
 
@@ -28,4 +28,3 @@ subcollection: RegistryImages
 
 您可以在 {{site.data.keyword.registrylong_notm}} 中使用指令行存取 {{site.data.keyword.IBM}} 所提供的映像檔，請參閱 [IBM 公用映像檔](/docs/services/Registry?topic=registry-public_images#public_images)。
 {: tip}
-

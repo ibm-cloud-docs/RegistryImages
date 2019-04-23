@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
-keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, public image
+keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, Registry, data in use, memory encryption, intel sgx, fortanix,
 
 subcollection: RegistryImages
 
@@ -24,11 +24,14 @@ subcollection: RegistryImages
 # 开始使用 `datashield-barbican` 映像
 {: #datashield-barbican_starter}
 
-此容器映像会在 Data Shield 环境中运行 Barbican，为您的数据提供保护。
-{:shortdesc}
+此容器映像为在 Data Shield 环境中运行 Barbican 所使用的数据提供保护。有关服务和保护“使用中的数据”的含义的更多信息，请参阅 [IBM Cloud Data Shield 文档](/docs/services/data-shield?topic=data-shield-about#about)。
+{: shortdesc}
 
 您可以使用命令行来访问 {{site.data.keyword.IBM}} 提供的映像，请参阅 [IBM 公共映像](/docs/services/Registry?topic=registry-public_images#public_images)。
 {: tip}
+
+## 部署映像
+{: #datashield-barbican-deploy}
 
 您可以使用以下 Kubernetes pod 规范来部署映像：
 
@@ -42,7 +45,7 @@ subcollection: RegistryImages
     spec:
       containers:
       - name: data-shield-barbican
-        image: <TODO INSERT APPROPRIATE IMAGE NAME HERE>
+        image: <IMAGE_NAME>
         volumeMounts:
         - mountPath: /dev/isgx
           name: isgx
@@ -68,8 +71,23 @@ subcollection: RegistryImages
 ```
 {: codeblock}
 
-容器的部署和启动可能需要几分钟才能完成。Barbican 演示实例是在没有 Keystone 认证的情况下配置的。请求必须包含头 `X-Project-Id: 12345`
+<table>
+<caption>表 1. 必需的输入变量</caption>
+  <tr>
+    <th>变量</th>
+    <th>描述</th>
+  </tr>
+  <tr>
+    <td><code>IMAGE_NAME</code></td>
+    <td>要部署的映像的名称。</td>
+  </tr>
+</table>
+
+容器的部署和启动可能需要几分钟才能完成。Barbican 演示实例是在没有 Keystone 认证的情况下配置的。请求必须包含头 `X-Project-Id: 12345`。
 {: tip}
+
+## 创建私钥
+{: #datashield-barbican-secret}
 
 您可以通过运行以下命令在 Barbican 演示实例中创建一个私钥：
 

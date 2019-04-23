@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-03"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
 
@@ -87,7 +87,7 @@ sp-gateway-8a9031ab:
 4. 필요에 따라 다른 모든 세부사항을 입력하십시오.
 5. **클러스터 작성**을 클릭하십시오.
 
-클러스터가 배치된 후 클러스터에 대한 액세스를 확보하는 방법에 대한 [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) 문서를 검토하십시오.
+클러스터가 배치된 후 클러스터에 대한 액세스를 확보하는 방법에 대한 [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started) 문서를 검토하십시오.
 
 ## 보안 경계 내에서 사설 네트워크 스캔
 {: #sph_private_networks}
@@ -99,7 +99,7 @@ sp-gateway-8a9031ab:
 - 필수 [CLI](/docs/containers?topic=containers-cs_cli_install#cs_cli_install)를 설치하십시오.
 - 클러스터를 [CLI의 대상으로 지정](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure)하십시오.
 
-1. 구성 파일 _health-pod.yaml_을 작성하십시오. 이 파일은 컨테이너 팟(Pod)의 고가용성 배치를 작성합니다.
+1. 구성 파일 `health-pod.yaml`을 작성하십시오. 이 파일은 컨테이너 팟(Pod)의 고가용성 배치를 작성합니다.
 
     ```
 apiVersion: extensions/v1beta1
@@ -133,7 +133,7 @@ apiVersion: extensions/v1beta1
               value: <IBM Cloud infrastructure api key>
     ```
     {: codeblock}
-    
+
 2. 배치를 작성하십시오.
 
     ```
@@ -163,7 +163,7 @@ NAME                                    READY     STATUS    RESTARTS   AGE
 
 - Docker를 설치하십시오.
 
-1. 다음과 같이 고유 워크스테이션에서 Docker 컨테이너 작성:
+1. 다음 명령을 실행하여 고유 워크스테이션에서 Docker 컨테이너를 작성하십시오. 
 
     ```
     docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
@@ -199,7 +199,7 @@ sp-gateway-8a9031ab:
 ```
 {: screen}
 
-보고서의 형식은 다음과 같습니다.
+보고서는 다음 형식으로 되어 있습니다. 
 
 ```
 <gateway name>:
@@ -217,10 +217,10 @@ sp-gateway-8a9031ab:
 
 |키|설명|기본값
 |---|-------------|---|
-|scan|노출 스캔의 유형("public" 또는 "private") |없음(둘 다 스캔)
-|exclude-vlan-ids|스캔을 피하기 위한 ID별 VLAN 목록|없음
-|poll-interval|다음 스캔 때까지 시간(초) 설정|0(한 번 실행)
-|allowed-public-ports|스캔에 따라 화이트리스트로 지정할 포트 목록|80, 443, 9000 - 9999
+|`scan`|노출 스캔의 유형("public" 또는 "private") |없음(둘 다 스캔)
+|`exclude-vlan-ids`|스캔을 피하기 위한 ID별 VLAN 목록|없음
+|`poll-interval`|다음 스캔 때까지 시간(초) 설정|0(한 번 실행)
+|`allowed-public-ports`|스캔에 따라 화이트리스트로 지정할 포트 목록|80, 443, 9000 - 9999
 {: caption="표 1. 컨테이너 인수" caption-side="top"}
 
 ## 환경 변수 참조
@@ -228,6 +228,6 @@ sp-gateway-8a9031ab:
 
 |키|설명|
 |---|-------------|
-|SL_USER|IBM Cloud 인프라 사용자 이름|
-|SL_APIKEY|IBM Cloud 인프라 API 키|
+|`SL_USER`|IBM Cloud 인프라 사용자 이름|
+|`SL_APIKEY`|IBM Cloud 인프라 API 키|
 {: caption="표 2. 환경 변수" caption-side="top"}

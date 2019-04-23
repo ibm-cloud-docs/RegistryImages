@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-27"
 
-keywords: IBM Cloud Container Registry, Data Shield environment, nginx image, container image, public image
+keywords: IBM Cloud Container Registry, Data Shield environment, nginx image, container image, public image, data in use, memory encryption, intel sgx, fortanix,
 
 subcollection: RegistryImages
 
@@ -24,11 +24,14 @@ subcollection: RegistryImages
 # Iniciación a la imagen `datashield-nginx`
 {: #datashield-nginx_starter}
 
-Esta imagen del contenedor ejecuta NGINX en el entorno Data Shield, que proporciona protección para sus datos.
-{:shortdesc}
+Esta imagen de contenedor proporciona protección para datos en uso al ejecutar NGINX en el entorno Data Shield. Para obtener más información sobre el servicio y qué significa proteger "datos en uso", consulte la [documentación de IBM Cloud Data Shield](/docs/services/data-shield?topic=data-shield-about#about).
+{: shortdesc}
 
 Puede acceder a las imágenes que suministra {{site.data.keyword.IBM}} desde la línea de mandatos; consulte las [imágenes públicas de IBM](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
+
+## Despliegue de la imagen
+{: #datashield-nginx-deploy}
 
 Puede utilizar la siguiente especificación de pod de Kubernetes para desplegar la imagen:
 
@@ -42,7 +45,7 @@ Puede utilizar la siguiente especificación de pod de Kubernetes para desplegar 
     spec:
       containers:
       - name: data-shield-nginx
-        image: <TODO INSERT APPROPRIATE IMAGE NAME HERE>
+        image: <IMAGE_NAME>
         volumeMounts:
         - mountPath: /dev/isgx
           name: isgx
@@ -66,6 +69,19 @@ Puede utilizar la siguiente especificación de pod de Kubernetes para desplegar 
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: codeblock}
+{: pre}
+
+<table>
+<caption>Tabla 1. Variables de entrada necesarias</caption>
+  <tr>
+    <th>Variable</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td><code>IMAGE_NAME</code></td>
+    <td>El nombre de la imagen que desea desplegar.</td>
+  </tr>
+</table>
 
 Para proporcionar su propio contenido que servirá NGINX, colóquelo bajo `/usr/local/nginx/html` en el contenedor.
+{: tip}

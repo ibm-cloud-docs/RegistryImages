@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-03"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -46,7 +46,7 @@ Jedes Liberty-Image bietet die folgenden Softwarepakete.
 - IBM WebSphere Application Server for Developers Liberty
 - IBM Java Runtime Environment 8.0
 
-Welche Liberty-Features jeweils in einem Image installiert sind, hängt davon ab, welchen Tag Sie auswählen. In der folgenden Tabelle sind die Features aufgeführt, die in den jeweiligen `ibmliberty`-Images enthalten sind. Weitere Informationen zu den einzelnen Features finden Sie in der [Übersicht über die Liberty-Features im IBM Knowledge Center ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html).
+Welche Liberty-Features jeweils in einem Image installiert sind, hängt davon ab, welchen Tag Sie auswählen. In der folgenden Tabelle sind die Features aufgeführt, die in den jeweiligen `ibmliberty`-Images enthalten sind. Weitere Informationen zu den einzelnen Features finden Sie in der [Übersicht über die Liberty-Features im IBM Knowledge Center ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/rwlp_feat.html).
 
 |Tag|Beschreibung|
 |---|-----------|
@@ -90,7 +90,7 @@ Lesen Sie die [Nutzungseinschränkungen](#ibmliberty_usage) für die `ibmliberty
 3. Weitere Informationen zum Erstellen von Containern aus Images, zum Einrichten von Clustern und zum Bereitstellen von Apps in Clustern finden Sie unter den folgenden Links:
 
     - [Container auf Grundlage von Images erstellen](/docs/containers?topic=containers-images#images)
-    - [Einführung in IBM Cloud Kubernetes Service](/docs/containers?topic=containers-container_index#container_index)
+    - [Einführung in IBM Cloud Kubernetes Service](/docs/containers?topic=containers-getting-started#getting-started)
     - [Apps in Clustern bereitstellen](/docs/containers?topic=containers-app#app)
 
     Für das Image `ibmliberty` muss Port 9080 öffentlich zugänglich gemacht werden. Wenn Sie einen Container aus dem {{site.data.keyword.Bluemix_notm}}-Dashboard erstellen, wird der Port standardmäßig im Feld **Öffentlicher Port** hinzugefügt. Wenn Sie einen Container über die CLI erstellen, legen Sie den Port in Ihrem Befehl `kubectl run` mit der Option `--port=9080` frei.
@@ -128,9 +128,9 @@ WebSphere Application Server basieren auf der Anzahl der benötigten Processor-V
 
 Für jede Containergröße in {{site.data.keyword.Bluemix_notm}} ist eine bestimmte Anzahl von PVU-Berechtigungen erforderlich, die in der WebSphere Application Server-Lizenz verfügbar sein müssen. Sie müssen daher Ihre `ibmliberty`-Container planen, bevor Sie die Lizenz erwerben.
 
-Wenden Sie sich für den Kauf einer WebSphere Application Server-Lizenz an den [IBM Service ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us). Wenn Sie bereits über eine Lizenz für WebSphere Application Server Version 8.5 oder höher verfügen, können Sie alle nicht genutzten PVUs der bestehenden Berechtigung für die Bereitstellung Ihres Containers verwenden.
+Wenden Sie sich für den Kauf einer WebSphere Application Server-Lizenz an den [IBM Service ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase). Wenn Sie bereits über eine Lizenz für WebSphere Application Server Version 8.5 oder höher verfügen, können Sie alle nicht genutzten PVUs der bestehenden Berechtigung für die Bereitstellung Ihres Containers verwenden.
 
-Wenn Sie nach dem Erwerb der Lizenz feststellen, dass Sie weitere PVUs benötigen, können Sie die Anzahl der PVUs nach Rücksprache mit dem [IBM Service ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us) erhöhen.
+Wenn Sie nach dem Erwerb der Lizenz feststellen, dass Sie weitere PVUs benötigen, können Sie die Anzahl der PVUs nach Rücksprache mit dem [IBM Service ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase) erhöhen.
 
 ## Image `ibmliberty` mit Produktionslizenz für die Verwendung mit {{site.data.keyword.containershort_notm}} erstellen
 {: #ibmliberty_prod_image}
@@ -141,7 +141,7 @@ Verwenden Sie Ihre Lizenz für WebSphere Application Server zum Erstellen eines 
 - [Durchführen eines Upgrades des Images von Docker Hub auf ein Produktionsimage ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
 - [Erstellen eines eigenen Images mit Produktionslizenz ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://github.com/WASdev/ci.docker/tree/master/ga).
 
-Nachdem Sie ein Image mit Produktionslizenz erstellt haben, [übertragen Sie das Image in Ihre private Registry](/docs/services/Registry?topic=registry-index#index), um es mit {{site.data.keyword.containershort_notm}} zu verwenden.
+Nachdem Sie ein Image mit Produktionslizenz erstellt haben, [übertragen Sie das Image in Ihre private Registry](/docs/services/Registry?topic=registry-getting-started#getting-started), um es mit {{site.data.keyword.containershort_notm}} zu verwenden.
 
 ## Image über die bereitgestellten Images erstellen
 {: #ibmliberty_creating_image}
@@ -175,7 +175,7 @@ Führen Sie die folgenden Schritte aus, um ein Image mit Ihrem App-Code aus dem 
 
 5. Fügen Sie sonstige Abhängigkeiten für Ihre App zur Dockerfile hinzu.
 
-6. Erstellen Sie das Image und übertragen Sie es mit Push-Operation in Ihr privates Bluemix-Repository. Weitere Informationen finden Sie unter [Einführung in {{site.data.keyword.registrylong_notm}}](/docs/services/Registry?topic=registry-index#index).
+6. Erstellen Sie das Image und übertragen Sie es mit Push-Operation in Ihr privates Bluemix-Repository. Weitere Informationen finden Sie unter [Einführung in {{site.data.keyword.registrylong_notm}}](/docs/services/Registry?topic=registry-getting-started#getting-started).
 
 Alle `ibmliberty`-Images sind so konfiguriert, dass die Liberty-Protokolldateien in das Verzeichnis `/logs` des Containers geschrieben werden. Alle anderen vom Liberty-Server geschriebenen Dateien werden im Verzeichnis `/opt/ibm/wlp/output/defaultServer` erstellt. Der Zugriff auf diese Dateien ist über den Direktaufruf `/output` möglich.
 {:tip}

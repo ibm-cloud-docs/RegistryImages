@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-03"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public image
 
@@ -71,12 +71,12 @@ subcollection: RegistryImages
 4. 필요에 따라 다른 모든 세부사항을 입력하십시오.
 5. **클러스터 작성**을 클릭하십시오.
 
-클러스터가 배치된 후 클러스터에 대한 액세스를 확보하는 방법에 대한 [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) 문서를 검토하십시오.
+클러스터가 배치된 후 클러스터에 대한 액세스를 확보하는 방법에 대한 [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started) 문서를 검토하십시오.
 
 ## 보안 경계 Vyatta의 초기 구성 실행
 {: #spn_initial_setup}
 
-1. _config.json_ 파일을 작성하십시오. 이 파일에는 Vyatta에 액세스하기 위해 `ibmcloud-secure-perimeter-network`에 필요한 기본 매개변수가 있습니다.
+1. `config.json` 파일을 작성하십시오. 이 파일에는 Vyatta에 액세스하기 위해 `ibmcloud-secure-perimeter-network`에 필요한 기본 매개변수가 있습니다.
 
   ```
   {
@@ -107,7 +107,7 @@ subcollection: RegistryImages
   ```
   {: codeblock}
 
-  _config.json_을 채우는 방법에 대한 세부사항은 [config.json 참조 테이블](#spn_reference_config_json)을 참조하십시오. 이 파일은 [`ibmcloud-secure-perimeter-network`를 Kubernetes 팟(Pod)으로 설정](#spn_setup) 프로세스에서 사용될 수도 있습니다.
+  `config.json`을 채우는 방법에 대한 세부사항은 [`config.json` 참조 테이블](#spn_reference_config_json)을 참조하십시오. 이 파일은 [`ibmcloud-secure-perimeter-network`를 Kubernetes 팟(Pod)으로 설정](#spn_setup) 프로세스에서 사용될 수도 있습니다.
 
 2. `ibmcloud-secure-perimeter-network`를 Docker 컨테이너로 실행하여 초기 설정을 시작하십시오.
 
@@ -116,14 +116,14 @@ subcollection: RegistryImages
   ```
   {: pre}
 
-  이 조치는 _state.json_ 파일을 작업 디렉토리에 작성합니다. 이 파일은 [`ibmcloud-secure-perimeter-network`를 Kubernetes 팟(Pod)으로 설정](#spn_setup)에 사용됩니다.
+  이 조치는 `state.json` 파일을 작업 디렉토리에 작성합니다. 이 파일은 [`ibmcloud-secure-perimeter-network`를 Kubernetes 팟(Pod)으로 설정](#spn_setup)에 사용됩니다.
 
 ## 보안 경계 내에서 Kubernetes 팟(Pod)으로 설정
 {: #spn_setup}
 
 `ibmcloud-secure-perimeter-network` 이미지에서 보안 경계의 서브넷을 관리하려면 Kubernetes 팟(Pod)을 사용하여 장기 프로세스로 실행할 수 있습니다. `ibmcloud-secure-perimeter-network`에는 Vyatta에 맞게 구성하기 위해 팟(Pod)에 복사해야 하는 여러 구성 파일 및 폴더가 있습니다.
 
-1. _pvc.yaml_ 파일을 작성하십시오. 이 구성 파일은 팟(Pod)에 볼륨으로 마운트할 수 있는 pvc(persistent volume claim)를 작성합니다.
+1. `pvc.yaml` 파일을 작성하십시오. 이 구성 파일은 팟(Pod)에 볼륨으로 마운트할 수 있는 지속적 볼륨 클레임(PVC)을 작성합니다.   
 
   ```
   apiVersion: v1
@@ -141,14 +141,14 @@ subcollection: RegistryImages
   ```
   {: codeblock}
 
-2. pvc를 작성하십시오.
+2. PVC를 작성하십시오.
 
     ```
     kubectl apply -f restore-pvc.yaml
     ```
     {: pre}
 
-3. _network-pod.yaml_ 파일을 작성하십시오. 이 구성 파일은 Kubernetes 클러스터에 `ibmcloud-secure-perimeter-network` 이미지를 팟(Pod)으로 배치하고 pvc(persistent volume claim)를 볼륨으로 마운트합니다.
+3. `network-pod.yaml` 파일을 작성하십시오. 이 구성 파일은 Kubernetes 클러스터에 `ibmcloud-secure-perimeter-network` 이미지를 팟(Pod)으로 배치하고 pvc(persistent volume claim)를 볼륨으로 마운트합니다.
 
   ```
   apiVersion: v1
@@ -173,7 +173,7 @@ subcollection: RegistryImages
   ```
   {: codeblock}
 
-4. _rules.conf_ 파일을 작성하십시오. 이 구성 파일은 보안 경계에 화이트리스트로 지정할 공용 인터넷의 외부 서브넷과 포트를 `ibmcloud-secure-perimeter-network`에 알립니다.
+4. `rules.conf` 파일을 작성하십시오. 이 구성 파일은 보안 경계에 화이트리스트로 지정할 공용 인터넷의 외부 서브넷과 포트를 `ibmcloud-secure-perimeter-network`에 알립니다.
 
   ```
   {
@@ -205,29 +205,29 @@ subcollection: RegistryImages
 
   _keys_ 디렉토리에는 Vyatta에 액세스하기 위해 `ibmcloud-secure-perimeter-network`에 필요한 SSH 키가 포함됩니다. SSH 키에 대한 자세한 정보는 [전제조건 절](#spn_prerequisites)을 참조하십시오.
 
-## config.json 참조
+## `config.json` 참조
 {: #spn_reference_config_json}
 
 |키|설명
 |---|-------------|---|
-|slid|IBM Cloud 인프라 사용자 이름
-|apikey|IBM Cloud 인프라 API 키
-|region|Vyatta가 배치된 IBM Cloud 지역
-|inf_name_private|Vyatta 개인용 인터페이스의 이름
-|inf_name_public|Vyatta 공용 인터페이스의 이름
-|gatewayid|Vyatta 게이트웨이 ID
-|vlans|유형, VLAN 번호 및 VLAN ID가 포함된 보안 경계 세그먼트 VLAN의 목록
-|vyatta_gateway_vip|게이트웨이의 VIP
-|vyatta_primary|기본 Vyatta 멤버의 사설 및 공인 IP가 포함된 오브젝트
-|vyatta_secondary|보조 Vyatta 멤버의 사설 및 공인 IP가 포함된 오브젝트
-{: caption="표 1. config.json" caption-side="top"}
+|`slid`|IBM Cloud 인프라 사용자 이름
+|`apikey`|IBM Cloud 인프라 API 키
+|`region`|Vyatta가 배치된 IBM Cloud 지역
+|`inf_name_private`|Vyatta 개인용 인터페이스의 이름
+|`inf_name_public`|Vyatta 공용 인터페이스의 이름
+|`gatewayid`|Vyatta 게이트웨이 ID
+|`vlans`|유형, VLAN 번호 및 VLAN ID가 포함된 보안 경계 세그먼트 VLAN의 목록
+|`vyatta_gateway_vip`|게이트웨이의 VIP
+|`vyatta_primary`|기본 Vyatta 멤버의 사설 및 공인 IP가 포함된 오브젝트
+|`vyatta_secondary`|보조 Vyatta 멤버의 사설 및 공인 IP가 포함된 오브젝트
+{: caption="표 1. `config.json`" caption-side="top"}
 
-## rules.conf 참조
+## `rules.conf` 참조
 {: #spn_reference_rules_conf}
 
 |키|설명
 |---|-------------|---|
-|external_subnets|보안 경계를 노출할 공용 인터넷의 서브넷 목록
-|external_ports|보안 경계를 노출할 포트 목록
-|userips|보안 경계에 화이트리스트로 지정할 사용자 IP의 목록
-{: caption="표 2. rules.conf" caption-side="top"}
+|`external_subnets`|보안 경계를 노출할 공용 인터넷의 서브넷 목록
+|`external_ports`|보안 경계를 노출할 포트 목록
+|`userips`|보안 경계에 화이트리스트로 지정할 사용자 IP의 목록
+{: caption="표 2. `rules.conf`" caption-side="top"}

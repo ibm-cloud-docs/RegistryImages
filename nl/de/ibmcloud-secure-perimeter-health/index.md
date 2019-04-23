@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-03"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
 
@@ -87,7 +87,7 @@ Das `ibmcloud-secure-perimeter-health`-Image bietet die folgenden Softwarepakete
 4. Geben Sie alle weiteren erforderlichen Details ein.
 5. Klicken Sie auf **Cluster erstellen**.
 
-Informationen zum Einrichten des Zugriffs auf den Cluster nach seiner Bereitstellung finden Sie in der [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index)-Dokumentation.
+Informationen zum Einrichten des Zugriffs auf den Cluster nach seiner Bereitstellung finden Sie in der [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started)-Dokumentation.
 
 ## Scannen von privaten Netzen in einem Secure Perimeter
 {: #sph_private_networks}
@@ -99,7 +99,7 @@ Erstellen Sie einen Container-Pod, der auf dem Image `ibmcloud-secure-perimeter-
 - Installieren Sie die erforderlichen [Befehlszeilenschnittstellen (CLIs)](/docs/containers?topic=containers-cs_cli_install#cs_cli_install).
 - [Geben Sie Ihren Cluster als Ziel in der Befehlszeilenschnittstelle an.](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure)
 
-1. Erstellen Sie eine Konfigurationsdatei mit dem Namen _health-pod.yaml_. Mit dieser Datei wird eine Hochverfügbarkeitsbereitstellung des Container-Pods erstellt.
+1. Erstellen Sie eine Konfigurationsdatei mit dem Namen `health-pod.yaml`. Mit dieser Datei wird eine Hochverfügbarkeitsbereitstellung des Container-Pods erstellt.
 
     ```
     apiVersion: extensions/v1beta1
@@ -133,7 +133,7 @@ Erstellen Sie einen Container-Pod, der auf dem Image `ibmcloud-secure-perimeter-
               value: <API-Schlüssel für die IBM Cloud-Infrastruktur>
     ```
     {: codeblock}
-    
+
 2. Erstellen Sie die Bereitstellung.
 
     ```
@@ -163,7 +163,7 @@ Erstellen Sie einen Docker-Container, der auf dem Image `ibmcloud-secure-perimet
 
 - Installieren Sie Docker.
 
-1. Erstellen Sie wie folgt einen Docker-Container für die eigene Workstation:
+1. Erstellen Sie einen Docker-Container über die eigene Workstation, indem Sie den folgenden Befehl ausführen:
 
     ```
     docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
@@ -199,7 +199,7 @@ sp-gateway-8a9031ab:
 ```
 {: screen}
 
-Das Format des Berichts ist im Folgenden dargestellt:
+Der Bericht weist das folgende Format auf:
 
 ```
 <Gateway-Name>:
@@ -217,10 +217,10 @@ Das Image `ibmcloud-secure-perimeter-health` gibt für ein Teilnetz den Status `
 
 |Schlüssel|Beschreibung|Standardwert
 |---|-------------|---|
-|scan|Typ des Sicherheitslückenscans ("öffentlich" oder "privat") |Ohne (beide Scantypen)
-|exclude-vlan-ids|Liste der VLANs nach IDs ohne Scannen|Ohne
-|poll-interval|Sekunden bis zum nächsten Scan festlegen|0 (einmalige Ausführung)
-|allowed-public-ports|Liste mit Ports, die in eine Whitelist für den Scan aufgenommen werden sollen|80, 443, 9000-9999
+|`scan`|Typ des Sicherheitslückenscans ("öffentlich" oder "privat") |Ohne (beide Scantypen)
+|`exclude-vlan-ids`|Liste der VLANs nach IDs ohne Scannen|Ohne
+|`poll-interval`|Sekunden bis zum nächsten Scan festlegen|0 (einmalige Ausführung)
+|`allowed-public-ports`|Liste mit Ports, die in eine Whitelist für den Scan aufgenommen werden sollen|80, 443, 9000-9999
 {: caption="Tabelle 1. Containerargumente" caption-side="top"}
 
 ## Referenzinformationen zu Umgebungsvariablen
@@ -228,6 +228,6 @@ Das Image `ibmcloud-secure-perimeter-health` gibt für ein Teilnetz den Status `
 
 |Schlüssel|Beschreibung|
 |---|-------------|
-|SL_USER|Ihr Benutzername für die IBM Cloud-Infrastruktur|
-|SL_APIKEY|Ihr API-Schlüssel für die IBM Cloud-Infrastruktur|
+|`SL_USER`|Ihr Benutzername für die IBM Cloud-Infrastruktur|
+|`SL_APIKEY`|Ihr API-Schlüssel für die IBM Cloud-Infrastruktur|
 {: caption="Tabelle 2. Umgebungsvariablen" caption-side="top"}

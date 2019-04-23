@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -50,7 +50,7 @@ subcollection: RegistryImages
 
 - Alpine 3.7
 - Duplicity 0.7.10
-- python 및 gpgme 패키지
+- Python 및 GnuPG Made Easy(GPGME) 패키지
 
 ## {{site.data.keyword.cos_full_notm}} 서비스 인스턴스 설정
 {: #backup_restore_setup_object_storage}
@@ -162,7 +162,7 @@ pvc(persistent volume claim)를 통해 앱 팟(Pod)에 마운트되는 pv(persis
    <table>
    <caption>표 1. YAML 파일 컴포넌트</caption>
    <thead>
-   <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> yaml 파일 컴포넌트 이해</th>
+   <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> YAML 파일 컴포넌트 이해</th>
    </thead>
     <tbody>
      <tr>
@@ -288,7 +288,7 @@ pvc(persistent volume claim)를 통해 앱 팟(Pod)에 마운트되는 pv(persis
    <table>
    <caption>표 2. YAML 파일 컴포넌트</caption>
    <thead>
-   <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> yaml 파일 컴포넌트 이해</th>
+   <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> YAML 파일 컴포넌트 이해</th>
    </thead>
     <tbody>
      <tr>
@@ -338,7 +338,7 @@ pvc(persistent volume claim)를 통해 앱 팟(Pod)에 마운트되는 pv(persis
     ```
     {: screen}
 
-    팟(Pod)이 복원 명령을 실행하고 중지됩니다. _CrashLoopBackOff_ 메시지는 Kubernetes가 팟(Pod)을 다시 시작하려고 시도 중임을 의미합니다.
+    팟(Pod)이 복원 명령을 실행하고 중지됩니다. `CrashLoopBackOff` 메시지는 Kubernetes가 팟(Pod)을 다시 시작하려고 시도 중임을 의미합니다.
 
 5. 팟(Pod)이 더 많은 자원을 이용하지 못하도록 팟(Pod)을 제거하십시오.
 
@@ -461,7 +461,7 @@ $ gpg --list-keys
     <table>
     <caption>표 3. YAML 파일 컴포넌트</caption>
     <thead>
-    <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> yaml 파일 컴포넌트 이해</th>
+    <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> YAML 파일 컴포넌트 이해</th>
     </thead>
      <tbody>
      <tr>

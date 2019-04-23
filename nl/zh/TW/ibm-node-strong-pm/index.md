@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-04"
 
 keywords: IBM Cloud Container Registry, ibm-node-strong image, container image, public image
 
@@ -21,7 +21,7 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
-# `ibm-node-strong-pm` 公用映像檔
+# `ibm-node-strong-pm` 公用映像檔 - 已淘汰
 {: #node-strong}
 
 `ibm-node-strong-pm` 公用映像檔已不再可用。

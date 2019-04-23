@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-03"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
 
@@ -83,11 +83,11 @@ A imagem `ibmcloud-secure-perimeter-health` fornece os pacotes de software a seg
 
 1. Forneça o cluster do Kubernetes por meio da seção **Contêineres** no catálogo do {{site.data.keyword.cloud_notm}}.
 2. Clique em **Criar**.
-3. Selecione as VLANs públicas e privadas do segmento de perímetro seguro dos menus suspensos da VLAN.
+3. Selecione as VLANs públicas e privadas do Segmento de perímetro seguro nos menus suspensos da VLAN.
 4. Insira todos os outros detalhes, conforme necessário.
 5. Clique em  ** Criar Cluster **.
 
-Revise a documentação do [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) sobre como obter acesso ao seu cluster após ele ser implementado.
+Revise a documentação do [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started) sobre como obter acesso ao seu cluster após ele ser implementado.
 
 ## Varrer as redes privadas em um perímetro seguro
 {: #sph_private_networks}
@@ -99,7 +99,7 @@ Crie um pod de contêiner por meio da imagem `ibmcloud-secure-perimeter-health` 
 - Instale as [CLIs](/docs/containers?topic=containers-cs_cli_install#cs_cli_install) necessárias.
 - [Destine sua CLI](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure) para seu cluster.
 
-1. Crie um arquivo de configuração denominado _health-pod.yaml_. Esse arquivo cria uma implementação altamente disponível do pod do contêiner.
+1. Crie um arquivo de configuração denominado `health-pod.yaml`. Esse arquivo cria uma implementação altamente disponível do pod do contêiner.
 
     ```
     apiVersion: extensions/v1beta1
@@ -133,7 +133,7 @@ Crie um pod de contêiner por meio da imagem `ibmcloud-secure-perimeter-health` 
               valor: <IBM Cloud infrastructure api key>
     ```
     {: codeblock}
-    
+
 2. Crie a implementação.
 
     ```
@@ -163,7 +163,7 @@ Crie um contêiner do Docker por meio da imagem `ibmcloud-secure-perimeter-healt
 
 - Instale o Docker.
 
-1. Crie um contêiner do Docker de sua própria estação de trabalho, da seguinte forma:
+1. Crie um contêiner do Docker por meio de sua própria estação de trabalho executando o comando a seguir:
 
     ```
     docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
@@ -199,7 +199,7 @@ sp-gateway-8a9031ab:
 ```
 {: screen}
 
-O formato do relatório é o seguinte:
+O relatório está no formato a seguir:
 
 ```
 <gateway name>:
@@ -217,13 +217,13 @@ A `ibmcloud-secure-perimeter-health` determinará uma sub-rede como `PASS` se ne
 
 |Chave|Descrição|Padrão
 |---|-------------|---|
-|scan|O tipo de varredura de exposição ("pública" ou
+|`scan`|O tipo de varredura de exposição ("pública" ou
 "privada") |None (varrer ambas)
-|exclude-vlan-ids|Lista de VLANs por IDs a evitar a
+|`exclude-vlan-ids`|Lista de VLANs por IDs a evitar a
 varredura|None
-|poll-interval|Configurar o número de segundos até a
+|`poll-interval`|Configurar o número de segundos até a
 próxima varredura|0 (executar uma única vez)
-|allowed-public-ports|Lista de portas para a
+|`allowed-public-ports`|Lista de portas para a
 lista de desbloqueio da varredura|80, 443, 9000-9999
 {: caption="Tabela 1. Argumentos do contêiner" caption-side="top"}
 
@@ -232,6 +232,6 @@ lista de desbloqueio da varredura|80, 443, 9000-9999
 
 |Chave|Descrição|
 |---|-------------|
-|SL_USER|Seu nome do usuário da infraestrutura no IBM Cloud|
-|SL_APIKEY|Sua chave API da infraestrutura no IBM Cloud|
+|`SL_USER`|Seu nome do usuário da infraestrutura no IBM Cloud|
+|`SL_APIKEY`|Sua chave API da infraestrutura no IBM Cloud|
 {: caption="Tabela 2. Variáveis de ambiente" caption-side="top"}

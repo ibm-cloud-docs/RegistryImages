@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
-keywords: IBM Cloud Container Registry, Data Shield environment, container image, public image, vault image
+keywords: IBM Cloud Container Registry, Data Shield environment, container image, public image, vault image, data in use, memory encryption, intel sgx, fortanix,
 
 subcollection: RegistryImages
 
@@ -24,11 +24,15 @@ subcollection: RegistryImages
 # `datashield-vault` イメージの概説
 {: #datashield-vault_starter}
 
-このコンテナー・イメージは、データ・シールド環境で Vault を実行し、データを保護します。
-{:shortdesc}
+このコンテナー・イメージは、データ・シールド環境で Vault を実行することにより使用されるデータを保護します。このサービスについて、および「使用されるデータ」を保護することの意味について詳しくは、[IBM Cloud Data Shield の資料](/docs/services/data-shield?topic=data-shield-about#about)を参照してください。
+{: shortdesc}
 
 {{site.data.keyword.IBM}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry?topic=registry-public_images#public_images)を参照してください。
 {: tip}
+
+
+## イメージのデプロイ
+{: #datashield-vault-deploy}
 
 Kubernetes ポッドの次の仕様を使用して、イメージをデプロイできます。
 
@@ -42,7 +46,7 @@ Kubernetes ポッドの次の仕様を使用して、イメージをデプロイ
     spec:
       containers:
       - name: data-shield-vault
-        image: <TODO INSERT APPROPRIATE IMAGE NAME HERE>
+        image: <IMAGE_NAME>
         volumeMounts:
         - mountPath: /dev/isgx
           name: isgx
@@ -66,8 +70,41 @@ Kubernetes ポッドの次の仕様を使用して、イメージをデプロイ
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: codeblock}
+{: pre}
+
+<table>
+<caption>表 1. 必須の入力変数</caption>
+  <tr>
+    <th>変数</th>
+    <th>説明</th>
+  </tr>
+  <tr>
+    <td><code>IMAGE_NAME</code></td>
+    <td>デプロイするイメージの名前。</td>
+  </tr>
+</table>
+
+保護された Vault のインスタンスにアクセスするには、以下のようにします。
+
+1. 以下のいずれかのコマンドを実行して、インスタンスのノード IP アドレスを検索します。
+
+  * オプション 1:
+
+    ```
+    kubectl get pod -owide
+    ```
+    {: pre}
+
+  * オプション 2:
+    ```
+    kubectl describe pod
+    ```
+    {: pre}
+
+2. `VAULT_ADDR` 環境変数を `http://<YOUR_IP>:8200` に設定します。
+  
 
 Vault インスタンスのノード IP アドレスを検索するには、`kubectl get pod -owide` または `kubectl describe pod` を使用します。 データ・シールドで保護された Vault インスタンスにアクセスするには、`VAULT_ADDR` 環境変数を `http://<IP>:8200` に設定します。
 
-`vault init`、`vault unseal`、`vault auth`、`vault write`、`vault read` のような Vault CLI コマンドを使用して、秘密を認証してアクセスできます。 Vault CLI の使用方法について詳しくは、[Vault Commands (CLI) ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://www.vaultproject.io/docs/commands/index.html) を参照してください。
+`vault init`、`vault unseal`、`vault auth`、`vault write`、`vault read` のような Vault CLI コマンドを使用して、秘密を認証してアクセスできます。Vault CLI の使用方法について詳しくは、[Vault Commands (CLI) ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://www.vaultproject.io/docs/commands/index.html) を参照してください。
+{: tip}

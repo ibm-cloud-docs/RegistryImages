@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
-keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, public image
+keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, Registry, data in use, memory encryption, intel sgx, fortanix,
 
 subcollection: RegistryImages
 
@@ -24,11 +24,14 @@ subcollection: RegistryImages
 # Initiation à l'image `datashield-barbican`
 {: #datashield-barbican_starter}
 
-Cette image de conteneur exécute Barbican dans l'environnement Data Shield et offre une protection pour vos données.
-{:shortdesc}
+Cette image de conteneur fournit une protection pour les données en cours d'utilisation en exécutant Barbican dans l'environnement Data Shield. Pour plus d'informations sur le service et ce qu'implique la protection des données en cours d'utilisation, voir la [documentation IBM Cloud Data Shield](/docs/services/data-shield?topic=data-shield-about#about).
+{: shortdesc}
 
 Vous pouvez accéder aux images fournies par {{site.data.keyword.IBM}} à l'aide de la ligne de commande. Voir [Images IBM publiques](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
+
+## Déploiement de l'image
+{: #datashield-barbican-deploy}
 
 Vous pouvez utiliser les spécifications suivantes sur les pods Kubernetes pour déployer l'image :
 
@@ -42,7 +45,7 @@ Vous pouvez utiliser les spécifications suivantes sur les pods Kubernetes pour 
     spec:
       containers:
       - name: data-shield-barbican
-        image: <TODO INSERT APPROPRIATE IMAGE NAME HERE>
+        image: <IMAGE_NAME>
         volumeMounts:
         - mountPath: /dev/isgx
           name: isgx
@@ -68,8 +71,23 @@ Vous pouvez utiliser les spécifications suivantes sur les pods Kubernetes pour 
 ```
 {: codeblock}
 
-Le processus de déploiement et de démarrage du conteneur peut prendre quelques minutes. L'instance Barbican de démonstration est configurée sans authentification Keystone. Les demandes doivent inclure l'en-tête `X-Project-Id: 12345`
+<table>
+<caption>Tableau 1. Variables d'entrée requises</caption>
+  <tr>
+    <th>Variable</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>IMAGE_NAME</code></td>
+    <td>Nom de l'image que vous voulez déployer.</td>
+  </tr>
+</table>
+
+Le processus de déploiement et de démarrage du conteneur peut prendre quelques minutes. L'instance Barbican de démonstration est configurée sans authentification Keystone. Les demandes doivent inclure l'en-tête `X-Project-Id: 12345`.
 {: tip}
+
+## Création d'un secret
+{: #datashield-barbican-secret}
 
 Vous pouvez créer un secret dans l'instance Barbican de démonstration en exécutant la commande suivante :
 

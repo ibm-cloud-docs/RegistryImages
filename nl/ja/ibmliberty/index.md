@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-03"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -46,7 +46,7 @@ IBM® WebSphere® Application Server Liberty (`ibmliberty`) イメージは {{si
 - IBM WebSphere Application Server for Developers Liberty
 - IBM Java Runtime Environment 8.0
 
-イメージにインストールされている具体的な Liberty フィーチャーは、選択したタグによって異なります。 次の表に、各 `ibmliberty` イメージに含まれているフィーチャーを示します。 各フィーチャーについて詳しくは、[IBM Knowledge Center にある Liberty フィーチャーの概要 ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html)を参照してください。
+イメージにインストールされている具体的な Liberty フィーチャーは、選択したタグによって異なります。 次の表に、各 `ibmliberty` イメージに含まれているフィーチャーを示します。 各フィーチャーについて詳しくは、[IBM Knowledge Center にある Liberty フィーチャーの概要 ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/rwlp_feat.html)を参照してください。
 
 |タグ|説明|
 |---|-----------|
@@ -90,7 +90,7 @@ Docker Hub の [websphere-liberty イメージ ![外部リンク・アイコン]
 3. イメージからのコンテナーのビルド、クラスターのセットアップ、クラスターでのアプリのデプロイについて詳しくは、以下のリンク先を参照してください。
 
     - [イメージからのコンテナーのビルド](/docs/containers?topic=containers-images#images)
-    - [IBM Cloud Kubernetes Service 概説](/docs/containers?topic=containers-container_index#container_index)
+    - [IBM Cloud Kubernetes Service 概説](/docs/containers?topic=containers-getting-started#getting-started)
     - [アプリをクラスターにデプロイする](/docs/containers?topic=containers-app#app)
 
     `ibmliberty` イメージを使用するには、ポート 9080 がパブリックに公開される必要があります。 {{site.data.keyword.Bluemix_notm}} ダッシュボードからコンテナーを作成する場合、このポートが**「パブリック・ポート」**フィールドにデフォルトで追加されます。 CLI からコンテナーを作成する場合は、`kubectl run` コマンドに `--port=9080` オプションを指定して実行し、ポートを公開してください。
@@ -128,9 +128,9 @@ WebSphere Application Server ライセンスは、必要なプロセッサー・
 
 {{site.data.keyword.Bluemix_notm}} 内のコンテナーのサイズごとに、特定の数の PVU 使用権が WebSphere Application Server ライセンスで使用可能でなければなりません。 したがって、ライセンスを購入する前に、`ibmliberty` コンテナーを計画する必要があります。
 
-WebSphere Application Server ライセンスを購入するには、[IBM サービス![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us)にお問い合わせください。 WebSphere Application Server v8.5 以降のライセンスを既にお持ちの場合は、既存の使用権の中の未使用 PVU を、コンテナーのデプロイメントに使用できます。
+WebSphere Application Server ライセンスを購入するには、[IBM サービス![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase)にお問い合わせください。 WebSphere Application Server v8.5 以降のライセンスを既にお持ちの場合は、既存の使用権の中の未使用 PVU を、コンテナーのデプロイメントに使用できます。
 
-ライセンス購入後にさらに PVU が必要であることが分かった場合は、[IBM サービス ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us) に連絡して量を増やすことができます。
+ライセンス購入後にさらに PVU が必要であることが分かった場合は、[IBM サービス ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase) に連絡して量を増やすことができます。
 
 ## {{site.data.keyword.containershort_notm}} で使用する、実動ライセンス交付を受けた `ibmliberty` イメージの作成
 {: #ibmliberty_prod_image}
@@ -141,7 +141,7 @@ WebSphere Application Server ライセンスを使用して、{{site.data.keywor
 - [Docker Hub からのイメージを実動イメージにアップグレードする ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade)。
 - [実動ライセンス交付を受けた独自のイメージを作成する ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://github.com/WASdev/ci.docker/tree/master/ga)。
 
-実動ライセンス交付を受けたイメージを作成した後、{{site.data.keyword.containershort_notm}} で使用するために、[イメージをプライベート・レジストリーにプッシュ](/docs/services/Registry?topic=registry-index#index)します。
+実動ライセンス交付を受けたイメージを作成した後、{{site.data.keyword.containershort_notm}} で使用するために、[イメージをプライベート・レジストリーにプッシュ](/docs/services/Registry?topic=registry-getting-started#getting-started)します。
 
 ## 提供イメージからのイメージの作成
 {: #ibmliberty_creating_image}
@@ -175,7 +175,7 @@ WebSphere Application Server ライセンスを使用して、{{site.data.keywor
 
 5. 独自のアプリに関する他の従属物があれば Dockerfile に追加します。
 
-6. イメージをビルドしてプライベート・イメージ・レジストリーにプッシュします。 詳しくは、[{{site.data.keyword.registrylong_notm}} 概説](/docs/services/Registry?topic=registry-index#index)を参照してください。
+6. イメージをビルドしてプライベート・イメージ・レジストリーにプッシュします。 詳しくは、[{{site.data.keyword.registrylong_notm}} 概説](/docs/services/Registry?topic=registry-getting-started#getting-started)を参照してください。
 
 すべての `ibmliberty` イメージは、コンテナー内のディレクトリー `/logs` に Liberty ログ・ファイルを書き込むように構成されています。 Liberty サーバーによって書き込まれる他のファイルはすべて、ディレクトリー `/opt/ibm/wlp/output/defaultServer` に作成されます。 これらのファイルには、ショートカット `/output` を使用してアクセスできます。
 {:tip}

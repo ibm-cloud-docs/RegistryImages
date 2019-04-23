@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -50,7 +50,7 @@ Ogni immagine `ibm-backup-restore` contiene i seguenti pacchetti software:
 
 - Alpine 3.7
 - Duplicity 0.7.10
-- Pacchetti python e gpgme
+- Pacchetti Python e GnuPG Made Easy (GPGME)
 
 ## Configurazione di un'istanza del servizio {{site.data.keyword.cos_full_notm}}
 {: #backup_restore_setup_object_storage}
@@ -338,7 +338,7 @@ Per ripristinare i dati da {{site.data.keyword.cos_full_notm}} a un PV, completa
     ```
     {: screen}
 
-    Il pod esegue il comando restore e si arresta. Il messaggio _CrashLoopBackOff_ significa che Kubernetes sta tentando di riavviare il pod.
+    Il pod esegue il comando restore e si arresta. Il messaggio `CrashLoopBackOff` significa che Kubernetes sta tentando di riavviare il pod.
 
 5. Rimuovi il pod per impedire che utilizzi ulteriori risorse.
 

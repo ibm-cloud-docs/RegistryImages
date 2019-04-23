@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
-keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, public image
+keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, Registry, data in use, memory encryption, intel sgx, fortanix,
 
 subcollection: RegistryImages
 
@@ -24,11 +24,14 @@ subcollection: RegistryImages
 # Introdução à imagem `datashield-barbican`
 {: #datashield-barbican_starter}
 
-Essa imagem de contêiner executa o Barbican no ambiente Data Shield, fornecendo proteção aos seus dados.
-{:shortdesc}
+Essa imagem de contêiner fornece proteção para os dados em uso executando o Barbican no ambiente do Data Shield. Para obter mais informações sobre o serviço e o que significa proteger os "dados em uso", consulte a [Documentação do IBM Cloud Data Shield](/docs/services/data-shield?topic=data-shield-about#about).
+{: shortdesc}
 
 É possível acessar as imagens que são fornecidas pela {{site.data.keyword.IBM}} usando a linha de comandos. Consulte [Imagens públicas da IBM](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
+
+## Implementando a imagem
+{: #datashield-barbican-deploy}
 
 É possível usar a especificação de pod do Kubernetes a seguir para implementar a imagem:
 
@@ -42,7 +45,7 @@ Essa imagem de contêiner executa o Barbican no ambiente Data Shield, fornecendo
     spec:
       containers:
       - name: data-shield-barbican
-        image: <TODO INSERT APPROPRIATE IMAGE NAME HERE>
+        image: <IMAGE_NAME>
         volumeMounts:
         - mountPath: /dev/isgx
           name: isgx
@@ -68,9 +71,24 @@ Essa imagem de contêiner executa o Barbican no ambiente Data Shield, fornecendo
 ```
 {: codeblock}
 
+<table>
+<caption>Tabela 1. Variáveis de entrada necessárias</caption>
+  <tr>
+    <th>Consolidação</th>
+    <th>Descrição</th>
+  </tr>
+  <tr>
+    <td><code>IMAGE_NAME</code></td>
+    <td>O nome da imagem que você deseja implementar.</td>
+  </tr>
+</table>
+
 Pode levar alguns minutos para que o contêiner seja implementado e iniciado. A instância de demonstração do Barbican é
-configurada sem a autenticação Keystone. A solicitação deve incluir o cabeçalho `X-Project-Id: 12345`
+configurada sem a autenticação Keystone. As solicitações devem incluir o cabeçalho `X-Project-Id: 12345`.
 {: tip}
+
+## Criando um segredo
+{: #datashield-barbican-secret}
 
 É possível criar um segredo na instância de demonstração do Barbican executando o comando a seguir:
 

@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
-keywords: IBM Cloud Container Registry, Data Shield environment, container image, public image, vault image
+keywords: IBM Cloud Container Registry, Data Shield environment, container image, public image, vault image, data in use, memory encryption, intel sgx, fortanix,
 
 subcollection: RegistryImages
 
@@ -24,11 +24,15 @@ subcollection: RegistryImages
 # `datashield-vault` 이미지 시작하기
 {: #datashield-vault_starter}
 
-이 컨테이너 이미지는 Data Shield 환경에서 Vault를 실행하며 사용자의 데이터에 대한 보호를 제공합니다.
-{:shortdesc}
+이 컨테이너 이미지는 Data Shield 환경에서 Vault를 실행하여 사용 중인 데이터를 보호합니다. 서비스에 대한 자세한 내용과 "사용 중인 데이터"를 보호하는 방법에 대한 자세한 내용은 [IBM Cloud Data Shield 문서](/docs/services/data-shield?topic=data-shield-about#about)를 참조하십시오.
+{: shortdesc}
 
 명령행을 사용하여 {{site.data.keyword.IBM}}에서 제공한 이미지에 액세스할 수 있습니다. [IBM 공용 이미지](/docs/services/Registry?topic=registry-public_images#public_images)를 참조하십시오.
 {: tip}
+
+
+## 이미지 배치
+{: #datashield-vault-deploy}
 
 다음 Kubernetes 팟(Pod) 스펙을 사용하여 이미지를 배치할 수 있습니다.
 
@@ -42,7 +46,7 @@ subcollection: RegistryImages
     spec:
       containers:
       - name: data-shield-vault
-        image: <TODO INSERT APPROPRIATE IMAGE NAME HERE>
+        image: <IMAGE_NAME>
         volumeMounts:
         - mountPath: /dev/isgx
           name: isgx
@@ -66,8 +70,40 @@ subcollection: RegistryImages
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: codeblock}
+{: pre}
 
-`kubectl get pod -owide` 또는 `kubectl describe pod`을 사용하여 볼트 인스턴스에 대한 노드 IP 주소를 검색하십시오. Data Shield 보호 볼트 인스턴스에 액세스하려면 `볼트_ADDR` 환경 변수를 `http://<IP>:8200`으로 설정하십시오.
+<table>
+<caption>표 1. 필수 입력 변수</caption>
+  <tr>
+    <th>변수</th>
+    <th>설명</th>
+  </tr>
+  <tr>
+    <td><code>IMAGE_NAME</code></td>
+    <td>배치하려는 이미지 이름입니다. </td>
+  </tr>
+</table>
 
-`vault init`, `vault unseal`, `vault auth`, `vault write` 및 `vault read`와 같은 vault CLI 명령을 사용하여 시크릿을 인증하고 액세스할 수 있습니다. Vault CLI 사용 방법에 대한 자세한 정보는 [Vault Commands (CLI) ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.vaultproject.io/docs/commands/index.html)를 참조하십시오.
+Vault의 보호된 인스턴스에 액세스하려면 다음을 실행하십시오. 
+
+1. 다음 명령 중 하나를 실행하여 인스턴스의 노드 IP 주소를 찾으십시오. 
+
+  * 옵션 1:
+
+    ```
+    kubectl get pod -owide
+    ```
+    {: pre}
+
+  * 옵션 2:
+    ```
+    kubectl describe pod
+    ```
+    {: pre}
+
+2. `VAULT_ADDR` 환경 변수를 `http://<YOUR_IP>:8200`으로 설정하십시오.
+  
+
+`kubectl get pod -owide` 또는 `kubectl describe pod`을 사용하여 볼트 인스턴스에 대한 노드 IP 주소를 검색하십시오. Data Shield 보호 Vault 인스턴스에 액세스하려면 `VAULT_ADDR` 환경 변수를 `http://<IP>:8200`으로 설정하십시오. 
+`vault init`, `vault unseal`, `vault auth`, `vault write` 및 `vault read`와 같은 Vault CLI 명령을 사용하여 시크릿을 인증하고 액세스할 수 있습니다. Vault CLI 사용 방법에 대한 자세한 정보는 [Vault Commands (CLI) ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.vaultproject.io/docs/commands/index.html)를 참조하십시오.
+{: tip}

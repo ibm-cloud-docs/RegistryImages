@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -50,7 +50,7 @@ Jedes Image `ibm-backup-restore` enth채lt die folgenden Softwarepakete:
 
 - Alpine 3.7
 - Duplicity 0.7.10
-- python- und gpgme-Pakete
+- Python- und GPGME-Pakete (GnuPG Made Easy)
 
 ## {{site.data.keyword.cos_full_notm}}-Serviceinstanz einrichten
 {: #backup_restore_setup_object_storage}
@@ -162,7 +162,7 @@ F체hren Sie die folgenden Schritte aus, um einen vorhandenen physischen Datentr�
    <table>
    <caption>Tabelle 1. Komponenten der YAML-Datei</caption>
    <thead>
-   <th colspan=2><img src="../images/idea.png" alt="Ideensymbol"/> Komponenten der YAML-Datei</th>
+   <th colspan=2><img src="../images/idea.png" alt="Ideensymbol"/> Komponenten der YAML-Datei verstehen</th>
    </thead>
     <tbody>
      <tr>
@@ -288,7 +288,7 @@ F체hren Sie die folgenden Schritte aus, um Daten von {{site.data.keyword.cos_ful
    <table>
    <caption>Tabelle 2. Komponenten der YAML-Datei</caption>
    <thead>
-   <th colspan=2><img src="../images/idea.png" alt="Ideensymbol"/> Komponenten der YAML-Datei</th>
+   <th colspan=2><img src="../images/idea.png" alt="Ideensymbol"/> Komponenten der YAML-Datei verstehen</th>
    </thead>
     <tbody>
      <tr>
@@ -338,7 +338,7 @@ F체hren Sie die folgenden Schritte aus, um Daten von {{site.data.keyword.cos_ful
     ```
     {: screen}
 
-    Der Pod f체hrt den Wiederherstellungsbefehl aus und wird gestoppt. Die Nachricht _CrashLoopBackOff_ bedeutet, dass Kubernetes versucht, den Pod erneut zu starten.
+    Der Pod f체hrt den Wiederherstellungsbefehl aus und wird gestoppt. Die Nachricht `CrashLoopBackOff` bedeutet, dass Kubernetes versucht, den Pod erneut zu starten.
 
 5. Entfernen Sie den Pod, um zu verhindern, dass er weitere Ressourcen verbraucht.
 
@@ -461,7 +461,7 @@ Verschl체sseln Sie die Daten in Ihrer {{site.data.keyword.cos_full_notm}}-Instan
     <table>
     <caption>Tabelle 3. Komponenten der YAML-Datei</caption>
     <thead>
-    <th colspan=2><img src="../images/idea.png" alt="Ideensymbol"/> Komponenten der YAML-Datei</th>
+    <th colspan=2><img src="../images/idea.png" alt="Ideensymbol"/> Komponenten der YAML-Datei verstehen</th>
     </thead>
      <tbody>
      <tr>

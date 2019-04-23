@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -50,7 +50,7 @@ Chaque image `ibm-backup-restore` contient les progiciels suivants :
 
 - Alpine 3.7
 - Duplicity 0.7.10
-- Packages python et gpgme
+- Packages Python et GPGME (GnuPG Made Easy)
 
 ## Configuration d'une instance de service {{site.data.keyword.cos_full_notm}}
 {: #backup_restore_setup_object_storage}
@@ -91,7 +91,7 @@ Consultez la documentation [{{site.data.keyword.cos_full_notm}}](/docs/services/
 Vous pouvez créer une sauvegarde ponctuelle ou planifiée de tout volume persistant qui est monté dans votre pod d'application via une réservation de volume persistant.  
 {: shortdesc}
 
-L'exemple suivant vous montre comment déployer un pod de sauvegarde depuis l'image `ibm-backup-restore`, monter un volume persistant dans le pod de sauvegarde en utilisant une réclamation de volume persistant et sauvegarder les données depuis le volume persistant dans votre instance de service {{site.data.keyword.cos_full_notm}}.  
+L'exemple suivant vous montre comment déployer un pod de sauvegarde depuis l'image `ibm-backup-restore`, monter un volume persistant dans le pod de sauvegarde en utilisant une réservation de volume persistant et sauvegarder les données depuis le volume persistant dans votre instance de service {{site.data.keyword.cos_full_notm}}.  
 
 **Avant de commencer**
 
@@ -110,7 +110,7 @@ Pour sauvegarder un volume persistant, procédez comme suit :
    ```
    {: pre}
 
-2. Créez un pod de sauvegarde depuis l'image `ibm-backup-restore`. Pour accéder aux données du volume persistant, vous devez monter la réclamation de volume persistant qui lie le volume persistant à votre pod de sauvegarde. L'exemple ci-après crée une pod de sauvegarde qui exécute une sauvegarde incrémentielle quotidienne. Pour créer une sauvegarde avec des paramètres différents, examinez la liste complète des [options de variable d'environnement](#backup_restore_env_reference).
+2. Créez un pod de sauvegarde depuis l'image `ibm-backup-restore`. Pour accéder aux données du volume persistant, vous devez monter la réservation de volume persistant qui lie le volume persistant à votre pod de sauvegarde. L'exemple ci-après crée une pod de sauvegarde qui exécute une sauvegarde incrémentielle quotidienne. Pour créer une sauvegarde avec des paramètres différents, examinez la liste complète des [options de variable d'environnement](#backup_restore_env_reference).
 
    L'image `ibm-backup-restore` doit être déployée dans un pod unique et ne peut pas être utilisée dans le cadre d'un déploiement Kubernetes.
    {: important}
@@ -162,7 +162,7 @@ Pour sauvegarder un volume persistant, procédez comme suit :
    <table>
    <caption>Tableau 1. Composants du fichier YAML</caption>
    <thead>
-   <th colspan=2><img src="../images/idea.png" alt="Icône d'idée"/> Présentation des composants du fichier yaml</th>
+   <th colspan=2><img src="../images/idea.png" alt="Icône Idée"/> Description des composants du fichier YAML</th>
    </thead>
     <tbody>
      <tr>
@@ -248,7 +248,7 @@ Pour restaurer des données depuis {{site.data.keyword.cos_full_notm}} dans un v
    ```
    {: pre}
 
-2. Créez un pod de restauration depuis l'image `ibm-backup-restore`. Pour restaurer des données dans un volume persistant, vous devez monter la réclamation de volume persistant qui lie le volume persistant à votre pod de restauration.
+2. Créez un pod de restauration depuis l'image `ibm-backup-restore`. Pour restaurer des données dans un volume persistant, vous devez monter la réservation de volume persistant qui lie le volume persistant à votre pod de restauration.
 
    ```
    apiVersion: v1
@@ -288,7 +288,7 @@ Pour restaurer des données depuis {{site.data.keyword.cos_full_notm}} dans un v
    <table>
    <caption>Tableau 2. Composants du fichier YAML</caption>
    <thead>
-   <th colspan=2><img src="../images/idea.png" alt="Icône d'idée"/> Présentation des composants du fichier yaml</th>
+   <th colspan=2><img src="../images/idea.png" alt="Icône Idée"/> Description des composants du fichier YAML</th>
    </thead>
     <tbody>
      <tr>
@@ -338,7 +338,7 @@ Pour restaurer des données depuis {{site.data.keyword.cos_full_notm}} dans un v
     ```
     {: screen}
 
-    Le pod exécute la commande de restauration et s'arrête. Le message _CrashLoopBackOff_ signifie que Kubernetes est en train d'essayer de redémarrer le pod.
+    Le pod exécute la commande de restauration et s'arrête. Le message `CrashLoopBackOff` signifie que Kubernetes est en train d'essayer de redémarrer le pod.
 
 5. Retirez le pod pour l'empêcher de consommer davantage de ressources.
 
@@ -462,7 +462,7 @@ d'{{site.data.keyword.cos_full_notm}} que vous aviez notées plus tôt. Ajoutez 
     <table>
     <caption>Tableau 3. Composants du fichier YAML</caption>
     <thead>
-    <th colspan=2><img src="../images/idea.png" alt="Icône d'idée"/> Présentation des composants du fichier yaml</th>
+    <th colspan=2><img src="../images/idea.png" alt="Icône Idée"/> Description des composants du fichier YAML</th>
     </thead>
      <tbody>
      <tr>

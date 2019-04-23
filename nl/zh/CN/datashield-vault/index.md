@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
-keywords: IBM Cloud Container Registry, Data Shield environment, container image, public image, vault image
+keywords: IBM Cloud Container Registry, Data Shield environment, container image, public image, vault image, data in use, memory encryption, intel sgx, fortanix,
 
 subcollection: RegistryImages
 
@@ -24,11 +24,15 @@ subcollection: RegistryImages
 # 开始使用 `datashield-vault` 映像
 {: #datashield-vault_starter}
 
-此容器映像会在 Data Shield 环境中运行 Vault，为您的数据提供保护。
-{:shortdesc}
+此容器映像为在 Data Shield 环境中运行 Vault 所使用的数据提供保护。有关服务和保护“使用中的数据”的含义的更多信息，请参阅 [IBM Cloud Data Shield 文档](/docs/services/data-shield?topic=data-shield-about#about)。
+{: shortdesc}
 
 您可以使用命令行来访问 {{site.data.keyword.IBM}} 提供的映像，请参阅 [IBM 公共映像](/docs/services/Registry?topic=registry-public_images#public_images)。
 {: tip}
+
+
+## 部署映像
+{: #datashield-vault-deploy}
 
 您可以使用以下 Kubernetes pod 规范来部署映像：
 
@@ -42,7 +46,7 @@ subcollection: RegistryImages
     spec:
       containers:
       - name: data-shield-vault
-        image: <TODO INSERT APPROPRIATE IMAGE NAME HERE>
+        image: <IMAGE_NAME>
         volumeMounts:
         - mountPath: /dev/isgx
           name: isgx
@@ -66,8 +70,41 @@ subcollection: RegistryImages
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: codeblock}
+{: pre}
+
+<table>
+<caption>表 1. 必需的输入变量</caption>
+  <tr>
+    <th>变量</th>
+    <th>描述</th>
+  </tr>
+  <tr>
+    <td><code>IMAGE_NAME</code></td>
+    <td>要部署的映像的名称。</td>
+  </tr>
+</table>
+
+要访问 Vault 的受保护实例，请执行以下操作：
+
+1. 通过运行以下命令之一查找实例的节点 IP 地址。
+
+  * 选项 1：
+
+    ```
+    kubectl get pod -owide
+    ```
+    {: pre}
+
+  * 选项 2：
+    ```
+    kubectl describe pod
+    ```
+    {: pre}
+
+2. 将 `VAULT_ADDR` 环境变量设置为 `http://<YOUR_IP>:8200`。
+  
 
 使用 `kubectl get pod -owide` 或 `kubectl describe pod` 来查找 Vault 实例的节点 IP 地址。将 `VAULT_ADDR` 环境变量设置为 `http://<IP>:8200`，以访问受 Data Shield 保护的 Vault 实例。
 
 您可以使用 Vault CLI 命令（例如 `vault init`、`vault unseal`、`vault auth`、`vault write` 和 `vault read`）来认证和访问私钥。有关如何使用 Vault CLI 的更多信息，请参阅 [Vault Commands (CLI) ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://www.vaultproject.io/docs/commands/index.html)。
+{: tip}

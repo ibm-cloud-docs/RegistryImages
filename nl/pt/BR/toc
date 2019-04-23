@@ -13,4 +13,6 @@ Imagens de contêiner público IBM
     ibmcloud-secure-perimeter-health/index.md
     ibmcloud-secure-perimeter-network/index.md
     ibmliberty/index.md
+    ibm-mq/index.md
+    ibm-node-strong-pm/index.md
     {: .navgroup-end}

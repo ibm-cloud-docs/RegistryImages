@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-03"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
 
@@ -87,7 +87,7 @@ sp-gateway-8a9031ab:
 4. 必要に応じて他のすべての詳細を入力します。
 5. **「クラスターの作成」**をクリックします。
 
-クラスターがデプロイされた後、クラスターにアクセスする方法については、[{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) 資料を参照してください。
+クラスターがデプロイされた後、クラスターにアクセスする方法については、[{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started) 資料を参照してください。
 
 ## Secure Perimeter 内のプライベート・ネットワークをスキャンする
 {: #sph_private_networks}
@@ -99,7 +99,7 @@ sp-gateway-8a9031ab:
 - 必要な [CLI](/docs/containers?topic=containers-cs_cli_install#cs_cli_install) をインストールします。
 - [CLI のターゲット](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure)を自分のクラスターに設定します。
 
-1. _health-pod.yaml_ という名前の構成ファイルを作成します。 このファイルにより、高可用性のコンテナー・ポッドのデプロイメントが作成されます。
+1. `health-pod.yaml` という名前の構成ファイルを作成します。 このファイルにより、高可用性のコンテナー・ポッドのデプロイメントが作成されます。
 
     ```
     apiVersion: extensions/v1beta1
@@ -133,7 +133,7 @@ sp-gateway-8a9031ab:
               value: <IBM Cloud infrastructure api key>
     ```
     {: codeblock}
-    
+
 2. デプロイメントを作成します。
 
     ```
@@ -163,7 +163,7 @@ sp-gateway-8a9031ab:
 
 - Docker をインストールします。
 
-1. 以下のように、自身のワークステーションから Docker コンテナーを作成します。
+1. 以下のコマンドを実行して、自身のワークステーションから Docker コンテナーを作成します。
 
     ```
     docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
@@ -199,7 +199,7 @@ sp-gateway-8a9031ab:
 ```
 {: screen}
 
-レポートのフォーマットは、以下のとおりです。
+レポートの形式は以下のとおりです。
 
 ```
 <gateway name>:
@@ -217,10 +217,10 @@ sp-gateway-8a9031ab:
 
 |キー|説明|デフォルト
 |---|-------------|---|
-|scan|露出スキャンのタイプ (「public」または「private」) |なし (両方をスキャン)
-|exclude-vlan-ids|スキャンを回避する VLAN ID のリスト|なし
-|poll-interval|次のスキャンまでの秒数を設定|0 (実行は 1 回)
-|allowed-public-ports|スキャンでのホワイトリストに登録するポートのリスト|80, 443, 9000-9999
+|`scan`|露出スキャンのタイプ (「public」または「private」) |なし (両方をスキャン)
+|`exclude-vlan-ids`|スキャンを回避する VLAN ID のリスト|なし
+|`poll-interval`|次のスキャンまでの秒数を設定|0 (実行は 1 回)
+|`allowed-public-ports`|スキャンでのホワイトリストに登録するポートのリスト|80, 443, 9000-9999
 {: caption="表 1. コンテナー引数" caption-side="top"}
 
 ## 環境変数リファレンス
@@ -228,6 +228,6 @@ sp-gateway-8a9031ab:
 
 |キー|説明|
 |---|-------------|
-|SL_USER|IBM Cloud インフラストラクチャー・ユーザー名|
-|SL_APIKEY|IBM Cloud インフラストラクチャー API 鍵|
+|`SL_USER`|IBM Cloud インフラストラクチャー・ユーザー名|
+|`SL_APIKEY`|IBM Cloud インフラストラクチャー API 鍵|
 {: caption="表 2. 環境変数" caption-side="top"}

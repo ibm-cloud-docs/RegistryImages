@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-03"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -46,7 +46,7 @@ IBM WebSphere Application Server Liberty 컨테이너에서 Java를 기반으로
 - IBM WebSphere Application Server for Developers Liberty
 - IBM Java Runtime Environment 8.0
 
-이미지에 설치된 특정 Liberty 기능은 사용자가 선택하는 태그에 따라 다릅니다. 다음 표에서는 각 `ibmliberty` 이미지에 포함되는 기능을 보여줍니다. 각 기능에 대한 자세한 정보는 [Liberty features overview in IBM Knowledge Center![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html)를 참조하십시오.
+이미지에 설치된 특정 Liberty 기능은 사용자가 선택하는 태그에 따라 다릅니다. 다음 표에서는 각 `ibmliberty` 이미지에 포함되는 기능을 보여줍니다. 각 기능에 대한 자세한 정보는 [Liberty features overview in IBM Knowledge Center![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/rwlp_feat.html)를 참조하십시오.
 
 |태그|설명|
 |---|-----------|
@@ -90,7 +90,7 @@ Docker 허브의 [websphere-liberty image ![외부 링크 아이콘](../../../ic
 3. 이미지에서 컨테이너 빌드, 클러스터 설정 및 클러스터에 앱 배치에 대한 자세한 정보를 보려면 다음 링크를 사용하십시오.
 
     - [이미지에서 컨테이너 빌드](/docs/containers?topic=containers-images#images)
-    - [IBM Cloud Kubernetes Service 시작하기](/docs/containers?topic=containers-container_index#container_index)
+    - [IBM Cloud Kubernetes Service 시작하기](/docs/containers?topic=containers-getting-started#getting-started)
     - [클러스터에 앱 배치](/docs/containers?topic=containers-app#app)
 
     `ibmliberty` 이미지에는 9080 포트가 공개적으로 노출되어야 합니다. {{site.data.keyword.Bluemix_notm}} 대시보드에서 컨테이너를 작성할 때 기본적으로 **공용 포트** 필드에서 포트가 추가됩니다. CLI에서 컨테이너를 작성하려면 `--port=9080` 옵션이 포함된 `kubectl run` 명령으로 포트를 노출하십시오.
@@ -128,9 +128,9 @@ WebSphere Application Server 라이센스는 필요한 PVU\(Processor Value Unit
 
 {{site.data.keyword.Bluemix_notm}}의 모든 컨테이너 크기에는 WebSphere Application Server 라이센스에서 사용 가능해야 하는 특정 수의 PVU 인타이틀먼트가 있어야 합니다. 따라서 라이센스를 구매하기 전에 `ibmliberty` 컨테이너를 계획해야 합니다.
 
-WebSphere Application Server 라이센스를 구매하려면 [IBM Service ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us)에 문의하십시오. WebSphere Application Server v8.5 이상에 대한 라이센스가 이미 있으면, 컨테이너의 배치를 위해 기존 인타이틀먼트의 미사용 PVU를 사용할 수 있습니다.
+WebSphere Application Server 라이센스를 구매하려면 [IBM Service ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase)에 문의하십시오. WebSphere Application Server v8.5 이상에 대한 라이센스가 이미 있으면, 컨테이너의 배치를 위해 기존 인타이틀먼트의 미사용 PVU를 사용할 수 있습니다.
 
-라이센스를 구매한 후 추가 PVU가 필요하면 [IBM Service ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us)에 문의하여 양을 늘릴 수 있습니다.
+라이센스를 구매한 후 추가 PVU가 필요하면 [IBM Service ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase)에 문의하여 양을 늘릴 수 있습니다.
 
 ## {{site.data.keyword.containershort_notm}}에서 사용될 프로덕션 라이센스 `ibmliberty` 이미지 작성
 {: #ibmliberty_prod_image}
@@ -141,7 +141,7 @@ WebSphere Application Server 라이센스를 사용하여 {{site.data.keyword.co
 - [Upgrade the image from Docker Hub to a production image ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
 - [Build your own production-licensed image ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://github.com/WASdev/ci.docker/tree/master/ga)
 
-프로덕션 라이센스가 부여된 이미지를 작성한 후 {{site.data.keyword.containershort_notm}}와 함께 사용하도록 [이미지를 사설 레지스트리에 푸시](/docs/services/Registry?topic=registry-index#index)하십시오.
+프로덕션 라이센스가 부여된 이미지를 작성한 후 {{site.data.keyword.containershort_notm}}와 함께 사용하도록 [이미지를 사설 레지스트리에 푸시](/docs/services/Registry?topic=registry-getting-started#getting-started)하십시오.
 
 ## 제공된 이미지에서 이미지 작성
 {: #ibmliberty_creating_image}
@@ -175,7 +175,7 @@ WebSphere Application Server 라이센스를 사용하여 {{site.data.keyword.co
 
 5. Dockerfile에 앱의 기타 종속 항목을 추가하십시오.
 
-6. 이미지를 빌드한 다음 사설 이미지 레지스트리에 푸시하십시오. 자세한 정보는 [{{site.data.keyword.registrylong_notm}} 시작하기](/docs/services/Registry?topic=registry-index#index)를 참조하십시오.
+6. 이미지를 빌드한 다음 사설 이미지 레지스트리에 푸시하십시오. 자세한 정보는 [{{site.data.keyword.registrylong_notm}} 시작하기](/docs/services/Registry?topic=registry-getting-started#getting-started)를 참조하십시오.
 
 컨테이너 내부의 `/logs` 디렉토리에 Liberty 로그 파일을 작성하도록 모든 `ibmliberty` 이미지가 구성됩니다. Liberty 서버에서 쓰는 기타 모든 파일은 `/opt/ibm/wlp/output/defaultServer` 디렉토리에 작성됩니다. 바로 가기(`/output`)를 사용하여 이러한 파일에 액세스할 수 있습니다.
 {:tip}

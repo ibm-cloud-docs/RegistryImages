@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-03"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
 
@@ -83,11 +83,11 @@ L'image `ibmcloud-secure-perimeter-health` fournit les progiciels suivants.
 
 1. Mettez à disposition votre cluster Kubernetes à partir de la section **Conteneurs** du catalogue {{site.data.keyword.cloud_notm}}.
 2. Cliquez sur **Créer**.
-3. Sélectionnez les réseaux locaux virtuels public et privé du segment de paramètre sécurisé (Secure Perimeter Segment) à partir des menus déroulants VLAN.
+3. Sélectionnez les réseaux locaux virtuels privés et publics Secure Perimeter Segment depuis les menus déroulants de réseau local virtuel.
 4. Entrez toutes les autres informations requises.
 5. Cliquez sur **Créer un cluster**.
 
-Consultez la documentation [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) savoir comment accéder à votre cluster une fois celui-ci déployé.
+Consultez la documentation [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started) savoir comment accéder à votre cluster une fois celui-ci déployé.
 
 ## Analyser les réseaux privés au sein d'un périmètre sécurisé
 {: #sph_private_networks}
@@ -99,7 +99,7 @@ Créez un pod de conteneur à partir de l'image `ibmcloud-secure-perimeter-healt
 - Installez les [interfaces de ligne de commande](/docs/containers?topic=containers-cs_cli_install#cs_cli_install) requises.
 - [Ciblez votre interface de ligne de commande](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure) vers votre cluster.
 
-1. Créez un fichier de configuration nommé _health-pod.yaml_. Ce fichier crée un déploiement hautement disponible du pod de conteneur.
+1. Créez un fichier de configuration nommé `health-pod.yaml`. Ce fichier crée un déploiement hautement disponible du pod de conteneur.
 
     ```
     apiVersion: extensions/v1beta1
@@ -133,7 +133,7 @@ Créez un pod de conteneur à partir de l'image `ibmcloud-secure-perimeter-healt
               value: <IBM Cloud infrastructure api key>
     ```
     {: codeblock}
-    
+
 2. Créez le déploiement.
 
     ```
@@ -163,7 +163,7 @@ Créez un conteneur Docker à partir de l'image `ibmcloud-secure-perimeter-healt
 
 - Installez Docker.
 
-1. Créez un conteneur Docker à partir de votre propre poste de travail à l'aide de la commande suivante :
+1. Créez un conteneur Docker à partir de votre propre poste de travail en exécutant la commande suivante :
 
     ```
     docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
@@ -199,7 +199,7 @@ sp-gateway-8a9031ab:
 ```
 {: screen}
 
-Le format du rapport est le suivant :
+Le rapport est au format suivant :
 
 ```
 <nom de la passerelle> :
@@ -217,10 +217,10 @@ Le format du rapport est le suivant :
 
 |Clé|Description|Valeur par défaut
 |---|-------------|---|
-|scan|Type d'analyse d'exposition ("publique" ou "privée") |Aucun (analyser les deux)
-|exclude-vlan-ids|Liste des réseaux locaux virtuels (VLAN) par ID pour éviter l'analyse|Aucun
-|poll-interval|Définit le nombre de secondes écoulées entre deux analyses|0 (une seule exécution)
-|allowed-public-ports|Liste des ports à placer sur liste blanche sous l'analyse|80, 443, 9000-9999
+|`scan`|Type d'analyse d'exposition ("publique" ou "privée") |Aucun (analyser les deux)
+|`exclude-vlan-ids`|Liste des réseaux locaux virtuels (VLAN) par ID pour éviter l'analyse|Aucun
+|`poll-interval`|Définit le nombre de secondes écoulées entre deux analyses|0 (une seule exécution)
+|`allowed-public-ports`|Liste des ports à placer sur liste blanche sous l'analyse|80, 443, 9000-9999
 {: caption="Tableau 1. Arguments de conteneur" caption-side="top"}
 
 ## Référence de variable d'environnement
@@ -228,6 +228,6 @@ Le format du rapport est le suivant :
 
 |Clé|Description|
 |---|-------------|
-|SL_USER|Votre nom d'utilisateur d'infrastructure IBM Cloud|
-|SL_APIKEY|Votre clé d'API d'infrastructure IBM Cloud|
+|`SL_USER`|Votre nom d'utilisateur d'infrastructure IBM Cloud|
+|`SL_APIKEY`|Votre clé d'API d'infrastructure IBM Cloud|
 {: caption="Tableau 2. Variables d'environnement" caption-side="top"}

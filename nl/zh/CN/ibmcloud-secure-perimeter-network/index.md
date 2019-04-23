@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-03"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public image
 
@@ -71,12 +71,12 @@ subcollection: RegistryImages
 4. 根据需要输入其他所有详细信息。
 5. 单击**创建集群**。
 
-查看 [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) 文档以了解如何在部署后获取集群的访问权。
+查看 [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started) 文档以了解如何在部署后获取集群的访问权。
 
 ## 运行 Secure Perimeter Vyatta 的初始配置
 {: #spn_initial_setup}
 
-1. 创建名为 _config.json_ 的文件。此文件包含 `ibmcloud-secure-perimeter-network` 访问 Vyatta 所需的基本参数。
+1. 创建名为 `config.json` 的文件。此文件包含 `ibmcloud-secure-perimeter-network` 访问 Vyatta 所需的基本参数。
 
   ```
   {
@@ -107,7 +107,7 @@ subcollection: RegistryImages
   ```
   {: codeblock}
 
-  请参阅 [config.json 参考表](#spn_reference_config_json)以获取有关如何填充 _config.json_ 的详细信息。此文件也可用于[将 `ibmcloud-secure-perimeter-network` 设置为 Kubernetes pod](#spn_setup) 的过程。
+  请参阅 [`config.json` 参考表](#spn_reference_config_json)以获取有关如何填充 `config.json` 的详细信息。此文件也可用于[将 `ibmcloud-secure-perimeter-network` 设置为 Kubernetes pod](#spn_setup) 的过程。
 
 2. 作为 Docker 容器运行 `ibmcloud-secure-perimeter-network` 以开始初始设置。
 
@@ -116,14 +116,14 @@ subcollection: RegistryImages
   ```
   {: pre}
 
-  此操作将在工作目录中创建文件 _state.json_。此文件用于[将 `ibmcloud-secure-perimeter-network` 设置为 Kubernetes pod](#spn_setup)。
+  此操作将在工作目录中创建文件 `state.json`。此文件用于[将 `ibmcloud-secure-perimeter-network` 设置为 Kubernetes pod](#spn_setup)。
 
 ## 设置为 Secure Perimeter 中的 Kubernetes pod
 {: #spn_setup}
 
 为使 `ibmcloud-secure-perimeter-network` 映像管理 Secure Perimeter 上的子网，可使用 Kubernetes pod 将其作为长期存在的进程运行。`ibmcloud-secure-perimeter-network` 具有多个配置文件和文件夹，必须将它们复制到 pod 以针对 Vyatta 进行配置：
 
-1. 创建名为 _pvc.yaml_ 的文件。此配置文件会创建持久性卷申领 (pvc)，可将此 pvc 作为卷安装到 pod。
+1. 创建名为 `pvc.yaml` 的文件。此配置文件会创建持久性卷申领 (PVC)，可将此 PVC 作为卷安装到 pod。
 
   ```
   apiVersion: v1
@@ -141,14 +141,14 @@ subcollection: RegistryImages
   ```
   {: codeblock}
 
-2. 创建 pvc。
+2. 创建 PVC。
 
     ```
     kubectl apply -f restore-pvc.yaml
     ```
     {: pre}
 
-3. 创建名为 _network-pod.yaml_ 的文件。此配置文件将 `ibmcloud-secure-perimeter-network` 映像作为 pod 部署在 Kubernetes 集群中，并作为卷安装持久性卷申领。
+3. 创建名为 `network-pod.yaml` 的文件。此配置文件将 `ibmcloud-secure-perimeter-network` 映像作为 pod 部署在 Kubernetes 集群中，并作为卷安装持久性卷申领。
 
   ```
   apiVersion: v1
@@ -173,7 +173,7 @@ subcollection: RegistryImages
   ```
   {: codeblock}
 
-4. 创建名为 _rules.conf_ 的文件。此配置文件告知 `ibmcloud-secure-perimeter-network` 将公用因特网中的哪些外部子网和端口列入到 Secure Perimeter 白名单。
+4. 创建名为 `rules.conf` 的文件。此配置文件告知 `ibmcloud-secure-perimeter-network` 将公用因特网中的哪些外部子网和端口列入到 Secure Perimeter 白名单。
 
   ```
   {
@@ -205,29 +205,29 @@ subcollection: RegistryImages
 
   目录 _keys_ 包含 `ibmcloud-secure-perimeter-network` 访问 Vyatta 所需的 SSH 密钥。请参阅[先决条件部分](#spn_prerequisites)以获取有关 SSH 密钥的更多信息。
 
-## config.json 参考
+## `config.json` 参考
 {: #spn_reference_config_json}
 
 |键|描述
 |---|-------------|---|
-|slid|您的 IBM Cloud 基础架构用户名
-|apikey|您的 IBM Cloud 基础架构 API 密钥
-|region|部署 Vyatta 的 IBM Cloud 区域
-|inf_name_private|Vyatta 专用接口的名称
-|inf_name_public|Vyatta 公共接口的名称
-|gatewayid|Vyatta 网关标识
-|vlans|包含类型、VLAN 编号和 VLAN 标识的 Secure Perimeter Segment VLAN 的列表
-|vyatta_gateway_vip|网关 VIP
-|vyatta_primary|包含主 Vyatta 成员的专用 IP 和公共 IP 的对象
-|vyatta_secondary|包含辅助 Vyatta 成员的专用 IP 和公共 IP 的对象
-{: caption="表 1. config.json" caption-side="top"}
+|`slid`|您的 IBM Cloud 基础架构用户名
+|`apikey`|您的 IBM Cloud 基础架构 API 密钥
+|`region`|部署 Vyatta 的 IBM Cloud 区域
+|`inf_name_private`|Vyatta 专用接口的名称
+|`inf_name_public`|Vyatta 公共接口的名称
+|`gatewayid`|Vyatta 网关标识
+|`vlans`|包含类型、VLAN 编号和 VLAN 标识的 Secure Perimeter Segment VLAN 的列表
+|`vyatta_gateway_vip`|网关 VIP
+|`vyatta_primary`|包含主 Vyatta 成员的专用 IP 和公共 IP 的对象
+|`vyatta_secondary`|包含辅助 Vyatta 成员的专用 IP 和公共 IP 的对象
+{: caption="表 1. `config.json`" caption-side="top"}
 
-## rules.conf 参考
+## `rules.conf` 参考
 {: #spn_reference_rules_conf}
 
 |键|描述
 |---|-------------|---|
-|external_subnets|向其公开 Secure Perimeter 的公用因特网上的子网列表
-|external_ports|向其公开 Secure Perimeter 的端口的列表
-|userips|要列入 Secure Perimeter 白名单的用户 IP 的列表
-{: caption="表 2. rules.conf" caption-side="top"}
+|`external_subnets`|向其公开 Secure Perimeter 的公用因特网上的子网列表
+|`external_ports`|向其公开 Secure Perimeter 的端口的列表
+|`userips`|要列入 Secure Perimeter 白名单的用户 IP 的列表
+{: caption="表 2. `rules.conf`" caption-side="top"}

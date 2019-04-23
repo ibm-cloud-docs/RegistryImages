@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -30,7 +30,7 @@ La imagen `ibm-backup-restore` contiene los paquetes preinstalados necesarios pa
 Puede acceder a las imágenes que suministra {{site.data.keyword.IBM_notm}} desde la línea de mandatos; consulte las [imágenes públicas de IBM](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
-## Modo de funcionamiento
+## Cómo funciona
 {: #backup_restore_how_it_works}
 
 Con la imagen `ibm-backup-restore`, puede crear una copia de seguridad puntual o planificada para datos de app almacenados en un volumen persistente (PV) del clúster o para restaurar datos de app en un PV. Para realizar copia de seguridad y restaurar datos, despliegue un pod desde la imagen `ibm-backup-restore`. A continuación, monte el PVC que enlace con el pod el PV del que desea hacer copia de seguridad o el PV que desea utilizar para restaurar los datos.
@@ -50,7 +50,7 @@ Cada imagen `ibm-backup-restore` contiene los siguientes paquetes de software:
 
 - Alpine 3.7
 - Duplicity 0.7.10
-- Paquetes python y gpgme
+- Python, y paquetes GnuPG Made Easy (GPGME)
 
 ## Configuración de una instancia de servicio de {{site.data.keyword.cos_full_notm}}
 {: #backup_restore_setup_object_storage}
@@ -163,7 +163,7 @@ Para hacer una copia de seguridad de un PV existente, complete los pasos siguien
    <table>
    <caption>Tabla 1. Componentes del archivo YAML</caption>
    <thead>
-   <th colspan=2><img src="../images/idea.png" alt="Icono de idea"/> Visión general de los componentes del archivo yaml</th>
+   <th colspan=2><img src="../images/idea.png" alt="Icono de idea"/> Visión general de los componentes del archivo YAML</th>
    </thead>
     <tbody>
      <tr>
@@ -289,7 +289,7 @@ Para restaurar datos de {{site.data.keyword.cos_full_notm}} en un PV, complete l
    <table>
    <caption>Tabla 2. Componentes del archivo YAML</caption>
    <thead>
-   <th colspan=2><img src="../images/idea.png" alt="Icono de idea"/> Visión general de los componentes del archivo yaml</th>
+   <th colspan=2><img src="../images/idea.png" alt="Icono de idea"/> Visión general de los componentes del archivo YAML</th>
    </thead>
     <tbody>
      <tr>
@@ -339,7 +339,7 @@ Para restaurar datos de {{site.data.keyword.cos_full_notm}} en un PV, complete l
     ```
     {: screen}
 
-    El pod ejecuta el mandato restaurar y se detiene. El mensaje _CrashLoopBackOff_ significa que Kubernetes intenta reiniciar el pod.
+    El pod ejecuta el mandato restaurar y se detiene. El mensaje `CrashLoopBackOff` significa que Kubernetes intenta reiniciar el pod.
 
 5. Elimine el pod para evitar que consuma más recursos.
 
@@ -463,7 +463,7 @@ credenciales. Para **ENCRYPTION_PASSPHRASE**, incluya una frase de contraseña p
     <table>
     <caption>Tabla 3. Componentes del archivo YAML</caption>
     <thead>
-    <th colspan=2><img src="../images/idea.png" alt="Icono de idea"/> Visión general de los componentes del archivo yaml</th>
+    <th colspan=2><img src="../images/idea.png" alt="Icono de idea"/> Visión general de los componentes del archivo YAML</th>
     </thead>
      <tbody>
      <tr>

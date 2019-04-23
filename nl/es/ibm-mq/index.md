@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-09"
 
 keywords: IBM Cloud Container Registry, IBM MQ, ibm-mq, container image, public image
 
@@ -28,4 +28,3 @@ La imagen pública `ibm-mq` está disponible en la siguiente ubicación: [IBM MQ
 
 Puede acceder a las imágenes que {{site.data.keyword.IBM}} incluye en {{site.data.keyword.registrylong_notm}} desde la línea de mandatos; consulte las [imágenes públicas de IBM](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
-

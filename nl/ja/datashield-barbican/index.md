@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
-keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, public image
+keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, Registry, data in use, memory encryption, intel sgx, fortanix,
 
 subcollection: RegistryImages
 
@@ -24,11 +24,14 @@ subcollection: RegistryImages
 # `datashield-barbican` イメージの概説
 {: #datashield-barbican_starter}
 
-このコンテナー・イメージは、データ・シールド環境で Barbican を実行し、データを保護します。
-{:shortdesc}
+このコンテナー・イメージは、データ・シールド環境で Barbican を実行することにより使用されるデータを保護します。このサービスについて、および「使用されるデータ」を保護することの意味について詳しくは、[IBM Cloud Data Shield の資料](/docs/services/data-shield?topic=data-shield-about#about)を参照してください。
+{: shortdesc}
 
 {{site.data.keyword.IBM}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry?topic=registry-public_images#public_images)を参照してください。
 {: tip}
+
+## イメージのデプロイ
+{: #datashield-barbican-deploy}
 
 Kubernetes ポッドの次の仕様を使用して、イメージをデプロイできます。
 
@@ -42,7 +45,7 @@ Kubernetes ポッドの次の仕様を使用して、イメージをデプロイ
     spec:
       containers:
       - name: data-shield-barbican
-        image: <TODO INSERT APPROPRIATE IMAGE NAME HERE>
+        image: <IMAGE_NAME>
         volumeMounts:
         - mountPath: /dev/isgx
           name: isgx
@@ -68,8 +71,23 @@ Kubernetes ポッドの次の仕様を使用して、イメージをデプロイ
 ```
 {: codeblock}
 
+<table>
+<caption>表 1. 必須の入力変数</caption>
+  <tr>
+    <th>変数</th>
+    <th>説明</th>
+  </tr>
+  <tr>
+    <td><code>IMAGE_NAME</code></td>
+    <td>デプロイするイメージの名前。</td>
+  </tr>
+</table>
+
 コンテナーのデプロイと開始には数分かかる場合があります。 Barbican デモンストレーション・インスタンスは、Keystone 認証なしで構成されます。 要求には、ヘッダー `X-Project-Id: 12345` を含める必要があります。
 {: tip}
+
+## 秘密の作成
+{: #datashield-barbican-secret}
 
 次のコマンドを実行して、Barbican デモンストレーション・インスタンスで秘密を作成することができます。
 

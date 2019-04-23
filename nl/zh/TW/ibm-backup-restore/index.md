@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -46,7 +46,7 @@ subcollection: RegistryImages
 
 - Alpine 3.7
 - Duplicity 0.7.10
-- python 及 gpgme 套件
+- Python 及 GnuPG Made Easy (GPGME) 套件
 
 ## 設定 {{site.data.keyword.cos_full_notm}} 服務實例
 {: #backup_restore_setup_object_storage}
@@ -158,7 +158,7 @@ subcollection: RegistryImages
    <table>
    <caption>表 1. YAML 檔案元件</caption>
    <thead>
-   <th colspan=2><img src="../images/idea.png" alt="構想圖示"/> 瞭解 yaml 檔案元件</th>
+   <th colspan=2><img src="../images/idea.png" alt="構想圖示"/> 瞭解 YAML 檔案元件</th>
    </thead>
     <tbody>
      <tr>
@@ -285,7 +285,7 @@ subcollection: RegistryImages
    <table>
    <caption>表 2. YAML 檔案元件</caption>
    <thead>
-   <th colspan=2><img src="../images/idea.png" alt="構想圖示"/> 瞭解 yaml 檔案元件</th>
+   <th colspan=2><img src="../images/idea.png" alt="構想圖示"/> 瞭解 YAML 檔案元件</th>
    </thead>
     <tbody>
      <tr>
@@ -336,7 +336,7 @@ subcollection: RegistryImages
     ```
     {: screen}
 
-    Pod 會執行 restore 指令並停止。_CrashLoopBackOff_ 訊息表示 Kubernetes 正在試圖重新啟動 Pod。
+    Pod 會執行 restore 指令並停止。`CrashLoopBackOff` 訊息表示 Kubernetes 正在試圖重新啟動 Pod。
 
 5. 移除 Pod 以防止該 Pod 耗用更多資源。
 
@@ -460,7 +460,7 @@ $ gpg --list-keys
     <table>
     <caption>表 3. YAML 檔案元件</caption>
     <thead>
-    <th colspan=2><img src="../images/idea.png" alt="構想圖示"/> 瞭解 yaml 檔案元件</th>
+    <th colspan=2><img src="../images/idea.png" alt="構想圖示"/> 瞭解 YAML 檔案元件</th>
     </thead>
      <tbody>
      <tr>

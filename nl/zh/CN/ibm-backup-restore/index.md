@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -46,7 +46,7 @@ subcollection: RegistryImages
 
 - Alpine 3.7
 - Duplicity 0.7.10
-- python 和 gpgme 包
+- Python 和 GnuPG Made Easy (GPGME) 软件包
 
 ## 设置 {{site.data.keyword.cos_full_notm}} 服务实例
 {: #backup_restore_setup_object_storage}
@@ -336,7 +336,7 @@ subcollection: RegistryImages
     ```
     {: screen}
 
-    pod 运行复原命令并停止。_CrashLoopBackOff_ 消息表示 Kubernetes 正尝试重新启动 pod。
+    pod 运行复原命令并停止。`CrashLoopBackOff` 消息表示 Kubernetes 正尝试重新启动 pod。
 
 5. 除去 pod 以阻止 pod 使用更多资源。
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-03"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public image
 
@@ -71,12 +71,12 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
 4. 必要に応じて他のすべての詳細を入力します。
 5. **「クラスターの作成」**をクリックします。
 
-クラスターがデプロイされた後、クラスターにアクセスする方法については、[{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) 資料を参照してください。
+クラスターがデプロイされた後、クラスターにアクセスする方法については、[{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started) 資料を参照してください。
 
 ## Secure Perimeter Vyatta の初期構成を実行する
 {: #spn_initial_setup}
 
-1. _config.json_ という名前のファイルを作成します。 このファイルには、Vyatta にアクセスするために `ibmcloud-secure-perimeter-network` が必要とする基本パラメーターが含まれます。
+1. `config.json` という名前のファイルを作成します。 このファイルには、Vyatta にアクセスするために `ibmcloud-secure-perimeter-network` が必要とする基本パラメーターが含まれます。
 
   ```
   {
@@ -107,7 +107,7 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
   ```
   {: codeblock}
 
-  _config.json_ にデータを設定する方法の詳細については、[config.json リファレンス表](#spn_reference_config_json)を参照してください。 このファイルは、[Kubernetes ポッドとしての `ibmcloud-secure-perimeter-network` のセットアップ](#spn_setup)のプロセスでも使用できます。
+  `config.json` にデータを設定する方法の詳細については、[`config.json` リファレンス表](#spn_reference_config_json)を参照してください。このファイルは、[Kubernetes ポッドとしての `ibmcloud-secure-perimeter-network` のセットアップ](#spn_setup)のプロセスでも使用できます。
 
 2. `ibmcloud-secure-perimeter-network` を Docker コンテナーとして実行して、初期セットアップを開始します。
 
@@ -116,14 +116,14 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
   ```
   {: pre}
 
-  この操作により、作業ディレクトリー内に _state.json_ ファイルが作成されます。 このファイルを [Kubernetes ポッドとしての `ibmcloud-secure-perimeter-network` のセットアップ](#spn_setup)で使用します。
+  この操作により、作業ディレクトリー内に `state.json` ファイルが作成されます。 このファイルを [Kubernetes ポッドとしての `ibmcloud-secure-perimeter-network` のセットアップ](#spn_setup)で使用します。
 
 ## Secure Perimeter 内の Kubernetes ポッドとしてセットアップする
 {: #spn_setup}
 
 `ibmcloud-secure-perimeter-network` イメージが Secure Perimeter 上のサブネットを管理できるように、Kubernetes ポッドを使用して長期継続プロセスとしてこのイメージを実行できます。 `ibmcloud-secure-perimeter-network` には、ポッドにコピーしたうえで Vyatta 用に構成する必要があるいくつかの構成ファイルとフォルダーがあります。
 
-1. _pvc.yaml_ という名前のファイルを作成します。 この構成ファイルは、ポッドにボリュームとしてマウントできる、永続ボリューム・クレーム (pvc) を作成します。
+1. `pvc.yaml` という名前のファイルを作成します。 この構成ファイルは、ポッドにボリュームとしてマウントできる、永続ボリューム・クレーム (PVC) を作成します。
 
   ```
   apiVersion: v1
@@ -141,14 +141,14 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
   ```
   {: codeblock}
 
-2. pvc を作成します。
+2. PVC を作成します。
 
     ```
     kubectl apply -f restore-pvc.yaml
     ```
     {: pre}
 
-3. _network-pod.yaml_ という名前のファイルを作成します。 この構成ファイルは、`ibmcloud-secure-perimeter-network` イメージを Kubernetes クラスター内のポッドとしてデプロイし、永続ボリューム・クレームをボリュームとしてマウントします。
+3. `network-pod.yaml` という名前のファイルを作成します。 この構成ファイルは、`ibmcloud-secure-perimeter-network` イメージを Kubernetes クラスター内のポッドとしてデプロイし、永続ボリューム・クレームをボリュームとしてマウントします。
 
   ```
   apiVersion: v1
@@ -173,7 +173,7 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
   ```
   {: codeblock}
 
-4. _rules.conf_ という名前のファイルを作成します。 この構成ファイルは、パブリック・インターネットからどの外部サブネットおよび外部ポートを Secure Perimeter へのホワイトリストに登録するかを `ibmcloud-secure-perimeter-network` に指示します。
+4. `rules.conf` という名前のファイルを作成します。 この構成ファイルは、パブリック・インターネットからどの外部サブネットおよび外部ポートを Secure Perimeter へのホワイトリストに登録するかを `ibmcloud-secure-perimeter-network` に指示します。
 
   ```
   {
@@ -205,29 +205,29 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
 
   _keys_ ディレクトリーに、`ibmcloud-secure-perimeter-network` が Vyatta にアクセスするために必要な SSH 鍵が含まれています。 SSH 鍵について詳しくは、[前提条件セクション](#spn_prerequisites)を参照してください。
 
-## config.json リファレンス
+## `config.json` リファレンス
 {: #spn_reference_config_json}
 
 |キー|説明
 |---|-------------|---|
-|slid|IBM Cloud インフラストラクチャー・ユーザー名
-|apikey|IBM Cloud インフラストラクチャー API 鍵
-|region|Vyatta がデプロイされる IBM Cloud 地域
-|inf_name_private|Vyatta プライベート・インターフェースの名前
-|inf_name_public|Vyatta パブリック・インターフェースの名前
-|gatewayid|Vyatta ゲートウェイ ID
-|vlans|タイプ、VLAN 番号、および VLAN ID を含む、Secure Perimeter Segment VLAN のリスト
-|vyatta_gateway_vip|ゲートウェイの VIP
-|vyatta_primary|1 次 Vyatta メンバーのプライベートおよびパブリック IP を含んでいるオブジェクト
-|vyatta_secondary|2 次 Vyatta メンバーのプライベートおよびパブリック IP を含んでいるオブジェクト
-{: caption="表 1. config.json" caption-side="top"}
+|`slid`|IBM Cloud インフラストラクチャー・ユーザー名
+|`apikey`|IBM Cloud インフラストラクチャー API 鍵
+|`region`|Vyatta がデプロイされる IBM Cloud 地域
+|`inf_name_private`|Vyatta プライベート・インターフェースの名前
+|`inf_name_public`|Vyatta パブリック・インターフェースの名前
+|`gatewayid`|Vyatta ゲートウェイ ID
+|`vlans`|タイプ、VLAN 番号、および VLAN ID を含む、Secure Perimeter Segment VLAN のリスト
+|`vyatta_gateway_vip`|ゲートウェイの VIP
+|`vyatta_primary`|1 次 Vyatta メンバーのプライベートおよびパブリック IP を含んでいるオブジェクト
+|`vyatta_secondary`|2 次 Vyatta メンバーのプライベートおよびパブリック IP を含んでいるオブジェクト
+{: caption="表 1. `config.json`" caption-side="top"}
 
-## rules.conf リファレンス
+## `rules.conf` リファレンス
 {: #spn_reference_rules_conf}
 
 |キー|説明
 |---|-------------|---|
-|external_subnets|Secure Perimeter を公開するパブリック・インターネット上のサブネットのリスト
-|external_ports|Secure Perimeter を公開するポートのリスト
-|userips|Secure Perimeter へのホワイトリストに登録するユーザー IP のリスト
-{: caption="表 2. rules.conf" caption-side="top"}
+|`external_subnets`|Secure Perimeter を公開するパブリック・インターネット上のサブネットのリスト
+|`external_ports`|Secure Perimeter を公開するポートのリスト
+|`userips`|Secure Perimeter へのホワイトリストに登録するユーザー IP のリスト
+{: caption="表 2. `rules.conf`" caption-side="top"}

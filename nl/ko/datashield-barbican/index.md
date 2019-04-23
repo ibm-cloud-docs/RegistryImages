@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-13"
 
-keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, public image
+keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, Registry, data in use, memory encryption, intel sgx, fortanix,
 
 subcollection: RegistryImages
 
@@ -24,11 +24,14 @@ subcollection: RegistryImages
 # `datashield-barbican` 이미지 시작하기
 {: #datashield-barbican_starter}
 
-이 컨테이너 이미지는 Data Shield 환경에서 Barbican을 실행하며 사용자의 데이터에 대한 보호를 제공합니다.
-{:shortdesc}
+이 컨테이너 이미지는 Data Shield 환경에서 Barbican을 실행하여 사용 중인 데이터를 보호합니다. 서비스에 대한 자세한 내용과 "사용 중인 데이터"를 보호하는 방법에 대한 자세한 내용은 [IBM Cloud Data Shield 문서](/docs/services/data-shield?topic=data-shield-about#about)를 참조하십시오.
+{: shortdesc}
 
 명령행을 사용하여 {{site.data.keyword.IBM}}에서 제공한 이미지에 액세스할 수 있습니다. [IBM 공용 이미지](/docs/services/Registry?topic=registry-public_images#public_images)를 참조하십시오.
 {: tip}
+
+## 이미지 배치
+{: #datashield-barbican-deploy}
 
 다음 Kubernetes 팟(Pod) 스펙을 사용하여 이미지를 배치할 수 있습니다.
 
@@ -42,7 +45,7 @@ subcollection: RegistryImages
     spec:
       containers:
       - name: data-shield-barbican
-        image: <TODO INSERT APPROPRIATE IMAGE NAME HERE>
+        image: <IMAGE_NAME>
         volumeMounts:
         - mountPath: /dev/isgx
           name: isgx
@@ -68,8 +71,23 @@ subcollection: RegistryImages
 ```
 {: codeblock}
 
+<table>
+<caption>표 1. 필수 입력 변수</caption>
+  <tr>
+    <th>변수</th>
+    <th>설명</th>
+  </tr>
+  <tr>
+    <td><code>IMAGE_NAME</code></td>
+    <td>배치하려는 이미지 이름입니다. </td>
+  </tr>
+</table>
+
 컨테이너가 배치하고 시작하는 데 몇 분이 소요될 수 있습니다. 데모 Barbican 인스턴스는 Keystone 인증 없이 구성됩니다. 요청에는 헤더 `X-Project-Id: 12345`가 포함되어야 합니다.
 {: tip}
+
+## 시크릿 작성
+{: #datashield-barbican-secret}
 
 다음 명령을 실행하여 Barbican 데모 인스턴스에 시크릿을 작성할 수 있습니다.
 

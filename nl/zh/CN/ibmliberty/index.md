@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-03"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -46,7 +46,7 @@ subcollection: RegistryImages
 - IBM WebSphere Application Server for Developers Liberty
 - IBM Java Runtime Environment 8.0
 
-映像中具体安装了哪些 Liberty 功能部件取决于您所选择的标记。下表显示了每个 `ibmliberty` 映像中包含的功能部件。有关每个功能部件的更多信息，请参阅 [IBM Knowledge Center 上的 Liberty 功能部件概述 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html)。
+映像中具体安装了哪些 Liberty 功能部件取决于您所选择的标记。下表显示了每个 `ibmliberty` 映像中包含的功能部件。有关每个功能部件的更多信息，请参阅 [IBM Knowledge Center 上的 Liberty 功能部件概述 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/rwlp_feat.html)。
 
 |标记|描述|
 |---|-----------|
@@ -90,7 +90,7 @@ subcollection: RegistryImages
 3. 有关基于映像构建容器、设置集群以及在集群中部署应用程序的更多信息，请使用以下链接：
 
     - [基于映像构建容器](/docs/containers?topic=containers-images#images)
-    - [IBM Cloud Kubernetes 服务入门](/docs/containers?topic=containers-container_index#container_index)
+    - [IBM Cloud Kubernetes 服务入门](/docs/containers?topic=containers-getting-started#getting-started)
     - [在集群中部署应用程序](/docs/containers?topic=containers-app#app)
 
     `ibmliberty` 映像要求以公共方式公开端口 9080。在 {{site.data.keyword.Bluemix_notm}}“仪表板”中创建容器时，缺省情况下会在**公共端口**字段中添加此端口。如果在 CLI 中创建容器，请在带 `--port=9080` 选项的 `kubectl ic run` 命令中公开此端口。
@@ -130,11 +130,11 @@ WebSphere Application Server 许可基于您所需的处理器价值单元 \(PVU
 Application Server 许可中提供。因此，在购买许可之前，必须计划 `ibmliberty` 容器。
 
 
-要购买 WebSphere Application Server 许可，请联系 [IBM 服务中心 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us)。如果您已拥有 WebSphere
+要购买 WebSphere Application Server 许可，请联系 [IBM 服务中心 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase)。如果您已拥有 WebSphere
 Application Server V8.5 或更新版本的许可，那么可以使用现有授权中未使用的任何 PVU 来部署容器。
 
 
-如果您在购买许可之后发现还需要更多的 PVU，那么可以联系 [IBM 服务中心 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us) 以增加数量。
+如果您在购买许可之后发现还需要更多的 PVU，那么可以联系 [IBM 服务中心 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase) 以增加数量。
 
 ## 创建与 {{site.data.keyword.containershort_notm}} 一起使用的生产许可 `ibmliberty` 映像
 {: #ibmliberty_prod_image}
@@ -145,7 +145,7 @@ Application Server V8.5 或更新版本的许可，那么可以使用现有授�
 - [将 Docker Hub 中的映像升级到生产映像 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade)。
 - [构建自己的生产许可映像 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://github.com/WASdev/ci.docker/tree/master/ga)。
 
-创建生产许可映像之后，[将映像推送至专用注册表](/docs/services/Registry?topic=registry-index#index)，以与 {{site.data.keyword.containershort_notm}} 一起使用。
+创建生产许可映像之后，[将映像推送至专用注册表](/docs/services/Registry?topic=registry-getting-started#getting-started)，以与 {{site.data.keyword.containershort_notm}} 一起使用。
 
 ## 基于提供的映像创建映像
 {: #ibmliberty_creating_image}
@@ -179,7 +179,7 @@ Application Server V8.5 或更新版本的许可，那么可以使用现有授�
 
 5. 将应用程序的其他所有依赖项添加到 Dockerfile 中。
 
-6. 构建映像并将其推送到专用映像注册表。有关更多信息，请参阅 [{{site.data.keyword.registrylong_notm}} 入门](/docs/services/Registry?topic=registry-index#index)。
+6. 构建映像并将其推送到专用映像注册表。有关更多信息，请参阅 [{{site.data.keyword.registrylong_notm}} 入门](/docs/services/Registry?topic=registry-getting-started#getting-started)。
 
 所有 `ibmliberty` 映像都已配置为将 Liberty 日志文件写入容器内的 `/logs` 目录中。由 Liberty 服务器写入的所有其他文件都会在 `/opt/ibm/wlp/output/defaultServer` 目录中进行创建。您可以使用快捷方式 `/output` 来访问这些文件。
 {:tip}

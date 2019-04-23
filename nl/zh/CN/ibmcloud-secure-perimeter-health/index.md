@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-03"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
 
@@ -87,7 +87,7 @@ sp-gateway-8a9031ab:
 4. 根据需要输入其他所有详细信息。
 5. 单击**创建集群**。
 
-查看 [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-container_index#container_index) 文档以了解如何在部署后获取集群的访问权。
+查看 [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started) 文档以了解如何在部署后获取集群的访问权。
 
 ## 扫描 Secure Perimeter 中的专用网络
 {: #sph_private_networks}
@@ -99,7 +99,7 @@ sp-gateway-8a9031ab:
 - 安装必需的 [CLI](/docs/containers?topic=containers-cs_cli_install#cs_cli_install)。
 - [设定 CLI 的目标](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure)为集群。
 
-1. 创建名为 _health-pod.yaml_ 的配置文件。此文件创建容器 pod 的高可用性部署。
+1. 创建名为 `health-pod.yaml` 的配置文件。此文件创建容器 pod 的高可用性部署。
 
     ```
 apiVersion: extensions/v1beta1
@@ -133,7 +133,7 @@ apiVersion: extensions/v1beta1
               value: <IBM Cloud infrastructure api key>
     ```
     {: codeblock}
-    
+
 2. 创建部署。
 
     ```
@@ -163,7 +163,7 @@ NAME                                    READY     STATUS    RESTARTS   AGE
 
 - 安装 Docker。
 
-1. 从自己的工作站创建 Docker 容器，如下所示：
+1. 通过运行以下命令，从自己的工作站创建 Docker 容器：
 
     ```
     docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
@@ -199,7 +199,7 @@ sp-gateway-8a9031ab:
 ```
 {: screen}
 
-报告的格式如下所示：
+报告采用以下格式：
 
 ```
 <gateway name>:
@@ -217,10 +217,10 @@ sp-gateway-8a9031ab:
 
 |键|描述|缺省值
 |---|-------------|---|
-|scan|暴露扫描的类型（“public”或“private”）|无（全部扫描）
-|exclude-vlan-ids|按标识列出的要避免扫描的 VLAN 列表|无
-|poll-interval|设置直至下一次扫描的秒数|0（立即运行）
-|allowed-public-ports|要列入扫描白名单的端口列表|80, 443, 9000-9999
+|`scan`|暴露扫描的类型（“public”或“private”）|无（全部扫描）
+|`exclude-vlan-ids`|按标识列出的要避免扫描的 VLAN 列表|无
+|`poll-interval`|设置直至下一次扫描的秒数|0（立即运行）
+|`allowed-public-ports`|要列入扫描白名单的端口列表|80, 443, 9000-9999
 {: caption="表 1. 容器自变量" caption-side="top"}
 
 ## 环境变量参考
@@ -228,6 +228,6 @@ sp-gateway-8a9031ab:
 
 |键|描述|
 |---|-------------|
-|SL_USER|您的 IBM Cloud 基础架构用户名|
-|SL_APIKEY|您的 IBM Cloud 基础架构 API 密钥|
+|`SL_USER`|您的 IBM Cloud 基础架构用户名|
+|`SL_APIKEY`|您的 IBM Cloud 基础架构 API 密钥|
 {: caption="表 2. 环境变量" caption-side="top"}

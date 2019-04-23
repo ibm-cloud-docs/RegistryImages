@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-03"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -46,7 +46,7 @@ IBM® WebSphere® Application Server Liberty (`ibmliberty`) 映像檔是提供�
 - IBM WebSphere Application Server for Developers Liberty
 - IBM Java Runtime Environment 8.0
 
-映像檔中安裝的特定 Liberty 特性取決於您選取的標籤。下表顯示每一個 `ibmliberty` 映像檔中包含哪些特性。如需每一個特性的相關資訊，請參閱 [IBM Knowledge Center 中的 Liberty 特性概觀 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html)。
+映像檔中安裝的特定 Liberty 特性取決於您選取的標籤。下表顯示每一個 `ibmliberty` 映像檔中包含哪些特性。如需每一個特性的相關資訊，請參閱 [IBM Knowledge Center 中的 Liberty 特性概觀 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/rwlp_feat.html)。
 
 |標籤|說明|
 |---|-----------|
@@ -90,7 +90,7 @@ IBM® WebSphere® Application Server Liberty (`ibmliberty`) 映像檔是提供�
 3. 如需從映像檔建置容器、設定叢集以及在叢集裡部署應用程式的相關資訊，請使用下列鏈結：
 
     - [從映像檔建置容器](/docs/containers?topic=containers-images#images)
-    - [開始使用 IBM Cloud Kubernetes Service](/docs/containers?topic=containers-container_index#container_index)
+    - [開始使用 IBM Cloud Kubernetes Service](/docs/containers?topic=containers-getting-started#getting-started)
     - [在叢集中部署應用程式](/docs/containers?topic=containers-app#app)
 
     `ibmliberty` 映像檔需要公開埠 9080。從「{{site.data.keyword.Bluemix_notm}} 儀表板」中建立容器時，預設會在**公用埠**欄位中新增埠。如果從 CLI 建立容器，請在 `kubectl run` 指令中以 `--port=9080` 選項公開埠。
@@ -129,9 +129,9 @@ WebSphere Application Server 授權是根據所需的「處理器價值單位 (P
 
 {{site.data.keyword.Bluemix_notm}} 中的每個容器大小都需要在 WebSphere Application Server 授權中必須具有特定數目的 PVU 授權。因此，您必須先計劃 `ibmliberty` 容器，再購買授權。
 
-若要購買 WebSphere Application Server 授權，請與 [IBM 服務中心 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us) 聯絡。如果您已有 WebSphere Application Server 8.5 版或更新版本的授權，則可以使用現有授權中的任何未用 PVU 來部署容器。
+若要購買 WebSphere Application Server 授權，請與 [IBM 服務中心 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase) 聯絡。如果您已有 WebSphere Application Server 8.5 版或更新版本的授權，則可以使用現有授權中的任何未用 PVU 來部署容器。
 
-如果您在購買授權之後發現需要更多的 PVU，則可以與 [IBM 服務中心 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us) 聯絡來增加數量。
+如果您在購買授權之後發現需要更多的 PVU，則可以與 [IBM 服務中心 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase) 聯絡來增加數量。
 
 ## 建立要與 {{site.data.keyword.containershort_notm}} 搭配使用的正式作業授權 `ibmliberty` 映像檔
 {: #ibmliberty_prod_image}
@@ -142,7 +142,7 @@ WebSphere Application Server 授權是根據所需的「處理器價值單位 (P
 - [將映像檔從 Docker Hub 升級至正式作業映像檔 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade)。
 - [自行建置正式作業授權映像檔 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://github.com/WASdev/ci.docker/tree/master/ga)。
 
-在建立正式作業授權映像檔之後，請[將映像檔推送至專用登錄](/docs/services/Registry?topic=registry-index#index)，以與 {{site.data.keyword.containershort_notm}} 搭配使用。
+在建立正式作業授權映像檔之後，請[將映像檔推送至專用登錄](/docs/services/Registry?topic=registry-getting-started#getting-started)，以與 {{site.data.keyword.containershort_notm}} 搭配使用。
 
 ## 從提供的映像檔建立映像檔
 {: #ibmliberty_creating_image}
@@ -176,7 +176,7 @@ WebSphere Application Server 授權是根據所需的「處理器價值單位 (P
 
 5. 將應用程式的任何其他相依關係新增至 Dockerfile。
 
-6. 建置映像檔並將它推送至專用映像檔登錄。如需相關資訊，請參閱[開始使用 {{site.data.keyword.registrylong_notm}}](/docs/services/Registry?topic=registry-index#index)。
+6. 建置映像檔並將它推送至專用映像檔登錄。如需相關資訊，請參閱[開始使用 {{site.data.keyword.registrylong_notm}}](/docs/services/Registry?topic=registry-getting-started#getting-started)。
 
 所有 `ibmliberty` 映像檔都會配置為將 Liberty 日誌檔寫入至容器內的目錄 `/logs`。所有其他由 Liberty 伺服器寫入的檔案都建立在目錄 `/opt/ibm/wlp/output/defaultServer` 中。您可以使用捷徑 `/output` 來存取這些檔案。
 {:tip}

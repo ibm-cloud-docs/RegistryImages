@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-04-03"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -49,7 +49,7 @@ imagem do Liberty fornece os pacotes de software a seguir.
 
 Os
 recursos específicos do Liberty que são instalados na imagem dependem da tag que você
-seleciona. A tabela a seguir mostra os recursos que são incluídos em cada uma das imagens `ibmliberty`. Para obter mais informações sobre cada recurso, consulte a [Visão geral dos recursos do Liberty no IBM Knowledge Center ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/rwlp_feat.html).
+seleciona. A tabela a seguir mostra os recursos que são incluídos em cada uma das imagens `ibmliberty`. Para obter mais informações sobre cada recurso, consulte a [Visão geral dos recursos do Liberty no IBM Knowledge Center ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/rwlp_feat.html).
 
 |Marcação|Descrição|
 |---|-----------|
@@ -104,7 +104,7 @@ caixa suspensa **TAG/VERSÃO**.
 3. Para obter mais informações sobre como criar contêineres por meio de imagens, configurar clusters e implementar apps em clusters, use os links a seguir:
 
     - [Construindo contêineres de imagens](/docs/containers?topic=containers-images#images)
-    - [Introdução ao IBM Cloud Kubernetes Service](/docs/containers?topic=containers-container_index#container_index)
+    - [Introdução ao IBM Cloud Kubernetes Service](/docs/containers?topic=containers-getting-started#getting-started)
     - [Implementando apps em clusters](/docs/containers?topic=containers-app#app)
 
     A imagem `ibmliberty` requer que a porta 9080 seja exposta publicamente. Ao criar um contêiner por meio do Painel do {{site.data.keyword.Bluemix_notm}}, a porta é incluída no campo **Porta pública** por padrão. Se você criar um contêiner por meio da CLI, exponha a porta em seu comando `kubectl run` com a opção `--port=9080`.
@@ -146,11 +146,11 @@ Cada tamanho de contêiner no {{site.data.keyword.Bluemix_notm}} requer um núme
 do WebSphere Application Server. Portanto, deve-se planejar seus contêineres do `ibmliberty`
 antes de comprar a licença.
 
-Para comprar uma licença do WebSphere Application Server, entre em contato com o [Serviço IBM ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us). Se você já tiver uma licença para o WebSphere
+Para comprar uma licença do WebSphere Application Server, entre em contato com o [Serviço IBM ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase). Se você já tiver uma licença para o WebSphere
 Application Server v8.5 ou mais recente, será possível usar qualquer PVU não usada de sua autorização existente
 para a implementação de seu contêiner.
 
-Se você descobrir que precisa de mais PVUs depois de comprar a licença, será possível aumentar a quantia entrando em contato com o [Serviço IBM ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://www.ibm.com/marketplace/cloud/application-server-on-cloud/purchase/us/en-us).
+Se você descobrir que precisa de mais PVUs depois de comprar a licença, será possível aumentar a quantia entrando em contato com o [Serviço IBM ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase).
 
 ## Criando uma imagem `ibmliberty` licenciada para produção para ser usada com o
 {{site.data.keyword.containershort_notm}}
@@ -164,7 +164,7 @@ a seguir.
 - [Faça upgrade da imagem do Docker Hub para uma imagem de produção ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
 - [Construa a sua própria imagem licenciada de produção ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://github.com/WASdev/ci.docker/tree/master/ga).
 
-Depois de criar uma imagem licenciada para produção, [envie por push imagem para seu registro privado](/docs/services/Registry?topic=registry-index#index) para usá-la com o {{site.data.keyword.containershort_notm}}.
+Depois de criar uma imagem licenciada para produção, [envie por push imagem para seu registro privado](/docs/services/Registry?topic=registry-getting-started#getting-started) para usá-la com o {{site.data.keyword.containershort_notm}}.
 
 ## Criando uma imagem a partir das imagens fornecidas
 {: #ibmliberty_creating_image}
@@ -201,7 +201,7 @@ informações a seguir nele.
 
 5. Inclua quaisquer outras dependências para seu app no Dockerfile.
 
-6. Construa e envie por push a imagem para seu registro de imagens privadas. Para obter mais informações, consulte [Introdução ao {{site.data.keyword.registrylong_notm}}](/docs/services/Registry?topic=registry-index#index).
+6. Construa e envie por push a imagem para seu registro de imagens privadas. Para obter mais informações, consulte [Introdução ao {{site.data.keyword.registrylong_notm}}](/docs/services/Registry?topic=registry-getting-started#getting-started).
 
 Todas as imagens `ibmliberty` são configuradas para
 gravar arquivos de log do Liberty no diretório `/logs` dentro do

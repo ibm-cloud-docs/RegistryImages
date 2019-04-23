@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-21"
+lastupdated: "2019-03-27"
 
-keywords: IBM Cloud Container Registry, Data Shield environment, nginx image, container image, public image
+keywords: IBM Cloud Container Registry, Data Shield environment, nginx image, container image, public image, data in use, memory encryption, intel sgx, fortanix,
 
 subcollection: RegistryImages
 
@@ -24,11 +24,14 @@ subcollection: RegistryImages
 # Introduzione all'immagine `datashield-nginx`
 {: #datashield-nginx_starter}
 
-Questa immagine contenitore esegue NGINX nell'ambiente Data Shield, fornendo la protezione per i tuoi dati.
-{:shortdesc}
+Questa immagine contenitore fornisce la protezione per i dati in uso eseguendo NGINX nell'ambiente Data Shield. Per ulteriori informazioni sul servizio e su cosa significa proteggere i "dati in uso", vedi la [documentazione IBM Cloud Data Shield](/docs/services/data-shield?topic=data-shield-about#about).
+{: shortdesc}
 
 Puoi accedere alle immagini fornite da {{site.data.keyword.IBM}} utilizzando la riga di comando, consulta [Immagini pubbliche IBM](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
+
+## Distribuzione dell'immagine
+{: #datashield-nginx-deploy}
 
 Puoi utilizzare le seguenti specifiche del pod Kubernetes per distribuire l'immagine:
 
@@ -42,7 +45,7 @@ Puoi utilizzare le seguenti specifiche del pod Kubernetes per distribuire l'imma
     spec:
       containers:
       - name: data-shield-nginx
-        image: <TODO INSERT APPROPRIATE IMAGE NAME HERE>
+        image: <IMAGE_NAME>
         volumeMounts:
         - mountPath: /dev/isgx
           name: isgx
@@ -66,6 +69,19 @@ Puoi utilizzare le seguenti specifiche del pod Kubernetes per distribuire l'imma
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: codeblock}
+{: pre}
+
+<table>
+<caption>Tabella 1. Variabili di input obbligatorie</caption>
+  <tr>
+    <th>Variabile</th>
+    <th>Descrizione</th>
+  </tr>
+  <tr>
+    <td><code>IMAGE_NAME</code></td>
+    <td>Il nome dell'immagine che vuoi distribuire. </td>
+  </tr>
+</table>
 
 Per fornire il tuo contenuto in modo che venga utilizzato da NGINX, posizionalo in `/usr/local/nginx/html` nel contenitore.
+{: tip}
