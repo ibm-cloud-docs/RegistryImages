@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-11"
+lastupdated: "2019-04-26"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -118,7 +118,7 @@ After you create a container from the `ibmliberty` image, you can view metrics o
 
 3. To review the Java heap usage, you need to access the **RSS** memory stat. Follow the guidelines on how to access a shell of a container, see [Get a Shell to a Running Container ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/). The Java heap usage is displayed in kilobytes. If your heap usage is under 2097152 kilobytes (2GB) across all instances, then you do not have to purchase a WebSphere Application Server license.
 
-4. Adjust the maximum heap usage for your WebSphere Application Server instance. See [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) for more information.
+4. Adjust the maximum heap usage for your WebSphere Application Server instance. See [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![External link icon](../../../icons/launch-glyph.svg "External link icon")](http://www.ibm.com/support/docview.wss?uid=swg21596474) for more information.
 
 ## Getting a WebSphere Application Server license
 {: #ibmliberty_license}
