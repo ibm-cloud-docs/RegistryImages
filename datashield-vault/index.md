@@ -70,7 +70,7 @@ You can use the following Kubernetes pod spec to deploy the image:
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: pre}
+{: codeblock}
 
 <table>
 <caption>Table 1. Required input variables</caption>
@@ -93,13 +93,13 @@ To access the protected instance of Vault:
     ```
     kubectl get pod -owide
     ```
-    {: pre}
+    {: codeblock}
 
   * Option 2:
     ```
     kubectl describe pod
     ```
-    {: pre}
+    {: codeblock}
 
 2. Set the `VAULT_ADDR` environment variable to `http://<YOUR_IP>:8200`.
   

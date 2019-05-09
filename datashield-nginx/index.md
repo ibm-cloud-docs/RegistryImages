@@ -69,7 +69,7 @@ You can use the following Kubernetes pod spec to deploy the image:
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: pre}
+{: codeblock}
 
 <table>
 <caption>Table 1. Required input variables</caption>

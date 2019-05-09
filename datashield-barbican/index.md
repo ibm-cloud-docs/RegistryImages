@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-11"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, Registry, data in use, memory encryption, intel sgx, fortanix,
 
@@ -36,38 +36,38 @@ You can access the images that are provided by {{site.data.keyword.IBM}} by usin
 You can use the following Kubernetes pod specification to deploy the image:
 
 ```
-    apiVersion: v1
-    kind: Pod
-    metadata:
-      name: data-shield-barbican
-      labels:
-        app: data-shield-barbican
-    spec:
-      containers:
-      - name: data-shield-barbican
-        image: <IMAGE_NAME>
-        volumeMounts:
-        - mountPath: /dev/isgx
-          name: isgx
-        - mountPath: /dev/gsgx
-          name: gsgx
-        - mountPath: /var/run/aesmd/aesm.socket
-          name: aesm-socket
-        ports:
-        - containerPort: 9311
-          hostPort: 9311
-          name: barbican
-          protocol: TCP
-      volumes:
-      - name: isgx
-        hostPath:
-          path: /dev/isgx
-      - name: gsgx
-        hostPath:
-          path: /dev/gsgx
-      - name: aesm-socket
-        hostPath:
-          path: /var/run/aesmd/aesm.socket
+apiVersion: v1
+kind: Pod
+metadata:
+  name: data-shield-barbican
+  labels:
+    app: data-shield-barbican
+spec:
+  containers:
+  - name: data-shield-barbican
+    image: <IMAGE_NAME>
+    volumeMounts:
+    - mountPath: /dev/isgx
+      name: isgx
+    - mountPath: /dev/gsgx
+      name: gsgx
+    - mountPath: /var/run/aesmd/aesm.socket
+      name: aesm-socket
+    ports:
+    - containerPort: 9311
+      hostPort: 9311
+      name: barbican
+      protocol: TCP
+  volumes:
+  - name: isgx
+    hostPath:
+      path: /dev/isgx
+  - name: gsgx
+    hostPath:
+      path: /dev/gsgx
+  - name: aesm-socket
+    hostPath:
+      path: /var/run/aesmd/aesm.socket
 ```
 {: codeblock}
 
@@ -92,15 +92,15 @@ It might take a few minutes for the container to deploy and start. The demonstra
 You can create a secret in the Barbican demonstration instance by running the following command:
 
 ```
-    curl -sS -X POST -H 'content-type:application/json' -H 'X-Project-Id: 12345' -d \
-        '{"payload": "my-secret-here", "payload_content_type": "text/plain"}' \
-        http://<node>:9311/v1/secrets
+curl -sS -X POST -H 'content-type:application/json' -H 'X-Project-Id: 12345' -d \
+    '{"payload": "my-secret-here", "payload_content_type": "text/plain"}' \
+    http://<node>:9311/v1/secrets
 ```
-{: pre}
+{: codeblock}
     
 The response contains the URL for the created secret. You can retrieve the secret by running the following command:
 
 ```
-    curl -sS -H 'X-Project-Id: 12345' <url>
+curl -sS -H 'X-Project-Id: 12345' <url>
 ```
-{: pre}
+{: codeblock}
