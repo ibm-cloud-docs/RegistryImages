@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-11"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield environment, nginx image, container image, public image, data in use, memory encryption, intel sgx, fortanix,
 
@@ -36,38 +36,38 @@ You can access the images that are provided by {{site.data.keyword.IBM}} by usin
 You can use the following Kubernetes pod spec to deploy the image:
 
 ```
-    apiVersion: v1
-    kind: Pod
-    metadata:
-      name: data-shield-nginx
-      labels:
-        app: data-shield-nginx
-    spec:
-      containers:
-      - name: data-shield-nginx
-        image: <IMAGE_NAME>
-        volumeMounts:
-        - mountPath: /dev/isgx
-          name: isgx
-        - mountPath: /dev/gsgx
-          name: gsgx
-        - mountPath: /var/run/aesmd/aesm.socket
-          name: aesm-socket
-        ports:
-        - containerPort: 80
-          hostPort: 80
-          name: http
-          protocol: TCP
-      volumes:
-      - name: isgx
-        hostPath:
-          path: /dev/isgx
-      - name: gsgx
-        hostPath:
-          path: /dev/gsgx
-      - name: aesm-socket
-        hostPath:
-          path: /var/run/aesmd/aesm.socket
+apiVersion: v1
+kind: Pod
+metadata:
+  name: data-shield-nginx
+  labels:
+    app: data-shield-nginx
+spec:
+  containers:
+  - name: data-shield-nginx
+    image: <IMAGE_NAME>
+    volumeMounts:
+    - mountPath: /dev/isgx
+      name: isgx
+    - mountPath: /dev/gsgx
+      name: gsgx
+    - mountPath: /var/run/aesmd/aesm.socket
+      name: aesm-socket
+    ports:
+    - containerPort: 80
+      hostPort: 80
+      name: http
+      protocol: TCP
+  volumes:
+  - name: isgx
+    hostPath:
+      path: /dev/isgx
+  - name: gsgx
+    hostPath:
+      path: /dev/gsgx
+  - name: aesm-socket
+    hostPath:
+      path: /var/run/aesmd/aesm.socket
 ```
 {: codeblock}
 
