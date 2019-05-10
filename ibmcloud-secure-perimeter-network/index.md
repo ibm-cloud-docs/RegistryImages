@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-10"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public image
 
@@ -112,7 +112,7 @@ Review [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=contain
 2. Run `ibmcloud-secure-perimeter-network` as a Docker container to begin initial set-up.
 
   ```
-  docker run registry.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0 python config-secure-perimeter.py -v /path/to/current/dir:/opt/secure-perimeter
+  docker run icr.io/ibm/ibmcloud-secure-perimeter-network:1.0.0 python config-secure-perimeter.py -v /path/to/current/dir:/opt/secure-perimeter
   ```
   {: pre}
 
@@ -162,7 +162,7 @@ In order for `ibmcloud-secure-perimeter-network` image to manage subnets on your
       spec:
         containers:
         - name: network-pod
-          image: registry.bluemix.net/ibm/ibmcloud-secure-perimeter-network:1.0.0
+          image: icr.io/ibm/ibmcloud-secure-perimeter-network:1.0.0
           volumeMounts:
           - name: network-vol
             mountPath: /opt/secure-perimeter
