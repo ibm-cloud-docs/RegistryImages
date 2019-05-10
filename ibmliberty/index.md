@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-26"
+lastupdated: "2019-05-10"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -159,7 +159,7 @@ To create an image with your app code from the `ibmliberty` image, complete the 
 1. With a text editor, create a file that is named `Dockerfile` and copy the following information into it.
 
    ```
-   FROM registry.bluemix.net/ibmliberty:<tag>
+   FROM icr.io/ibmliberty:<tag>
    COPY <app_name>.<file_extension> /config/dropins/
    ```
    {: pre}
