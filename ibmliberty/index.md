@@ -60,7 +60,7 @@ The specific Liberty features that are installed in the image depend on the tag 
 |`ibm/liberty:webProfile8`|This image includes all features required for Java EE8 Web Profile compliance.|
 |`ibm/liberty:javaee7`|This image includes all features from the `ibm/liberty:webProfile7` image, plus features that are required for Java EE7 Full Platform compliance.|
 |`ibm/liberty:javaee8`|This image includes all features from the `ibm/liberty:webProfile8` image, plus features that are required for Java EE8 Full Platform compliance.|
-{: caption="Table 1. The features that are included in each of the `ibm/liberty` images" caption-side="top"}
+{: caption="Table 1. The features that are included in each of the <code>ibm/liberty</code> images" caption-side="top"}
 
 ## Usage restrictions
 {: #ibmliberty_usage}
