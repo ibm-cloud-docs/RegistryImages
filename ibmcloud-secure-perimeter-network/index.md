@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-05-10"
+lastupdated: "2019-05-16"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public image
 
@@ -220,7 +220,7 @@ In order for `ibmcloud-secure-perimeter-network` image to manage subnets on your
 |`vyatta_gateway_vip`|The VIP of the Gateway
 |`vyatta_primary`|Object that contains the private and public IP of the primary Vyatta member
 |`vyatta_secondary`|Object that contains the private and public IP of the secondary Vyatta member
-{: caption="Table 1. `config.json`" caption-side="top"}
+{: caption="Table 1. <code>config.json</code>" caption-side="top"}
 
 ## `rules.conf` reference
 {: #spn_reference_rules_conf}
@@ -230,4 +230,4 @@ In order for `ibmcloud-secure-perimeter-network` image to manage subnets on your
 |`external_subnets`|List of subnets on the public internet to expose Secure Perimeter to
 |`external_ports`|List of ports to expose Secure Perimeter to
 |`userips`|List of user IPs to whitelist to Secure Perimeter
-{: caption="Table 2. `rules.conf`" caption-side="top"}
+{: caption="Table 2. <code>rules.conf</code>" caption-side="top"}
