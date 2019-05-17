@@ -22,6 +22,7 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:download: .download}
 
+
 # Getting started with the `ibm/liberty` image
 {: #ibmliberty}
 
