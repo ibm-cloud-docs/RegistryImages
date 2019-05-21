@@ -89,7 +89,7 @@ A imagem `ibmcloud-secure-perimeter-health` fornece os pacotes de software a seg
 
 Revise a documentação do [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started) sobre como obter acesso ao seu cluster após ele ser implementado.
 
-## Varrer as redes privadas em um perímetro seguro
+## Varrer as redes privadas dentro de um perímetro seguro
 {: #sph_private_networks}
 
 Crie um pod de contêiner por meio da imagem `ibmcloud-secure-perimeter-health` e configure uma varredura de rotina.

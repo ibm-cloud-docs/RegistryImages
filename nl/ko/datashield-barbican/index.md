@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-13"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, Registry, data in use, memory encryption, intel sgx, fortanix,
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # `datashield-barbican` 이미지 시작하기
 {: #datashield-barbican_starter}
 
-이 컨테이너 이미지는 Data Shield 환경에서 Barbican을 실행하여 사용 중인 데이터를 보호합니다. 서비스에 대한 자세한 내용과 "사용 중인 데이터"를 보호하는 방법에 대한 자세한 내용은 [IBM Cloud Data Shield 문서](/docs/services/data-shield?topic=data-shield-about#about)를 참조하십시오.
+이 컨테이너 이미지는 {{site.data.keyword.datashield_short}} 환경에서 Barbican을 실행하여 사용 중인 데이터를 보호합니다. 서비스 및 "사용 중인 데이터"를 보호하는 것의 의미에 대한 자세한 정보는 [{{site.data.keyword.datashield_short}} 문서](/docs/services/data-shield?topic=data-shield-about#about)를 참조하십시오.
 {: shortdesc}
 
 명령행을 사용하여 {{site.data.keyword.IBM}}에서 제공한 이미지에 액세스할 수 있습니다. [IBM 공용 이미지](/docs/services/Registry?topic=registry-public_images#public_images)를 참조하십시오.
@@ -79,7 +79,7 @@ subcollection: RegistryImages
   </tr>
   <tr>
     <td><code>IMAGE_NAME</code></td>
-    <td>배치하려는 이미지 이름입니다. </td>
+    <td>배치하려는 이미지 이름입니다.</td>
   </tr>
 </table>
 
@@ -96,11 +96,11 @@ subcollection: RegistryImages
         '{"payload": "my-secret-here", "payload_content_type": "text/plain"}' \
         http://<node>:9311/v1/secrets
 ```
-{: pre}
+{: codeblock}
     
 응답에는 작성된 시크릿에 대한 URL이 포함되어 있습니다. 다음 명령을 실행하여 시크릿을 검색할 수 있습니다.
 
 ```
     curl -sS -H 'X-Project-Id: 12345' <url>
 ```
-{: pre}
+{: codeblock}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-27"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield environment, nginx image, container image, public image, data in use, memory encryption, intel sgx, fortanix,
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # Iniciación a la imagen `datashield-nginx`
 {: #datashield-nginx_starter}
 
-Esta imagen de contenedor proporciona protección para datos en uso al ejecutar NGINX en el entorno Data Shield. Para obtener más información sobre el servicio y qué significa proteger "datos en uso", consulte la [documentación de IBM Cloud Data Shield](/docs/services/data-shield?topic=data-shield-about#about).
+Esta imagen de contenedor proporciona protección para los datos que se utilizan cuando se ejecuta NGINX en el entorno {{site.data.keyword.datashield_short}}. Para obtener más información sobre el servicio y sobre lo que significa proteger "datos en uso", consulte la [documentación de {{site.data.keyword.datashield_short}}](/docs/services/data-shield?topic=data-shield-about#about).
 {: shortdesc}
 
 Puede acceder a las imágenes que suministra {{site.data.keyword.IBM}} desde la línea de mandatos; consulte las [imágenes públicas de IBM](/docs/services/Registry?topic=registry-public_images#public_images).
@@ -36,7 +36,7 @@ Puede acceder a las imágenes que suministra {{site.data.keyword.IBM}} desde la 
 Puede utilizar la siguiente especificación de pod de Kubernetes para desplegar la imagen:
 
 ```
-    apiVersion: v1
+apiVersion: v1
     kind: Pod
     metadata:
       name: data-shield-nginx
@@ -69,7 +69,7 @@ Puede utilizar la siguiente especificación de pod de Kubernetes para desplegar 
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: pre}
+{: codeblock}
 
 <table>
 <caption>Tabla 1. Variables de entrada necesarias</caption>

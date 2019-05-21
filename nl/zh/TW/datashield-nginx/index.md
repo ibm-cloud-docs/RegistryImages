@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-27"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield environment, nginx image, container image, public image, data in use, memory encryption, intel sgx, fortanix,
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # 開始使用 `datashield-nginx` 映像檔
 {: #datashield-nginx_starter}
 
-此容器映像檔藉由在 Data Shield 環境中執行 NGINX，而為使用中的資料提供保護。如需服務的相關資訊及保護「使用中的資料」有何涵義，請參閱 [IBM Cloud Data Shield 文件](/docs/services/data-shield?topic=data-shield-about#about)。
+此容器映像檔藉由在 {{site.data.keyword.datashield_short}} 環境中執行 NGINX，而為使用中的資料提供保護。如需服務的相關資訊及保護「使用中的資料」有何涵義，請參閱 [{{site.data.keyword.datashield_short}} 文件](/docs/services/data-shield?topic=data-shield-about#about)。
 {: shortdesc}
 
 您可以使用指令行存取 {{site.data.keyword.IBM}} 所提供的映像檔，請參閱 [IBM 公用映像檔](/docs/services/Registry?topic=registry-public_images#public_images)。
@@ -69,7 +69,7 @@ subcollection: RegistryImages
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: pre}
+{: codeblock}
 
 <table>
 <caption>表 1. 必要的輸入變數</caption>

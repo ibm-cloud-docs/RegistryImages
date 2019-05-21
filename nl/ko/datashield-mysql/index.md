@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-27"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield, data in use, memory encryption, intel sgx, fortanix, mysql image, mariaDB, container image, public image
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # `datashield-mariadb` 이미지 시작하기
 {: #datashield-mariadb_starter}
 
-이 컨테이너 이미지는 Data Shield 환경에서 MariaDB를 실행하여 사용 중인 데이터를 보호합니다. 서비스에 대한 자세한 내용과 사용 중인 데이터를 보호하는 방법에 대한 자세한 내용은 [IBM Cloud Data Shield 문서](/docs/services/data-shield?topic=data-shield-about#about)를 참조하십시오.
+이 컨테이너 이미지는 {{site.data.keyword.datashield_short}} 환경에서 MariaDB를 실행하여 사용 중인 데이터를 보호합니다. 서비스 및 사용 중인 데이터를 보호하는 것의 의미에 대한 자세한 정보는 [{{site.data.keyword.datashield_short}} 문서](/docs/services/data-shield?topic=data-shield-about#about)를 참조하십시오.
 {: shortdesc}
 
 명령행을 사용하여 {{site.data.keyword.IBM}}에서 제공한 이미지에 액세스할 수 있습니다. [IBM 공용 이미지](/docs/services/Registry?topic=registry-public_images#public_images)를 참조하십시오.
@@ -72,7 +72,7 @@ spec:
     hostPath:
       path: /var/run/aesmd/aesm.socket
 ```
-{: pre}
+{: codeblock}
   
 <table>
 <caption>표 1. 필수 입력 변수</caption>
@@ -82,7 +82,7 @@ spec:
   </tr>
   <tr>
     <td><code>IMAGE_NAME</code></td>
-    <td>배치하려는 이미지 이름입니다. </td>
+    <td>배치하려는 이미지 이름입니다.</td>
   </tr>
     <tr>
     <td><code>MARIADB_ROOT_PASSWORD</code></td>
@@ -90,14 +90,14 @@ spec:
   </tr>
   <tr>
     <td><code>ROOT_PASSWORD</code></td>
-    <td>MariaDB 루트 사용자에 설정하려는 비밀번호입니다. </td>
+    <td>MariaDB 루트 사용자에 설정하려는 비밀번호입니다.</td>
   </tr>
 </table>
 
 ### 허용되는 환경 변수
 {: #datashield-mariadb-variables}
 
-MariaDB 컨테이너는 다음과 같은 환경 변수를 허용합니다. 다른 변수를 사용하려면 다음 예제와 같이 해당 변수를 스펙에 추가하십시오. 
+MariaDB 컨테이너는 다음과 같은 환경 변수를 허용합니다. 다른 변수를 사용하려면 다음 예제와 같이 해당 변수를 스펙에 추가하십시오.
 
 ```
 spec:
@@ -164,7 +164,7 @@ spec:
 ```
 mariadb -h <node> --protocol tcp -uroot
 ```
-{: pre}
+{: codeblock}
 
-Data Shield MariaDB 이미지는 클라이언트 연결에서 TLS(Transport Layer Security)를 사용해야 합니다. 클라이언트 버전에 따라 `--ssl` 또는 `--ssl-mode require`을 클라이언트 명령행에 추가해야 할 수 있습니다.
+{{site.data.keyword.datashield_short}} MariaDB 이미지에서는 클라이언트 연결이 TLS(Transport Layer Security)를 사용해야 합니다. 클라이언트 버전에 따라 `--ssl` 또는 `--ssl-mode require`을 클라이언트 명령행에 추가해야 할 수 있습니다.
 {: note}

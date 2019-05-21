@@ -107,7 +107,7 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
   ```
   {: codeblock}
 
-  `config.json` にデータを設定する方法の詳細については、[`config.json` リファレンス表](#spn_reference_config_json)を参照してください。このファイルは、[Kubernetes ポッドとしての `ibmcloud-secure-perimeter-network` のセットアップ](#spn_setup)のプロセスでも使用できます。
+  `config.json` にデータを設定する方法の詳細については、[`config.json` リファレンス表](#spn_reference_config_json)を参照してください。 このファイルは、[Kubernetes ポッドとしての `ibmcloud-secure-perimeter-network` のセットアップ](#spn_setup)のプロセスでも使用できます。
 
 2. `ibmcloud-secure-perimeter-network` を Docker コンテナーとして実行して、初期セットアップを開始します。
 

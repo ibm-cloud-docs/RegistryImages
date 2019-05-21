@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-04-26"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -60,10 +60,10 @@ IBM WebSphere Application Server Liberty 컨테이너에서 Java를 기반으로
 ## 사용 제한사항
 {: #ibmliberty_usage}
 
-다음 표에서는 {{site.data.keyword.Bluemix_notm}}에서 `ibmliberty` 이미지의 무료 사용량에 적용되는 제한사항을 보여줍니다.
+다음 표에서는 {{site.data.keyword.cloud_notm}}에서 `ibmliberty` 이미지의 무료 사용량에 적용되는 제한사항을 보여줍니다.
 {:shortdesc}
 
-`ibmliberty` 이미지의 가격은 {{site.data.keyword.Bluemix_notm}}에서 사용하는 컨테이너의 가격과 별도로 책정됩니다.
+`ibmliberty` 이미지의 가격은 {{site.data.keyword.cloud_notm}}에서 사용하는 컨테이너의 가격과 별도로 책정됩니다.
 {:tip}
 
 |환경|무료 사용량 제한사항|
@@ -79,13 +79,13 @@ Docker 허브의 [websphere-liberty image ![외부 링크 아이콘](../../../ic
 ## 시작하기
 {: #ibmliberty_get_started}
 
-{{site.data.keyword.Bluemix_notm}} 카탈로그에서 무료 `ibmliberty` 이미지 중 하나를 사용하거나 자체 프로덕션 라이센스 이미지를 선택하여 단일 컨테이너 또는 컨테이너 그룹을 작성하십시오.
+{{site.data.keyword.cloud_notm}} 카탈로그에서 무료 `ibmliberty` 이미지 중 하나를 사용하거나 자체 프로덕션 라이센스 이미지를 선택하여 단일 컨테이너 또는 컨테이너 그룹을 작성하십시오.
 {:shortdesc}
 
 시작하기 전에, `ibmliberty` 이미지의 [사용량 제한사항](#ibmliberty_usage)을 검토하십시오.
 {: important}
 
-1. 카탈로그의 측면 패널에서 **컨테이너** > **IBM Cloud Container Registry** > **IBM 공용 저장소**를 선택하십시오. 컨테이너를 빌드할 `ibmliberty` 이미지를 검색하십시오. 자체 프로덕션 라이센스 이미지를 작성하고 이를 {{site.data.keyword.Bluemix_notm}}에 배치한 경우에는 카탈로그에서 이 이미지를 선택하십시오. 컨테이너 작성 페이지가 열립니다.
+1. 카탈로그의 측면 패널에서 **컨테이너** > **IBM Cloud Container Registry** > **IBM 공용 저장소**를 선택하십시오. 컨테이너를 빌드할 `ibmliberty` 이미지를 검색하십시오. 자체 프로덕션 라이센스 이미지를 작성하고 이를 {{site.data.keyword.cloud_notm}}에 배치한 경우에는 카탈로그에서 이 이미지를 선택하십시오. 컨테이너 작성 페이지가 열립니다.
 2. `태그/ 버전` 드롭 다운 상자에서 사용하고자 하는 **ibmliberty** 이미지의 버전을 선택하십시오.
 3. 이미지에서 컨테이너 빌드, 클러스터 설정 및 클러스터에 앱 배치에 대한 자세한 정보를 보려면 다음 링크를 사용하십시오.
 
@@ -93,7 +93,7 @@ Docker 허브의 [websphere-liberty image ![외부 링크 아이콘](../../../ic
     - [IBM Cloud Kubernetes Service 시작하기](/docs/containers?topic=containers-getting-started#getting-started)
     - [클러스터에 앱 배치](/docs/containers?topic=containers-app#app)
 
-    `ibmliberty` 이미지에는 9080 포트가 공개적으로 노출되어야 합니다. {{site.data.keyword.Bluemix_notm}} 대시보드에서 컨테이너를 작성할 때 기본적으로 **공용 포트** 필드에서 포트가 추가됩니다. CLI에서 컨테이너를 작성하려면 `--port=9080` 옵션이 포함된 `kubectl run` 명령으로 포트를 노출하십시오.
+    `ibmliberty` 이미지에는 9080 포트가 공개적으로 노출되어야 합니다. {{site.data.keyword.cloud_notm}} 대시보드에서 컨테이너를 작성할 때 기본적으로 **공용 포트** 필드에서 포트가 추가됩니다. CLI에서 컨테이너를 작성하려면 `--port=9080` 옵션이 포함된 `kubectl run` 명령으로 포트를 노출하십시오.
     {:tip}
 
 ## CLI로 컨테이너에 대한 Java 힙 영역 사용량 모니터링
@@ -118,7 +118,7 @@ Docker 허브의 [websphere-liberty image ![외부 링크 아이콘](../../../ic
 
 3. Java 힙 사용량을 검토하려면 **RSS** 메모리 stat에 액세스해야 합니다. 컨테이너의 쉘에 액세스하는 방법에 대한 가이드라인을 따르십시오. [Get a Shell to a Running Container ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)를 참조하십시오. Java 힙 사용량은 KB 단위로 표시됩니다. 힙 사용량이 모든 인스턴스에서 2097152KB(2GB) 미만이면 WebSphere Application Server 라이센스를 구매할 필요가 없습니다.
 
-4. WebSphere Application Server 인스턴스의 최대 힙 사용량을 조정하십시오. 자세한 정보는 [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)을 참조하십시오.
+4. WebSphere Application Server 인스턴스의 최대 힙 사용량을 조정하십시오. 자세한 정보는 [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](http://www.ibm.com/support/docview.wss?uid=swg21596474)을 참조하십시오.
 
 ## WebSphere Application Server 라이센스 가져오기
 {: #ibmliberty_license}
@@ -126,7 +126,7 @@ Docker 허브의 [websphere-liberty image ![외부 링크 아이콘](../../../ic
 WebSphere Application Server 라이센스는 필요한 PVU\(Processor Value Unit\) 수를 기반으로 합니다. PVU는 IBM Middleware 소프트웨어의 라이센싱에 대한 측정 단위입니다. PVU 수는 소프트웨어에 사용할 수 있는 프로세서\(코어\) 수를 나타냅니다.
 {:shortdesc}
 
-{{site.data.keyword.Bluemix_notm}}의 모든 컨테이너 크기에는 WebSphere Application Server 라이센스에서 사용 가능해야 하는 특정 수의 PVU 인타이틀먼트가 있어야 합니다. 따라서 라이센스를 구매하기 전에 `ibmliberty` 컨테이너를 계획해야 합니다.
+{{site.data.keyword.cloud_notm}}의 모든 컨테이너 크기에는 WebSphere Application Server 라이센스에서 사용 가능해야 하는 특정 수의 PVU 인타이틀먼트가 있어야 합니다. 따라서 라이센스를 구매하기 전에 `ibmliberty` 컨테이너를 계획해야 합니다.
 
 WebSphere Application Server 라이센스를 구매하려면 [IBM Service ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase)에 문의하십시오. WebSphere Application Server v8.5 이상에 대한 라이센스가 이미 있으면, 컨테이너의 배치를 위해 기존 인타이틀먼트의 미사용 PVU를 사용할 수 있습니다.
 
@@ -183,7 +183,7 @@ WebSphere Application Server 라이센스를 사용하여 {{site.data.keyword.co
 ## `ibmliberty` Dockerfile 참조
 {: #ibmliberty_reference_dockerfile}
 
-이 Dockerfile에서는 {{site.data.keyword.Bluemix_notm}}의 `ibmliberty:webProfile7` 이미지가 Docker 허브의 공용 websphere-liberty 이미지에서 빌드되는 방법을 보여줍니다. 이 정보는 참조 전용입니다.
+이 Dockerfile에서는 {{site.data.keyword.cloud_notm}}의 `ibmliberty:webProfile7` 이미지가 Docker 허브의 공용 websphere-liberty 이미지에서 빌드되는 방법을 보여줍니다. 이 정보는 참조 전용입니다.
 {:shortdesc}
 
 ```

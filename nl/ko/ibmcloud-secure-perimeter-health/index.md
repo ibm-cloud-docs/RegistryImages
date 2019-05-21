@@ -163,7 +163,7 @@ NAME                                    READY     STATUS    RESTARTS   AGE
 
 - Docker를 설치하십시오.
 
-1. 다음 명령을 실행하여 고유 워크스테이션에서 Docker 컨테이너를 작성하십시오. 
+1. 다음 명령을 실행하여 고유 워크스테이션에서 Docker 컨테이너를 작성하십시오.
 
     ```
     docker run -it -e SL_USER='$SL_USER' -e SL_APIKEY='$SL_APIKEY' registry.bluemix.net/ibm/ibmcloud-secure-perimeter-health:1.0.0 /usr/local/bin/python run.py --scan public --allowed-public-ports 80 443 9000-9999
@@ -199,7 +199,7 @@ sp-gateway-8a9031ab:
 ```
 {: screen}
 
-보고서는 다음 형식으로 되어 있습니다. 
+보고서는 다음 형식으로 되어 있습니다.
 
 ```
 <gateway name>:

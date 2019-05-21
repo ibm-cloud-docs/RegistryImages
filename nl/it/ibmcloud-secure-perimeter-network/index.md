@@ -67,7 +67,7 @@ L'immagine `ibmcloud-secure-perimeter-network` fornisce i seguenti pacchetti sof
 
 1. Esegui il provisioning del tuo cluster Kubernetes dalla sezione **Contenitori** nel catalogo IBM Cloud.
 2. Fai clic su **Crea**.
-3. Seleziona le VLAN private e pubbliche del Secure Perimeter Segment dai menu a discesa delle VLAN. 
+3. Seleziona le VLAN private e pubbliche del Secure Perimeter Segment dai menu a discesa delle VLAN.
 4. Immetti tutti gli altri dettagli come richiesto.
 5. Fai clic su **Crea cluster**.
 
@@ -123,7 +123,7 @@ Controlla la [documentazione di {{site.data.keyword.containerlong_notm}}](/docs/
 
 Per fare in modo che l'immagine `ibmcloud-secure-perimeter-network` gestisca le sottoreti nel tuo Secure Perimeter, puoi eseguirla come un processo di lunga durata utilizzando un pod Kubernetes. `ibmcloud-secure-perimeter-network` ha diversi file di configurazione e cartelle che devono essere copiati nel pod per eseguirne la configurazione per il Vyatta:
 
-1. Crea un file denominato `pvc.yaml`. Questo file di configurazione crea un'attestazione del volume persistente (PVC) che puoi montare al tuo pod come un volume. 
+1. Crea un file denominato `pvc.yaml`. Questo file di configurazione crea un'attestazione del volume persistente (PVC) che puoi montare al tuo pod come un volume.
 
   ```
   apiVersion: v1

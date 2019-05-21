@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-04-26"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -60,10 +60,10 @@ Las características de Liberty específicas que se instalan en la imagen depend
 ## Restricciones de uso
 {: #ibmliberty_usage}
 
-La siguiente tabla muestra las restricciones de uso que se aplican al uso gratuito de la imagen `ibmliberty` en {{site.data.keyword.Bluemix_notm}}.
+La siguiente tabla muestra las restricciones de uso que se aplican al uso gratuito de la imagen `ibmliberty` en {{site.data.keyword.cloud_notm}}.
 {:shortdesc}
 
-El precio de la imagen `ibmliberty` es independiente del precio de los contenedores que utiliza en {{site.data.keyword.Bluemix_notm}}.
+El precio de la imagen `ibmliberty` es independiente del precio de los contenedores que utiliza en {{site.data.keyword.cloud_notm}}.
 {:tip}
 
 |Entorno|Restricciones para el uso gratuito|
@@ -79,13 +79,13 @@ Revise los términos de uso para las imágenes certificadas de IBM en la secció
 ## Iniciación
 {: #ibmliberty_get_started}
 
-Utilice una de las imágenes gratuitas `ibmliberty` del catálogo de {{site.data.keyword.Bluemix_notm}} o seleccione su propia imagen con licencia de producción para crear un contenedor único o un grupo de contenedores.
+Utilice una de las imágenes gratuitas `ibmliberty` del catálogo de {{site.data.keyword.cloud_notm}} o seleccione su propia imagen con licencia de producción para crear un contenedor único o un grupo de contenedores.
 {:shortdesc}
 
 Antes de empezar, revise las [restricciones de uso](#ibmliberty_usage) para las imágenes de `ibmliberty`.
 {: important}
 
-1. En el catálogo, seleccione **Contenedores** > **Registro de contenedores de IBM Cloud** > **Repositorios públicos de IBM** en el panel lateral. Busque la imagen `ibmliberty` como base a partir de la cual crear su contenedor. Si ha creado su propia imagen con licencia de producción y la ha desplegado en {{site.data.keyword.Bluemix_notm}}, seleccione esta imagen en el catálogo. Se abre la página de creación de contenedor.
+1. En el catálogo, seleccione **Contenedores** > **Registro de contenedores de IBM Cloud** > **Repositorios públicos de IBM** en el panel lateral. Busque la imagen `ibmliberty` como base a partir de la cual crear su contenedor. Si ha creado su propia imagen con licencia de producción y la ha desplegado en {{site.data.keyword.cloud_notm}}, seleccione esta imagen en el catálogo. Se abre la página de creación de contenedor.
 2. Seleccione la versión de la imagen `ibmliberty` que desea utilizar en el recuadro desplegable **TAG/ VERSION**.
 3. Para obtener más información sobre la creación de contenedores a partir de imágenes, la configuración de clústeres y el despliegue de apps en clústeres, utilice los enlaces siguientes:
 
@@ -93,7 +93,7 @@ Antes de empezar, revise las [restricciones de uso](#ibmliberty_usage) para las 
     - [Iniciación al servicio IBM Cloud Kubernetes](/docs/containers?topic=containers-getting-started#getting-started)
     - [Despliegue de apps en clústeres](/docs/containers?topic=containers-app#app)
 
-    La imagen `ibmliberty` requiere que el puerto 9080 esté expuesto públicamente. Cuando crea un contenedor desde el Panel de control de {{site.data.keyword.Bluemix_notm}}, de forma predeterminada el puerto se añade en el campo **Puerto público**. Si crea un contenedor desde la CLI, exponga el puerto en el mandato `kubectl run` con la opción `--port=9080`.
+    La imagen `ibmliberty` requiere que el puerto 9080 esté expuesto públicamente. Cuando crea un contenedor desde el Panel de control de {{site.data.keyword.cloud_notm}}, de forma predeterminada el puerto se añade en el campo **Puerto público**. Si crea un contenedor desde la CLI, exponga el puerto en el mandato `kubectl run` con la opción `--port=9080`.
     {:tip}
 
 ## Supervisión del uso del espacio de almacenamiento dinámico de Java de un contenedor con la CLI
@@ -118,7 +118,7 @@ Después de crear un contenedor a partir de la imagen `ibmliberty`, puede ver m�
 
 3. Para revisar el uso del almacenamiento dinámico de Java, tiene que acceder a las estadísticas de memoria de **RSS**. Siga las directrices sobre cómo acceder a un shell de un contenedor; consulte [Obtención de un shell de un contenedor en ejecución ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/). El uso del almacenamiento dinámico de Java se visualiza en kilobytes. Si el uso del almacenamiento dinámico está por debajo de 2097152 kilobytes (2GB) en todas las instancias, no tiene que adquirir una licencia de WebSphere Application Server.
 
-4. Ajuste el máximo uso del almacenamiento dinámico para la instancia de WebSphere Application Server. Consulte [Establecer argumentos JVM genéricos en el perfil de WebSphere Application Server V8.5 Liberty ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) para obtener más información.
+4. Ajuste el máximo uso del almacenamiento dinámico para la instancia de WebSphere Application Server. Consulte [Establecer argumentos JVM genéricos en el perfil de WebSphere Application Server V8.5 Liberty ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](http://www.ibm.com/support/docview.wss?uid=swg21596474) para obtener más información.
 
 ## Obtención de una licencia de WebSphere Application Server
 {: #ibmliberty_license}
@@ -126,7 +126,7 @@ Después de crear un contenedor a partir de la imagen `ibmliberty`, puede ver m�
 Las licencias de WebSphere Application Server se basan en el número de value unit de procesador \(PVU\) que es necesario. PVU es una unidad de medida para la licencia del software de middleware de IBM. El número de PVU indica el número de procesadores \(núcleos\) que están disponibles para el software.
 {:shortdesc}
 
-Cada tamaño de contenedor en {{site.data.keyword.Bluemix_notm}} requiere un número específico de autorización por value unit de procesador (PVU) que deben estar disponibles en la licencia de WebSphere Application Server. Por lo tanto, debe planificar los contenedores de `ibmliberty` antes de adquirir la licencia.
+Cada tamaño de contenedor en {{site.data.keyword.cloud_notm}} requiere un número específico de autorización por value unit de procesador (PVU) que deben estar disponibles en la licencia de WebSphere Application Server. Por lo tanto, debe planificar los contenedores de `ibmliberty` antes de adquirir la licencia.
 
 Para adquirir una licencia de WebSphere Application Server, póngase en contacto con el [servicio de IBM ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase). Si ya tiene una licencia para WebSphere
 Application Server v8.5 o posterior, puede utilizar todos los PVU no utilizados desde su titularidad existente para el despliegue del contenedor.
@@ -184,7 +184,7 @@ Todas las imágenes `ibmliberty` están configuradas para grabar los archivos de
 ## Referencia del Dockerfile de `ibmliberty`
 {: #ibmliberty_reference_dockerfile}
 
-Este Dockerfile ilustra cómo se compila la imagen `ibmliberty:webProfile7` en {{site.data.keyword.Bluemix_notm}} a partir de las imágenes websphere-liberty públicas en Docker Hub. Esta información sirve únicamente como referencia.
+Este Dockerfile ilustra cómo se compila la imagen `ibmliberty:webProfile7` en {{site.data.keyword.cloud_notm}} a partir de las imágenes websphere-liberty públicas en Docker Hub. Esta información sirve únicamente como referencia.
 {:shortdesc}
 
 ```

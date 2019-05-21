@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-04-26"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -60,10 +60,10 @@ IBM® WebSphere® Application Server Liberty (`ibmliberty`) イメージは {{si
 ## 使用上の制約事項
 {: #ibmliberty_usage}
 
-次の表は、{{site.data.keyword.Bluemix_notm}} での `ibmliberty` イメージの無料使用に適用される制約事項を示しています。
+次の表は、{{site.data.keyword.cloud_notm}} での `ibmliberty` イメージの無料使用に適用される制約事項を示しています。
 {:shortdesc}
 
-`ibmliberty` イメージの価格設定は、{{site.data.keyword.Bluemix_notm}} で使用するコンテナーの価格設定とは無関係です。
+`ibmliberty` イメージの価格設定は、{{site.data.keyword.cloud_notm}} で使用するコンテナーの価格設定とは無関係です。
 {:tip}
 
 |環境|無料使用上の制約事項|
@@ -79,13 +79,13 @@ Docker Hub の [websphere-liberty イメージ ![外部リンク・アイコン]
 ## 概説
 {: #ibmliberty_get_started}
 
-{{site.data.keyword.Bluemix_notm}} カタログにある無料の `ibmliberty` イメージのいずれかを使用するか、実動ライセンス交付を受けた独自のイメージを選択して、単一コンテナーまたはコンテナー・グループを作成します。
+{{site.data.keyword.cloud_notm}} カタログにある無料の `ibmliberty` イメージのいずれかを使用するか、実動ライセンス交付を受けた独自のイメージを選択して、単一コンテナーまたはコンテナー・グループを作成します。
 {:shortdesc}
 
 始める前に、`ibmliberty` イメージの[使用上の制約事項](#ibmliberty_usage)を確認してください。
 {: important}
 
-1. カタログから、サイド・パネルで**「コンテナー」**>**「IBM Cloud Container Registry」**>**「IBM パブリック・リポジトリー (IBM Public Repositories)」**を選択します。 コンテナーをビルドする元になる `ibmliberty` イメージを検索します。 実動ライセンス交付を受けた独自のイメージを作成して {{site.data.keyword.Bluemix_notm}} にデプロイした場合は、そのイメージをカタログから選択してください。 コンテナー作成ページが開きます。
+1. カタログから、サイド・パネルで**「コンテナー」**>**「IBM Cloud Container Registry」**>**「IBM パブリック・リポジトリー (IBM Public Repositories)」**を選択します。 コンテナーをビルドする元になる `ibmliberty` イメージを検索します。 実動ライセンス交付を受けた独自のイメージを作成して {{site.data.keyword.cloud_notm}} にデプロイした場合は、そのイメージをカタログから選択してください。 コンテナー作成ページが開きます。
 2. `「タグ/バージョン」`ドロップダウン・ボックスから、使用する **ibmliberty** イメージのバージョンを選択します。
 3. イメージからのコンテナーのビルド、クラスターのセットアップ、クラスターでのアプリのデプロイについて詳しくは、以下のリンク先を参照してください。
 
@@ -93,7 +93,7 @@ Docker Hub の [websphere-liberty イメージ ![外部リンク・アイコン]
     - [IBM Cloud Kubernetes Service 概説](/docs/containers?topic=containers-getting-started#getting-started)
     - [アプリをクラスターにデプロイする](/docs/containers?topic=containers-app#app)
 
-    `ibmliberty` イメージを使用するには、ポート 9080 がパブリックに公開される必要があります。 {{site.data.keyword.Bluemix_notm}} ダッシュボードからコンテナーを作成する場合、このポートが**「パブリック・ポート」**フィールドにデフォルトで追加されます。 CLI からコンテナーを作成する場合は、`kubectl run` コマンドに `--port=9080` オプションを指定して実行し、ポートを公開してください。
+    `ibmliberty` イメージを使用するには、ポート 9080 がパブリックに公開される必要があります。 {{site.data.keyword.cloud_notm}} ダッシュボードからコンテナーを作成する場合、このポートが**「パブリック・ポート」**フィールドにデフォルトで追加されます。 CLI からコンテナーを作成する場合は、`kubectl run` コマンドに `--port=9080` オプションを指定して実行し、ポートを公開してください。
     {:tip}
 
 ## CLI を使用した、コンテナーの Java ヒープ・スペース使用量のモニター
@@ -118,7 +118,7 @@ Docker Hub の [websphere-liberty イメージ ![外部リンク・アイコン]
 
 3. Java ヒープ使用量を確認するには、**RSS** のメモリー統計にアクセスする必要があります。 コンテナーのシェルへのアクセス方法に関するガイドラインに従って、[Get a Shell to a Running Container ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/) を参照してください。 Java ヒープ使用量はキロバイト単位で表示されます。 すべてのインスタンスを合わせてヒープ使用量が 2097152 キロバイト (2 GB) 未満であれば、WebSphere Application Server ライセンスを購入する必要はありません。
 
-4. WebSphere Application Server インスタンスの最大ヒープ使用量を調整します。 詳しくは、[Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)を参照してください。
+4. WebSphere Application Server インスタンスの最大ヒープ使用量を調整します。 詳しくは、[Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](http://www.ibm.com/support/docview.wss?uid=swg21596474)を参照してください。
 
 ## WebSphere Application Server ライセンスの取得
 {: #ibmliberty_license}
@@ -126,7 +126,7 @@ Docker Hub の [websphere-liberty イメージ ![外部リンク・アイコン]
 WebSphere Application Server ライセンスは、必要なプロセッサー・バリュー・ユニット (PVU) の数に基づきます。 PVU は、IBM ミドルウェア・ソフトウェアのライセンス交付のための測定単位です。 PVU の数は、ソフトウェアが使用できるプロセッサー (コア) の数を示します。
 {:shortdesc}
 
-{{site.data.keyword.Bluemix_notm}} 内のコンテナーのサイズごとに、特定の数の PVU 使用権が WebSphere Application Server ライセンスで使用可能でなければなりません。 したがって、ライセンスを購入する前に、`ibmliberty` コンテナーを計画する必要があります。
+{{site.data.keyword.cloud_notm}} 内のコンテナーのサイズごとに、特定の数の PVU 使用権が WebSphere Application Server ライセンスで使用可能でなければなりません。 したがって、ライセンスを購入する前に、`ibmliberty` コンテナーを計画する必要があります。
 
 WebSphere Application Server ライセンスを購入するには、[IBM サービス![外部リンク・アイコン](../../../icons/launch-glyph.svg "外部リンク・アイコン")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase)にお問い合わせください。 WebSphere Application Server v8.5 以降のライセンスを既にお持ちの場合は、既存の使用権の中の未使用 PVU を、コンテナーのデプロイメントに使用できます。
 
@@ -183,7 +183,7 @@ WebSphere Application Server ライセンスを使用して、{{site.data.keywor
 ## `ibmliberty` Dockerfile リファレンス
 {: #ibmliberty_reference_dockerfile}
 
-この Dockerfile は、Docker Hub 上のパブリック websphere-liberty イメージから {{site.data.keyword.Bluemix_notm}} の `ibmliberty:webProfile7` イメージがどのようにビルドされるかを示しています。 この情報は、あくまでも参考用です。
+この Dockerfile は、Docker Hub 上のパブリック websphere-liberty イメージから {{site.data.keyword.cloud_notm}} の `ibmliberty:webProfile7` イメージがどのようにビルドされるかを示しています。この情報は、あくまでも参考用です。
 {:shortdesc}
 
 ```

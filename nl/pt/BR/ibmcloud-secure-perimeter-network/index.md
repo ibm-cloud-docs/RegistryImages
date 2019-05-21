@@ -73,7 +73,7 @@ A imagem `ibmcloud-secure-perimeter-network` fornece os pacotes de software a se
 
 Revise a documentação do [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started) sobre como obter acesso ao seu cluster após ele ser implementado.
 
-## Executar a configuração inicial do seu Vyatta de perímetro seguro
+## Execute a configuração inicial de seu Vyatta de perímetro seguro
 {: #spn_initial_setup}
 
 1. Crie um arquivo denominado `config.json`. Esse arquivo contém os parâmetros básicos necessários para que a `ibmcloud-secure-perimeter-network` acesse o Vyatta.
@@ -118,8 +118,7 @@ Revise a documentação do [{{site.data.keyword.containerlong_notm}}](/docs/cont
 
   Essa ação criará um arquivo `state.json` em seu diretório de trabalho. Esse arquivo é usado na [configuração da `ibmcloud-secure-perimeter-network` como um pod do Kubernetes](#spn_setup).
 
-## Configurar como um pod do Kubernetes em seu
-perímetro seguro
+## Configuração como um pod do Kubernetes dentro do seu perímetro seguro
 {: #spn_setup}
 
 Para que a imagem `ibmcloud-secure-perimeter-network` gerencie as sub-redes em seu perímetro seguro, é possível executá-la como um processo de longa duração usando um pod do Kubernetes. O `ibmcloud-secure-perimeter-network` tem vários arquivos e pastas de configuração que devem ser copiados para o pod para configurá-lo para o Vyatta:

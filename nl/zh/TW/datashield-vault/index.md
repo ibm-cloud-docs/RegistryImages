@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-13"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield environment, container image, public image, vault image, data in use, memory encryption, intel sgx, fortanix,
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # 開始使用 `datashield-vault` 映像檔
 {: #datashield-vault_starter}
 
-此容器映像檔藉由在 Data Shield 環境中執行 Vault，而為使用中的資料提供保護。如需服務的相關資訊及保護「使用中的資料」有何涵義，請參閱 [IBM Cloud Data Shield 文件](/docs/services/data-shield?topic=data-shield-about#about)。
+此容器映像檔藉由在 {{site.data.keyword.datashield_short}} 環境中執行 Vault，而為使用中的資料提供保護。如需服務的相關資訊及保護「使用中的資料」有何涵義，請參閱 [{{site.data.keyword.datashield_short}} 文件](/docs/services/data-shield?topic=data-shield-about#about)。
 {: shortdesc}
 
 您可以使用指令行存取 {{site.data.keyword.IBM}} 所提供的映像檔，請參閱 [IBM 公用映像檔](/docs/services/Registry?topic=registry-public_images#public_images)。
@@ -70,7 +70,7 @@ subcollection: RegistryImages
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: pre}
+{: codeblock}
 
 <table>
 <caption>表 1. 必要的輸入變數</caption>
@@ -93,18 +93,18 @@ subcollection: RegistryImages
     ```
     kubectl get pod -owide
     ```
-    {: pre}
+    {: codeblock}
 
   * 選項 2：
     ```
     kubectl describe pod
     ```
-    {: pre}
+    {: codeblock}
 
-2. 請將 `VAULT_ADDR` 環境變數設為 `http://<YOUR_IP>:8200`。
+2. 將 `VAULT_ADDR` 環境變數設為 `http://<YOUR_IP>:8200`。
   
 
-請使用 `kubectl get pod -owide` 或 `kubectl describe pod` 來查閱 Vault 實例的節點 IP 位址。請將 `VAULT_ADDR` 環境變數設為 `http://<IP>:8200` 以存取 Data Shield 保護的 Vault 實例。
+請使用 `kubectl get pod -owide` 或 `kubectl describe pod` 來查閱 Vault 實例的節點 IP 位址。將 `VAULT_ADDR` 環境變數設為 `http://<IP>:8200`，以存取 {{site.data.keyword.datashield_short}} 保護的「儲存庫」實例。
 
 您可以使用 Vault CLI 指令，例如 `vault init`、`vault unseal`、`vault auth`、`vault write` 及 `vault read` 以鑑別和存取密碼。如需如何使用 Vault CLI 的相關資訊，請參閱 [Vault Commands (CLI) ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.vaultproject.io/docs/commands/index.html)。
 {: tip}

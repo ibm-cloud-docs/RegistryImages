@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-13"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, Registry, data in use, memory encryption, intel sgx, fortanix,
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # Einführung zum Image `datashield-barbican`
 {: #datashield-barbican_starter}
 
-Dieses Container-Image bietet den verwendeten Daten durch die Barbican-Ausführung in der Data Shield-Umgebung Schutz. Weitere Informationen zu dem Service und die Bedeutung des Schutzes von "verwendeten Daten" finden Sie in der [Dokumentation zu IBM Cloud Data Shield](/docs/services/data-shield?topic=data-shield-about#about).
+Dieses Container-Image bietet den verwendeten Daten durch die Barbican-Ausführung in der {{site.data.keyword.datashield_short}}-Umgebung Schutz. Weitere Informationen zu dem Service und die Bedeutung des Schutzes von "verwendeten Daten" finden Sie in der [{{site.data.keyword.datashield_short}}-Dokumentation](/docs/services/data-shield?topic=data-shield-about#about).
 {: shortdesc}
 
 Sie können auf die von {{site.data.keyword.IBM}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry?topic=registry-public_images#public_images).
@@ -36,7 +36,7 @@ Sie können auf die von {{site.data.keyword.IBM}} bereitgestellten Images über 
 Mithilfe der folgenden Kubernetes-Podspezifikationen können Sie das Image bereitstellen:
 
 ```
-    apiVersion: v1
+apiVersion: v1
     kind: Pod
     metadata:
       name: data-shield-barbican
@@ -92,15 +92,15 @@ Das Bereitstellen und Starten des Containers kann einige Minuten in Anspruch neh
 Sie können einen geheimen Schlüssel in der Barbican-Demonstrationsinstanz erstellen, indem Sie den folgenden Befehl ausführen:
 
 ```
-    curl -sS -X POST -H 'content-type:application/json' -H 'X-Project-Id: 12345' -d \
+curl -sS -X POST -H 'content-type:application/json' -H 'X-Project-Id: 12345' -d \
         '{"payload": "my-secret-here", "payload_content_type": "text/plain"}' \
         http://<node>:9311/v1/secrets
 ```
-{: pre}
+{: codeblock}
     
 Die Antwort enthält die URL für den erstellten geheimen Schlüssel. Sie können den geheimen Schlüssel abrufen, indem Sie den folgenden Befehl ausführen:
 
 ```
-    curl -sS -H 'X-Project-Id: 12345' <url>
+curl -sS -H 'X-Project-Id: 12345' <url>
 ```
-{: pre}
+{: codeblock}

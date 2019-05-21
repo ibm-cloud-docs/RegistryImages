@@ -123,7 +123,7 @@ subcollection: RegistryImages
 
 `ibmcloud-secure-perimeter-network` 이미지에서 보안 경계의 서브넷을 관리하려면 Kubernetes 팟(Pod)을 사용하여 장기 프로세스로 실행할 수 있습니다. `ibmcloud-secure-perimeter-network`에는 Vyatta에 맞게 구성하기 위해 팟(Pod)에 복사해야 하는 여러 구성 파일 및 폴더가 있습니다.
 
-1. `pvc.yaml` 파일을 작성하십시오. 이 구성 파일은 팟(Pod)에 볼륨으로 마운트할 수 있는 지속적 볼륨 클레임(PVC)을 작성합니다.   
+1. `pvc.yaml` 파일을 작성하십시오. 이 구성 파일은 팟(Pod)에 볼륨으로 마운트할 수 있는 지속적 볼륨 클레임(PVC)을 작성합니다.
 
   ```
   apiVersion: v1

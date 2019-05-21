@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-27"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield, data in use, memory encryption, intel sgx, fortanix, mysql image, mariaDB, container image, public image
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # Introduzione all'immagine `datashield-mariadb`
 {: #datashield-mariadb_starter}
 
-Questa immagine contenitore fornisce la protezione per i dati in uso eseguendo MariaDB nell'ambiente Data Shield. Per ulteriori informazioni sul servizio e su cosa significa proteggere i dati in uso, vedi la [documentazione IBM Cloud Data Shield](/docs/services/data-shield?topic=data-shield-about#about).
+Questa immagine contenitore fornisce la protezione per i dati in uso eseguendo MariaDB nell'ambiente {{site.data.keyword.datashield_short}}. Per ulteriori informazioni sul servizio e su cosa significa proteggere i dati in uso, vedi la [documentazione di {{site.data.keyword.datashield_short}}](/docs/services/data-shield?topic=data-shield-about#about).
 {: shortdesc}
 
 Puoi accedere alle immagini fornite da {{site.data.keyword.IBM}} utilizzando la riga di comando, consulta [Immagini pubbliche IBM](/docs/services/Registry?topic=registry-public_images#public_images).
@@ -72,7 +72,7 @@ spec:
     hostPath:
       path: /var/run/aesmd/aesm.socket
 ```
-{: pre}
+{: codeblock}
   
 <table>
 <caption>Tabella 1. Variabili di input obbligatorie</caption>
@@ -128,7 +128,7 @@ spec:
   </tr>
   <tr>
     <td><code>MARIADB_USER</code></td>
-    <td>Crea un utente MariaDB regolare con il nome utente specificato. </td>
+    <td>Crea un utente MariaDB regolare con il nome utente specificato.</td>
   </tr>
   <tr>
     <td><code>MARIADB_PASSWORD</code></td>
@@ -152,7 +152,7 @@ spec:
   </tr>
   <tr>
     <td><code>MARIADB_REPLICATION_MASTER_HOST</code> (slave)</td>
-    <td>Imposta il nome host a cui connettersi per la replica. </td>
+    <td>Imposta il nome host a cui connettersi per la replica.</td>
   </tr>
 </table>
 
@@ -164,7 +164,7 @@ Puoi collegarti all'istanza MariaDB immettendo il seguente comando:
 ```
 mariadb -h <node> --protocol tcp -uroot
 ```
-{: pre}
+{: codeblock}
 
-L'immagine Data Shield MariaDB richiede che le connessioni client utilizzino TLS (Transport Layer Security). A seconda della versione del client, potrebbe essere necessario aggiungere `--ssl` o `--ssl-mode require` alla riga di comando del client.
+L'immagine {{site.data.keyword.datashield_short}} MariaDB richiede che le connessioni client utilizzino TLS (Transport Layer Security). A seconda della versione del client, potrebbe essere necessario aggiungere `--ssl` o `--ssl-mode require` alla riga di comando del client.
 {: note}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-27"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield, data in use, memory encryption, intel sgx, fortanix, mysql image, mariaDB, container image, public image
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # Einführung zum Image `datashield-mariadb`
 {: #datashield-mariadb_starter}
 
-Dieses Container-Image bietet den verwendeten Daten durch die MariaDB-Ausführung in der Data Shield-Umgebung Schutz. Weitere Informationen zu dem Service und die Bedeutung des Schutzes von "verwendeten Daten" finden Sie in der [Dokumentation zu IBM Cloud Data Shield](/docs/services/data-shield?topic=data-shield-about#about).
+Dieses Container-Image bietet den verwendeten Daten durch die MariaDB-Ausführung in der {{site.data.keyword.datashield_short}}-Umgebung Schutz. Weitere Informationen zu dem Service und die Bedeutung des Schutzes von "verwendeten Daten" finden Sie in der [{{site.data.keyword.datashield_short}}-Dokumentation](/docs/services/data-shield?topic=data-shield-about#about).
 {: shortdesc}
 
 Sie können auf die von {{site.data.keyword.IBM}} bereitgestellten Images über die Befehlszeile zugreifen. Informationen hierzu finden Sie in [öffentliche IBM Images](/docs/services/Registry?topic=registry-public_images#public_images).
@@ -72,7 +72,7 @@ spec:
     hostPath:
       path: /var/run/aesmd/aesm.socket
 ```
-{: pre}
+{: codeblock}
   
 <table>
 <caption>Tabelle 1. Erforderliche Eingabevariablen</caption>
@@ -164,7 +164,7 @@ Sie können eine Verbindung zur MariaDB-Instanz herstellen, indem Sie den folgen
 ```
 mariadb -h <node> --protocol tcp -uroot
 ```
-{: pre}
+{: codeblock}
 
-Für das Data Shield-MariaDB-Image ist es erforderlich, dass die Clientverbindungen TLS (Transport Layer Security) verwenden. Abhängig von der verwendeten Clientversion müssen Sie möglicherweise `--ssl` oder `--ssl-mode require` zur Clientbefehlszeile hinzufügen.
+Für das {{site.data.keyword.datashield_short}}-MariaDB-Image ist es erforderlich, dass die Clientverbindungen TLS (Transport Layer Security) verwenden. Abhängig von der verwendeten Clientversion müssen Sie möglicherweise `--ssl` oder `--ssl-mode require` zur Clientbefehlszeile hinzufügen.
 {: note}

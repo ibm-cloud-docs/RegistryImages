@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-13"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield environment, container image, public image, vault image, data in use, memory encryption, intel sgx, fortanix,
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # Introdução à imagem `datashield-vault`
 {: #datashield-vault_starter}
 
-Essa imagem de contêiner fornece proteção para os dados em uso executando o Vault no ambiente do Data Shield. Para obter mais informações sobre o serviço e o que significa proteger os "dados em uso", consulte a [Documentação do IBM Cloud Data Shield](/docs/services/data-shield?topic=data-shield-about#about).
+Essa imagem de contêiner fornece proteção para os dados em uso ao executar o Vault no ambiente do {{site.data.keyword.datashield_short}}. Para obter mais informações sobre o serviço e o que significa proteger "dados em uso", consulte a [Documentação do {{site.data.keyword.datashield_short}}](/docs/services/data-shield?topic=data-shield-about#about).
 {: shortdesc}
 
 É possível acessar as imagens que são fornecidas pela {{site.data.keyword.IBM}} usando a linha de comandos. Consulte [Imagens públicas da IBM](/docs/services/Registry?topic=registry-public_images#public_images).
@@ -37,7 +37,7 @@ Essa imagem de contêiner fornece proteção para os dados em uso executando o V
 É possível usar a seguinte especificação de pod do Kubernetes para implementar a imagem:
 
 ```
-    apiVersion: v1
+apiVersion: v1
     kind: Pod
     metadata:
       name: data-shield-vault
@@ -70,7 +70,7 @@ Essa imagem de contêiner fornece proteção para os dados em uso executando o V
         hostPath:
           path: /var/run/aesmd/aesm.socket
 ```
-{: pre}
+{: codeblock}
 
 <table>
 <caption>Tabela 1. Variáveis de entrada necessárias</caption>
@@ -93,18 +93,18 @@ Para acessar a instância protegida do Vault:
     ```
     kubectl get pod -owide
     ```
-    {: pre}
+    {: codeblock}
 
   * Opção 2:
     ```
     kubectl describe pod
     ```
-    {: pre}
+    {: codeblock}
 
-2. Configure a variável de ambiente `VAULT_ADDR` para `http://<YOUR_IP>:8200`.
+2. Configure a variável de ambiente `VAULT_ADDR` para `http://<YOUR_IP>: 8200`.
   
 
-Use `kubectl get pod -owide` ou `kubectl describe pod` para consultar o endereço IP do nó para a instância da área segura. Configure a variável de ambiente `VAULT_ADDR` para `http://<IP>:8200` para acessar a instância do Vault protegida pelo Data Shield.
+Use `kubectl get pod -owide` ou `kubectl describe pod` para consultar o endereço IP do nó para a instância da área segura. Configure a variável de ambiente `VAULT_ADDR` para `http://<IP>:8200` para acessar a instância do Vault protegida por {{site.data.keyword.datashield_short}}.
 
 É possível usar comandos da CLI do Vault, como `vault init`, `vault unseal`, `vault auth`, `vault write` e `vault read`, para autenticar e acessar segredos. Para obter mais informações sobre como usar a CLI da área segura, consulte [Comando da área segura (CLI) ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://www.vaultproject.io/docs/commands/index.html).
 {: tip}

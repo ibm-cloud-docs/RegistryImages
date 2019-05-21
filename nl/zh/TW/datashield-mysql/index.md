@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-27"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield, data in use, memory encryption, intel sgx, fortanix, mysql image, mariaDB, container image, public image
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # 開始使用 `datashield-mariadb` 映像檔
 {: #datashield-mariadb_starter}
 
-此容器映像檔藉由在 Data Shield 環境中執行 MariaDB，而為使用中的資料提供保護。如需服務的相關資訊及保護「使用中的資料」有何涵義，請參閱 [IBM Cloud Data Shield 文件](/docs/services/data-shield?topic=data-shield-about#about)。
+此容器映像檔藉由在 {{site.data.keyword.datashield_short}} 環境中執行 MariaDB，而為使用中的資料提供保護。如需服務的相關資訊及保護使用中的資料有何涵義，請參閱 [{{site.data.keyword.datashield_short}} 文件](/docs/services/data-shield?topic=data-shield-about#about)。
 {: shortdesc}
 
 您可以使用指令行存取 {{site.data.keyword.IBM}} 所提供的映像檔，請參閱 [IBM 公用映像檔](/docs/services/Registry?topic=registry-public_images#public_images)。
@@ -72,7 +72,7 @@ spec:
     hostPath:
       path: /var/run/aesmd/aesm.socket
 ```
-{: pre}
+{: codeblock}
   
 <table>
 <caption>表 1. 必要的輸入變數</caption>
@@ -164,7 +164,7 @@ spec:
 ```
 mariadb -h <node> --protocol tcp -uroot
 ```
-{: pre}
+{: codeblock}
 
-Data Shield MariaDB 映像檔需要用戶端連線使用傳輸層安全 (TLS)。視您的用戶端版本而定，您可能需要在用戶端指令行新增 `--ssl` 或 `--ssl-mode require`。
+{{site.data.keyword.datashield_short}} MariaDB 映像檔需要用戶端連線使用傳輸層安全 (TLS)。視您的用戶端版本而定，您可能需要在用戶端指令行新增 `--ssl` 或 `--ssl-mode require`。
 {: note}

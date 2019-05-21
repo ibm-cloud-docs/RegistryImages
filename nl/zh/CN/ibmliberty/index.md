@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-04-26"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -60,10 +60,10 @@ subcollection: RegistryImages
 ## 使用限制
 {: #ibmliberty_usage}
 
-下表显示适用于 {{site.data.keyword.Bluemix_notm}} 中 `ibmliberty` 映像免费使用的限制。
+下表显示适用于 {{site.data.keyword.cloud_notm}} 中 `ibmliberty` 映像免费使用的限制。
 {:shortdesc}
 
-`ibmliberty` 映像的定价与 {{site.data.keyword.Bluemix_notm}} 中使用的容器的定价无关。
+`ibmliberty` 映像的定价与 {{site.data.keyword.cloud_notm}} 中使用的容器的定价无关。
 {:tip}
 
 |环境|免费使用限制|
@@ -79,13 +79,13 @@ subcollection: RegistryImages
 ## 入门
 {: #ibmliberty_get_started}
 
-使用 {{site.data.keyword.Bluemix_notm}} 目录中的某个免费 `ibmliberty` 映像，或选择自己的生产许可映像，创建单个容器或容器组。
+使用 {{site.data.keyword.cloud_notm}} 目录中的某个免费 `ibmliberty` 映像，或选择自己的生产许可映像，创建单个容器或容器组。
 {:shortdesc}
 
 开始之前，请查看 `ibmliberty` 映像的[使用限制](#ibmliberty_usage)。
 {: important}
 
-1. 在目录中，选择侧面板上的**容器** > **IBM Cloud Container Registry** > **IBM 公共存储库**。搜索 `ibmliberty` 映像以基于该映像构建容器。如果您已创建自己的生产许可映像并已将其部署至 {{site.data.keyword.Bluemix_notm}}，请从目录选择此映像。这将打开“容器创建”页面。
+1. 在目录中，选择侧面板上的**容器** > **IBM Cloud Container Registry** > **IBM 公共存储库**。搜索 `ibmliberty` 映像以基于该映像构建容器。如果您已创建自己的生产许可映像并已将其部署至 {{site.data.keyword.cloud_notm}}，请从目录选择此映像。这将打开“容器创建”页面。
 2. 从`标记/版本`下拉框中，选择要使用的 **ibmliberty** 映像的版本。
 3. 有关基于映像构建容器、设置集群以及在集群中部署应用程序的更多信息，请使用以下链接：
 
@@ -93,7 +93,7 @@ subcollection: RegistryImages
     - [IBM Cloud Kubernetes 服务入门](/docs/containers?topic=containers-getting-started#getting-started)
     - [在集群中部署应用程序](/docs/containers?topic=containers-app#app)
 
-    `ibmliberty` 映像要求以公共方式公开端口 9080。在 {{site.data.keyword.Bluemix_notm}}“仪表板”中创建容器时，缺省情况下会在**公共端口**字段中添加此端口。如果在 CLI 中创建容器，请在带 `--port=9080` 选项的 `kubectl ic run` 命令中公开此端口。
+    `ibmliberty` 映像要求以公共方式公开端口 9080。在 {{site.data.keyword.cloud_notm}}“仪表板”中创建容器时，缺省情况下会在**公共端口**字段中添加此端口。如果在 CLI 中创建容器，请在带 `--port=9080` 选项的 `kubectl ic run` 命令中公开此端口。
     {:tip}
 
 ## 使用 CLI 监视容器的 Java 堆空间使用
@@ -105,20 +105,20 @@ subcollection: RegistryImages
 1. 获取要查看其度量值的 pod 的名称。
   
    ```
-    kubectl get pods
-    ```
+   kubectl get pods
+   ```
    {: pre}
 
 2. 查看特定 pod 及其容器的度量值。
 
    ```
-    kubectl top pod POD_NAME --containers
-    ```
+   kubectl top pod POD_NAME --containers
+   ```
    {: pre}
 
 3. 要复查 Java 堆使用量，您需要访问 **RSS** 内存统计信息。请按照有关如何访问容器 shell 的准则来执行操作。相关信息，请参阅 [Get a Shell to a Running Container ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)。Java 堆使用量以 KB 显示。如果跨所有实例堆使用量低于 2097152 KB (2GB)，那么您无需购买 WebSphere Application Server 许可。
 
-4. 针对 WebSphere Application Server 实例，调整最大堆使用量。有关更多信息，请参阅[在 WebSphere Application Server V8.5 Liberty 概要文件中设置通用 JVM 参数 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474)。
+4. 针对 WebSphere Application Server 实例，调整最大堆使用量。有关更多信息，请参阅[在 WebSphere Application Server V8.5 Liberty 概要文件中设置通用 JVM 参数 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](http://www.ibm.com/support/docview.wss?uid=swg21596474)。
 
 ## 获取 WebSphere Application Server 许可
 {: #ibmliberty_license}
@@ -126,13 +126,11 @@ subcollection: RegistryImages
 WebSphere Application Server 许可基于您所需的处理器价值单元 \(PVU\) 数。PVU 是 IBM 中间件软件许可的计量单位。PVU 数表示软件可用的处理器（核心）数。
 {:shortdesc}
 
-{{site.data.keyword.Bluemix_notm}} 中的每一个容器大小都需要特定的 PVU 授权数，这些授权必须在 WebSphere
+{{site.data.keyword.cloud_notm}} 中的每一个容器大小都需要特定的 PVU 授权数，这些授权必须在 WebSphere
 Application Server 许可中提供。因此，在购买许可之前，必须计划 `ibmliberty` 容器。
-
 
 要购买 WebSphere Application Server 许可，请联系 [IBM 服务中心 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase)。如果您已拥有 WebSphere
 Application Server V8.5 或更新版本的许可，那么可以使用现有授权中未使用的任何 PVU 来部署容器。
-
 
 如果您在购买许可之后发现还需要更多的 PVU，那么可以联系 [IBM 服务中心 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://www.ibm.com/us-en/marketplace/application-server-on-cloud/purchase) 以增加数量。
 
@@ -187,7 +185,7 @@ Application Server V8.5 或更新版本的许可，那么可以使用现有授�
 ## `ibmliberty` Dockerfile 参考
 {: #ibmliberty_reference_dockerfile}
 
-以下 Dockerfile 说明了 {{site.data.keyword.Bluemix_notm}} 中的 `ibmliberty:webProfile7` 映像是如何基于 Docker Hub 上的公共 websphere-liberty 映像进行构建的。这些信息仅供参考。
+以下 Dockerfile 说明了 {{site.data.keyword.cloud_notm}} 中的 `ibmliberty:webProfile7` 映像是如何基于 Docker Hub 上的公共 websphere-liberty 映像进行构建的。这些信息仅供参考。
 {:shortdesc}
 
 ```

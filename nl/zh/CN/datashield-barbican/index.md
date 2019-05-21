@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-13"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, Registry, data in use, memory encryption, intel sgx, fortanix,
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # 开始使用 `datashield-barbican` 映像
 {: #datashield-barbican_starter}
 
-此容器映像为在 Data Shield 环境中运行 Barbican 所使用的数据提供保护。有关服务和保护“使用中的数据”的含义的更多信息，请参阅 [IBM Cloud Data Shield 文档](/docs/services/data-shield?topic=data-shield-about#about)。
+此容器映像为在 {{site.data.keyword.datashield_short}} 环境中运行 Barbican 所使用的数据提供保护。有关服务和保护“使用中的数据”的含义的更多信息，请参阅 [{{site.data.keyword.datashield_short}} 文档](/docs/services/data-shield?topic=data-shield-about#about)。
 {: shortdesc}
 
 您可以使用命令行来访问 {{site.data.keyword.IBM}} 提供的映像，请参阅 [IBM 公共映像](/docs/services/Registry?topic=registry-public_images#public_images)。
@@ -96,11 +96,11 @@ subcollection: RegistryImages
         '{"payload": "my-secret-here", "payload_content_type": "text/plain"}' \
         http://<node>:9311/v1/secrets
 ```
-{: pre}
+{: codeblock}
     
 响应包含所创建私钥的 URL。您可以通过运行以下命令来检索该私钥：
 
 ```
     curl -sS -H 'X-Project-Id: 12345' <url>
 ```
-{: pre}
+{: codeblock}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-13"
+lastupdated: "2019-04-23"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -21,11 +21,14 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 
-# 開始使用 `ibm-backup-restore` 映像檔
+# 開始使用 `ibmcloud-backup-restore` 映像檔
 {: #ibmbackup_restore_starter}
 
-`ibm-backup-restore` 映像檔包含在 {{site.data.keyword.containerlong}} 中備份及還原持續性儲存空間所需的預先安裝套件。
+`ibmcloud-backup-restore` 映像檔包含在 {{site.data.keyword.containerlong}} 中備份及還原持續性儲存空間所需的預先安裝套件。
 {:shortdesc}
+
+`ibmcloud-backup-restore` 映像檔僅能在 `icr.io` 登錄網域中使用，並在 `registry.bluemix.net` 網域中遭到淘汰。若要存取映像檔，並從中部署容器，您的叢集必須將 API 金鑰儲存在映像檔取回密碼中，以授權對 {{site.data.keyword.registryshort_notm}} 的存取。若為 2019 年 2 月 25 日之前建立的叢集，您必須更新叢集，才能存取 `icr.io` 登錄網域，以便您可以使用 `ibmcloud-backup-restore` 映像檔。如需已變更什麼及如何更新叢集的相關資訊，請參閱[瞭解如何授權叢集以從登錄中取回映像檔](/docs/containers?topic=containers-images#cluster_registry_auth)，以及[更新現有叢集來使用 API 金鑰映像檔取回密碼](/docs/containers?topic=containers-images#imagePullSecret_migrate_api_key)。
+{: important}
 
 您可以使用指令行存取 {{site.data.keyword.IBM_notm}} 所提供的映像檔，請參閱 [IBM 公用映像檔](/docs/services/Registry?topic=registry-public_images#public_images)。
 {: tip}
@@ -33,16 +36,16 @@ subcollection: RegistryImages
 ## 如何運作
 {: #backup_restore_how_it_works}
 
-使用 `ibm-backup-restore` 映像檔，您可以為儲存在叢集中之持續性磁區 (PV) 的應用程式資料建立一次性或排定的備份，或是將應用程式資料還原到 PV。若要備份及還原資料，請從 `ibm-backup-restore` 映像檔部署 Pod。然後，裝載負責連結您要備份之 PV 或您要用於將資料還原至 Pod 之 PV 的 PVC。
+使用 `ibmcloud-backup-restore` 映像檔，您可以為儲存在叢集中之持續性磁區 (PV) 的應用程式資料建立一次性或排定的備份，或是將應用程式資料還原到 PV。若要備份及還原資料，請從 `ibmcloud-backup-restore` 映像檔部署 Pod。然後，裝載負責連結您要備份之 PV 或您要用於將資料還原至 Pod 之 PV 的 PVC。
 
-**我的資料去哪裡？如何存取它？** 您備份的資料儲存在 {{site.data.keyword.cos_full_notm}} 服務實例內。若要存取服務，請使用 {{site.data.keyword.cos_full_notm}} 服務認證作為 `ibm-backup-restore` Pod 中的環境變數，或編輯執行中 Pod 的 `config.conf` 檔。
+**我的資料去哪裡？如何存取它？** 您備份的資料儲存在 {{site.data.keyword.cos_full_notm}} 服務實例內。若要存取服務，請使用 {{site.data.keyword.cos_full_notm}} 服務認證作為 `ibmcloud-backup-restore` Pod 中的環境變數，或編輯執行中 Pod 的 `config.conf` 檔。
 
-**我可以將備份的資料還原到不同應用程式或不同 PV 嗎？** 是的，您可以將儲存的資料從 {{site.data.keyword.cos_full_notm}} 服務實例還原至叢集裡的 PV。若要還原資料，您必須從 `ibm-backup-restore` 映像檔建立一個還原 Pod。然後，裝載負責連結您要用於 Pod 之 PV 的 PVC。  
+**我可以將備份的資料還原到不同應用程式或不同 PV 嗎？** 是的，您可以將儲存的資料從 {{site.data.keyword.cos_full_notm}} 服務實例還原至叢集裡的 PV。若要還原資料，您必須從 `ibmcloud-backup-restore` 映像檔建立一個還原 Pod。然後，裝載負責連結您要用於 Pod 之 PV 的 PVC。  
 
 ## 包含的內容
 {: #backup_restore_whats_included}
 
-每個 `ibm-backup-restore` 映像檔都會包含下列軟體套件：
+每個 `ibmcloud-backup-restore` 映像檔都會包含下列軟體套件：
 
 - Alpine 3.7
 - Duplicity 0.7.10
@@ -55,7 +58,7 @@ subcollection: RegistryImages
 {: shortdesc}
 
 1. 部署 {{site.data.keyword.cos_full_notm}} 服務實例。
-   1. 開啟 [{{site.data.keyword.Bluemix_notm}} 型錄 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://cloud.ibm.com/catalog/services/cloud-object-storage)。
+   1. 開啟 [{{site.data.keyword.cloud_notm}} 型錄 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://cloud.ibm.com/catalog/services/cloud-object-storage)。
    2. 輸入服務實例的名稱，例如 `cos-backup`，然後選取 **default** 作為您的資源群組。
    3. 檢閱[方案選項 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage#s3api) 以取得定價資訊，並選取方案。
    4. 按一下**建立**。
@@ -63,14 +66,14 @@ subcollection: RegistryImages
    1. 在服務詳細資料頁面上的導覽，按一下**服務認證**。
    2. 按一下**新建認證**。會顯示對話框。
    3. 輸入認證的名稱。
-   4. 在**新增線型配置參數（選用）**，輸入 `{"HMAC":true}` 以建立額外的 HMAC 認證，供 `ibm-backup-restore` Pod 用於向 {{site.data.keyword.cos_full_notm}} 服務進行 HMAC 鑑別。
+   4. 在**新增線型配置參數（選用）**，輸入 `{"HMAC":true}` 以建立額外的 HMAC 認證，供 `ibmcloud-backup-restore` Pod 用於向 {{site.data.keyword.cos_full_notm}} 服務進行 HMAC 鑑別。
    5. 按一下**新增**。新的認證會列在**服務認證**表格中。
    6. 按一下**檢視認證**。
    7. 記下 **cos_hmac_keys** 區段中找到的 **access_key_id** 及 **secret_access_key**。
 3. 建立第一個 {{site.data.keyword.cos_full_notm}} 儲存區。
    1. 在服務詳細資料頁面上的導覽，按一下**儲存區**。
    2. 按一下**建立儲存區**。會顯示對話框。
-   3. 輸入儲存區的唯一名稱。名稱必須在跨所有地區且跨所有 {{site.data.keyword.Bluemix_notm}} 帳戶的 {{site.data.keyword.cos_full_notm}} 內都唯一。
+   3. 輸入儲存區的唯一名稱。名稱必須在跨所有地區且跨所有 {{site.data.keyword.cloud_notm}} 帳戶的 {{site.data.keyword.cos_full_notm}} 內都唯一。
    4. 從**備援**下拉清單，選取您的資料所需要的可用性層次。如需相關資訊，請參閱 [{{site.data.keyword.cos_full_notm}} 地區及端點](/docs/services/cloud-object-storage/basics?topic=cloud-object-storage-endpoints#endpoints)。
    5. 將**位置**變更為您要還原資料的地區。請記住，您的資料可能因為法律因素而無法還原到每個地區。  
    6. 按一下**建立**。
@@ -79,7 +82,7 @@ subcollection: RegistryImages
    2. 在服務詳細資料頁面上的導覽，按一下**儲存區** > **配置**。
    3. 記下公用 URL，您可以用來存取儲存區中的資料。
 
-檢閱 [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about-ibm-cloud-object-storage#about-ibm-cloud-object-storage) 文件，以取得配置服務實例的相關資訊。
+檢閱 [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about#about) 文件，以取得配置服務實例的相關資訊。
 
 ## 從持續性磁區備份資料
 {: #backup_restore_scheduled_backup}
@@ -87,7 +90,7 @@ subcollection: RegistryImages
 您可以為透過持續性磁區要求 (PVC) 裝載至應用程式 Pod 的任何持續性磁區 (PV)，建立一次性或排定的備份。  
 {: shortdesc}
 
-下列範例會引導您完成如何從 `ibm-backup-restore` 映像檔部署備份 Pod、使用 PVC 將現有 PV 裝載至備份 Pod，然後將資料從 PV 備份到 {{site.data.keyword.cos_full_notm}} 服務實例。  
+下列範例會引導您完成如何從 `ibmcloud-backup-restore` 映像檔部署備份 Pod、使用 PVC 將現有 PV 裝載至備份 Pod，然後將資料從 PV 備份到 {{site.data.keyword.cos_full_notm}} 服務實例。  
 
 **開始之前**
 
@@ -106,9 +109,9 @@ subcollection: RegistryImages
    ```
    {: pre}
 
-2. 從 `ibm-backup-restore` 映像檔建立備份 Pod。若要存取 PV 中的資料，您必須裝載將 PV 連結至備份 Pod 的 PVC。下列範例會建立備份 Pod，以執行每日增量備份。若要使用不同的設定來建立備份，請檢閱完整[環境變數選項](#backup_restore_env_reference)清單。
+2. 從 `ibmcloud-backup-restore` 映像檔建立備份 Pod。若要存取 PV 中的資料，您必須裝載將 PV 連結至備份 Pod 的 PVC。下列範例會建立備份 Pod，以執行每日增量備份。若要使用不同的設定來建立備份，請檢閱完整[環境變數選項](#backup_restore_env_reference)清單。
 
-   `ibm-backup-restore` 映像檔必須部署在單一 Pod，而不能用來作為 Kubernetes 部署的一部分。
+   `ibmcloud-backup-restore` 映像檔必須部署在單一 Pod，而不能用來作為 Kubernetes 部署的一部分。
    {: important}
 
    若要檢視映像檔，請執行 `ibmcloud cr region-set global` 指令設定全球登錄的目標。然後，執行 `ibmcloud cr images --include-ibm` 以列出 IBM 公用映像檔。
@@ -121,23 +124,23 @@ subcollection: RegistryImages
      name: backuppod
    spec:
      containers:
-     - image: registry.bluemix.net/ibm-backup-restore
+     - image: icr.io/ibm/ibmcloud-backup-restore
        name: backupcontainer
        env:
        - name: OBJECTSTORAGE
          value: S3
-       - name: ACCESS_KEY_ID 
+       - name: ACCESS_KEY_ID
          value: '<access_key_id>'
-       - name: SECRET_ACCESS_KEY 
+       - name: SECRET_ACCESS_KEY
          value: '<secret_access_key>'
-       - name: ENDPOINT 
+       - name: ENDPOINT
          value: '<regional_endpoint>'
-       - name: BUCKET_NAME 
+       - name: BUCKET_NAME
          value: '<bucket_name>'
        - name: BACKUP_DIRECTORY  
          value: /myvol
        - name: BACKUP_NAME
-         value: <backup_name> 
+         value: <backup_name>
        - name: SCHEDULE_TYPE
          value: periodic
        - name: SCHEDULE_INFO
@@ -146,15 +149,20 @@ subcollection: RegistryImages
          value: incremental
        command: ["/bin/bash", "./vbackup"]
        volumeMounts:
-       - mountPath: /myvol 
-         name: backup-volume 
+       - mountPath: <mount_path1>
+         name: <pvc_name1>
+       - mountPath: <mount_path1>
+         name: <pvc_name2>
      volumes:
-     - name: backup-volume 
+     - name: pvc_name1
        persistentVolumeClaim:
-         claimName: <pvc_name>  
+         claimName: <pvc_name1>  
+     - name: pvc_name2
+       persistentVolumeClaim:
+         claimName: <pvc_name2> 
    ```
    {: codeblock}
-   
+
    <table>
    <caption>表 1. YAML 檔案元件</caption>
    <thead>
@@ -182,12 +190,16 @@ subcollection: RegistryImages
      <td>在儲存區中存放備份之物件的唯一名稱。</td>
      </tr>
      <tr>
+     <td><code>&lt;mount_path&gt;</code></td>
+     <td>備份容器內的磁區裝載路徑，而此容器裝載您要備份的 PVC。如果您想要備份多個 PVC，請為每一個 PVC 指定個別的裝載路徑。請確定您在 <code>volumeMount.name</code> 中使用的名稱，符合您在 YAML 檔之 <code>volumes.name</code> 區段中指定的磁區名稱。</td>
+     </tr>
+     <tr>
      <td><code>&lt;pvc_name&gt;</code></td>
-     <td>連結您要備份之 PV 的 PVC 名稱。</td>
+     <td>您要備份的 PVC 名稱。如果您想要備份多個 PVC，請為您要備份的每一個 PVC 指定磁區名稱及對應 PVC。請確定您在 <code>volumes.name</code> 中使用的名稱，符合 YAML 檔之 <code>volumeMount.name</code> 區段中的名稱。</td>
      </tr>
      </tbody>
      </table>
-    
+
 3. 建立備份 Pod 並起始 PV 資料備份。
 
     ```
@@ -216,8 +228,8 @@ subcollection: RegistryImages
     ```
     {: pre}
 
-6. 在 {{site.data.keyword.Bluemix_notm}} GUI 中，檢閱 {{site.data.keyword.cos_full_notm}} 中的備份。
-    1. 從 {{site.data.keyword.Bluemix_notm}} 儀表板，尋找 {{site.data.keyword.cos_full_notm}} 服務實例。
+6. 在 {{site.data.keyword.cloud_notm}} GUI 中，檢閱 {{site.data.keyword.cos_full_notm}} 中的備份。
+    1. 從 {{site.data.keyword.cloud_notm}} 儀表板，尋找 {{site.data.keyword.cos_full_notm}} 服務實例。
     2. 從導覽選取**儲存區**，然後按一下您在備份配置中使用的儲存區。您的備份會顯示為儲存區中的物件。
     3. 檢閱壓縮檔。您可以下載 `vol1.difftar.gz` 檔案、解壓縮該檔案，然後驗證已備份的資料。
 
@@ -245,40 +257,45 @@ subcollection: RegistryImages
    ```
    {: pre}
 
-2. 從 `ibm-backup-restore` 映像檔建立還原 Pod。若要將資料還原至 PV，您必須裝載將 PV 連結至還原 Pod 的 PVC。
+2. 從 `ibmcloud-backup-restore` 映像檔建立還原 Pod。若要將資料還原至 PV，您必須裝載將 PV 連結至還原 Pod 的 PVC。{: codeblock}
 
-   ```
+    ```
    apiVersion: v1
    kind: Pod
    metadata:
      name: restorepod
    spec:
      containers:
-     - image: registry.bluemix.net/ibm-backup-restore
+     - image: icr.io/ibm/ibmcloud-backup-restore
        name: restorecontainer
        env:
        - name: OBJECTSTORAGE
-         value: S3
+          value: S3
        - name: ACCESS_KEY_ID
          value: '<access_key_ID>'
-       - name: SECRET_ACCESS_KEY
-         value: '<secret_access_key>'
-       - name: ENDPOINT
-         value: '<regional_endpoint>'
-       - name: BUCKET_NAME
-         value: '<bucket_name>'
+       - name: SECRET_ACCESS_KEY 
+          value: '<secret_access_key>'
+       - name: ENDPOINT 
+          value: '<regional_endpoint>'
+       - name: BUCKET_NAME 
+          value: '<bucket_name>'
        - name: RESTORE_DIRECTORY
          value: /myvol
        - name: BACKUP_NAME
          value: <backup_name>
        command: ["/bin/sh", "./vrestore"]
        volumeMounts:
-       - mountPath: /myvol
-         name: restore-volume
+       - mountPath: <mount_path1>
+         name: <pvc_name1>
+       - mountPath: <mount_path1>
+         name: <pvc_name2>
      volumes:
-     - name: restore-volume
+     - name: pvc_name1
        persistentVolumeClaim:
-         claimName: <pvc_name>
+         claimName: <pvc_name1>  
+     - name: pvc_name2
+       persistentVolumeClaim:
+         claimName: <pvc_name2> 
    ```
    {: codeblock}
 
@@ -308,15 +325,17 @@ subcollection: RegistryImages
      <td><code>&lt;backup_name&gt;</code></td>
      <td>在儲存區中存放備份之物件的唯一名稱。您必須使用備份 Pod 中使用的名稱，將資料儲存在 {{site.data.keyword.cos_full_notm}}。</td>
      </tr>
+     <td><code>&lt;mount_path&gt;</code></td>
+     <td>還原容器內的磁區裝載路徑，而此容器裝載您要在其中還原資料的 PVC。如果您想要將資料還原至多個 PVC，請為每一個 PVC 指定個別的裝載路徑。請確定您在 <code>volumeMount.name</code> 中使用的名稱，符合您在 YAML 檔之 <code>volumes.name</code> 區段中指定的磁區名稱。</td>
+     </tr>
      <tr>
      <td><code>&lt;pvc_name&gt;</code></td>
-     <td>連結您要還原資料之 PV 的 PVC 名稱。</td>
-     </tr>
+     <td>您要在其中還原資料的 PVC 名稱。若要將資料還原至多個 PVC，請為每一個 PVC 新增一個 <code>volumes</code> 項目。請確定您在 <code>volumes.name</code> 中使用的名稱，符合 YAML 檔之 <code>volumeMount.name</code> 區段中的名稱。</td>
+     </tr> 
      </tbody>
      </table>
 
 3. 建立還原 Pod 並開始還原資料。
-    
 
     ```
     kubectl apply -f restorepod.yaml
@@ -337,219 +356,22 @@ subcollection: RegistryImages
     {: screen}
 
     Pod 會執行 restore 指令並停止。`CrashLoopBackOff` 訊息表示 Kubernetes 正在試圖重新啟動 Pod。
-
-5. 移除 Pod 以防止該 Pod 耗用更多資源。
-
-    ```
-    kubectl delete -f restorepod.yaml
-    ```
-    {: pre}
-    
-6. 驗證您的資料已順利還原。
-    
+5. 驗證您的資料已順利還原。
 
     ```
     kubectl logs restorepod
     ```
     {: pre}
 
+6. 移除 Pod 以防止該 Pod 耗用更多資源。
+
+    ```
+    kubectl delete -f restorepod.yaml
+    ```
+    {: pre}
+
 您已順利還原備份。您現在可以裝載負責將 PV 連結至叢集內任何其他 Pod 的 PVC，以便存取還原檔案。如果所備份的容器資料包含非 root 使用者，您必須將非 root 許可權新增至新的容器。如需相關資訊，請參閱[新增非 root 使用者對磁區的存取權](/docs/containers?topic=containers-cs_troubleshoot_storage#cs_storage_nonroot)。
 
-## 加密備份
-{: #backup_restore_encrypting_backups}
-
-加密 {{site.data.keyword.cos_full_notm}} 實例中的資料。
-
-1. 下載 <a href="https://www.gnupg.org/download/index.html" target="_blank">GnuPG <img src="../../../icons/launch-glyph.svg" alt="外部鏈結圖示"></a>，以建立加密金鑰。
-2. 在本端磁碟機上建立加密金鑰。您可以按 ENTER 鍵來接受預設值。
-
-    請記下所建立的通行詞組。如果遺失通行詞組，將無法解密任何使用金鑰所加密的資訊。
-    {: important}
-
-    ```
-    gpg --gen-key
-    ```
-    {: pre}
-
-    視 <a href="https://www.gnupg.org/download/index.html" target="_blank">GnuPG <img src="../../../icons/launch-glyph.svg" alt="外部鏈結圖示"></a> 的版本而定，您可能需要在指令中使用 `gpg2`，而非 `gpg`。
-
-3. 驗證金鑰。
-
-    ```
-    gpg --list-keys
-    ```
-    {: pre}
-
-    ```
-$ gpg --list-keys
-    /Users/Username/.gnupg/pubring.gpg
-    ------------------------------------
-    pub   2048R/XXXXXXXX 2016-10-27
-    uid       [ultimate] Example Name (This is an example key) <example_email_address>
-    sub   2048R/YYYYYYYY 2016-10-27
-    ```
-    {: screen}
-
-4. 從 `sub` 金鑰，匯出含有值的加密金鑰。請將檔案命名為 `encryption.asc`。
-
-    ```
-    gpg --export-secret-keys -a <SUB_KEY> > encryption.asc
-    ```
-    {: pre}
-
-    在此範例中，sub 金鑰的值為 `YYYYYYYY`。
-
-    ```
-    gpg --export-secret-keys -a YYYYYYYY > encryption.asc
-    ```
-    {: pre}
-
-5.  在本端目錄中建立加密備份容器的環境變數檔案。
-
-    ```
-    touch <encryption_env-file_name>
-    ```
-    {: pre}
-
-6.  編輯 Pod 配置檔，然後新增下列欄位。針對空白環境變數，輸入您先前所記下的 {{site.data.keyword.cos_full_notm}} 認證值。請包含認證中所使用的引號。若為 **ENCRYPTION_PASSPHRASE**，包括通行詞組，以透過密碼保護備份。此通行詞組不同於建立加密金鑰時所建立的詞組。當您備份資料以及還原資料時，必須包含此通行詞組。
-
-    ```
-    apiVersion: v1
-    kind: Pod
-    metadata:
-      name: backuppod
-    spec:
-      containers:
-      - image: registry.bluemix.net/ibm-backup-restore
-        name: backupcontainer
-        env:
-        - name: OBJECTSTORAGE
-          value: S3
-        - name: ACCESS_KEY_ID 
-          value: '<access_key_id>'
-        - name: SECRET_ACCESS_KEY 
-          value: '<secret_access_key>'
-        - name: ENDPOINT 
-          value: '<regional_endpoint>'
-        - name: BUCKET_NAME 
-          value: '<bucket_name>'
-        - name: BACKUP_DIRECTORY  
-          value: /myvol
-        - name: BACKUP_NAME
-          value: <backup_name> 
-        - name: SCHEDULE_TYPE
-            value: periodic
-        - name: SCHEDULE_INFO
-            value: daily
-        - name: BACKUP_TYPE
-          value: incremental
-        - name: ENCRYPTION_REQUIRED
-            value: yes
-        - name: ENCRYPTION_PASSPHRASE 
-          value: <passphrase>
-        volumeMounts:
-        - mountPath: /myvol 
-          name: backup-volume 
-      volumes:
-      - name: backup-volume 
-        persistentVolumeClaim:
-          claimName: <pvc_name>  
-    ```
-    {: codeblock}
-   
-    <table>
-    <caption>表 3. YAML 檔案元件</caption>
-    <thead>
-    <th colspan=2><img src="../images/idea.png" alt="構想圖示"/> 瞭解 YAML 檔案元件</th>
-    </thead>
-     <tbody>
-     <tr>
-     <td><code>&lt;access_key_ID&gt;</code></td>
-     <td>您在 {{site.data.keyword.cos_full_notm}} 服務實例認證之中擷取的存取金鑰 ID。</td>
-     </tr>
-     <tr>
-     <td><code>&lt;secret_access_key&gt;</em></code></td>
-     <td>您在 {{site.data.keyword.cos_full_notm}} 服務實例認證之中擷取的密碼存取金鑰。</td>
-     </tr>
-     <tr>
-     <td><code>&lt;regional_endpoint&gt;</code></td>
-     <td>您用來存取特定地區之 {{site.data.keyword.cos_full_notm}} 的地區 API 端點 URL。</td>
-     </tr>
-     <tr>
-     <td><code>&lt;bucket_name&gt;</code></td>
-     <td>您想要用來在 {{site.data.keyword.cos_full_notm}} 儲存備份的儲存區名稱。</td>
-     </tr>
-     <tr>
-     <td><code>&lt;backup_name&gt;</code></td>
-     <td>在儲存區中存放備份之物件的唯一名稱。</td>
-     </tr>
-     <tr>
-     <td><code>&lt;passphrase&gt;</code></td>
-     <td>您要用於備份的任何字串。當您還原資料時，必須包含此通行詞組。</td>
-     </tr>
-     <tr>
-     <td><code>&lt;pvc_name&gt;</code></td>
-     <td>連結您要備份之 PV 的 PVC 名稱。</td>
-     </tr>
-     </tbody>
-     </table>
-   
-    這些設定會建立加密的每日增量備份。若要使用不同的設定來建立備份，請檢閱完整[環境變數選項](#backup_restore_env_reference)清單。
-    
-7.  建立備份 Pod。 
-
-    ```
-    kubectl apply -f backuppod.yaml 
-    ```
-    {: pre}
-
-8.  驗證 Pod 在執行中。
-
-    ```
-    kubectl get pods
-    ```
-    {: pre}
-    
-    ```
-    NAME               READY     STATUS    RESTARTS   AGE
-    backuppod          1/1       Running   0          1hr
-    ```
-    {: screen}
-
-9.  將加密金鑰複製到從 `ibm-backup-restore` 映像檔建置之容器的 `/backup_restore` 目錄。
-
-    ```
-    kubectl cp ./encryption.asc <container_name>:/backup_restore
-    ```
-    {: pre}
-
-    請將加密金鑰的副本保留在本端，以解密資料。
-
-10. 登入 Pod 並導覽至 `backup_restore` 資料夾。 
-
-    ```
-    kubecl exec -it <pod_name> bash
-    ```
-    {: pre}
-
-11. 驗證 `encryption.asc` 檔案已複製到 `backup_restore` 資料夾。
-
-    ```
-    root@instance:/backup_restore# ls                                                                                                                                                         
-    __init__.py  backup.py  config.conf  configureOS.py  encryption.asc  restore.py  run.py  utilities.py  vbackup  vrestore
-    ```
-    {: screen}
-
-12. 從 backup_restore 資料夾執行備份 Script。
-
-    ```
-    ./vbackup &
-    ```
-    {: codeblock}
-
-13. 若要確認您的備份已加密，請檢閱 {{site.data.keyword.cos_full_notm}} 服務實例中的檔案。檔案現在已在檔名尾端附加 `.gpg`。
-
-您的備份已加密。若要還原檔案，請遵循[將資料從 {{site.data.keyword.cos_full_notm}} 還原至叢集裡的 PVC](#backup_restore_restore_script_cli) 中的步驟，並在執行還原處理程序的 Pod 上，在 `backup_restore` 目錄中包含 `encryption.asc` 檔。如果備份已加密，您必須在建立還原 Pod 時提供 **ENCRYPTION_REQUIRED** 及 **ENCRYPTION_PASSPHRASE** 環境變數。
 
 ## 環境變數參考資料
 {: #backup_restore_env_reference}
@@ -580,10 +402,3 @@ $ gpg --list-keys
 |RESTORE_DIRECTORY|*/backup*：預設值。要在其中裝載磁區的絕對目錄。資料會還原至此目錄。請不要選取 `backup_restore` 目錄，因為該目錄包含用於備份及還原處理程序的檔案。|
 {: caption="表 6. 還原變數" caption-side="top"}
 
-|索引鍵|值選項|
-|---|-------------|
-|ENCRYPTION_KEY_FILE|.*/encryption.asc*：預設值。如果您變更加密金鑰的檔名，或金鑰位於非 `backup_restore` 的目錄，請包含此環境變數。|
-|ENCRYPTION_REQUIRED|*no*：預設值。<br/> *yes*：如果您未將備份加密，則請不要包含任何加密環境變數。如果您將備份加密，請包含此索引鍵並使用值 `yes`。|
-|ENCRYPTION_PASSPHRASE|包含通行詞組，以保護備份。此通行詞組不同於建立加密金鑰時所建立的詞組。當您備份資料以及還原資料時，必須包含此通行詞組。|
-|IS_KEY_GENERATED_ON_SYSTEM|*no*：預設值。<br/> *yes*：如果您直接在容器上產生了加密金鑰，請包含這個環境變數與 `yes` 值。大部分使用者都會在其本端電腦上產生金鑰，並將金鑰複製到 Pod，而且可以將預設值保留為 `no`。|
-{: caption="表 7. 加密變數" caption-side="top"}

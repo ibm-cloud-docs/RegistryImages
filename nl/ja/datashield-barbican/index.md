@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-13"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, Registry, data in use, memory encryption, intel sgx, fortanix,
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # `datashield-barbican` イメージの概説
 {: #datashield-barbican_starter}
 
-このコンテナー・イメージは、データ・シールド環境で Barbican を実行することにより使用されるデータを保護します。このサービスについて、および「使用されるデータ」を保護することの意味について詳しくは、[IBM Cloud Data Shield の資料](/docs/services/data-shield?topic=data-shield-about#about)を参照してください。
+このコンテナー・イメージは、{{site.data.keyword.datashield_short}} 環境で Barbican を実行することにより使用されるデータを保護します。このサービスについて、および「使用されるデータ」を保護することの意味について詳しくは、[{{site.data.keyword.datashield_short}} の資料](/docs/services/data-shield?topic=data-shield-about#about)を参照してください。
 {: shortdesc}
 
 {{site.data.keyword.IBM}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry?topic=registry-public_images#public_images)を参照してください。
@@ -36,38 +36,38 @@ subcollection: RegistryImages
 Kubernetes ポッドの次の仕様を使用して、イメージをデプロイできます。
 
 ```
-    apiVersion: v1
-    kind: Pod
-    metadata:
-      name: data-shield-barbican
-      labels:
-        app: data-shield-barbican
-    spec:
-      containers:
-      - name: data-shield-barbican
-        image: <IMAGE_NAME>
-        volumeMounts:
-        - mountPath: /dev/isgx
-          name: isgx
-        - mountPath: /dev/gsgx
-          name: gsgx
-        - mountPath: /var/run/aesmd/aesm.socket
-          name: aesm-socket
-        ports:
-        - containerPort: 9311
-          hostPort: 9311
-          name: barbican
-          protocol: TCP
-      volumes:
-      - name: isgx
-        hostPath:
-          path: /dev/isgx
-      - name: gsgx
-        hostPath:
-          path: /dev/gsgx
-      - name: aesm-socket
-        hostPath:
-          path: /var/run/aesmd/aesm.socket
+apiVersion: v1
+kind: Pod
+metadata:
+  name: data-shield-barbican
+  labels:
+    app: data-shield-barbican
+spec:
+  containers:
+  - name: data-shield-barbican
+    image: <IMAGE_NAME>
+    volumeMounts:
+    - mountPath: /dev/isgx
+      name: isgx
+    - mountPath: /dev/gsgx
+      name: gsgx
+    - mountPath: /var/run/aesmd/aesm.socket
+      name: aesm-socket
+    ports:
+    - containerPort: 9311
+      hostPort: 9311
+      name: barbican
+      protocol: TCP
+  volumes:
+  - name: isgx
+    hostPath:
+      path: /dev/isgx
+  - name: gsgx
+    hostPath:
+      path: /dev/gsgx
+  - name: aesm-socket
+    hostPath:
+      path: /var/run/aesmd/aesm.socket
 ```
 {: codeblock}
 
@@ -92,15 +92,15 @@ Kubernetes ポッドの次の仕様を使用して、イメージをデプロイ
 次のコマンドを実行して、Barbican デモンストレーション・インスタンスで秘密を作成することができます。
 
 ```
-    curl -sS -X POST -H 'content-type:application/json' -H 'X-Project-Id: 12345' -d \
-        '{"payload": "my-secret-here", "payload_content_type": "text/plain"}' \
+curl -sS -X POST -H 'content-type:application/json' -H 'X-Project-Id: 12345' -d \
+    '{"payload": "my-secret-here", "payload_content_type": "text/plain"}' \
         http://<node>:9311/v1/secrets
 ```
-{: pre}
+{: codeblock}
     
 応答には、作成された秘密の URL が含まれています。 次のコマンドを実行して、秘密を取得することができます。
 
 ```
-    curl -sS -H 'X-Project-Id: 12345' <url>
+curl -sS -H 'X-Project-Id: 12345' <url>
 ```
-{: pre}
+{: codeblock}

@@ -27,7 +27,7 @@ subcollection: RegistryImages
 A imagem pública `ibm-node-strong-pm` não está mais disponível.
 {: deprecated}
 
-Em vez disso, é possível iniciar com o [ serviço {{site.data.keyword.apiconnect_short}} ](/docs/services/apiconnect?topic=apiconnect-index#index).
+Em vez disso, é possível iniciar com o [serviço {{site.data.keyword.apiconnect_short}}](/docs/services/apiconnect?topic=apiconnect-index#index).
 
 É possível acessar as imagens que são fornecidas pela {{site.data.keyword.IBM}} usando a linha de comandos. Consulte [Imagens públicas da IBM](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-27"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield, data in use, memory encryption, intel sgx, fortanix, mysql image, mariaDB, container image, public image
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # `datashield-mariadb` イメージの概説
 {: #datashield-mariadb_starter}
 
-このコンテナー・イメージは、データ・シールド環境で MariaDB を実行することにより使用されるデータを保護します。このサービスについて、および「使用されるデータ」を保護することの意味について詳しくは、[IBM Cloud Data Shield の資料](/docs/services/data-shield?topic=data-shield-about#about)を参照してください。
+このコンテナー・イメージは、{{site.data.keyword.datashield_short}} 環境で MariaDB を実行することにより使用されるデータを保護します。このサービスについて、および使用されるデータを保護することの意味について詳しくは、[{{site.data.keyword.datashield_short}} の資料](/docs/services/data-shield?topic=data-shield-about#about)を参照してください。
 {: shortdesc}
 
 {{site.data.keyword.IBM}} によって提供されるイメージには、コマンド・ラインを使用してアクセスできます。[IBM のパブリック・イメージ](/docs/services/Registry?topic=registry-public_images#public_images)を参照してください。
@@ -72,7 +72,7 @@ spec:
     hostPath:
       path: /var/run/aesmd/aesm.socket
 ```
-{: pre}
+{: codeblock}
   
 <table>
 <caption>表 1. 必須の入力変数</caption>
@@ -97,7 +97,7 @@ spec:
 ### 受け入れ済み環境変数
 {: #datashield-mariadb-variables}
 
-MariaDB コンテナーは、以下の環境変数も受け入れます。別の変数を使用するには、以下の例に示されているように、それらをスペックに追加します。
+MariaDB コンテナーは、以下の環境変数も受け入れます。 別の変数を使用するには、以下の例に示されているように、それらをスペックに追加します。
 
 ```
 spec:
@@ -164,7 +164,7 @@ spec:
 ```
 mariadb -h <node> --protocol tcp -uroot
 ```
-{: pre}
+{: codeblock}
 
-データ・シールド MariaDB イメージでは、クライアント接続は Transport Layer Security (TLS) を使用する必要があります。ご使用のクライアント・バージョンによっては、`--ssl` または `--ssl-mode require` をクライアントのコマンド・ラインに追加しなければならないことがあります。
+{{site.data.keyword.datashield_short}} MariaDB イメージでは、クライアント接続は Transport Layer Security (TLS) を使用する必要があります。ご使用のクライアント・バージョンによっては、`--ssl` または `--ssl-mode require` をクライアントのコマンド・ラインに追加しなければならないことがあります。
 {: note}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-13"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, barbican, Registry, data in use, memory encryption, intel sgx, fortanix,
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # Introdução à imagem `datashield-barbican`
 {: #datashield-barbican_starter}
 
-Essa imagem de contêiner fornece proteção para os dados em uso executando o Barbican no ambiente do Data Shield. Para obter mais informações sobre o serviço e o que significa proteger os "dados em uso", consulte a [Documentação do IBM Cloud Data Shield](/docs/services/data-shield?topic=data-shield-about#about).
+Essa imagem de contêiner fornece proteção para os dados que estão em uso por meio da execução do Barbican no ambiente do {{site.data.keyword.datashield_short}}. Para obter mais informações sobre o serviço e o que significa proteger "dados em uso", consulte a [Documentação do {{site.data.keyword.datashield_short}}](/docs/services/data-shield?topic=data-shield-about#about).
 {: shortdesc}
 
 É possível acessar as imagens que são fornecidas pela {{site.data.keyword.IBM}} usando a linha de comandos. Consulte [Imagens públicas da IBM](/docs/services/Registry?topic=registry-public_images#public_images).
@@ -36,7 +36,7 @@ Essa imagem de contêiner fornece proteção para os dados em uso executando o B
 É possível usar a especificação de pod do Kubernetes a seguir para implementar a imagem:
 
 ```
-    apiVersion: v1
+apiVersion: v1
     kind: Pod
     metadata:
       name: data-shield-barbican
@@ -93,15 +93,15 @@ configurada sem a autenticação Keystone. As solicitações devem incluir o cab
 É possível criar um segredo na instância de demonstração do Barbican executando o comando a seguir:
 
 ```
-    curl -sS -X POST -H 'content-type:application/json' -H 'X-Project-Id: 12345' -d \
+curl -sS -X POST -H 'content-type:application/json' -H 'X-Project-Id: 12345' -d \
         '{"payload": "my-secret-here", "payload_content_type": "text/plain"}' \
         http://<node>:9311/v1/secrets
 ```
-{: pre}
+{: codeblock}
     
 A resposta contém a URL para o segredo criado. É possível recuperar o segredo executando o comando a seguir:
 
 ```
-    curl -sS -H 'X-Project-Id: 12345' <url>
+curl -sS -H 'X-Project-Id: 12345' <url>
 ```
-{: pre}
+{: codeblock}

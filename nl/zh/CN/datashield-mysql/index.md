@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-27"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield, data in use, memory encryption, intel sgx, fortanix, mysql image, mariaDB, container image, public image
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # 开始使用 `datashield-mariadb` 映像
 {: #datashield-mariadb_starter}
 
-此容器映像为在 Data Shield 环境中运行 MariaDB 所使用的数据提供保护。有关服务和保护使用中的数据的含义的更多信息，请参阅 [IBM Cloud Data Shield 文档](/docs/services/data-shield?topic=data-shield-about#about)。
+此容器映像为在 {{site.data.keyword.datashield_short}} 环境中运行 MariaDB 所使用的数据提供保护。有关服务和保护“使用中的数据”的含义的更多信息，请参阅 [{{site.data.keyword.datashield_short}} 文档](/docs/services/data-shield?topic=data-shield-about#about)。
 {: shortdesc}
 
 您可以使用命令行来访问 {{site.data.keyword.IBM}} 提供的映像，请参阅 [IBM 公共映像](/docs/services/Registry?topic=registry-public_images#public_images)。
@@ -72,7 +72,7 @@ spec:
     hostPath:
       path: /var/run/aesmd/aesm.socket
 ```
-{: pre}
+{: codeblock}
   
 <table>
 <caption>表 1. 必需的输入变量</caption>
@@ -164,7 +164,7 @@ spec:
 ```
 mariadb -h <node> --protocol tcp -uroot
 ```
-{: pre}
+{: codeblock}
 
-Data Shield MariaDB 映像要求客户机连接使用传输层安全性 (TLS)。您可能需要将 `--ssl` 或 `--ssl-mode require` 添加到客户机命令行，具体取决于您的客户机版本。
+{{site.data.keyword.datashield_short}} MariaDB 映像要求客户机连接使用传输层安全性 (TLS)。您可能需要将 `--ssl` 或 `--ssl-mode require` 添加到客户机命令行，具体取决于您的客户机版本。
 {: note}

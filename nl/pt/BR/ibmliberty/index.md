@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-04-26"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -68,12 +68,12 @@ conformidade com a plataforma integral do Java EE7.|
 {: #ibmliberty_usage}
 
 A tabela a seguir mostra as restrições que se aplicam ao uso grátis da imagem
-`ibmliberty` no {{site.data.keyword.Bluemix_notm}}.
+`ibmliberty` no {{site.data.keyword.cloud_notm}}.
 {:shortdesc}
 
 A precificação para a
 imagem `ibmliberty` independe da precificação para os contêineres
-usados no {{site.data.keyword.Bluemix_notm}}.
+usados no {{site.data.keyword.cloud_notm}}.
 {:tip}
 
 |Ambiente|Restrições de uso grátis|
@@ -90,7 +90,7 @@ Revise os termos de uso para imagens certificadas pela IBM na seção Licença d
 ## Iniciar
 {: #ibmliberty_get_started}
 
-Use uma das imagens `ibmliberty` grátis do catálogo do {{site.data.keyword.Bluemix_notm}} ou selecione sua própria
+Use uma das imagens `ibmliberty` grátis do catálogo do {{site.data.keyword.cloud_notm}} ou selecione sua própria
 imagem licenciada para produção para criar um contêiner único ou um grupo de contêiner.
 {:shortdesc}
 
@@ -98,7 +98,7 @@ Antes de iniciar, revise as [restrições de uso](#ibmliberty_usage) para as ima
 `ibmliberty`.
 {: important}
 
-1. No catálogo, selecione **Contêineres** > **IBM Cloud Container Registry** > **IBM Public Repositories** no painel lateral. Procure a imagem `ibmliberty` da qual construir seu contêiner. Se você criou sua própria imagem licenciada para produção e a implementou no {{site.data.keyword.Bluemix_notm}}, selecione essa imagem no catálogo. A página de criação do contêiner é aberta.
+1. No catálogo, selecione **Contêineres** > **IBM Cloud Container Registry** > **IBM Public Repositories** no painel lateral. Procure a imagem `ibmliberty` da qual construir seu contêiner. Se você criou sua própria imagem licenciada para produção e a implementou no {{site.data.keyword.cloud_notm}}, selecione essa imagem no catálogo. A página de criação do contêiner é aberta.
 2. Selecione a versão da imagem `ibmliberty` que você deseja usar na
 caixa suspensa **TAG/VERSÃO**.
 3. Para obter mais informações sobre como criar contêineres por meio de imagens, configurar clusters e implementar apps em clusters, use os links a seguir:
@@ -107,7 +107,7 @@ caixa suspensa **TAG/VERSÃO**.
     - [Introdução ao IBM Cloud Kubernetes Service](/docs/containers?topic=containers-getting-started#getting-started)
     - [Implementando apps em clusters](/docs/containers?topic=containers-app#app)
 
-    A imagem `ibmliberty` requer que a porta 9080 seja exposta publicamente. Ao criar um contêiner por meio do Painel do {{site.data.keyword.Bluemix_notm}}, a porta é incluída no campo **Porta pública** por padrão. Se você criar um contêiner por meio da CLI, exponha a porta em seu comando `kubectl run` com a opção `--port=9080`.
+    A imagem `ibmliberty` requer que a porta 9080 seja exposta publicamente. Ao criar um contêiner por meio do Painel do {{site.data.keyword.cloud_notm}}, a porta é incluída no campo **Porta pública** por padrão. Se você criar um contêiner por meio da CLI, exponha a porta em seu comando `kubectl run` com a opção `--port=9080`.
     {:tip}
 
 ## Monitorando o uso de espaço de heap Java para um contêiner com a CLI
@@ -134,7 +134,7 @@ disponível para o aplicativo Java durante o tempo de execução.
 3. Para revisar o uso de heap Java, é necessário acessar a estatística de memória **RSS**. Siga as diretrizes sobre como acessar um shell de um contêiner. Consulte [Obter um shell para um contêiner em execução ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo") ](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/). O uso de heap Java é exibido em kilobytes. Se seu uso de heap estiver abaixo de 2.097.152 kilobytes
 (2 GB) em todas as instâncias, não será necessário comprar uma licença do WebSphere Application Server.
 
-4. Ajuste o uso máximo de heap para sua instância do WebSphere Application Server. Consulte [Configurando argumentos genéricos da JVM no perfil Liberty do WebSphere Application Server V8.5 ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](http://www-01.ibm.com/support/docview.wss?uid=swg21596474) para obter mais informações.
+4. Ajuste o uso máximo de heap para sua instância do WebSphere Application Server. Consulte [Configurando argumentos genéricos da JVM no perfil Liberty do WebSphere Application Server V8.5 ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](http://www.ibm.com/support/docview.wss?uid=swg21596474) para obter mais informações.
 
 ## Obtendo uma licença do WebSphere Application Server
 {: #ibmliberty_license}
@@ -142,7 +142,7 @@ disponível para o aplicativo Java durante o tempo de execução.
 As licenças do WebSphere Application Server são baseadas no número de Unidades de valor do processador \(PVUs\) que você precisa. PVU é uma unidade de medida para o licenciamento de software Middleware IBM. O número de PVUs indica o número de processadores \(núcleos\) que estão disponíveis para o software.
 {:shortdesc}
 
-Cada tamanho de contêiner no {{site.data.keyword.Bluemix_notm}} requer um número específico de titularidades da Unidade de Valor do Processador que devem estar disponíveis na licença
+Cada tamanho de contêiner no {{site.data.keyword.cloud_notm}} requer um número específico de titularidades da Unidade de Valor do Processador que devem estar disponíveis na licença
 do WebSphere Application Server. Portanto, deve-se planejar seus contêineres do `ibmliberty`
 antes de comprar a licença.
 
@@ -193,11 +193,11 @@ informações a seguir nele.
     O diretório `/config` é um atalho para `/opt/ibm/wlp/usr/servers/defaultServer`.
     {: note}
 
-2. Substitua  `<tag>` pela versão da imagem `ibmliberty` que inclui os recursos que seu app requer.
+2. Substitua `<tag>` pela versão da imagem `ibmliberty` que inclui os recursos requeridos pelo app.
 
-3. Substitua  `<app_name>` pelo nome de seu arquivo de app.
+3. Substitua `<app_name>` pelo nome de seu arquivo de app.
 
-4. Substitua  `<file_extension>` por `.war`, `.ear` ou `.eba`.
+4. Substitua `<file_extension>` por `.war`, `.ear` ou `.eba`.
 
 5. Inclua quaisquer outras dependências para seu app no Dockerfile.
 
@@ -213,7 +213,7 @@ esses arquivos usando o atalho `/output`.
 ## Referência do Dockerfile `ibmliberty`
 {: #ibmliberty_reference_dockerfile}
 
-Esse Dockerfile ilustra como a imagem `ibmliberty:webProfile7` em {{site.data.keyword.Bluemix_notm}} é construída por meio das imagens websphere-liberty públicas no Docker Hub. Estas informações destinam-se apenas à referência.
+Esse Dockerfile ilustra como a imagem `ibmliberty:webProfile7` em {{site.data.keyword.cloud_notm}} é construída por meio das imagens websphere-liberty públicas no Docker Hub. Estas informações destinam-se apenas à referência.
 {:shortdesc}
 
 ```

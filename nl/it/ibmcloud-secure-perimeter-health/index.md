@@ -83,7 +83,7 @@ L'immagine `ibmcloud-secure-perimeter-health` fornisce i seguenti pacchetti soft
 
 1. Esegui il provisioning del tuo cluster Kubernetes dalla sezione **Contenitori** nel catalogo {{site.data.keyword.cloud_notm}}.
 2. Fai clic su **Crea**.
-3. Seleziona le VLAN private e pubbliche del Secure Perimeter Segment dai menu a discesa delle VLAN. 
+3. Seleziona le VLAN private e pubbliche del Secure Perimeter Segment dai menu a discesa delle VLAN.
 4. Immetti tutti gli altri dettagli necessari.
 5. Fai clic su **Crea cluster**.
 

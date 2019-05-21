@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-27"
+lastupdated: "2019-05-09"
 
 keywords: IBM Cloud Container Registry, Data Shield, data in use, memory encryption, intel sgx, fortanix, mysql image, mariaDB, container image, public image
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # Initiation à l'image `datashield-mariadb`
 {: #datashield-mariadb_starter}
 
-Cette image de conteneur fournit une protection pour les données en cours d'utilisation en exécutant MariaDB dans l'environnement Data Shield. Pour plus d'informations sur le service et ce qu'implique la protection des données en cours d'utilisation, voir la [](/docs/services/data-shield?topic=data-shield-about#about).
+Cette image de conteneur fournit une protection pour les données en cours d'utilisation en exécutant MariaDB dans l'environnement {{site.data.keyword.datashield_short}}. Pour plus d'informations sur le service et ce qu'implique la protection des données en cours d'utilisation, voir la [documentation {{site.data.keyword.datashield_short}}](/docs/services/data-shield?topic=data-shield-about#about).
 {: shortdesc}
 
 Vous pouvez accéder aux images fournies par {{site.data.keyword.IBM}} à l'aide de la ligne de commande. Voir [Images IBM publiques](/docs/services/Registry?topic=registry-public_images#public_images).
@@ -72,7 +72,7 @@ spec:
     hostPath:
       path: /var/run/aesmd/aesm.socket
 ```
-{: pre}
+{: codeblock}
   
 <table>
 <caption>Tableau 1. Variables d'entrée requises</caption>
@@ -164,7 +164,7 @@ Vous pouvez vous connecter à l'instance MariaDB en exécutant la commande suiva
 ```
 mariadb -h <node> --protocol tcp -uroot
 ```
-{: pre}
+{: codeblock}
 
-L'image Data Shield MariaDB requiert que les connexions client utilisent TLS (Transport Layer Security). Suivant votre version client, il sera éventuellement nécessaire d'ajouter `--ssl` ou `--ssl-mode require` à la ligne de commande du client.
+L'image {{site.data.keyword.datashield_short}} MariaDB requiert que les connexions client utilisent TLS (Transport Layer Security). Suivant votre version client, il sera éventuellement nécessaire d'ajouter `--ssl` ou `--ssl-mode require` à la ligne de commande du client.
 {: note}
