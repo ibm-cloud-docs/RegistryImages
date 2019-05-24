@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-24"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -245,6 +245,8 @@ Your backup is available. If you configured your backup to create a one-time ful
 {: #backup_restore_restore_script_cli}
 
 You can restore data from your {{site.data.keyword.cos_full_notm}} service instance to a PV in your cluster.
+
+If you have multiple full backups in your {{site.data.keyword.cos_full_notm}} service instance, the PVC is restored with the data of the last full backup. If you have incremental backups, the PVC is restored with the data of the last full backup, including all incremental backups up to the day where you start the restore.
 
 **Before you begin**
 
