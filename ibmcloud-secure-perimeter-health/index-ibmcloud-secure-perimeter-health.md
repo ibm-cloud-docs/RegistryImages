@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-05-10"
+lastupdated: "2019-06-03"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
 
@@ -33,7 +33,7 @@ You can access the images that are provided by {{site.data.keyword.IBM_notm}} by
 ## How it works
 {: #sph_how-it-works}
 
-To ensure your Secure Perimeter is functioning properly, `ibmcloud-secure-perimeter-health` can scan public or private networks in your {{site.data.keyword.cloud_notm}} infrastructure account and report vulnerabilities. You can use **ibmcloud-secure-perimeter-health** image in two ways:
+To ensure that your Secure Perimeter is functioning properly, `ibmcloud-secure-perimeter-health` can scan public or private networks in your {{site.data.keyword.cloud_notm}} infrastructure account and report vulnerabilities. You can use **ibmcloud-secure-perimeter-health** image in two ways:
 
 - Use `ibmcloud-secure-perimeter-health` as a pod on a Kubernetes cluster within your Secure Perimeter to scan for private network exposures.
 - Use `ibmcloud-secure-perimeter-health` as a stand-alone Docker container on your workstation to scan for public network exposures.
@@ -87,7 +87,7 @@ The `ibmcloud-secure-perimeter-health` image provides the following software pac
 4. Enter all other details as you require.
 5. Click **Create Cluster**.
 
-Review [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started) documentation about how to get access to your cluster after it has been deployed.
+For information about how to get access to your cluster after it has been deployed, see [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started).
 
 ## Scan private networks within a Secure Perimeter
 {: #sph_private_networks}
@@ -141,7 +141,7 @@ Create a container pod from the `ibmcloud-secure-perimeter-health` image, and se
     ```
     {: pre}
 
-3. Confirm the pod is running.
+3. Confirm that the pod is running.
 
     ```
     kubectl get pods
@@ -170,9 +170,9 @@ Create a Docker container from the `ibmcloud-secure-perimeter-health` image and 
     ```
     {: pre}
 
-2. After the container produces a report, review the [Analysing scan results](#sph_scan_results) section to understand the results.
+2. After the container produces a report, review the [Analyzing scan results](#sph_scan_results) section to understand the results.
 
-## Analysing scan results
+## Analyzing scan results
 {: #sph_scan_results}
 
 The `ibmcloud-secure-perimeter-health` produces a formatted report on functioning health of a Secure Perimeter:
@@ -221,7 +221,7 @@ The `ibmcloud-secure-perimeter-health` determines a subnet as `PASS` if no hosts
 |`exclude-vlan-ids`|List of VLANs by IDs to avoid scanning|None
 |`poll-interval`|Set the number of seconds until the next scan|0 (run once)
 |`allowed-public-ports`|List of ports to whitelist under the scan|80, 443, 9000-9999
-{: caption="Table 1. container arguments" caption-side="top"}
+{: caption="Table 1. `Container arguments" caption-side="top"}
 
 ## Environment variable reference
 {: #sph_reference_env_var}
@@ -230,4 +230,4 @@ The `ibmcloud-secure-perimeter-health` determines a subnet as `PASS` if no hosts
 |---|-------------|
 |`SL_USER`|Your IBM Cloud infrastructure user name|
 |`SL_APIKEY`|Your IBM Cloud infrastructure API key|
-{: caption="Table 2. environment variables" caption-side="top"}
+{: caption="Table 2. Environment variables" caption-side="top"}
