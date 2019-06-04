@@ -110,4 +110,3 @@ spec:
 
 To provide your own content for NGINX to serve, place it under `/usr/local/nginx/html` in the container.
 {: tip}
-
