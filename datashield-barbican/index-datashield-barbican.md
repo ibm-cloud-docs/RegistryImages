@@ -122,11 +122,10 @@ curl -sS -X POST -H 'content-type:application/json' -H 'X-Project-Id: 12345' -d 
     http://<node>:9311/v1/secrets
 ```
 {: codeblock}
-    
+
 The response contains the URL for the created secret. You can retrieve the secret by running the following command:
 
 ```
 curl -sS -H 'X-Project-Id: 12345' <url>
 ```
 {: codeblock}
-
