@@ -30,7 +30,6 @@ This container image provides protection for data that is in use by running Vaul
 You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
-
 ## Deploying the image
 {: #datashield-vault-deploy}
 
@@ -112,26 +111,25 @@ spec:
 ## Accessing a protected instance of Vault
 {: #datashield-vault-access}
 
-To access the protected instance of Vault:
+To access the protected instance of Vault, complete the following steps:
 
 1. Look up the node IP address for your instance by running one of the following commands.
 
-  * Option 1:
+   * Option 1:
 
-    ```
-    kubectl get pod -owide
-    ```
-    {: codeblock}
+   ```
+   kubectl get pod -owide
+   ```
+   {: codeblock}
 
-  * Option 2:
-    ```
-    kubectl describe pod
-    ```
-    {: codeblock}
+   * Option 2:
+  
+   ```
+   kubectl describe pod
+   ```
+   {: codeblock}
 
 2. Set the `VAULT_ADDR` environment variable to `http://<YOUR_IP>:8200`.
-  
 
 You can use Vault CLI commands like `vault init`, `vault unseal`, `vault auth`, `vault write`, and `vault read` to authenticate and access secrets. For more information about how to use the Vault CLI, see [Vault Commands (CLI) ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.vaultproject.io/docs/commands/index.html).
 {: tip}
-
