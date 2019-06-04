@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-03"
+lastupdated: "2019-06-04"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -369,7 +369,7 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the f
     ```
     {: pre}
 
-6. Remove the pod to prevent the pod from consuming more resources.
+6. Remove the pod to prevent the pod from using more resources.
 
     ```
     kubectl delete -f restorepod.yaml
