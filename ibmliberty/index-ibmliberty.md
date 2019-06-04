@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-03"
+lastupdated: "2019-06-04"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -56,10 +56,10 @@ The specific Liberty features that are installed in the image depend on the tag 
 |`ibm/liberty:microProfile2`|This image contains the features that provide the capabilities that are specified by [MicroProfile 2.x ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://microprofile.io/).|
 |`ibm/liberty:springBoot1`|This image contains the features that provide the capabilities that are specified by [Spring Boot 1.x ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://spring.io/projects/spring-boot).|
 |`ibm/liberty:springBoot2`|This image contains the features that provide the capabilities that are specified by [Spring Boot 2.x ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://spring.io/projects/spring-boot).|
-|`ibm/liberty:webProfile7`|This image includes all features that are required for Java EE7 Web Profile compliance.|
-|`ibm/liberty:webProfile8`|This image includes all features that are required for Java EE8 Web Profile compliance.|
-|`ibm/liberty:javaee7`|This image includes all features from the `ibm/liberty:webProfile7` image, plus features that are required for Java EE7 Full Platform compliance.|
-|`ibm/liberty:javaee8`|This image includes all features from the `ibm/liberty:webProfile8` image, plus features that are required for Java EE8 Full Platform compliance.|
+|`ibm/liberty:webProfile7`|This image includes all features that are required for Java EE 7 Web Profile compliance.|
+|`ibm/liberty:webProfile8`|This image includes all features that are required for Java EE 8 Web Profile compliance.|
+|`ibm/liberty:javaee7`|This image includes all features from the `ibm/liberty:webProfile7` image, plus features that are required for Java EE 7 Full Platform compliance.|
+|`ibm/liberty:javaee8`|This image includes all features from the `ibm/liberty:webProfile8` image, plus features that are required for Java EE 8 Full Platform compliance.|
 {: caption="Table 1. The features that are included in each of the <code>ibm/liberty</code> images" caption-side="top"}
 
 ## Usage restrictions
@@ -98,7 +98,7 @@ Before you begin, review the [usage restrictions](#ibmliberty_usage) for the `ib
     - [Getting started with IBM Cloud Kubernetes Service](/docs/containers?topic=containers-getting-started#getting-started)
     - [Deploying apps in clusters](/docs/containers?topic=containers-app#app)
 
-    The `ibm/liberty` image requires port 9080 to be exposed publicly. When you create a container from the {{site.data.keyword.cloud_notm}} Dashboard, the port is added in the **Public Port** field by default. If you create a container from the CLI, expose the port in your `kubectl run` command with `--port=9080` option.
+    The `ibm/liberty` image requires that port 9080 is public. When you create a container from the {{site.data.keyword.cloud_notm}} Dashboard, the port is added in the **Public Port** field by default. If you create a container from the CLI, make the port public by running the `kubectl run` command with the `--port=9080` option.
     {:tip}
 
 ## Monitoring the Java heap space usage for a container with the CLI
