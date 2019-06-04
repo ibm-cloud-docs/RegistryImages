@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-05-16"
+lastupdated: "2019-06-03"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -21,7 +21,6 @@ subcollection: RegistryImages
 {:important: .important}
 {:deprecated: .deprecated}
 {:download: .download}
-
 
 # Getting started with the `ibm/liberty` image
 {: #ibmliberty}
@@ -53,12 +52,12 @@ The specific Liberty features that are installed in the image depend on the tag 
 |---|-----------|
 |All `ibm/liberty` images|All `ibm/liberty` images include the following features. <ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
 |`ibm/liberty:latest`|This image points to the `ibm/liberty:javaee8` image.|
-|`ibm/liberty:microProfile1`|This image contains the features that provide the capabilities specified by [MicroProfile 1.x ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://microprofile.io/).|
-|`ibm/liberty:microProfile2`|This image contains the features that provide the capabilities specified by [MicroProfile 2.x ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://microprofile.io/).|
-|`ibm/liberty:springBoot1`|This image contains the features that provide the capabilities specified by [Spring Boot 1.x ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://spring.io/projects/spring-boot).|
-|`ibm/liberty:springBoot2`|This image contains the features that provide the capabilities specified by [Spring Boot 2.x ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://spring.io/projects/spring-boot).|
-|`ibm/liberty:webProfile7`|This image includes all features required for Java EE7 Web Profile compliance.|
-|`ibm/liberty:webProfile8`|This image includes all features required for Java EE8 Web Profile compliance.|
+|`ibm/liberty:microProfile1`|This image contains the features that provide the capabilities that are specified by [MicroProfile 1.x ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://microprofile.io/).|
+|`ibm/liberty:microProfile2`|This image contains the features that provide the capabilities that are specified by [MicroProfile 2.x ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://microprofile.io/).|
+|`ibm/liberty:springBoot1`|This image contains the features that provide the capabilities that are specified by [Spring Boot 1.x ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://spring.io/projects/spring-boot).|
+|`ibm/liberty:springBoot2`|This image contains the features that provide the capabilities that are specified by [Spring Boot 2.x ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://spring.io/projects/spring-boot).|
+|`ibm/liberty:webProfile7`|This image includes all features that are required for Java EE7 Web Profile compliance.|
+|`ibm/liberty:webProfile8`|This image includes all features that are required for Java EE8 Web Profile compliance.|
 |`ibm/liberty:javaee7`|This image includes all features from the `ibm/liberty:webProfile7` image, plus features that are required for Java EE7 Full Platform compliance.|
 |`ibm/liberty:javaee8`|This image includes all features from the `ibm/liberty:webProfile8` image, plus features that are required for Java EE8 Full Platform compliance.|
 {: caption="Table 1. The features that are included in each of the <code>ibm/liberty</code> images" caption-side="top"}
@@ -92,7 +91,7 @@ Before you begin, review the [usage restrictions](#ibmliberty_usage) for the `ib
 {: important}
 
 1. From the catalog, select **Containers** > **IBM Cloud Container Registry** > **IBM Public Repositories** on the side panel. Search for the `ibm/liberty` image to build your container from. If you created your own production-licensed image and deployed it to {{site.data.keyword.cloud_notm}}, select this image from the catalog. The container creation page opens.
-2. Select the version of the `ibm/liberty` image that you want to use from the **TAG/ VERSION** drop down box.
+2. From the **TAG/ VERSION** drop-down box, select the version of the `ibm/liberty` image that you want to use.
 3. For more information about building containers from images, setting up clusters, and deploying apps in clusters, use the following links:
 
     - [Building containers from images](/docs/containers?topic=containers-images#images)
@@ -122,9 +121,9 @@ After you create a container from the `ibm/liberty` image, you can view metrics 
    ```
    {: pre}
 
-3. To review the Java heap usage, you need to access the **RSS** memory stat. Follow the guidelines on how to access a shell of a container, see [Get a Shell to a Running Container ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/). The Java heap usage is displayed in kilobytes. If your heap usage is under 2097152 kilobytes (2GB) across all instances, then you do not have to purchase a WebSphere Application Server license.
+3. To review the Java heap usage, you must access the **RSS** memory stat, see [Get a Shell to a Running Container ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/). The Java heap usage is displayed in kilobytes. If your heap usage is under 2097152 kilobytes (2GB) across all instances, then you do not have to purchase a WebSphere Application Server license.
 
-4. Adjust the maximum heap usage for your WebSphere Application Server instance. See [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www-01.ibm.com/support/docview.wss?uid=swg21596474) for more information.
+4. Adjust the maximum heap usage for your WebSphere Application Server instance. For more information, see [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www-01.ibm.com/support/docview.wss?uid=swg21596474).
 
 ## Getting a WebSphere Application Server license
 {: #ibm/liberty_license}
