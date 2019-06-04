@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-06-03"
+lastupdated: "2019-06-04"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public image
 
@@ -67,7 +67,7 @@ The `ibmcloud-secure-perimeter-network` image provides the following software pa
 
 1. Provision your Kubernetes cluster from the **Containers** section in IBM Cloud catalog.
 2. Click **Create**.
-3. Select the Secure Perimeter Segment public and private VLANs from the VLAN drop-down menus.
+3. Select the Secure Perimeter Segment public and private VLANs from the VLAN lists.
 4. Enter all other details as required.
 5. Click **Create Cluster**.
 
@@ -227,7 +227,7 @@ In order for `ibmcloud-secure-perimeter-network` image to manage subnets on your
 
 |Key|Description
 |---|-------------|---|
-|`external_subnets`|List of subnets on the public internet to expose Secure Perimeter to
-|`external_ports`|List of ports to expose Secure Perimeter to
+|`external_subnets`|List of subnets on the public internet that Secure Perimeter can use
+|`external_ports`|List of ports that Secure Perimeter can use
 |`userips`|List of user IPs to whitelist to Secure Perimeter
 {: caption="Table 2. <code>rules.conf</code>" caption-side="top"}
