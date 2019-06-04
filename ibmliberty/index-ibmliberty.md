@@ -90,8 +90,8 @@ Use one of the free `ibm/liberty` images from the {{site.data.keyword.cloud_notm
 Before you begin, review the [usage restrictions](#ibmliberty_usage) for the `ibm/liberty` images.
 {: important}
 
-1. From the catalog, select **Containers** > **IBM Cloud Container Registry** > **IBM Public Repositories** on the side panel. Search for the `ibm/liberty` image to build your container from. If you created your own production-licensed image and deployed it to {{site.data.keyword.cloud_notm}}, select this image from the catalog. The container creation page opens.
-2. From the **TAG/ VERSION** drop-down box, select the version of the `ibm/liberty` image that you want to use.
+1. From the catalog, select **Containers** > **IBM Cloud Container Registry** > **IBM Public Repositories** in the side pane. Search for the `ibm/liberty` image to build your container from. If you created your own production-licensed image and deployed it to {{site.data.keyword.cloud_notm}}, select this image from the catalog. The container creation page opens.
+2. From the **TAG/VERSION** list, select the version of the `ibm/liberty` image that you want to use.
 3. For more information about building containers from images, setting up clusters, and deploying apps in clusters, use the following links:
 
     - [Building containers from images](/docs/containers?topic=containers-images#images)
@@ -121,7 +121,7 @@ After you create a container from the `ibm/liberty` image, you can view metrics 
    ```
    {: pre}
 
-3. To review the Java heap usage, you must access the **RSS** memory stat, see [Get a Shell to a Running Container ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/). The Java heap usage is displayed in kilobytes. If your heap usage is under 2097152 kilobytes (2GB) across all instances, then you do not have to purchase a WebSphere Application Server license.
+3. To review the Java heap usage, you must access the **RSS** memory stat, see [Get a Shell to a Running Container ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/). The Java heap usage is displayed in kilobytes (KB). If your heap usage is under 2097152 KB (2 GB) across all instances, then you do not have to purchase a WebSphere Application Server license.
 
 4. Adjust the maximum heap usage for your WebSphere Application Server instance. For more information, see [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www-01.ibm.com/support/docview.wss?uid=swg21596474).
 
