@@ -59,7 +59,7 @@ The `ibmcloud-secure-perimeter-network` image provides the following software pa
 ## Prerequisites
 {: #spn_prerequisites}
 
-- Vyatta and VLANs that have been ordered from the IBM Cloud infrastructure portal and VLANs that are associated to the Vyatta.
+- Vyatta and VLANs ordered from the IBM Cloud infrastructure portal and VLANs that are associated to the Vyatta.
 - The automated Secure Perimeter deployment pre-loads the Vyatta with SSH keys that `ibmcloud-secure-perimeter-network` uses to access the gateway. SSH keys must be loaded either manually or through the Secure Perimeter installation process. For more information, see [Set up an automated Secure Perimeter in IBM Cloud ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
 
 ## Provision a Kubernetes cluster within a Secure Perimeter by using {{site.data.keyword.containerlong_notm}}
@@ -71,139 +71,139 @@ The `ibmcloud-secure-perimeter-network` image provides the following software pa
 4. Enter all other details as required.
 5. Click **Create Cluster**.
 
-To find out how to get access to your cluster after it has been deployed, see [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started).
+To access your cluster after it is deployed, see [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started).
 
 ## Run initial config of your Secure Perimeter Vyatta
 {: #spn_initial_setup}
 
 1. Create a file that is named `config.json`. This file contains the basic parameters that are required by `ibmcloud-secure-perimeter-network` to access the Vyatta.
 
-  ```
-  {
-    "slid": "XXXX",
-    "apikey": "XXXX",
-    "region": "XXXX",
-    "inf_name_private": "dp0bond0",
-    "inf_name_public": "dp0bond1",
-    "gatewayid": "XXXX",
-    "vlans": [
+   ```
+   {
+     "slid": "XXXX",
+     "apikey": "XXXX",
+     "region": "XXXX",
+     "inf_name_private": "dp0bond0",
+     "inf_name_public": "dp0bond1",
+     "gatewayid": "XXXX",
+     "vlans": [
       {
-        "type": "XXXX",
-        "vlan_num": XXXX,
-        "vlanid": XXXX
-      },
-      ...
-    ],
-    "vyatta_gateway_vip": "X.X.X.X",
-    "vyatta_primary": {
-      "private_ip": "X.X.X.X",
-      "public_ip": "X.X.X.X"
+         "type": "XXXX",
+         "vlan_num": XXXX,
+         "vlanid": XXXX
+       },
+       ...
+     ],
+     "vyatta_gateway_vip": "X.X.X.X",
+     "vyatta_primary": {
+       "private_ip": "X.X.X.X",
+       "public_ip": "X.X.X.X"
     },
-    "vyatta_secondary": {
-      "private_ip": "X.X.X.X",
-      "public_ip": "X.X.X.X"
-    }
-  }
-  ```
-  {: codeblock}
+     "vyatta_secondary": {
+       "private_ip": "X.X.X.X",
+       "public_ip": "X.X.X.X"
+     }
+   }
+   ```
+   {: codeblock}
 
-   For information about how to populate `config.json`, see the [`config.json` reference table](#spn_reference_config_json). This file can also be used in the [set-up of `ibmcloud-secure-perimeter-network` as a Kubernetes pod](#spn_setup) process.
+   For more information about how to populate `config.json`, see the [`config.json` reference table](#spn_reference_config_json). This file can also be used in the [set-up of `ibmcloud-secure-perimeter-network` as a Kubernetes pod](#spn_setup) process.
 
 2. Run `ibmcloud-secure-perimeter-network` as a Docker container to begin initial set-up.
 
-  ```
-  docker run icr.io/ibm/ibmcloud-secure-perimeter-network:1.0.0 python config-secure-perimeter.py -v /path/to/current/dir:/opt/secure-perimeter
-  ```
-  {: pre}
+   ```
+   docker run icr.io/ibm/ibmcloud-secure-perimeter-network:1.0.0 python config-secure-perimeter.py -v /path/to/current/dir:/opt/secure-perimeter
+   ```
+   {: pre}
 
-  This action creates a file `state.json` in your working directory. This file is used to [set up `ibmcloud-secure-perimeter-network` as a Kubernetes pod](#spn_setup).
+   This action creates a file `state.json` in your working directory. This file is used to [set up `ibmcloud-secure-perimeter-network` as a Kubernetes pod](#spn_setup).
 
 ## Set up a Kubernetes pod within your Secure Perimeter
 {: #spn_setup}
 
-In order for `ibmcloud-secure-perimeter-network` image to manage subnets on your Secure Perimeter, you can run it as a long-lived process by using a Kubernetes pod. The `ibmcloud-secure-perimeter-network` has several configuration files and folders that must be copied to the pod to configure it for the Vyatta:
+If you want the `ibmcloud-secure-perimeter-network` image to manage subnets on your Secure Perimeter, you can run it as a long-lived process by using a Kubernetes pod. To configure the pod for the Vyatta, you must copy several configuration files and folders from the `ibmcloud-secure-perimeter-network` image to the pod to configure it for the Vyatta:
 
 1. Create a file that is named `pvc.yaml`. This configuration file creates a persistent volume claim (PVC) that you can mount to your pod as a volume.
 
-  ```
-  apiVersion: v1
-  kind: PersistentVolumeClaim
-  metadata:
-    name: network-pvc
-    annotations:
-      volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze"
-  spec:
+   ```
+   apiVersion: v1
+   kind: PersistentVolumeClaim
+   metadata:
+     name: network-pvc
+     annotations:
+       volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze"
+   spec:
     accessModes:
-      - ReadWriteMany
-    resources:
-      requests:
-        storage: 20Gi
-  ```
-  {: codeblock}
+       - ReadWriteMany
+     resources:
+       requests:
+         storage: 20Gi
+   ```
+   {: codeblock}
 
 2. Create the PVC.
 
-    ```
-    kubectl apply -f restore-pvc.yaml
-    ```
-    {: pre}
+   ```
+   kubectl apply -f restore-pvc.yaml
+   ```
+   {: pre}
 
 3. Create a file that is named `network-pod.yaml`. This configuration file deploys the `ibmcloud-secure-perimeter-network` image as a pod in your Kubernetes cluster and mounts your persistent volume claim as a volume.
 
-  ```
-  apiVersion: v1
-  kind: Pod
-  metadata:
-    name: network-pod
-    labels:
-      app: network-pod
-  spec:
-    template:
-      spec:
-        containers:
-        - name: network-pod
-          image: icr.io/ibm/ibmcloud-secure-perimeter-network:1.0.0
-          volumeMounts:
-          - name: network-vol
-            mountPath: /opt/secure-perimeter
-        volumes:
-        - name: network-vol
-          PersistentVolumeClaim:
-            claimName: network-pvc
-  ```
-  {: codeblock}
+   ```
+   apiVersion: v1
+   kind: Pod
+   metadata:
+     name: network-pod
+     labels:
+       app: network-pod
+   spec:
+     template:
+       spec:
+         containers:
+         - name: network-pod
+           image: icr.io/ibm/ibmcloud-secure-perimeter-network:1.0.0
+           volumeMounts:
+           - name: network-vol
+             mountPath: /opt/secure-perimeter
+         volumes:
+         - name: network-vol
+           PersistentVolumeClaim:
+             claimName: network-pvc
+   ```
+   {: codeblock}
 
 4. Create a file that is named `rules.conf`. This configuration file tells `ibmcloud-secure-perimeter-network` which external subnets and ports from the public internet to whitelist into the Secure Perimeter.
 
-  ```
-  {
-      "external_subnets": [
-        "X.X.X.X/X",
-        "X.X.X.X/X"
-      ],
-      "external_ports": [
-        "XX",
-        "XX"
-      ],
-      "userips": [
-        "X.X.X.X",
-        "X.X.X.X"
-      ]
-  }
-  ```
-  {: codeblock}
+   ```
+   {
+       "external_subnets": [
+         "X.X.X.X/X",
+         "X.X.X.X/X"
+       ],
+       "external_ports": [
+         "XX",
+         "XX"
+       ],
+       "userips": [
+         "X.X.X.X",
+         "X.X.X.X"
+       ]
+   }
+   ```
+   {: codeblock}
 
 5. Copy the files onto the `ibmcloud-secure-perimeter-network` pod.
 
-  ```
-  kubectl cp keys network-pod:/opt/secure-perimeter/
-  kubectl cp state.json network-pod:/opt/secure-perimeter/state.json
-  kubectl cp config.json network-pod:/opt/secure-perimeter/config.json
-  kubectl cp rules.conf network-pod:/opt/secure-perimeter/rules.conf
-  ```
-  {: pre}
+   ```
+   kubectl cp keys network-pod:/opt/secure-perimeter/
+   kubectl cp state.json network-pod:/opt/secure-perimeter/state.json
+   kubectl cp config.json network-pod:/opt/secure-perimeter/config.json
+   kubectl cp rules.conf network-pod:/opt/secure-perimeter/rules.conf
+   ```
+   {: pre}
 
-  The directory `keys` contains the SSH keys that are required for `ibmcloud-secure-perimeter-network` to access the Vyatta. For more information about the SSH keys, see the [prerequisites section](#spn_prerequisites).
+   The directory `keys` contains the SSH keys that are required for `ibmcloud-secure-perimeter-network` to access the Vyatta. For more information about the SSH keys, see the [prerequisites section](#spn_prerequisites).
 
 ## `config.json` reference
 {: #spn_reference_config_json}
