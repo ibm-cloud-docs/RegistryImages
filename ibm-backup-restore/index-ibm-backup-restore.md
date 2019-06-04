@@ -40,7 +40,7 @@ With the `ibmcloud-backup-restore` image, you can create a one-time or scheduled
 
 **Where does my data go? How do I access it?**
 
-Data that you back up is stored within an {{site.data.keyword.cos_full_notm}} service instance. To access the service, use your {{site.data.keyword.cos_full_notm}} service credentials as environment variables in the `ibmcloud-backup-restore` pod, or edit the `config.conf` file in the running pod.
+Data that you back up are stored in an {{site.data.keyword.cos_full_notm}} service instance. To access the service, use your {{site.data.keyword.cos_full_notm}} service credentials as environment variables in the `ibmcloud-backup-restore` pod, or edit the `config.conf` file in the running pod.
 
 **Can I restore backed up data to a different app or a different PV?**
 
@@ -70,7 +70,7 @@ Create and configure an {{site.data.keyword.cos_full_notm}} service instance to 
    1. In the navigation on the service details page, click **Service Credentials**.
    2. Click **New credential**. A dialog box is displayed.
    3. Enter a name for your credentials.
-   4. In **Add Inline Configuration Parameters (Optional)**, enter `{"HMAC":true}` to create additional HMAC credentials that the `ibmcloud-backup-restore` pod uses for HMAC authentication with the {{site.data.keyword.cos_full_notm}} service.
+   4. In the **Add Inline Configuration Parameters (Optional)** field, enter `{"HMAC":true}` to create additional HMAC credentials that the `ibmcloud-backup-restore` pod uses for HMAC authentication with the {{site.data.keyword.cos_full_notm}} service.
    5. Click **Add**. Your new credentials are listed in the **Service Credentials** table.
    6. Click **View credentials**.
    7. Make note of the **access_key_id** and the **secret_access_key** that you can find in the **cos_hmac_keys** section.
@@ -78,7 +78,7 @@ Create and configure an {{site.data.keyword.cos_full_notm}} service instance to 
    1. In the navigation on the service details page, click **Buckets**.
    2. Click **Create bucket**. A dialog box is displayed.
    3. Enter a unique name for your bucket. The name must be unique within {{site.data.keyword.cos_full_notm}} across all regions and across all {{site.data.keyword.cloud_notm}} accounts.
-   4. From the **Resiliency** drop down, select the level of availability that you want for your data. For more information, see [{{site.data.keyword.cos_full_notm}} regions and endpoints](/docs/services/cloud-object-storage/basics?topic=cloud-object-storage-endpoints#endpoints).
+   4. From the **Resiliency** list, select the level of availability that you want for your data. For more information, see [{{site.data.keyword.cos_full_notm}} regions and endpoints](/docs/services/cloud-object-storage/basics?topic=cloud-object-storage-endpoints#endpoints).
    5. Change the **Location** to the region where you want to store your data. Keep in mind that your data might not be allowed to be stored in every region due to legal reasons.  
    6. Click **Create**.
 4. Retrieve the {{site.data.keyword.cos_full_notm}} host name for your bucket.
