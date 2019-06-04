@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-05-24"
+lastupdated: "2019-06-03"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -36,7 +36,7 @@ You can access the images that are provided by {{site.data.keyword.IBM_notm}} by
 ## How it works
 {: #backup_restore_how_it_works}
 
-With the `ibmcloud-backup-restore` image, you can create a one-time or scheduled backup for app data that is stored in a persistent volume (PV) in your cluster or restore app data to a PV. To back up and restore data, you deploy a pod from the `ibmcloud-backup-restore` image. Then, you mount the PVC that binds the PV that you want to backup or the PV that you want to use for restoring your data to your pod.
+With the `ibmcloud-backup-restore` image, you can create a one-time or scheduled backup for app data that is stored in a persistent volume (PV) in your cluster or restore app data to a PV. To back up and restore data, you deploy a pod from the `ibmcloud-backup-restore` image. Then, you mount the PVC that binds the PV that you want to back up or the PV that you want to use for restoring your data to your pod.
 
 **Where does my data go? How do I access it?**
 
@@ -68,7 +68,7 @@ Create and configure an {{site.data.keyword.cos_full_notm}} service instance to 
    4. Click **Create**.
 2. Retrieve the {{site.data.keyword.cos_full_notm}} service instance credentials.
    1. In the navigation on the service details page, click **Service Credentials**.
-   2. Click **New credential**. A dialog box displays.
+   2. Click **New credential**. A dialog box is displayed.
    3. Enter a name for your credentials.
    4. In **Add Inline Configuration Parameters (Optional)**, enter `{"HMAC":true}` to create additional HMAC credentials that the `ibmcloud-backup-restore` pod uses for HMAC authentication with the {{site.data.keyword.cos_full_notm}} service.
    5. Click **Add**. Your new credentials are listed in the **Service Credentials** table.
@@ -76,7 +76,7 @@ Create and configure an {{site.data.keyword.cos_full_notm}} service instance to 
    7. Make note of the **access_key_id** and the **secret_access_key** that you can find in the **cos_hmac_keys** section.
 3. Create your first {{site.data.keyword.cos_full_notm}} bucket.
    1. In the navigation on the service details page, click **Buckets**.
-   2. Click **Create bucket**. A dialog box displays.
+   2. Click **Create bucket**. A dialog box is displayed.
    3. Enter a unique name for your bucket. The name must be unique within {{site.data.keyword.cos_full_notm}} across all regions and across all {{site.data.keyword.cloud_notm}} accounts.
    4. From the **Resiliency** drop down, select the level of availability that you want for your data. For more information, see [{{site.data.keyword.cos_full_notm}} regions and endpoints](/docs/services/cloud-object-storage/basics?topic=cloud-object-storage-endpoints#endpoints).
    5. Change the **Location** to the region where you want to store your data. Keep in mind that your data might not be allowed to be stored in every region due to legal reasons.  
@@ -94,7 +94,7 @@ Review the [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-sto
 You can create a one-time or scheduled backup for any persistent volume (PV) that is mounted to your app pod through a persistent volume claim (PVC).  
 {: shortdesc}
 
-The following example walks you through how to deploy a backup pod from the `ibmcloud-backup-restore` image, mount an existing PV to the backup pod by using a PVC, and back up the data from the PV to your {{site.data.keyword.cos_full_notm}} service instance.  
+The following example shows you how to deploy a backup pod from the `ibmcloud-backup-restore` image, mount an existing PV to the backup pod by using a PVC, and back up the data from the PV to your {{site.data.keyword.cos_full_notm}} service instance.  
 
 **Before you begin**
 
