@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-06-03"
+lastupdated: "2019-06-04"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
 
@@ -83,7 +83,7 @@ The `ibmcloud-secure-perimeter-health` image provides the following software pac
 
 1. Provision your Kubernetes cluster from the **Containers** section in the {{site.data.keyword.cloud_notm}} catalog.
 2. Click **Create**.
-3. Select the Secure Perimeter Segment public and private VLANs from the VLAN drop-down menus.
+3. Select the Secure Perimeter Segment public and private VLANs from the VLAN lists.
 4. Enter all other details as you require.
 5. Click **Create Cluster**.
 
