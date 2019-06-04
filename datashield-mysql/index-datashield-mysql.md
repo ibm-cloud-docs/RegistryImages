@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-11"
+lastupdated: "2019-06-03"
 
 keywords: IBM Cloud Container Registry, Data Shield, data in use, memory encryption, Intel SGX, Fortanix, mysql image, mariaDB, container image, public image
 
@@ -192,6 +192,3 @@ mariadb -h <node> --protocol tcp -uroot
 
 The {{site.data.keyword.datashield_short}} MariaDB image requires that client connections use Transport Layer Security (TLS). Depending on your client version, you might need to add `--ssl` or `--ssl-mode require` to the client command line.
 {: note}
-
-
-
