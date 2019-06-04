@@ -394,7 +394,7 @@ Review the full list of fields that can be passed as environment variables or ed
 
 |Key|Value options|
 |---|-------------|
-|BACKUP_DIRECTORY|`/backup`. Default. Absolute file path of the directory that the volume is mounted to. Data is backed up from this directory. Do not select the directory backup_restore because that directory contains files for the backup and restore processes.|
+|BACKUP_DIRECTORY|`/backup`. Default. Absolute file path of the directory that the volume is mounted to. Data is backed up from this directory. Do not select the directory `backup_restore` because that directory contains files for the backup and restore processes.|
 |BACKUP_NAME|`volume_backup`. Default. Choose a backup name.|
 |BACKUP_TYPE|`full`. Default. All files are backed up every time.<br/> `incremental`. Only new or changed files are backed up. If you choose `incremental`, you must choose values for **SCHEDULING_INFO** and **SCHEDULING_TYPE**.|
 |SCHEDULE_TYPE|`none`. Default. Create a one-time backup.<br/> **Note:** If you choose to create a one-time backup, your pod is removed from the cluster after the backup is finished. <br/> `periodic`. Change the value to periodic to create scheduled backups.|
