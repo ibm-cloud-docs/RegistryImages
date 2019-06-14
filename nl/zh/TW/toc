@@ -5,14 +5,14 @@
 IBM 公用容器映像檔
 
     {: .navgroup id="learn"}
-    datashield-barbican/index.md
-    datashield-mysql/index.md
-    datashield-nginx/index.md
-    datashield-vault/index.md
-    ibm-backup-restore/index.md
-    ibmcloud-secure-perimeter-health/index.md
-    ibmcloud-secure-perimeter-network/index.md
-    ibmliberty/index.md
-    ibm-mq/index.md
-    ibm-node-strong-pm/index.md
+    datashield-barbican/index-datashield-barbican.md
+    datashield-mysql/index-datashield-mysql.md
+    datashield-nginx/index-datashield-nginx.md
+    datashield-vault/index-datashield-vault.md
+    ibm-backup-restore/index-ibm-backup-restore.md
+    ibmcloud-secure-perimeter-health/index-ibmcloud-secure-perimeter-health.md
+    ibmcloud-secure-perimeter-network/index-ibmcloud-secure-perimeter-network.md
+    ibmliberty/index-ibmliberty.md
+    ibm-mq/index-ibm-mq.md
+    ibm-node-strong-pm/index-ibm-node-strong-pm.md
     {: .navgroup-end}
