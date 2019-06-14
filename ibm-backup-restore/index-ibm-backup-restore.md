@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-14"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -53,7 +53,7 @@ Every `ibmcloud-backup-restore` image contains the following software packages:
 
 - Alpine 3.7
 - Duplicity 0.7.10
-- Python, and  GnuPG Made Easy (GPGME) packages
+- Python, and  GnuPG Made Easy (GPGme) packages
 
 ## Setting up an {{site.data.keyword.cos_full_notm}} service instance
 {: #backup_restore_setup_object_storage}
