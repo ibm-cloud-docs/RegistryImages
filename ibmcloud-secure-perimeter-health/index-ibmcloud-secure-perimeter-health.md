@@ -221,7 +221,7 @@ The `ibmcloud-secure-perimeter-health` determines a subnet as `PASS` if no hosts
 |`exclude-vlan-ids`|List of VLANs by IDs to avoid scanning|None
 |`poll-interval`|Set the number of seconds until the next scan|0 (run once)
 |`allowed-public-ports`|List of ports to whitelist under the scan|80, 443, 9000-9999
-{: caption="Table 1. `Container arguments" caption-side="top"}
+{: caption="Table 1. Container arguments" caption-side="top"}
 
 ## Environment variable reference
 {: #sph_reference_env_var}
