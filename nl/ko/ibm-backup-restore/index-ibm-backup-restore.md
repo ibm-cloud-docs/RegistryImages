@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-21"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -53,7 +53,7 @@ subcollection: RegistryImages
 
 - Alpine 3.7
 - Duplicity 0.7.10
-- Python 및 GnuPG Made Easy(GPGME) 패키지
+- Python 및 GnuPG Made Easy(GPGme) 패키지
 
 ## {{site.data.keyword.cos_full_notm}} 서비스 인스턴스 설정
 {: #backup_restore_setup_object_storage}
@@ -86,7 +86,7 @@ subcollection: RegistryImages
    2. 서비스 세부사항 페이지의 탐색에서 **버킷** > **구성**을 클릭하십시오.
    3. 버킷의 데이터에 액세스하는 데 사용할 수 있는 공용 URL을 기록해 두십시오.
 
-서비스 인스턴스 구성에 대한 자세한 정보는 [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about#about) 문서를 검토하십시오.
+서비스 인스턴스 구성에 대한 자세한 정보는 [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about-ibm-cloud-object-storage) 문서를 검토하십시오.
 
 ## pv(persistent volume)에서 데이터 백업
 {: #backup_restore_scheduled_backup}

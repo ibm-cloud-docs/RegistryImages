@@ -53,7 +53,7 @@ Cada imagen `ibmcloud-backup-restore` contiene los siguientes paquetes de softwa
 
 - Alpine 3.7
 - Duplicity 0.7.10
-- Python, y paquetes GnuPG Made Easy (GPGME)
+- Python y paquetes GnuPG Made Easy (GPGME)
 
 ## Configuración de una instancia de servicio de {{site.data.keyword.cos_full_notm}}
 {: #backup_restore_setup_object_storage}

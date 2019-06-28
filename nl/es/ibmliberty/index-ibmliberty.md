@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-19"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -136,7 +136,7 @@ Las licencias de WebSphere Application Server se basan en el número de value un
 
 Cada tamaño de contenedor en {{site.data.keyword.cloud_notm}} requiere un número específico de autorización por value unit de procesador (PVU) que deben estar disponibles en la licencia de WebSphere Application Server. Por lo tanto, debe planificar los contenedores de `ibm/liberty` antes de adquirir la licencia.
 
-Para adquirir una licencia de WebSphere Application Server, póngase en contacto con el [servicio de IBM ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](https://cloud.ibm.com/catalog/services/websphere-application-server). Si ya tiene una licencia para WebSphere
+Para adquirir una licencia de WebSphere Application Server, póngase en contacto con el [servicio de IBM ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](https://www.ibm.com/us-en/marketplace/java-ee-runtime/purchase). Si ya tiene una licencia para WebSphere
 Application Server v8.5 o posterior, puede utilizar todos los PVU no utilizados desde su titularidad existente para el despliegue del contenedor.
 
 Si encuentra que requiere más PVU después de adquirir la licencia, puede aumentar la cantidad contactando con el [servicio de IBM ![Icono de enlace externo](../../../icons/launch-glyph.svg "Icono de enlace externo")](https://cloud.ibm.com/catalog/services/websphere-application-server).

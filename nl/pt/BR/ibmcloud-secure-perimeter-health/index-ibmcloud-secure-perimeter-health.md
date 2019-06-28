@@ -43,7 +43,7 @@ Para obter mais informações sobre Perímetro seguro, consulte os artigos do bl
 - [Configure um perímetro seguro no {{site.data.keyword.cloud_notm}} ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/).
 - [Configure um perímetro seguro automatizado no {{site.data.keyword.cloud_notm}} ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
 
-Após a varredura, a imagem `ibmcloud-secure-perimeter-health` produz um relatório sobre quais redes estavam acessíveis de dentro do segmento de perímetro seguro. Cada relatório detalha o nome do gateway de rede, da VLAN, de suas sub-redes e de quaisquer hosts ofensivos. O código a seguir é um relatório de exemplo de um usuário que varreu a rede privada em busca de vulnerabilidades: 
+Após a varredura, a imagem `ibmcloud-secure-perimeter-health` produz um relatório sobre quais redes estavam acessíveis de dentro do segmento de perímetro seguro. Cada relatório detalha o nome do gateway de rede, da VLAN, de suas sub-redes e de quaisquer hosts ofensivos. O código a seguir é um relatório de exemplo de um usuário que varreu a rede privada em busca de vulnerabilidades:
 
 ```
 #-------- Running Secure Perimeter exposure scan 2018-05-24 12:00:00 --------#
@@ -225,7 +225,7 @@ varredura|None
 próxima varredura|0 (executar uma única vez)
 |`allowed-public-ports`|Lista de portas para a
 lista de desbloqueio da varredura|80, 443, 9000-9999
-{: caption="Tabela 1. Argumentos de contêiner" caption-side="top"}
+{: caption="Tabela 1. Argumentos do contêiner" caption-side="top"}
 
 ## Referência de variável de ambiente
 {: #sph_reference_env_var}

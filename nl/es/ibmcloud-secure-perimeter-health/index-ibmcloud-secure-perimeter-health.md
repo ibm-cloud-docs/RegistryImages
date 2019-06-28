@@ -35,7 +35,7 @@ Puede acceder a las imágenes que suministra {{site.data.keyword.IBM_notm}} desd
 
 Para asegurarse de que su Secure Perimeter esté funcionando correctamente, `ibmcloud-secure-perimeter-health` puede explorar redes públicas o privadas en su cuenta de infraestructura de {{site.data.keyword.cloud_notm}} e informar de las vulnerabilidades. Puede utilizar la imagen **ibmcloud-secure-perimeter-health** de dos formas:
 
-- Utilice `ibmcloud-secure-perimeter-health` como un pod en un clúster de Kubernetes dentro del Secure Perimeter para explorar en ubsca de exposiciones en redes privadas.
+- Utilice `ibmcloud-secure-perimeter-health` como un pod en un clúster de Kubernetes dentro del Secure Perimeter para explorar en busca de exposiciones en redes privadas.
 - Utilice `ibmcloud-secure-perimeter-health` como un contenedor autónomo de Docker de su estación de trabajo para explorar en busca de exposiciones en redes públicas.
 
 Para obtener más información sobre Secure Perimeter, consulte estos artículos de blog:
@@ -222,7 +222,7 @@ El informe se presenta en el siguiente formato:
 |`exclude-vlan-ids`|Lista de VLAN por ID para evitar la exploración|Ninguno
 |`poll-interval`|Establecer el número de segundos hasta la siguiente exploración|0 (ejecutar una vez)
 |`allowed-public-ports`|Lista de puertos a incluir en una lista blanca en la exploración|80, 443, 9000-9999
-{: caption="Tabla 1. Argumentos de contenedor" caption-side="top"}
+{: caption="Tabla 1. Argumentos del contenedor" caption-side="top"}
 
 ## Referencia de variables de entorno
 {: #sph_reference_env_var}

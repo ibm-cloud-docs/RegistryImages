@@ -221,7 +221,7 @@ Le rapport est au format suivant :
 |`exclude-vlan-ids`|Liste des réseaux locaux virtuels (VLAN) par ID pour éviter l'analyse|Aucun
 |`poll-interval`|Définit le nombre de secondes écoulées entre deux analyses|0 (une seule exécution)
 |`allowed-public-ports`|Liste des ports à placer sur liste blanche sous l'analyse|80, 443, 9000-9999
-{: caption="Tableau 1. `Arguments de conteneur" caption-side="top"}
+{: caption="Tableau 1. Arguments de conteneur" caption-side="top"}
 
 ## Référence de variable d'environnement
 {: #sph_reference_env_var}

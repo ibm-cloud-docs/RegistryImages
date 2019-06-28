@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-21"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -40,7 +40,7 @@ subcollection: RegistryImages
 
 **自分のデータはどこに行くのですか? どのようにしてアクセスしますか?**
 
-バックアップしたデータは、{{site.data.keyword.cos_full_notm}} サービス・インスタンス内に保管されます。サービスにアクセスするには、`ibmcloud-backup-restore` ポッドの環境変数として {{site.data.keyword.cos_full_notm}} サービス資格情報を使用するか、実行中のポッドの `config.conf` ファイルを編集します。
+バックアップしたデータは、{{site.data.keyword.cos_full_notm}} サービス・インスタンス内に保管されます。 サービスにアクセスするには、`ibmcloud-backup-restore` ポッドの環境変数として {{site.data.keyword.cos_full_notm}} サービス資格情報を使用するか、実行中のポッドの `config.conf` ファイルを編集します。
 
 **バックアップしたデータを別のアプリケーションまたは別の PV にリストアできますか?**
 
@@ -53,7 +53,7 @@ subcollection: RegistryImages
 
 - Alpine 3.7
 - Duplicity 0.7.10
-- Python および GnuPG Made Easy (GPGME) パッケージ
+- Python および GnuPG Made Easy (GPGme) パッケージ
 
 ## {{site.data.keyword.cos_full_notm}} サービス・インスタンスのセットアップ
 {: #backup_restore_setup_object_storage}
@@ -69,7 +69,6 @@ subcollection: RegistryImages
 2. {{site.data.keyword.cos_full_notm}} サービス・インスタンスの資格情報を取得します。
    1. サービス詳細ページのナビゲーションで、**「サービス資格情報」**をクリックします。
    2. **「新規資格情報」**をクリックします。 ダイアログ・ボックスが表示されます。
-
    3. 資格情報に対する名前を入力します。
    4. **「インラインの構成パラメーターの追加 (オプション)」**フィールドに、`{"HMAC":true}` と入力します。これにより、`ibmcloud-backup-restore` ポッドが {{site.data.keyword.cos_full_notm}} サービスでの HMAC 認証に使用する、追加の HMAC 資格情報を作成します。
    5. **「追加」**をクリックします。 新しい資格情報が**「サービス資格情報」**の表にリストされます。
@@ -78,9 +77,8 @@ subcollection: RegistryImages
 3. 最初の {{site.data.keyword.cos_full_notm}} バケットを作成します。
    1. サービス詳細ページのナビゲーションで、**「バケット」**をクリックします。
    2. **「バケットの作成」**をクリックします。 ダイアログ・ボックスが表示されます。
-
    3. バケットに対する固有の名前を入力します。 この名前は、{{site.data.keyword.cos_full_notm}} 内で、すべての地域およびすべての {{site.data.keyword.cloud_notm}} アカウントにわたって固有でなければなりません。
-   4. **「回復力」**リストから、データに必要な可用性のレベルを選択します。詳しくは、[{{site.data.keyword.cos_full_notm}} の地域とエンドポイント](/docs/services/cloud-object-storage/basics?topic=cloud-object-storage-endpoints#endpoints)を参照してください。
+   4. **「回復力」**リストから、データに必要な可用性のレベルを選択します。 詳しくは、[{{site.data.keyword.cos_full_notm}} の地域とエンドポイント](/docs/services/cloud-object-storage/basics?topic=cloud-object-storage-endpoints#endpoints)を参照してください。
    5. **「ロケーション」**を変更して、データを保管する地域に設定します。 法律上の理由により、データをすべての地域で保管できるとは限らないことに注意してください。  
    6. **「作成」**をクリックします。
 4. バケットの {{site.data.keyword.cos_full_notm}} ホスト名を取得します。
@@ -88,7 +86,7 @@ subcollection: RegistryImages
    2. サービス詳細ページのナビゲーションで、**「バケット」**>**「構成」**をクリックします。
    3. バケットのデータにアクセスするためのパブリック URL をメモします。
 
-サービス・インスタンスの構成について詳しくは、[{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about#about) の資料を参照してください。
+サービス・インスタンスの構成について詳しくは、[{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about-ibm-cloud-object-storage) の資料を参照してください。
 
 ## 永続ボリュームからのデータのバックアップ
 {: #backup_restore_scheduled_backup}
@@ -249,7 +247,7 @@ subcollection: RegistryImages
 
 {{site.data.keyword.cos_full_notm}} サービス・インスタンスからクラスター内の PV にデータをリストアすることができます。
 
-{{site.data.keyword.cos_full_notm}} サービス・インスタンスに複数のフルバックアップが存在する場合は、PVC は最後のフルバックアップのデータを使用して復元されます。増分バックアップが存在する場合は、PVC は、復元を開始した日までのすべての増分バックアップを含む、最後のフルバックアップのデータを使用して復元されます。
+{{site.data.keyword.cos_full_notm}} サービス・インスタンスに複数のフルバックアップが存在する場合は、PVC は最後のフルバックアップのデータを使用して復元されます。 増分バックアップが存在する場合は、PVC は、復元を開始した日までのすべての増分バックアップを含む、最後のフルバックアップのデータを使用して復元されます。
 
 **開始する前に**
 
@@ -397,17 +395,17 @@ subcollection: RegistryImages
 
 |キー|値のオプション|
 |---|-------------|
-|BACKUP_DIRECTORY|`/backup`。デフォルト。ボリュームのマウント先のディレクトリーの絶対ファイル・パス。 データはこのディレクトリーからバックアップされます。 ディレクトリー `backup_restore` は選択しないでください。このディレクトリーには、バックアップとリストアの処理のためのファイルが入っています。|
-|BACKUP_NAME|`volume_backup`。デフォルト。バックアップ名を選択します。|
-|BACKUP_TYPE|`full`。デフォルト。毎回すべてのファイルがバックアップされます。<br/> `incremental`。新規ファイルおよび変更されたファイルのみがバックアップされます。`incremental` を選択した場合は、**SCHEDULING_INFO** と **SCHEDULING_TYPE** の値を選択する必要があります。|
-|SCHEDULE_TYPE|`none`。デフォルト。1 回限りのバックアップを作成します。<br/> **注:** 一回限りのバックアップを作成するよう選択した場合、ポッドは、バックアップ終了後にクラスターから削除されます。 <br/> `periodic`。スケジュール・バックアップを作成するには、値を periodic に変更します。|
-|SCHEDULE_INFO|`hourly`。毎時バックアップを作成します。<br/>`daily`。デフォルト。日次バックアップを作成します。<br/>`weekly`。週次バックアップを作成します。定期的更新をスケジュールする場合は、この変数を含める必要があります。|
-|EXCLUDE_DIRECTORIES|`none`。デフォルト。バックアップから除外するディレクトリーの絶対ファイル・パスを含めます。 複数のディレクトリーはコンマで区切ります。|
+|BACKUP_DIRECTORY|`/backup`。 デフォルト。 ボリュームのマウント先のディレクトリーの絶対ファイル・パス。 データはこのディレクトリーからバックアップされます。 ディレクトリー `backup_restore` は選択しないでください。このディレクトリーには、バックアップとリストアの処理のためのファイルが入っています。|
+|BACKUP_NAME|`volume_backup`。 デフォルト。 バックアップ名を選択します。|
+|BACKUP_TYPE|`full`。 デフォルト。 毎回すべてのファイルがバックアップされます。<br/> `incremental`。 新規ファイルおよび変更されたファイルのみがバックアップされます。 `incremental` を選択した場合は、**SCHEDULING_INFO** と **SCHEDULING_TYPE** の値を選択する必要があります。|
+|SCHEDULE_TYPE|`none`。 デフォルト。 1 回限りのバックアップを作成します。<br/> **注:** 一回限りのバックアップを作成するよう選択した場合、ポッドは、バックアップ終了後にクラスターから削除されます。 <br/> `periodic`。 スケジュール・バックアップを作成するには、値を periodic に変更します。|
+|SCHEDULE_INFO|`hourly`。 毎時バックアップを作成します。<br/>`daily`。 デフォルト。 日次バックアップを作成します。<br/>`weekly`。 週次バックアップを作成します。 定期的更新をスケジュールする場合は、この変数を含める必要があります。|
+|EXCLUDE_DIRECTORIES|`none`。 デフォルト。 バックアップから除外するディレクトリーの絶対ファイル・パスを含めます。 複数のディレクトリーはコンマで区切ります。|
 {: caption="表 5. バックアップの変数" caption-side="top"}
 
 |キー|値のオプション|
 |---|-------------|
-|BACKUP_NAME|`volume_backup`。デフォルト。{{site.data.keyword.cos_full_notm}} からリストアするバックアップの名前を入れます。|
-|RESTORE_DIRECTORY|`/backup`。デフォルト。ボリュームのマウント先の絶対ディレクトリー。 データはこのディレクトリーにリストアされます。 ディレクトリー `backup_restore` は選択しないでください。このディレクトリーには、バックアップとリストアの処理のためのファイルが入っています。|
+|BACKUP_NAME|`volume_backup`。 デフォルト。 {{site.data.keyword.cos_full_notm}} からリストアするバックアップの名前を入れます。|
+|RESTORE_DIRECTORY|`/backup`。 デフォルト。 ボリュームのマウント先の絶対ディレクトリー。 データはこのディレクトリーにリストアされます。 ディレクトリー `backup_restore` は選択しないでください。このディレクトリーには、バックアップとリストアの処理のためのファイルが入っています。|
 {: caption="表 6. リストアの変数" caption-side="top"}
 

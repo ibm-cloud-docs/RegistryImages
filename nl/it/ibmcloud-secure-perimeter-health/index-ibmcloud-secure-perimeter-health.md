@@ -221,7 +221,7 @@ Il report ha il seguente formato:
 |`exclude-vlan-ids`|L'elenco di VLAN in base agli ID per cui evitare la scansione|Nessuna
 |`poll-interval`|Imposta il numero di secondi fino alla prossima scansione|0 (eseguire una sola volta)
 |`allowed-public-ports`|L'elenco di IP utente da includere nella whitelist nella scansione.|80, 443, 9000-9999
-{: caption="Tabella 1. `Argomenti del contenitore" caption-side="top"}
+{: caption="Tabella 1. Argomenti del contenitore" caption-side="top"}
 
 ## Riferimenti alla variabile di ambiente
 {: #sph_reference_env_var}

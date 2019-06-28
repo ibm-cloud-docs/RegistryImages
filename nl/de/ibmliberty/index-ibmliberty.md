@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-19"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -133,7 +133,7 @@ WebSphere Application Server basieren auf der Anzahl der benötigten Processor-V
 
 Für jede Containergröße in {{site.data.keyword.cloud_notm}} ist eine bestimmte Anzahl von PVU-Berechtigungen erforderlich, die in der WebSphere Application Server-Lizenz verfügbar sein müssen. Sie müssen daher Ihre `ibm/liberty`-Container planen, bevor Sie die Lizenz erwerben.
 
-Wenden Sie sich für den Kauf einer WebSphere Application Server-Lizenz an den [IBM Service ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://cloud.ibm.com/catalog/services/websphere-application-server). Wenn Sie bereits über eine Lizenz für WebSphere Application Server Version 8.5 oder höher verfügen, können Sie alle nicht genutzten PVUs der bestehenden Berechtigung für die Bereitstellung Ihres Containers verwenden.
+Wenden Sie sich für den Kauf einer WebSphere Application Server-Lizenz an den [IBM Service ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://www.ibm.com/us-en/marketplace/java-ee-runtime/purchase). Wenn Sie bereits über eine Lizenz für WebSphere Application Server Version 8.5 oder höher verfügen, können Sie alle nicht genutzten PVUs der bestehenden Berechtigung für die Bereitstellung Ihres Containers verwenden.
 
 Wenn Sie nach dem Erwerb der Lizenz feststellen, dass Sie weitere PVUs benötigen, können Sie die Anzahl der PVUs nach Rücksprache mit dem [IBM Service ![Symbol für externen Link](../../../icons/launch-glyph.svg "Symbol für externen Link")](https://cloud.ibm.com/catalog/services/websphere-application-server) erhöhen.
 

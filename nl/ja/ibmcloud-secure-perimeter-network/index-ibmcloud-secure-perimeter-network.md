@@ -107,7 +107,7 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
    ```
    {: codeblock}
 
-   `config.json` にデータを設定する方法の詳細については、[`config.json` リファレンス表](#spn_reference_config_json)を参照してください。このファイルは、[Kubernetes ポッドとしての `ibmcloud-secure-perimeter-network` のセットアップ](#spn_setup)のプロセスでも使用できます。
+   `config.json` にデータを設定する方法の詳細については、[`config.json` リファレンス表](#spn_reference_config_json)を参照してください。 このファイルは、[Kubernetes ポッドとしての `ibmcloud-secure-perimeter-network` のセットアップ](#spn_setup)のプロセスでも使用できます。
 
 2. `ibmcloud-secure-perimeter-network` を Docker コンテナーとして実行して、初期セットアップを開始します。
 
@@ -121,7 +121,7 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
 ## Secure Perimeter 内の Kubernetes ポッドをセットアップする
 {: #spn_setup}
 
-`ibmcloud-secure-perimeter-network` イメージが Secure Perimeter 上のサブネットを管理するには、Kubernetes ポッドを使用して長期継続プロセスとしてこのイメージを実行できます。Vyatta のポッドを構成するには、`ibmcloud-secure-perimeter-network` イメージのいくつかの構成ファイルとフォルダーをポッドにコピーして、Vyatta 用に構成する必要があります。
+`ibmcloud-secure-perimeter-network` イメージが Secure Perimeter 上のサブネットを管理するには、Kubernetes ポッドを使用して長期継続プロセスとしてこのイメージを実行できます。 Vyatta のポッドを構成するには、`ibmcloud-secure-perimeter-network` イメージのいくつかの構成ファイルとフォルダーをポッドにコピーして、Vyatta 用に構成する必要があります。
 
 1. `pvc.yaml` という名前のファイルを作成します。 この構成ファイルは、ポッドにボリュームとしてマウントできる、永続ボリューム・クレーム (PVC) を作成します。
 
@@ -203,7 +203,7 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
    ```
    {: pre}
 
-   `keys` ディレクトリーに、`ibmcloud-secure-perimeter-network` が Vyatta にアクセスするために必要な SSH 鍵が含まれています。SSH 鍵について詳しくは、[前提条件セクション](#spn_prerequisites)を参照してください。
+   `keys` ディレクトリーに、`ibmcloud-secure-perimeter-network` が Vyatta にアクセスするために必要な SSH 鍵が含まれています。 SSH 鍵について詳しくは、[前提条件セクション](#spn_prerequisites)を参照してください。
 
 ## `config.json` リファレンス
 {: #spn_reference_config_json}

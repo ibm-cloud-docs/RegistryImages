@@ -104,7 +104,7 @@ spec:
   </tr>
   <tr>
     <td><code>NODE-IP</code></td>
-    <td>Vault インスタンスのノード IP アドレス。IP アドレスを検索するには、<code>kubectl get pod -owide</code> または <code>kubectl describe pod</code> を使用できます。</td>
+    <td>Vault インスタンスのノード IP アドレス。 IP アドレスを検索するには、<code>kubectl get pod -owide</code> または <code>kubectl describe pod</code> を使用できます。</td>
   </tr>
 </table>
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-21"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -53,7 +53,7 @@ Ogni immagine `ibmcloud-backup-restore` contiene i seguenti pacchetti software:
 
 - Alpine 3.7
 - Duplicity 0.7.10
-- Pacchetti Python e GnuPG Made Easy (GPGME)
+- Pacchetti Python e GnuPG Made Easy (GPGme)
 
 ## Configurazione di un'istanza del servizio {{site.data.keyword.cos_full_notm}}
 {: #backup_restore_setup_object_storage}
@@ -86,7 +86,7 @@ Crea e configura un'istanza del servizio {{site.data.keyword.cos_full_notm}} da 
    2. Nella navigazione nella pagina dei dettagli del servizio, fai clic su **Bucket** > **Configurazione**.
    3. Prendi nota dell'URL pubblico che puoi utilizzare per accedere ai dati nel tuo bucket.
 
-Controlla la [documentazione {{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about#about) per ulteriori informazioni sulla configurazione della tua istanza del servizio.
+Controlla la [documentazione {{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about-ibm-cloud-object-storage) per ulteriori informazioni sulla configurazione della tua istanza del servizio.
 
 ## Backup dei dati da un volume persistente
 {: #backup_restore_scheduled_backup}

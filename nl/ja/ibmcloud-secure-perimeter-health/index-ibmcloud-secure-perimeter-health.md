@@ -33,7 +33,7 @@ subcollection: RegistryImages
 ## 機能
 {: #sph_how-it-works}
 
-Secure Perimeter が適切に機能していることを確認するために、`ibmcloud-secure-perimeter-health` で、ご使用の {{site.data.keyword.cloud_notm}} インフラストラクチャー・アカウントのパブリック・ネットワークまたはプライベート・ネットワークをスキャンし、脆弱性のレポートを作成できます。**ibmcloud-secure-perimeter-health** イメージは、以下の 2 つの方法で使用できます。
+Secure Perimeter が適切に機能していることを確認するために、`ibmcloud-secure-perimeter-health` で、ご使用の {{site.data.keyword.cloud_notm}} インフラストラクチャー・アカウントのパブリック・ネットワークまたはプライベート・ネットワークをスキャンし、脆弱性のレポートを作成できます。 **ibmcloud-secure-perimeter-health** イメージは、以下の 2 つの方法で使用できます。
 
 - `ibmcloud-secure-perimeter-health` を Secure Perimeter 内の Kubernetes クラスター上のポッドとして使用して、プライベート・ネットワークの露出をスキャンする。
 - `ibmcloud-secure-perimeter-health` をワークステーション上のスタンドアロン Docker コンテナーとして使用して、パブリック・ネットワークの露出をスキャンする。
@@ -221,7 +221,7 @@ sp-gateway-8a9031ab:
 |`exclude-vlan-ids`|スキャンを回避する VLAN ID のリスト|なし
 |`poll-interval`|次のスキャンまでの秒数を設定|0 (実行は 1 回)
 |`allowed-public-ports`|スキャンでのホワイトリストに登録するポートのリスト|80, 443, 9000-9999
-{: caption="表 1. `コンテナー引数" caption-side="top"}
+{: caption="表 1. コンテナー引数" caption-side="top"}
 
 ## 環境変数リファレンス
 {: #sph_reference_env_var}

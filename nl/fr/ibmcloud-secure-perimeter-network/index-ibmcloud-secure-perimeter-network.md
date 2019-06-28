@@ -116,7 +116,7 @@ Pour accéder à votre cluster après l'avoir déployé, voir [{{site.data.keywo
    ```
    {: pre}
 
-   Cette action crée un fichier `state.json` dans votre répertoire de travail. Ce fichier est utilisé pour [configurrer`ibmcloud-secure-perimeter-network` en tant que pod Kubernetes](#spn_setup).
+   Cette action crée un fichier `state.json` dans votre répertoire de travail. Ce fichier est utilisé pour [configurer `ibmcloud-secure-perimeter-network` en tant que pod Kubernetes](#spn_setup).
 
 ## Configuration en tant que pod Kubernetes au sein de votre périmètre sécurisé
 {: #spn_setup}

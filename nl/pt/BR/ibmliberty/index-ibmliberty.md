@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-19"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -138,7 +138,7 @@ As licenças do WebSphere Application Server são baseadas no número de Unidade
 Cada tamanho de contêiner no {{site.data.keyword.cloud_notm}} requer um número específico de titularidades da Unidade de Valor do Processador que devem estar disponíveis na licença
 do WebSphere Application Server. Portanto, deve-se planejar os contêineres `ibm/liberty` antes da compra da licença.
 
-Para comprar uma licença do WebSphere Application Server, entre em contato com o [Serviço IBM ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://cloud.ibm.com/catalog/services/websphere-application-server). Se você já tiver uma licença para o WebSphere
+Para comprar uma licença do WebSphere Application Server, entre em contato com o [Serviço IBM ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://www.ibm.com/us-en/marketplace/java-ee-runtime/purchase). Se você já tiver uma licença para o WebSphere
 Application Server v8.5 ou mais recente, será possível usar qualquer PVU não usada de sua autorização existente
 para a implementação de seu contêiner.
 

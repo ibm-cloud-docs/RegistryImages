@@ -221,7 +221,7 @@ sp-gateway-8a9031ab:
 |`exclude-vlan-ids`|스캔을 피하기 위한 ID별 VLAN 목록|없음
 |`poll-interval`|다음 스캔 때까지 시간(초) 설정|0(한 번 실행)
 |`allowed-public-ports`|스캔에 따라 화이트리스트로 지정할 포트 목록|80, 443, 9000 - 9999
-{: caption="표 1. `컨테이너 인수" caption-side="top"}
+{: caption="표 1. 컨테이너 인수" caption-side="top"}
 
 ## 환경 변수 참조
 {: #sph_reference_env_var}

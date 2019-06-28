@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-21"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -49,7 +49,7 @@ subcollection: RegistryImages
 
 - Alpine 3.7
 - Duplicity 0.7.10
-- Python 和 GnuPG Made Easy (GPGME) 软件包
+- Python 和 GnuPG Made Easy (GPGme) 软件包
 
 ## 设置 {{site.data.keyword.cos_full_notm}} 服务实例
 {: #backup_restore_setup_object_storage}
@@ -82,7 +82,7 @@ subcollection: RegistryImages
    2. 在“服务详细信息”页面的导航中，单击**存储区** > **配置**。
    3. 记下可用于访问存储区中数据的公共 URL。
 
-查看 [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about#about) 文档，以获取有关配置服务实例的更多信息。
+查看 [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about-ibm-cloud-object-storage) 文档，以获取有关配置服务实例的更多信息。
 
 ## 备份持久性卷中的数据
 {: #backup_restore_scheduled_backup}

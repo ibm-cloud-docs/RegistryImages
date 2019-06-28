@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-19"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -133,7 +133,7 @@ WebSphere Application Server 许可证基于您所需的处理器价值单元 \(
 
 {{site.data.keyword.cloud_notm}} 中的每个容器大小都需要必须在 WebSphere Application Server 许可证中可用的特定 PVU 授权数。因此，在购买许可证之前，必须计划 `ibm/liberty` 容器。
 
-要购买 WebSphere Application Server 许可证，请联系 [IBM 服务中心 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://cloud.ibm.com/catalog/services/websphere-application-server)。如果您已拥有 WebSphere
+要购买 WebSphere Application Server 许可证，请联系 [IBM 服务中心 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://www.ibm.com/us-en/marketplace/java-ee-runtime/purchase)。如果您已拥有 WebSphere
 Application Server V8.5 或更新版本的许可证，那么可以使用现有授权中未使用的任何 PVU 来部署容器。
 
 如果您在购买许可证之后发现还需要更多的 PVU，那么可以联系 [IBM 服务中心 ![外部链接图标](../../../icons/launch-glyph.svg "外部链接图标")](https://cloud.ibm.com/catalog/services/websphere-application-server) 以增加数量。

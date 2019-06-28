@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-19"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -133,7 +133,7 @@ WebSphere Application Server 라이센스는 필요한 PVU\(Processor Value Unit
 
 {{site.data.keyword.cloud_notm}}의 모든 컨테이너 크기에는 WebSphere Application Server 라이센스에서 사용 가능해야 하는 특정 수의 PVU 인타이틀먼트가 있어야 합니다. 따라서 라이센스를 구매하기 전에 `ibm/liberty` 컨테이너를 계획해야 합니다.
 
-WebSphere Application Server 라이센스를 구매하려면 [IBM Service ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://cloud.ibm.com/catalog/services/websphere-application-server)에 문의하십시오. WebSphere Application Server v8.5 이상에 대한 라이센스가 이미 있으면, 컨테이너의 배치를 위해 기존 인타이틀먼트의 미사용 PVU를 사용할 수 있습니다.
+WebSphere Application Server 라이센스를 구매하려면 [IBM Service ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.ibm.com/us-en/marketplace/java-ee-runtime/purchase)에 문의하십시오. WebSphere Application Server v8.5 이상에 대한 라이센스가 이미 있으면, 컨테이너의 배치를 위해 기존 인타이틀먼트의 미사용 PVU를 사용할 수 있습니다.
 
 라이센스를 구매한 후 추가 PVU가 필요하면 [IBM Service ![외부 링크 아이콘](../../../icons/launch-glyph.svg "외부 링크 아이콘")](https://cloud.ibm.com/catalog/services/websphere-application-server)에 문의하여 양을 늘릴 수 있습니다.
 
