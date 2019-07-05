@@ -121,16 +121,16 @@ Crie um pod de contêiner por meio da imagem `ibmcloud-secure-perimeter-health` 
             - /usr/local/bin/python
             - /run.py
             - --scan
-            - privada
-            - --excluir-vlan-ids
-            - < Private Secure Perimeter Segment VLAN ID>
-            - -- poll-interval
+            - private
+            - --exclude-vlan-ids
+            - <Private Secure Perimeter Segment VLAN ID>
+            - --poll-interval
             - 1800
-            ambiente:
-            - nome: SL_USER
-              valor: <IBM Cloud infrastructure user name>
-            - nome: SL_APIKEY
-              valor: <IBM Cloud infrastructure api key>
+            env:
+            - name: SL_USER
+              value: <IBM Cloud infrastructure user name>
+            - name: SL_APIKEY
+              value: <IBM Cloud infrastructure api key>
     ```
     {: codeblock}
 
@@ -217,14 +217,10 @@ A `ibmcloud-secure-perimeter-health` determinará uma sub-rede como `PASS` se ne
 
 |Chave|Descrição|Padrão
 |---|-------------|---|
-|`scan`|O tipo de varredura de exposição ("pública" ou
-"privada") |None (varrer ambas)
-|`exclude-vlan-ids`|Lista de VLANs por IDs a evitar a
-varredura|None
-|`poll-interval`|Configurar o número de segundos até a
-próxima varredura|0 (executar uma única vez)
-|`allowed-public-ports`|Lista de portas para a
-lista de desbloqueio da varredura|80, 443, 9000-9999
+|`scan`|O tipo de varredura de exposição ("pública" ou "privada") |None (varrer ambas)
+|`exclude-vlan-ids`|Lista de VLANs por IDs a evitar a varredura|None
+|`poll-interval`|Configurar o número de segundos até a próxima varredura|0 (executar uma única vez)
+|`allowed-public-ports`|Lista de portas para a lista de desbloqueio da varredura|80, 443, 9000-9999
 {: caption="Tabela 1. Argumentos do contêiner" caption-side="top"}
 
 ## Referência de variável de ambiente
