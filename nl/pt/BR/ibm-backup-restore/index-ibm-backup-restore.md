@@ -397,8 +397,8 @@ Revise a lista completa de campos que podem ser passados como variáveis de ambi
 |BACKUP_DIRECTORY|`/backup`. Padrão. Caminho de arquivo absoluto do diretório no qual o volume é montado. O backup dos dados é feito a partir desse diretório. Não selecione o diretório `backup_restore`, pois ele contém arquivos para os processos de backup e restauração.|
 |BACKUP_NAME|`volume_backup`. Padrão. Escolha um nome de backup.|
 |BACKUP_TYPE|`full`. Padrão. É feito backup de todos os arquivos toda vez.<br/> `incremental`. O backup é feito somente para arquivos novos ou mudados. Se você escolher `incremental`, deverá escolher valores para **SCHEDULING_INFO** e **SCHEDULING_TYPE**.|
-|SCHEDULE_TYPE|`none`. Padrão. Crie um backup único.<br/> **Nota:** se você optar por criar um backup único, seu pod será removido do cluster depois que o backup for concluído. <br/> `periodic`. Mude o valor para periodic para criar backups planejados.|
-|SCHEDULE_INFO|`hourly`. Crie um backup por hora.<br/>`daily`. Padrão. Crie um backup por dia.<br/>`weekly`. Crie um backup por semana. Deve-se incluir essa variável ao planejar uma atualização periódica.|
+|SCHEDULE_TYPE|`none`. Padrão. Crie um backup único.<br/> **Nota:** se você optar por criar um backup único, seu pod será removido do cluster após a conclusão do backup. <br/> `periodic`. Mude o valor para periodic para criar backups planejados.|
+|SCHEDULE_INFO|`hourly`. Crie um backup por hora.<br/>`daily`. Padrão. Crie um backup diário.<br/>`weekly`. Crie um backup por semana. Deve-se incluir essa variável ao planejar uma atualização periódica.|
 |EXCLUDE_DIRECTORIES|`none`. Padrão. Inclua o caminho de arquivo absoluto dos diretórios que você deseja excluir do backup. Separe os diretórios com uma vírgula.|
 {: caption="Tabela 5. Variáveis de backup" caption-side="top"}
 

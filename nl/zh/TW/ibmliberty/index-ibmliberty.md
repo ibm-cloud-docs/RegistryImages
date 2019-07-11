@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-19"
+lastupdated: "2019-06-24"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -135,7 +135,7 @@ WebSphere Application Server 授權是根據所需的「處理器價值單位 (P
 
 若要購買 WebSphere Application Server 授權，請與 [IBM 服務中心 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.ibm.com/us-en/marketplace/java-ee-runtime/purchase) 聯絡。如果您已有 WebSphere Application Server 8.5 版或更新版本的授權，則可以使用現有授權中的任何未用 PVU 來部署容器。
 
-如果您在購買授權之後發現需要更多的 PVU，則可以與 [IBM 服務中心 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://cloud.ibm.com/catalog/services/websphere-application-server) 聯絡來增加數量。
+如果您在購買授權之後發現需要更多的 PVU，則可以與 [IBM 服務中心 ![外部鏈結圖示](../../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.ibm.com/us-en/marketplace/java-ee-runtime/purchase) 聯絡來增加數量。
 
 ## 建立要與 {{site.data.keyword.containershort_notm}} 搭配使用的正式作業授權 `ibm/liberty` 映像檔
 {: #ibmliberty_prod_image}

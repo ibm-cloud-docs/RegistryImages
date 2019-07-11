@@ -397,7 +397,7 @@ Rivedi l'elenco completo dei campi che possono essere trasmessi come variabili d
 |BACKUP_DIRECTORY|`/backup`. Predefinito. Il percorso file assoluto della directory su cui è montato il volume. Viene eseguito il backup dei dati da questa directory. Non selezionare la directory `backup_restore` poiché tale directory contiene i file per i processi di backup e ripristino.|
 |BACKUP_NAME|`volume_backup`. Predefinito. Scegli un nome di backup.|
 |BACKUP_TYPE|`full`. Predefinito. Viene eseguito ogni volta il backup di tutti i file.<br/> `incremental`. Viene eseguito il backup solo dei file nuovi o modificati. Se scegli `incremental`, devi scegliere i valori per **SCHEDULING_INFO** e **SCHEDULING_TYPE**.|
-|SCHEDULE_TYPE|`none`. Predefinito. Crea un backup monouso.<br/> **Nota:** se scegli di creare un backup una tantum, il tuo pod viene rimosso dal cluster dopo che il backup è terminato.<br/> `periodic`. Modifica il valore con periodic per creare backup pianificati.|
+|SCHEDULE_TYPE|`none`. Predefinito. Crea un backup monouso.<br/> **Nota:** se scegli di creare un backup una tantum, il tuo pod viene rimosso dal cluster dopo che il backup è terminato. <br/> `periodic`. Modifica il valore con periodic per creare backup pianificati.|
 |SCHEDULE_INFO|`hourly`. Crea un backup orario.<br/>`daily`. Predefinito. Crea un backup giornaliero.<br/>`weekly`. Crea un backup settimanale. Devi includere questa variabile se stai pianificando un aggiornamento periodico.|
 |EXCLUDE_DIRECTORIES|`none`. Predefinito. Includi il percorso file assoluto delle directory che desideri escludere dal backup. Separa le directory con una virgola.|
 {: caption="Tabella 5. Variabili di backup" caption-side="top"}

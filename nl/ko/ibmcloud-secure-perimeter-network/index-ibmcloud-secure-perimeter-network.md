@@ -81,28 +81,28 @@ subcollection: RegistryImages
    ```
    {
      "slid": "XXXX",
-    "apikey": "XXXX",
-    "region": "XXXX",
-    "inf_name_private": "dp0bond0",
-    "inf_name_public": "dp0bond1",
-    "gatewayid": "XXXX",
-    "vlans": [
+     "apikey": "XXXX",
+     "region": "XXXX",
+     "inf_name_private": "dp0bond0",
+     "inf_name_public": "dp0bond1",
+     "gatewayid": "XXXX",
+     "vlans": [
       {
          "type": "XXXX",
-        "vlan_num": XXXX,
-        "vlanid": XXXX
-      },
+         "vlan_num": XXXX,
+         "vlanid": XXXX
+       },
        ...
      ],
-    "vyatta_gateway_vip": "X.X.X.X",
-    "vyatta_primary": {
+     "vyatta_gateway_vip": "X.X.X.X",
+     "vyatta_primary": {
        "private_ip": "X.X.X.X",
-      "public_ip": "X.X.X.X"
+       "public_ip": "X.X.X.X"
     },
-    "vyatta_secondary": {
+     "vyatta_secondary": {
        "private_ip": "X.X.X.X",
-      "public_ip": "X.X.X.X"
-    }
+       "public_ip": "X.X.X.X"
+     }
    }
    ```
    {: codeblock}
@@ -126,18 +126,18 @@ subcollection: RegistryImages
 1. `pvc.yaml` 파일을 작성하십시오. 이 구성 파일은 팟(Pod)에 볼륨으로 마운트할 수 있는 지속적 볼륨 클레임(PVC)을 작성합니다.
 
    ```
-  apiVersion: v1
-  kind: PersistentVolumeClaim
-  metadata:
-    name: network-pvc
-    annotations:
-      volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze"
-  spec:
+   apiVersion: v1
+   kind: PersistentVolumeClaim
+   metadata:
+     name: network-pvc
+     annotations:
+       volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze"
+   spec:
     accessModes:
-      - ReadWriteMany
-    resources:
-      requests:
-        storage: 20Gi
+       - ReadWriteMany
+     resources:
+       requests:
+         storage: 20Gi
    ```
    {: codeblock}
 
@@ -179,16 +179,16 @@ subcollection: RegistryImages
    {
        "external_subnets": [
          "X.X.X.X/X",
-        "X.X.X.X/X"
+         "X.X.X.X/X"
        ],
-      "external_ports": [
+       "external_ports": [
          "XX",
-        "XX"
+         "XX"
        ],
-      "userips": [
+       "userips": [
          "X.X.X.X",
-        "X.X.X.X"
-      ]
+         "X.X.X.X"
+       ]
    }
    ```
    {: codeblock}

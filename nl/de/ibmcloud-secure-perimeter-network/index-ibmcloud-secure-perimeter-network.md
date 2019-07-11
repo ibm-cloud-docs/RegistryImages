@@ -220,7 +220,7 @@ Wenn Sie das Image `ibmcloud-secure-perimeter-network` zur Verwaltung von Teilne
 |`vyatta_gateway_vip`|VIP des Gateways
 |`vyatta_primary`|Objekt mit der privaten und öffentlichen IP des primären Vyatta-Mitglieds
 |`vyatta_secondary`|Objekt mit der privaten und öffentlichen IP des sekundären Vyatta-Mitglieds
-{: caption="Tabelle 1. <codeconfig.json</code>" caption-side="top"}
+{: caption="Tabelle 1. <codeconfig.json</code>" caption-side="top"}>
 
 ## Referenzinformationen zu `rules.conf`
 {: #spn_reference_rules_conf}
@@ -230,4 +230,4 @@ Wenn Sie das Image `ibmcloud-secure-perimeter-network` zur Verwaltung von Teilne
 |`external_subnets`|Liste mit Teilnetzen im öffentlichen Internet, die Secure Perimeter nutzen kann
 |`external_ports`|Liste der Ports, die Secure Perimeter nutzen kann
 |`userips`|Liste mit Benutzer-IPs, die in eine Whitelist für Secure Perimeter aufgenommen werden sollen
-{: caption="Tabelle 2. <coderules.conf</code>" caption-side="top"}
+{: caption="Tabelle 2. <coderules.conf</code>" caption-side="top"}>

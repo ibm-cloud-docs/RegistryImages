@@ -211,7 +211,7 @@ Secure Perimeter について詳しくは、以下のブログ記事を参照し
 |キー|説明
 |---|-------------|---|
 |`slid`|IBM Cloud インフラストラクチャー・ユーザー名
-|`apikey`|IBM Cloud インフラストラクチャー API 鍵
+|`apikey`|IBM Cloud インフラストラクチャー API キー
 |`region`|Vyatta がデプロイされる IBM Cloud 地域
 |`inf_name_private`|Vyatta プライベート・インターフェースの名前
 |`inf_name_public`|Vyatta パブリック・インターフェースの名前

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-19"
+lastupdated: "2019-06-24"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -142,7 +142,7 @@ Para comprar uma licença do WebSphere Application Server, entre em contato com 
 Application Server v8.5 ou mais recente, será possível usar qualquer PVU não usada de sua autorização existente
 para a implementação de seu contêiner.
 
-Se você descobrir que precisa de mais PVUs depois de comprar a licença, será possível aumentar a quantia entrando em contato com o [Serviço IBM ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://cloud.ibm.com/catalog/services/websphere-application-server).
+Se você descobrir que precisa de mais PVUs depois de comprar a licença, será possível aumentar a quantia entrando em contato com o [Serviço IBM ![Ícone de link externo](../../../icons/launch-glyph.svg "Ícone de link externo")](https://www.ibm.com/us-en/marketplace/java-ee-runtime/purchase).
 
 ## Criando uma imagem `ibm/liberty` licenciada para produção para uso com o {{site.data.keyword.containershort_notm}}
 {: #ibmliberty_prod_image}

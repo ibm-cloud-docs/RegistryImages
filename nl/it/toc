@@ -1,7 +1,7 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="RegistryImages" audience="compute" href="/docs/services/RegistryImages/index.html" path="services/RegistryImages"}
+{: .toc subcollection="RegistryImages" category="containers" audience="compute" href="/docs/services/RegistryImages/index.html" path="services/RegistryImages"}
 Immagini contenitore pubbliche IBM
 
     {: .navgroup id="learn"}

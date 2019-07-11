@@ -229,5 +229,5 @@ sp-gateway-8a9031ab:
 |キー|説明|
 |---|-------------|
 |`SL_USER`|IBM Cloud インフラストラクチャー・ユーザー名|
-|`SL_APIKEY`|IBM Cloud インフラストラクチャー API 鍵|
+|`SL_APIKEY`|IBM Cloud インフラストラクチャー API キー|
 {: caption="表 2. 環境変数" caption-side="top"}
