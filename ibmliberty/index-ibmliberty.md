@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-24"
+lastupdated: "2019-08-22"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -95,7 +95,7 @@ Before you begin, review the [usage restrictions](#ibmliberty_usage) for the `ib
 3. For more information about building containers from images, setting up clusters, and deploying apps in clusters, use the following links:
 
     - [Building containers from images](/docs/containers?topic=containers-images#images)
-    - [Getting started with IBM Cloud Kubernetes Service](/docs/containers?topic=containers-getting-started#getting-started)
+    - [Getting started with {{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started)
     - [Deploying apps in clusters](/docs/containers?topic=containers-app#app)
 
     The `ibm/liberty` image requires that port 9080 is public. When you create a container from the {{site.data.keyword.cloud_notm}} Dashboard, the port is added in the **Public Port** field by default. If you create a container from the CLI, make the port public by running the `kubectl run` command with the `--port=9080` option.
