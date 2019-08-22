@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-08-22"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public image
 
@@ -71,7 +71,7 @@ The `ibmcloud-secure-perimeter-network` image provides the following software pa
 4. Enter all other details as required.
 5. Click **Create Cluster**.
 
-To access your cluster after it is deployed, see [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started).
+To access your cluster after it is deployed, see [Getting started with {{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started).
 
 ## Run initial config of your Secure Perimeter Vyatta
 {: #spn_initial_setup}
