@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-08-22"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
 
@@ -87,7 +87,7 @@ The `ibmcloud-secure-perimeter-health` image provides the following software pac
 4. Enter all other details as you require.
 5. Click **Create Cluster**.
 
-For more information about how to get access to your cluster after it is deployed, see [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started).
+For more information about how to get access to your cluster after it is deployed, see [Getting started with {{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started).
 
 ## Scan private networks within a Secure Perimeter
 {: #sph_private_networks}
