@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-21"
+lastupdated: "2019-09-11"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -86,7 +86,7 @@ Create and configure an {{site.data.keyword.cos_full_notm}} service instance to 
    2. In the navigation on the service details page, click **Buckets** > **Configuration**.
    3. Make note of the public URL that you can use to access the data in your bucket.
 
-Review the [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about-ibm-cloud-object-storage) documentation for more information on configuring your service instance.
+For more information about configuring your service instance, see the [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-getting-started) documentation.
 
 ## Backing up data from a persistent volume
 {: #backup_restore_scheduled_backup}
