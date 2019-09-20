@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-08-22"
+lastupdated: "2019-09-20"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -104,7 +104,7 @@ Before you begin, review the [usage restrictions](#ibmliberty_usage) for the `ib
 ## Monitoring the Java heap space usage for a container with the CLI
 {: #ibmliberty_monitor_heap}
 
-After you create a container from the `ibm/liberty` image, you can view metrics on a particular pod and its containers and review the Java heap usage. The Java heap space is the memory that is available to the Java application during runtime.
+After you create a container from the `ibm/liberty` image, you can view metrics on a particular pod and its containers and review the Java heap usage. The Java heap space is the memory that is available to the Java application at run time.
 {:shortdesc}
 
 1. Get the name of the pod that you want to view metrics for.
@@ -121,7 +121,7 @@ After you create a container from the `ibm/liberty` image, you can view metrics 
    ```
    {: pre}
 
-3. To review the Java heap usage, you must access the **RSS** memory stat, see [Get a Shell to a Running Container ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/). The Java heap usage is displayed in kilobytes (KB). If your heap usage is under 2097152 KB (2 GB) across all instances, then you do not have to purchase a WebSphere Application Server license.
+3. To review the Java heap usage, you must access the **RSS** memory stat, see [Kubernetes: Get a shell to a running container ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/). The Java heap usage is displayed in KB. If your heap usage is under 2097152 KB (2 GB) across all instances, then you do not have to purchase a WebSphere Application Server license.
 
 4. Adjust the maximum heap usage for your WebSphere Application Server instance. For more information, see [Setting generic JVM arguments in the WebSphere Application Server V8.5 Liberty profile ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www-01.ibm.com/support/docview.wss?uid=swg21596474).
 
