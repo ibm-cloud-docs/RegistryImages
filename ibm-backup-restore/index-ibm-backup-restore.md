@@ -38,13 +38,15 @@ You can access the images that are provided by {{site.data.keyword.IBM_notm}} by
 
 With the `ibmcloud-backup-restore` image, you can create a one-time or scheduled backup for app data that is stored in a persistent volume (PV) in your cluster or restore app data to a PV. To back up and restore data, you deploy a pod from the `ibmcloud-backup-restore` image. Then, you mount the PVC that binds the PV that you want to back up or the PV that you want to use for restoring your data to your pod.
 
-**Where does my data go? How do I access it?**
+<dl>
+  <dt>Where does my data go? How do I access it?</dt>
+  <dd>Data that you back up are stored in an {{site.data.keyword.cos_full_notm}} service instance. To access the service, use your {{site.data.keyword.cos_full_notm}} service credentials as environment variables in the `ibmcloud-backup-restore` pod, or edit the `config.conf` file in the running pod.</dd>
+</dl>
 
-Data that you back up are stored in an {{site.data.keyword.cos_full_notm}} service instance. To access the service, use your {{site.data.keyword.cos_full_notm}} service credentials as environment variables in the `ibmcloud-backup-restore` pod, or edit the `config.conf` file in the running pod.
-
-**Can I restore backed up data to a different app or a different PV?**
-
-Yes, you can restore your saved data from the {{site.data.keyword.cos_full_notm}} service instance to a PV in your cluster. To restore data, you must create a restore pod from the `ibmcloud-backup-restore` image. Then, you mount the PVC that binds the PV that you want to use to your pod.  
+<dl>
+  <dt>Can I restore backed up data to a different app or a different PV?</dt>
+  <dd>Yes, you can restore your saved data from the {{site.data.keyword.cos_full_notm}} service instance to a PV in your cluster. To restore data, you must create a restore pod from the `ibmcloud-backup-restore` image. Then, you mount the PVC that binds the PV that you want to use to your pod. </dd>
+</dl> 
 
 ## What is included
 {: #backup_restore_whats_included}
