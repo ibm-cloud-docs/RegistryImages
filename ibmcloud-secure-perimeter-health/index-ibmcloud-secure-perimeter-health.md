@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-08-22"
+lastupdated: "2019-09-24"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
 
@@ -46,7 +46,7 @@ For more information about Secure Perimeter, see these blog articles:
 After scanning, the `ibmcloud-secure-perimeter-health` image produces a report on which networks were reachable from within the Secure Perimeter Segment. Each report details the name of the network gateway, VLAN, its subnets, and any offending hosts. The following code is an example report of a user that scanned for private network vulnerabilities:
 
 ```
-#-------- Running Secure Perimeter exposure scan 2018-05-24 12:00:00 --------#
+# -------- Running Secure Perimeter exposure scan 2018-05-24 12:00:00 -------- #
 
 RESULTS:
 
@@ -94,7 +94,8 @@ For more information about how to get access to your cluster after it is deploye
 
 Create a container pod from the `ibmcloud-secure-perimeter-health` image, and set up a routine scan.
 
-**Before you begin**
+### Before you begin
+{: #sph_private_networks_prereq}
 
 - Install the required [CLIs](/docs/containers?topic=containers-cs_cli_install#cs_cli_install).
 - [Target your CLI](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure) to your cluster.
@@ -159,7 +160,8 @@ Create a container pod from the `ibmcloud-secure-perimeter-health` image, and se
 
 Create a Docker container from the `ibmcloud-secure-perimeter-health` image and scan public networks.
 
-**Before you begin**
+### Before you begin
+{: #sph_public_networks_prereq}
 
 - Install Docker.
 
@@ -178,7 +180,7 @@ Create a Docker container from the `ibmcloud-secure-perimeter-health` image and 
 The `ibmcloud-secure-perimeter-health` produces a formatted report on functioning health of a Secure Perimeter:
 
 ```
-#-------- Running Secure Perimeter exposure scan 2018-05-24 12:00:00 --------#
+# -------- Running Secure Perimeter exposure scan 2018-05-24 12:00:00 -------- #
 
 RESULTS:
 
