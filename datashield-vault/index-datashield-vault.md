@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-06-03"
+lastupdated: "2019-09-24"
 
 keywords: IBM Cloud Container Registry, Data Shield environment, container image, public image, Vault image, data in use, memory encryption, Intel SGX, Fortanix,
 
@@ -24,7 +24,7 @@ subcollection: RegistryImages
 # Getting started with the `datashield-vault` image
 {: #datashield-vault_starter}
 
-This container image provides protection for data that is in use by running Vault in the {{site.data.keyword.datashield_short}} environment. For more information about the service and what it means to protect "data in use", see the [{{site.data.keyword.datashield_short}} documentation](/docs/services/data-shield?topic=data-shield-about#about).
+This container image provides protection for data that is in use by running Vault in the {{site.data.keyword.datashield_short}} environment. For more information about the service and what it means to protect data in use, see the [{{site.data.keyword.datashield_short}} documentation](/docs/services/data-shield?topic=data-shield-about#about).
 {: shortdesc}
 
 You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
