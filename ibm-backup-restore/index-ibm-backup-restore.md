@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-09-11"
+lastupdated: "2019-09-24"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -96,7 +96,8 @@ You can create a one-time or scheduled backup for any persistent volume (PV) tha
 
 The following example shows you how to deploy a backup pod from the `ibmcloud-backup-restore` image, mount an existing PV to the backup pod by using a PVC, and back up the data from the PV to your {{site.data.keyword.cos_full_notm}} service instance.  
 
-**Before you begin**
+### Before you begin
+{: #backup_restore_scheduled_backup_prereq}
 
 - [Set up an {{site.data.keyword.cos_full_notm}} service instance](#backup_restore_setup_object_storage).
 - Install the required [CLIs](/docs/containers?topic=containers-cs_cli_install#cs_cli_install) to create and work with your cluster.
@@ -248,7 +249,8 @@ You can restore data from your {{site.data.keyword.cos_full_notm}} service insta
 
 If you have multiple full backups in your {{site.data.keyword.cos_full_notm}} service instance, the PVC is restored with the data of the last full backup. If you have incremental backups, the PVC is restored with the data of the last full backup, including all incremental backups up to the day where you start the restore.
 
-**Before you begin**
+### Before you begin
+{: #backup_restore_restore_script_cli_prereq}
 
 - [Target your CLI to your cluster](/docs/containers?topic=containers-cs_cli_install#cs_cli_configure).
 - [Create a backup for a PV in your cluster](#backup_restore_scheduled_backup).
