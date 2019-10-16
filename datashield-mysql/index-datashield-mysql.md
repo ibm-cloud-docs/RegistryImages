@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-06-03"
+lastupdated: "2019-10-16"
 
 keywords: IBM Cloud Container Registry, Data Shield, data in use, memory encryption, Intel SGX, Fortanix, mysql image, mariaDB, container image, public image
 
@@ -93,30 +93,14 @@ spec:
       targetPort: 3306
 ```
 {: codeblock}
-  
-<table>
-<caption>Table 1. Required input variables</caption>
-  <tr>
-    <th>Variable</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td><code>IMAGE_NAME</code></td>
-    <td>The name of the image that you want to deploy.</td>
-  </tr>
-    <tr>
-    <td><code>MARIADB_ROOT_PASSWORD</code></td>
-    <td>Sets the password for the MariaDB root user.</td>
-  </tr>
-  <tr>
-    <td><code>ROOT_PASSWORD</code></td>
-    <td>The password that you want to set for the MariaDB root user.</td>
-  </tr>
-  <tr>
-    <td><code>NODE_IP</code></td>
-    <td>The node IP address of your MariaDB instance.</td>
-  </tr>
-</table>
+
+| Variable | Description |
+|-----------------|-----------------|
+| `IMAGE_NAME` | The name of the image that you want to deploy. |
+| `MARIADB_ROOT_PASSWORD` | Sets the password for the MariaDB root user. |
+| `ROOT_PASSWORD` | The password that you want to set for the MariaDB root user. |
+| `NODE_IP` | The node IP address of your MariaDB instance. |
+{: caption="Table 1. Required input variables" caption-side="top"}
 
 ### Accepted environment variables
 {: #datashield-mariadb-variables}
@@ -136,49 +120,18 @@ spec:
 ```
 {: screen}
 
-<table>
-<caption>Table 2. The environment variables that the MariaDB container accepts</caption>
-  <tr>
-    <th>Variable</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td><code>MARIADB_ALLOW_EMPTY_PASSWORD</code></td>
-    <td>Allows the database to start with an empty password for the root user. Not recommended.</td>
-  </tr>
-  <tr>
-    <td><code>MARIADB_RANDOM_ROOT_PASSWORD</code></td>
-    <td>Generates a random password for the MariaDB root user.</td>
-  </tr>
-  <tr>
-    <td><code>MARIADB_USER</code></td>
-    <td>Creates a regular MariaDB user with the specified user name.</td>
-  </tr>
-  <tr>
-    <td><code>MARIADB_PASSWORD</code></td>
-    <td>Password for <code>MARIADB_USER</code>.</td>
-  </tr>
-  <tr>
-    <td><code>MARIADB_DATABASE</code></td>
-    <td>Creates an empty database with the specified name.</td>
-  </tr>
-  <tr>
-    <td><code>MARIADB_REPLICATION_MODE</code></td>
-    <td>Enables replication. Options include <code>master</code> or <code>slave</code>.</td>
-  </tr>
-  <tr>
-    <td><code>MARIADB_REPLICATION_USER</code> (master or slave)</td>
-    <td>Sets the name of the replication user. This user is created on the master and is used by the slave to connect.</td>
-  </tr>
-  <tr>
-    <td><code>MARIADB_REPLICATION_PASSWORD</code> (master or slave)</td>
-    <td>Sets the password for the replication user. This password is used on the master to create the user and by the slave to log in.</td>
-  </tr>
-  <tr>
-    <td><code>MARIADB_REPLICATION_MASTER_HOST</code> (slave)</td>
-    <td>Sets the host name to connect to for replication.</td>
-  </tr>
-</table>
+| Variable | Description |
+|-----------------|-----------------|
+| `MARIADB_ALLOW_EMPTY_PASSWORD` | Allows the database to start with an empty password for the root user. Not recommended. |
+| `MARIADB_RANDOM_ROOT_PASSWORD` | Generates a random password for the MariaDB root user. |
+| `MARIADB_USER` | Creates a regular MariaDB user with the specified user name. |
+| `MARIADB_PASSWORD` | Password for `MARIADB_USER`. |
+| `MARIADB_DATABASE` | Creates an empty database with the specified name. |
+| `MARIADB_REPLICATION_MODE` | Enables replication. Options include `master` or `slave`. |
+| `MARIADB_REPLICATION_USER`  (master or slave) | Sets the name of the replication user. This user is created on the master and is used by the slave to connect. |
+| `MARIADB_REPLICATION_PASSWORD` (master or slave) | Sets the password for the replication user. This password is used on the master to create the user and by the slave to log in. |
+| `MARIADB_REPLICATION_MASTER_HOST` (slave) | Sets the host name to connect to for replication. |
+{: caption="Table 2. The environment variables that the MariaDB container accepts" caption-side="top"}
 
 ## Connecting to the MariaDB instance
 {: #datashield-mariadb-connect}
