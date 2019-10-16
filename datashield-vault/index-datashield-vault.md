@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-09-24"
+lastupdated: "2019-10-16"
 
 keywords: IBM Cloud Container Registry, Data Shield environment, container image, public image, Vault image, data in use, memory encryption, Intel SGX, Fortanix,
 
@@ -92,21 +92,11 @@ spec:
 ```
 {: codeblock}
 
-<table>
-<caption>Table 1. Required input variables</caption>
-  <tr>
-    <th>Variable</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td><code>IMAGE_NAME</code></td>
-    <td>The name of the image that you want to deploy.</td>
-  </tr>
-  <tr>
-    <td><code>NODE-IP</code></td>
-    <td>The node IP address of your Vault instance. To find the IP address, you can use either <code>kubectl get pod -owide</code> or <code>kubectl describe pod</code>.</td>
-  </tr>
-</table>
+| Variable | Description |
+|-----------------|-----------------|
+| `IMAGE_NAME` | The name of the image that you want to deploy. |
+| `NODE_IP` | The node IP address of your Vault instance. To find the IP address, you can use either `kubectl get pod -owide` or `kubectl describe pod`. |
+{: caption="Table 1. Required input variables" caption-side="top"}
 
 ## Accessing a protected instance of Vault
 {: #datashield-vault-access}
@@ -115,14 +105,14 @@ To access the protected instance of Vault, complete the following steps:
 
 1. Look up the node IP address for your instance by running one of the following commands.
 
-   * Option 1:
+   - Option 1:
 
    ```
    kubectl get pod -owide
    ```
    {: codeblock}
 
-   * Option 2:
+   - Option 2:
   
    ```
    kubectl describe pod
