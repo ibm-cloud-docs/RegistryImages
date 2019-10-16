@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-09-20"
+lastupdated: "2019-10-16"
 
 keywords: IBM Cloud Container Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public image
 
@@ -50,7 +50,7 @@ The specific Liberty features that are installed in the image depend on the tag 
 
 |Tag|Description|
 |---|-----------|
-|All `ibm/liberty` images|All `ibm/liberty` images include the following features. <ul><li>`appSecurity-2.0`</li><li>`collectiveMember-1.0`</li><li>`localConnector-1.0`</li><li>`IdapRegistry-3.0`</li><li>`monitor-1.0`</li><li>`requestTiming-1.0`</li><li>`restConnector-1.0`</li><li>`sessionDatabase-1.0`</li><li>`ssl-1.0`</li><li>`webCache-1.0`</li></ul>|
+|All `ibm/liberty` images|All `ibm/liberty` images include the following features: </br></br>`appSecurity-2.0`</br></br>`collectiveMember-1.0`</br></br>`localConnector-1.0`</br></br>`IdapRegistry-3.0`</br></br>`monitor-1.0`</br></br>`requestTiming-1.0`</br></br>`restConnector-1.0`</br></br>`sessionDatabase-1.0`</br></br>`ssl-1.0`</br></br>`webCache-1.0`|
 |`ibm/liberty:latest`|This image points to the `ibm/liberty:javaee8` image.|
 |`ibm/liberty:microProfile1`|This image contains the features that provide the capabilities that are specified by [MicroProfile 1.x ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://microprofile.io/).|
 |`ibm/liberty:microProfile2`|This image contains the features that provide the capabilities that are specified by [MicroProfile 2.x ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://microprofile.io/).|
