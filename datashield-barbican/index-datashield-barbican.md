@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-09-24"
+lastupdated: "2019-10-16"
 
 keywords: IBM Cloud Container Registry, Data Shield environment, datashield-barbican image, container image, Barbican, Registry, data in use, memory encryption, Intel SGX, Fortanix,
 
@@ -92,21 +92,11 @@ spec:
 ```
 {: codeblock}
 
-<table>
-<caption>Table 1. Required input variables</caption>
-  <tr>
-    <th>Variable</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td><code>IMAGE_NAME</code></td>
-    <td>The name of the image that you want to deploy.</td>
-  </tr>
-  <tr>
-    <td><code>NODE_IP</code></td>
-    <td>The node IP address of your Barbican instance.</td>
-  </tr>
-</table>
+| Variable | Description |
+|-----------------|-----------------|
+| `IMAGE_NAME` | The name of the image that you want to deploy. |
+| `NODE_IP` | The node IP address of your Barbican instance. |
+{: caption="Table 1. Required input variables" caption-side="top"}
 
 It might take a few minutes for the container to deploy and start. The demonstration Barbican instance is configured without Keystone authentication. Requests must include the header `X-Project-Id: 12345`.
 {: tip}
