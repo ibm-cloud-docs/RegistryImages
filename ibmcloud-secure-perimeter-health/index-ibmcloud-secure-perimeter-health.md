@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-09-24"
+lastupdated: "2019-10-18"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public image
 
@@ -27,7 +27,7 @@ subcollection: RegistryImages
 The `ibmcloud-secure-perimeter-health` image contains a tool for scanning vulnerabilities in a Secure Perimeter in {{site.data.keyword.cloud}}.
 {:shortdesc}
 
-You can access the images that are provided by {{site.data.keyword.IBM_notm}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
+You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [{{site.data.keyword.IBM_notm}} public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
 ## How it works
@@ -217,19 +217,19 @@ The `ibmcloud-secure-perimeter-health` determines a subnet as `PASS` if no hosts
 ## Container argument reference
 {: #sph_reference_container_arg}
 
-|Key|Description|Default
+| Key | Description | Default |
 |---|-------------|---|
-|`scan`|The type of exposure scan ("public" or "private") |None (scan both)
-|`exclude-vlan-ids`|List of VLANs by IDs to avoid scanning|None
-|`poll-interval`|Set the number of seconds until the next scan|0 (run once)
-|`allowed-public-ports`|List of ports to whitelist under the scan|80, 443, 9000-9999
+| `scan` | The type of exposure scan ("public" or "private") | None (scan both) |
+| `exclude-vlan-ids` | List of VLANs by IDs to avoid scanning | None |
+| `poll-interval` | Set the number of seconds until the next scan | 0 (run once) |
+| `allowed-public-ports` | List of ports to whitelist under the scan | 80, 443, 9000-9999 |
 {: caption="Table 1. Container arguments" caption-side="top"}
 
 ## Environment variable reference
 {: #sph_reference_env_var}
 
-|Key|Description|
+| Key | Description |
 |---|-------------|
-|`SL_USER`|Your IBM Cloud infrastructure user name|
-|`SL_APIKEY`|Your IBM Cloud infrastructure API key|
+| `SL_USER` | Your {{site.data.keyword.cloud_notm}} infrastructure user name |
+| `SL_APIKEY` | Your {{site.data.keyword.cloud_notm}} infrastructure API key |
 {: caption="Table 2. Environment variables" caption-side="top"}
