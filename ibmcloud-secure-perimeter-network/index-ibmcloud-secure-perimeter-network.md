@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-08-22"
+lastupdated: "2019-10-18"
 
 keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public image
 
@@ -27,7 +27,7 @@ subcollection: RegistryImages
 The `ibmcloud-secure-perimeter-network` image contains tools for automating the configuration of Vyatta virtual router appliances within a Secure Perimeter.
 {:shortdesc}
 
-You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
+You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [{{site.data.keyword.IBM_notm}} public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
 ## How it works
@@ -37,13 +37,13 @@ With `ibmcloud-secure-perimeter-network`, you can automate the configuration of 
 
 For more information about Secure Perimeter, see these blog articles:
 
-- [Set up a Secure Perimeter in IBM Cloud ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/).
-- [Set up an automated Secure Perimeter in IBM Cloud ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
+- [Set up a Secure Perimeter in {{site.data.keyword.cloud_notm}} ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/).
+- [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}} ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
 
 You can use the `ibmcloud-secure-perimeter-network` image in two ways:
 
 - Use `ibmcloud-secure-perimeter-network` as a Docker container to initialize the Secure Perimeter firewall rules configuration.
-- Use `ibmcloud-secure-perimeter-network` as a pod on a Kubernetes cluster to poll the IBM Cloud infrastructure account for new subnets that are created on your Secure Perimeter Segment VLANs and add them to the Vyatta firewall configuration.
+- Use `ibmcloud-secure-perimeter-network` as a pod on a Kubernetes cluster to poll the {{site.data.keyword.cloud}} infrastructure account for new subnets that are created on your Secure Perimeter Segment VLANs and add them to the Vyatta firewall configuration.
 
 ## What is included
 {: #spn_whats_included}
@@ -59,13 +59,13 @@ The `ibmcloud-secure-perimeter-network` image provides the following software pa
 ## Prerequisites
 {: #spn_prerequisites}
 
-- Vyatta and VLANs ordered from the IBM Cloud infrastructure portal and VLANs that are associated to the Vyatta.
-- The automated Secure Perimeter deployment pre-loads the Vyatta with SSH keys that `ibmcloud-secure-perimeter-network` uses to access the gateway. SSH keys must be loaded either manually or through the Secure Perimeter installation process. For more information, see [Set up an automated Secure Perimeter in IBM Cloud ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
+- Vyatta and VLANs ordered from the {{site.data.keyword.cloud_notm}} infrastructure portal and VLANs that are associated to the Vyatta.
+- The automated Secure Perimeter deployment pre-loads the Vyatta with SSH keys that `ibmcloud-secure-perimeter-network` uses to access the gateway. SSH keys must be loaded either manually or through the Secure Perimeter installation process. For more information, see [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}} ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
 
 ## Provision a Kubernetes cluster within a Secure Perimeter by using {{site.data.keyword.containerlong_notm}}
 {: #spn_provision_cluster}
 
-1. Provision your Kubernetes cluster from the **Containers** section in IBM Cloud catalog.
+1. Provision your Kubernetes cluster from the **Containers** section in {{site.data.keyword.cloud_notm}} catalog.
 2. Click **Create**.
 3. Select the Secure Perimeter Segment public and private VLANs from the VLAN lists.
 4. Enter all other details as required.
@@ -208,26 +208,26 @@ If you want the `ibmcloud-secure-perimeter-network` image to manage subnets on y
 ## `config.json` reference
 {: #spn_reference_config_json}
 
-|Key|Description
-|---|-------------|---|
-|`slid`|Your IBM Cloud infrastructure user name
-|`apikey`|Your IBM Cloud infrastructure API key
-|`region`|The IBM Cloud region where the Vyatta is deployed
-|`inf_name_private`|The name of the Vyatta private interface
-|`inf_name_public`|The name of the Vyatta public interface
-|`gatewayid`|The Vyatta gateway ID
-|`vlans`|List of Secure Perimeter Segment VLANs containing the type, VLAN number, and VLAN ID
-|`vyatta_gateway_vip`|The VIP of the Gateway
-|`vyatta_primary`|Object that contains the private and public IP of the primary Vyatta member
-|`vyatta_secondary`|Object that contains the private and public IP of the secondary Vyatta member
+| Key | Description |
+|---|-------------|
+| `slid` | Your {{site.data.keyword.cloud_notm}} infrastructure user name |
+| `apikey` | Your {{site.data.keyword.cloud_notm}} infrastructure API key |
+| `region` | The {{site.data.keyword.cloud_notm}} region where the Vyatta is deployed |
+| `inf_name_private` | The name of the Vyatta private interface |
+| `inf_name_public` | The name of the Vyatta public interface |
+| `gatewayid` | The Vyatta gateway ID |
+| `vlans` | List of Secure Perimeter Segment VLANs containing the type, VLAN number, and VLAN ID |
+| `vyatta_gateway_vip` | The VIP of the Gateway |
+| `vyatta_primary` |Object that contains the private and public IP of the primary Vyatta member |
+| `vyatta_secondary` |Object that contains the private and public IP of the secondary Vyatta member |
 {: caption="Table 1. <code>config.json</code>" caption-side="top"}
 
 ## `rules.conf` reference
 {: #spn_reference_rules_conf}
 
-|Key|Description
-|---|-------------|---|
-|`external_subnets`|List of subnets on the public internet that Secure Perimeter can use
-|`external_ports`|List of ports that Secure Perimeter can use
-|`userips`|List of user IPs to whitelist to Secure Perimeter
+| Key | Description |
+|---|-------------|
+| `external_subnets` | List of subnets on the public internet that Secure Perimeter can use |
+| `external_ports` | List of ports that Secure Perimeter can use |
+| `userips` | List of user IPs to whitelist to Secure Perimeter |
 {: caption="Table 2. <code>rules.conf</code>" caption-side="top"}
