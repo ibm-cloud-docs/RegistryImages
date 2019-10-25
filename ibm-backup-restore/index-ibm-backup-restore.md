@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-09-24"
+lastupdated: "2019-10-18"
 
 keywords: IBM Cloud Container Registry, IBM Cloud Kubernetes Service, ibm-backup-restore, container image, back up data, restore data
 
@@ -27,10 +27,10 @@ subcollection: RegistryImages
 The `ibmcloud-backup-restore` image contains the preinstalled packages that are needed to back up and restore persistent storage in {{site.data.keyword.containerlong}}.
 {:shortdesc}
 
-The `ibmcloud-backup-restore` image is available only in the `icr.io` registry domains, and is deprecated in the `registry.bluemix.net` domains. To access the image and deploy containers from it, your cluster must store an API key in an image pull secret to authorize access to {{site.data.keyword.registryshort_notm}}. For clusters that were created before 25 February 2019, you must update your cluster to have access to the `icr.io` registry domains so that you can use the `ibmcloud-backup-restore` image. For more information about what changed and how to update your cluster, see [Understanding how to authorize your cluster to pull images from a registry](/docs/containers?topic=containers-images#cluster_registry_auth) and [Updating existing clusters to use the API key image pull secret](/docs/containers?topic=containers-images#imagePullSecret_migrate_api_key). 
+The `ibmcloud-backup-restore` image is available only in the `icr.io` registry domains, and is deprecated in the `registry.bluemix.net` domains. To access the image and deploy containers from it, your cluster must store an API key in an image pull secret to authorize access to {{site.data.keyword.registryshort_notm}}. For clusters that were created before 25 February 2019, you must update your cluster to have access to the `icr.io` registry domains so that you can use the `ibmcloud-backup-restore` image. For more information about what changed and how to update your cluster, see [Understanding how to authorize your cluster to pull images from a registry](/docs/containers?topic=containers-images#cluster_registry_auth) and [Updating existing clusters to use the API key image pull secret](/docs/containers?topic=containers-images#imagePullSecret_migrate_api_key).
 {: important}
 
-You can access the images that are provided by {{site.data.keyword.IBM_notm}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
+You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [{{site.data.keyword.IBM_notm}} public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
 
 ## How it works
@@ -46,7 +46,7 @@ With the `ibmcloud-backup-restore` image, you can create a one-time or scheduled
 <dl>
   <dt>Can I restore backed up data to a different app or a different PV?</dt>
   <dd>Yes, you can restore your saved data from the {{site.data.keyword.cos_full_notm}} service instance to a PV in your cluster. To restore data, you must create a restore pod from the `ibmcloud-backup-restore` image. Then, you mount the PVC that binds the PV that you want to use to your pod. </dd>
-</dl> 
+</dl>
 
 ## What is included
 {: #backup_restore_whats_included}
@@ -96,7 +96,7 @@ For more information about configuring your service instance, see the [{{site.da
 You can create a one-time or scheduled backup for any persistent volume (PV) that is mounted to your app pod through a persistent volume claim (PVC).  
 {: shortdesc}
 
-The following example shows you how to deploy a backup pod from the `ibmcloud-backup-restore` image, mount an existing PV to the backup pod by using a PVC, and back up the data from the PV to your {{site.data.keyword.cos_full_notm}} service instance.  
+The following example shows you how to deploy a backup pod from the `ibmcloud-backup-restore` image, mount an existing PV to the backup pod by using a PVC, and back up the data from the PV to your {{site.data.keyword.cos_full_notm}} service instance.
 
 ### Before you begin
 {: #backup_restore_scheduled_backup_prereq}
@@ -121,7 +121,7 @@ To back up an existing PV, complete the following steps:
    The `ibmcloud-backup-restore` image must be deployed in a single pod and cannot be used as part of a Kubernetes deployment.
    {: important}
 
-   To view the image, target the global registry by running the `ibmcloud cr region-set global` command. Then, run `ibmcloud cr images --include-ibm` to list IBM public images.
+   To view the image, target the global registry by running the `ibmcloud cr region-set global` command. Then, run `ibmcloud cr images --include-ibm` to list {{site.data.keyword.IBM_notm}} public images.
    {: tip}
   
    ```
@@ -144,7 +144,7 @@ To back up an existing PV, complete the following steps:
          value: '<regional_endpoint>'
        - name: BUCKET_NAME
          value: '<bucket_name>'
-       - name: BACKUP_DIRECTORY  
+       - name: BACKUP_DIRECTORY
          value: /myvol
        - name: BACKUP_NAME
          value: <backup_name>
@@ -163,10 +163,10 @@ To back up an existing PV, complete the following steps:
      volumes:
      - name: pvc_name1
        persistentVolumeClaim:
-         claimName: <pvc_name1>  
+         claimName: <pvc_name1>
      - name: pvc_name2
        persistentVolumeClaim:
-         claimName: <pvc_name2> 
+         claimName: <pvc_name2>
    ```
    {: codeblock}
 
@@ -247,7 +247,7 @@ Your backup is available. If you configured your backup to create a one-time ful
 ## Restoring data from {{site.data.keyword.cos_full_notm}} to your cluster
 {: #backup_restore_restore_script_cli}
 
-You can restore data from your {{site.data.keyword.cos_full_notm}} service instance to a PV in your cluster.
+You can restore data from your {{site.data.keyword.cos_full_notm}} service instance to a PV in your cluster. 
 
 If you have multiple full backups in your {{site.data.keyword.cos_full_notm}} service instance, the PVC is restored with the data of the last full backup. If you have incremental backups, the PVC is restored with the data of the last full backup, including all incremental backups up to the day where you start the restore.
 
@@ -302,10 +302,10 @@ To restore data from {{site.data.keyword.cos_full_notm}} to a PV, complete the f
      volumes:
      - name: pvc_name1
        persistentVolumeClaim:
-         claimName: <pvc_name1>  
+         claimName: <pvc_name1>
      - name: pvc_name2
        persistentVolumeClaim:
-         claimName: <pvc_name2> 
+         claimName: <pvc_name2>
    ```
    {: codeblock}
 
