@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-05-21"
+lastupdated: "2019-10-18"
 
 keywords: IBM Cloud Container Registry, ibm-node-strong image, container image, public image
 
@@ -29,5 +29,6 @@ The `ibm-node-strong-pm` public image is no longer available.
 
 You can get started with the [{{site.data.keyword.apiconnect_short}} service](/docs/services/apiconnect?topic=apiconnect-getting-started#getting-started) instead.
 
-You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [IBM public images](/docs/services/Registry?topic=registry-public_images#public_images).
+You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [{{site.data.keyword.IBM_notm}} public images](/docs/services/Registry?topic=registry-public_images#public_images).
 {: tip}
+
