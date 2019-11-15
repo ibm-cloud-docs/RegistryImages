@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-10-18"
+lastupdated: "2019-11-15"
 
-keywords: IBM Cloud Container Registry, Data Shield environment, container image, public image, Vault image, data in use, memory encryption, Intel SGX, Fortanix,
+keywords: registry, Data Shield environment, container image, public images, Vault image, data in use, memory encryption, Intel SGX, Fortanix,
 
 subcollection: RegistryImages
 
