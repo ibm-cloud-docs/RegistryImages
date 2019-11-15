@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-10-18"
+lastupdated: "2019-11-15"
 
-keywords: IBM Cloud Container Registry, Data Shield, data in use, memory encryption, Intel SGX, Fortanix, mysql image, mariaDB, container image, public image
+keywords: registry, Data Shield, data in use, memory encryption, Intel SGX, Fortanix, mysql image, mariaDB, container image, public images,
 
 subcollection: RegistryImages
 
