@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-10-18"
+lastupdated: "2019-11-15"
 
-keywords: IBM Cloud Container Registry, ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public image
+keywords: registry, ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public images,
 
 subcollection: RegistryImages
 
