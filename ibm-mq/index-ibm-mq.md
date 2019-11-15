@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-10-18"
+lastupdated: "2019-11-15"
 
-keywords: IBM Cloud Container Registry, IBM MQ, ibm-mq, container image, public image
+keywords: registry, IBM MQ, ibm-mq, container image, public images, MQ,
 
 subcollection: RegistryImages
 
