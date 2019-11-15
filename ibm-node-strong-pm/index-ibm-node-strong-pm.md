@@ -2,9 +2,9 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-10-18"
+lastupdated: "2019-11-15"
 
-keywords: IBM Cloud Container Registry, ibm-node-strong image, container image, public image
+keywords: registry, ibm-node-strong image, container image, public images,
 
 subcollection: RegistryImages
 
