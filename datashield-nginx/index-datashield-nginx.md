@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-11-15"
+lastupdated: "2019-12-16"
 
 keywords: registry, Data Shield environment, nginx image, container image, public images, data in use, memory encryption, Intel SGX, Fortanix,
 
@@ -20,6 +20,7 @@ subcollection: RegistryImages
 {:important: .important}
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
+{:term: .term}
 
 # Getting started with the `datashield-nginx` image
 {: #datashield-nginx_starter}
