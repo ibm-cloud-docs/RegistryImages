@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-11-15"
+lastupdated: "2019-12-16"
 
 keywords: registry, Data Shield, data in use, memory encryption, Intel SGX, Fortanix, mysql image, mariaDB, container image, public images,
 
@@ -20,6 +20,7 @@ subcollection: RegistryImages
 {:important: .important}
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
+{:term: .term}
 
 # Getting started with the `datashield-mariadb` image
 {: #datashield-mariadb_starter}
