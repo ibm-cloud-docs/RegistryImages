@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-11-15"
+lastupdated: "2019-12-16"
 
 keywords: registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public images,
 
@@ -21,6 +21,7 @@ subcollection: RegistryImages
 {:important: .important}
 {:deprecated: .deprecated}
 {:download: .download}
+{:term: .term}
 
 # Getting started with the `ibm/liberty` image
 {: #ibmliberty}
