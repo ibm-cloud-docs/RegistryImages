@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-12-10"
+lastupdated: "2019-12-16"
 
 keywords: registry, Kubernetes, ibm-backup-restore, container image, back up data, restore data, public images,
 
@@ -20,6 +20,7 @@ subcollection: RegistryImages
 {:important: .important}
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
+{:term: .term}
 
 # Getting started with the `ibmcloud-backup-restore` image
 {: #ibmbackup_restore_starter}
