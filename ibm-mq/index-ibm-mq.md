@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-11-15"
+lastupdated: "2019-12-16"
 
 keywords: registry, IBM MQ, ibm-mq, container image, public images, MQ,
 
@@ -20,6 +20,7 @@ subcollection: RegistryImages
 {:important: .important}
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
+{:term: .term}
 
 # `ibm-mq` public image
 {: #mq}
