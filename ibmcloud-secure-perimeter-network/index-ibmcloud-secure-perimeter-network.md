@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2019
-lastupdated: "2019-12-16"
+  years: 2018, 2020
+lastupdated: "2020-01-22"
 
 keywords: registry, ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public images,
 
@@ -21,6 +21,7 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 {:term: .term}
+{:external: target="_blank" .external}
 
 # Getting started with the `ibmcloud-secure-perimeter-network` image
 {: #ibmcloud-secure-perimeter-network}
@@ -38,8 +39,8 @@ With `ibmcloud-secure-perimeter-network`, you can automate the configuration of 
 
 For more information about Secure Perimeter, see these blog articles:
 
-- [Set up a Secure Perimeter in {{site.data.keyword.cloud_notm}} ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/).
-- [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}} ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
+- [Set up a Secure Perimeter in {{site.data.keyword.cloud_notm}}](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/){: external}.
+- [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}}](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/){: external}.
 
 You can use the `ibmcloud-secure-perimeter-network` image in two ways:
 
@@ -61,7 +62,7 @@ The `ibmcloud-secure-perimeter-network` image provides the following software pa
 {: #spn_prerequisites}
 
 - Vyatta and VLANs ordered from the {{site.data.keyword.cloud_notm}} infrastructure portal and VLANs that are associated to the Vyatta.
-- The automated Secure Perimeter deployment pre-loads the Vyatta with SSH keys that `ibmcloud-secure-perimeter-network` uses to access the gateway. SSH keys must be loaded either manually or through the Secure Perimeter installation process. For more information, see [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}} ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/).
+- The automated Secure Perimeter deployment pre-loads the Vyatta with SSH keys that `ibmcloud-secure-perimeter-network` uses to access the gateway. SSH keys must be loaded either manually or through the Secure Perimeter installation process. For more information, see [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}}](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/){: external}.
 
 ## Provision a Kubernetes cluster within a Secure Perimeter by using {{site.data.keyword.containerlong_notm}}
 {: #spn_provision_cluster}
