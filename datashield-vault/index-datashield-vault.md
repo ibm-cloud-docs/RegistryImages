@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2019
-lastupdated: "2019-12-16"
+  years: 2018, 2020
+lastupdated: "2020-01-22"
 
 keywords: registry, Data Shield environment, container image, public images, Vault image, data in use, memory encryption, Intel SGX, Fortanix,
 
@@ -21,6 +21,7 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 {:term: .term}
+{:external: target="_blank" .external}
 
 # Getting started with the `datashield-vault` image
 {: #datashield-vault_starter}
@@ -122,5 +123,5 @@ To access the protected instance of Vault, complete the following steps:
 
 2. Set the `VAULT_ADDR` environment variable to `http://<YOUR_IP>:8200`.
 
-You can use Vault CLI commands like `vault init`, `vault unseal`, `vault auth`, `vault write`, and `vault read` to authenticate and access secrets. For more information about how to use the Vault CLI, see [Vault Commands (CLI) ![External link icon](../../../icons/launch-glyph.svg "External link icon")](https://www.vaultproject.io/docs/commands/index.html).
+You can use Vault CLI commands like `vault init`, `vault unseal`, `vault auth`, `vault write`, and `vault read` to authenticate and access secrets. For more information about how to use the Vault CLI, see [Vault Commands (CLI)](https://www.vaultproject.io/docs/commands/index.html){: external}.
 {: tip}
