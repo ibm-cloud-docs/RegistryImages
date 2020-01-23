@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2019
-lastupdated: "2019-12-16"
+  years: 2015, 2020
+lastupdated: "2020-01-22"
 
 keywords: registry, ibm-node-strong image, container image, public images,
 
@@ -21,6 +21,7 @@ subcollection: RegistryImages
 {:deprecated: .deprecated}
 {:table: .aria-labeledby="caption"}
 {:term: .term}
+{:external: target="_blank" .external}
 
 # `ibm-node-strong-pm` public image - deprecated
 {: #node-strong}
