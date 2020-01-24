@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-01-22"
+lastupdated: "2020-01-23"
 
 keywords: registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public images,
 
@@ -50,6 +50,8 @@ Every Liberty image provides the following software packages.
 
 The specific Liberty features that are installed in the image depend on the tag that you select. The following table shows the features that are included in each of the `ibm/liberty` images. For more information about each feature, see the [Liberty features overview in {{site.data.keyword.IBM_notm}} Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/rwlp_feat.html){: external}.
 
+The following table shows the features that are included in each of the `ibm/liberty` images.
+
 |Tag|Description|
 |---|-----------|
 |All `ibm/liberty` images|All `ibm/liberty` images include the following features: </br></br>`appSecurity-2.0`</br></br>`collectiveMember-1.0`</br></br>`localConnector-1.0`</br></br>`IdapRegistry-3.0`</br></br>`monitor-1.0`</br></br>`requestTiming-1.0`</br></br>`restConnector-1.0`</br></br>`sessionDatabase-1.0`</br></br>`ssl-1.0`</br></br>`webCache-1.0`|
@@ -72,6 +74,8 @@ The following table shows the restrictions that apply to the free usage of the `
 
 The pricing for the `ibm/liberty` image is independent of the pricing for the containers that you use in {{site.data.keyword.cloud_notm}}.
 {:tip}
+
+The following table shows the pricing.
 
 |Environment|Free usage restrictions|
 |-----------|-----------------------|
