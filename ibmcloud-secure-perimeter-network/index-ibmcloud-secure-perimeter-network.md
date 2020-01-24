@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-01-22"
+lastupdated: "2020-01-23"
 
 keywords: registry, ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public images,
 
@@ -210,6 +210,8 @@ If you want the `ibmcloud-secure-perimeter-network` image to manage subnets on y
 ## `config.json` reference
 {: #spn_reference_config_json}
 
+The following table shows the `config.json`.
+
 | Key | Description |
 |---|-------------|
 | `slid` | Your {{site.data.keyword.cloud_notm}} infrastructure user name |
@@ -226,6 +228,8 @@ If you want the `ibmcloud-secure-perimeter-network` image to manage subnets on y
 
 ## `rules.conf` reference
 {: #spn_reference_rules_conf}
+
+The following table shows the `rules.conf`.
 
 | Key | Description |
 |---|-------------|
