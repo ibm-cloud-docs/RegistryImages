@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-01-22"
+lastupdated: "2020-01-23"
 
 keywords: registry, Data Shield environment, datashield-barbican image, container image, Barbican, Registry, data in use, memory encryption, Intel SGX, Fortanix, public images, 
 
@@ -93,6 +93,8 @@ spec:
       targetPort: 9311
 ```
 {: codeblock}
+
+The following table shows the required input variables.
 
 | Variable | Description |
 |-----------------|-----------------|
