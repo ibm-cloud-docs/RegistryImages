@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-01-22"
+lastupdated: "2020-01-23"
 
 keywords: registry, Data Shield, data in use, memory encryption, Intel SGX, Fortanix, mysql image, mariaDB, container image, public images,
 
@@ -96,6 +96,8 @@ spec:
 ```
 {: codeblock}
 
+The following table shows the required input variables.
+
 | Variable | Description |
 |-----------------|-----------------|
 | `IMAGE_NAME` | The name of the image that you want to deploy. |
@@ -121,6 +123,8 @@ spec:
       value: <USER_NAME>
 ```
 {: screen}
+
+The following table shows the environment variables that the MariaDB container accepts.
 
 | Variable | Description |
 |-----------------|-----------------|
