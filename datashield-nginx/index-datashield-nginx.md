@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-01-22"
+lastupdated: "2020-01-23"
 
 keywords: registry, Data Shield environment, nginx image, container image, public images, data in use, memory encryption, Intel SGX, Fortanix,
 
@@ -93,6 +93,8 @@ spec:
       targetPort: 443
 ```
 {: codeblock}
+
+The following table shows the required input variables.
 
 | Variable | Description |
 |-----------------|-----------------|
