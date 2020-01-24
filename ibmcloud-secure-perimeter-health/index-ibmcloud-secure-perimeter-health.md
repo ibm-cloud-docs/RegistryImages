@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-01-22"
+lastupdated: "2020-01-23"
 
 keywords: registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public images,
 
@@ -151,6 +151,8 @@ Create a container pod from the `ibmcloud-secure-perimeter-health` image, and se
     ```
     {: pre}
 
+    The report is in the following format:
+
     ```
     NAME                                    READY     STATUS    RESTARTS   AGE
     health-pod-<random-id>                  1/1       Running   0          1hr
@@ -219,6 +221,8 @@ The `ibmcloud-secure-perimeter-health` determines a subnet as `PASS` if no hosts
 ## Container argument reference
 {: #sph_reference_container_arg}
 
+The following table shows the container arguments.
+
 | Key | Description | Default |
 |---|-------------|---|
 | `scan` | The type of exposure scan ("public" or "private") | None (scan both) |
@@ -229,6 +233,8 @@ The `ibmcloud-secure-perimeter-health` determines a subnet as `PASS` if no hosts
 
 ## Environment variable reference
 {: #sph_reference_env_var}
+
+The following table shows the environment variables.
 
 | Key | Description |
 |---|-------------|
