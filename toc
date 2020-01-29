@@ -9,10 +9,10 @@ IBM public container images
     datashield-mysql/index-datashield-mysql.md
     datashield-nginx/index-datashield-nginx.md
     datashield-vault/index-datashield-vault.md
-    ibm-backup-restore/index-ibm-backup-restore.md
     ibmcloud-secure-perimeter-health/index-ibmcloud-secure-perimeter-health.md
     ibmcloud-secure-perimeter-network/index-ibmcloud-secure-perimeter-network.md
-    ibmliberty/index-ibmliberty.md
+    ibmliberty/index-ibmliberty.md    
+    ibm-backup-restore/index-ibm-backup-restore.md
     ibm-mq/index-ibm-mq.md
     ibm-node-strong-pm/index-ibm-node-strong-pm.md
     {: .navgroup-end}
