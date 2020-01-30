@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-01-23"
+lastupdated: "2020-01-30"
 
 keywords: registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public images,
 
@@ -30,7 +30,7 @@ subcollection: RegistryImages
 The {{site.data.keyword.IBM}} {{site.data.keyword.appserver_short}} Liberty \(`ibm/liberty`\) images are supplied for {{site.data.keyword.containerlong}}.
 {:shortdesc}
 
-You can access the images that are provided by {{site.data.keyword.IBM_notm}} by using the command line, see [{{site.data.keyword.IBM_notm}} public images](/docs/services/Registry?topic=registry-public_images#public_images).
+You can access the images that are provided by {{site.data.keyword.IBM_notm}} by using the command line, see [{{site.data.keyword.IBM_notm}} public images](/docs/Registry?topic=registry-public_images#public_images).
 {: tip}
 
 ## How it works
@@ -152,7 +152,7 @@ Use your {{site.data.keyword.appserver_short}} license to create a production-li
 - [Upgrade the image from Docker Hub to a production image](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade){: external}.
 - [Build your own production-licensed image](https://github.com/WASdev/ci.docker/tree/master/ga){: external}.
 
-After you create a production-licensed image, [push the image to your private registry](/docs/services/Registry?topic=registry-getting-started#getting-started) to use it with {{site.data.keyword.containershort_notm}}.
+After you create a production-licensed image, [push the image to your private registry](/docs/Registry?topic=registry-getting-started#getting-started) to use it with {{site.data.keyword.containershort_notm}}.
 
 ## Creating an image from the provided images
 {: #ibmliberty_creating_image}
@@ -186,7 +186,7 @@ To create an image with your app code from the `ibm/liberty` image, complete the
 
 5. Add any other dependencies for your app to the Dockerfile.
 
-6. Build and push the image to your private images registry. For more information, see [Getting started with {{site.data.keyword.registrylong_notm}}](/docs/services/Registry?topic=registry-getting-started#getting-started).
+6. Build and push the image to your private images registry. For more information, see [Getting started with {{site.data.keyword.registrylong_notm}}](/docs/Registry?topic=registry-getting-started#getting-started).
 
 All `ibm/liberty` images are configured to write Liberty log files to the directory `/logs` inside the container. All other files that are written by the Liberty server, are created in the directory `/opt/ibm/wlp/output/defaultServer`. You can access these files by using the shortcut `/output`.
 {:tip}
