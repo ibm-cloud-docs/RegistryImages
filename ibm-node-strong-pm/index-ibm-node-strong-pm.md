@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-01-22"
+lastupdated: "2020-01-30"
 
 keywords: registry, ibm-node-strong image, container image, public images,
 
@@ -29,8 +29,7 @@ subcollection: RegistryImages
 The `ibm-node-strong-pm` public image is no longer available.
 {: deprecated}
 
-You can get started with the [{{site.data.keyword.apiconnect_short}} service](/docs/services/apiconnect?topic=apiconnect-getting-started#getting-started) instead.
+You can get started with the [{{site.data.keyword.apiconnect_short}} service](/docs/apiconnect?topic=apiconnect-getting-started#getting-started) instead.
 
-You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [{{site.data.keyword.IBM_notm}} public images](/docs/services/Registry?topic=registry-public_images#public_images).
+You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [{{site.data.keyword.IBM_notm}} public images](/docs/Registry?topic=registry-public_images#public_images).
 {: tip}
-
