@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-01-23"
+lastupdated: "2020-01-30"
 
 keywords: registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public images,
 
@@ -29,7 +29,7 @@ subcollection: RegistryImages
 The `ibmcloud-secure-perimeter-health` image contains a tool for scanning vulnerabilities in a Secure Perimeter in {{site.data.keyword.cloud}}.
 {:shortdesc}
 
-You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [{{site.data.keyword.IBM_notm}} public images](/docs/services/Registry?topic=registry-public_images#public_images).
+You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [{{site.data.keyword.IBM_notm}} public images](/docs/Registry?topic=registry-public_images#public_images).
 {: tip}
 
 ## How it works
