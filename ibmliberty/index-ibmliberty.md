@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-01-30"
 
-keywords: registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, liberty, public images,
+keywords: registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, Open Liberty, liberty, public images,
 
 subcollection: RegistryImages
 
@@ -27,77 +27,52 @@ subcollection: RegistryImages
 # Getting started with the `ibm/liberty` image
 {: #ibmliberty}
 
-The {{site.data.keyword.IBM}} {{site.data.keyword.appserver_short}} Liberty \(`ibm/liberty`\) images are supplied for {{site.data.keyword.containerlong}}.
-{:shortdesc}
-
 You can access the images that are provided by {{site.data.keyword.IBM_notm}} by using the command line, see [{{site.data.keyword.IBM_notm}} public images](/docs/Registry?topic=registry-public_images#public_images).
 {: tip}
 
 ## How it works
 {: #ibmliberty_how_it_works}
 
-You can use an `ibm/liberty` image as a parent to create your own image and deploy your own WAR, EAR, or OSGi apps based on Java in an {{site.data.keyword.IBM_notm}} {{site.data.keyword.appserver_short}} Liberty container.
+You can use an `ibm/liberty` image as a parent to create your own image and deploy your own Java application (Jarkata EE, MicroProfile or Spring Boot) in an Liberty container. 
 {:shortdesc}
 
-## What is included
-{: #ibmliberty_whats_included}
+The recommended pattern is to build a new application image by having a `Dockerfile` similar to:
 
-Every Liberty image provides the following software packages.
-{:shortdesc}
+   ```
+   FROM icr.io/ibm/liberty:<tag>
 
-- {{site.data.keyword.IBM_notm}} {{site.data.keyword.appserver_short}} for Developers Liberty
-- IBM Java Runtime Environment 8.0
+   # Add my app and config
+   COPY --chown=1001:0  Sample1.war /config/dropins/
+   COPY --chown=1001:0  server.xml /config/
+   
+   RUN configure.sh
+   ```
 
-The specific Liberty features that are installed in the image depend on the tag that you select. The following table shows the features that are included in each of the `ibm/liberty` images. For more information about each feature, see the [Liberty features overview in {{site.data.keyword.IBM_notm}} Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/rwlp_feat.html){: external}.
+You basically just add your application and corresponding configuration, then call the built-in script `configure.sh` to install any needed features (if using the `kernel` based tag) and prime the shared class cache for improved startup performance.
 
-The following table shows the features that are included in each of the `ibm/liberty` images.
+For more information on building applications images you can check out the documentation for [Open Liberty](https://github.com/OpenLiberty/ci.docker#building-an-application-image) or [WebSphere Liberty](https://github.com/WASdev/ci.docker#building-an-application-image),using the tags below as the `FROM` value in your `Dockerfile`.
+ 
+## Tags
+{: #ibmliberty_tags}
+
+The following table shows the features that are included in each of the `ibm/liberty` image tags.
 
 |Tag|Description|
 |---|-----------|
-|All `ibm/liberty` images|All `ibm/liberty` images include the following features: </br></br>`appSecurity-2.0`</br></br>`collectiveMember-1.0`</br></br>`localConnector-1.0`</br></br>`IdapRegistry-3.0`</br></br>`monitor-1.0`</br></br>`requestTiming-1.0`</br></br>`restConnector-1.0`</br></br>`sessionDatabase-1.0`</br></br>`ssl-1.0`</br></br>`webCache-1.0`|
-|`ibm/liberty:latest`|This image points to the `ibm/liberty:javaee8` image.|
-|`ibm/liberty:microProfile1`|This image contains the features that provide the capabilities that are specified by [MicroProfile 1.x](https://microprofile.io/){: external}.|
-|`ibm/liberty:microProfile2`|This image contains the features that provide the capabilities that are specified by [MicroProfile 2.x](https://microprofile.io/){: external}.|
-|`ibm/liberty:springBoot1`|This image contains the features that provide the capabilities that are specified by [Spring Boot 1.x](https://spring.io/projects/spring-boot){: external}.|
-|`ibm/liberty:springBoot2`|This image contains the features that provide the capabilities that are specified by [Spring Boot 2.x](https://spring.io/projects/spring-boot){: external}.|
-|`ibm/liberty:webProfile7`|This image includes all features that are required for Java EE 7 Web Profile compliance.|
-|`ibm/liberty:webProfile8`|This image includes all features that are required for Java EE 8 Web Profile compliance.|
-|`ibm/liberty:javaee7`|This image includes all features from the `ibm/liberty:webProfile7` image, plus features that are required for Java EE 7 Full Platform compliance.|
-|`ibm/liberty:javaee8`|This image includes all features from the `ibm/liberty:webProfile8` image, plus features that are required for Java EE 8 Full Platform compliance.|
-{: caption="Table 1. The features that are included in each of the <code>ibm/liberty</code> images" caption-side="top"}
-
-## Usage restrictions
-{: #ibmliberty_usage}
-
-The following table shows the restrictions that apply to the free usage of the `ibm/liberty` image in {{site.data.keyword.cloud_notm}}.
-{:shortdesc}
-
-The pricing for the `ibm/liberty` image is independent of the pricing for the containers that you use in {{site.data.keyword.cloud_notm}}.
-{:tip}
-
-The following table shows the pricing.
-
-|Environment|Free usage restrictions|
-|-----------|-----------------------|
-|Development|**Unlimited** free usage of the `ibm/liberty` image.|
-|Production|Free usage of the `ibm/liberty` image is limited to a **maximum of 2 GB Java heap space** across all container instances that run the image. For example, you can have 2 x 1 GB, or 4 x 512 MB heap liberty instances for free.|
-{: caption="Table 2. Pricing" caption-side="top"}
-
-To monitor the Java heap usage of your container instances, see [Monitoring the Java heap space usage for a container with the CLI](#ibmliberty_monitor_heap).
-
-Review the terms of use for {{site.data.keyword.IBM_notm}} certified images in the License section of the [websphere-liberty image](https://hub.docker.com/_/websphere-liberty/){: external} on Docker Hub.
+|`icr.io/ibm/liberty:20.0.0.3-wl-kernel`| This tag contains Red Hat's Universal Base Image 8, IBM Java Runtime Environment 8.0, and {{site.data.keyword.IBM_notm}} {{site.data.keyword.appserver_short}} Liberty 20.0.0.3 with just the `kernel` feature enabled, so you must either call Liberty's `installUtility` or the container's `configure.sh` to add features. See [this page](https://github.com/WASdev/ci.docker#building-an-application-image) for more details. |
+|`icr.io/ibm/liberty:20.0.0.3-wl-full`| This tag contains Red Hat's Universal Base Image 8, IBM Java Runtime Environment 8.0, and {{site.data.keyword.IBM_notm}} {{site.data.keyword.appserver_short}} Liberty 20.0.0.3 with all of its features enabled. |
+|`icr.io/ibm/liberty:20.0.0.3-ol-kernel`|  This tag contains Red Hat's Universal Base Image 8, AdoptOpenJDK 8 with OpenJ9, and Open Liberty 20.0.0.3 with the kernel and all of its features already loaded. |
+|`icr.io/ibm/liberty:20.0.0.3-ol-full`| This tag contains Red Hat's Universal Base Image 8, AdoptOpenJDK 8 with OpenJ9, and Open Liberty 20.0.0.3 with all of its features enabled. |
+{: caption="Table 1. Each of the image tags for <code>ibm/liberty</code>" caption-side="top"}
 
 ## Getting started
 {: #ibmliberty_get_started}
 
-Use one of the free `ibm/liberty` images from the {{site.data.keyword.cloud_notm}} catalog or select your own production-licensed image to create a single container or a container group.
+Use your application image, derived from of the free `ibm/liberty` image tags, to create a single container or a container group.
 {:shortdesc}
 
-Before you begin, review the [usage restrictions](#ibmliberty_usage) for the `ibm/liberty` images.
-{: important}
-
-1. From the catalog, select **Containers** > **IBM Cloud Container Registry** > **IBM Public Repositories** in the side pane. Search for the `ibm/liberty` image to build your container from. If you created your own production-licensed image and deployed it to {{site.data.keyword.cloud_notm}}, select this image from the catalog. The container creation page opens.
-2. From the **TAG/VERSION** list, select the version of the `ibm/liberty` image that you want to use.
+1. From the catalog, select **Containers** > **IBM Cloud Container Registry** > **IBM Public Repositories** in the side pane. Search for your own application image and that was deployed to {{site.data.keyword.cloud_notm}}, select this image from the catalog. The container creation page opens.
+2. From the **TAG/VERSION** list, select the version of the image that you want to use.
 3. For more information about building containers from images, setting up clusters, and deploying apps in clusters, use the following links:
 
     - [Building containers from images](/docs/containers?topic=containers-images#images)
@@ -131,8 +106,12 @@ After you create a container from the `ibm/liberty` image, you can view metrics 
 
 4. Adjust the maximum heap usage for your {{site.data.keyword.appserver_short}} instance. For more information, see [Setting generic JVM arguments in the {{site.data.keyword.appserver_short}} V8.5 Liberty profile](https://www-01.ibm.com/support/docview.wss?uid=swg21596474){: external}.
 
-## Getting a {{site.data.keyword.appserver_short}} license
+## License for production use
 {: #ibm/liberty_license}
+
+The {{site.data.keyword.IBM_notm}} {{site.data.keyword.appserver_short}} Liberty images contain an International License Agreement for Non-Warranted Programs (ILAN) license which allows entitled {{site.data.keyword.IBM_notm}} {{site.data.keyword.appserver_short}} Liberty customers to use these same images under an International Program License Agreement (IPLA) term.
+
+For customers that still wish to apply a {{site.data.keyword.IBM_notm}} {{site.data.keyword.appserver_short}} Liberty license to their docker image can do so following [these instructions](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade).
 
 {{site.data.keyword.appserver_short}} licenses are based on the number of Processor Value Units \(PVUs\) that you need. PVU is a unit of measurement for the licensing of {{site.data.keyword.IBM_notm}} Middleware software. The number of PVUs indicates the number of processors \(cores\) that are available to the software.
 {:shortdesc}
@@ -143,56 +122,3 @@ To purchase a {{site.data.keyword.appserver_short}} License, contact [{{site.dat
 
 If you find that you require more PVUs after you purchased the license, you can increase the amount by contacting [{{site.data.keyword.IBM_notm}} Service](https://www.ibm.com/us-en/marketplace/java-ee-runtime/purchase){: external}.
 
-## Creating a production-licensed `ibm/liberty` image to be used with {{site.data.keyword.containershort_notm}}
-{: #ibmliberty_prod_image}
-
-Use your {{site.data.keyword.appserver_short}} license to create a production-licensed `ibm/liberty` image that you can use with {{site.data.keyword.containershort_notm}}. Choose between one of the following tasks.
-{:shortdesc}
-
-- [Upgrade the image from Docker Hub to a production image](https://github.com/WASdev/ci.docker/tree/master/ga/production-upgrade){: external}.
-- [Build your own production-licensed image](https://github.com/WASdev/ci.docker/tree/master/ga){: external}.
-
-After you create a production-licensed image, [push the image to your private registry](/docs/Registry?topic=registry-getting-started#getting-started) to use it with {{site.data.keyword.containershort_notm}}.
-
-## Creating an image from the provided images
-{: #ibmliberty_creating_image}
-
-You can use one of the `ibm/liberty` images as a parent for creating a child image that includes your own app code. Customize the sample Dockerfile and build your image on your computer. Then, you can add your image to your organization's private images registry and create containers with it.
-{:shortdesc}
-
-Before you begin, consider the following steps.
-
-- Build your app code into a WAR, EAR, or OSGi file.
-- Copy the file to the directory, from which you want to build your image.
-
-To create an image with your app code from the `ibm/liberty` image, complete the following steps:
-
-1. With a text editor, create a file that is named `Dockerfile` and copy the following information into it.
-
-   ```
-   FROM icr.io/ibm/liberty:<tag>
-   COPY <app_name>.<file_extension> /config/dropins/
-   ```
-   {: pre}
-
-    The directory `/config` is a shortcut for `/opt/ibm/wlp/usr/servers/defaultServer`.
-    {: note}
-
-2. Replace `<tag>` with the version of the `ibm/liberty` image that includes the features that your app requires.
-
-3. Replace `<app_name>` with the name of your app file.
-
-4. Replace `<file_extension>` with either `.war`, `.ear`, or `.eba`.
-
-5. Add any other dependencies for your app to the Dockerfile.
-
-6. Build and push the image to your private images registry. For more information, see [Getting started with {{site.data.keyword.registrylong_notm}}](/docs/Registry?topic=registry-getting-started#getting-started).
-
-All `ibm/liberty` images are configured to write Liberty log files to the directory `/logs` inside the container. All other files that are written by the Liberty server, are created in the directory `/opt/ibm/wlp/output/defaultServer`. You can access these files by using the shortcut `/output`.
-{:tip}
-
-## `ibm/liberty` Dockerfile reference
-{: #ibmliberty_reference_dockerfile}
-
-The `ibm/liberty` image Dockerfiles can be found in the [WASdev/ci.docker GitHub repository](https://github.com/WASdev/ci.docker/tree/master/ga){: external} for reference.
-{:shortdesc}
