@@ -56,7 +56,7 @@ For more information about building applications images by using the [tags](#ibm
 ## Tags
 {: #ibmliberty_tags}
 
-The following table shows the features that are included in each of the `ibm/liberty` image tags. Each of these tags is supported for the `amd64`, `s390x`, and `ppc64le` architectures by a manifest list, which means that if you use the tags as is, you'll get the architecture that matches the requesting machine.  
+The following table shows the features that are included in each of the `ibm/liberty` image tags. Each of these tags is supported for the `amd64`, `s390x`, and `ppc64le` architectures by a manifest list, which means that if you use the tags as is, you get the architecture that matches the requesting computer.
 
 |Tag|Description|
 |---|-----------|
@@ -103,7 +103,7 @@ After you create a container from the `ibm/liberty` image, you can view metrics 
    ```
    {: pre}
 
-3. To review the Java heap usage, you must access the **RSS** memory stat, see [Kubernetes: Get a shell to a running container](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/){: external}. The Java heap usage is displayed in KB. If your heap usage is under 2097152 KB (2 GB) across all instances, then you do not have to purchase a {{site.data.keyword.appserver_short}} license.
+3. To review the Java heap usage, you must access the **RSS** memory stat, see [Kubernetes: Get a shell to a running container](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/){: external}. The Java heap usage is displayed in KB. If your heap usage is under 2097152 KB (2 GB) across all instances, then you don't have to buy a {{site.data.keyword.appserver_short}} license.
 
 4. Adjust the maximum heap usage for your {{site.data.keyword.appserver_short}} instance. For more information, see [Setting generic JVM arguments in the {{site.data.keyword.appserver_short}} 8.5 Liberty profile](https://www-01.ibm.com/support/docview.wss?uid=swg21596474){: external}.
 
@@ -117,8 +117,8 @@ If you want to apply an {{site.data.keyword.IBM_notm}} {{site.data.keyword.appse
 {{site.data.keyword.appserver_short}} licenses are based on the number of Processor Value Units (PVUs) that you require. PVU is a unit of measurement for the licensing of {{site.data.keyword.IBM_notm}} Middleware software. The number of PVUs indicates the number of processors (cores) that are available to the software.
 {:shortdesc}
 
-Every container size in {{site.data.keyword.cloud_notm}} requires a specific number of PVU entitlements that must be available in the {{site.data.keyword.appserver_short}} license. Therefore, you must plan your `ibm/liberty` containers prior to purchasing the license.
+Every container size in {{site.data.keyword.cloud_notm}} requires a specific number of PVU entitlements that must be available in the {{site.data.keyword.appserver_short}} license. Therefore, you must plan your `ibm/liberty` containers before buying the license.
 
-To purchase a {{site.data.keyword.appserver_short}} License, contact [{{site.data.keyword.IBM_notm}} Service](https://www.ibm.com/us-en/marketplace/java-ee-runtime/purchase){: external}. If you already have a license for {{site.data.keyword.appserver_short}} 8.5 or later, you can use any unused PVUs from your existing entitlement for the deployment of your container.
+To buy a {{site.data.keyword.appserver_short}} license, contact [{{site.data.keyword.IBM_notm}} Service](https://www.ibm.com/us-en/marketplace/java-ee-runtime/purchase){: external}. If you already have a license for {{site.data.keyword.appserver_short}} 8.5 or later, you can use any unused PVUs from your existing entitlement for the deployment of your container.
 
-After you purchase the license, if you require more PVUs, you can increase the amount by contacting [{{site.data.keyword.IBM_notm}} Service](https://www.ibm.com/us-en/marketplace/java-ee-runtime/purchase){: external}.
+After you buy the license, if you require more PVUs, you can increase the amount by contacting [{{site.data.keyword.IBM_notm}} Service](https://www.ibm.com/us-en/marketplace/java-ee-runtime/purchase){: external}.
