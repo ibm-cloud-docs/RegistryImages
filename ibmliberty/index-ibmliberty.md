@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-26"
+lastupdated: "2020-03-27"
 
 keywords: registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, Open Liberty, liberty, public images,
 
@@ -56,7 +56,7 @@ For more information about building applications images by using the [tags](#ibm
 ## Tags
 {: #ibmliberty_tags}
 
-The following table shows the features that are included in each of the `ibm/liberty` image tags.
+The following table shows the features that are included in each of the `ibm/liberty` image tags. Each of these tags is supported for the `amd64`, `s390x`, and `ppc64le` architectures by a manifest list, which means that if you use the tags as is, you'll get the architecture that matches the requesting machine.  
 
 |Tag|Description|
 |---|-----------|
