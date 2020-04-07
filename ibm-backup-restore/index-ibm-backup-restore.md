@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-01-30"
+lastupdated: "2020-04-07"
 
 keywords: registry, Kubernetes, ibm-backup-restore, container image, back up data, restore data, public images,
 
@@ -26,7 +26,7 @@ subcollection: RegistryImages
 # `ibmcloud-backup-restore` image - deprecated
 {: #ibmbackup_restore_starter}
 
-The `ibmcloud-backup-restore` image is no longer available.
+The `ibmcloud-backup-restore` image is available as a Helm chart.
 {: deprecated}
 
 You can back up and restore by using the {{site.data.keyword.cloud}} Backup Restore Helm chart in {{site.data.keyword.containerlong_notm}} instead, see [Backing up and restoring PVC data for file and block storage](/docs/containers?topic=containers-utilities#ibmcloud-backup-restore).
