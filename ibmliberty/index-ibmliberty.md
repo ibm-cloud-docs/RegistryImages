@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-27"
+lastupdated: "2020-04-14"
 
 keywords: registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, Open Liberty, liberty, public images,
 
@@ -105,7 +105,7 @@ After you create a container from the `ibm/liberty` image, you can view metrics 
 
 3. To review the Java heap usage, you must access the **RSS** memory stat, see [Kubernetes: Get a shell to a running container](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/){: external}. The Java heap usage is displayed in KB. If your heap usage is under 2097152 KB (2 GB) across all instances, then you don't have to buy a {{site.data.keyword.appserver_short}} license.
 
-4. Adjust the maximum heap usage for your {{site.data.keyword.appserver_short}} instance. For more information, see [Setting generic JVM arguments in the {{site.data.keyword.appserver_short}} 8.5 Liberty profile](https://www-01.ibm.com/support/docview.wss?uid=swg21596474){: external}.
+4. Adjust the maximum heap usage for your {{site.data.keyword.appserver_short}} instance. For more information, see [Setting generic JVM arguments in the {{site.data.keyword.appserver_short}} 8.5 Liberty profile](https://www.ibm.com/support/pages/node/476495){: external}.
 
 ## License for production use
 {: #ibm/liberty_license}
@@ -119,6 +119,6 @@ If you want to apply an {{site.data.keyword.IBM_notm}} {{site.data.keyword.appse
 
 Every container size in {{site.data.keyword.cloud_notm}} requires a specific number of PVU entitlements that must be available in the {{site.data.keyword.appserver_short}} license. Therefore, you must plan your `ibm/liberty` containers before buying the license.
 
-To buy a {{site.data.keyword.appserver_short}} license, contact [{{site.data.keyword.IBM_notm}} Service](https://www.ibm.com/us-en/marketplace/java-ee-runtime/purchase){: external}. If you already have a license for {{site.data.keyword.appserver_short}} 8.5 or later, you can use any unused PVUs from your existing entitlement for the deployment of your container.
+To buy a {{site.data.keyword.appserver_short}} license, contact [{{site.data.keyword.IBM_notm}} Service](https://www.ibm.com/cloud/websphere-application-server/pricing){: external}. If you already have a license for {{site.data.keyword.appserver_short}} 8.5 or later, you can use any unused PVUs from your existing entitlement for the deployment of your container.
 
-After you buy the license, if you require more PVUs, you can increase the amount by contacting [{{site.data.keyword.IBM_notm}} Service](https://www.ibm.com/us-en/marketplace/java-ee-runtime/purchase){: external}.
+After you buy the license, if you require more PVUs, you can increase the amount by contacting [{{site.data.keyword.IBM_notm}} Service](https://www.ibm.com/cloud/websphere-application-server/pricing){: external}.
