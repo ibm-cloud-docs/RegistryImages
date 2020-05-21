@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-01-30"
+lastupdated: "2020-05-20"
 
 keywords: registry, Data Shield environment, datashield-barbican image, container image, Barbican, Registry, data in use, memory encryption, Intel SGX, Fortanix, public images, 
 
@@ -29,7 +29,7 @@ subcollection: RegistryImages
 This container image provides protection for data that is in use by running Barbican in the {{site.data.keyword.datashield_full}} environment. For more information about the service and what it means to protect data in use, see the [{{site.data.keyword.datashield_short}} documentation](/docs/data-shield?topic=data-shield-about#about).
 {: shortdesc}
 
-You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [{{site.data.keyword.IBM_notm}} public images](/docs/Registry?topic=registry-public_images#public_images).
+You can access the images that are provided by {{site.data.keyword.IBM}} by using the command line, see [{{site.data.keyword.IBM_notm}} public images](/docs/Registry?topic=Registry-public_images#public_images).
 {: tip}
 
 ## Deploying the image
