@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-05-20"
+lastupdated: "2020-07-02"
 
 keywords: registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public images,
 
@@ -39,11 +39,6 @@ To ensure that your Secure Perimeter is functioning properly, `ibmcloud-secure-p
 
 - Use `ibmcloud-secure-perimeter-health` as a pod on a Kubernetes cluster within your Secure Perimeter to scan for private network exposures.
 - Use `ibmcloud-secure-perimeter-health` as a stand-alone Docker container on your workstation to scan for public network exposures.
-
-For more information about Secure Perimeter, see these blog articles:
-
-- [Set up a Secure Perimeter in {{site.data.keyword.cloud_notm}}](https://developer.ibm.com/dwblog/2018/ibm-cloud-vyatta-set-up-secure-perimeter/){: external}.
-- [Set up an automated Secure Perimeter in {{site.data.keyword.cloud_notm}}](https://developer.ibm.com/dwblog/2018/set-automated-secure-perimeter-ibm-cloud/){: external}.
 
 After scanning, the `ibmcloud-secure-perimeter-health` image produces a report on which networks were reachable from within the Secure Perimeter Segment. Each report details the name of the network gateway, VLAN, its subnets, and any offending hosts. The following code is an example report of a user that scanned for private network vulnerabilities:
 
