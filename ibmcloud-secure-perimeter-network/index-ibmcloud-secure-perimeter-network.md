@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-07-02"
+lastupdated: "2020-08-28"
 
 keywords: registry, ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public images,
 
@@ -73,7 +73,7 @@ To access your cluster after it is deployed, see [Getting started with {{site.da
 ## Run initial config of your Secure Perimeter Vyatta
 {: #spn_initial_setup}
 
-1. Create a file that is named `config.json`. This file contains the basic parameters that are required by `ibmcloud-secure-perimeter-network` to access the Vyatta.
+1. Create a file that is named `config.json`. This file contains the basic options that are required by `ibmcloud-secure-perimeter-network` to access the Vyatta.
 
    ```
    {
