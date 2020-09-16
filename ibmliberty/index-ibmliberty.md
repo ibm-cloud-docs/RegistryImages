@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-11"
+lastupdated: "2020-09-14"
 
 keywords: registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, Open Liberty, liberty, public images,
 
@@ -27,7 +27,7 @@ subcollection: RegistryImages
 # Getting started with the `ibm/liberty` image
 {: #ibmliberty}
 
-You can use an `ibm/liberty` image as a parent to create your own image and deploy your own Java application (Jakata EE, Eclipse MicroProfile, or Spring Boot) in a Liberty container.
+You can use an `ibm/liberty` image as a parent to create your own image and deploy your own Java application (Jakarta EE, Eclipse MicroProfile, or Spring Boot) in a Liberty container.
 {:shortdesc}
 
 You can access the images that are provided by {{site.data.keyword.IBM_notm}} by using the command line, see [{{site.data.keyword.IBM_notm}} public images](/docs/Registry?topic=Registry-public_images#public_images).
