@@ -1,4 +1,4 @@
-# RegistryImages
+# Registry Images
 
 Documentation for <a href="https://cloud.ibm.com/docs/Registry?topic=registry-public_images#public_images" rel="nofollow">IBM public images in IBM Cloud Container Registry service</a>.
 
