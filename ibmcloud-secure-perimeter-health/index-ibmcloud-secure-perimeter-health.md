@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-07-02"
+lastupdated: "2020-09-25"
 
 keywords: registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public images,
 
@@ -223,7 +223,7 @@ The following table shows the container arguments.
 | `scan` | The type of exposure scan ("public" or "private") | None (scan both) |
 | `exclude-vlan-ids` | List of VLANs by IDs to avoid scanning | None |
 | `poll-interval` | Set the number of seconds until the next scan | 0 (run once) |
-| `allowed-public-ports` | List of ports to whitelist under the scan | 80, 443, 9000-9999 |
+| `allowed-public-ports` | List of ports to allowlist under the scan | 80, 443, 9000-9999 |
 {: caption="Table 1. Container arguments" caption-side="top"}
 
 ## Environment variable reference
