@@ -136,7 +136,7 @@ The following table shows the environment variables that the MariaDB container a
 | `MARIADB_REPLICATION_MODE` | Enables replication. Options include `primary` or `secondary`. |
 | `MARIADB_REPLICATION_USER` | Sets the name of the replication user. This user is created on the primary and is used by the secondary to connect. |
 | `MARIADB_REPLICATION_PASSWORD` | Sets the password for the replication user. This password is used on the primary to create the user and by the secondary to log in. |
-| `MARIADB_REPLICATION_MASTER_HOST` | Sets the host name for the secondary to connect to for replication. |
+| `MARIADB_REPLICATION_PRIMARY_HOST` | Sets the host name for the secondary to connect to for replication. |
 {: caption="Table 2. The environment variables that the MariaDB container accepts" caption-side="top"}
 
 ## Connecting to the MariaDB instance
