@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-14"
+lastupdated: "2020-11-24"
 
 keywords: registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, Open Liberty, liberty, public images,
 
@@ -41,10 +41,16 @@ You can build a new application image by having a `Dockerfile` that is similar t
    ```
    FROM icr.io/ibm/liberty:<tag>
 
-   # Add my app and config
-   COPY --chown=1001:0  Sample1.war /config/dropins/
+   # Add the application server configuration
    COPY --chown=1001:0  server.xml /config/
 
+   # If you are using Open Liberty's kernel-slim tag, call this script to grow the list of features
+   #RUN features.sh
+
+   # Add the application
+   COPY --chown=1001:0  Sample1.war /config/dropins/
+
+   # Warm up the server and for WebSphere Liberty's kernel tag, grow the set of features
    RUN configure.sh
    ```
    {: codeblock}
@@ -60,10 +66,10 @@ The following table shows the features that are included in each of the `ibm/lib
 
 |Tag|Description|
 |---|-----------|
-|`icr.io/ibm/liberty:20.0.0.6-wl-kernel`| This tag contains Red Hat Universal Base Image 8, {{site.data.keyword.IBM_notm}} Java Runtime Environment 8.0, and {{site.data.keyword.IBM_notm}} {{site.data.keyword.appserver_short}} Liberty 20.0.0.6 with the `kernel` feature enabled. To add features, you must either call Liberty's `installUtility` or the container's `configure.sh`. For more information, see [Building an application image](https://github.com/WASdev/ci.docker#building-an-application-image){: external}. |
-|`icr.io/ibm/liberty:20.0.0.6-wl-full`| This tag contains Red Hat Universal Base Image 8, {{site.data.keyword.IBM_notm}} Java Runtime Environment 8.0, and {{site.data.keyword.IBM_notm}} {{site.data.keyword.appserver_short}} Liberty 20.0.0.6 with all of its features enabled. |
-|`icr.io/ibm/liberty:20.0.0.6-ol-kernel`| This tag contains Red Hat Universal Base Image 8, AdoptOpenJDK 8 with OpenJ9, and Open Liberty 20.0.0.6 with the kernel with all of its features enabled. |
-|`icr.io/ibm/liberty:20.0.0.6-ol-full`| This tag contains Red Hat Universal Base Image 8, AdoptOpenJDK 8 with OpenJ9, and Open Liberty 20.0.0.6 with all of its features enabled. |
+|`icr.io/ibm/liberty:20.0.0.12-wl-kernel`| This tag contains Red Hat Universal Base Image 8, {{site.data.keyword.IBM_notm}} Java Runtime Environment 8.0, and {{site.data.keyword.IBM_notm}} {{site.data.keyword.appserver_short}} Liberty 20.0.0.12 with the `kernel` feature enabled. To add features, you must either call Liberty's `installUtility` or the container's `configure.sh`. For more information, see [Building an application image](https://github.com/WASdev/ci.docker#building-an-application-image){: external}. |
+|`icr.io/ibm/liberty:20.0.0.12-wl-full`| This tag contains Red Hat Universal Base Image 8, {{site.data.keyword.IBM_notm}} Java Runtime Environment 8.0, and {{site.data.keyword.IBM_notm}} {{site.data.keyword.appserver_short}} Liberty 20.0.0.12 with all of its features enabled. |
+|`icr.io/ibm/liberty:20.0.0.12-ol-kernel-slim`| This tag contains Red Hat Universal Base Image 8, AdoptOpenJDK 8 with OpenJ9, and Open Liberty 20.0.0.12 with the `kernel` feature enabled. To add features, you must either call Open Liberty's `featureUtility` or the container's `features.sh`.  For more information, see [Building an application image](https://github.com/OpenLiberty/ci.docker#building-an-application-image){: external}   |
+|`icr.io/ibm/liberty:20.0.0.12-ol-full`| This tag contains Red Hat Universal Base Image 8, AdoptOpenJDK 8 with OpenJ9, and Open Liberty 20.0.0.12 with all of its features enabled. |
 |`icr.io/ibm/liberty:20.0.0.9-wl-kernel`| This tag contains Red Hat Universal Base Image 8, {{site.data.keyword.IBM_notm}} Java Runtime Environment 8.0, and {{site.data.keyword.IBM_notm}} {{site.data.keyword.appserver_short}} Liberty 20.0.0.9 with the `kernel` feature enabled. To add features, you must either call Liberty's `installUtility` or the container's `configure.sh`. For more information, see [Building an application image](https://github.com/WASdev/ci.docker#building-an-application-image){: external}. |
 |`icr.io/ibm/liberty:20.0.0.9-wl-full`| This tag contains Red Hat Universal Base Image 8, {{site.data.keyword.IBM_notm}} Java Runtime Environment 8.0, and {{site.data.keyword.IBM_notm}} {{site.data.keyword.appserver_short}} Liberty 20.0.0.9 with all of its features enabled. |
 |`icr.io/ibm/liberty:20.0.0.9-ol-kernel`| This tag contains Red Hat Universal Base Image 8, AdoptOpenJDK 8 with OpenJ9, and Open Liberty 20.0.0.9 with the kernel with all of its features enabled. |
