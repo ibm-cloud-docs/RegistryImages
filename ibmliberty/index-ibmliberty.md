@@ -44,18 +44,17 @@ You can build a new application image by having a `Dockerfile` that is similar t
    # Add the application server configuration
    COPY --chown=1001:0  server.xml /config/
 
-   # If you are using Open Liberty's kernel-slim tag, call this script to grow the list of features
+   # For Open Liberty only
    #RUN features.sh
 
    # Add the application
    COPY --chown=1001:0  Sample1.war /config/dropins/
 
-   # Warm up the server and for WebSphere Liberty's kernel tag, grow the set of features
    RUN configure.sh
    ```
    {: codeblock}
 
-Add your application and the corresponding configuration, then, if you are using the `kernel` based tag, call the built-in script `configure.sh` to install the required features and prime the shared class cache to improve the startup performance.
+Add the server configuration, then, if you are using the `kernel-slim` tag from Open Liberty, install the required features by calling the `features.sh` built-in script. You can then add your application and prime the shared class cache to improve the startup performance by calling the `configure.sh` built-in script. If you are using the `kernel` tag from {{site.data.keyword.IBM_notm}} {{site.data.keyword.appserver_short}} Liberty, the `configure.sh` script installs the required features, equivalent to Open Liberty's `feature.sh` script.
 
 For more information about building applications images by using the [tags](#ibmliberty_tags) as the `FROM` value in your `Dockerfile`, see [Open Liberty](https://github.com/OpenLiberty/ci.docker#building-an-application-image){: external} and [WebSphere Liberty](https://github.com/WASdev/ci.docker#building-an-application-image){: external}.
 
