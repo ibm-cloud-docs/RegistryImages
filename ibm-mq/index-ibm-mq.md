@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2018, 2020
-lastupdated: "2020-05-20"
+  years: 2018, 2021
+lastupdated: "2021-02-10"
 
-keywords: registry, IBM MQ, ibm-mq, container image, public images, MQ,
+keywords: Registry, IBM MQ, ibm-mq, container image, public images, WebSphere MQ,
 
 subcollection: RegistryImages
 
