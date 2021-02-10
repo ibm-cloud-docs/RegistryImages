@@ -23,6 +23,7 @@ subcollection: RegistryImages
 {:term: .term}
 {:external: target="_blank" .external}
 
+
 # `ibmcloud-backup-restore` image - deprecated
 {: #ibmbackup_restore_starter}
 
