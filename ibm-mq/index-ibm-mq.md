@@ -23,6 +23,7 @@ subcollection: RegistryImages
 {:term: .term}
 {:external: target="_blank" .external}
 
+
 # `ibm-mq` public image
 {: #mq}
 
