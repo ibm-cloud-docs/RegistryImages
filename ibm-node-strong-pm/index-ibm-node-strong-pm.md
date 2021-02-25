@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-05-20"
+  years: 2015, 2021
+lastupdated: "2021-02-25"
 
-keywords: registry, ibm-node-strong image, container image, public images,
+keywords: Registry, ibm-node-strong image, container image, public images,
 
 subcollection: RegistryImages
 
