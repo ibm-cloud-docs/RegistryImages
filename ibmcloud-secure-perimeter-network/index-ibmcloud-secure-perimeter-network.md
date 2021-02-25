@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2018, 2020
-lastupdated: "2020-09-03"
+  years: 2018, 2021
+lastupdated: "2021-02-25"
 
-keywords: registry, ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public images,
+keywords: Registry, ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public images,
 
 subcollection: RegistryImages
 
@@ -68,7 +68,7 @@ The `ibmcloud-secure-perimeter-network` image provides the following software pa
 4. Enter all other details as required.
 5. Click **Create Cluster**.
 
-To access your cluster after it's deployed, see [Getting started with {{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started).
+To access your cluster after deployment, see [Getting started with {{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-getting-started#getting-started).
 
 ## Run initial config of your Secure Perimeter Vyatta
 {: #spn_initial_setup}
@@ -230,5 +230,5 @@ The following table shows the `rules.conf`.
 |---|-------------|
 | `external_subnets` | List of subnets on the public internet that Secure Perimeter can use. |
 | `external_ports` | List of ports that Secure Perimeter can use. |
-| `userips` | List of user IPs to allowlist to Secure Perimeter. |
+| `userips` | List of user IP addresses to allowlist to Secure Perimeter. |
 {: caption="Table 2. <code>rules.conf</code>" caption-side="top"}
