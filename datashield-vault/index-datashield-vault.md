@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2018, 2020
-lastupdated: "2020-05-20"
+  years: 2018, 2021
+lastupdated: "2021-02-25"
 
-keywords: registry, Data Shield environment, container image, public images, Vault image, data in use, memory encryption, Intel SGX, Fortanix,
+keywords: Registry, Data Shield environment, container image, public images, Vault image, data in use, memory encryption, Intel SGX, Fortanix,
 
 subcollection: RegistryImages
 
@@ -109,14 +109,14 @@ To access the protected instance of Vault, complete the following steps:
 
 1. Look up the node IP address for your instance by running one of the following commands.
 
-   - Option 1:
+   - Option 1
 
    ```
    kubectl get pod -owide
    ```
    {: codeblock}
 
-   - Option 2:
+   - Option 2
   
    ```
    kubectl describe pod
