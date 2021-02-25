@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2018, 2020
-lastupdated: "2020-05-20"
+  years: 2018, 2021
+lastupdated: "2021-02-25"
 
-keywords: registry, Data Shield environment, nginx image, container image, public images, data in use, memory encryption, Intel SGX, Fortanix,
+keywords: Registry, Data Shield environment, nginx image, container image, public images, data in use, memory encryption, Intel SGX, Fortanix,
 
 subcollection: RegistryImages
 
