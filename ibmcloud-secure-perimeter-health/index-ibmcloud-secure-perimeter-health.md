@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2018, 2020
-lastupdated: "2020-09-25"
+  years: 2018, 2021
+lastupdated: "2021-02-25"
 
-keywords: registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public images,
+keywords: Registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public images,
 
 subcollection: RegistryImages
 
@@ -221,9 +221,9 @@ The following table shows the container arguments.
 | Key | Description | Default |
 |---|-------------|---|
 | `scan` | The type of exposure scan ("public" or "private") | None (scan both) |
-| `exclude-vlan-ids` | List of VLANs by IDs to avoid scanning | None |
-| `poll-interval` | Set the number of seconds until the next scan | 0 (run once) |
-| `allowed-public-ports` | List of ports to allowlist under the scan | 80, 443, 9000-9999 |
+| `exclude-vlan-ids` | List of VLANs by IDs to avoid scanning. | None |
+| `poll-interval` | Set the number of seconds until the next scan. | 0 (run once) |
+| `allowed-public-ports` | List of ports to allowlist under the scan. | 80, 443, 9000-9999 |
 {: caption="Table 1. Container arguments" caption-side="top"}
 
 ## Environment variable reference
@@ -233,6 +233,6 @@ The following table shows the environment variables.
 
 | Key | Description |
 |---|-------------|
-| `SL_USER` | Your {{site.data.keyword.cloud_notm}} infrastructure user name |
-| `SL_APIKEY` | Your {{site.data.keyword.cloud_notm}} infrastructure API key |
+| `SL_USER` | Your {{site.data.keyword.cloud_notm}} infrastructure username. |
+| `SL_APIKEY` | Your {{site.data.keyword.cloud_notm}} infrastructure API key. |
 {: caption="Table 2. Environment variables" caption-side="top"}
