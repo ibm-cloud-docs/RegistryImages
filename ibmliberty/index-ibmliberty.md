@@ -2,9 +2,9 @@
 
 copyright:
   years: 2017, 2021
-lastupdated: "2021-01-26"
+lastupdated: "2021-02-25"
 
-keywords: registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, Open Liberty, liberty, public images,
+keywords: Registry, IBM Liberty, ibmliberty, container image, IBM WebSphere Application Server Liberty, Open Liberty, liberty, public images,
 
 subcollection: RegistryImages
 
@@ -144,7 +144,7 @@ If you want to apply an {{site.data.keyword.IBM_notm}} {{site.data.keyword.appse
 {{site.data.keyword.appserver_short}} licenses are based on the number of Processor Value Units (PVUs) that you require. PVU is a unit of measurement for the licensing of {{site.data.keyword.IBM_notm}} Middleware software. The number of PVUs indicates the number of processors (cores) that are available to the software.
 {:shortdesc}
 
-Every container size in {{site.data.keyword.cloud_notm}} requires a specific number of PVU entitlements that must be available in the {{site.data.keyword.appserver_short}} license. Therefore, you must plan your `ibm/liberty` containers before buying the license.
+Every container size in {{site.data.keyword.cloud_notm}} requires a specific number of PVU entitlements that must be available in the {{site.data.keyword.appserver_short}} license. Therefore, you must plan your `ibm/liberty` containers before you buy the license.
 
 To buy a {{site.data.keyword.appserver_short}} license, contact [{{site.data.keyword.IBM_notm}} Service](https://www.ibm.com/cloud/websphere-application-server/pricing){: external}. If you already have a license for {{site.data.keyword.appserver_short}} 8.5 or later, you can use any unused PVUs from your existing entitlement for the deployment of your container.
 
