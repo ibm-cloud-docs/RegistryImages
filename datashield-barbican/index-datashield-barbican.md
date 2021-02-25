@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2018, 2020
-lastupdated: "2020-05-20"
+  years: 2018, 2021
+lastupdated: "2021-02-25"
 
-keywords: registry, Data Shield environment, datashield-barbican image, container image, Barbican, Registry, data in use, memory encryption, Intel SGX, Fortanix, public images, 
+keywords: Registry, Data Shield environment, datashield-barbican image, container image, Barbican, Registry, data in use, memory encryption, Intel SGX, Fortanix, public images, 
 
 subcollection: RegistryImages
 
