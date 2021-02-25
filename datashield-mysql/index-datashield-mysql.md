@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2018, 2020
-lastupdated: "2020-11-09"
+  years: 2018, 2021
+lastupdated: "2021-02-25"
 
-keywords: registry, Data Shield, data in use, memory encryption, Intel SGX, Fortanix, mysql image, mariaDB, container image, public images,
+keywords: Registry, Data Shield, data in use, memory encryption, Intel SGX, Fortanix, mysql image, mariaDB, container image, public images,
 
 subcollection: RegistryImages
 
@@ -130,13 +130,13 @@ The following table shows the environment variables that the MariaDB container a
 |-----------------|-----------------|
 | `MARIADB_ALLOW_EMPTY_PASSWORD` | Allows the database to start with an empty password for the root user. Not recommended. |
 | `MARIADB_RANDOM_ROOT_PASSWORD` | Generates a random password for the MariaDB root user. |
-| `MARIADB_USER` | Creates a regular MariaDB user with the specified user name. |
+| `MARIADB_USER` | Creates a regular MariaDB user with the specified username. |
 | `MARIADB_PASSWORD` | Password for `MARIADB_USER`. |
 | `MARIADB_DATABASE` | Creates an empty database with the specified name. |
 | `MARIADB_REPLICATION_MODE` | Enables replication. Options include `primary` or `secondary`. |
 | `MARIADB_REPLICATION_USER` | Sets the name of the replication user. This user is created on the primary and is used by the secondary to connect. |
 | `MARIADB_REPLICATION_PASSWORD` | Sets the password for the replication user. This password is used on the primary to create the user and by the secondary to log in. |
-| `MARIADB_REPLICATION_PRIMARY_HOST` | Sets the host name for the secondary to connect to for replication. |
+| `MARIADB_REPLICATION_PRIMARY_HOST` | Sets the hostname for the secondary to connect to for replication. |
 {: caption="Table 2. The environment variables that the MariaDB container accepts" caption-side="top"}
 
 ## Connecting to the MariaDB instance
