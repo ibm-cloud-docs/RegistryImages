@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2021
-lastupdated: "2021-02-25"
+lastupdated: "2021-03-11"
 
 keywords: Registry, ibmcloud-secure-perimeter-health, container image, health, Secure Perimeter, scan, public images,
 
@@ -70,7 +70,7 @@ sp-gateway-8a9031ab:
 The `ibmcloud-secure-perimeter-health` image provides the following software packages.
 {:shortdesc}
 
-- Alpine Linux
+- Alpine Linux&reg;
 - Python runtime
 - SoftLayer Python Client
 - Nmap port scanner
