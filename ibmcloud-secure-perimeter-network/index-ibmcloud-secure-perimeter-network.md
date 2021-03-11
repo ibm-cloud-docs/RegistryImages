@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2021
-lastupdated: "2021-02-25"
+lastupdated: "2021-03-11"
 
 keywords: Registry, ibmcloud-secure-perimeter-network, container image, network, Secure Perimeter, public images,
 
@@ -48,10 +48,10 @@ You can use the `ibmcloud-secure-perimeter-network` image in two ways:
 The `ibmcloud-secure-perimeter-network` image provides the following software packages.
 {:shortdesc}
 
-- Alpine Linux
+- Alpine Linux&reg;
 - Python runtime
 - SoftLayer Python Client
-- Ansible
+- Ansible&reg;
 
 ## Prerequisites
 {: #spn_prerequisites}
