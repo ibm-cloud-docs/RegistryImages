@@ -1,7 +1,7 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="RegistryImages" audience="compute" href="/docs/Registry?topic=RegistryImages" path="RegistryImages"}
+{: .toc subcollection="RegistryImages" audience="service" href="/docs/Registry?topic=RegistryImages" path="RegistryImages"}
 IBM public container images
 
     {: .navgroup id="learn"}
