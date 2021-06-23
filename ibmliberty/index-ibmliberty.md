@@ -24,6 +24,7 @@ subcollection: RegistryImages
 {:term: .term}
 {:external: target="_blank" .external}
 
+
 # Getting started with the `ibm/liberty` image
 {: #ibmliberty}
 
